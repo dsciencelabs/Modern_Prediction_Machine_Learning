@@ -1,0 +1,459 @@
+<style>
+body{
+text-align: justify}
+</style>
+
+
+
+# Analisis Data {#dataanalysis}
+
+Pada Chapter \@ref(dataanalysis), kita akan membahas mengenai cara melakukan analisis data pada `R`. Pada *Chapter* ini penulis akan memperkenalkan fungsi-fungsi yang ada pada `R` yang dapat membantu kita menganalisis data dan melakukan sejumlah uji statistik.
+
+Pada *Chapter* ini kita tidak akan berfokus pada persamaan-persamaan matematika yang menjadi dasar suatu uji statistik. *Chapter* ini menitik beratkan pada bagaimana pembaca dapat melakukan sejumlah uji statistik pada `R` dan gambaran metode yang digunakan.
+
+## Import Data {#importdata}
+
+Kita dapat melakukan import data dalam berbagai format pada `R`. Namun, pada *sub-chapter* ini hanya akan dibahas bagaimana cara mengimport data dari file dengan format `.csv`dan `.txt`. Secara umum fungsi-fungsi yang digunakan untuk membaca data pada file dengan format tersebut adalah sebagai berikut:
+
+```{r, eval=FALSE}
+read.table(file, header = FALSE, sep = "", dec = ".",
+           stringsAsFactors = default.stringsAsFactors())
+
+read.csv(file, header = TRUE, sep = ",", dec = ".")
+
+read.csv2(file, header = TRUE, sep = ";", dec = ",")
+
+read.delim(file, header = TRUE, sep = "\t", dec = ".")
+
+read.delim2(file, header = TRUE, sep = "\t", dec = ",")
+```
+
+> **Catatan:**
+>
+> * `file` : lokasi dan nama file yang akan dibaca diakhiri dengan format file. Secara *default* fungsi akan membaca file yang ada pada *working directory*. Untuk mengetahui lokasi *working directory*, jalankan fungsi `getwd()`. Salin file yang akan dibaca pada lokasi *working directory*.
+> * `header` : nilai logik yang menunjukkan apakah baris pertama pada file yang dibaca akan dibaca sebagai nama kolom.
+> * `sep` : simbol yang menujukkan pemisah antar data. Pemisah antar data dapat berupa "\",";",".", dll.
+> * `dec` : simbol yang menujukkan desimal. Pemisah desimal dapat berupa "." atau ",".
+> * `stringsAsFactors` : nilai logik yang menunjukkan apakah jenis data `string` akan dikonversi menjadi `factor`. 
+
+Kelima fungsi tersebut digunakan untuk membaca data tabular atau data yang disusun kedalam format tabel. Fungsi `read.table()` merupakan bentuk umum dari keempat fungsi lainnya. Fungsi tersebut dapat digunakan untuk membaca data dalam kedua format yang telah disebutkan sebelumnya. Fungsi lainnya lebih spesifi, dimana fungsi `read.csv()` dan `read.csv2()` digunakan untuk membaca data dengan ekstensi `.csv`, sedangkan `read.delim()` dan `read.delim2()` untuk membaca data dengan ekstensi `.txt`. Berikut adalah contoh bagaimana cara membaca data dengan nama `data.csv` yang ada pada *working directory* dengan pemisah antar data berupa `;` dan tanda koma berupa `,`:
+
+```{r, eval=FALSE}
+data <- read.table(file="data.csv", sep=";", dec=",")
+```
+
+## Membaca Data Dari *Library* {#librarydata}
+
+Untuk keperluan pendidikan atau pengujian sebuah fungsi biasanya dalam sebuah *library* disediakan dataset yang siap digunakan. `R` melalui *library* `datasets` menyediakan sejumlah data yang dapat digunakan untuk berlatih menggunakan `R`. Berikut adalah fungsi yang digunakan untuk mengecek dataset apa saja yang tersedia pada sebuah *library*:
+
+```{r, eval=FALSE}
+data(package=.packages(all.available = TRUE))
+```
+
+> **Catatan:**
+>
+> * `package`: nama *library* yang hendak dicek dataset yang tersedia.
+
+Berikut adalah contoh cara melakukan pengecekan pada dataset yang tersedia pada *library* `datasets`:
+
+```{r, eval=FALSE}
+data(package="datasets")
+
+# cek seluruh dataset dari seluruh library yg telah dimuat
+data()
+```
+
+## Ringkasan Data {#summarystats}
+
+Terdapat sejumlah fungsi yang akan pembaca sering gunakan untuk mengecek dataset yang akan pembaca analisa. Fungsi-fungsi tersebut antara lain:
+
+* `head()`: mengecek $n$ (*default* 6) observasi teratas.
+* `tail()`: mengecek $n$ (*default* 6) observasi terbawah.
+* `str()`: mengecek struktur data atau jenis data pada masing-masing kolom. Jenis data yang ada pada `R` dapat berupa `num` (numerik), `int` (integer), `Factor`(factor), `date` (tanggal), dan `chr` (karakter atau string).
+* `summary()`: ringkasan data.
+
+Berikut adalah contoh penerapan fungsi-fungsi tersebut pada dataset `iris`:
+
+```{r}
+# cek 10 observasi teratas
+head(iris, 10)
+
+# cek 10 observasi terbawah
+tail(iris, 10)
+
+# cek struktur data
+str(iris)
+
+# ringkasan data
+summary(iris)
+```
+
+Fungsi-fungsi lainnya yang dapat digunakan untuk melakukan analisis statistika deskriptif adalah sebagai berikut:
+
+* `mean()` : menghitung nilai rata-rata variabel numerik.
+* `sd()` : menghitung simpangan baku variabel numerik.
+* `var()` : menghitung varians variabel numerik.
+* `median()` : menghitung median suatu variabel numerik.
+* `range()` : memperoleh nilai minimum dan maksimum suatu variabel numerik.
+* `IQR()` : memperoleh nilai jarak antar kuartil.
+* `quantile()` : memperoleh kuantil variabel numerik.
+
+Berikut adalah contoh penerapan fungsi-fungsi tersebut:
+
+```{r}
+attach(airquality)
+
+# rata-rata konsentrasi ozon
+mean(Ozone, na.rm = TRUE)
+
+# median konsentrasi ozon
+median(Ozone, na.rm = TRUE)
+
+# simpangan baku konsentrasi ozon
+sd(Ozone, na.rm = TRUE)
+
+# varians konsentrasi ozon
+var(Ozone, na.rm = TRUE)
+
+# range konsentrasi ozon
+range(Ozone, na.rm = TRUE)
+
+# IQR konsentrasi ozon
+IQR(Ozone, na.rm = TRUE)
+
+# kuartil 1, 2 dan 3 konsentrasi ozon
+quantile(Ozone, probs = c(0.25, 0.5, 0.75), na.rm = TRUE)
+
+detach(airquality)
+```
+
+## Uji Normalitas Data Tunggal {#norm}
+
+Pada analisis statistik inferensial khususnya pada pengujian hipotesis, asumsi normalitas merupakan sesuatu yang harus terpenuhi jika prosedur uji yang digunakan merupakan prosedur uji parametrik. Terdapat dua buah cara untuk melakukan uji tersebut, antara lain:
+
+1. Metode grafis (qq-plot, ECDF, plot densitas, histogram, dan boxplot).
+2. Metode matematis (Shapiro-Wilk, Cramer-von Mises, Shapiro-Francia, Anderson-Darling, Liliefors, Pearson Chi-square, dll).
+
+Pada *Chapter* ini, kita akan berfokus pada uji matematis karena cara pengujian dengan menggunakan metode grafis telah penulis jabarkan pada *Chapter* visualisasi data.
+
+Metode uji normalitas yang sering digunakan pada `R` adalah metode Shapiro-Wilk. Metode ini merupakan metode uji yang memiliki power yang besar khusunya untuk ukuran sampel yang relatif kecil. Versi awal metode ini terbatas dengan jumlah sampel 3 sampai 50 sampel. Versi selanjutnya mengalami modifikasi sehingga dapat menangani sampel sampai dengan 5000 sampel bahkan lebih.
+
+Untuk melakukan uji SHapiro-Wilk pada `R`, pembaca dapat menggunakan fungsi `shapiro.test()`. Format fungsi tersebut adalah sebagai beriku:
+
+```{r, eval=FALSE}
+shapiro.test(x)
+```
+
+
+> **Catatan:**
+>
+> * `x` : vektor numerik.
+
+Untuk lebih memahami impelementasi fungsi tersebut pada data, berikut adalah contoh penerapan fungsi tersebut untuk menguji normalitas distribusi konsentrasi ozon pada dataset `airquality`:
+
+```{r}
+shapiro.test(airquality$Ozone)
+```
+
+Berdasarkan hasil uji diperoleh nilai p-value < 0,05, sehingga $H_0$ ditolak dan dapat disimpulkan bahwa distribusi konsentrasi ozon tidak mengikuti distribusi normal. Untuk lebih memahami prosedur pengujian normalitas distribusi suatu data pembaca dapat membaca lebih lanjut pada tautan [Environmental Data Modelin](https://environmental-data-modeling.netlify.com/tutorial/11_uji_hipotesis/#11-4-uji-asumsi-normalitas-distribusi-data).
+
+## Uji Rata-Rata Satu dan Dua Sampel
+
+Uji rata-rata satu sampel merupakan uji statistik untuk menguji apakah rata-rata suatu sampel berasal dari suatu populasi yang telah diketahui nilai rata-ratanya. Sedangkan uji rata-rata untuk dua populasi dilakukan untuk menguji apakah kedua selisis rata-rata populasi tersebut bernilai nol yang menujukkan bahwa kedua populasi tersebut memiliki nilai rata-rata yang sama. Uji rata-rata dua populasi dapat dilakukan untuk sampel independen (contoh: uji rata-rata performa dua buah IPAL) dan berpasangan (contoh: uji rata-rata input dan output IPAL).
+
+Untuk melakukan uji rata-rata  pada `R` dapat digunakan fungsi `t.test()` untuk uji parametrik dan `wilcox.test()` untuk melakukan uji non-parametrik *sign rank test*. Format fungsi-fungsi tersebut adalah sebagai berikut:
+
+```{r, eval=FALSE}
+t.test(x, y = NULL,
+       alternative = c("two.sided", "less", "greater"),
+       mu = 0, paired = FALSE, var.equal = FALSE,
+       conf.level = 0.95, ...)
+
+wilcox.test(x, y = NULL,
+            alternative = c("two.sided", "less", "greater"),
+            mu = 0, paired = FALSE, conf.level = 0.95, ...)
+```
+
+
+> **Catatan:**
+>
+> * `x,y` : vektor numerik. Jika argumen `x` dan `y` diisikan maka uji hipotesis dilakukan untuk dua buah populasi.
+> * `alternative`: digunakan untuk menentukan jenis uji hipotesis apakah satu sisi(“less” dan “greater”), atau dua sisi (“two.sided”).
+> * `mu` : nilai rata-rata populasi atau nilai rata-rata selisih antar populasi jika dilakukan uji hipotesis terhadap dua populasi. Secara default nilainya 0.
+> * `paired` : nilai logikal yang menentukan apakah uji dua populasi digunakan untuk sampel berpasangan (TRUE) atau tidak (FALSE).
+> * `var.equal` : nilai logikal yang menunjukkan apakah varians kedua populasi diasumsikan sama atau berbeda.
+> * `conf.level` : tingkat kepercayaan. Secara default tingkat kepercayaan yang digunakan adalah 95%.
+
+Berikut adalah contoh penerapan fungsi tersebut untuk uji hipotesis satu dan dua populasi:
+
+```{r}
+# Uji hipotesis konsentrasi ozon = 40 ppm
+# parametrik
+t.test(x=airquality$Ozone, alternative = "two.sided",
+       mu = 40)
+# nonparametrik
+wilcox.test(x=airquality$Ozone, alternative = "two.sided",
+       mu = 40)
+
+# Uji hipotesis dua populasi
+dni3 <- dimnames(iris3)
+ii <- data.frame(matrix(aperm(iris3, c(1,3,2)), ncol = 4,
+                        dimnames = list(NULL, sub(" L.",".Length",
+                                        sub(" W.",".Width", dni3[[2]])))),
+    Species = gl(3, 50, labels = sub("S", "s", sub("V", "v", dni3[[3]]))))
+# parametrik
+t.test(x=iris$Sepal.Length[iris$Species=="setosa"], 
+       y=ii$Sepal.Length[iris$Species=="versicolor"])
+# nonparametrik
+wilcox.test(x=iris$Sepal.Length[iris$Species=="setosa"], 
+       y=ii$Sepal.Length[iris$Species=="versicolor"])
+```
+
+Fungsi `t.test()` akan menghasilkan output berupa nilai t uji, derajat kebebasan (df), nilai p-value, rentang estimasi nilai rata-rata berdasarkan tingkat kepercayaan yang digunakan, serta estimasi nilai rata-rata sampel. Fungsi `wilcox.test()` akan menghasilkan dua buah output yaitu nilai W dan p-value berdasarkan nilai W yang dihasilkan.
+
+## Korelasi Antar Variabel
+
+Pada sebuah analisa, kita sering kali tertarik untuk menganalisa hubungan atau korelasi antara satu variabel terhadap variabel lainnya. Pengamatan adanya korelasi antar variabel dapat dilakukan melalui visualisasi menggunakan *scatterplot* dan perhitungan matematis menggunakan metode Pearson untuk metode parametrik dan metode rangking Spearman dan Kendall untuk metode non-parametrik. Pada *Chapter* ini kita akan berfokus untuk melakukan uji korelasi menggunakan `R` menggunakan metode matematis.
+
+Pada `R` uji korelasi dapat dilakukan dengan menggunakan fungsi `cor.test()`. Format fungsi tersebut adalah sebagai berikut:
+
+```{r, eval=FALSE}
+cor.test(x, y,
+         alternative = c("two.sided", "less", "greater"),
+         method = c("pearson", "kendall", "spearman"),
+         conf.level = 0.95)
+```
+
+
+> **Catatan:**
+>
+> * `x,y` : vektor numerik.
+> * `alternative`: digunakan untuk menentukan jenis uji hipotesis apakah satu sisi(“less” dan “greater”), atau dua sisi (“two.sided”).
+> * `method` : metode perhitungan korelasi yang digunakan.
+> * `conf.level` : tingkat kepercayaan. Secara default tingkat kepercayaan yang digunakan adalah 95%.
+
+Berikut adalah penerapan fungsi `cor.test()` berdasarkan metode-metode yang telah disediakan pada fungsi tersebut:
+
+```{r}
+# Pearson
+cor.test(x = airquality$Ozone, y = airquality$Solar.R,
+         alternative = "two.sided",
+         method = "pearson")
+
+# Kendall
+cor.test(x = airquality$Ozone, y = airquality$Solar.R,
+         alternative = "two.sided",
+         method = "kendall")
+
+# Spearman
+cor.test(x = airquality$Ozone, y = airquality$Solar.R,
+         alternative = "two.sided",
+         method = "spearman")
+```
+
+Berdasarkan output yang dihasilkan, metode Pearson menghasilkan output berupa nilai t uji, derajat kebebasan, nilai p-value, rentang estimasi nilai korelasi berdasarkan tingkat kepercayaan, dan estimasi nilai korelasi. Metode Kendall dan Spearman disisi lai menghasilkan  output berupa nilai z uji dan S untuk masing-masing metode serta nilai p-value berdasarkan nilai statistika uji dan estimasi koefisien korelasi.
+
+## Analisis Varians
+
+Pada *sub-Chapter* sebelumnya penulis telah menjelaskan uji rata-rata untuk satu sampel dan dua sampel. Pada kenyataannya dalam sebuah percobaan laboratorium, kita tidak hanya membandingkan dua buah grup sampel saja, namun beberapa grup dan sejumlah faktor. Untuk menganalisa apakah variasi perlakuan pada kelompok sampel akan memberikan hasil yang berbeda-beda pada rata-rata tiap grup atau tidak diperlukan analisis varians untuk menganilisa variasi perlakuan atau faktor pada masing-masing grup. Analisis varians dapat dilakukan baik untuk satu faktor maupun dua faktor atau lebih. Untuk melakukannya pada `R`, kita dapat menggunakan fungsi `aov()` untuk analisis varians dengan metode parametrik dan `kruskal.test()` untuk analisis varians dengan menggunakan metode nonparametrik. Berikut adalah format kedua fungsi tersebut:
+
+```{r, eval=FALSE}
+aov(formula, data = NULL)
+
+kruskal.test(formula, data)
+```
+
+
+> **Catatan:**
+>
+> * `formula` : formula model yang digunakan. 
+> * `data`: dataset yang akan digunakan.
+
+Berikut adalah contoh penerapan kedua fungsi tersebut untuk melihat apakah terdapat beda pada rata-rata konsentrasi bulanan ozon menggunakan dataset `airquality`:
+
+```{r}
+summary(aov(Ozone~Month, airquality))
+
+kruskal.test(Ozone~Month, airquality)
+```
+
+Berdasarkan hasil yang diperoleh diketahui bahwa rata-rata konsentrasi bulanan ozon tidak sama tiap bulannya atau minimal terdapat satu bulan dimana konsentrasi ozonnya berbeda secara signifikan dengan konsentrasi ozon pada bulan-bulan lainnya. Untuk lebih memahami terkait analisis varians pada `R` dan cara membaca output kedua fungsi tersebut, pembaca dapat membaca tulisan pada halaman situs [sthda](http://www.sthda.com/english/wiki/comparing-means-in-r).
+
+## Analisis Komponen Utama
+
+Analisis komponen utama menggunakan transformasi ortogonal (umumnya nilai singular atau dekomposisi nilai eigen) untuk mengubah seperangkat variabel pengamatan yang mungkin berkorelasi menjadi seperangkat variabel tidak berkorelasi (ortogonal) yang disebut komponen utama. Transformasi didefinisikan sedemikian rupa sehingga komponen utama pertama memiliki varians setinggi mungkin (menyumbang variabilitas pada data sebanyak mungkin), dan masing-masing komponen berikutnya pada gilirannya memiliki varians tertinggi yang mungkin di bawah kendala, dimana komponen tersebut menjadi ortogonal ke komponen sebelumnya.
+
+Dalam R, analisis komponen utama umumnya dilakukan dengan fungsi `prcomp ()`. Format fungsi tersebut adalah sebagai berikut:
+
+```{r, eval=FALSE}
+prcomp(x, retx = TRUE, center = TRUE, scale. = FALSE,
+       tol = NULL)
+```
+
+
+> **Catatan:**
+>
+> * `x` : data frame atau matriks kompleks numerik. 
+> * `retx` : nilai logik yang mengindikasikan apakah variabel hasil rotasi perlu ditampilkan.
+> * `center` : nilai logik yang mengidikasikan apakah variabel perlu dilakukan pergeseran sehingga nilai rata-ratanya berpusat pada nilai nol.
+> * `scale` : nilai logik yang mengidikasikan apakah variabel perlu dilakukan penskalaan sebelum dilakukan analisis.
+> * `tol` : nilai toleransi yang menunjukkan batas nilai bagi komponen yang akan dipertahankan. Komponen yang dihilangkan jika simpangan bakunya kurang dari atau sama dengan `tol x simpangan baku pc1`.
+
+Untuk memahami penerapan fungsi tersebut, kita akan melakukan simulasi menggunakan dataset `iris`. Output yang dihasilkan di bawah ini menunjukkan bagaimana empat variabel numerik ditransformasikan menjadi empat komponen utama. Penskalaan data mungkin tidak diperlukan dalam kasus ini, karena keempat pengukuran memiliki unit yang sama dan besarnya sama. Namun, penskalaan umumnya merupakan praktik yang baik.
+
+```{r}
+iris_use <- iris[,-5] # menghilangkan variabel non-numerik
+iris_pca <- prcomp(iris_use, scale. = TRUE)
+iris_pca
+```
+
+Fungsi `summary` memberikan proporsi varians total yang dikaitkan dengan masing-masing komponen utama, dan proporsi kumulatif ketika masing-masing komponen ditambahkan. Kita melihat bahwa dua komponen pertama berperan lebih dari 95% dari total varians.
+
+```{r}
+summary(iris_pca)
+```
+
+Histogram (hasil plot dalam analisis `prcomp`) secara grafis merekapitulasi proporsi varian yang disumbangkan oleh masing-masing komponen utama, sementara biplot menunjukkan bagaimana variabel awal diproyeksikan pada dua komponen utama pertama (Gambar \@ref(fig:prcomp)). Ini juga menunjukkan  koordinat dari masing-masing sampel dalam ruang (PC1, PC2). Satu spesies iris (yang berubahmenjadi setosa dari analisis kluster di bawah ini) secara jelas dipisahkan dari dua spesies lain dalam ruang koordinat ini.
+
+ 
+
+```{r prcomp,echo=FALSE, fig.cap='Analisis komponen utama data iris.', tidy=FALSE, out.width='80%', fig.align='center', message=FALSE, warning=FALSE}
+par(mfrow=c(1,2))
+plot(iris_pca)
+biplot(iris_pca, col = c("gray", "black"))
+par(mfrow=c(1,1))
+```
+
+Untuk informasi lebih lanjut terkait metode analisis komponen utama, pembaca dapat membacanya pada laman [Little Book of R for Multivariate Analysis](https://little-book-of-r-for-multivariate-analysis.readthedocs.io/en/latest/).
+
+## Analisis Cluster
+
+Analisis cluster mencoba untuk mengurutkan satu set objek ke dalam kelompok (cluster) sedemikian rupa sehingga objek dalam cluster yang sama lebih mirip satu sama lain dibandingkan objek pada cluster lainnya. Ini digunakan untuk analisis eksplorasi melalui proses penambangan data (*data mining*) di banyak bidang, seperti bioinformatika, biologi evolusi, analisis gambar, lingkungan, dan pembelajaran mesin.
+
+Menurut Wikipedia: “Analisis Cluster itu sendiri bukanlah salah satu algoritma spesifik, tetapi tugas umum yang harus dipecahkan. Ini dapat dicapai dengan berbagai algoritma yang berbeda secara signifikan dalam pengertian mereka tentang apa yang merupakan sebuah cluster dan bagaimana cara menemukannya secara efisien. Gagasan populer mengenai cluster termasuk kelompok dengan jarak rendah di antara anggota cluster, area padat ruang data, interval atau distribusi statistik tertentu. Algoritma pengelompokan dan pengaturan parameter yang sesuai (termasuk nilai-nilai seperti fungsi jarak yang akan digunakan, ambang kepadatan atau jumlah cluster yang diharapkan) tergantung pada dataset individual dan tujuan penggunaan hasil. Analisis cluster seperti itu bukan tugas otomatis, tetapi proses berulang penemuan pengetahuan yang melibatkan *trial and error*. Seringkali diperlukan untuk memodifikasi preprocessing dan parameter sampai hasilnya mencapai properti yang diinginkan.
+
+### Analisis Cluster Menggunakan Algoritma Pengelompokan Hierarkis Aglomeratif
+
+Hierarchical clustering membangun hierarki cluster, di mana metrik hierarki adalah suatu ukuran ketidaksamaan antar cluster. Menurut halaman bantuan untuk `hclust()`, metode pengelompokan hierarkis aglomeratif, “Fungsi ini melakukan analisis hierarki cluster menggunakan seperangkat ketidaksamaan untuk n objek yang dikelompokkan. Awalnya, masing-masing objek ditugaskan ke cluster sendiri dan kemudian algoritma melanjutkan secara iteratif, pada setiap tahap bergabung dengan dua cluster yang paling mirip, terus sampai hanya ada satu cluster. Pada setiap tahap, jarak antar kluster dihitung ulang dengan formula pembaruan ketidaksamaan Lance Williams sesuai dengan metode pengelompokan tertentu yang digunakan. ”Ada tujuh metode aglomerasi yang tersedia, dengan lengkap — yang mencari kluster kompak, bola — sebagai default. Format umum fungsi `hclust()` adalah sebagai berikut:
+
+```{r, eval=FALSE}
+hclust(d, method = "complete", members = NULL)
+```
+
+
+> **Catatan:**
+>
+> * `d` : struktur ketidaksamaan yang dihasilkan dengan fungsi `dist`. 
+> * `method` : metode alglomerasi yang digunakan. Metode yang dapat digunakan antara lain: "ward.D", "ward.D2", "single", "complete", "average" (= UPGMA), "mcquitty" (= WPGMA), "median" (= WPGMC) atau "centroid" (= UPGMC)
+> * `members`: NULL atau vektor dengan ukuran sama dengan `d`. Untuk info lebih lanjut jalankan sintaks `?hclust`.
+
+Untuk memahami penerapan fungsi `hclust()`, kita akan kembali menggunakan data `iris_use`. Berikut adalah sintaks yang digunakan:
+
+```{r}
+# menghitung jarak antar observasi
+iris_hclust <- dist(iris_use)
+
+# Pembentukan Cluster
+hc <- hclust(iris_hclust)
+hc
+```
+
+Visualisasi cluster dibentuk melalui dendogram yang ditampilkan pada Gambar \@ref(fig:hclust).
+
+```{r hclust,echo=FALSE, fig.cap='Analisis pengelompokan hierarkis alglomeratif data iris.', tidy=FALSE, out.width='80%', fig.align='center', message=FALSE, warning=FALSE}
+plot(hc)
+```
+
+### Pengelompokan Hierarkis Divisif
+
+Menurut halaman bantuan `diana()` (*DIvisive ANAlysis Clustering*) dalam *library* `cluster`, “Algoritma diana membangun hierarki pengelompokan, dimulai dengan satu kluster besar yang berisi semua n pengamatan. Cluster dibagi sampai masing-masing cluster hanya berisi satu pengamatan. Pada setiap tahap, cluster dengan diameter terbesar dipilih. Format fungsi `diana()` adalah sebagai berikut:
+
+```{r, eval=FALSE}
+diana(x, metric = "euclidean", stand = FALSE)
+```
+
+
+> **Catatan:**
+>
+> * `x` : struktur ketidaksamaan yang dihasilkan dengan fungsi `dist` atau data frame. 
+> * `metric` : karakter string yang menyatakan metode pengukuran jarak yang digunakan. Metode pengukuran jarak dapat berupa "euclidean" dan "manhattan".
+> * `stand`: vektor logik yang menyatakan apakah data akan dilakukan standardisasi terlebih dahulu sebelum dilakukan analisis.
+
+```{r diana,echo=FALSE, fig.cap='Analisis pengelompokan divisif data iris.', tidy=FALSE, out.width='80%', fig.align='center', message=FALSE, warning=FALSE}
+library(cluster)
+iris_diana <- diana(iris_use)
+par(mfrow=c(1,2))
+plot(iris_diana)
+par(mfrow=c(1,1))
+```
+
+### Pengelompokan Menggunakan Algoritma K-Mean
+
+k-means melakukan pengelompokan n pengamatan ke dalam k cluster di mana setiap pengamatan akan tergabung dengan pusat cluster terdekat. Pengguna harus menentukan jumlah pusat (cluster) yang diinginkan sebagai output. Untuk melakukan pengelompokan dengan algoritma k-means pada `R` dapat menggunakan fungsi `kmeans()`. Format fungsi tersebut secara umum adalah sebagai berikut:
+
+```{r, eval=FALSE}
+kmeans(x, centers, iter.max = 10,
+       algorithm = c("Hartigan-Wong", "Lloyd", "Forgy",
+                     "MacQueen"))
+```
+
+
+> **Catatan:**
+>
+> * `x` : data frame. 
+> * `centers` : jumlah cluster yang ingin di buat.
+> * `iter.max`: jumlah iterasi maksimum yang diijinkan.
+> * `algorithm` : algoritma pengelompokan yang digunakan. Untuk informasi lebih lanjut jalankan sintaks `?kmeans`.
+
+```{r}
+iris_kmeans <- kmeans(iris_use, centers = 3)
+iris_kmeans
+
+# menghitung lokasi pusat cluster
+ccent = function(cl) {
+ f = function(i) colMeans(iris_use[cl==i,])
+ x = sapply(sort(unique(cl)), f)
+ colnames(x) = sort(unique(cl))
+ return(x)
+}
+
+ccent(iris_kmeans$cluster)
+```
+
+### Pengelompokan Menggunakan Algoritma PAM
+
+pam mem-partisi data menjadi k cluster di sekitar medoid. Medoid dari set data yang terbatas merupakan titik data dengan nilai ketidaksamaan rata-rata untuk semua titik data adalah minimum. Hal tersebut menujukkan bahwa medoid merupakan pusat dari set cluster. Menurut halaman bantuan `pam()`, pendekatan k-medoid lebih kuat daripada pendekatan k-means “karena meminimalkan jumlah ketidaksamaan daripada jumlah jarak euclidean kuadrat”. Format umum fungsi `pam()` adalah sebagai berikut:
+
+```{r, eval=FALSE}
+pam(x, k, diss = inherits(x, "dist"),
+    metric = c("euclidean", "manhattan"))
+```
+
+
+> **Catatan:**
+>
+> * `x` : data frame. 
+> * `k` : jumlah cluster yang ingin di buat.
+> * `method`: metode perhitungan jarak yang digunakan. Untuk informasi lebih lanjut jalankan sintaks `?pam`.
+
+```{r}
+library(cluster)
+iris_pam <- pam(iris_use, k=3)
+iris_pam
+```
+
+```{r pam,echo=FALSE, fig.cap='Analisis pengelompokan metode pam data iris.', tidy=FALSE, out.width='80%', fig.align='center', message=FALSE, warning=FALSE}
+par(mfrow=c(1,2))
+plot(iris_pam)
+par(mfrow=c(1,1))
+```
+
+## Referensi
+
+1. Bloomfield, V.A. 2014. **Using R for Numerical Analysis in Science and Engineering**. CRC Press.
+2. Coqhlan, A. Tanpa Tahun. **Using R for Multivariate Analysis**. <https://little-book-of-r-for-multivariate-analysis.readthedocs.io/en/latest/src/multivariateanalysis.html#principal-component-analysis>.
+3. Primartha, R. 2018. **Belajar Machine Learning Teori dan Praktik**. Penerbit Informatika : Bandung
+4. Rosadi,D. 2016. **Analisis Statistika dengan R**. Gadjah Mada University Press: Yogyakarta.
+5. Rosidi, M. 2019. **Uji Hipotesis**. <https://environmental-data-modeling.netlify.com/tutorial/11_uji_hipotesis/>.
+6. STHDA. Tanpa Tahun. **Comparing Means in R**. <http://www.sthda.com/english/wiki/comparing-means-in-r>.
+
