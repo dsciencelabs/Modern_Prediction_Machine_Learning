@@ -51,7 +51,7 @@ knitr::include_graphics('images/Cover_Metode_Numerik.png', dpi = NA)
 
 ```
 
-Metone Numerik Menggunakan R Untuk Teknik Lingkungan merupakan buku yang penulis tulis dengan harapan dapat menjadi salah satu rujukan mahasiswa khusunya Teknik Lingkungan yang tertarik untuk belajar `R`. Selain itu, buku ini merupakan salah satu cara pengabdian penulis guna menyediakan sumber pembelajaran yang bersifat terbuka dan dapat diakses seluruh kalangan secara gratis.  
+Metode Numerik Menggunakan R sebagai modul pembelajaran Statistika. Selain itu, buku ini merupakan salah satu cara pengabdian penulis guna menyediakan sumber pembelajaran yang bersifat terbuka dan dapat diakses seluruh kalangan secara gratis.  
 
 **Mengapa perlu menulis buku ini?** Penulis merasa selama ini buku-buku metode numerik yang ada di pasaran masih didominasi oleh buku-buku pemrograman berbasis Matlab. Atas dasar tersebut, penulis merasa perlu adanya alternatif pembelajaran menggunakan bahasa pemrograman lain.
 
