@@ -4,26 +4,25 @@
 
   <meta charset="utf-8" />
   <meta http-equiv="X-UA-Compatible" content="IE=edge" />
-  <title>Chapter 7 Akar Persamaan Non-Linier | Metode Numerik Menggunakan R Untuk Teknik Lingkungan</title>
+  <title>Chapter 7 Akar Persamaan Non-Linier | Metode Numerik Menggunakan R</title>
   <meta name="description" content="Komputasi metode numerik menggunakan R dengan contoh kasus di bidang teknik lingkungan. Buku ini dapat menjadi rujukan bagi mahasiswa yang ingin mendalami proses komputasi metode numerik menggunakan R. Buku ini disusun sedemikian rupa dengan bahasa yang sederhana agar mudah dipahami oleh mahasiswa." />
-  <meta name="generator" content="bookdown 0.34 and GitBook 2.6.7" />
+  <meta name="generator" content="bookdown 0.35 and GitBook 2.6.7" />
 
-  <meta property="og:title" content="Chapter 7 Akar Persamaan Non-Linier | Metode Numerik Menggunakan R Untuk Teknik Lingkungan" />
+  <meta property="og:title" content="Chapter 7 Akar Persamaan Non-Linier | Metode Numerik Menggunakan R" />
   <meta property="og:type" content="book" />
-  <meta property="og:image" content="/images/cover.png" />
+  <meta property="og:image" content="/images/Cover_Metode_Numerik.png" />
   <meta property="og:description" content="Komputasi metode numerik menggunakan R dengan contoh kasus di bidang teknik lingkungan. Buku ini dapat menjadi rujukan bagi mahasiswa yang ingin mendalami proses komputasi metode numerik menggunakan R. Buku ini disusun sedemikian rupa dengan bahasa yang sederhana agar mudah dipahami oleh mahasiswa." />
-  <meta name="github-repo" content="mohrosidi/metode_numerik" />
+  <meta name="github-repo" content="dsciencelabs/Metode_Numerik_R" />
 
   <meta name="twitter:card" content="summary" />
-  <meta name="twitter:title" content="Chapter 7 Akar Persamaan Non-Linier | Metode Numerik Menggunakan R Untuk Teknik Lingkungan" />
+  <meta name="twitter:title" content="Chapter 7 Akar Persamaan Non-Linier | Metode Numerik Menggunakan R" />
   
   <meta name="twitter:description" content="Komputasi metode numerik menggunakan R dengan contoh kasus di bidang teknik lingkungan. Buku ini dapat menjadi rujukan bagi mahasiswa yang ingin mendalami proses komputasi metode numerik menggunakan R. Buku ini disusun sedemikian rupa dengan bahasa yang sederhana agar mudah dipahami oleh mahasiswa." />
-  <meta name="twitter:image" content="/images/cover.png" />
+  <meta name="twitter:image" content="/images/Cover_Metode_Numerik.png" />
 
-<meta name="author" content="Mohammad Rosidi" />
+<meta name="author" content="Bakti Siregar, M.Sc, Trisha M.A. Januaviani, M.Mat &amp; Dr. Kalfin, M.Mat" />
 
 
-<meta name="date" content="2023-08-10" />
 
   <meta name="viewport" content="width=device-width, initial-scale=1" />
   <meta name="apple-mobile-web-app-capable" content="yes" />
@@ -445,7 +444,7 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
       <div class="body-inner">
         <div class="book-header" role="navigation">
           <h1>
-            <i class="fa fa-circle-o-notch fa-spin"></i><a href="./">Metode Numerik Menggunakan R Untuk Teknik Lingkungan</a>
+            <i class="fa fa-circle-o-notch fa-spin"></i><a href="./">Metode Numerik Menggunakan R</a>
           </h1>
         </div>
 
@@ -716,7 +715,7 @@ f\left(x \right).f\left(a \right)&lt;0
 <span id="cb545-2"><a href="rootfinding.html#cb545-2" tabindex="-1"></a>               <span class="at">a=</span><span class="sc">-</span><span class="dv">1</span>, <span class="at">b=</span><span class="dv">0</span>)</span></code></pre></div>
 <pre><code>## $`function`
 ## function(x){x*exp(-x)+1}
-## &lt;bytecode: 0x0000013889416360&gt;
+## &lt;bytecode: 0x0000022aafec5448&gt;
 ## 
 ## $root
 ## [1] -0.5671
@@ -815,7 +814,7 @@ f\left(x \right).f\left(a \right)&lt;0
 <span id="cb548-2"><a href="rootfinding.html#cb548-2" tabindex="-1"></a>               <span class="at">a=</span><span class="sc">-</span><span class="dv">1</span>, <span class="at">b=</span><span class="dv">0</span>)</span></code></pre></div>
 <pre><code>## $`function`
 ## function(x){x*exp(-x)+1}
-## &lt;bytecode: 0x000001388c1c51d0&gt;
+## &lt;bytecode: 0x0000022ab0ec6010&gt;
 ## 
 ## $root
 ## [1] -0.5671
@@ -886,7 +885,7 @@ x_2 = -\frac{1}{e^{2,718282}}=-0,06598802
 <div class="sourceCode" id="cb551"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb551-1"><a href="rootfinding.html#cb551-1" tabindex="-1"></a><span class="fu">root_fpi</span>(<span class="cf">function</span>(x){<span class="sc">-</span><span class="dv">1</span><span class="sc">/</span><span class="fu">exp</span>(<span class="sc">-</span>x)}, <span class="at">x0=</span><span class="sc">-</span><span class="dv">1</span>)</span></code></pre></div>
 <pre><code>## $`function`
 ## function(x){-1/exp(-x)}
-## &lt;bytecode: 0x0000013886031de8&gt;
+## &lt;bytecode: 0x0000022aa76a5bb8&gt;
 ## 
 ## $root
 ## [1] -0.5671
@@ -963,7 +962,7 @@ x_1=x_0-\frac{f\left(x_0\right)}{f&#39;\left(x_0\right)}=0-\frac{-1}{2}=0,5
 <span id="cb554-3"><a href="rootfinding.html#cb554-3" tabindex="-1"></a>              <span class="at">x0=</span><span class="dv">0</span>)</span></code></pre></div>
 <pre><code>## $`function`
 ## function(x){x-exp(-x)}
-## &lt;bytecode: 0x000001388a50a798&gt;
+## &lt;bytecode: 0x0000022aabeace20&gt;
 ## 
 ## $root
 ## [1] 0.5671
@@ -1087,7 +1086,7 @@ x_2=0+0,999998\frac{10^{-6}-0}{-0,999998+1}=0,499999
 <div class="sourceCode" id="cb557"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb557-1"><a href="rootfinding.html#cb557-1" tabindex="-1"></a><span class="fu">root_secant</span>(<span class="cf">function</span>(x){x<span class="sc">-</span><span class="fu">exp</span>(<span class="sc">-</span>x)}, <span class="at">x=</span><span class="dv">0</span>)</span></code></pre></div>
 <pre><code>## $`function`
 ## function(x){x-exp(-x)}
-## &lt;bytecode: 0x000001388c545c68&gt;
+## &lt;bytecode: 0x0000022aae9b3fc8&gt;
 ## 
 ## $root
 ## [1] 0.5671
@@ -1214,7 +1213,7 @@ f\left(h\right)=h^3+\left(0,075-\frac{1,2^2}{2\times9,81\times1,8^2\times0,6^2}-
 ## function(h){
 ##   (h^3) + ((0.075-((1.2^2)/(2*9.81*(1.8^2)*(0.6^2))))*h^2)+ (1.2^2/(2*9.81*(1.8^2)))
 ## }
-## &lt;bytecode: 0x000001388a9323e8&gt;
+## &lt;bytecode: 0x0000022ab04e0918&gt;
 ## 
 ## $root
 ## [1] -0.287
@@ -1301,7 +1300,7 @@ gitbook.start({
 "link": null,
 "text": null
 },
-"download": null,
+"download": ["Metode_Numerik.pdf", "Metode_Numerik.epub"],
 "search": {
 "engine": "fuse",
 "options": null

@@ -493,4 +493,3 @@ model-linier-dengan-prediktor-kategorikal
 wlr
 logreg
 referensi-11
-penyelesaian-persamaan-diferensial-parsial-menggunakan-paket-reactran
