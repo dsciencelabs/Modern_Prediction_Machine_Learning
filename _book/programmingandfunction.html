@@ -1,0 +1,1198 @@
+<!DOCTYPE html>
+<html lang="" xml:lang="">
+<head>
+
+  <meta charset="utf-8" />
+  <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+  <title>Chapter 4 Pemrograman dan Fungsi | Metode Numerik Menggunakan R Untuk Teknik Lingkungan</title>
+  <meta name="description" content="Komputasi metode numerik menggunakan R dengan contoh kasus di bidang teknik lingkungan. Buku ini dapat menjadi rujukan bagi mahasiswa yang ingin mendalami proses komputasi metode numerik menggunakan R. Buku ini disusun sedemikian rupa dengan bahasa yang sederhana agar mudah dipahami oleh mahasiswa." />
+  <meta name="generator" content="bookdown 0.34 and GitBook 2.6.7" />
+
+  <meta property="og:title" content="Chapter 4 Pemrograman dan Fungsi | Metode Numerik Menggunakan R Untuk Teknik Lingkungan" />
+  <meta property="og:type" content="book" />
+  <meta property="og:image" content="/images/cover.png" />
+  <meta property="og:description" content="Komputasi metode numerik menggunakan R dengan contoh kasus di bidang teknik lingkungan. Buku ini dapat menjadi rujukan bagi mahasiswa yang ingin mendalami proses komputasi metode numerik menggunakan R. Buku ini disusun sedemikian rupa dengan bahasa yang sederhana agar mudah dipahami oleh mahasiswa." />
+  <meta name="github-repo" content="mohrosidi/metode_numerik" />
+
+  <meta name="twitter:card" content="summary" />
+  <meta name="twitter:title" content="Chapter 4 Pemrograman dan Fungsi | Metode Numerik Menggunakan R Untuk Teknik Lingkungan" />
+  
+  <meta name="twitter:description" content="Komputasi metode numerik menggunakan R dengan contoh kasus di bidang teknik lingkungan. Buku ini dapat menjadi rujukan bagi mahasiswa yang ingin mendalami proses komputasi metode numerik menggunakan R. Buku ini disusun sedemikian rupa dengan bahasa yang sederhana agar mudah dipahami oleh mahasiswa." />
+  <meta name="twitter:image" content="/images/cover.png" />
+
+<meta name="author" content="Mohammad Rosidi" />
+
+
+<meta name="date" content="2023-08-10" />
+
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <meta name="apple-mobile-web-app-capable" content="yes" />
+  <meta name="apple-mobile-web-app-status-bar-style" content="black" />
+  
+  
+<link rel="prev" href="dataviz.html"/>
+<link rel="next" href="numericmethod.html"/>
+<script src="libs/jquery/jquery-3.6.0.min.js"></script>
+<script src="https://cdn.jsdelivr.net/npm/fuse.js@6.4.6/dist/fuse.min.js"></script>
+<link href="libs/gitbook/css/style.css" rel="stylesheet" />
+<link href="libs/gitbook/css/plugin-table.css" rel="stylesheet" />
+<link href="libs/gitbook/css/plugin-bookdown.css" rel="stylesheet" />
+<link href="libs/gitbook/css/plugin-highlight.css" rel="stylesheet" />
+<link href="libs/gitbook/css/plugin-search.css" rel="stylesheet" />
+<link href="libs/gitbook/css/plugin-fontsettings.css" rel="stylesheet" />
+<link href="libs/gitbook/css/plugin-clipboard.css" rel="stylesheet" />
+
+
+
+
+
+
+
+
+<link href="libs/anchor-sections/anchor-sections.css" rel="stylesheet" />
+<link href="libs/anchor-sections/anchor-sections-hash.css" rel="stylesheet" />
+<script src="libs/anchor-sections/anchor-sections.js"></script>
+
+
+<style type="text/css">
+pre > code.sourceCode { white-space: pre; position: relative; }
+pre > code.sourceCode > span { display: inline-block; line-height: 1.25; }
+pre > code.sourceCode > span:empty { height: 1.2em; }
+.sourceCode { overflow: visible; }
+code.sourceCode > span { color: inherit; text-decoration: inherit; }
+pre.sourceCode { margin: 0; }
+@media screen {
+div.sourceCode { overflow: auto; }
+}
+@media print {
+pre > code.sourceCode { white-space: pre-wrap; }
+pre > code.sourceCode > span { text-indent: -5em; padding-left: 5em; }
+}
+pre.numberSource code
+  { counter-reset: source-line 0; }
+pre.numberSource code > span
+  { position: relative; left: -4em; counter-increment: source-line; }
+pre.numberSource code > span > a:first-child::before
+  { content: counter(source-line);
+    position: relative; left: -1em; text-align: right; vertical-align: baseline;
+    border: none; display: inline-block;
+    -webkit-touch-callout: none; -webkit-user-select: none;
+    -khtml-user-select: none; -moz-user-select: none;
+    -ms-user-select: none; user-select: none;
+    padding: 0 4px; width: 4em;
+    color: #aaaaaa;
+  }
+pre.numberSource { margin-left: 3em; border-left: 1px solid #aaaaaa;  padding-left: 4px; }
+div.sourceCode
+  {   }
+@media screen {
+pre > code.sourceCode > span > a:first-child::before { text-decoration: underline; }
+}
+code span.al { color: #ff0000; font-weight: bold; } /* Alert */
+code span.an { color: #60a0b0; font-weight: bold; font-style: italic; } /* Annotation */
+code span.at { color: #7d9029; } /* Attribute */
+code span.bn { color: #40a070; } /* BaseN */
+code span.bu { color: #008000; } /* BuiltIn */
+code span.cf { color: #007020; font-weight: bold; } /* ControlFlow */
+code span.ch { color: #4070a0; } /* Char */
+code span.cn { color: #880000; } /* Constant */
+code span.co { color: #60a0b0; font-style: italic; } /* Comment */
+code span.cv { color: #60a0b0; font-weight: bold; font-style: italic; } /* CommentVar */
+code span.do { color: #ba2121; font-style: italic; } /* Documentation */
+code span.dt { color: #902000; } /* DataType */
+code span.dv { color: #40a070; } /* DecVal */
+code span.er { color: #ff0000; font-weight: bold; } /* Error */
+code span.ex { } /* Extension */
+code span.fl { color: #40a070; } /* Float */
+code span.fu { color: #06287e; } /* Function */
+code span.im { color: #008000; font-weight: bold; } /* Import */
+code span.in { color: #60a0b0; font-weight: bold; font-style: italic; } /* Information */
+code span.kw { color: #007020; font-weight: bold; } /* Keyword */
+code span.op { color: #666666; } /* Operator */
+code span.ot { color: #007020; } /* Other */
+code span.pp { color: #bc7a00; } /* Preprocessor */
+code span.sc { color: #4070a0; } /* SpecialChar */
+code span.ss { color: #bb6688; } /* SpecialString */
+code span.st { color: #4070a0; } /* String */
+code span.va { color: #19177c; } /* Variable */
+code span.vs { color: #4070a0; } /* VerbatimString */
+code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warning */
+</style>
+
+<style type="text/css">
+  
+  div.hanging-indent{margin-left: 1.5em; text-indent: -1.5em;}
+</style>
+
+<link rel="stylesheet" href="style.css" type="text/css" />
+</head>
+
+<body>
+
+
+
+  <div class="book without-animation with-summary font-size-2 font-family-1" data-basepath=".">
+
+    <div class="book-summary">
+      <nav role="navigation">
+
+<ul class="summary">
+<li><a href="./">Metode Numerik Menggunakan R</a></li>
+
+<li class="divider"></li>
+<li class="chapter" data-level="" data-path="index.html"><a href="index.html"><i class="fa fa-check"></i>Pengantar</a>
+<ul>
+<li class="chapter" data-level="" data-path="index.html"><a href="index.html#gambaran-isi-buku"><i class="fa fa-check"></i>Gambaran Isi Buku</a></li>
+<li class="chapter" data-level="" data-path="index.html"><a href="index.html#cara-berkontribusi-dalam-buku-ini"><i class="fa fa-check"></i>Cara Berkontribusi dalam Buku Ini</a></li>
+<li class="chapter" data-level="" data-path="index.html"><a href="index.html#ucapan-terima-kasih"><i class="fa fa-check"></i>Ucapan Terima Kasih</a></li>
+<li class="chapter" data-level="" data-path="index.html"><a href="index.html#lisensi"><i class="fa fa-check"></i>Lisensi</a></li>
+</ul></li>
+<li class="chapter" data-level="1" data-path="intro.html"><a href="intro.html"><i class="fa fa-check"></i><b>1</b> Bahasa Pemrograman R</a>
+<ul>
+<li class="chapter" data-level="1.1" data-path="intro.html"><a href="intro.html#sejarahR"><i class="fa fa-check"></i><b>1.1</b> Sejarah R</a></li>
+<li class="chapter" data-level="1.2" data-path="intro.html"><a href="intro.html#fiturR"><i class="fa fa-check"></i><b>1.2</b> Fitur dan Karakteristik R</a></li>
+<li class="chapter" data-level="1.3" data-path="intro.html"><a href="intro.html#prosconsR"><i class="fa fa-check"></i><b>1.3</b> Kelebihan dan Kekurangan R</a></li>
+<li class="chapter" data-level="1.4" data-path="intro.html"><a href="intro.html#rstudio"><i class="fa fa-check"></i><b>1.4</b> RStudio</a></li>
+<li class="chapter" data-level="1.5" data-path="intro.html"><a href="intro.html#installR"><i class="fa fa-check"></i><b>1.5</b> Menginstall R dan RStudio</a></li>
+<li class="chapter" data-level="1.6" data-path="intro.html"><a href="intro.html#wdR"><i class="fa fa-check"></i><b>1.6</b> Working Directory</a>
+<ul>
+<li class="chapter" data-level="1.6.1" data-path="intro.html"><a href="intro.html#changewdR"><i class="fa fa-check"></i><b>1.6.1</b> Mengubah Lokasi Working Directory</a></li>
+<li class="chapter" data-level="1.6.2" data-path="intro.html"><a href="intro.html#defaultwdR"><i class="fa fa-check"></i><b>1.6.2</b> Mengubah Lokasi Working Directory Default</a></li>
+</ul></li>
+<li class="chapter" data-level="1.7" data-path="intro.html"><a href="intro.html#installlibraryR"><i class="fa fa-check"></i><b>1.7</b> Memasang dan Mengaktifkan Paket R</a></li>
+<li class="chapter" data-level="1.8" data-path="intro.html"><a href="intro.html#helpR"><i class="fa fa-check"></i><b>1.8</b> Fasilitas Help</a>
+<ul>
+<li class="chapter" data-level="1.8.1" data-path="intro.html"><a href="intro.html#searchhelp"><i class="fa fa-check"></i><b>1.8.1</b> Mencari Help dari Suatu Perintah Tertentu</a></li>
+<li class="chapter" data-level="1.8.2" data-path="intro.html"><a href="intro.html#generalhelp"><i class="fa fa-check"></i><b>1.8.2</b> General Help</a></li>
+<li class="chapter" data-level="1.8.3" data-path="intro.html"><a href="intro.html#othershelp"><i class="fa fa-check"></i><b>1.8.3</b> Fasilitas Help Lainnya</a></li>
+</ul></li>
+<li class="chapter" data-level="1.9" data-path="intro.html"><a href="intro.html#referensi"><i class="fa fa-check"></i><b>1.9</b> Referensi</a></li>
+</ul></li>
+<li class="chapter" data-level="2" data-path="calculation.html"><a href="calculation.html"><i class="fa fa-check"></i><b>2</b> Kalkulasi Menggunakan R</a>
+<ul>
+<li class="chapter" data-level="2.1" data-path="calculation.html"><a href="calculation.html#aritmetikoperator"><i class="fa fa-check"></i><b>2.1</b> Operator Aritmatik</a></li>
+<li class="chapter" data-level="2.2" data-path="calculation.html"><a href="calculation.html#aritmaticfunction"><i class="fa fa-check"></i><b>2.2</b> Fungsi Aritmetik</a></li>
+<li class="chapter" data-level="2.3" data-path="calculation.html"><a href="calculation.html#relationoperators"><i class="fa fa-check"></i><b>2.3</b> Operator Relasi</a></li>
+<li class="chapter" data-level="2.4" data-path="calculation.html"><a href="calculation.html#logicoperators"><i class="fa fa-check"></i><b>2.4</b> Operator Logika</a></li>
+<li class="chapter" data-level="2.5" data-path="calculation.html"><a href="calculation.html#assigningvar"><i class="fa fa-check"></i><b>2.5</b> Memasukkan Nilai Kedalam Variabel</a></li>
+<li class="chapter" data-level="2.6" data-path="calculation.html"><a href="calculation.html#typedata"><i class="fa fa-check"></i><b>2.6</b> Tipe dan Struktur Data</a></li>
+<li class="chapter" data-level="2.7" data-path="calculation.html"><a href="calculation.html#vector"><i class="fa fa-check"></i><b>2.7</b> Vektor</a>
+<ul>
+<li class="chapter" data-level="2.7.1" data-path="calculation.html"><a href="calculation.html#createvector"><i class="fa fa-check"></i><b>2.7.1</b> Membuat vektor</a></li>
+<li class="chapter" data-level="2.7.2" data-path="calculation.html"><a href="calculation.html#missingvalue"><i class="fa fa-check"></i><b>2.7.2</b> Missing Values</a></li>
+<li class="chapter" data-level="2.7.3" data-path="calculation.html"><a href="calculation.html#subsetvector"><i class="fa fa-check"></i><b>2.7.3</b> Subset Pada Vektor</a></li>
+<li class="chapter" data-level="2.7.4" data-path="calculation.html"><a href="calculation.html#vectorops"><i class="fa fa-check"></i><b>2.7.4</b> Operasi Matematis Menggunakan Vektor</a></li>
+<li class="chapter" data-level="2.7.5" data-path="calculation.html"><a href="calculation.html#seq"><i class="fa fa-check"></i><b>2.7.5</b> Membuat Deret Angka</a></li>
+<li class="chapter" data-level="2.7.6" data-path="calculation.html"><a href="calculation.html#repseq"><i class="fa fa-check"></i><b>2.7.6</b> Nilai Berulang</a></li>
+<li class="chapter" data-level="2.7.7" data-path="calculation.html"><a href="calculation.html#randnumb"><i class="fa fa-check"></i><b>2.7.7</b> Deret Bilangan Acak</a></li>
+</ul></li>
+<li class="chapter" data-level="2.8" data-path="calculation.html"><a href="calculation.html#matriks"><i class="fa fa-check"></i><b>2.8</b> Matriks</a>
+<ul>
+<li class="chapter" data-level="2.8.1" data-path="calculation.html"><a href="calculation.html#creatematrix"><i class="fa fa-check"></i><b>2.8.1</b> Membuat matriks</a></li>
+<li class="chapter" data-level="2.8.2" data-path="calculation.html"><a href="calculation.html#subsetmatrix"><i class="fa fa-check"></i><b>2.8.2</b> Subset Pada Matriks</a></li>
+<li class="chapter" data-level="2.8.3" data-path="calculation.html"><a href="calculation.html#matrixcalculation"><i class="fa fa-check"></i><b>2.8.3</b> Perhitungan Menggunakan Matriks</a></li>
+</ul></li>
+<li class="chapter" data-level="2.9" data-path="calculation.html"><a href="calculation.html#referensi-1"><i class="fa fa-check"></i><b>2.9</b> Referensi</a></li>
+</ul></li>
+<li class="chapter" data-level="3" data-path="dataviz.html"><a href="dataviz.html"><i class="fa fa-check"></i><b>3</b> Visualisasi Data</a>
+<ul>
+<li class="chapter" data-level="3.1" data-path="dataviz.html"><a href="dataviz.html#plotfunc"><i class="fa fa-check"></i><b>3.1</b> Visualisasi Data Menggunakan Fungsi plot()</a></li>
+<li class="chapter" data-level="3.2" data-path="dataviz.html"><a href="dataviz.html#otherviz"><i class="fa fa-check"></i><b>3.2</b> Visualisasi Lainnya</a>
+<ul>
+<li class="chapter" data-level="3.2.1" data-path="dataviz.html"><a href="dataviz.html#barplot"><i class="fa fa-check"></i><b>3.2.1</b> Bar Plot</a></li>
+<li class="chapter" data-level="3.2.2" data-path="dataviz.html"><a href="dataviz.html#histogram"><i class="fa fa-check"></i><b>3.2.2</b> Histogram dan Density Plot</a></li>
+<li class="chapter" data-level="3.2.3" data-path="dataviz.html"><a href="dataviz.html#boxplot"><i class="fa fa-check"></i><b>3.2.3</b> Box plot</a></li>
+</ul></li>
+<li class="chapter" data-level="3.3" data-path="dataviz.html"><a href="dataviz.html#customise"><i class="fa fa-check"></i><b>3.3</b> Kustomisasi Parameter Grafik</a>
+<ul>
+<li class="chapter" data-level="3.3.1" data-path="dataviz.html"><a href="dataviz.html#addtitle"><i class="fa fa-check"></i><b>3.3.1</b> Menambahkan Judul</a></li>
+<li class="chapter" data-level="3.3.2" data-path="dataviz.html"><a href="dataviz.html#addlegend"><i class="fa fa-check"></i><b>3.3.2</b> Menambahkan Legend</a></li>
+<li class="chapter" data-level="3.3.3" data-path="dataviz.html"><a href="dataviz.html#addtext"><i class="fa fa-check"></i><b>3.3.3</b> Menambahkan Teks Pada Grafik</a></li>
+<li class="chapter" data-level="3.3.4" data-path="dataviz.html"><a href="dataviz.html#addlines"><i class="fa fa-check"></i><b>3.3.4</b> Menambahkan Garis Pada Plot</a></li>
+<li class="chapter" data-level="3.3.5" data-path="dataviz.html"><a href="dataviz.html#changepoint"><i class="fa fa-check"></i><b>3.3.5</b> Merubah Simbol plot dan Jenis Garis</a></li>
+<li class="chapter" data-level="3.3.6" data-path="dataviz.html"><a href="dataviz.html#mengatur-axis-plot"><i class="fa fa-check"></i><b>3.3.6</b> Mengatur Axis Plot</a></li>
+<li class="chapter" data-level="3.3.7" data-path="dataviz.html"><a href="dataviz.html#changecolor"><i class="fa fa-check"></i><b>3.3.7</b> Mengatur Warna</a></li>
+</ul></li>
+<li class="chapter" data-level="3.4" data-path="dataviz.html"><a href="dataviz.html#plot-dua-dan-tiga-dimensi"><i class="fa fa-check"></i><b>3.4</b> Plot Dua dan Tiga Dimensi</a></li>
+<li class="chapter" data-level="3.5" data-path="dataviz.html"><a href="dataviz.html#referensi-2"><i class="fa fa-check"></i><b>3.5</b> Referensi</a></li>
+</ul></li>
+<li class="chapter" data-level="4" data-path="programmingandfunction.html"><a href="programmingandfunction.html"><i class="fa fa-check"></i><b>4</b> Pemrograman dan Fungsi</a>
+<ul>
+<li class="chapter" data-level="4.1" data-path="programmingandfunction.html"><a href="programmingandfunction.html#loop"><i class="fa fa-check"></i><b>4.1</b> Loop</a>
+<ul>
+<li class="chapter" data-level="4.1.1" data-path="programmingandfunction.html"><a href="programmingandfunction.html#forloop"><i class="fa fa-check"></i><b>4.1.1</b> For Loop</a></li>
+<li class="chapter" data-level="4.1.2" data-path="programmingandfunction.html"><a href="programmingandfunction.html#whileloop"><i class="fa fa-check"></i><b>4.1.2</b> While Loop</a></li>
+<li class="chapter" data-level="4.1.3" data-path="programmingandfunction.html"><a href="programmingandfunction.html#repeatloop"><i class="fa fa-check"></i><b>4.1.3</b> Repeat Loop</a></li>
+<li class="chapter" data-level="4.1.4" data-path="programmingandfunction.html"><a href="programmingandfunction.html#break"><i class="fa fa-check"></i><b>4.1.4</b> Break</a></li>
+</ul></li>
+<li class="chapter" data-level="4.2" data-path="programmingandfunction.html"><a href="programmingandfunction.html#loopapply"><i class="fa fa-check"></i><b>4.2</b> Loop Menggunakan Apply Family Function</a>
+<ul>
+<li class="chapter" data-level="4.2.1" data-path="programmingandfunction.html"><a href="programmingandfunction.html#apply"><i class="fa fa-check"></i><b>4.2.1</b> Apply</a></li>
+<li class="chapter" data-level="4.2.2" data-path="programmingandfunction.html"><a href="programmingandfunction.html#lapply"><i class="fa fa-check"></i><b>4.2.2</b> lapply</a></li>
+<li class="chapter" data-level="4.2.3" data-path="programmingandfunction.html"><a href="programmingandfunction.html#sapply"><i class="fa fa-check"></i><b>4.2.3</b> sapply</a></li>
+<li class="chapter" data-level="4.2.4" data-path="programmingandfunction.html"><a href="programmingandfunction.html#vapply"><i class="fa fa-check"></i><b>4.2.4</b> vapply</a></li>
+<li class="chapter" data-level="4.2.5" data-path="programmingandfunction.html"><a href="programmingandfunction.html#tapply"><i class="fa fa-check"></i><b>4.2.5</b> tapply</a></li>
+</ul></li>
+<li class="chapter" data-level="4.3" data-path="programmingandfunction.html"><a href="programmingandfunction.html#dm"><i class="fa fa-check"></i><b>4.3</b> Decision Making</a>
+<ul>
+<li class="chapter" data-level="4.3.1" data-path="programmingandfunction.html"><a href="programmingandfunction.html#ifstatement"><i class="fa fa-check"></i><b>4.3.1</b> if statement</a></li>
+<li class="chapter" data-level="4.3.2" data-path="programmingandfunction.html"><a href="programmingandfunction.html#ifelsestatement"><i class="fa fa-check"></i><b>4.3.2</b> if else statement</a></li>
+<li class="chapter" data-level="4.3.3" data-path="programmingandfunction.html"><a href="programmingandfunction.html#switchstatement"><i class="fa fa-check"></i><b>4.3.3</b> switch statement</a></li>
+</ul></li>
+<li class="chapter" data-level="4.4" data-path="programmingandfunction.html"><a href="programmingandfunction.html#fungsi"><i class="fa fa-check"></i><b>4.4</b> Fungsi</a></li>
+<li class="chapter" data-level="4.5" data-path="programmingandfunction.html"><a href="programmingandfunction.html#debugging"><i class="fa fa-check"></i><b>4.5</b> Debugging</a></li>
+<li class="chapter" data-level="4.6" data-path="programmingandfunction.html"><a href="programmingandfunction.html#referensi-3"><i class="fa fa-check"></i><b>4.6</b> Referensi</a></li>
+</ul></li>
+<li class="chapter" data-level="5" data-path="numericmethod.html"><a href="numericmethod.html"><i class="fa fa-check"></i><b>5</b> Pengantar Metode Numerik</a>
+<ul>
+<li class="chapter" data-level="5.1" data-path="numericmethod.html"><a href="numericmethod.html#numericmethodintro"><i class="fa fa-check"></i><b>5.1</b> Mengenal Metode Numerik</a>
+<ul>
+<li class="chapter" data-level="5.1.1" data-path="numericmethod.html"><a href="numericmethod.html#diffanalitycnumeric"><i class="fa fa-check"></i><b>5.1.1</b> Perbedaan Antara Metode Numerik dan Analitik</a></li>
+<li class="chapter" data-level="5.1.2" data-path="numericmethod.html"><a href="numericmethod.html#tahapan-penyelesaian-menggunakan-metode-numerik"><i class="fa fa-check"></i><b>5.1.2</b> Tahapan Penyelesaian Menggunakan Metode Numerik</a></li>
+</ul></li>
+<li class="chapter" data-level="5.2" data-path="numericmethod.html"><a href="numericmethod.html#acuracy"><i class="fa fa-check"></i><b>5.2</b> Akurasi dan Presisi</a></li>
+<li class="chapter" data-level="5.3" data-path="numericmethod.html"><a href="numericmethod.html#numerror"><i class="fa fa-check"></i><b>5.3</b> Error Numerik</a></li>
+<li class="chapter" data-level="5.4" data-path="numericmethod.html"><a href="numericmethod.html#referensi-4"><i class="fa fa-check"></i><b>5.4</b> Referensi</a></li>
+</ul></li>
+<li class="chapter" data-level="6" data-path="linearaljabar.html"><a href="linearaljabar.html"><i class="fa fa-check"></i><b>6</b> Aljabar Linier</a>
+<ul>
+<li class="chapter" data-level="6.1" data-path="linearaljabar.html"><a href="linearaljabar.html#vecmat"><i class="fa fa-check"></i><b>6.1</b> Vektor dan matriks</a>
+<ul>
+<li class="chapter" data-level="6.1.1" data-path="linearaljabar.html"><a href="linearaljabar.html#operasivektor"><i class="fa fa-check"></i><b>6.1.1</b> Operasi Vektor</a></li>
+<li class="chapter" data-level="6.1.2" data-path="linearaljabar.html"><a href="linearaljabar.html#operasimatrik"><i class="fa fa-check"></i><b>6.1.2</b> Operasi matriks</a></li>
+</ul></li>
+<li class="chapter" data-level="6.2" data-path="linearaljabar.html"><a href="linearaljabar.html#rowoperation"><i class="fa fa-check"></i><b>6.2</b> Operasi Baris Elementer</a></li>
+<li class="chapter" data-level="6.3" data-path="linearaljabar.html"><a href="linearaljabar.html#gausselimination"><i class="fa fa-check"></i><b>6.3</b> Eliminasi Gauss</a>
+<ul>
+<li class="chapter" data-level="6.3.1" data-path="linearaljabar.html"><a href="linearaljabar.html#rowechelonform"><i class="fa fa-check"></i><b>6.3.1</b> <em>Row Echelon Form</em></a></li>
+<li class="chapter" data-level="6.3.2" data-path="linearaljabar.html"><a href="linearaljabar.html#redrowechelonform"><i class="fa fa-check"></i><b>6.3.2</b> Eliminasi Gauss-Jordan</a></li>
+<li class="chapter" data-level="6.3.3" data-path="linearaljabar.html"><a href="linearaljabar.html#matriktridiagonal"><i class="fa fa-check"></i><b>6.3.3</b> Matrik Tridiagonal</a></li>
+<li class="chapter" data-level="6.3.4" data-path="linearaljabar.html"><a href="linearaljabar.html#solvefunc"><i class="fa fa-check"></i><b>6.3.4</b> Penyelesaian Sistem Persamaan Linier Menggunakan Fungsi <code>solve()</code></a></li>
+<li class="chapter" data-level="6.3.5" data-path="linearaljabar.html"><a href="linearaljabar.html#solvetridiagfunct"><i class="fa fa-check"></i><b>6.3.5</b> Penyelesaian Sistem Persamaan Linier Menggunakan Fungsi ’Solve.tridiag()`</a></li>
+</ul></li>
+<li class="chapter" data-level="6.4" data-path="linearaljabar.html"><a href="linearaljabar.html#dekomposisimatriks"><i class="fa fa-check"></i><b>6.4</b> Dekomposisi Matriks</a>
+<ul>
+<li class="chapter" data-level="6.4.1" data-path="linearaljabar.html"><a href="linearaljabar.html#ludecomp"><i class="fa fa-check"></i><b>6.4.1</b> Dekomposisi LU</a></li>
+<li class="chapter" data-level="6.4.2" data-path="linearaljabar.html"><a href="linearaljabar.html#dekomposisi-cholesky"><i class="fa fa-check"></i><b>6.4.2</b> Dekomposisi Cholesky</a></li>
+<li class="chapter" data-level="6.4.3" data-path="linearaljabar.html"><a href="linearaljabar.html#othersdecomp"><i class="fa fa-check"></i><b>6.4.3</b> Dekomposisi Lainnya</a></li>
+</ul></li>
+<li class="chapter" data-level="6.5" data-path="linearaljabar.html"><a href="linearaljabar.html#iteratif"><i class="fa fa-check"></i><b>6.5</b> Metode Iterasi</a>
+<ul>
+<li class="chapter" data-level="6.5.1" data-path="linearaljabar.html"><a href="linearaljabar.html#jacobiiter"><i class="fa fa-check"></i><b>6.5.1</b> Iterasi Jacobi</a></li>
+<li class="chapter" data-level="6.5.2" data-path="linearaljabar.html"><a href="linearaljabar.html#seideliter"><i class="fa fa-check"></i><b>6.5.2</b> Iterasi Gauss-Seidel</a></li>
+</ul></li>
+<li class="chapter" data-level="6.6" data-path="linearaljabar.html"><a href="linearaljabar.html#studikasus"><i class="fa fa-check"></i><b>6.6</b> Studi Kasus</a>
+<ul>
+<li class="chapter" data-level="6.6.1" data-path="linearaljabar.html"><a href="linearaljabar.html#leastsquare"><i class="fa fa-check"></i><b>6.6.1</b> Metode Kuadrat Terkecil</a></li>
+<li class="chapter" data-level="6.6.2" data-path="linearaljabar.html"><a href="linearaljabar.html#reaktorkimia"><i class="fa fa-check"></i><b>6.6.2</b> Aliran Massa Dalam Reaktor</a></li>
+</ul></li>
+<li class="chapter" data-level="6.7" data-path="linearaljabar.html"><a href="linearaljabar.html#referensi-5"><i class="fa fa-check"></i><b>6.7</b> Referensi</a></li>
+<li class="chapter" data-level="6.8" data-path="linearaljabar.html"><a href="linearaljabar.html#latihan"><i class="fa fa-check"></i><b>6.8</b> Latihan</a></li>
+</ul></li>
+<li class="chapter" data-level="7" data-path="rootfinding.html"><a href="rootfinding.html"><i class="fa fa-check"></i><b>7</b> Akar Persamaan Non-Linier</a>
+<ul>
+<li class="chapter" data-level="7.1" data-path="rootfinding.html"><a href="rootfinding.html#bracketing"><i class="fa fa-check"></i><b>7.1</b> Metode Tertutup</a>
+<ul>
+<li class="chapter" data-level="7.1.1" data-path="rootfinding.html"><a href="rootfinding.html#table"><i class="fa fa-check"></i><b>7.1.1</b> Metode Tabel</a></li>
+<li class="chapter" data-level="7.1.2" data-path="rootfinding.html"><a href="rootfinding.html#bisection"><i class="fa fa-check"></i><b>7.1.2</b> Metode Biseksi</a></li>
+<li class="chapter" data-level="7.1.3" data-path="rootfinding.html"><a href="rootfinding.html#regulafalsi"><i class="fa fa-check"></i><b>7.1.3</b> Metode Regula Falsi</a></li>
+</ul></li>
+<li class="chapter" data-level="7.2" data-path="rootfinding.html"><a href="rootfinding.html#openmethod"><i class="fa fa-check"></i><b>7.2</b> Metode Terbuka</a>
+<ul>
+<li class="chapter" data-level="7.2.1" data-path="rootfinding.html"><a href="rootfinding.html#fixpoint"><i class="fa fa-check"></i><b>7.2.1</b> Metode Iterasi Titik Tetap</a></li>
+<li class="chapter" data-level="7.2.2" data-path="rootfinding.html"><a href="rootfinding.html#newtonraphson"><i class="fa fa-check"></i><b>7.2.2</b> Metode Newton-Raphson</a></li>
+<li class="chapter" data-level="7.2.3" data-path="rootfinding.html"><a href="rootfinding.html#secant"><i class="fa fa-check"></i><b>7.2.3</b> Metode Secant</a></li>
+</ul></li>
+<li class="chapter" data-level="7.3" data-path="rootfinding.html"><a href="rootfinding.html#uniroot"><i class="fa fa-check"></i><b>7.3</b> Penyelesaian Persamaan Non-Linier Menggunakan Fungsi <code>uniroot</code> dan <code>uniroot.all</code></a></li>
+<li class="chapter" data-level="7.4" data-path="rootfinding.html"><a href="rootfinding.html#akar-persamaan-polinomial-menggunakan-fungsi-polyroot"><i class="fa fa-check"></i><b>7.4</b> Akar Persamaan Polinomial Menggunakan Fungsi <code>polyroot</code></a></li>
+<li class="chapter" data-level="7.5" data-path="rootfinding.html"><a href="rootfinding.html#studi-kasus"><i class="fa fa-check"></i><b>7.5</b> Studi Kasus</a>
+<ul>
+<li class="chapter" data-level="7.5.1" data-path="rootfinding.html"><a href="rootfinding.html#persamaan-van-der-walls"><i class="fa fa-check"></i><b>7.5.1</b> Persamaan Van Der Walls</a></li>
+<li class="chapter" data-level="7.5.2" data-path="rootfinding.html"><a href="rootfinding.html#hukum-bernoulli"><i class="fa fa-check"></i><b>7.5.2</b> Hukum Bernoulli</a></li>
+</ul></li>
+<li class="chapter" data-level="7.6" data-path="rootfinding.html"><a href="rootfinding.html#referensi-6"><i class="fa fa-check"></i><b>7.6</b> Referensi</a></li>
+<li class="chapter" data-level="7.7" data-path="rootfinding.html"><a href="rootfinding.html#latihan-1"><i class="fa fa-check"></i><b>7.7</b> Latihan</a></li>
+</ul></li>
+<li class="chapter" data-level="8" data-path="interpolation.html"><a href="interpolation.html"><i class="fa fa-check"></i><b>8</b> Interpolasi dan Ekstrapolasi</a>
+<ul>
+<li class="chapter" data-level="8.1" data-path="interpolation.html"><a href="interpolation.html#poliinterpolation"><i class="fa fa-check"></i><b>8.1</b> Interpolasi Polinomial</a>
+<ul>
+<li class="chapter" data-level="8.1.1" data-path="interpolation.html"><a href="interpolation.html#mengevaluasi-polinomial"><i class="fa fa-check"></i><b>8.1.1</b> Mengevaluasi Polinomial</a></li>
+<li class="chapter" data-level="8.1.2" data-path="interpolation.html"><a href="interpolation.html#lininterpol"><i class="fa fa-check"></i><b>8.1.2</b> Interpolasi Linier</a></li>
+<li class="chapter" data-level="8.1.3" data-path="interpolation.html"><a href="interpolation.html#hopoliinter"><i class="fa fa-check"></i><b>8.1.3</b> Interpolasi Polinomial Orde Tinggi</a></li>
+</ul></li>
+<li class="chapter" data-level="8.2" data-path="interpolation.html"><a href="interpolation.html#pwinter"><i class="fa fa-check"></i><b>8.2</b> Interpolasi Piecewise</a>
+<ul>
+<li class="chapter" data-level="8.2.1" data-path="interpolation.html"><a href="interpolation.html#pwlininter"><i class="fa fa-check"></i><b>8.2.1</b> Interpolasi Linier Piecewise</a></li>
+<li class="chapter" data-level="8.2.2" data-path="interpolation.html"><a href="interpolation.html#cubicspline"><i class="fa fa-check"></i><b>8.2.2</b> Interpolasi Spline Kubik</a></li>
+</ul></li>
+<li class="chapter" data-level="8.3" data-path="interpolation.html"><a href="interpolation.html#studi-kasus-1"><i class="fa fa-check"></i><b>8.3</b> Studi Kasus</a>
+<ul>
+<li class="chapter" data-level="8.3.1" data-path="interpolation.html"><a href="interpolation.html#interpolasi-data-runtun-waktu"><i class="fa fa-check"></i><b>8.3.1</b> Interpolasi Data Runtun Waktu</a></li>
+</ul></li>
+<li class="chapter" data-level="8.4" data-path="interpolation.html"><a href="interpolation.html#referensi-7"><i class="fa fa-check"></i><b>8.4</b> Referensi</a></li>
+<li class="chapter" data-level="8.5" data-path="interpolation.html"><a href="interpolation.html#latihan-2"><i class="fa fa-check"></i><b>8.5</b> Latihan</a></li>
+</ul></li>
+<li class="chapter" data-level="9" data-path="diffinteg.html"><a href="diffinteg.html"><i class="fa fa-check"></i><b>9</b> Diferensiasi dan Integrasi Numerik</a>
+<ul>
+<li class="chapter" data-level="9.1" data-path="diffinteg.html"><a href="diffinteg.html#finitediff"><i class="fa fa-check"></i><b>9.1</b> Metode Beda Hingga</a></li>
+<li class="chapter" data-level="9.2" data-path="diffinteg.html"><a href="diffinteg.html#diffother"><i class="fa fa-check"></i><b>9.2</b> Diferensiasi Menggunakan Fungsi Lainnya di R</a>
+<ul>
+<li class="chapter" data-level="9.2.1" data-path="diffinteg.html"><a href="diffinteg.html#diferensiasi-metode-titik-pusat-mengggunakan-fungsidiff"><i class="fa fa-check"></i><b>9.2.1</b> Diferensiasi Metode Titik Pusat Mengggunakan Fungsi<code>diff()</code></a></li>
+<li class="chapter" data-level="9.2.2" data-path="diffinteg.html"><a href="diffinteg.html#diferensiasi-menggunakan-paket-numderiv"><i class="fa fa-check"></i><b>9.2.2</b> Diferensiasi Menggunakan Paket <code>numDeriv</code></a></li>
+<li class="chapter" data-level="9.2.3" data-path="diffinteg.html"><a href="diffinteg.html#diferensiasi-menggunakan-paket-pracma"><i class="fa fa-check"></i><b>9.2.3</b> DIferensiasi Menggunakan Paket <code>pracma</code></a></li>
+</ul></li>
+<li class="chapter" data-level="9.3" data-path="diffinteg.html"><a href="diffinteg.html#newtoncotes"><i class="fa fa-check"></i><b>9.3</b> Metode Integrasi Newton-Cotes</a>
+<ul>
+<li class="chapter" data-level="9.3.1" data-path="diffinteg.html"><a href="diffinteg.html#riemann"><i class="fa fa-check"></i><b>9.3.1</b> Metode Integral Riemann</a></li>
+<li class="chapter" data-level="9.3.2" data-path="diffinteg.html"><a href="diffinteg.html#trapezoida"><i class="fa fa-check"></i><b>9.3.2</b> Metode Trapezoida</a></li>
+<li class="chapter" data-level="9.3.3" data-path="diffinteg.html"><a href="diffinteg.html#simpson"><i class="fa fa-check"></i><b>9.3.3</b> Metode Simpson</a></li>
+<li class="chapter" data-level="9.3.4" data-path="diffinteg.html"><a href="diffinteg.html#simpson38"><i class="fa fa-check"></i><b>9.3.4</b> Metode Simpson 3/8</a></li>
+</ul></li>
+<li class="chapter" data-level="9.4" data-path="diffinteg.html"><a href="diffinteg.html#metode-integrasi-newton-cotes-mengunakan-fungsi-lainnya"><i class="fa fa-check"></i><b>9.4</b> Metode Integrasi Newton-Cotes Mengunakan Fungsi Lainnya</a></li>
+<li class="chapter" data-level="9.5" data-path="diffinteg.html"><a href="diffinteg.html#kuadgauss"><i class="fa fa-check"></i><b>9.5</b> Metode Kuadratur Gauss</a></li>
+<li class="chapter" data-level="9.6" data-path="diffinteg.html"><a href="diffinteg.html#othergauss"><i class="fa fa-check"></i><b>9.6</b> Metode Gauss-Legendre Menggunakan Fungsi <code>legendre.quadrature()</code></a></li>
+<li class="chapter" data-level="9.7" data-path="diffinteg.html"><a href="diffinteg.html#adaptifint"><i class="fa fa-check"></i><b>9.7</b> Metode Integrasi Adaptif</a></li>
+<li class="chapter" data-level="9.8" data-path="diffinteg.html"><a href="diffinteg.html#metode-integral-adaptif-menggunakan-fungsi-lainnya-pada-r"><i class="fa fa-check"></i><b>9.8</b> Metode Integral Adaptif Menggunakan Fungsi Lainnya Pada <code>R</code></a></li>
+<li class="chapter" data-level="9.9" data-path="diffinteg.html"><a href="diffinteg.html#romberg"><i class="fa fa-check"></i><b>9.9</b> Metode Integrasi Romberg</a></li>
+<li class="chapter" data-level="9.10" data-path="diffinteg.html"><a href="diffinteg.html#metode-integrasi-romberg-menggunakan-fungsi-lainnya"><i class="fa fa-check"></i><b>9.10</b> Metode Integrasi Romberg Menggunakan Fungsi Lainnya</a></li>
+<li class="chapter" data-level="9.11" data-path="diffinteg.html"><a href="diffinteg.html#montecarlo"><i class="fa fa-check"></i><b>9.11</b> Metode Integrasi Monte Carlo</a></li>
+<li class="chapter" data-level="9.12" data-path="diffinteg.html"><a href="diffinteg.html#studi-kasus-2"><i class="fa fa-check"></i><b>9.12</b> Studi Kasus</a>
+<ul>
+<li class="chapter" data-level="9.12.1" data-path="diffinteg.html"><a href="diffinteg.html#penerjung-payung"><i class="fa fa-check"></i><b>9.12.1</b> Penerjung Payung</a></li>
+</ul></li>
+<li class="chapter" data-level="9.13" data-path="diffinteg.html"><a href="diffinteg.html#referensi-8"><i class="fa fa-check"></i><b>9.13</b> Referensi</a></li>
+<li class="chapter" data-level="9.14" data-path="diffinteg.html"><a href="diffinteg.html#latihan-3"><i class="fa fa-check"></i><b>9.14</b> Latihan</a></li>
+</ul></li>
+<li class="chapter" data-level="10" data-path="diffeq.html"><a href="diffeq.html"><i class="fa fa-check"></i><b>10</b> Persamaan Diferensial</a>
+<ul>
+<li class="chapter" data-level="10.1" data-path="diffeq.html"><a href="diffeq.html#ivp"><i class="fa fa-check"></i><b>10.1</b> <em>Initial value problems</em></a>
+<ul>
+<li class="chapter" data-level="10.1.1" data-path="diffeq.html"><a href="diffeq.html#eulermethod"><i class="fa fa-check"></i><b>10.1.1</b> Metode Euler</a></li>
+<li class="chapter" data-level="10.1.2" data-path="diffeq.html"><a href="diffeq.html#heun"><i class="fa fa-check"></i><b>10.1.2</b> Metode Heun</a></li>
+<li class="chapter" data-level="10.1.3" data-path="diffeq.html"><a href="diffeq.html#midpt"><i class="fa fa-check"></i><b>10.1.3</b> Metode Titik Tengah</a></li>
+<li class="chapter" data-level="10.1.4" data-path="diffeq.html"><a href="diffeq.html#rungekutta"><i class="fa fa-check"></i><b>10.1.4</b> Metode Runge-Kutta Orde 4</a></li>
+<li class="chapter" data-level="10.1.5" data-path="diffeq.html"><a href="diffeq.html#mml"><i class="fa fa-check"></i><b>10.1.5</b> Metode Multistep Linier</a></li>
+</ul></li>
+<li class="chapter" data-level="10.2" data-path="diffeq.html"><a href="diffeq.html#sysdiff"><i class="fa fa-check"></i><b>10.2</b> Sistem Persamaan Diferensial</a></li>
+<li class="chapter" data-level="10.3" data-path="diffeq.html"><a href="diffeq.html#penyelesaian-persamaan-diferensial-dan-sistem-persamaan-diferensial-menggunakan-fungsi-ode"><i class="fa fa-check"></i><b>10.3</b> Penyelesaian Persamaan Diferensial dan Sistem Persamaan Diferensial Menggunakan Fungsi <code>ode()</code></a></li>
+<li class="chapter" data-level="10.4" data-path="diffeq.html"><a href="diffeq.html#pasialdiff"><i class="fa fa-check"></i><b>10.4</b> Persamaan Diferensial Parsial</a>
+<ul>
+<li class="chapter" data-level="10.4.1" data-path="diffeq.html"><a href="diffeq.html#persamaan-difusi"><i class="fa fa-check"></i><b>10.4.1</b> Persamaan Difusi</a></li>
+<li class="chapter" data-level="10.4.2" data-path="diffeq.html"><a href="diffeq.html#persamaan-gelombang"><i class="fa fa-check"></i><b>10.4.2</b> Persamaan Gelombang</a></li>
+<li class="chapter" data-level="10.4.3" data-path="diffeq.html"><a href="diffeq.html#laplace"><i class="fa fa-check"></i><b>10.4.3</b> Persamaan Laplace</a></li>
+<li class="chapter" data-level="10.4.4" data-path="diffeq.html"><a href="diffeq.html#setup.grid.1d"><i class="fa fa-check"></i><b>10.4.4</b> <code>setup.grid.1D()</code></a></li>
+<li class="chapter" data-level="10.4.5" data-path="diffeq.html"><a href="diffeq.html#setup.prop.1d"><i class="fa fa-check"></i><b>10.4.5</b> <code>setup.prop.1D()</code></a></li>
+<li class="chapter" data-level="10.4.6" data-path="diffeq.html"><a href="diffeq.html#tran.1d"><i class="fa fa-check"></i><b>10.4.6</b> <code>tran.1D()</code></a></li>
+<li class="chapter" data-level="10.4.7" data-path="diffeq.html"><a href="diffeq.html#ode.1d-atau-steady.1d"><i class="fa fa-check"></i><b>10.4.7</b> <code>ode.1D()</code> atau <code>steady.1D()</code></a></li>
+</ul></li>
+<li class="chapter" data-level="10.5" data-path="diffeq.html"><a href="diffeq.html#contoh-penerapan-paket-reactran"><i class="fa fa-check"></i><b>10.5</b> Contoh Penerapan Paket <code>ReacTran</code></a>
+<ul>
+<li class="chapter" data-level="10.5.1" data-path="diffeq.html"><a href="diffeq.html#persamaan-adveksi-difuksi-1d"><i class="fa fa-check"></i><b>10.5.1</b> Persamaan Adveksi-Difuksi 1D</a></li>
+<li class="chapter" data-level="10.5.2" data-path="diffeq.html"><a href="diffeq.html#persamaan-gelombang-1d"><i class="fa fa-check"></i><b>10.5.2</b> Persamaan Gelombang 1D</a></li>
+<li class="chapter" data-level="10.5.3" data-path="diffeq.html"><a href="diffeq.html#persamaan-laplace"><i class="fa fa-check"></i><b>10.5.3</b> Persamaan Laplace</a></li>
+<li class="chapter" data-level="10.5.4" data-path="diffeq.html"><a href="diffeq.html#persamaan-poisson-untuk-dipol"><i class="fa fa-check"></i><b>10.5.4</b> Persamaan Poisson untuk Dipol</a></li>
+</ul></li>
+<li class="chapter" data-level="10.6" data-path="diffeq.html"><a href="diffeq.html#studi-kasus-3"><i class="fa fa-check"></i><b>10.6</b> Studi Kasus</a>
+<ul>
+<li class="chapter" data-level="10.6.1" data-path="diffeq.html"><a href="diffeq.html#model-lotka-voltera"><i class="fa fa-check"></i><b>10.6.1</b> Model Lotka-Voltera</a></li>
+</ul></li>
+<li class="chapter" data-level="10.7" data-path="diffeq.html"><a href="diffeq.html#referensi-9"><i class="fa fa-check"></i><b>10.7</b> Referensi</a></li>
+<li class="chapter" data-level="10.8" data-path="diffeq.html"><a href="diffeq.html#latihan-4"><i class="fa fa-check"></i><b>10.8</b> Latihan</a></li>
+</ul></li>
+<li class="chapter" data-level="11" data-path="dataanalysis.html"><a href="dataanalysis.html"><i class="fa fa-check"></i><b>11</b> Analisis Data</a>
+<ul>
+<li class="chapter" data-level="11.1" data-path="dataanalysis.html"><a href="dataanalysis.html#importdata"><i class="fa fa-check"></i><b>11.1</b> Import Data</a></li>
+<li class="chapter" data-level="11.2" data-path="dataanalysis.html"><a href="dataanalysis.html#librarydata"><i class="fa fa-check"></i><b>11.2</b> Membaca Data Dari <em>Library</em></a></li>
+<li class="chapter" data-level="11.3" data-path="dataanalysis.html"><a href="dataanalysis.html#summarystats"><i class="fa fa-check"></i><b>11.3</b> Ringkasan Data</a></li>
+<li class="chapter" data-level="11.4" data-path="dataanalysis.html"><a href="dataanalysis.html#norm"><i class="fa fa-check"></i><b>11.4</b> Uji Normalitas Data Tunggal</a></li>
+<li class="chapter" data-level="11.5" data-path="dataanalysis.html"><a href="dataanalysis.html#uji-rata-rata-satu-dan-dua-sampel"><i class="fa fa-check"></i><b>11.5</b> Uji Rata-Rata Satu dan Dua Sampel</a></li>
+<li class="chapter" data-level="11.6" data-path="dataanalysis.html"><a href="dataanalysis.html#korelasi-antar-variabel"><i class="fa fa-check"></i><b>11.6</b> Korelasi Antar Variabel</a></li>
+<li class="chapter" data-level="11.7" data-path="dataanalysis.html"><a href="dataanalysis.html#analisis-varians"><i class="fa fa-check"></i><b>11.7</b> Analisis Varians</a></li>
+<li class="chapter" data-level="11.8" data-path="dataanalysis.html"><a href="dataanalysis.html#analisis-komponen-utama"><i class="fa fa-check"></i><b>11.8</b> Analisis Komponen Utama</a></li>
+<li class="chapter" data-level="11.9" data-path="dataanalysis.html"><a href="dataanalysis.html#analisis-cluster"><i class="fa fa-check"></i><b>11.9</b> Analisis Cluster</a>
+<ul>
+<li class="chapter" data-level="11.9.1" data-path="dataanalysis.html"><a href="dataanalysis.html#analisis-cluster-menggunakan-algoritma-pengelompokan-hierarkis-aglomeratif"><i class="fa fa-check"></i><b>11.9.1</b> Analisis Cluster Menggunakan Algoritma Pengelompokan Hierarkis Aglomeratif</a></li>
+<li class="chapter" data-level="11.9.2" data-path="dataanalysis.html"><a href="dataanalysis.html#pengelompokan-hierarkis-divisif"><i class="fa fa-check"></i><b>11.9.2</b> Pengelompokan Hierarkis Divisif</a></li>
+<li class="chapter" data-level="11.9.3" data-path="dataanalysis.html"><a href="dataanalysis.html#pengelompokan-menggunakan-algoritma-k-mean"><i class="fa fa-check"></i><b>11.9.3</b> Pengelompokan Menggunakan Algoritma K-Mean</a></li>
+<li class="chapter" data-level="11.9.4" data-path="dataanalysis.html"><a href="dataanalysis.html#pengelompokan-menggunakan-algoritma-pam"><i class="fa fa-check"></i><b>11.9.4</b> Pengelompokan Menggunakan Algoritma PAM</a></li>
+</ul></li>
+<li class="chapter" data-level="11.10" data-path="dataanalysis.html"><a href="dataanalysis.html#referensi-10"><i class="fa fa-check"></i><b>11.10</b> Referensi</a></li>
+</ul></li>
+<li class="chapter" data-level="12" data-path="datamod.html"><a href="datamod.html"><i class="fa fa-check"></i><b>12</b> Pemodelan Data</a>
+<ul>
+<li class="chapter" data-level="12.1" data-path="datamod.html"><a href="datamod.html#reglin"><i class="fa fa-check"></i><b>12.1</b> Regresi Linier</a>
+<ul>
+<li class="chapter" data-level="12.1.1" data-path="datamod.html"><a href="datamod.html#SLR"><i class="fa fa-check"></i><b>12.1.1</b> Regrasi Linier Sederhana (<em>Simple Linear Regression</em>)</a></li>
+<li class="chapter" data-level="12.1.2" data-path="datamod.html"><a href="datamod.html#MLR"><i class="fa fa-check"></i><b>12.1.2</b> Regresi Linier Berganda (<em>Multiple Linier Regression</em>)</a></li>
+<li class="chapter" data-level="12.1.3" data-path="datamod.html"><a href="datamod.html#lminter"><i class="fa fa-check"></i><b>12.1.3</b> Model Linier dengan Interaksi Antar Variabel Prediktor</a></li>
+<li class="chapter" data-level="12.1.4" data-path="datamod.html"><a href="datamod.html#nlinpred"><i class="fa fa-check"></i><b>12.1.4</b> Transformasi Non-linier Pada Prediktor</a></li>
+<li class="chapter" data-level="12.1.5" data-path="datamod.html"><a href="datamod.html#model-linier-dengan-prediktor-kategorikal"><i class="fa fa-check"></i><b>12.1.5</b> Model Linier dengan Prediktor Kategorikal</a></li>
+<li class="chapter" data-level="12.1.6" data-path="datamod.html"><a href="datamod.html#wlr"><i class="fa fa-check"></i><b>12.1.6</b> Regresi linier dengan Pembobotan</a></li>
+</ul></li>
+<li class="chapter" data-level="12.2" data-path="datamod.html"><a href="datamod.html#logreg"><i class="fa fa-check"></i><b>12.2</b> Regresi Logistik</a></li>
+<li class="chapter" data-level="12.3" data-path="datamod.html"><a href="datamod.html#referensi-11"><i class="fa fa-check"></i><b>12.3</b> Referensi</a></li>
+</ul></li>
+<li class="divider"></li>
+<li><a href="https://github.com/rstudio/bookdown" target="blank">Published with bookdown</a></li>
+
+</ul>
+
+      </nav>
+    </div>
+
+    <div class="book-body">
+      <div class="body-inner">
+        <div class="book-header" role="navigation">
+          <h1>
+            <i class="fa fa-circle-o-notch fa-spin"></i><a href="./">Metode Numerik Menggunakan R Untuk Teknik Lingkungan</a>
+          </h1>
+        </div>
+
+        <div class="page-wrapper" tabindex="-1" role="main">
+          <div class="page-inner">
+
+            <section class="normal" id="section-">
+<div id="programmingandfunction" class="section level1 hasAnchor" number="4">
+<h1><span class="header-section-number">Chapter 4</span> Pemrograman dan Fungsi<a href="programmingandfunction.html#programmingandfunction" class="anchor-section" aria-label="Anchor link to header"></a></h1>
+<p>Kita telah membahas dasar-dasar kalkulasi menggunakan <code>R</code> pada Chapter <a href="calculation.html#calculation">2</a>. Pada Chapter <a href="programmingandfunction.html#programmingandfunction">4</a> kita akan membahas dasar pemrograman menggunakan <code>R</code>. Pada chapter ini kita juga akan membahas bagaimana kita dapat membentuk suatu fungsi menggunakan <code>R</code> untuk pekerjaan yang berulang-ulang.</p>
+<div id="loop" class="section level2 hasAnchor" number="4.1">
+<h2><span class="header-section-number">4.1</span> Loop<a href="programmingandfunction.html#loop" class="anchor-section" aria-label="Anchor link to header"></a></h2>
+<p><em>Loop</em> merupakan kode program yang berulang-ulang. <em>Loop</em> berguna saat kita ingin melakukan sebuah perintah yang perlu dijalankan berulang-ulang seperti melakukan perhitungan maupaun melakukan visualisasi terhadap banyak variabel secara serentak. Hal ini tentu saja membantu kita karena kita tidak perlu menulis sejumlah sintaks yang berulang-ulang. Kita hanya perlu mengatur <em>statement</em> berdasarkan hasil yang kita harapkan.</p>
+<p>Pada <code>R</code> bentuk <em>loop</em> dapat bermacam-macam (“<em>for loop</em>”,“<em>while loop</em>”, dll). <code>R</code> menyederhanakan bentuk <em>loop</em> ini dengan menyediakan sejumlah fungsi seperti <code>apply()</code>,<code>tapply()</code>, dll. Sehingga <code>loop</code> jarang sekali muncul dalam kode <code>R</code>. Sehingga <code>R</code> sering disebut sebagai <em>loopless loop</em>.</p>
+<p>Meski <em>loop</em> jarang muncul bukan berarti kita tidak akan melakukannya. Terkadang saat kita melakukan komputasi statistik atau matematik dan belum terdapat <em>library</em> yang mendukung proses tersebut, sering kali kita akan membuat sintaks sendiri berdasarkan algoritma metode tersebut. Pada algoritma tersebut sering pula terdapat <em>loop</em> yang diperlukan selama proses perhitungan. Secara sederhana diagram umum loop ditampilkan pada Gambar <a href="programmingandfunction.html#fig:loop">4.1</a></p>
+<div class="figure" style="text-align: center"><span style="display:block;" id="fig:loop"></span>
+<img src="images/skema_loop.png" alt="Diagram umum loop (sumber: Primartha, 2018)." width="40%" />
+<p class="caption">
+Gambar 4.1: Diagram umum loop (sumber: Primartha, 2018).
+</p>
+</div>
+<div id="forloop" class="section level3 hasAnchor" number="4.1.1">
+<h3><span class="header-section-number">4.1.1</span> For Loop<a href="programmingandfunction.html#forloop" class="anchor-section" aria-label="Anchor link to header"></a></h3>
+<p>Mengulangi sebuah <em>statement</em> atau sekelompok <em>statement</em> sebanyak nilai yang ditentukan di awal. Jadi operasi akan terus dilakukan sampai dengan jumlah yang telah ditetapkan di awal atau dengan kata lain tes kondisi (Jika jumlah pengulangan telah cukup) hanya akan dilakukan di akhir. Secara sederhana bentuk dari <em>for loop</em> dapat dituliskan sebagai berikut:</p>
+<div class="sourceCode" id="cb279"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb279-1"><a href="programmingandfunction.html#cb279-1" tabindex="-1"></a><span class="cf">for</span> (value <span class="cf">in</span> vector){</span>
+<span id="cb279-2"><a href="programmingandfunction.html#cb279-2" tabindex="-1"></a>  statements</span>
+<span id="cb279-3"><a href="programmingandfunction.html#cb279-3" tabindex="-1"></a>}</span></code></pre></div>
+<p>Berikut adalah contoh sintaks penerapan <em>for loop</em>:</p>
+<div class="sourceCode" id="cb280"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb280-1"><a href="programmingandfunction.html#cb280-1" tabindex="-1"></a><span class="co"># Membuat vektor numerik</span></span>
+<span id="cb280-2"><a href="programmingandfunction.html#cb280-2" tabindex="-1"></a>vektor <span class="ot">&lt;-</span> <span class="fu">c</span>(<span class="dv">1</span><span class="sc">:</span><span class="dv">5</span>)</span>
+<span id="cb280-3"><a href="programmingandfunction.html#cb280-3" tabindex="-1"></a></span>
+<span id="cb280-4"><a href="programmingandfunction.html#cb280-4" tabindex="-1"></a><span class="co"># loop </span></span>
+<span id="cb280-5"><a href="programmingandfunction.html#cb280-5" tabindex="-1"></a><span class="cf">for</span>(i <span class="cf">in</span> vektor){</span>
+<span id="cb280-6"><a href="programmingandfunction.html#cb280-6" tabindex="-1"></a>  <span class="fu">print</span>(i)</span>
+<span id="cb280-7"><a href="programmingandfunction.html#cb280-7" tabindex="-1"></a>}</span></code></pre></div>
+<pre><code>## [1] 1
+## [1] 2
+## [1] 3
+## [1] 4
+## [1] 5</code></pre>
+<p><em>Loop</em> akan dimulai dari blok <em>statement for</em> sampai dengan <code>print(i)</code>. Berdasarkan <em>loop</em> pada contoh tersebut, <em>loop</em> hanya dilakukan sebanyak 5 kali sesuai dengan jumlah vektor yang ada.</p>
+</div>
+<div id="whileloop" class="section level3 hasAnchor" number="4.1.2">
+<h3><span class="header-section-number">4.1.2</span> While Loop<a href="programmingandfunction.html#whileloop" class="anchor-section" aria-label="Anchor link to header"></a></h3>
+<p><em>While loop</em> merupakan loop yang digunakan ketika kita telah menetapkan <em>stop condition</em> sebelumnya. Blok <em>statement</em>/kode yang sama akan terus dijalankan sampai <em>stop condition</em> ini tercapai. <em>Stop condition</em> akan di cek sebelum melakukan proses <em>loop</em>. Berikut adalah pola dari <em>while loop</em> dapat dituliskan sebagai berikut:</p>
+<div class="sourceCode" id="cb282"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb282-1"><a href="programmingandfunction.html#cb282-1" tabindex="-1"></a><span class="cf">while</span> (test_expression){</span>
+<span id="cb282-2"><a href="programmingandfunction.html#cb282-2" tabindex="-1"></a>  statement</span>
+<span id="cb282-3"><a href="programmingandfunction.html#cb282-3" tabindex="-1"></a>}</span></code></pre></div>
+<p>Berikut adalah contoh penerapan dari <em>while loop</em>:</p>
+<div class="sourceCode" id="cb283"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb283-1"><a href="programmingandfunction.html#cb283-1" tabindex="-1"></a>coba <span class="ot">&lt;-</span> <span class="fu">c</span>(<span class="st">&quot;Contoh&quot;</span>)</span>
+<span id="cb283-2"><a href="programmingandfunction.html#cb283-2" tabindex="-1"></a>counter <span class="ot">&lt;-</span> <span class="dv">1</span></span>
+<span id="cb283-3"><a href="programmingandfunction.html#cb283-3" tabindex="-1"></a></span>
+<span id="cb283-4"><a href="programmingandfunction.html#cb283-4" tabindex="-1"></a><span class="co"># loop</span></span>
+<span id="cb283-5"><a href="programmingandfunction.html#cb283-5" tabindex="-1"></a><span class="cf">while</span> (counter<span class="sc">&lt;</span><span class="dv">5</span>){</span>
+<span id="cb283-6"><a href="programmingandfunction.html#cb283-6" tabindex="-1"></a>  <span class="co"># print vektor</span></span>
+<span id="cb283-7"><a href="programmingandfunction.html#cb283-7" tabindex="-1"></a>  <span class="fu">print</span>(coba)</span>
+<span id="cb283-8"><a href="programmingandfunction.html#cb283-8" tabindex="-1"></a>  <span class="co"># tambahkan nilai counter sehingga proses terus berlangsung sampai counter = 5 </span></span>
+<span id="cb283-9"><a href="programmingandfunction.html#cb283-9" tabindex="-1"></a>  counter <span class="ot">&lt;-</span> counter <span class="sc">+</span> <span class="dv">1</span></span>
+<span id="cb283-10"><a href="programmingandfunction.html#cb283-10" tabindex="-1"></a>}</span></code></pre></div>
+<pre><code>## [1] &quot;Contoh&quot;
+## [1] &quot;Contoh&quot;
+## [1] &quot;Contoh&quot;
+## [1] &quot;Contoh&quot;</code></pre>
+<p><em>Loop</em> akan dimulai dari blok <em>statement while</em> sampai dengan <em>counter</em> &lt;- 1. <em>Loop</em> hanya akan dilakukan sepanjang nilai <em>counter</em> &lt; 5.</p>
+</div>
+<div id="repeatloop" class="section level3 hasAnchor" number="4.1.3">
+<h3><span class="header-section-number">4.1.3</span> Repeat Loop<a href="programmingandfunction.html#repeatloop" class="anchor-section" aria-label="Anchor link to header"></a></h3>
+<p><em>Repeat loop</em> akan menjalankan <em>statement</em>/kode yang sama berulang-ulang hingga <em>stop condition</em> tercapai. Berikut adalah pola dari <em>repeat loop</em>.</p>
+<div class="sourceCode" id="cb285"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb285-1"><a href="programmingandfunction.html#cb285-1" tabindex="-1"></a><span class="cf">repeat</span> {</span>
+<span id="cb285-2"><a href="programmingandfunction.html#cb285-2" tabindex="-1"></a>  commands</span>
+<span id="cb285-3"><a href="programmingandfunction.html#cb285-3" tabindex="-1"></a>  <span class="cf">if</span>(condition){</span>
+<span id="cb285-4"><a href="programmingandfunction.html#cb285-4" tabindex="-1"></a>    <span class="cf">break</span></span>
+<span id="cb285-5"><a href="programmingandfunction.html#cb285-5" tabindex="-1"></a>  }</span>
+<span id="cb285-6"><a href="programmingandfunction.html#cb285-6" tabindex="-1"></a>}</span></code></pre></div>
+<p>Berikut adalah contoh penerapan dari <em>repeat loop</em>:</p>
+<div class="sourceCode" id="cb286"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb286-1"><a href="programmingandfunction.html#cb286-1" tabindex="-1"></a>coba <span class="ot">&lt;-</span> <span class="fu">c</span>(<span class="st">&quot;contoh&quot;</span>)</span>
+<span id="cb286-2"><a href="programmingandfunction.html#cb286-2" tabindex="-1"></a>counter <span class="ot">&lt;-</span> <span class="dv">1</span></span>
+<span id="cb286-3"><a href="programmingandfunction.html#cb286-3" tabindex="-1"></a><span class="cf">repeat</span> {</span>
+<span id="cb286-4"><a href="programmingandfunction.html#cb286-4" tabindex="-1"></a>  <span class="fu">print</span>(coba)</span>
+<span id="cb286-5"><a href="programmingandfunction.html#cb286-5" tabindex="-1"></a>  counter <span class="ot">&lt;-</span> counter <span class="sc">+</span> <span class="dv">1</span></span>
+<span id="cb286-6"><a href="programmingandfunction.html#cb286-6" tabindex="-1"></a>  <span class="cf">if</span>(counter <span class="sc">&lt;</span> <span class="dv">5</span>){</span>
+<span id="cb286-7"><a href="programmingandfunction.html#cb286-7" tabindex="-1"></a><span class="cf">break</span></span>
+<span id="cb286-8"><a href="programmingandfunction.html#cb286-8" tabindex="-1"></a>  }</span>
+<span id="cb286-9"><a href="programmingandfunction.html#cb286-9" tabindex="-1"></a>}</span></code></pre></div>
+<pre><code>## [1] &quot;contoh&quot;</code></pre>
+<p><em>Loop</em> akan dimulai dari blok <em>statement while</em> sampai dengan <em>break</em>. <em>Loop</em> hanya akan dilakukan sepanjang nilai <em>counter</em> &lt; 5. Hasil yang diperoleh berbeda dengan <em>while loop</em>, dimana kita memperoleh 4 buah kata “contoh”. Hal ini disebabkan karena <em>repeat loop</em> melakukan pengecekan <em>stop condition</em> tidak di awal loop seperti <em>while loop</em> sehingga berapapun nilainya, selama nilainya sesuai dengan <em>stop condition</em> maka <em>loop</em> akan dihentikan. Hal ini berbeda dengan <em>while loop</em> dimana proses dilakukan berulang-ulang sampai jumlahnya mendekati <em>stop condition</em>.</p>
+</div>
+<div id="break" class="section level3 hasAnchor" number="4.1.4">
+<h3><span class="header-section-number">4.1.4</span> Break<a href="programmingandfunction.html#break" class="anchor-section" aria-label="Anchor link to header"></a></h3>
+<p><em>Break</em> sebenarnya bukan bagian dari <em>loop</em>, namun sering digunakan dalam <em>loop</em>. <em>Break</em> dapat digunakan pada <em>loop</em> manakala dirasa perlu, yaitu saat kondisi yang disyaratkan pada <em>break</em> tercapai.</p>
+<p>Berikut adalah contoh penerapan <em>break</em> pada beberapa jenis <em>loop</em>.</p>
+<div class="sourceCode" id="cb288"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb288-1"><a href="programmingandfunction.html#cb288-1" tabindex="-1"></a><span class="co"># for loop</span></span>
+<span id="cb288-2"><a href="programmingandfunction.html#cb288-2" tabindex="-1"></a>a <span class="ot">=</span> <span class="fu">c</span>(<span class="dv">2</span>,<span class="dv">4</span>,<span class="dv">6</span>,<span class="dv">8</span>,<span class="dv">10</span>,<span class="dv">12</span>,<span class="dv">14</span>)</span>
+<span id="cb288-3"><a href="programmingandfunction.html#cb288-3" tabindex="-1"></a><span class="cf">for</span>(i <span class="cf">in</span> a){</span>
+<span id="cb288-4"><a href="programmingandfunction.html#cb288-4" tabindex="-1"></a>  <span class="cf">if</span>(i<span class="sc">&gt;</span><span class="dv">8</span>){</span>
+<span id="cb288-5"><a href="programmingandfunction.html#cb288-5" tabindex="-1"></a>    <span class="cf">break</span></span>
+<span id="cb288-6"><a href="programmingandfunction.html#cb288-6" tabindex="-1"></a>  }</span>
+<span id="cb288-7"><a href="programmingandfunction.html#cb288-7" tabindex="-1"></a>  <span class="fu">print</span>(i)</span>
+<span id="cb288-8"><a href="programmingandfunction.html#cb288-8" tabindex="-1"></a>}</span></code></pre></div>
+<pre><code>## [1] 2
+## [1] 4
+## [1] 6
+## [1] 8</code></pre>
+<div class="sourceCode" id="cb290"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb290-1"><a href="programmingandfunction.html#cb290-1" tabindex="-1"></a><span class="co"># while loop</span></span>
+<span id="cb290-2"><a href="programmingandfunction.html#cb290-2" tabindex="-1"></a>a <span class="ot">=</span> <span class="dv">2</span></span>
+<span id="cb290-3"><a href="programmingandfunction.html#cb290-3" tabindex="-1"></a>b <span class="ot">=</span> <span class="dv">4</span></span>
+<span id="cb290-4"><a href="programmingandfunction.html#cb290-4" tabindex="-1"></a><span class="cf">while</span>(a<span class="sc">&lt;</span><span class="dv">7</span>){</span>
+<span id="cb290-5"><a href="programmingandfunction.html#cb290-5" tabindex="-1"></a>  <span class="fu">print</span>(a)</span>
+<span id="cb290-6"><a href="programmingandfunction.html#cb290-6" tabindex="-1"></a>  a <span class="ot">=</span> a <span class="sc">+</span><span class="dv">1</span></span>
+<span id="cb290-7"><a href="programmingandfunction.html#cb290-7" tabindex="-1"></a>  <span class="cf">if</span>(b<span class="sc">+</span>a<span class="sc">&gt;</span><span class="dv">10</span>){</span>
+<span id="cb290-8"><a href="programmingandfunction.html#cb290-8" tabindex="-1"></a>    <span class="cf">break</span></span>
+<span id="cb290-9"><a href="programmingandfunction.html#cb290-9" tabindex="-1"></a>  }</span>
+<span id="cb290-10"><a href="programmingandfunction.html#cb290-10" tabindex="-1"></a>}</span></code></pre></div>
+<pre><code>## [1] 2
+## [1] 3
+## [1] 4
+## [1] 5
+## [1] 6</code></pre>
+<div class="sourceCode" id="cb292"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb292-1"><a href="programmingandfunction.html#cb292-1" tabindex="-1"></a><span class="co"># repeat loop</span></span>
+<span id="cb292-2"><a href="programmingandfunction.html#cb292-2" tabindex="-1"></a>a <span class="ot">=</span> <span class="dv">1</span></span>
+<span id="cb292-3"><a href="programmingandfunction.html#cb292-3" tabindex="-1"></a><span class="cf">repeat</span>{</span>
+<span id="cb292-4"><a href="programmingandfunction.html#cb292-4" tabindex="-1"></a>  <span class="fu">print</span>(a)</span>
+<span id="cb292-5"><a href="programmingandfunction.html#cb292-5" tabindex="-1"></a>  a <span class="ot">=</span> a<span class="sc">+</span><span class="dv">1</span></span>
+<span id="cb292-6"><a href="programmingandfunction.html#cb292-6" tabindex="-1"></a>  <span class="cf">if</span>(a<span class="sc">&gt;</span><span class="dv">6</span>){</span>
+<span id="cb292-7"><a href="programmingandfunction.html#cb292-7" tabindex="-1"></a>    <span class="cf">break</span></span>
+<span id="cb292-8"><a href="programmingandfunction.html#cb292-8" tabindex="-1"></a>  }</span>
+<span id="cb292-9"><a href="programmingandfunction.html#cb292-9" tabindex="-1"></a>}</span></code></pre></div>
+<pre><code>## [1] 1
+## [1] 2
+## [1] 3
+## [1] 4
+## [1] 5
+## [1] 6</code></pre>
+</div>
+</div>
+<div id="loopapply" class="section level2 hasAnchor" number="4.2">
+<h2><span class="header-section-number">4.2</span> Loop Menggunakan Apply Family Function<a href="programmingandfunction.html#loopapply" class="anchor-section" aria-label="Anchor link to header"></a></h2>
+<p>Penggunaan loop sangat membantu kita dalam melakukan proses perhitungan berulang. Namun, metode ini tidak cukup ringkas dalam penerapannya dan perlu penulisan sintaks yang cukup panjang untuk menyelesaikan sebuah kasus yang kita inginkan. Berikut adalah sebuah sintaks yang digunakan untuk menghitung nilai mean pada suatu dataset:</p>
+<div class="sourceCode" id="cb294"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb294-1"><a href="programmingandfunction.html#cb294-1" tabindex="-1"></a><span class="co"># subset data iris</span></span>
+<span id="cb294-2"><a href="programmingandfunction.html#cb294-2" tabindex="-1"></a>sub_iris <span class="ot">&lt;-</span> iris[,<span class="sc">-</span><span class="dv">5</span>]</span>
+<span id="cb294-3"><a href="programmingandfunction.html#cb294-3" tabindex="-1"></a><span class="co"># membuat vektor untuk menyimpan hasil loop</span></span>
+<span id="cb294-4"><a href="programmingandfunction.html#cb294-4" tabindex="-1"></a>a <span class="ot">&lt;-</span> <span class="fu">rep</span>(<span class="cn">NA</span>,<span class="dv">4</span>)</span>
+<span id="cb294-5"><a href="programmingandfunction.html#cb294-5" tabindex="-1"></a><span class="co"># loop</span></span>
+<span id="cb294-6"><a href="programmingandfunction.html#cb294-6" tabindex="-1"></a><span class="cf">for</span>(i <span class="cf">in</span> <span class="dv">1</span><span class="sc">:</span><span class="fu">length</span>(sub_iris)){</span>
+<span id="cb294-7"><a href="programmingandfunction.html#cb294-7" tabindex="-1"></a>  a[i]<span class="ot">&lt;-</span><span class="fu">mean</span>(sub_iris[,i])</span>
+<span id="cb294-8"><a href="programmingandfunction.html#cb294-8" tabindex="-1"></a>}</span>
+<span id="cb294-9"><a href="programmingandfunction.html#cb294-9" tabindex="-1"></a><span class="co"># print</span></span>
+<span id="cb294-10"><a href="programmingandfunction.html#cb294-10" tabindex="-1"></a>a</span></code></pre></div>
+<pre><code>## [1] 5.843 3.057 3.758 1.199</code></pre>
+<div class="sourceCode" id="cb296"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb296-1"><a href="programmingandfunction.html#cb296-1" tabindex="-1"></a><span class="fu">class</span>(a) <span class="co"># cek kelas objek</span></span></code></pre></div>
+<pre><code>## [1] &quot;numeric&quot;</code></pre>
+<p>Metode alternatif lain untuk melakukan loop suatu fungsi adalah dengan menggunakan Apply function family. Metode ini memungkinkan kita untuk melakukan loop suatu fungsi tanpa perlu menuliskan sintaks loop. Berikut adalah beberapa fungsi dari apply family yang nantinya akan sering kita gunakan:</p>
+<ul>
+<li><code>apply()</code>: fungsi generik yang mengaplikasikan fungsi kepada kolom atau baris pada matriks atau secara lebih general aplikasi dilakukan pada dimensi untuk jenis data array.</li>
+<li><code>lapply()</code>: fungsi apply yang bekerja pada jenis data list dan memberikan output berupa list juga.</li>
+<li><code>sapply()</code>: bentuk sederhana dari lapply yang menghasilkan output berupa matriks atau vektor.</li>
+<li><code>vapply()</code>: disebut juga <em>verified apply</em> (memungkinkan untuk menghasilkan output dengan jenis data yang telah ditentukan sebelumnya).</li>
+<li><code>tapply()</code>: <em>tagged apply</em> dimana dimana tag menentukan subset dari data.</li>
+</ul>
+<div id="apply" class="section level3 hasAnchor" number="4.2.1">
+<h3><span class="header-section-number">4.2.1</span> Apply<a href="programmingandfunction.html#apply" class="anchor-section" aria-label="Anchor link to header"></a></h3>
+<p>Fungsi <code>apply()</code> bekerja dengan jenis data matrik atau array (jenis data homogen). Kita dapat melakukan spesifikasi apakah suatu fungsi hanya akan bekerja pada kolom saja, baris saja atau keduanya. Format fungsi ini adalah sebagai berikut:</p>
+<div class="sourceCode" id="cb298"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb298-1"><a href="programmingandfunction.html#cb298-1" tabindex="-1"></a><span class="fu">apply</span>(X, MARGIN, FUN, ...)</span></code></pre></div>
+<blockquote>
+<p><strong>Catatan:</strong></p>
+<ul>
+<li><strong>X</strong>: matriks atau array</li>
+<li><strong>MARGIN</strong>: menentukan bagaimana fungsi bekerja terhadap matriks atau array. Jika nilai yang diinputkan 1, maka fungsi akan bekerja pada masing-masing baris pada matriks. Jika nilainya 2, maka fungsi akan bekerja pada tiap kolom pada matriks.</li>
+<li><strong>FUN</strong>: fungsi yang akan digunakan. Fungsi yang dapat digunakan dapat berupa fungsi dasar matematika atau statistika, serta user define function.</li>
+<li><strong>…</strong>: opsional argumen pada fungsi yang digunakan.</li>
+</ul>
+</blockquote>
+<p>Berikut adalah contoh bagaimana aplikasi fungsi tersebut pada matriks:</p>
+<div class="sourceCode" id="cb299"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb299-1"><a href="programmingandfunction.html#cb299-1" tabindex="-1"></a><span class="do">## membuat matriks</span></span>
+<span id="cb299-2"><a href="programmingandfunction.html#cb299-2" tabindex="-1"></a>x <span class="ot">&lt;-</span> <span class="fu">cbind</span>(<span class="at">x1 =</span> <span class="dv">3</span>, <span class="at">x2 =</span> <span class="fu">c</span>(<span class="dv">4</span><span class="sc">:</span><span class="dv">1</span>, <span class="dv">2</span><span class="sc">:</span><span class="dv">5</span>))</span>
+<span id="cb299-3"><a href="programmingandfunction.html#cb299-3" tabindex="-1"></a>x <span class="co"># print</span></span></code></pre></div>
+<pre><code>##      x1 x2
+## [1,]  3  4
+## [2,]  3  3
+## [3,]  3  2
+## [4,]  3  1
+## [5,]  3  2
+## [6,]  3  3
+## [7,]  3  4
+## [8,]  3  5</code></pre>
+<div class="sourceCode" id="cb301"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb301-1"><a href="programmingandfunction.html#cb301-1" tabindex="-1"></a><span class="fu">class</span>(x) <span class="co"># cek kelas objek</span></span></code></pre></div>
+<pre><code>## [1] &quot;matrix&quot; &quot;array&quot;</code></pre>
+<div class="sourceCode" id="cb303"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb303-1"><a href="programmingandfunction.html#cb303-1" tabindex="-1"></a><span class="do">## menghitung mean masing-masing kolom</span></span>
+<span id="cb303-2"><a href="programmingandfunction.html#cb303-2" tabindex="-1"></a><span class="fu">apply</span>(x, <span class="at">MARGIN=</span><span class="dv">2</span> ,<span class="at">FUN=</span>mean, <span class="at">trim=</span><span class="fl">0.2</span>, <span class="at">na.rm=</span><span class="cn">TRUE</span>)</span></code></pre></div>
+<pre><code>## x1 x2 
+##  3  3</code></pre>
+<div class="sourceCode" id="cb305"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb305-1"><a href="programmingandfunction.html#cb305-1" tabindex="-1"></a><span class="do">## menghitung range pada masing-masing baris</span></span>
+<span id="cb305-2"><a href="programmingandfunction.html#cb305-2" tabindex="-1"></a><span class="do">## menggunakan user define function</span></span>
+<span id="cb305-3"><a href="programmingandfunction.html#cb305-3" tabindex="-1"></a><span class="fu">apply</span>(x, <span class="at">MARGIN=</span><span class="dv">1</span>,</span>
+<span id="cb305-4"><a href="programmingandfunction.html#cb305-4" tabindex="-1"></a>      <span class="at">FUN=</span><span class="cf">function</span>(x){</span>
+<span id="cb305-5"><a href="programmingandfunction.html#cb305-5" tabindex="-1"></a>        <span class="fu">max</span>(x)<span class="sc">-</span><span class="fu">min</span>(x)</span>
+<span id="cb305-6"><a href="programmingandfunction.html#cb305-6" tabindex="-1"></a>      })</span></code></pre></div>
+<pre><code>## [1] 1 0 1 2 1 0 1 2</code></pre>
+</div>
+<div id="lapply" class="section level3 hasAnchor" number="4.2.2">
+<h3><span class="header-section-number">4.2.2</span> lapply<a href="programmingandfunction.html#lapply" class="anchor-section" aria-label="Anchor link to header"></a></h3>
+<p>Fungsi ini melakukan loop fungsi terhadap input data berupa list. Output yang dihasilkan juga merupakan list dengan panjang list yang sama dengan yang diinputkan. Format yang digunakan adalah sebagai berikut:</p>
+<div class="sourceCode" id="cb307"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb307-1"><a href="programmingandfunction.html#cb307-1" tabindex="-1"></a><span class="fu">lapply</span>(X, FUN, ...)</span></code></pre></div>
+<blockquote>
+<p><strong>Catatan:</strong></p>
+<ul>
+<li><strong>X</strong>: vektor, data frame atau list</li>
+<li><strong>FUN</strong>: fungsi yang akan digunakan. Fungsi yang dapat digunakan dapat berupa fungsi dasar matematika atau statistika, serta user define function. Subset juga dimungkinkan pada fungsi ini.</li>
+<li><strong>…</strong>: opsional argumen pada fungsi yang digunakan.</li>
+</ul>
+</blockquote>
+<p>Berikut adalah contoh penerapan fungsi lapply:</p>
+<div class="sourceCode" id="cb308"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb308-1"><a href="programmingandfunction.html#cb308-1" tabindex="-1"></a><span class="do">## Membuat list</span></span>
+<span id="cb308-2"><a href="programmingandfunction.html#cb308-2" tabindex="-1"></a>x <span class="ot">&lt;-</span> <span class="fu">list</span>(<span class="at">a =</span> <span class="dv">1</span><span class="sc">:</span><span class="dv">10</span>, <span class="at">beta =</span> <span class="fu">exp</span>(<span class="sc">-</span><span class="dv">3</span><span class="sc">:</span><span class="dv">3</span>), <span class="at">logic =</span> <span class="fu">c</span>(<span class="cn">TRUE</span>,<span class="cn">FALSE</span>,<span class="cn">FALSE</span>,<span class="cn">TRUE</span>))</span>
+<span id="cb308-3"><a href="programmingandfunction.html#cb308-3" tabindex="-1"></a>x <span class="co"># print</span></span></code></pre></div>
+<pre><code>## $a
+##  [1]  1  2  3  4  5  6  7  8  9 10
+## 
+## $beta
+## [1]  0.04979  0.13534  0.36788  1.00000  2.71828
+## [6]  7.38906 20.08554
+## 
+## $logic
+## [1]  TRUE FALSE FALSE  TRUE</code></pre>
+<div class="sourceCode" id="cb310"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb310-1"><a href="programmingandfunction.html#cb310-1" tabindex="-1"></a><span class="fu">class</span>(x) <span class="co"># cek kelas objek</span></span></code></pre></div>
+<pre><code>## [1] &quot;list&quot;</code></pre>
+<div class="sourceCode" id="cb312"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb312-1"><a href="programmingandfunction.html#cb312-1" tabindex="-1"></a><span class="do">## Menghitung nilai mean pada masing-masing baris lits</span></span>
+<span id="cb312-2"><a href="programmingandfunction.html#cb312-2" tabindex="-1"></a><span class="fu">lapply</span>(x, <span class="at">FUN=</span>mean)</span></code></pre></div>
+<pre><code>## $a
+## [1] 5.5
+## 
+## $beta
+## [1] 4.535
+## 
+## $logic
+## [1] 0.5</code></pre>
+<div class="sourceCode" id="cb314"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb314-1"><a href="programmingandfunction.html#cb314-1" tabindex="-1"></a><span class="do">## Menghitung mean tiap kolom dataset iris</span></span>
+<span id="cb314-2"><a href="programmingandfunction.html#cb314-2" tabindex="-1"></a><span class="fu">lapply</span>(iris, <span class="at">FUN=</span>mean)</span></code></pre></div>
+<pre><code>## Warning in mean.default(X[[i]], ...): argument is not
+## numeric or logical: returning NA</code></pre>
+<pre><code>## $Sepal.Length
+## [1] 5.843
+## 
+## $Sepal.Width
+## [1] 3.057
+## 
+## $Petal.Length
+## [1] 3.758
+## 
+## $Petal.Width
+## [1] 1.199
+## 
+## $Species
+## [1] NA</code></pre>
+<div class="sourceCode" id="cb317"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb317-1"><a href="programmingandfunction.html#cb317-1" tabindex="-1"></a><span class="do">## Mengalikan elemen vektor dengan suatu nilai</span></span>
+<span id="cb317-2"><a href="programmingandfunction.html#cb317-2" tabindex="-1"></a>y <span class="ot">&lt;-</span> <span class="fu">c</span>(<span class="dv">1</span><span class="sc">:</span><span class="dv">5</span>)</span>
+<span id="cb317-3"><a href="programmingandfunction.html#cb317-3" tabindex="-1"></a><span class="fu">lapply</span>(y, <span class="at">FUN=</span><span class="cf">function</span>(x){x<span class="sc">*</span><span class="dv">5</span>})</span></code></pre></div>
+<pre><code>## [[1]]
+## [1] 5
+## 
+## [[2]]
+## [1] 10
+## 
+## [[3]]
+## [1] 15
+## 
+## [[4]]
+## [1] 20
+## 
+## [[5]]
+## [1] 25</code></pre>
+<div class="sourceCode" id="cb319"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb319-1"><a href="programmingandfunction.html#cb319-1" tabindex="-1"></a><span class="do">## Mengubah output menjadi vektor</span></span>
+<span id="cb319-2"><a href="programmingandfunction.html#cb319-2" tabindex="-1"></a><span class="fu">unlist</span>(<span class="fu">lapply</span>(y, <span class="at">FUN=</span><span class="cf">function</span>(x){x<span class="sc">*</span><span class="dv">5</span>}))</span></code></pre></div>
+<pre><code>## [1]  5 10 15 20 25</code></pre>
+</div>
+<div id="sapply" class="section level3 hasAnchor" number="4.2.3">
+<h3><span class="header-section-number">4.2.3</span> sapply<a href="programmingandfunction.html#sapply" class="anchor-section" aria-label="Anchor link to header"></a></h3>
+<p>Fungsi <code>sapply()</code> merupakan bentuk lain dari fungsi <code>lapply()</code>. Perbedaanya terletak pada output default yang dihasilkan. Secara default <code>sapply()</code> menerima input utama berupa list (dapat pula dataframe atau vektor), namun tidak seperti <code>lapply()</code> jenis data output yang dihasilkan adalah vektor. Untuk mengubah output menjadi list perlu argumen tambahan berupa <code>simplify=FALSE</code>. Format fungsi tersebut adalah sebagai berikut:</p>
+<div class="sourceCode" id="cb321"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb321-1"><a href="programmingandfunction.html#cb321-1" tabindex="-1"></a><span class="fu">sapply</span>(X, FUN, ..., <span class="at">simplify =</span> <span class="cn">TRUE</span>, <span class="at">USE.NAMES =</span> <span class="cn">TRUE</span>)</span></code></pre></div>
+<blockquote>
+<p><strong>Catatan:</strong></p>
+<ul>
+<li><strong>X</strong>: vektor, data frame atau list</li>
+<li><strong>FUN</strong>: fungsi yang akan digunakan. Fungsi yang dapat digunakan dapat berupa fungsi dasar matematika atau statistika, serta user define function. Subset juga dimungkinkan pada fungsi ini.</li>
+<li><strong>…</strong>: opsional argumen pada fungsi yang digunakan.</li>
+<li><strong>simplify</strong>: logical. Jika nilainya <code>TRUE</code> maka output yang dihasilkan adalah bentuk sederhana dari vektor, matrix atau array.</li>
+<li><strong>USE.NAMES</strong>: jika list memiliki nama pada setiap elemennya, maka nama elemen tersebut akan secara default ditampilkan.</li>
+</ul>
+</blockquote>
+<p>Berikut adalah contoh penerapannya:</p>
+<div class="sourceCode" id="cb322"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb322-1"><a href="programmingandfunction.html#cb322-1" tabindex="-1"></a><span class="do">## membuat list</span></span>
+<span id="cb322-2"><a href="programmingandfunction.html#cb322-2" tabindex="-1"></a>x <span class="ot">&lt;-</span> <span class="fu">list</span>(<span class="at">a =</span> <span class="dv">1</span><span class="sc">:</span><span class="dv">10</span>, <span class="at">beta =</span> <span class="fu">exp</span>(<span class="sc">-</span><span class="dv">3</span><span class="sc">:</span><span class="dv">3</span>), <span class="at">logic =</span> <span class="fu">c</span>(<span class="cn">TRUE</span>,<span class="cn">FALSE</span>,<span class="cn">FALSE</span>,<span class="cn">TRUE</span>))</span>
+<span id="cb322-3"><a href="programmingandfunction.html#cb322-3" tabindex="-1"></a></span>
+<span id="cb322-4"><a href="programmingandfunction.html#cb322-4" tabindex="-1"></a><span class="do">## menghitung nilai mean setiap elemen</span></span>
+<span id="cb322-5"><a href="programmingandfunction.html#cb322-5" tabindex="-1"></a><span class="fu">sapply</span>(x, <span class="at">FUN=</span>mean)</span></code></pre></div>
+<pre><code>##     a  beta logic 
+## 5.500 4.535 0.500</code></pre>
+<div class="sourceCode" id="cb324"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb324-1"><a href="programmingandfunction.html#cb324-1" tabindex="-1"></a><span class="do">## menghitung nilai mean dengan output list</span></span>
+<span id="cb324-2"><a href="programmingandfunction.html#cb324-2" tabindex="-1"></a><span class="fu">sapply</span>(x, <span class="at">FUN=</span>mean, <span class="at">simplify=</span><span class="cn">FALSE</span>)</span></code></pre></div>
+<pre><code>## $a
+## [1] 5.5
+## 
+## $beta
+## [1] 4.535
+## 
+## $logic
+## [1] 0.5</code></pre>
+<div class="sourceCode" id="cb326"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb326-1"><a href="programmingandfunction.html#cb326-1" tabindex="-1"></a><span class="do">## summary objek dataframe</span></span>
+<span id="cb326-2"><a href="programmingandfunction.html#cb326-2" tabindex="-1"></a><span class="fu">sapply</span>(mtcars, <span class="at">FUN=</span>summary)</span></code></pre></div>
+<pre><code>##           mpg   cyl  disp    hp  drat    wt  qsec
+## Min.    10.40 4.000  71.1  52.0 2.760 1.513 14.50
+## 1st Qu. 15.43 4.000 120.8  96.5 3.080 2.581 16.89
+## Median  19.20 6.000 196.3 123.0 3.695 3.325 17.71
+## Mean    20.09 6.188 230.7 146.7 3.597 3.217 17.85
+## 3rd Qu. 22.80 8.000 326.0 180.0 3.920 3.610 18.90
+## Max.    33.90 8.000 472.0 335.0 4.930 5.424 22.90
+##             vs     am  gear  carb
+## Min.    0.0000 0.0000 3.000 1.000
+## 1st Qu. 0.0000 0.0000 3.000 2.000
+## Median  0.0000 0.0000 4.000 2.000
+## Mean    0.4375 0.4062 3.688 2.812
+## 3rd Qu. 1.0000 1.0000 4.000 4.000
+## Max.    1.0000 1.0000 5.000 8.000</code></pre>
+<div class="sourceCode" id="cb328"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb328-1"><a href="programmingandfunction.html#cb328-1" tabindex="-1"></a><span class="do">## summary objek list</span></span>
+<span id="cb328-2"><a href="programmingandfunction.html#cb328-2" tabindex="-1"></a>a <span class="ot">&lt;-</span> <span class="fu">list</span>(<span class="at">mobil=</span>mtcars, <span class="at">anggrek=</span>iris)</span>
+<span id="cb328-3"><a href="programmingandfunction.html#cb328-3" tabindex="-1"></a><span class="fu">sapply</span>(a, <span class="at">FUN=</span>summary)</span></code></pre></div>
+<pre><code>## $mobil
+##       mpg            cyl            disp      
+##  Min.   :10.4   Min.   :4.00   Min.   : 71.1  
+##  1st Qu.:15.4   1st Qu.:4.00   1st Qu.:120.8  
+##  Median :19.2   Median :6.00   Median :196.3  
+##  Mean   :20.1   Mean   :6.19   Mean   :230.7  
+##  3rd Qu.:22.8   3rd Qu.:8.00   3rd Qu.:326.0  
+##  Max.   :33.9   Max.   :8.00   Max.   :472.0  
+##        hp             drat            wt      
+##  Min.   : 52.0   Min.   :2.76   Min.   :1.51  
+##  1st Qu.: 96.5   1st Qu.:3.08   1st Qu.:2.58  
+##  Median :123.0   Median :3.69   Median :3.33  
+##  Mean   :146.7   Mean   :3.60   Mean   :3.22  
+##  3rd Qu.:180.0   3rd Qu.:3.92   3rd Qu.:3.61  
+##  Max.   :335.0   Max.   :4.93   Max.   :5.42  
+##       qsec            vs              am       
+##  Min.   :14.5   Min.   :0.000   Min.   :0.000  
+##  1st Qu.:16.9   1st Qu.:0.000   1st Qu.:0.000  
+##  Median :17.7   Median :0.000   Median :0.000  
+##  Mean   :17.8   Mean   :0.438   Mean   :0.406  
+##  3rd Qu.:18.9   3rd Qu.:1.000   3rd Qu.:1.000  
+##  Max.   :22.9   Max.   :1.000   Max.   :1.000  
+##       gear           carb     
+##  Min.   :3.00   Min.   :1.00  
+##  1st Qu.:3.00   1st Qu.:2.00  
+##  Median :4.00   Median :2.00  
+##  Mean   :3.69   Mean   :2.81  
+##  3rd Qu.:4.00   3rd Qu.:4.00  
+##  Max.   :5.00   Max.   :8.00  
+## 
+## $anggrek
+##   Sepal.Length   Sepal.Width    Petal.Length 
+##  Min.   :4.30   Min.   :2.00   Min.   :1.00  
+##  1st Qu.:5.10   1st Qu.:2.80   1st Qu.:1.60  
+##  Median :5.80   Median :3.00   Median :4.35  
+##  Mean   :5.84   Mean   :3.06   Mean   :3.76  
+##  3rd Qu.:6.40   3rd Qu.:3.30   3rd Qu.:5.10  
+##  Max.   :7.90   Max.   :4.40   Max.   :6.90  
+##   Petal.Width        Species  
+##  Min.   :0.1   setosa    :50  
+##  1st Qu.:0.3   versicolor:50  
+##  Median :1.3   virginica :50  
+##  Mean   :1.2                  
+##  3rd Qu.:1.8                  
+##  Max.   :2.5</code></pre>
+</div>
+<div id="vapply" class="section level3 hasAnchor" number="4.2.4">
+<h3><span class="header-section-number">4.2.4</span> vapply<a href="programmingandfunction.html#vapply" class="anchor-section" aria-label="Anchor link to header"></a></h3>
+<p>Funsgi ini merupakan bentuk lain dari <code>sapply()</code>. Bedanya secara kecepatan proses fungsi ini lebih cepat dari <code>sapply()</code>. Hal yang menarik dari fungsi ini kita dapat menambahkan argumen <code>FUN.VALUE</code>. pada argumen ini kita memasukkan vektor berupa output fungsi yang diinginkan. Perbedaan lainnya adalah output yang dihasilkan hanya berupa matriks atau array. Format dari fungsi ini adalah sebagai berikut:</p>
+<div class="sourceCode" id="cb330"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb330-1"><a href="programmingandfunction.html#cb330-1" tabindex="-1"></a><span class="fu">vapply</span>(X, FUN, FUN.VALUE, ..., <span class="at">USE.NAMES =</span> <span class="cn">TRUE</span>)</span></code></pre></div>
+<blockquote>
+<p><strong>Catatan:</strong></p>
+<ul>
+<li><strong>X</strong>: vektor, data frame atau list</li>
+<li><strong>FUN</strong>: fungsi yang akan digunakan. Fungsi yang dapat digunakan dapat berupa fungsi dasar matematika atau statistika, serta user define function. Subset juga dimungkinkan pada fungsi ini.</li>
+<li><strong>FUN.VALUE</strong>: vektor, template dari return value FUN.</li>
+<li><strong>…</strong>: opsional argumen pada fungsi yang digunakan.</li>
+<li><strong>USE.NAMES</strong>: jika list memiliki nama pada setiap elemennya, maka nama elemen tersebut akan secara default ditampilkan.</li>
+</ul>
+</blockquote>
+<p>Berikut adalah contoh penerapannya:</p>
+<div class="sourceCode" id="cb331"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb331-1"><a href="programmingandfunction.html#cb331-1" tabindex="-1"></a><span class="do">## membuat list</span></span>
+<span id="cb331-2"><a href="programmingandfunction.html#cb331-2" tabindex="-1"></a>x <span class="ot">&lt;-</span> <span class="fu">sapply</span>(<span class="dv">3</span><span class="sc">:</span><span class="dv">9</span>, seq)</span>
+<span id="cb331-3"><a href="programmingandfunction.html#cb331-3" tabindex="-1"></a>x <span class="co"># print</span></span></code></pre></div>
+<pre><code>## [[1]]
+## [1] 1 2 3
+## 
+## [[2]]
+## [1] 1 2 3 4
+## 
+## [[3]]
+## [1] 1 2 3 4 5
+## 
+## [[4]]
+## [1] 1 2 3 4 5 6
+## 
+## [[5]]
+## [1] 1 2 3 4 5 6 7
+## 
+## [[6]]
+## [1] 1 2 3 4 5 6 7 8
+## 
+## [[7]]
+## [1] 1 2 3 4 5 6 7 8 9</code></pre>
+<div class="sourceCode" id="cb333"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb333-1"><a href="programmingandfunction.html#cb333-1" tabindex="-1"></a><span class="do">## membuat ringkasan data pada tiap elemen list</span></span>
+<span id="cb333-2"><a href="programmingandfunction.html#cb333-2" tabindex="-1"></a><span class="fu">vapply</span>(x, fivenum,</span>
+<span id="cb333-3"><a href="programmingandfunction.html#cb333-3" tabindex="-1"></a>       <span class="fu">c</span>(<span class="at">Min. =</span> <span class="dv">0</span>, <span class="st">&quot;1st Qu.&quot;</span> <span class="ot">=</span> <span class="dv">0</span>, </span>
+<span id="cb333-4"><a href="programmingandfunction.html#cb333-4" tabindex="-1"></a>         <span class="at">Median =</span> <span class="dv">0</span>, <span class="st">&quot;3rd Qu.&quot;</span> <span class="ot">=</span> <span class="dv">0</span>, <span class="at">Max. =</span> <span class="dv">0</span>))</span></code></pre></div>
+<pre><code>##         [,1] [,2] [,3] [,4] [,5] [,6] [,7]
+## Min.     1.0  1.0    1  1.0  1.0  1.0    1
+## 1st Qu.  1.5  1.5    2  2.0  2.5  2.5    3
+## Median   2.0  2.5    3  3.5  4.0  4.5    5
+## 3rd Qu.  2.5  3.5    4  5.0  5.5  6.5    7
+## Max.     3.0  4.0    5  6.0  7.0  8.0    9</code></pre>
+<div class="sourceCode" id="cb335"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb335-1"><a href="programmingandfunction.html#cb335-1" tabindex="-1"></a><span class="do">## membuat ringkasan data pada tiap kolom dataframe</span></span>
+<span id="cb335-2"><a href="programmingandfunction.html#cb335-2" tabindex="-1"></a><span class="fu">vapply</span>(mtcars, summary,</span>
+<span id="cb335-3"><a href="programmingandfunction.html#cb335-3" tabindex="-1"></a>       <span class="fu">c</span>(<span class="at">Min. =</span> <span class="dv">0</span>, <span class="st">&quot;1st Qu.&quot;</span> <span class="ot">=</span> <span class="dv">0</span>, </span>
+<span id="cb335-4"><a href="programmingandfunction.html#cb335-4" tabindex="-1"></a>         <span class="at">Median =</span> <span class="dv">0</span>, <span class="st">&quot;3rd Qu.&quot;</span> <span class="ot">=</span> <span class="dv">0</span>, <span class="at">Max. =</span> <span class="dv">0</span>, <span class="at">Mean=</span><span class="dv">0</span>))</span></code></pre></div>
+<pre><code>##           mpg   cyl  disp    hp  drat    wt  qsec
+## Min.    10.40 4.000  71.1  52.0 2.760 1.513 14.50
+## 1st Qu. 15.43 4.000 120.8  96.5 3.080 2.581 16.89
+## Median  19.20 6.000 196.3 123.0 3.695 3.325 17.71
+## 3rd Qu. 20.09 6.188 230.7 146.7 3.597 3.217 17.85
+## Max.    22.80 8.000 326.0 180.0 3.920 3.610 18.90
+## Mean    33.90 8.000 472.0 335.0 4.930 5.424 22.90
+##             vs     am  gear  carb
+## Min.    0.0000 0.0000 3.000 1.000
+## 1st Qu. 0.0000 0.0000 3.000 2.000
+## Median  0.0000 0.0000 4.000 2.000
+## 3rd Qu. 0.4375 0.4062 3.688 2.812
+## Max.    1.0000 1.0000 4.000 4.000
+## Mean    1.0000 1.0000 5.000 8.000</code></pre>
+</div>
+<div id="tapply" class="section level3 hasAnchor" number="4.2.5">
+<h3><span class="header-section-number">4.2.5</span> tapply<a href="programmingandfunction.html#tapply" class="anchor-section" aria-label="Anchor link to header"></a></h3>
+<p>Fungsi ini sangat berguna jika pembaca ingin menghitung suatu nilai misalnya mean berdasarkan grup data atau factor. Format fungsi ini adalah sebagi berikut:</p>
+<div class="sourceCode" id="cb337"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb337-1"><a href="programmingandfunction.html#cb337-1" tabindex="-1"></a><span class="fu">tapply</span>(X, INDEX, <span class="at">FUN =</span> <span class="cn">NULL</span>, ..., <span class="at">simplify =</span> <span class="cn">TRUE</span>)</span></code></pre></div>
+<blockquote>
+<p><strong>Catatan:</strong></p>
+<ul>
+<li><strong>X</strong>: vektor, data frame atau list</li>
+<li><strong>INDEX</strong>: list satu atau beberapa factor yang memiliki panjang sama dengan X.</li>
+<li><strong>FUN</strong>: fungsi yang akan digunakan. Fungsi yang dapat digunakan dapat berupa fungsi dasar matematika atau statistika, serta user define function. Subset juga dimungkinkan pada fungsi ini.</li>
+<li><strong>…</strong>: opsional argumen pada fungsi yang digunakan.</li>
+<li><strong>simplify</strong>: logical. Jika nilainya <code>TRUE</code> maka output yang dihasilkan adalah bentuk skalar.</li>
+</ul>
+</blockquote>
+<p>Berikut adalah contoh penerapannya:</p>
+<div class="sourceCode" id="cb338"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb338-1"><a href="programmingandfunction.html#cb338-1" tabindex="-1"></a><span class="do">## membuat tabel frekuensi</span></span>
+<span id="cb338-2"><a href="programmingandfunction.html#cb338-2" tabindex="-1"></a>groups <span class="ot">&lt;-</span> <span class="fu">as.factor</span>(<span class="fu">rbinom</span>(<span class="dv">32</span>, <span class="at">n =</span> <span class="dv">5</span>, <span class="at">prob =</span> <span class="fl">0.4</span>))</span>
+<span id="cb338-3"><a href="programmingandfunction.html#cb338-3" tabindex="-1"></a></span>
+<span id="cb338-4"><a href="programmingandfunction.html#cb338-4" tabindex="-1"></a><span class="fu">tapply</span>(groups, groups, length)</span></code></pre></div>
+<pre><code>## 12 13 16 
+##  2  2  1</code></pre>
+<div class="sourceCode" id="cb340"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb340-1"><a href="programmingandfunction.html#cb340-1" tabindex="-1"></a><span class="co"># atau</span></span>
+<span id="cb340-2"><a href="programmingandfunction.html#cb340-2" tabindex="-1"></a><span class="fu">table</span>(groups)</span></code></pre></div>
+<pre><code>## groups
+## 12 13 16 
+##  2  2  1</code></pre>
+<div class="sourceCode" id="cb342"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb342-1"><a href="programmingandfunction.html#cb342-1" tabindex="-1"></a><span class="do">## membuat tabel kontingensi</span></span>
+<span id="cb342-2"><a href="programmingandfunction.html#cb342-2" tabindex="-1"></a><span class="co"># menghitung jumlah breaks berdasarkan faktor jenis wool</span></span>
+<span id="cb342-3"><a href="programmingandfunction.html#cb342-3" tabindex="-1"></a><span class="co"># dan tensi level</span></span>
+<span id="cb342-4"><a href="programmingandfunction.html#cb342-4" tabindex="-1"></a><span class="fu">tapply</span>(<span class="at">X=</span>warpbreaks<span class="sc">$</span>breaks, <span class="at">INDEX=</span>warpbreaks[,<span class="sc">-</span><span class="dv">1</span>], <span class="at">FUN=</span>sum)</span></code></pre></div>
+<pre><code>##     tension
+## wool   L   M   H
+##    A 401 216 221
+##    B 254 259 169</code></pre>
+<div class="sourceCode" id="cb344"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb344-1"><a href="programmingandfunction.html#cb344-1" tabindex="-1"></a><span class="co"># menghitung mean panjang gigi babi hutan berdasarkan</span></span>
+<span id="cb344-2"><a href="programmingandfunction.html#cb344-2" tabindex="-1"></a><span class="co"># jenis suplemen dan dosisnya</span></span>
+<span id="cb344-3"><a href="programmingandfunction.html#cb344-3" tabindex="-1"></a><span class="fu">tapply</span>(ToothGrowth<span class="sc">$</span>len, ToothGrowth[,<span class="sc">-</span><span class="dv">1</span>], mean)</span></code></pre></div>
+<pre><code>##     dose
+## supp   0.5     1     2
+##   OJ 13.23 22.70 26.06
+##   VC  7.98 16.77 26.14</code></pre>
+<div class="sourceCode" id="cb346"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb346-1"><a href="programmingandfunction.html#cb346-1" tabindex="-1"></a><span class="co"># menghitung mpg minimum berdasarkan jumlah silinder pada mobil</span></span>
+<span id="cb346-2"><a href="programmingandfunction.html#cb346-2" tabindex="-1"></a><span class="fu">tapply</span>(mtcars<span class="sc">$</span>mpg, mtcars<span class="sc">$</span>cyl, min, <span class="at">simplify=</span><span class="cn">FALSE</span>)</span></code></pre></div>
+<pre><code>## $`4`
+## [1] 21.4
+## 
+## $`6`
+## [1] 17.8
+## 
+## $`8`
+## [1] 10.4</code></pre>
+</div>
+</div>
+<div id="dm" class="section level2 hasAnchor" number="4.3">
+<h2><span class="header-section-number">4.3</span> Decision Making<a href="programmingandfunction.html#dm" class="anchor-section" aria-label="Anchor link to header"></a></h2>
+<p><em>Decicion Making</em> atau sering disebut sebagai <em>if then else statement</em> merupakan bentuk percabagan yang digunakan manakala kita ingin agar program dapat melakukan pengujian terhadap syarat kondisi tertentu. Pada Tabel <a href="programmingandfunction.html#tab:percabangan">4.1</a> disajikan daftar percabangan yang digunakan pada <code>R</code>.</p>
+<table>
+<caption><span id="tab:percabangan">Tabel 4.1: </span> Daftar percabangan pada <code>R</code>.</caption>
+<colgroup>
+<col width="15%" />
+<col width="84%" />
+</colgroup>
+<thead>
+<tr class="header">
+<th><strong>Statement</strong></th>
+<th><strong>Keterangan</strong></th>
+</tr>
+</thead>
+<tbody>
+<tr class="odd">
+<td><em>if statement</em></td>
+<td><em>if statement</em> hanya terdiri atas sebuah ekspresi <em>Boolean</em>, dan diikuti satu atau lebih <em>statement</em></td>
+</tr>
+<tr class="even">
+<td><em>if…else statement</em></td>
+<td><em>if else statement</em> terdiri atas beberapa buah ekspresi <em>Boolean</em>. Ekspressi <em>Boolean</em> berikutnya akan dijalankan jika ekspresi *Boolan sebelumnya bernilai FALSE</td>
+</tr>
+<tr class="odd">
+<td><em>switch statement</em></td>
+<td><em>switch statement</em> digunakan untuk mengevaluasi sebuah variabel beberapa pilihan</td>
+</tr>
+</tbody>
+</table>
+<div id="ifstatement" class="section level3 hasAnchor" number="4.3.1">
+<h3><span class="header-section-number">4.3.1</span> if statement<a href="programmingandfunction.html#ifstatement" class="anchor-section" aria-label="Anchor link to header"></a></h3>
+<p>Pola <em>if statement</em> disajikan pada Gambar <a href="programmingandfunction.html#fig:ifstatement">4.2</a></p>
+<div class="figure" style="text-align: center"><span style="display:block;" id="fig:ifstatement"></span>
+<img src="images/ifstatement.png" alt="Diagram if statement (sumber: Primartha, 2018)." width="40%" />
+<p class="caption">
+Gambar 4.2: Diagram if statement (sumber: Primartha, 2018).
+</p>
+</div>
+<p>Berikut adalah contoh penerapan <em>if statement</em>:</p>
+<div class="sourceCode" id="cb348"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb348-1"><a href="programmingandfunction.html#cb348-1" tabindex="-1"></a>x <span class="ot">&lt;-</span> <span class="fu">c</span>(<span class="dv">1</span><span class="sc">:</span><span class="dv">5</span>)</span>
+<span id="cb348-2"><a href="programmingandfunction.html#cb348-2" tabindex="-1"></a><span class="cf">if</span>(<span class="fu">is.vector</span>(x)){</span>
+<span id="cb348-3"><a href="programmingandfunction.html#cb348-3" tabindex="-1"></a>  <span class="fu">print</span>(<span class="st">&quot;x adalah sebuah vector&quot;</span>)</span>
+<span id="cb348-4"><a href="programmingandfunction.html#cb348-4" tabindex="-1"></a>}</span></code></pre></div>
+<pre><code>## [1] &quot;x adalah sebuah vector&quot;</code></pre>
+</div>
+<div id="ifelsestatement" class="section level3 hasAnchor" number="4.3.2">
+<h3><span class="header-section-number">4.3.2</span> if else statement<a href="programmingandfunction.html#ifelsestatement" class="anchor-section" aria-label="Anchor link to header"></a></h3>
+<p>Pola dari <em>if else statement</em> disajikan pada Gambar <a href="programmingandfunction.html#fig:ifelse">4.3</a></p>
+<div class="figure" style="text-align: center"><span style="display:block;" id="fig:ifelse"></span>
+<img src="images/ifelse.png" alt="Diagram if else statement (sumber: Primartha, 2018)." width="40%" />
+<p class="caption">
+Gambar 4.3: Diagram if else statement (sumber: Primartha, 2018).
+</p>
+</div>
+<p>Berikut adalah contoh penerapan <em>if else statement</em>:</p>
+<div class="sourceCode" id="cb350"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb350-1"><a href="programmingandfunction.html#cb350-1" tabindex="-1"></a>x <span class="ot">&lt;-</span> <span class="fu">c</span>(<span class="st">&quot;Andi&quot;</span>,<span class="st">&quot;Iwan&quot;</span>, <span class="st">&quot;Adi&quot;</span>)</span>
+<span id="cb350-2"><a href="programmingandfunction.html#cb350-2" tabindex="-1"></a><span class="cf">if</span>(<span class="st">&quot;Rina&quot;</span> <span class="sc">%in%</span> x){</span>
+<span id="cb350-3"><a href="programmingandfunction.html#cb350-3" tabindex="-1"></a>  <span class="fu">print</span>(<span class="st">&quot;Rina ditemukan&quot;</span>)</span>
+<span id="cb350-4"><a href="programmingandfunction.html#cb350-4" tabindex="-1"></a>} <span class="cf">else</span> <span class="cf">if</span>(<span class="st">&quot;Adi&quot;</span> <span class="sc">%in%</span> x){</span>
+<span id="cb350-5"><a href="programmingandfunction.html#cb350-5" tabindex="-1"></a>  <span class="fu">print</span>(<span class="st">&quot;Adi ditemukan&quot;</span>)</span>
+<span id="cb350-6"><a href="programmingandfunction.html#cb350-6" tabindex="-1"></a>} <span class="cf">else</span>{</span>
+<span id="cb350-7"><a href="programmingandfunction.html#cb350-7" tabindex="-1"></a>  <span class="fu">print</span>(<span class="st">&quot;tidak ada yang ditemukan&quot;</span>)</span>
+<span id="cb350-8"><a href="programmingandfunction.html#cb350-8" tabindex="-1"></a>}</span></code></pre></div>
+<pre><code>## [1] &quot;Adi ditemukan&quot;</code></pre>
+</div>
+<div id="switchstatement" class="section level3 hasAnchor" number="4.3.3">
+<h3><span class="header-section-number">4.3.3</span> switch statement<a href="programmingandfunction.html#switchstatement" class="anchor-section" aria-label="Anchor link to header"></a></h3>
+<p>Pola dari <em>switch statement</em> disajikan pada Gambar <a href="programmingandfunction.html#fig:switch">4.4</a></p>
+<div class="figure" style="text-align: center"><span style="display:block;" id="fig:switch"></span>
+<img src="images/switch.png" alt="Diagram switch statement (sumber: Primartha, 2018)." width="40%" />
+<p class="caption">
+Gambar 4.4: Diagram switch statement (sumber: Primartha, 2018).
+</p>
+</div>
+<p>Berikut adalah contoh penerapan <em>switch statement</em>:</p>
+<div class="sourceCode" id="cb352"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb352-1"><a href="programmingandfunction.html#cb352-1" tabindex="-1"></a>y <span class="ot">=</span> <span class="dv">3</span></span>
+<span id="cb352-2"><a href="programmingandfunction.html#cb352-2" tabindex="-1"></a></span>
+<span id="cb352-3"><a href="programmingandfunction.html#cb352-3" tabindex="-1"></a>x <span class="ot">=</span> <span class="cf">switch</span>(</span>
+<span id="cb352-4"><a href="programmingandfunction.html#cb352-4" tabindex="-1"></a>  y,</span>
+<span id="cb352-5"><a href="programmingandfunction.html#cb352-5" tabindex="-1"></a>  <span class="st">&quot;Selamat Pagi&quot;</span>,</span>
+<span id="cb352-6"><a href="programmingandfunction.html#cb352-6" tabindex="-1"></a>  <span class="st">&quot;Selamat Siang&quot;</span>,</span>
+<span id="cb352-7"><a href="programmingandfunction.html#cb352-7" tabindex="-1"></a>  <span class="st">&quot;Selamat Sore&quot;</span>,</span>
+<span id="cb352-8"><a href="programmingandfunction.html#cb352-8" tabindex="-1"></a>  <span class="st">&quot;Selamat Malam&quot;</span></span>
+<span id="cb352-9"><a href="programmingandfunction.html#cb352-9" tabindex="-1"></a>)</span>
+<span id="cb352-10"><a href="programmingandfunction.html#cb352-10" tabindex="-1"></a></span>
+<span id="cb352-11"><a href="programmingandfunction.html#cb352-11" tabindex="-1"></a><span class="fu">print</span>(x)</span></code></pre></div>
+<pre><code>## [1] &quot;Selamat Sore&quot;</code></pre>
+</div>
+</div>
+<div id="fungsi" class="section level2 hasAnchor" number="4.4">
+<h2><span class="header-section-number">4.4</span> Fungsi<a href="programmingandfunction.html#fungsi" class="anchor-section" aria-label="Anchor link to header"></a></h2>
+<p>Fungsi merupakan sekumpulan instruksi atau <em>statement</em> yang dapat melakukan tugas khusus. Sebagai contoh fungsi perkalian untuk menyelesaikan operasi perkalian, fungsi pemangkatan hanya untuk operasi pemangkatan, dll.</p>
+<p>Pada <code>R</code> terdapat 2 jenis fungsi, yaitu: <em>build in fuction</em> dan <em>user define function</em>. <em>build in fnction</em> merupakan fungsi bawaan <code>R</code> saat pertama kita menginstall <code>R</code>. Contohnya adalah <code>mean()</code>, <code>sum()</code>, <code>ls()</code>, <code>rm()</code>, dll. Sedangkan <em>user define fuction</em> merupakan fungsi-fungsi yang dibuat sendiri oleh pengguna.</p>
+<p>Fungsi-fungsi buatan pengguna haruslah dideklarasikan (dibuat) terlebih dahulu sebelum dapat dijalankan. Pola pembentukan fungsi adalah sebagai berikut:</p>
+<div class="sourceCode" id="cb354"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb354-1"><a href="programmingandfunction.html#cb354-1" tabindex="-1"></a>function_name <span class="ot">&lt;-</span> <span class="cf">function</span>(argument_1, argument_2, ...){</span>
+<span id="cb354-2"><a href="programmingandfunction.html#cb354-2" tabindex="-1"></a>  <span class="cf">function</span> body</span>
+<span id="cb354-3"><a href="programmingandfunction.html#cb354-3" tabindex="-1"></a>}</span></code></pre></div>
+<blockquote>
+<p><strong>Catatan:</strong></p>
+<ul>
+<li><strong>function_name</strong> : Nama dari fungsi <code>R</code>. <code>R</code> akan menyimpan fungsi tersebut sebagai objek</li>
+<li><strong>argument_1, argument_2, …</strong> : <em>Argument</em> bersifat opsional (tidak wajib). <em>Argument</em> dapat digunakan untuk memberi inputan kepada fungsi</li>
+<li><strong>function body</strong> : Merupakan inti dari fungsi. Fuction body dapat terdiri atas 0 statement (kosong) hingga banyak statement.</li>
+<li><strong>return</strong> : Fungsi ada yang memiliki <em>output</em> atau <em>return value</em> ada juga yang tidak. Jika fungsi memiliki <em>return value</em> maka <em>return value</em> dapat diproses lebih lanjut</li>
+</ul>
+</blockquote>
+<p>Berikut adalah contoh penerapan <em>user define function</em>:</p>
+<div class="sourceCode" id="cb355"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb355-1"><a href="programmingandfunction.html#cb355-1" tabindex="-1"></a><span class="co"># Fungsi tanpa argument</span></span>
+<span id="cb355-2"><a href="programmingandfunction.html#cb355-2" tabindex="-1"></a>bilang <span class="ot">&lt;-</span> <span class="cf">function</span>(){</span>
+<span id="cb355-3"><a href="programmingandfunction.html#cb355-3" tabindex="-1"></a>  <span class="fu">print</span>(<span class="st">&quot;Hello World!!&quot;</span>)</span>
+<span id="cb355-4"><a href="programmingandfunction.html#cb355-4" tabindex="-1"></a>}</span>
+<span id="cb355-5"><a href="programmingandfunction.html#cb355-5" tabindex="-1"></a></span>
+<span id="cb355-6"><a href="programmingandfunction.html#cb355-6" tabindex="-1"></a><span class="co"># Print</span></span>
+<span id="cb355-7"><a href="programmingandfunction.html#cb355-7" tabindex="-1"></a><span class="fu">bilang</span>()</span></code></pre></div>
+<pre><code>## [1] &quot;Hello World!!&quot;</code></pre>
+<div class="sourceCode" id="cb357"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb357-1"><a href="programmingandfunction.html#cb357-1" tabindex="-1"></a><span class="co"># Fungsi dengan argumen</span></span>
+<span id="cb357-2"><a href="programmingandfunction.html#cb357-2" tabindex="-1"></a>tambah <span class="ot">&lt;-</span> <span class="cf">function</span>(a,b){</span>
+<span id="cb357-3"><a href="programmingandfunction.html#cb357-3" tabindex="-1"></a>  <span class="fu">print</span>(a<span class="sc">+</span>b)</span>
+<span id="cb357-4"><a href="programmingandfunction.html#cb357-4" tabindex="-1"></a>}</span>
+<span id="cb357-5"><a href="programmingandfunction.html#cb357-5" tabindex="-1"></a></span>
+<span id="cb357-6"><a href="programmingandfunction.html#cb357-6" tabindex="-1"></a><span class="co"># Print</span></span>
+<span id="cb357-7"><a href="programmingandfunction.html#cb357-7" tabindex="-1"></a><span class="fu">tambah</span>(<span class="dv">5</span>,<span class="dv">3</span>)</span></code></pre></div>
+<pre><code>## [1] 8</code></pre>
+<div class="sourceCode" id="cb359"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb359-1"><a href="programmingandfunction.html#cb359-1" tabindex="-1"></a><span class="co"># Fungsi dengan return value</span></span>
+<span id="cb359-2"><a href="programmingandfunction.html#cb359-2" tabindex="-1"></a>kali <span class="ot">&lt;-</span> <span class="cf">function</span>(a,b){</span>
+<span id="cb359-3"><a href="programmingandfunction.html#cb359-3" tabindex="-1"></a>  <span class="fu">return</span>(a<span class="sc">*</span>b)</span>
+<span id="cb359-4"><a href="programmingandfunction.html#cb359-4" tabindex="-1"></a>}</span>
+<span id="cb359-5"><a href="programmingandfunction.html#cb359-5" tabindex="-1"></a></span>
+<span id="cb359-6"><a href="programmingandfunction.html#cb359-6" tabindex="-1"></a><span class="co"># Print</span></span>
+<span id="cb359-7"><a href="programmingandfunction.html#cb359-7" tabindex="-1"></a><span class="fu">kali</span>(<span class="dv">4</span>,<span class="dv">3</span>)</span></code></pre></div>
+<pre><code>## [1] 12</code></pre>
+</div>
+<div id="debugging" class="section level2 hasAnchor" number="4.5">
+<h2><span class="header-section-number">4.5</span> Debugging<a href="programmingandfunction.html#debugging" class="anchor-section" aria-label="Anchor link to header"></a></h2>
+<p>Sering kali fungsi atau sintaks yang kita tulis menghasilkan error sehingga output yang kita harapkan tidak terjadi. <em>Debugging</em> merupakan langkah untuk mengecek error yang terjadi. Untuk lebih memahami proses <em>debugging</em>, berikut penulis sajikan contoh error pada suatu fungsi dapat terjadi:</p>
+<div class="sourceCode" id="cb361"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb361-1"><a href="programmingandfunction.html#cb361-1" tabindex="-1"></a>f1 <span class="ot">&lt;-</span> <span class="cf">function</span>(x){</span>
+<span id="cb361-2"><a href="programmingandfunction.html#cb361-2" tabindex="-1"></a>  xsq <span class="ot">&lt;-</span> x<span class="sc">^</span><span class="dv">2</span></span>
+<span id="cb361-3"><a href="programmingandfunction.html#cb361-3" tabindex="-1"></a>  xsqminus4 <span class="ot">&lt;-</span> xsq <span class="sc">-</span> <span class="dv">4</span></span>
+<span id="cb361-4"><a href="programmingandfunction.html#cb361-4" tabindex="-1"></a>  <span class="fu">print</span>(xsqminus4)</span>
+<span id="cb361-5"><a href="programmingandfunction.html#cb361-5" tabindex="-1"></a>  <span class="fu">log</span>(xsqminus4<span class="dv">-4</span>)</span>
+<span id="cb361-6"><a href="programmingandfunction.html#cb361-6" tabindex="-1"></a>}</span>
+<span id="cb361-7"><a href="programmingandfunction.html#cb361-7" tabindex="-1"></a></span>
+<span id="cb361-8"><a href="programmingandfunction.html#cb361-8" tabindex="-1"></a><span class="fu">f1</span>(<span class="dv">6</span><span class="sc">:</span><span class="dv">1</span>)</span></code></pre></div>
+<pre><code>## [1] 32 21 12  5  0 -3</code></pre>
+<pre><code>## Warning in log(xsqminus4 - 4): NaNs produced</code></pre>
+<pre><code>## [1] 3.332 2.833 2.079 0.000   NaN   NaN</code></pre>
+<p>Untuk mengecek error yang terjadi dari sintaks tersebut, kita dapat menggunakan fungsi <code>debug()</code>. Pembaca tinggal memasukkan nama fungsi kedalam fungsi <code>debug()</code>. Fungsi tersebut akan secara otomatis akan menampilkan hasil samping dari pengaplikasian fungsi <code>f1()</code> untuk melihat sumber atau tahapan dimana error mulai muncul.</p>
+<div class="sourceCode" id="cb365"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb365-1"><a href="programmingandfunction.html#cb365-1" tabindex="-1"></a><span class="fu">debug</span>(f1)</span>
+<span id="cb365-2"><a href="programmingandfunction.html#cb365-2" tabindex="-1"></a><span class="fu">f1</span>(<span class="dv">1</span><span class="sc">:</span><span class="dv">6</span>)</span></code></pre></div>
+<pre><code>## debugging in: f1(1:6)
+## debug at &lt;text&gt;#1: {
+##     xsq &lt;- x^2
+##     xsqminus4 &lt;- xsq - 4
+##     print(xsqminus4)
+##     log(xsqminus4 - 4)
+## }
+## debug at &lt;text&gt;#2: xsq &lt;- x^2
+## debug at &lt;text&gt;#3: xsqminus4 &lt;- xsq - 4
+## debug at &lt;text&gt;#4: print(xsqminus4)
+## [1] -3  0  5 12 21 32
+## debug at &lt;text&gt;#5: log(xsqminus4 - 4)</code></pre>
+<pre><code>## Warning in log(xsqminus4 - 4): NaNs produced</code></pre>
+<pre><code>## exiting from: f1(1:6)</code></pre>
+<pre><code>## [1]   NaN   NaN 0.000 2.079 2.833 3.332</code></pre>
+<p>Berdasarkan hasil <em>debugging</em>, <code>NaN</code> (<strong>missing value</strong>) muncul pada tahapan <em>debug</em> ke-4 (pembaca dapat melakukan enter terus menerus sampai proses <em>debug</em> selesai). Hal ini disebabkan karena terdapat nilai negatif pada objek <code>xsqminu4-4</code> yang selanjutnya dilakukan transformasi logaritmik. Untuk menghentikan proses <em>debugging</em> pembaca dapat mengetikkan <code>undebug(f1)</code>.</p>
+</div>
+<div id="referensi-3" class="section level2 hasAnchor" number="4.6">
+<h2><span class="header-section-number">4.6</span> Referensi<a href="programmingandfunction.html#referensi-3" class="anchor-section" aria-label="Anchor link to header"></a></h2>
+<ol style="list-style-type: decimal">
+<li>Bloomfield, V.A. 2014. <strong>Using R for Numerical Analysis in Science and Engineering</strong>. CRC Press</li>
+<li>Primartha, R. 2018. <strong>Belajar Machine Learning Teori dan Praktik</strong>. Penerbit Informatika : Bandung.</li>
+<li>Rosadi,D. 2016. <strong>Analisis Statistika dengan R</strong>. Gadjah Mada University Press: Yogyakarta.</li>
+</ol>
+
+<style>
+body{
+text-align: justify}
+</style>
+</div>
+</div>
+            </section>
+
+          </div>
+        </div>
+      </div>
+<a href="dataviz.html" class="navigation navigation-prev " aria-label="Previous page"><i class="fa fa-angle-left"></i></a>
+<a href="numericmethod.html" class="navigation navigation-next " aria-label="Next page"><i class="fa fa-angle-right"></i></a>
+    </div>
+  </div>
+<script src="libs/gitbook/js/app.min.js"></script>
+<script src="libs/gitbook/js/clipboard.min.js"></script>
+<script src="libs/gitbook/js/plugin-search.js"></script>
+<script src="libs/gitbook/js/plugin-sharing.js"></script>
+<script src="libs/gitbook/js/plugin-fontsettings.js"></script>
+<script src="libs/gitbook/js/plugin-bookdown.js"></script>
+<script src="libs/gitbook/js/jquery.highlight.js"></script>
+<script src="libs/gitbook/js/plugin-clipboard.js"></script>
+<script>
+gitbook.require(["gitbook"], function(gitbook) {
+gitbook.start({
+"sharing": {
+"github": false,
+"facebook": true,
+"twitter": true,
+"linkedin": false,
+"weibo": false,
+"instapaper": false,
+"vk": false,
+"whatsapp": false,
+"all": ["facebook", "twitter", "linkedin", "weibo", "instapaper"]
+},
+"fontsettings": {
+"theme": "white",
+"family": "sans",
+"size": 2
+},
+"edit": {
+"link": null,
+"text": null
+},
+"history": {
+"link": null,
+"text": null
+},
+"view": {
+"link": null,
+"text": null
+},
+"download": null,
+"search": {
+"engine": "fuse",
+"options": null
+},
+"toc": {
+"collapse": "subsection"
+}
+});
+});
+</script>
+
+<!-- dynamically load mathjax for compatibility with self-contained -->
+<script>
+  (function () {
+    var script = document.createElement("script");
+    script.type = "text/javascript";
+    var src = "true";
+    if (src === "" || src === "true") src = "https://cdnjs.cloudflare.com/ajax/libs/mathjax/2.7.9/latest.js?config=TeX-MML-AM_CHTML";
+    if (location.protocol !== "file:")
+      if (/^https?:/.test(src))
+        src = src.replace(/^https?:/, '');
+    script.src = src;
+    document.getElementsByTagName("head")[0].appendChild(script);
+  })();
+</script>
+</body>
+
+</html>

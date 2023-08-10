@@ -1,0 +1,788 @@
+<!DOCTYPE html>
+<html lang="" xml:lang="">
+<head>
+
+  <meta charset="utf-8" />
+  <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+  <title>Chapter 1 Bahasa Pemrograman R | Metode Numerik Menggunakan R Untuk Teknik Lingkungan</title>
+  <meta name="description" content="Komputasi metode numerik menggunakan R dengan contoh kasus di bidang teknik lingkungan. Buku ini dapat menjadi rujukan bagi mahasiswa yang ingin mendalami proses komputasi metode numerik menggunakan R. Buku ini disusun sedemikian rupa dengan bahasa yang sederhana agar mudah dipahami oleh mahasiswa." />
+  <meta name="generator" content="bookdown 0.34 and GitBook 2.6.7" />
+
+  <meta property="og:title" content="Chapter 1 Bahasa Pemrograman R | Metode Numerik Menggunakan R Untuk Teknik Lingkungan" />
+  <meta property="og:type" content="book" />
+  <meta property="og:image" content="/images/cover.png" />
+  <meta property="og:description" content="Komputasi metode numerik menggunakan R dengan contoh kasus di bidang teknik lingkungan. Buku ini dapat menjadi rujukan bagi mahasiswa yang ingin mendalami proses komputasi metode numerik menggunakan R. Buku ini disusun sedemikian rupa dengan bahasa yang sederhana agar mudah dipahami oleh mahasiswa." />
+  <meta name="github-repo" content="mohrosidi/metode_numerik" />
+
+  <meta name="twitter:card" content="summary" />
+  <meta name="twitter:title" content="Chapter 1 Bahasa Pemrograman R | Metode Numerik Menggunakan R Untuk Teknik Lingkungan" />
+  
+  <meta name="twitter:description" content="Komputasi metode numerik menggunakan R dengan contoh kasus di bidang teknik lingkungan. Buku ini dapat menjadi rujukan bagi mahasiswa yang ingin mendalami proses komputasi metode numerik menggunakan R. Buku ini disusun sedemikian rupa dengan bahasa yang sederhana agar mudah dipahami oleh mahasiswa." />
+  <meta name="twitter:image" content="/images/cover.png" />
+
+<meta name="author" content="Mohammad Rosidi" />
+
+
+<meta name="date" content="2023-08-10" />
+
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <meta name="apple-mobile-web-app-capable" content="yes" />
+  <meta name="apple-mobile-web-app-status-bar-style" content="black" />
+  
+  
+<link rel="prev" href="index.html"/>
+<link rel="next" href="calculation.html"/>
+<script src="libs/jquery/jquery-3.6.0.min.js"></script>
+<script src="https://cdn.jsdelivr.net/npm/fuse.js@6.4.6/dist/fuse.min.js"></script>
+<link href="libs/gitbook/css/style.css" rel="stylesheet" />
+<link href="libs/gitbook/css/plugin-table.css" rel="stylesheet" />
+<link href="libs/gitbook/css/plugin-bookdown.css" rel="stylesheet" />
+<link href="libs/gitbook/css/plugin-highlight.css" rel="stylesheet" />
+<link href="libs/gitbook/css/plugin-search.css" rel="stylesheet" />
+<link href="libs/gitbook/css/plugin-fontsettings.css" rel="stylesheet" />
+<link href="libs/gitbook/css/plugin-clipboard.css" rel="stylesheet" />
+
+
+
+
+
+
+
+
+<link href="libs/anchor-sections/anchor-sections.css" rel="stylesheet" />
+<link href="libs/anchor-sections/anchor-sections-hash.css" rel="stylesheet" />
+<script src="libs/anchor-sections/anchor-sections.js"></script>
+
+
+<style type="text/css">
+pre > code.sourceCode { white-space: pre; position: relative; }
+pre > code.sourceCode > span { display: inline-block; line-height: 1.25; }
+pre > code.sourceCode > span:empty { height: 1.2em; }
+.sourceCode { overflow: visible; }
+code.sourceCode > span { color: inherit; text-decoration: inherit; }
+pre.sourceCode { margin: 0; }
+@media screen {
+div.sourceCode { overflow: auto; }
+}
+@media print {
+pre > code.sourceCode { white-space: pre-wrap; }
+pre > code.sourceCode > span { text-indent: -5em; padding-left: 5em; }
+}
+pre.numberSource code
+  { counter-reset: source-line 0; }
+pre.numberSource code > span
+  { position: relative; left: -4em; counter-increment: source-line; }
+pre.numberSource code > span > a:first-child::before
+  { content: counter(source-line);
+    position: relative; left: -1em; text-align: right; vertical-align: baseline;
+    border: none; display: inline-block;
+    -webkit-touch-callout: none; -webkit-user-select: none;
+    -khtml-user-select: none; -moz-user-select: none;
+    -ms-user-select: none; user-select: none;
+    padding: 0 4px; width: 4em;
+    color: #aaaaaa;
+  }
+pre.numberSource { margin-left: 3em; border-left: 1px solid #aaaaaa;  padding-left: 4px; }
+div.sourceCode
+  {   }
+@media screen {
+pre > code.sourceCode > span > a:first-child::before { text-decoration: underline; }
+}
+code span.al { color: #ff0000; font-weight: bold; } /* Alert */
+code span.an { color: #60a0b0; font-weight: bold; font-style: italic; } /* Annotation */
+code span.at { color: #7d9029; } /* Attribute */
+code span.bn { color: #40a070; } /* BaseN */
+code span.bu { color: #008000; } /* BuiltIn */
+code span.cf { color: #007020; font-weight: bold; } /* ControlFlow */
+code span.ch { color: #4070a0; } /* Char */
+code span.cn { color: #880000; } /* Constant */
+code span.co { color: #60a0b0; font-style: italic; } /* Comment */
+code span.cv { color: #60a0b0; font-weight: bold; font-style: italic; } /* CommentVar */
+code span.do { color: #ba2121; font-style: italic; } /* Documentation */
+code span.dt { color: #902000; } /* DataType */
+code span.dv { color: #40a070; } /* DecVal */
+code span.er { color: #ff0000; font-weight: bold; } /* Error */
+code span.ex { } /* Extension */
+code span.fl { color: #40a070; } /* Float */
+code span.fu { color: #06287e; } /* Function */
+code span.im { color: #008000; font-weight: bold; } /* Import */
+code span.in { color: #60a0b0; font-weight: bold; font-style: italic; } /* Information */
+code span.kw { color: #007020; font-weight: bold; } /* Keyword */
+code span.op { color: #666666; } /* Operator */
+code span.ot { color: #007020; } /* Other */
+code span.pp { color: #bc7a00; } /* Preprocessor */
+code span.sc { color: #4070a0; } /* SpecialChar */
+code span.ss { color: #bb6688; } /* SpecialString */
+code span.st { color: #4070a0; } /* String */
+code span.va { color: #19177c; } /* Variable */
+code span.vs { color: #4070a0; } /* VerbatimString */
+code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warning */
+</style>
+
+<style type="text/css">
+  
+  div.hanging-indent{margin-left: 1.5em; text-indent: -1.5em;}
+</style>
+
+<link rel="stylesheet" href="style.css" type="text/css" />
+</head>
+
+<body>
+
+
+
+  <div class="book without-animation with-summary font-size-2 font-family-1" data-basepath=".">
+
+    <div class="book-summary">
+      <nav role="navigation">
+
+<ul class="summary">
+<li><a href="./">Metode Numerik Menggunakan R</a></li>
+
+<li class="divider"></li>
+<li class="chapter" data-level="" data-path="index.html"><a href="index.html"><i class="fa fa-check"></i>Pengantar</a>
+<ul>
+<li class="chapter" data-level="" data-path="index.html"><a href="index.html#gambaran-isi-buku"><i class="fa fa-check"></i>Gambaran Isi Buku</a></li>
+<li class="chapter" data-level="" data-path="index.html"><a href="index.html#cara-berkontribusi-dalam-buku-ini"><i class="fa fa-check"></i>Cara Berkontribusi dalam Buku Ini</a></li>
+<li class="chapter" data-level="" data-path="index.html"><a href="index.html#ucapan-terima-kasih"><i class="fa fa-check"></i>Ucapan Terima Kasih</a></li>
+<li class="chapter" data-level="" data-path="index.html"><a href="index.html#lisensi"><i class="fa fa-check"></i>Lisensi</a></li>
+</ul></li>
+<li class="chapter" data-level="1" data-path="intro.html"><a href="intro.html"><i class="fa fa-check"></i><b>1</b> Bahasa Pemrograman R</a>
+<ul>
+<li class="chapter" data-level="1.1" data-path="intro.html"><a href="intro.html#sejarahR"><i class="fa fa-check"></i><b>1.1</b> Sejarah R</a></li>
+<li class="chapter" data-level="1.2" data-path="intro.html"><a href="intro.html#fiturR"><i class="fa fa-check"></i><b>1.2</b> Fitur dan Karakteristik R</a></li>
+<li class="chapter" data-level="1.3" data-path="intro.html"><a href="intro.html#prosconsR"><i class="fa fa-check"></i><b>1.3</b> Kelebihan dan Kekurangan R</a></li>
+<li class="chapter" data-level="1.4" data-path="intro.html"><a href="intro.html#rstudio"><i class="fa fa-check"></i><b>1.4</b> RStudio</a></li>
+<li class="chapter" data-level="1.5" data-path="intro.html"><a href="intro.html#installR"><i class="fa fa-check"></i><b>1.5</b> Menginstall R dan RStudio</a></li>
+<li class="chapter" data-level="1.6" data-path="intro.html"><a href="intro.html#wdR"><i class="fa fa-check"></i><b>1.6</b> Working Directory</a>
+<ul>
+<li class="chapter" data-level="1.6.1" data-path="intro.html"><a href="intro.html#changewdR"><i class="fa fa-check"></i><b>1.6.1</b> Mengubah Lokasi Working Directory</a></li>
+<li class="chapter" data-level="1.6.2" data-path="intro.html"><a href="intro.html#defaultwdR"><i class="fa fa-check"></i><b>1.6.2</b> Mengubah Lokasi Working Directory Default</a></li>
+</ul></li>
+<li class="chapter" data-level="1.7" data-path="intro.html"><a href="intro.html#installlibraryR"><i class="fa fa-check"></i><b>1.7</b> Memasang dan Mengaktifkan Paket R</a></li>
+<li class="chapter" data-level="1.8" data-path="intro.html"><a href="intro.html#helpR"><i class="fa fa-check"></i><b>1.8</b> Fasilitas Help</a>
+<ul>
+<li class="chapter" data-level="1.8.1" data-path="intro.html"><a href="intro.html#searchhelp"><i class="fa fa-check"></i><b>1.8.1</b> Mencari Help dari Suatu Perintah Tertentu</a></li>
+<li class="chapter" data-level="1.8.2" data-path="intro.html"><a href="intro.html#generalhelp"><i class="fa fa-check"></i><b>1.8.2</b> General Help</a></li>
+<li class="chapter" data-level="1.8.3" data-path="intro.html"><a href="intro.html#othershelp"><i class="fa fa-check"></i><b>1.8.3</b> Fasilitas Help Lainnya</a></li>
+</ul></li>
+<li class="chapter" data-level="1.9" data-path="intro.html"><a href="intro.html#referensi"><i class="fa fa-check"></i><b>1.9</b> Referensi</a></li>
+</ul></li>
+<li class="chapter" data-level="2" data-path="calculation.html"><a href="calculation.html"><i class="fa fa-check"></i><b>2</b> Kalkulasi Menggunakan R</a>
+<ul>
+<li class="chapter" data-level="2.1" data-path="calculation.html"><a href="calculation.html#aritmetikoperator"><i class="fa fa-check"></i><b>2.1</b> Operator Aritmatik</a></li>
+<li class="chapter" data-level="2.2" data-path="calculation.html"><a href="calculation.html#aritmaticfunction"><i class="fa fa-check"></i><b>2.2</b> Fungsi Aritmetik</a></li>
+<li class="chapter" data-level="2.3" data-path="calculation.html"><a href="calculation.html#relationoperators"><i class="fa fa-check"></i><b>2.3</b> Operator Relasi</a></li>
+<li class="chapter" data-level="2.4" data-path="calculation.html"><a href="calculation.html#logicoperators"><i class="fa fa-check"></i><b>2.4</b> Operator Logika</a></li>
+<li class="chapter" data-level="2.5" data-path="calculation.html"><a href="calculation.html#assigningvar"><i class="fa fa-check"></i><b>2.5</b> Memasukkan Nilai Kedalam Variabel</a></li>
+<li class="chapter" data-level="2.6" data-path="calculation.html"><a href="calculation.html#typedata"><i class="fa fa-check"></i><b>2.6</b> Tipe dan Struktur Data</a></li>
+<li class="chapter" data-level="2.7" data-path="calculation.html"><a href="calculation.html#vector"><i class="fa fa-check"></i><b>2.7</b> Vektor</a>
+<ul>
+<li class="chapter" data-level="2.7.1" data-path="calculation.html"><a href="calculation.html#createvector"><i class="fa fa-check"></i><b>2.7.1</b> Membuat vektor</a></li>
+<li class="chapter" data-level="2.7.2" data-path="calculation.html"><a href="calculation.html#missingvalue"><i class="fa fa-check"></i><b>2.7.2</b> Missing Values</a></li>
+<li class="chapter" data-level="2.7.3" data-path="calculation.html"><a href="calculation.html#subsetvector"><i class="fa fa-check"></i><b>2.7.3</b> Subset Pada Vektor</a></li>
+<li class="chapter" data-level="2.7.4" data-path="calculation.html"><a href="calculation.html#vectorops"><i class="fa fa-check"></i><b>2.7.4</b> Operasi Matematis Menggunakan Vektor</a></li>
+<li class="chapter" data-level="2.7.5" data-path="calculation.html"><a href="calculation.html#seq"><i class="fa fa-check"></i><b>2.7.5</b> Membuat Deret Angka</a></li>
+<li class="chapter" data-level="2.7.6" data-path="calculation.html"><a href="calculation.html#repseq"><i class="fa fa-check"></i><b>2.7.6</b> Nilai Berulang</a></li>
+<li class="chapter" data-level="2.7.7" data-path="calculation.html"><a href="calculation.html#randnumb"><i class="fa fa-check"></i><b>2.7.7</b> Deret Bilangan Acak</a></li>
+</ul></li>
+<li class="chapter" data-level="2.8" data-path="calculation.html"><a href="calculation.html#matriks"><i class="fa fa-check"></i><b>2.8</b> Matriks</a>
+<ul>
+<li class="chapter" data-level="2.8.1" data-path="calculation.html"><a href="calculation.html#creatematrix"><i class="fa fa-check"></i><b>2.8.1</b> Membuat matriks</a></li>
+<li class="chapter" data-level="2.8.2" data-path="calculation.html"><a href="calculation.html#subsetmatrix"><i class="fa fa-check"></i><b>2.8.2</b> Subset Pada Matriks</a></li>
+<li class="chapter" data-level="2.8.3" data-path="calculation.html"><a href="calculation.html#matrixcalculation"><i class="fa fa-check"></i><b>2.8.3</b> Perhitungan Menggunakan Matriks</a></li>
+</ul></li>
+<li class="chapter" data-level="2.9" data-path="calculation.html"><a href="calculation.html#referensi-1"><i class="fa fa-check"></i><b>2.9</b> Referensi</a></li>
+</ul></li>
+<li class="chapter" data-level="3" data-path="dataviz.html"><a href="dataviz.html"><i class="fa fa-check"></i><b>3</b> Visualisasi Data</a>
+<ul>
+<li class="chapter" data-level="3.1" data-path="dataviz.html"><a href="dataviz.html#plotfunc"><i class="fa fa-check"></i><b>3.1</b> Visualisasi Data Menggunakan Fungsi plot()</a></li>
+<li class="chapter" data-level="3.2" data-path="dataviz.html"><a href="dataviz.html#otherviz"><i class="fa fa-check"></i><b>3.2</b> Visualisasi Lainnya</a>
+<ul>
+<li class="chapter" data-level="3.2.1" data-path="dataviz.html"><a href="dataviz.html#barplot"><i class="fa fa-check"></i><b>3.2.1</b> Bar Plot</a></li>
+<li class="chapter" data-level="3.2.2" data-path="dataviz.html"><a href="dataviz.html#histogram"><i class="fa fa-check"></i><b>3.2.2</b> Histogram dan Density Plot</a></li>
+<li class="chapter" data-level="3.2.3" data-path="dataviz.html"><a href="dataviz.html#boxplot"><i class="fa fa-check"></i><b>3.2.3</b> Box plot</a></li>
+</ul></li>
+<li class="chapter" data-level="3.3" data-path="dataviz.html"><a href="dataviz.html#customise"><i class="fa fa-check"></i><b>3.3</b> Kustomisasi Parameter Grafik</a>
+<ul>
+<li class="chapter" data-level="3.3.1" data-path="dataviz.html"><a href="dataviz.html#addtitle"><i class="fa fa-check"></i><b>3.3.1</b> Menambahkan Judul</a></li>
+<li class="chapter" data-level="3.3.2" data-path="dataviz.html"><a href="dataviz.html#addlegend"><i class="fa fa-check"></i><b>3.3.2</b> Menambahkan Legend</a></li>
+<li class="chapter" data-level="3.3.3" data-path="dataviz.html"><a href="dataviz.html#addtext"><i class="fa fa-check"></i><b>3.3.3</b> Menambahkan Teks Pada Grafik</a></li>
+<li class="chapter" data-level="3.3.4" data-path="dataviz.html"><a href="dataviz.html#addlines"><i class="fa fa-check"></i><b>3.3.4</b> Menambahkan Garis Pada Plot</a></li>
+<li class="chapter" data-level="3.3.5" data-path="dataviz.html"><a href="dataviz.html#changepoint"><i class="fa fa-check"></i><b>3.3.5</b> Merubah Simbol plot dan Jenis Garis</a></li>
+<li class="chapter" data-level="3.3.6" data-path="dataviz.html"><a href="dataviz.html#mengatur-axis-plot"><i class="fa fa-check"></i><b>3.3.6</b> Mengatur Axis Plot</a></li>
+<li class="chapter" data-level="3.3.7" data-path="dataviz.html"><a href="dataviz.html#changecolor"><i class="fa fa-check"></i><b>3.3.7</b> Mengatur Warna</a></li>
+</ul></li>
+<li class="chapter" data-level="3.4" data-path="dataviz.html"><a href="dataviz.html#plot-dua-dan-tiga-dimensi"><i class="fa fa-check"></i><b>3.4</b> Plot Dua dan Tiga Dimensi</a></li>
+<li class="chapter" data-level="3.5" data-path="dataviz.html"><a href="dataviz.html#referensi-2"><i class="fa fa-check"></i><b>3.5</b> Referensi</a></li>
+</ul></li>
+<li class="chapter" data-level="4" data-path="programmingandfunction.html"><a href="programmingandfunction.html"><i class="fa fa-check"></i><b>4</b> Pemrograman dan Fungsi</a>
+<ul>
+<li class="chapter" data-level="4.1" data-path="programmingandfunction.html"><a href="programmingandfunction.html#loop"><i class="fa fa-check"></i><b>4.1</b> Loop</a>
+<ul>
+<li class="chapter" data-level="4.1.1" data-path="programmingandfunction.html"><a href="programmingandfunction.html#forloop"><i class="fa fa-check"></i><b>4.1.1</b> For Loop</a></li>
+<li class="chapter" data-level="4.1.2" data-path="programmingandfunction.html"><a href="programmingandfunction.html#whileloop"><i class="fa fa-check"></i><b>4.1.2</b> While Loop</a></li>
+<li class="chapter" data-level="4.1.3" data-path="programmingandfunction.html"><a href="programmingandfunction.html#repeatloop"><i class="fa fa-check"></i><b>4.1.3</b> Repeat Loop</a></li>
+<li class="chapter" data-level="4.1.4" data-path="programmingandfunction.html"><a href="programmingandfunction.html#break"><i class="fa fa-check"></i><b>4.1.4</b> Break</a></li>
+</ul></li>
+<li class="chapter" data-level="4.2" data-path="programmingandfunction.html"><a href="programmingandfunction.html#loopapply"><i class="fa fa-check"></i><b>4.2</b> Loop Menggunakan Apply Family Function</a>
+<ul>
+<li class="chapter" data-level="4.2.1" data-path="programmingandfunction.html"><a href="programmingandfunction.html#apply"><i class="fa fa-check"></i><b>4.2.1</b> Apply</a></li>
+<li class="chapter" data-level="4.2.2" data-path="programmingandfunction.html"><a href="programmingandfunction.html#lapply"><i class="fa fa-check"></i><b>4.2.2</b> lapply</a></li>
+<li class="chapter" data-level="4.2.3" data-path="programmingandfunction.html"><a href="programmingandfunction.html#sapply"><i class="fa fa-check"></i><b>4.2.3</b> sapply</a></li>
+<li class="chapter" data-level="4.2.4" data-path="programmingandfunction.html"><a href="programmingandfunction.html#vapply"><i class="fa fa-check"></i><b>4.2.4</b> vapply</a></li>
+<li class="chapter" data-level="4.2.5" data-path="programmingandfunction.html"><a href="programmingandfunction.html#tapply"><i class="fa fa-check"></i><b>4.2.5</b> tapply</a></li>
+</ul></li>
+<li class="chapter" data-level="4.3" data-path="programmingandfunction.html"><a href="programmingandfunction.html#dm"><i class="fa fa-check"></i><b>4.3</b> Decision Making</a>
+<ul>
+<li class="chapter" data-level="4.3.1" data-path="programmingandfunction.html"><a href="programmingandfunction.html#ifstatement"><i class="fa fa-check"></i><b>4.3.1</b> if statement</a></li>
+<li class="chapter" data-level="4.3.2" data-path="programmingandfunction.html"><a href="programmingandfunction.html#ifelsestatement"><i class="fa fa-check"></i><b>4.3.2</b> if else statement</a></li>
+<li class="chapter" data-level="4.3.3" data-path="programmingandfunction.html"><a href="programmingandfunction.html#switchstatement"><i class="fa fa-check"></i><b>4.3.3</b> switch statement</a></li>
+</ul></li>
+<li class="chapter" data-level="4.4" data-path="programmingandfunction.html"><a href="programmingandfunction.html#fungsi"><i class="fa fa-check"></i><b>4.4</b> Fungsi</a></li>
+<li class="chapter" data-level="4.5" data-path="programmingandfunction.html"><a href="programmingandfunction.html#debugging"><i class="fa fa-check"></i><b>4.5</b> Debugging</a></li>
+<li class="chapter" data-level="4.6" data-path="programmingandfunction.html"><a href="programmingandfunction.html#referensi-3"><i class="fa fa-check"></i><b>4.6</b> Referensi</a></li>
+</ul></li>
+<li class="chapter" data-level="5" data-path="numericmethod.html"><a href="numericmethod.html"><i class="fa fa-check"></i><b>5</b> Pengantar Metode Numerik</a>
+<ul>
+<li class="chapter" data-level="5.1" data-path="numericmethod.html"><a href="numericmethod.html#numericmethodintro"><i class="fa fa-check"></i><b>5.1</b> Mengenal Metode Numerik</a>
+<ul>
+<li class="chapter" data-level="5.1.1" data-path="numericmethod.html"><a href="numericmethod.html#diffanalitycnumeric"><i class="fa fa-check"></i><b>5.1.1</b> Perbedaan Antara Metode Numerik dan Analitik</a></li>
+<li class="chapter" data-level="5.1.2" data-path="numericmethod.html"><a href="numericmethod.html#tahapan-penyelesaian-menggunakan-metode-numerik"><i class="fa fa-check"></i><b>5.1.2</b> Tahapan Penyelesaian Menggunakan Metode Numerik</a></li>
+</ul></li>
+<li class="chapter" data-level="5.2" data-path="numericmethod.html"><a href="numericmethod.html#acuracy"><i class="fa fa-check"></i><b>5.2</b> Akurasi dan Presisi</a></li>
+<li class="chapter" data-level="5.3" data-path="numericmethod.html"><a href="numericmethod.html#numerror"><i class="fa fa-check"></i><b>5.3</b> Error Numerik</a></li>
+<li class="chapter" data-level="5.4" data-path="numericmethod.html"><a href="numericmethod.html#referensi-4"><i class="fa fa-check"></i><b>5.4</b> Referensi</a></li>
+</ul></li>
+<li class="chapter" data-level="6" data-path="linearaljabar.html"><a href="linearaljabar.html"><i class="fa fa-check"></i><b>6</b> Aljabar Linier</a>
+<ul>
+<li class="chapter" data-level="6.1" data-path="linearaljabar.html"><a href="linearaljabar.html#vecmat"><i class="fa fa-check"></i><b>6.1</b> Vektor dan matriks</a>
+<ul>
+<li class="chapter" data-level="6.1.1" data-path="linearaljabar.html"><a href="linearaljabar.html#operasivektor"><i class="fa fa-check"></i><b>6.1.1</b> Operasi Vektor</a></li>
+<li class="chapter" data-level="6.1.2" data-path="linearaljabar.html"><a href="linearaljabar.html#operasimatrik"><i class="fa fa-check"></i><b>6.1.2</b> Operasi matriks</a></li>
+</ul></li>
+<li class="chapter" data-level="6.2" data-path="linearaljabar.html"><a href="linearaljabar.html#rowoperation"><i class="fa fa-check"></i><b>6.2</b> Operasi Baris Elementer</a></li>
+<li class="chapter" data-level="6.3" data-path="linearaljabar.html"><a href="linearaljabar.html#gausselimination"><i class="fa fa-check"></i><b>6.3</b> Eliminasi Gauss</a>
+<ul>
+<li class="chapter" data-level="6.3.1" data-path="linearaljabar.html"><a href="linearaljabar.html#rowechelonform"><i class="fa fa-check"></i><b>6.3.1</b> <em>Row Echelon Form</em></a></li>
+<li class="chapter" data-level="6.3.2" data-path="linearaljabar.html"><a href="linearaljabar.html#redrowechelonform"><i class="fa fa-check"></i><b>6.3.2</b> Eliminasi Gauss-Jordan</a></li>
+<li class="chapter" data-level="6.3.3" data-path="linearaljabar.html"><a href="linearaljabar.html#matriktridiagonal"><i class="fa fa-check"></i><b>6.3.3</b> Matrik Tridiagonal</a></li>
+<li class="chapter" data-level="6.3.4" data-path="linearaljabar.html"><a href="linearaljabar.html#solvefunc"><i class="fa fa-check"></i><b>6.3.4</b> Penyelesaian Sistem Persamaan Linier Menggunakan Fungsi <code>solve()</code></a></li>
+<li class="chapter" data-level="6.3.5" data-path="linearaljabar.html"><a href="linearaljabar.html#solvetridiagfunct"><i class="fa fa-check"></i><b>6.3.5</b> Penyelesaian Sistem Persamaan Linier Menggunakan Fungsi ’Solve.tridiag()`</a></li>
+</ul></li>
+<li class="chapter" data-level="6.4" data-path="linearaljabar.html"><a href="linearaljabar.html#dekomposisimatriks"><i class="fa fa-check"></i><b>6.4</b> Dekomposisi Matriks</a>
+<ul>
+<li class="chapter" data-level="6.4.1" data-path="linearaljabar.html"><a href="linearaljabar.html#ludecomp"><i class="fa fa-check"></i><b>6.4.1</b> Dekomposisi LU</a></li>
+<li class="chapter" data-level="6.4.2" data-path="linearaljabar.html"><a href="linearaljabar.html#dekomposisi-cholesky"><i class="fa fa-check"></i><b>6.4.2</b> Dekomposisi Cholesky</a></li>
+<li class="chapter" data-level="6.4.3" data-path="linearaljabar.html"><a href="linearaljabar.html#othersdecomp"><i class="fa fa-check"></i><b>6.4.3</b> Dekomposisi Lainnya</a></li>
+</ul></li>
+<li class="chapter" data-level="6.5" data-path="linearaljabar.html"><a href="linearaljabar.html#iteratif"><i class="fa fa-check"></i><b>6.5</b> Metode Iterasi</a>
+<ul>
+<li class="chapter" data-level="6.5.1" data-path="linearaljabar.html"><a href="linearaljabar.html#jacobiiter"><i class="fa fa-check"></i><b>6.5.1</b> Iterasi Jacobi</a></li>
+<li class="chapter" data-level="6.5.2" data-path="linearaljabar.html"><a href="linearaljabar.html#seideliter"><i class="fa fa-check"></i><b>6.5.2</b> Iterasi Gauss-Seidel</a></li>
+</ul></li>
+<li class="chapter" data-level="6.6" data-path="linearaljabar.html"><a href="linearaljabar.html#studikasus"><i class="fa fa-check"></i><b>6.6</b> Studi Kasus</a>
+<ul>
+<li class="chapter" data-level="6.6.1" data-path="linearaljabar.html"><a href="linearaljabar.html#leastsquare"><i class="fa fa-check"></i><b>6.6.1</b> Metode Kuadrat Terkecil</a></li>
+<li class="chapter" data-level="6.6.2" data-path="linearaljabar.html"><a href="linearaljabar.html#reaktorkimia"><i class="fa fa-check"></i><b>6.6.2</b> Aliran Massa Dalam Reaktor</a></li>
+</ul></li>
+<li class="chapter" data-level="6.7" data-path="linearaljabar.html"><a href="linearaljabar.html#referensi-5"><i class="fa fa-check"></i><b>6.7</b> Referensi</a></li>
+<li class="chapter" data-level="6.8" data-path="linearaljabar.html"><a href="linearaljabar.html#latihan"><i class="fa fa-check"></i><b>6.8</b> Latihan</a></li>
+</ul></li>
+<li class="chapter" data-level="7" data-path="rootfinding.html"><a href="rootfinding.html"><i class="fa fa-check"></i><b>7</b> Akar Persamaan Non-Linier</a>
+<ul>
+<li class="chapter" data-level="7.1" data-path="rootfinding.html"><a href="rootfinding.html#bracketing"><i class="fa fa-check"></i><b>7.1</b> Metode Tertutup</a>
+<ul>
+<li class="chapter" data-level="7.1.1" data-path="rootfinding.html"><a href="rootfinding.html#table"><i class="fa fa-check"></i><b>7.1.1</b> Metode Tabel</a></li>
+<li class="chapter" data-level="7.1.2" data-path="rootfinding.html"><a href="rootfinding.html#bisection"><i class="fa fa-check"></i><b>7.1.2</b> Metode Biseksi</a></li>
+<li class="chapter" data-level="7.1.3" data-path="rootfinding.html"><a href="rootfinding.html#regulafalsi"><i class="fa fa-check"></i><b>7.1.3</b> Metode Regula Falsi</a></li>
+</ul></li>
+<li class="chapter" data-level="7.2" data-path="rootfinding.html"><a href="rootfinding.html#openmethod"><i class="fa fa-check"></i><b>7.2</b> Metode Terbuka</a>
+<ul>
+<li class="chapter" data-level="7.2.1" data-path="rootfinding.html"><a href="rootfinding.html#fixpoint"><i class="fa fa-check"></i><b>7.2.1</b> Metode Iterasi Titik Tetap</a></li>
+<li class="chapter" data-level="7.2.2" data-path="rootfinding.html"><a href="rootfinding.html#newtonraphson"><i class="fa fa-check"></i><b>7.2.2</b> Metode Newton-Raphson</a></li>
+<li class="chapter" data-level="7.2.3" data-path="rootfinding.html"><a href="rootfinding.html#secant"><i class="fa fa-check"></i><b>7.2.3</b> Metode Secant</a></li>
+</ul></li>
+<li class="chapter" data-level="7.3" data-path="rootfinding.html"><a href="rootfinding.html#uniroot"><i class="fa fa-check"></i><b>7.3</b> Penyelesaian Persamaan Non-Linier Menggunakan Fungsi <code>uniroot</code> dan <code>uniroot.all</code></a></li>
+<li class="chapter" data-level="7.4" data-path="rootfinding.html"><a href="rootfinding.html#akar-persamaan-polinomial-menggunakan-fungsi-polyroot"><i class="fa fa-check"></i><b>7.4</b> Akar Persamaan Polinomial Menggunakan Fungsi <code>polyroot</code></a></li>
+<li class="chapter" data-level="7.5" data-path="rootfinding.html"><a href="rootfinding.html#studi-kasus"><i class="fa fa-check"></i><b>7.5</b> Studi Kasus</a>
+<ul>
+<li class="chapter" data-level="7.5.1" data-path="rootfinding.html"><a href="rootfinding.html#persamaan-van-der-walls"><i class="fa fa-check"></i><b>7.5.1</b> Persamaan Van Der Walls</a></li>
+<li class="chapter" data-level="7.5.2" data-path="rootfinding.html"><a href="rootfinding.html#hukum-bernoulli"><i class="fa fa-check"></i><b>7.5.2</b> Hukum Bernoulli</a></li>
+</ul></li>
+<li class="chapter" data-level="7.6" data-path="rootfinding.html"><a href="rootfinding.html#referensi-6"><i class="fa fa-check"></i><b>7.6</b> Referensi</a></li>
+<li class="chapter" data-level="7.7" data-path="rootfinding.html"><a href="rootfinding.html#latihan-1"><i class="fa fa-check"></i><b>7.7</b> Latihan</a></li>
+</ul></li>
+<li class="chapter" data-level="8" data-path="interpolation.html"><a href="interpolation.html"><i class="fa fa-check"></i><b>8</b> Interpolasi dan Ekstrapolasi</a>
+<ul>
+<li class="chapter" data-level="8.1" data-path="interpolation.html"><a href="interpolation.html#poliinterpolation"><i class="fa fa-check"></i><b>8.1</b> Interpolasi Polinomial</a>
+<ul>
+<li class="chapter" data-level="8.1.1" data-path="interpolation.html"><a href="interpolation.html#mengevaluasi-polinomial"><i class="fa fa-check"></i><b>8.1.1</b> Mengevaluasi Polinomial</a></li>
+<li class="chapter" data-level="8.1.2" data-path="interpolation.html"><a href="interpolation.html#lininterpol"><i class="fa fa-check"></i><b>8.1.2</b> Interpolasi Linier</a></li>
+<li class="chapter" data-level="8.1.3" data-path="interpolation.html"><a href="interpolation.html#hopoliinter"><i class="fa fa-check"></i><b>8.1.3</b> Interpolasi Polinomial Orde Tinggi</a></li>
+</ul></li>
+<li class="chapter" data-level="8.2" data-path="interpolation.html"><a href="interpolation.html#pwinter"><i class="fa fa-check"></i><b>8.2</b> Interpolasi Piecewise</a>
+<ul>
+<li class="chapter" data-level="8.2.1" data-path="interpolation.html"><a href="interpolation.html#pwlininter"><i class="fa fa-check"></i><b>8.2.1</b> Interpolasi Linier Piecewise</a></li>
+<li class="chapter" data-level="8.2.2" data-path="interpolation.html"><a href="interpolation.html#cubicspline"><i class="fa fa-check"></i><b>8.2.2</b> Interpolasi Spline Kubik</a></li>
+</ul></li>
+<li class="chapter" data-level="8.3" data-path="interpolation.html"><a href="interpolation.html#studi-kasus-1"><i class="fa fa-check"></i><b>8.3</b> Studi Kasus</a>
+<ul>
+<li class="chapter" data-level="8.3.1" data-path="interpolation.html"><a href="interpolation.html#interpolasi-data-runtun-waktu"><i class="fa fa-check"></i><b>8.3.1</b> Interpolasi Data Runtun Waktu</a></li>
+</ul></li>
+<li class="chapter" data-level="8.4" data-path="interpolation.html"><a href="interpolation.html#referensi-7"><i class="fa fa-check"></i><b>8.4</b> Referensi</a></li>
+<li class="chapter" data-level="8.5" data-path="interpolation.html"><a href="interpolation.html#latihan-2"><i class="fa fa-check"></i><b>8.5</b> Latihan</a></li>
+</ul></li>
+<li class="chapter" data-level="9" data-path="diffinteg.html"><a href="diffinteg.html"><i class="fa fa-check"></i><b>9</b> Diferensiasi dan Integrasi Numerik</a>
+<ul>
+<li class="chapter" data-level="9.1" data-path="diffinteg.html"><a href="diffinteg.html#finitediff"><i class="fa fa-check"></i><b>9.1</b> Metode Beda Hingga</a></li>
+<li class="chapter" data-level="9.2" data-path="diffinteg.html"><a href="diffinteg.html#diffother"><i class="fa fa-check"></i><b>9.2</b> Diferensiasi Menggunakan Fungsi Lainnya di R</a>
+<ul>
+<li class="chapter" data-level="9.2.1" data-path="diffinteg.html"><a href="diffinteg.html#diferensiasi-metode-titik-pusat-mengggunakan-fungsidiff"><i class="fa fa-check"></i><b>9.2.1</b> Diferensiasi Metode Titik Pusat Mengggunakan Fungsi<code>diff()</code></a></li>
+<li class="chapter" data-level="9.2.2" data-path="diffinteg.html"><a href="diffinteg.html#diferensiasi-menggunakan-paket-numderiv"><i class="fa fa-check"></i><b>9.2.2</b> Diferensiasi Menggunakan Paket <code>numDeriv</code></a></li>
+<li class="chapter" data-level="9.2.3" data-path="diffinteg.html"><a href="diffinteg.html#diferensiasi-menggunakan-paket-pracma"><i class="fa fa-check"></i><b>9.2.3</b> DIferensiasi Menggunakan Paket <code>pracma</code></a></li>
+</ul></li>
+<li class="chapter" data-level="9.3" data-path="diffinteg.html"><a href="diffinteg.html#newtoncotes"><i class="fa fa-check"></i><b>9.3</b> Metode Integrasi Newton-Cotes</a>
+<ul>
+<li class="chapter" data-level="9.3.1" data-path="diffinteg.html"><a href="diffinteg.html#riemann"><i class="fa fa-check"></i><b>9.3.1</b> Metode Integral Riemann</a></li>
+<li class="chapter" data-level="9.3.2" data-path="diffinteg.html"><a href="diffinteg.html#trapezoida"><i class="fa fa-check"></i><b>9.3.2</b> Metode Trapezoida</a></li>
+<li class="chapter" data-level="9.3.3" data-path="diffinteg.html"><a href="diffinteg.html#simpson"><i class="fa fa-check"></i><b>9.3.3</b> Metode Simpson</a></li>
+<li class="chapter" data-level="9.3.4" data-path="diffinteg.html"><a href="diffinteg.html#simpson38"><i class="fa fa-check"></i><b>9.3.4</b> Metode Simpson 3/8</a></li>
+</ul></li>
+<li class="chapter" data-level="9.4" data-path="diffinteg.html"><a href="diffinteg.html#metode-integrasi-newton-cotes-mengunakan-fungsi-lainnya"><i class="fa fa-check"></i><b>9.4</b> Metode Integrasi Newton-Cotes Mengunakan Fungsi Lainnya</a></li>
+<li class="chapter" data-level="9.5" data-path="diffinteg.html"><a href="diffinteg.html#kuadgauss"><i class="fa fa-check"></i><b>9.5</b> Metode Kuadratur Gauss</a></li>
+<li class="chapter" data-level="9.6" data-path="diffinteg.html"><a href="diffinteg.html#othergauss"><i class="fa fa-check"></i><b>9.6</b> Metode Gauss-Legendre Menggunakan Fungsi <code>legendre.quadrature()</code></a></li>
+<li class="chapter" data-level="9.7" data-path="diffinteg.html"><a href="diffinteg.html#adaptifint"><i class="fa fa-check"></i><b>9.7</b> Metode Integrasi Adaptif</a></li>
+<li class="chapter" data-level="9.8" data-path="diffinteg.html"><a href="diffinteg.html#metode-integral-adaptif-menggunakan-fungsi-lainnya-pada-r"><i class="fa fa-check"></i><b>9.8</b> Metode Integral Adaptif Menggunakan Fungsi Lainnya Pada <code>R</code></a></li>
+<li class="chapter" data-level="9.9" data-path="diffinteg.html"><a href="diffinteg.html#romberg"><i class="fa fa-check"></i><b>9.9</b> Metode Integrasi Romberg</a></li>
+<li class="chapter" data-level="9.10" data-path="diffinteg.html"><a href="diffinteg.html#metode-integrasi-romberg-menggunakan-fungsi-lainnya"><i class="fa fa-check"></i><b>9.10</b> Metode Integrasi Romberg Menggunakan Fungsi Lainnya</a></li>
+<li class="chapter" data-level="9.11" data-path="diffinteg.html"><a href="diffinteg.html#montecarlo"><i class="fa fa-check"></i><b>9.11</b> Metode Integrasi Monte Carlo</a></li>
+<li class="chapter" data-level="9.12" data-path="diffinteg.html"><a href="diffinteg.html#studi-kasus-2"><i class="fa fa-check"></i><b>9.12</b> Studi Kasus</a>
+<ul>
+<li class="chapter" data-level="9.12.1" data-path="diffinteg.html"><a href="diffinteg.html#penerjung-payung"><i class="fa fa-check"></i><b>9.12.1</b> Penerjung Payung</a></li>
+</ul></li>
+<li class="chapter" data-level="9.13" data-path="diffinteg.html"><a href="diffinteg.html#referensi-8"><i class="fa fa-check"></i><b>9.13</b> Referensi</a></li>
+<li class="chapter" data-level="9.14" data-path="diffinteg.html"><a href="diffinteg.html#latihan-3"><i class="fa fa-check"></i><b>9.14</b> Latihan</a></li>
+</ul></li>
+<li class="chapter" data-level="10" data-path="diffeq.html"><a href="diffeq.html"><i class="fa fa-check"></i><b>10</b> Persamaan Diferensial</a>
+<ul>
+<li class="chapter" data-level="10.1" data-path="diffeq.html"><a href="diffeq.html#ivp"><i class="fa fa-check"></i><b>10.1</b> <em>Initial value problems</em></a>
+<ul>
+<li class="chapter" data-level="10.1.1" data-path="diffeq.html"><a href="diffeq.html#eulermethod"><i class="fa fa-check"></i><b>10.1.1</b> Metode Euler</a></li>
+<li class="chapter" data-level="10.1.2" data-path="diffeq.html"><a href="diffeq.html#heun"><i class="fa fa-check"></i><b>10.1.2</b> Metode Heun</a></li>
+<li class="chapter" data-level="10.1.3" data-path="diffeq.html"><a href="diffeq.html#midpt"><i class="fa fa-check"></i><b>10.1.3</b> Metode Titik Tengah</a></li>
+<li class="chapter" data-level="10.1.4" data-path="diffeq.html"><a href="diffeq.html#rungekutta"><i class="fa fa-check"></i><b>10.1.4</b> Metode Runge-Kutta Orde 4</a></li>
+<li class="chapter" data-level="10.1.5" data-path="diffeq.html"><a href="diffeq.html#mml"><i class="fa fa-check"></i><b>10.1.5</b> Metode Multistep Linier</a></li>
+</ul></li>
+<li class="chapter" data-level="10.2" data-path="diffeq.html"><a href="diffeq.html#sysdiff"><i class="fa fa-check"></i><b>10.2</b> Sistem Persamaan Diferensial</a></li>
+<li class="chapter" data-level="10.3" data-path="diffeq.html"><a href="diffeq.html#penyelesaian-persamaan-diferensial-dan-sistem-persamaan-diferensial-menggunakan-fungsi-ode"><i class="fa fa-check"></i><b>10.3</b> Penyelesaian Persamaan Diferensial dan Sistem Persamaan Diferensial Menggunakan Fungsi <code>ode()</code></a></li>
+<li class="chapter" data-level="10.4" data-path="diffeq.html"><a href="diffeq.html#pasialdiff"><i class="fa fa-check"></i><b>10.4</b> Persamaan Diferensial Parsial</a>
+<ul>
+<li class="chapter" data-level="10.4.1" data-path="diffeq.html"><a href="diffeq.html#persamaan-difusi"><i class="fa fa-check"></i><b>10.4.1</b> Persamaan Difusi</a></li>
+<li class="chapter" data-level="10.4.2" data-path="diffeq.html"><a href="diffeq.html#persamaan-gelombang"><i class="fa fa-check"></i><b>10.4.2</b> Persamaan Gelombang</a></li>
+<li class="chapter" data-level="10.4.3" data-path="diffeq.html"><a href="diffeq.html#laplace"><i class="fa fa-check"></i><b>10.4.3</b> Persamaan Laplace</a></li>
+<li class="chapter" data-level="10.4.4" data-path="diffeq.html"><a href="diffeq.html#setup.grid.1d"><i class="fa fa-check"></i><b>10.4.4</b> <code>setup.grid.1D()</code></a></li>
+<li class="chapter" data-level="10.4.5" data-path="diffeq.html"><a href="diffeq.html#setup.prop.1d"><i class="fa fa-check"></i><b>10.4.5</b> <code>setup.prop.1D()</code></a></li>
+<li class="chapter" data-level="10.4.6" data-path="diffeq.html"><a href="diffeq.html#tran.1d"><i class="fa fa-check"></i><b>10.4.6</b> <code>tran.1D()</code></a></li>
+<li class="chapter" data-level="10.4.7" data-path="diffeq.html"><a href="diffeq.html#ode.1d-atau-steady.1d"><i class="fa fa-check"></i><b>10.4.7</b> <code>ode.1D()</code> atau <code>steady.1D()</code></a></li>
+</ul></li>
+<li class="chapter" data-level="10.5" data-path="diffeq.html"><a href="diffeq.html#contoh-penerapan-paket-reactran"><i class="fa fa-check"></i><b>10.5</b> Contoh Penerapan Paket <code>ReacTran</code></a>
+<ul>
+<li class="chapter" data-level="10.5.1" data-path="diffeq.html"><a href="diffeq.html#persamaan-adveksi-difuksi-1d"><i class="fa fa-check"></i><b>10.5.1</b> Persamaan Adveksi-Difuksi 1D</a></li>
+<li class="chapter" data-level="10.5.2" data-path="diffeq.html"><a href="diffeq.html#persamaan-gelombang-1d"><i class="fa fa-check"></i><b>10.5.2</b> Persamaan Gelombang 1D</a></li>
+<li class="chapter" data-level="10.5.3" data-path="diffeq.html"><a href="diffeq.html#persamaan-laplace"><i class="fa fa-check"></i><b>10.5.3</b> Persamaan Laplace</a></li>
+<li class="chapter" data-level="10.5.4" data-path="diffeq.html"><a href="diffeq.html#persamaan-poisson-untuk-dipol"><i class="fa fa-check"></i><b>10.5.4</b> Persamaan Poisson untuk Dipol</a></li>
+</ul></li>
+<li class="chapter" data-level="10.6" data-path="diffeq.html"><a href="diffeq.html#studi-kasus-3"><i class="fa fa-check"></i><b>10.6</b> Studi Kasus</a>
+<ul>
+<li class="chapter" data-level="10.6.1" data-path="diffeq.html"><a href="diffeq.html#model-lotka-voltera"><i class="fa fa-check"></i><b>10.6.1</b> Model Lotka-Voltera</a></li>
+</ul></li>
+<li class="chapter" data-level="10.7" data-path="diffeq.html"><a href="diffeq.html#referensi-9"><i class="fa fa-check"></i><b>10.7</b> Referensi</a></li>
+<li class="chapter" data-level="10.8" data-path="diffeq.html"><a href="diffeq.html#latihan-4"><i class="fa fa-check"></i><b>10.8</b> Latihan</a></li>
+</ul></li>
+<li class="chapter" data-level="11" data-path="dataanalysis.html"><a href="dataanalysis.html"><i class="fa fa-check"></i><b>11</b> Analisis Data</a>
+<ul>
+<li class="chapter" data-level="11.1" data-path="dataanalysis.html"><a href="dataanalysis.html#importdata"><i class="fa fa-check"></i><b>11.1</b> Import Data</a></li>
+<li class="chapter" data-level="11.2" data-path="dataanalysis.html"><a href="dataanalysis.html#librarydata"><i class="fa fa-check"></i><b>11.2</b> Membaca Data Dari <em>Library</em></a></li>
+<li class="chapter" data-level="11.3" data-path="dataanalysis.html"><a href="dataanalysis.html#summarystats"><i class="fa fa-check"></i><b>11.3</b> Ringkasan Data</a></li>
+<li class="chapter" data-level="11.4" data-path="dataanalysis.html"><a href="dataanalysis.html#norm"><i class="fa fa-check"></i><b>11.4</b> Uji Normalitas Data Tunggal</a></li>
+<li class="chapter" data-level="11.5" data-path="dataanalysis.html"><a href="dataanalysis.html#uji-rata-rata-satu-dan-dua-sampel"><i class="fa fa-check"></i><b>11.5</b> Uji Rata-Rata Satu dan Dua Sampel</a></li>
+<li class="chapter" data-level="11.6" data-path="dataanalysis.html"><a href="dataanalysis.html#korelasi-antar-variabel"><i class="fa fa-check"></i><b>11.6</b> Korelasi Antar Variabel</a></li>
+<li class="chapter" data-level="11.7" data-path="dataanalysis.html"><a href="dataanalysis.html#analisis-varians"><i class="fa fa-check"></i><b>11.7</b> Analisis Varians</a></li>
+<li class="chapter" data-level="11.8" data-path="dataanalysis.html"><a href="dataanalysis.html#analisis-komponen-utama"><i class="fa fa-check"></i><b>11.8</b> Analisis Komponen Utama</a></li>
+<li class="chapter" data-level="11.9" data-path="dataanalysis.html"><a href="dataanalysis.html#analisis-cluster"><i class="fa fa-check"></i><b>11.9</b> Analisis Cluster</a>
+<ul>
+<li class="chapter" data-level="11.9.1" data-path="dataanalysis.html"><a href="dataanalysis.html#analisis-cluster-menggunakan-algoritma-pengelompokan-hierarkis-aglomeratif"><i class="fa fa-check"></i><b>11.9.1</b> Analisis Cluster Menggunakan Algoritma Pengelompokan Hierarkis Aglomeratif</a></li>
+<li class="chapter" data-level="11.9.2" data-path="dataanalysis.html"><a href="dataanalysis.html#pengelompokan-hierarkis-divisif"><i class="fa fa-check"></i><b>11.9.2</b> Pengelompokan Hierarkis Divisif</a></li>
+<li class="chapter" data-level="11.9.3" data-path="dataanalysis.html"><a href="dataanalysis.html#pengelompokan-menggunakan-algoritma-k-mean"><i class="fa fa-check"></i><b>11.9.3</b> Pengelompokan Menggunakan Algoritma K-Mean</a></li>
+<li class="chapter" data-level="11.9.4" data-path="dataanalysis.html"><a href="dataanalysis.html#pengelompokan-menggunakan-algoritma-pam"><i class="fa fa-check"></i><b>11.9.4</b> Pengelompokan Menggunakan Algoritma PAM</a></li>
+</ul></li>
+<li class="chapter" data-level="11.10" data-path="dataanalysis.html"><a href="dataanalysis.html#referensi-10"><i class="fa fa-check"></i><b>11.10</b> Referensi</a></li>
+</ul></li>
+<li class="chapter" data-level="12" data-path="datamod.html"><a href="datamod.html"><i class="fa fa-check"></i><b>12</b> Pemodelan Data</a>
+<ul>
+<li class="chapter" data-level="12.1" data-path="datamod.html"><a href="datamod.html#reglin"><i class="fa fa-check"></i><b>12.1</b> Regresi Linier</a>
+<ul>
+<li class="chapter" data-level="12.1.1" data-path="datamod.html"><a href="datamod.html#SLR"><i class="fa fa-check"></i><b>12.1.1</b> Regrasi Linier Sederhana (<em>Simple Linear Regression</em>)</a></li>
+<li class="chapter" data-level="12.1.2" data-path="datamod.html"><a href="datamod.html#MLR"><i class="fa fa-check"></i><b>12.1.2</b> Regresi Linier Berganda (<em>Multiple Linier Regression</em>)</a></li>
+<li class="chapter" data-level="12.1.3" data-path="datamod.html"><a href="datamod.html#lminter"><i class="fa fa-check"></i><b>12.1.3</b> Model Linier dengan Interaksi Antar Variabel Prediktor</a></li>
+<li class="chapter" data-level="12.1.4" data-path="datamod.html"><a href="datamod.html#nlinpred"><i class="fa fa-check"></i><b>12.1.4</b> Transformasi Non-linier Pada Prediktor</a></li>
+<li class="chapter" data-level="12.1.5" data-path="datamod.html"><a href="datamod.html#model-linier-dengan-prediktor-kategorikal"><i class="fa fa-check"></i><b>12.1.5</b> Model Linier dengan Prediktor Kategorikal</a></li>
+<li class="chapter" data-level="12.1.6" data-path="datamod.html"><a href="datamod.html#wlr"><i class="fa fa-check"></i><b>12.1.6</b> Regresi linier dengan Pembobotan</a></li>
+</ul></li>
+<li class="chapter" data-level="12.2" data-path="datamod.html"><a href="datamod.html#logreg"><i class="fa fa-check"></i><b>12.2</b> Regresi Logistik</a></li>
+<li class="chapter" data-level="12.3" data-path="datamod.html"><a href="datamod.html#referensi-11"><i class="fa fa-check"></i><b>12.3</b> Referensi</a></li>
+</ul></li>
+<li class="divider"></li>
+<li><a href="https://github.com/rstudio/bookdown" target="blank">Published with bookdown</a></li>
+
+</ul>
+
+      </nav>
+    </div>
+
+    <div class="book-body">
+      <div class="body-inner">
+        <div class="book-header" role="navigation">
+          <h1>
+            <i class="fa fa-circle-o-notch fa-spin"></i><a href="./">Metode Numerik Menggunakan R Untuk Teknik Lingkungan</a>
+          </h1>
+        </div>
+
+        <div class="page-wrapper" tabindex="-1" role="main">
+          <div class="page-inner">
+
+            <section class="normal" id="section-">
+<div id="intro" class="section level1 hasAnchor" number="1">
+<h1><span class="header-section-number">Chapter 1</span> Bahasa Pemrograman R<a href="intro.html#intro" class="anchor-section" aria-label="Anchor link to header"></a></h1>
+<p>Dewasa ini tersedia banyak sekali <em>software</em> yang dapat digunakan untuk membantu kita dalam melakukan analisa data. <em>software</em> yang digunakan dapat berupa <em>software</em> berbayar atau gratis.</p>
+<p><code>R</code> merupakan merupakan salah satu <em>software</em> gratis yang sangat populer di Indonesia. Kemudahan penggunaan serta banyaknya besarnya dukungan komunitas membuat <code>R</code> menjadi salah satu bahasa pemrograman paling populer di dunia.</p>
+<p>Paket yang disediakan untuk analisis statistika dan analisa numerik juga sangat lengkap dan terus bertambah setiap saat. Hal ini membuat <code>R</code> banyak digunakan oleh para analis data.</p>
+<p>Pada <em>chapter</em> ini penulis akan memperkenalkan kepada pembaca mengenai bahasa pemrograman <code>R</code>. Mulai dari sejarah, cara instalasi sampai dengan bagaimana kita memanfaatkan fitur dasar bantuan untuk menggali lebih jauh tentang fungsi-fungsi <code>R</code></p>
+<div id="sejarahR" class="section level2 hasAnchor" number="1.1">
+<h2><span class="header-section-number">1.1</span> Sejarah R<a href="intro.html#sejarahR" class="anchor-section" aria-label="Anchor link to header"></a></h2>
+<p><code>R</code> Merupakan bahasa yang digunakan dalam komputasi <strong>statistik</strong> yang pertama kali dikembangkan oleh <strong>Ross Ihaka</strong> dan <strong>Robert Gentlement</strong> di University of Auckland New Zealand yang merupakan akronim dari nama depan kedua pembuatnya. Sebelum <code>R</code> dikenal ada <code>S</code> yang dikembangkan oleh <strong>John Chambers</strong> dan rekan-rekan dari <strong>Bell Laboratories</strong> yang memiliki fungsi yang sama untuk komputasi statistik. Hal yang membedakan antara keduanya adalah <code>R</code> merupakan sistem komputasi yang bersifat gratis.Logo <code>R</code> dapat dilihat pada Gambar <a href="intro.html#fig:Logo">1.1</a>.</p>
+<div class="figure" style="text-align: center"><span style="display:block;" id="fig:Logo"></span>
+<img src="images/r-icon.png" alt="Logo R." width="40%" />
+<p class="caption">
+Gambar 1.1: Logo R.
+</p>
+</div>
+<p><code>R</code> dapat dibilang merupakan aplikasi sistem <strong>statistik</strong> yang kaya. Hal ini disebabkan banyak sekali Paket yang dikembangkan oleh pengembang dan komunitas untuk keperluan analisa statistik seperti <em>linear regression</em>, <em>clustering</em>, <em>statistical test</em>, dll. Selain itu, <code>R</code> juga dapat ditambahkan Paket-Paket lain yang dapat meningkatkan fiturnya.</p>
+<p>Sebagai sebuah bahasa pemrograman yang banyak digunakan untuk keperluan analisa data, <code>R</code> dapat dioperasikan pada berbagai sistem operasi pada komputer. Adapun sistem operasi yang didukung antara lain: <code>UNIX</code>, <code>Linux</code>, <code>Windows</code>, dan <code>MacOS</code>.</p>
+</div>
+<div id="fiturR" class="section level2 hasAnchor" number="1.2">
+<h2><span class="header-section-number">1.2</span> Fitur dan Karakteristik R<a href="intro.html#fiturR" class="anchor-section" aria-label="Anchor link to header"></a></h2>
+<p><code>R</code> memiliki karakteristik yang berbeda dengan bahasa pemrograman lain seperti <code>C++</code>,<code>python</code>, dll. <code>R</code> memiliki aturan/sintaks yang berbeda dengan bahasa pemrograman yang lain yang membuatnya memiliki ciri khas tersendiri dibanding bahasa pemrograman yang lain.</p>
+<p>Beberapa ciri dan fitur pada <code>R</code> antara lain:</p>
+<ol style="list-style-type: decimal">
+<li><strong>Bahasa <code>R</code> bersifat case sensitif</strong>. maksudnya adalah dalam proses input <code>R</code> huruf besar dan kecil sangat diperhatikan. Sebagai contoh kita ingin melihat apakah objek A dan B pada sintaks berikut:</li>
+</ol>
+<div class="sourceCode" id="cb1"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb1-1"><a href="intro.html#cb1-1" tabindex="-1"></a>A <span class="ot">&lt;-</span> <span class="st">&quot;Andi&quot;</span></span>
+<span id="cb1-2"><a href="intro.html#cb1-2" tabindex="-1"></a>B <span class="ot">&lt;-</span> <span class="st">&quot;andi&quot;</span></span>
+<span id="cb1-3"><a href="intro.html#cb1-3" tabindex="-1"></a></span>
+<span id="cb1-4"><a href="intro.html#cb1-4" tabindex="-1"></a><span class="co"># cek kedua objek A dan B</span></span>
+<span id="cb1-5"><a href="intro.html#cb1-5" tabindex="-1"></a>A <span class="sc">==</span> B</span></code></pre></div>
+<pre><code>## [1] FALSE</code></pre>
+<div class="sourceCode" id="cb3"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb3-1"><a href="intro.html#cb3-1" tabindex="-1"></a><span class="co"># Kesimpulan : Kedua objek berbeda</span></span></code></pre></div>
+<ol start="2" style="list-style-type: decimal">
+<li><strong>Segala sesuatu yang ada pada program <code>R</code> akan diangap sebagai objek</strong>. konsep objek ini sama dengan bahasa pemrograma berbasis objek yang lain seperti <code>Java</code>, <code>C++</code>, <code>python</code>, dll.Perbedaannya adalah bahasa <code>R</code> relatif lebih sederhana dibandingkan bahasa pemrograman berbasis obejk yang lain.</li>
+<li><strong>interpreted language atau script</strong>. Bahasa <code>R</code> memungkinkan pengguna untuk melakukan kerja pada <code>R</code> tanpa perlu kompilasi kode program menjadi bahasa mesin.</li>
+<li>Mendukung proses <strong>loop</strong>, <strong>decision making</strong>, dan menyediakan berbagai jenis <strong>operstor</strong> (aritmatika, logika, dll).</li>
+<li><strong>Mendukung export dan import berbagai format file</strong>, seperti:TXT, CSV, XLS, dll.</li>
+<li><strong>Mudah ditingkatkan melalui penambahan fungsi atau <em>library</em></strong>. Penambahan Paket dapat dilakukan secara online melalui <a href="https://cran.r-project.org/">CRAN</a> atau melalui sumber seperti <a href="https://github.com/">github</a>.</li>
+<li><strong>Menyedikan berbagai fungsi untuk keperluan visualisasi data</strong>. Visualisasi data pada <code>R</code> dapat menggunakan Paket bawaan atau Paket lain seperti <code>ggplo2</code>,<code>ggvis</code>, dll.</li>
+</ol>
+</div>
+<div id="prosconsR" class="section level2 hasAnchor" number="1.3">
+<h2><span class="header-section-number">1.3</span> Kelebihan dan Kekurangan R<a href="intro.html#prosconsR" class="anchor-section" aria-label="Anchor link to header"></a></h2>
+<p>Selain karena <code>R</code> dapat digunakan secara gratis terdapat <strong>kelebihan</strong> lain yang ditawarkan, antara lain:</p>
+<ol style="list-style-type: decimal">
+<li><strong>Protability</strong>. Penggunaan software dapat digunakan kapanpun tanpa terikat oleh masa berakhirnya lisensi.</li>
+<li><strong>Multiplatform</strong>. <code>R</code> bersifat <em>Multiplatform Operating Systems</em>, dimana <em>software</em> <code>R</code> lebih kompatibel dibanding <em>software</em> statistika lainnya. Hal in berdampak pada kemudahan dalam penyesuaian jika pengguna harus berpindah sistem operasi karena <code>R</code> baik pada sistem operasi seperti <code>windows</code> akan sama pengoperasiannya dengan yang ada di <code>Linux</code> (Paket yang digunakan sama).</li>
+<li><strong>General</strong> dan <strong>Cutting-edge</strong>. Berbagai metode statistik baik metode klasik maupun baru telah diprogram kedalam <code>R</code>. Dengan demikian <em>software</em> ini dapat digunakan untuk analisis statistika dengan pendekatan klasik dan pendekatan modern.</li>
+<li><strong>Programable</strong>. Pengguna dapat memprogram metode baru atau mengembangakan modifikasi dari analisis statistika yang telah ada pada sistem <code>R</code>.</li>
+<li><strong>Berbasis analisis matriks</strong>. Bahasa <code>R</code> sangat baik digunakan untuk <em>programming</em> dengan basis matriks.</li>
+<li>Fasiltas grafik yang lengkap.</li>
+</ol>
+<p>Adapun kekurangan dari <code>R</code> antara lain:</p>
+<ol style="list-style-type: decimal">
+<li><strong>Point and Click GUI</strong>. Interaksi utama dengan <code>R</code> bersifat <em>CLI</em> (<em>Command Line Interface</em>), walaupun saat ini telah dikembangkan Paket yang memungkinkan kita berinteraksi dengan <code>R</code> menggunakan <em>GUI</em> (<em>Graphical User Interface</em>) sederhana menggunakan Paket <code>R-Commander</code> yang memiliki fungsi yang terbatas. <code>R- Commander</code> sendiri merupakan <em>GUI</em> yang diciptakan dengan tujuan untuk keperluan pengajaran sehingga analisis statistik yang disediakan adalah yang klasik. Meskipun terbatas Paket ini berguna jika kita membutuhkan analisis statistik sederhana dengan cara yang simpel.</li>
+<li><strong>Missing statistical function</strong>. Meskipun analisis statistika dalam <code>R</code> sudah cukup lengkap, namun tidak semua metode statistika telah diimplementasikan ke dalam <code>R</code>. Namun karena <code>R</code> merupakan <em>lingua franca</em> untuk keperluan komputasi statistika modern staan ini, dapat dikatakan ketersediaan fungsi tambahan dalam bentuk Paket hanya masalah waktu saja.</li>
+</ol>
+</div>
+<div id="rstudio" class="section level2 hasAnchor" number="1.4">
+<h2><span class="header-section-number">1.4</span> RStudio<a href="intro.html#rstudio" class="anchor-section" aria-label="Anchor link to header"></a></h2>
+<p>Aplikasi <code>R</code> pada dasarnya berbasis teks atau <em>command line</em> sehingga pengguna harus mengetikkan perintah-perintah tertentu dan harus hapal perintah-perintahnya. Setidaknya jika kita ingin melakukan kegiatan analisa data menggunakan <code>R</code> kita harus selalu siap dengan perintah-perintah yang hendak digunakan sehingga buku manual menjadi sesuatu yang wajib adasaat berkeja dengan <code>R</code>.</p>
+<p>Kondisi ini sering kali membingunkan bagi pengguna pemula maupun pengguna mahir yang sudah terbiasa dengan aplikasi statistik lain seperti SAS, SPSS, Minitab, dll. Alasan itulah yang menyebabkan pengembang <code>R</code> membuat berbagai <em>frontend</em> untuk <code>R</code> yang berguna untuk memudahkan dalam pengoperasian <code>R</code>.</p>
+<p><code>RStudio</code> merupakan salah satu bentuk <em>frontend</em> <code>R</code> yang cukup populer dan nyaman digunakan. Selain nyaman digunakan, <code>RStudio</code> memungkinkan kita melakukan penulisan laporan menggunakan <code>Rmarkdown</code> atau <code>RNotebook</code> serta membuat berbagai bentuk project seperti shyni, dll. Pada <code>R</code> studio juga memungkinkan kita mengatur <em>working directory</em> tanpa perlu mengetikkan sintaks pada Commander, yang diperlukan hanya memilihnya di menu <code>RStudio</code>. Selain itu, kita juga dapat meng-import file berisikan data tanpa perlu mengetikkan pada Commander dengan cara memilih pada menu <code>Environment</code>.</p>
+</div>
+<div id="installR" class="section level2 hasAnchor" number="1.5">
+<h2><span class="header-section-number">1.5</span> Menginstall R dan RStudio<a href="intro.html#installR" class="anchor-section" aria-label="Anchor link to header"></a></h2>
+<p>Pada tutorial ini hanya akan dijelaskan bagaimana menginstal <code>R</code> dan <code>RStudio</code> pada sistem operasi <code>windows</code>. Sebelum memulai menginstal sebaiknya pembaca mengunduh terlebih dahulu <em>installer</em> <a href="https://cran.r-project.org/bin/windows/base/">R</a> dan <a href="https://www.rstudio.com/products/rstudio/download/">RStudio</a>.</p>
+<ol style="list-style-type: decimal">
+<li>Jalankan proses pemasangan dengan meng-klik <em>installer</em> aplikasi <code>R</code> dan <code>RStudio</code>.</li>
+<li>Ikuti langkah proses pemasangan aplikasi yang ditampilkan dengan klik <code>OK</code> atau <code>Next</code>.</li>
+<li>Apabila pemasangan telah dilakukan, jalankan aplikasi yang telah terpasang untuk menguji jika aplikasi telah berjalan dengan baik.</li>
+</ol>
+<p>Jendela aplikasi yang telah terpasang ditampilkan pada Gambar <a href="intro.html#fig:jendela-R">1.2</a> dan Gambar <a href="intro.html#fig:jendela-RStudio">1.3</a>.</p>
+<div class="figure" style="text-align: center"><span style="display:block;" id="fig:jendela-R"></span>
+<img src="images/jendela_r.png" alt="Jendela R." width="80%" />
+<p class="caption">
+Gambar 1.2: Jendela R.
+</p>
+</div>
+<div class="figure" style="text-align: center"><span style="display:block;" id="fig:jendela-RStudio"></span>
+<img src="images/jendela_rstudio.png" alt="Jendela RStudio." width="80%" />
+<p class="caption">
+Gambar 1.3: Jendela RStudio.
+</p>
+</div>
+<blockquote>
+<p><strong>Tips:</strong> Sebaiknya install <code>R</code> terlebih dahulu sebelum <code>RStudio</code></p>
+</blockquote>
+</div>
+<div id="wdR" class="section level2 hasAnchor" number="1.6">
+<h2><span class="header-section-number">1.6</span> Working Directory<a href="intro.html#wdR" class="anchor-section" aria-label="Anchor link to header"></a></h2>
+<p>Setiap pengguna akan bekerja pada tempat khusus yang disebut sebagai <em>working directory</em>. <em>working directory</em> merupakan sebuah folder dimana <code>R</code> akan membaca dan menyimpan file kerja kita. Pada pengguna <code>windows</code>, <em>working directory</em> secara default pada saat pertama kali menginstall <code>R</code> terletak pada folder <code>c:\\Document</code>.</p>
+<div id="changewdR" class="section level3 hasAnchor" number="1.6.1">
+<h3><span class="header-section-number">1.6.1</span> Mengubah Lokasi Working Directory<a href="intro.html#changewdR" class="anchor-section" aria-label="Anchor link to header"></a></h3>
+<p>Kita dapat mengubah lokasi <em>working directory</em> berdasarkan lokasi yang kita inginkan, misalnya letak data yang akan kita olah tidak ada pada folder default atau kita ingin pekerjaan kita terkait <code>R</code> dapat berlangsung pada satu folder khusus.</p>
+<p>Berikut adalah cara mengubah <em>working directory</em> pada <code>R</code>.</p>
+<ol style="list-style-type: decimal">
+<li>Buatlah folder pada drive (kita bisa membuat folder pada selain drive c) dan namai dengan nama yang kalian inginkan. Pada tutorial ini penulis menggunakan nama folder <code>R</code>.</li>
+<li>Jika pengguna menggunakan <code>RStudio</code>, pada menu <code>RStudio</code> pilih <strong>Session &gt; Set Working Directory &gt; Chooses Directory</strong>. Proses tersebut ditampilkan pada Gambar <a href="intro.html#fig:working">1.4</a></li>
+<li>Pilih folder yang telah dibuat pada step 1 sebagai *working directory.</li>
+</ol>
+<blockquote>
+<p><strong>Penting:</strong> Data atau file yang hendak dibaca selama proses kerja pada <code>R</code> harus selalu diletakkan pada working directory. Jika tidak maka data atau file tidak akan terbaca.</p>
+</blockquote>
+<p>Untuk mengecek apakah proses perubahan telah terjadi, kita dapat mengeceknya dengan menjalankan perintah berikut untuk melihat lokasi <em>working directory</em> kita yang baru.</p>
+<div class="sourceCode" id="cb4"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb4-1"><a href="intro.html#cb4-1" tabindex="-1"></a><span class="fu">getwd</span>()</span></code></pre></div>
+<div class="figure" style="text-align: center"><span style="display:block;" id="fig:working"></span>
+<img src="images/working.png" alt="Mengubah working directory." width="80%" />
+<p class="caption">
+Gambar 1.4: Mengubah working directory.
+</p>
+</div>
+<p>Selain itu kita dapat mengubah <em>working directory</em> menggunakan perintah berikut:</p>
+<div class="sourceCode" id="cb5"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb5-1"><a href="intro.html#cb5-1" tabindex="-1"></a><span class="co"># Ubah working directori pada folder R</span></span>
+<span id="cb5-2"><a href="intro.html#cb5-2" tabindex="-1"></a><span class="fu">setwd</span>(<span class="st">&quot;/Documents/R&quot;</span>)</span></code></pre></div>
+<blockquote>
+<p><strong>Peringatan !!!</strong></p>
+<p>Pada proses pengisian lokasi folder pastikan pemisah pada lokasi folder menggunakan tanda “/” bukan “"</p>
+</blockquote>
+</div>
+<div id="defaultwdR" class="section level3 hasAnchor" number="1.6.2">
+<h3><span class="header-section-number">1.6.2</span> Mengubah Lokasi Working Directory Default<a href="intro.html#defaultwdR" class="anchor-section" aria-label="Anchor link to header"></a></h3>
+<p>Pada proses yang telah penulis jelaskan sebelumnya. Proses perubahan <em>working directory</em> hanya berlaku pada saat pekerjaan tersebut dilakukan. Setelah pekerjaan selesai dan kita menjalankan kembali <code>R</code> maka <em>working directory</em> akan kembali secara default pada working directory lama.</p>
+<p>Untuk membuat lokasi default <em>working directory</em> pindah, kita dapat melakukannya dengan memilih pada menu: <strong>Tools &gt; Global options &gt; pada “General” klik pada “Browse” dan pilih lokasi working directory yang diinginkan</strong>. Proses tersebut ditampilkan pada Gambar <a href="intro.html#fig:default">1.5</a></p>
+<div class="figure" style="text-align: center"><span style="display:block;" id="fig:default"></span>
+<img src="images/default.png" alt="Merubah working directory melalui Global options." width="80%" />
+<p class="caption">
+Gambar 1.5: Merubah working directory melalui Global options.
+</p>
+</div>
+</div>
+</div>
+<div id="installlibraryR" class="section level2 hasAnchor" number="1.7">
+<h2><span class="header-section-number">1.7</span> Memasang dan Mengaktifkan Paket R<a href="intro.html#installlibraryR" class="anchor-section" aria-label="Anchor link to header"></a></h2>
+<p><code>R</code> dapat ditingkatkan fungsionalitasnya melalui Paket-Paket yang tersedia secara luas. Paket-Paket ini dikembangkan secara spesifik oleh para pengembang sesuai dengan tujuan paketnya, seperti: <code>tidyverse</code> untuk <em>data science</em>, <code>pracma</code> untuk analisis diferensial, dll.</p>
+<p>Untuk menginstall Paket yang kita inginkan, kita dapat menggunakan fungsi <code>install.packages()</code>. Berikut adalah contoh bagaimana cara menginstall Paket <code>tidyverse</code>:</p>
+<div class="sourceCode" id="cb6"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb6-1"><a href="intro.html#cb6-1" tabindex="-1"></a><span class="fu">install.packages</span>(<span class="st">&quot;tidyverse&quot;</span>)</span></code></pre></div>
+<p>Paket yang telah diinstall tidak dapat langsung digunakan. Untuk menggunakan fungsi-fungsi yang tersedia pada Paket tersebut kita perlu terlebih dahulu mengaktifkannya menggunakan fungsi <code>library()</code>. Berikut adalah contoh sintaks untuk mengaktifkan Paket <code>tidyverse</code>:</p>
+<div class="sourceCode" id="cb7"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb7-1"><a href="intro.html#cb7-1" tabindex="-1"></a><span class="fu">library</span>(tidyverse)</span></code></pre></div>
+<p>Bagaimana ingin menggunakan fungsi pada Paket namun tidak ingin mengaktifkan paketnya terlebih dahulu menggunakan fungsi <code>library()</code>? Untuk melakukannya kita perlu mengetikkan nama Paket dikuti oleh tanda “::” diikuti fungsi yang ingin kita gunakan. Berikut adalah contoh penggunaan fungsi <code>read_csv()</code> dari Paket <code>readr</code> (salah satu Paket yang terdapat pada kumpulan Paket <code>tidyverse</code>) untuk membaca file <code>contoh.csv</code>:</p>
+<div class="sourceCode" id="cb8"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb8-1"><a href="intro.html#cb8-1" tabindex="-1"></a>readr<span class="sc">::</span><span class="fu">read_csv</span>(<span class="st">&quot;contoh.csv&quot;</span>)</span></code></pre></div>
+</div>
+<div id="helpR" class="section level2 hasAnchor" number="1.8">
+<h2><span class="header-section-number">1.8</span> Fasilitas Help<a href="intro.html#helpR" class="anchor-section" aria-label="Anchor link to header"></a></h2>
+<p>Agar dapat menggunakan <code>R</code> dengan secara lebih baik, pengetahuan untuk mengakses fasilitas <em>help</em> in cukup penting untuk disampaikan. Adapun cara yang dapat digunakan adalah sebagai berikut.</p>
+<div id="searchhelp" class="section level3 hasAnchor" number="1.8.1">
+<h3><span class="header-section-number">1.8.1</span> Mencari Help dari Suatu Perintah Tertentu<a href="intro.html#searchhelp" class="anchor-section" aria-label="Anchor link to header"></a></h3>
+<p>Untuk memperoleh bantuan terkait suatu perintah tertentu kita dapat menggunakan fungsi <code>help()</code>. Secara umum format yang digunakan adalah sebagai berikut:</p>
+<div class="sourceCode" id="cb9"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb9-1"><a href="intro.html#cb9-1" tabindex="-1"></a><span class="fu">help</span>(nama_perintah)</span></code></pre></div>
+<p>atau dapat juga menggunakan tanda tanya (?) pada awal <code>nama_perintah</code> seperti berikut:</p>
+<div class="sourceCode" id="cb10"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb10-1"><a href="intro.html#cb10-1" tabindex="-1"></a>?nama_perintah</span></code></pre></div>
+<p>Misalkan kita kebingungan terkait bagaimana cara menuliskan perintah untuk menghitung rata-rata suatu vektor. Kita dapat mengetikkan perintah berikut untuk mengakses fasilitas <em>help</em>.</p>
+<div class="sourceCode" id="cb11"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb11-1"><a href="intro.html#cb11-1" tabindex="-1"></a><span class="fu">help</span>(mean)</span>
+<span id="cb11-2"><a href="intro.html#cb11-2" tabindex="-1"></a></span>
+<span id="cb11-3"><a href="intro.html#cb11-3" tabindex="-1"></a><span class="co">#atau</span></span>
+<span id="cb11-4"><a href="intro.html#cb11-4" tabindex="-1"></a>?mean</span></code></pre></div>
+<p>Perintah tersebut akan memunculkan hasil berupa dokumentasi yang ditampilkan pada Gambar <a href="intro.html#fig:meandoc">1.6</a>.</p>
+<div class="figure" style="text-align: center"><span style="display:block;" id="fig:meandoc"></span>
+<img src="images/meandoc.png" alt="Jendela help dokumentasi fungsi mean()." width="50%" />
+<p class="caption">
+Gambar 1.6: Jendela help dokumentasi fungsi mean().
+</p>
+</div>
+<p>Keterangan pada jendela pada Gambar <a href="intro.html#fig:meandoc">1.6</a> adalah sebagia berikut:</p>
+<ol style="list-style-type: decimal">
+<li>Pada bagian jendela kiri atas jendela <em>help</em>, diberikan keterangan nama dari perintah yang sedang ditampilkan.</li>
+<li>Selanjutnya, pada bagian atas dokumen, ditampilkan infomasi terkait nama perintah, dan nama Paket yang memuat perintah tersebut. Pada gambar diatas informasi terkait perintah dan nama Paket ditunjukkan pada teks <code>mean {base}</code> yang menunjukkan perintah <code>mean()</code> pada Paket (Paket) <em>base</em> (Paket bawaan <code>R</code>).</li>
+<li>Setiap jendela <em>help</em> dari suatu perintah tertentu selanjutnya akan memuat bagian-bagian berikut:</li>
+</ol>
+<ul>
+<li><em>Title</em></li>
+<li><em>Description</em> : deskripsi singkat tentang perintah.</li>
+<li><em>Usage</em> : menampilkan sintaks perintah untuk penggunaan perintah tersebut.</li>
+<li><em>Arguments</em> : keterangan mengenai <em>argument/input</em>yang diperlukan pada perintah tersebut.</li>
+<li><em>Details</em> : keterangan lebih lengkap lengkap tentang perintah tersebut.</li>
+<li><em>Value</em> : keterangan tentang <em>output</em> suatu perintah dapat diperoleh pada bagian ini.</li>
+<li><em>Author(s)</em> : memberikan keterangan tentang <em>Author</em> dari perintah tersebut.</li>
+<li><em>References</em> : seringkali referensi yang dapat digunakan untuk memperoleh keterangan lebih lanjut terhadap suatu perintah ditampilkan pada bagian ini.</li>
+<li><em>See also</em>: bagian ini berisikan daftar perintah/fungsi yang berhubungan erat dengan perintah tersebut.</li>
+<li><em>Example</em> : berisikan contoh-contoh penggunaan perintah tersebut.</li>
+</ul>
+<p>Kita juga dapat melihat contoh penggunaan dari perintah tersebut. Untuk melakukannya kita dapat menggunakan fungsi <code>example()</code>. Fungsi tersebut akan menampilkan contoh kode penerapan dari fungsi yang kita inginkan. Secara sederhana fungsi tersebut dapat dituliskan sebagai berikut:</p>
+<div class="sourceCode" id="cb12"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb12-1"><a href="intro.html#cb12-1" tabindex="-1"></a><span class="fu">example</span>(nama_perintah)</span></code></pre></div>
+<p>Untuk mengetahui contoh kode fungsi <code>mean()</code>, ketikkan sintaks berikut:</p>
+<div class="sourceCode" id="cb13"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb13-1"><a href="intro.html#cb13-1" tabindex="-1"></a><span class="fu">example</span>(mean)</span></code></pre></div>
+<pre><code>## 
+## mean&gt; x &lt;- c(0:10, 50)
+## 
+## mean&gt; xm &lt;- mean(x)
+## 
+## mean&gt; c(xm, mean(x, trim = 0.10))
+## [1] 8.75 5.50</code></pre>
+<p>kita juga dapat mencoba kode yang dihasilkan pada console <code>R</code>. Berikut adalah contoh penerapannya:</p>
+<div class="sourceCode" id="cb15"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb15-1"><a href="intro.html#cb15-1" tabindex="-1"></a><span class="co"># Menghitung rata-rata bilangan 1 sampai 10 dan 50</span></span>
+<span id="cb15-2"><a href="intro.html#cb15-2" tabindex="-1"></a><span class="co"># membuat vektor</span></span>
+<span id="cb15-3"><a href="intro.html#cb15-3" tabindex="-1"></a>x <span class="ot">&lt;-</span> <span class="fu">c</span>(<span class="dv">0</span><span class="sc">:</span><span class="dv">10</span>, <span class="dv">50</span>)</span>
+<span id="cb15-4"><a href="intro.html#cb15-4" tabindex="-1"></a></span>
+<span id="cb15-5"><a href="intro.html#cb15-5" tabindex="-1"></a><span class="co"># Print</span></span>
+<span id="cb15-6"><a href="intro.html#cb15-6" tabindex="-1"></a>x</span></code></pre></div>
+<pre><code>##  [1]  0  1  2  3  4  5  6  7  8  9 10 50</code></pre>
+<div class="sourceCode" id="cb17"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb17-1"><a href="intro.html#cb17-1" tabindex="-1"></a><span class="co"># mean</span></span>
+<span id="cb17-2"><a href="intro.html#cb17-2" tabindex="-1"></a><span class="fu">mean</span>(x)</span></code></pre></div>
+<pre><code>## [1] 8.75</code></pre>
+<p>Pembaca dapat mencoba melakukanya sendiri dengan mengganti nilai yang telah ada serta mencoba contoh kode yang lain.</p>
+</div>
+<div id="generalhelp" class="section level3 hasAnchor" number="1.8.2">
+<h3><span class="header-section-number">1.8.2</span> General Help<a href="intro.html#generalhelp" class="anchor-section" aria-label="Anchor link to header"></a></h3>
+<p>Kita juga dapat membaca beberapa dokumen manual yang ada pada <code>R</code>. Untuk melakukannya jalankan perintah berikut:</p>
+<div class="sourceCode" id="cb19"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb19-1"><a href="intro.html#cb19-1" tabindex="-1"></a><span class="fu">help.start</span>()</span></code></pre></div>
+<p>Output yang dihasilkan berupa link pada sejumlah dokumen yang dapat kita klik. Tampilan halaman yang dihasilkan disajikan pada Gambar <a href="intro.html#fig:generalhelp">1.7</a>.</p>
+<div class="figure" style="text-align: center"><span style="display:block;" id="fig:generalhelp"></span>
+<img src="images/generalhelp.png" alt="Jendela general help dokumentasi fungsi mean()." width="50%" />
+<p class="caption">
+Gambar 1.7: Jendela general help dokumentasi fungsi mean().
+</p>
+</div>
+</div>
+<div id="othershelp" class="section level3 hasAnchor" number="1.8.3">
+<h3><span class="header-section-number">1.8.3</span> Fasilitas Help Lainnya<a href="intro.html#othershelp" class="anchor-section" aria-label="Anchor link to header"></a></h3>
+<p>Selain yang telah penulis sebutkan sebelumnya. Kita juga dapat memanfaatkan fasilitas <em>help</em> lainnya melalui fungsi <code>apropos()</code> dan <code>help.search()</code>.</p>
+<p><code>apropos ()</code>: mengembalikan daftar objek, berisi pola yang pembaca cari, dengan pencocokan sebagian. Ini berguna ketika pembaca tidak ingat persis nama fungsi yang akan digunakan. Berikut adalah contoh ketika penulis ingin mengetahui fungsi yang digunakan untuk menghitung median.</p>
+<div class="sourceCode" id="cb20"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb20-1"><a href="intro.html#cb20-1" tabindex="-1"></a><span class="fu">apropos</span>(<span class="st">&quot;med&quot;</span>)</span></code></pre></div>
+<pre><code>## [1] &quot;elNamed&quot;        &quot;elNamed&lt;-&quot;      &quot;median&quot;        
+## [4] &quot;median.default&quot; &quot;medpolish&quot;      &quot;runmed&quot;</code></pre>
+<p><em>List</em> yang dihasilkan berupa fungsi-fungsi yang memiliki elemen kata “med”. Berdasarkan pencaria tersebut penulis dapat mencoba menggunakan fungsi “median” untuk menghitung median.</p>
+<p><code>help.search ()</code> (sebagai alternatif ??): mencari dokumentasi yang cocok dengan karakter yang diberikan dengan cara yang berbeda. Ini mengembalikan daftar fungsi yang mengandung istilah yang pembaca cari dengan deskripsi singkat dari fungsi.</p>
+<p>Berikut adalah contoh penerapan dari fungsi tersebut:</p>
+<div class="sourceCode" id="cb22"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb22-1"><a href="intro.html#cb22-1" tabindex="-1"></a><span class="fu">help.search</span>(<span class="st">&quot;mean&quot;</span>)</span>
+<span id="cb22-2"><a href="intro.html#cb22-2" tabindex="-1"></a></span>
+<span id="cb22-3"><a href="intro.html#cb22-3" tabindex="-1"></a><span class="co"># atau</span></span>
+<span id="cb22-4"><a href="intro.html#cb22-4" tabindex="-1"></a>??mean</span></code></pre></div>
+<p><em>Output</em> yang dihasilkan akan tampak seperti pada Gambar <a href="intro.html#fig:helpsearch">1.8</a>.</p>
+<div class="figure" style="text-align: center"><span style="display:block;" id="fig:helpsearch"></span>
+<img src="images/helpsearch.png" alt="Jendela help search dokumentasi fungsi mean()." width="50%" />
+<p class="caption">
+Gambar 1.8: Jendela help search dokumentasi fungsi mean().
+</p>
+</div>
+</div>
+</div>
+<div id="referensi" class="section level2 hasAnchor" number="1.9">
+<h2><span class="header-section-number">1.9</span> Referensi<a href="intro.html#referensi" class="anchor-section" aria-label="Anchor link to header"></a></h2>
+<ol style="list-style-type: decimal">
+<li>Primartha, R. 2018. <strong>Belajar Machine Learning Teori dan Praktik</strong>. Penerbit Informatika : Bandung</li>
+<li>Rosadi,D. 2016. <strong>Analisis Statistika dengan R</strong>. Gadjah Mada University Press: Yogyakarta</li>
+<li>STHDA. Running RStudio and Setting Up Your Working Directory - Easy R Programming .<a href="http://www.sthda.com/english/wiki/running-rstudio-and-setting-up-your-working-directory-easy-r-programming#set-your-working-directory" class="uri">http://www.sthda.com/english/wiki/running-rstudio-and-setting-up-your-working-directory-easy-r-programming#set-your-working-directory</a></li>
+<li>STDHA. <strong>Getting Help With Functions In R Programming</strong>. <a href="http://www.sthda.com/english/wiki/getting-help-with-functions-in-r-programming" class="uri">http://www.sthda.com/english/wiki/getting-help-with-functions-in-r-programming</a> .</li>
+<li>Venables, W.N. Smith D.M. and R Core Team. 2018. <strong>An Introduction to R</strong>. R Manuals.</li>
+</ol>
+
+<style>
+body{
+text-align: justify}
+</style>
+</div>
+</div>
+            </section>
+
+          </div>
+        </div>
+      </div>
+<a href="index.html" class="navigation navigation-prev " aria-label="Previous page"><i class="fa fa-angle-left"></i></a>
+<a href="calculation.html" class="navigation navigation-next " aria-label="Next page"><i class="fa fa-angle-right"></i></a>
+    </div>
+  </div>
+<script src="libs/gitbook/js/app.min.js"></script>
+<script src="libs/gitbook/js/clipboard.min.js"></script>
+<script src="libs/gitbook/js/plugin-search.js"></script>
+<script src="libs/gitbook/js/plugin-sharing.js"></script>
+<script src="libs/gitbook/js/plugin-fontsettings.js"></script>
+<script src="libs/gitbook/js/plugin-bookdown.js"></script>
+<script src="libs/gitbook/js/jquery.highlight.js"></script>
+<script src="libs/gitbook/js/plugin-clipboard.js"></script>
+<script>
+gitbook.require(["gitbook"], function(gitbook) {
+gitbook.start({
+"sharing": {
+"github": false,
+"facebook": true,
+"twitter": true,
+"linkedin": false,
+"weibo": false,
+"instapaper": false,
+"vk": false,
+"whatsapp": false,
+"all": ["facebook", "twitter", "linkedin", "weibo", "instapaper"]
+},
+"fontsettings": {
+"theme": "white",
+"family": "sans",
+"size": 2
+},
+"edit": {
+"link": null,
+"text": null
+},
+"history": {
+"link": null,
+"text": null
+},
+"view": {
+"link": null,
+"text": null
+},
+"download": null,
+"search": {
+"engine": "fuse",
+"options": null
+},
+"toc": {
+"collapse": "subsection"
+}
+});
+});
+</script>
+
+<!-- dynamically load mathjax for compatibility with self-contained -->
+<script>
+  (function () {
+    var script = document.createElement("script");
+    script.type = "text/javascript";
+    var src = "true";
+    if (src === "" || src === "true") src = "https://cdnjs.cloudflare.com/ajax/libs/mathjax/2.7.9/latest.js?config=TeX-MML-AM_CHTML";
+    if (location.protocol !== "file:")
+      if (/^https?:/.test(src))
+        src = src.replace(/^https?:/, '');
+    script.src = src;
+    document.getElementsByTagName("head")[0].appendChild(script);
+  })();
+</script>
+</body>
+
+</html>
