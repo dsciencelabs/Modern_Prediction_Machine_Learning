@@ -223,12 +223,6 @@ Penerapannya terdapat pada sintaks berikut:
 v <- c(TRUE,TRUE, FALSE)
 t <- c(FALSE,FALSE,FALSE)
 
-# Operator &&
-print(v&&t)
-
-# Operator ||
-print(v||t)
-
 # Operator !
 print(!v)
 

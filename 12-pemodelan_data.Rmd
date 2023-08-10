@@ -216,34 +216,8 @@ summary(lm(medv~exp(lstat), data=Boston))
 
 Regresi linier dapat pula dilakukan dengan jenis variabel prediktor berupa variabel kategorikal. Untuk dapat melakukannya jenis data variabel kategorikal terlebih dahulu dirubah kedalam factor.
 
-Pada contoh kali ini, kita akan menggunakan dataset `utds` dari *library* `edtaR` untuk memodelkan konsentrasi `uranium` dalam air tanah menggunakan variabel `TDS` pada berbagai kondisi kesadahan. Berikut adalah sintaks yang digunakan
+BELUM ADA contoh
 
-```{r}
-library(edtaR)
-str(utds)
-
-# ubah variabe Bicarbonat menjadi factor
-utds$Bicarbonate <- factor(utds$Bicarbonate,
-                           levels = c(0,1),
-                           labels = c(" <= 50%",
-                                      " > 50%"))
-
-str(utds)
-```
-
-```{r}
-lm.fit <- lm(Uranium~., data=utds)
-anova(lm.fit)
-summary(lm.fit)
-```
-
-Plot residual yang ditampilkan pada Gambar \@ref(fig:lmcat).
-
-```{r lmcat,echo=FALSE, fig.cap='Analisis residual model dengan melibatkan variabel kategorikal pada dataset utds.', out.width='80%', fig.align='center', message=FALSE, warning=FALSE}
-par(mfrow=c(2,2))
-plot(lm.fit)
-par(mfrow=c(1,1))
-```
 
 ### Regresi linier dengan Pembobotan {#wlr}
 
@@ -303,13 +277,8 @@ glm(formula, family = gaussian, data, weights, subset,
 > * `subset` : subset data yang akan digunakan dalam pembentukan model.
 > * `weight` : nilai pembobotan dalam pembentukan model.
 
-Pada contoh berikut, kita akan membuat model untuk memprediksi *contamination rating* menggunakan dataset `contamination` dari *library* `edtaR`. Berikut adalah sintaks yang digunakan:
 
-```{r}
-log.model <- glm(CR ~ ., family=binomial, data=contamination)
-anova(log.model)
-summary(log.model)
-```
+Belum ADA Contoh
 
 ## Referensi
 
