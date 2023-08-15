@@ -51,7 +51,7 @@ knitr::include_graphics('images/Cover_Metode_Numerik.png', dpi = NA)
 
 ```
 
-Metode Numerik Menggunakan R sebagai modul pembelajaran Statistika. Selain itu, buku ini merupakan salah satu cara pengabdian penulis guna menyediakan sumber pembelajaran yang bersifat terbuka dan dapat diakses seluruh kalangan secara gratis.  
+Modul Metode Numerik menggunakan bahasa pemrograman R telah dirancang sebagai panduan esensial bagi mahasiswa dalam menjalani praktikum Metode Numerik di Universitas Matana. Modul ini mencakup beragam topik penting dalam analisis numerik, seperti interpolasi, integrasi numerik, solusi persamaan nonlinear, dan pemecahan sistem persamaan linear. Dengan penjelasan yang jelas dan contoh kode implementasi dalam R, mahasiswa akan mendapatkan pemahaman mendalam tentang konsep-konsep tersebut serta bagaimana menerapkannya secara praktis. Modul ini tidak hanya memberikan gambaran teoritis, tetapi juga memberi tumpuan pada aspek implementasi nyata melalui studi kasus yang relevan. Dengan memanfaatkan modul ini, mahasiswa diharapkan dapat mengembangkan keterampilan komputasi numerik mereka menggunakan bahasa R, yang merupakan alat yang kuat dalam menganalisis dan menyelesaikan masalah matematika yang kompleks.  
 
 **Mengapa perlu menulis buku ini?** Penulis merasa selama ini buku-buku metode numerik yang ada di pasaran masih didominasi oleh buku-buku pemrograman berbasis Matlab. Atas dasar tersebut, penulis merasa perlu adanya alternatif pembelajaran menggunakan bahasa pemrograman lain.
 
