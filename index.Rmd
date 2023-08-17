@@ -1,8 +1,7 @@
 --- 
 title: "Metode Numerik Menggunakan R"
 author: "Bakti Siregar, M.Sc, Trisha M.A. Januaviani, M.Mat & Dr. Kalfin, M.Mat"
-# date: "`r Sys.Date()`"
-date: "06 Maret 2023"
+date: "06 April 2023" # date: "`r Sys.Date()`"
 site: bookdown::bookdown_site
 documentclass: book
 bibliography: [book.bib, packages.bib]
@@ -74,18 +73,15 @@ Adapun isi pembahasan dalam modul ini adalah sebagai berikut:
 Berikut ini adalah nama dan biografi singkat para penulis:
 
 
-<img src = "https://raw.githubusercontent.com/dsciencelabs/Metode_Numerik_R/main/images/Penulis/Bakti.jpg" width = "150" height = "150" style = "float:right; margin-left: 10px; margin-top: 7px" />
+<img src = "https://github.com/dsciencelabs/images/blob/master/Penulis/Bakti.jpg?raw=true" width = "150" height = "150" style = "float:right; margin-left: 10px; margin-top: 7px" />
 
 - **Bakti Siregar, M.Sc** adalah Ketua Program Studi di Jurusan Statistika Universitas Matana. Lulusan Magister Matematika Terapan dari National Sun Yat Sen University, Taiwan. Beliau juga merupakan dosen dan konsultan Data Scientist di perusahaan-perusahaan ternama seperti JNE, Samora Group, Pertamina, dan lainnya. Beliau memiliki antusiasme khusus dalam mengajar Big Data Analytics, Machine Learning, Optimisasi, dan Analisis Time Series di bidang keuangan dan investasi. Keahliannya juga terlihat dalam penggunaan bahasa pemrograman Statistik seperti R Studio dan Python. Beliau mengaplikasikan sistem basis data MySQL/NoSQL dalam pembelajaran manajemen data, serta mahir dalam menggunakan tools Big Data seperti Spark dan Hadoop. Beberapa project beliau dapat dilihat di link berikut: [Rpubs](https://rpubs.com/dsciencelabs), [Github](https://github.com/dsciencelabs), [Website](https://dsciencelabs.github.io/web/index.html), dan [Kaggle](https://www.kaggle.com/baktisiregar/code). 
 
-
-<br/>
-
-<img src = "https://raw.githubusercontent.com/dsciencelabs/Metode_Numerik_R/main/images/Penulis/Kalfin.jpg" width = "140" height = "160" style = "float:right; margin-left: 10px; margin-top: 7px" />
+<img src = "https://github.com/dsciencelabs/images/blob/master/Penulis/Kalfin.jpg?raw=true" width = "140" height = "160" style = "float:right; margin-left: 10px; margin-top: 7px" />
 
 - **Dr. Kalfin, M. Mat** juga seorang dosen Statistika Universitas Matana dengan perjalanan pendidikan yang mengesankan. Beliau menyelesaikan gelar Matematika dari Universitas Padjadjaran pada tahun 2023. Dr. Kalfin memiliki konsentrasi penelitian yang sangat berharga, yaitu Matematika Keuangan dan Aktuaria. Dalam ranah Matematika Keuangan, beliau telah menunjukkan komitmen tinggi dengan melakukan penelitian mendalam mengenai pemodelan optimasi portofolio investasi. Penelitian ini mencakup analisis matematis yang rumit untuk merumuskan strategi investasi yang optimal. Di sisi lain, dalam bidang Aktuaria, Dr. Kalfin juga telah memberikan kontribusi penting melalui penelitian tentang model penentuan premi asuransi bencana. Penelitian ini tidak hanya memiliki dampak praktis dalam industri asuransi, tetapi juga mendorong pemahaman lebih dalam tentang evaluasi risiko dan kebijakan tarif yang berlandaskan pada analisis matematis yang kuat.
 
-<img src = "https://raw.githubusercontent.com/dsciencelabs/Metode_Numerik_R/main/images/Penulis/Trisha.jpg" width = "140" height = "160" style = "float:right; margin-left: 10px; margin-top: 7px" />
+<img src = "https://github.com/dsciencelabs/images/blob/master/Penulis/Trisha.jpg?raw=true" width = "140" height = "160" style = "float:right; margin-left: 10px; margin-top: 7px" />
 
 - **Trisha Magdalena Adelheid Januaviani, M.Mat** adalah soerang dosen yang sekaligus menjabad sebagai Sekerataris Program Studi Statistika di Universitas Matana. Sebagai lulusan Magister Matematika dari Universitas Padjadjaran, Beliau telah mengembangkan kompetensi terbaiknya dalam Pengajaran, Penelitian dan Pengabdian Kepada Masyarakat. Penelitiannya difokuskan pada matematika keuangan dan sains data, dua bidang yang penting dalam kehidupan saat ini. Beliau mampu memberikan wawasan berharga tentang penerapan konsep matematika dalam konteks keuangan. Kemampuannya dalam ilmu data juga memungkinkannya menganalisis dan menginterpretasi data dengan cermat untuk pengambilan keputusan yang lebih baik. 
 

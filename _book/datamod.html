@@ -4,18 +4,18 @@
 
   <meta charset="utf-8" />
   <meta http-equiv="X-UA-Compatible" content="IE=edge" />
-  <title>Bab 12 Pemodelan Data | Metode Numerik Menggunakan R</title>
+  <title>Bab 8 Pemodelan Data | Metode Numerik Menggunakan R</title>
   <meta name="description" content="Modul ini dapat menjadi rujukan bagi mahasiswa yang ingin mendalami proses komputasi metode numerik dengan menggunakan R. Meteri disusun sedemikian rupa dengan bahasa yang lebih sederhana agar mudah dipahami oleh Mahasiswa (Pengguna)." />
   <meta name="generator" content="bookdown 0.34 and GitBook 2.6.7" />
 
-  <meta property="og:title" content="Bab 12 Pemodelan Data | Metode Numerik Menggunakan R" />
+  <meta property="og:title" content="Bab 8 Pemodelan Data | Metode Numerik Menggunakan R" />
   <meta property="og:type" content="book" />
   <meta property="og:image" content="/images/Cover_Metode_Numerik.png" />
   <meta property="og:description" content="Modul ini dapat menjadi rujukan bagi mahasiswa yang ingin mendalami proses komputasi metode numerik dengan menggunakan R. Meteri disusun sedemikian rupa dengan bahasa yang lebih sederhana agar mudah dipahami oleh Mahasiswa (Pengguna)." />
   <meta name="github-repo" content="dsciencelabs/Metode_Numerik_R" />
 
   <meta name="twitter:card" content="summary" />
-  <meta name="twitter:title" content="Bab 12 Pemodelan Data | Metode Numerik Menggunakan R" />
+  <meta name="twitter:title" content="Bab 8 Pemodelan Data | Metode Numerik Menggunakan R" />
   
   <meta name="twitter:description" content="Modul ini dapat menjadi rujukan bagi mahasiswa yang ingin mendalami proses komputasi metode numerik dengan menggunakan R. Meteri disusun sedemikian rupa dengan bahasa yang lebih sederhana agar mudah dipahami oleh Mahasiswa (Pengguna)." />
   <meta name="twitter:image" content="/images/Cover_Metode_Numerik.png" />
@@ -23,6 +23,7 @@
 <meta name="author" content="Bakti Siregar, M.Sc, Trisha M.A. Januaviani, M.Mat &amp; Dr. Kalfin, M.Mat" />
 
 
+<meta name="date" content="2023-04-06" />
 
   <meta name="viewport" content="width=device-width, initial-scale=1" />
   <meta name="apple-mobile-web-app-capable" content="yes" />
@@ -144,293 +145,201 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
 <li class="chapter" data-level="" data-path="index.html"><a href="index.html#ringkasan"><i class="fa fa-check"></i>Ringkasan</a></li>
 <li class="chapter" data-level="" data-path="index.html"><a href="index.html#tim-penyusun"><i class="fa fa-check"></i>Tim Penyusun</a></li>
 <li class="chapter" data-level="" data-path="index.html"><a href="index.html#ucapan-terima-kasih"><i class="fa fa-check"></i>Ucapan Terima Kasih</a></li>
-<li class="chapter" data-level="" data-path="index.html"><a href="index.html#lisensi"><i class="fa fa-check"></i>Lisensi</a></li>
+<li class="chapter" data-level="" data-path="index.html"><a href="index.html#masukan-saran"><i class="fa fa-check"></i>Masukan &amp; Saran</a></li>
 </ul></li>
-<li class="chapter" data-level="1" data-path="intro.html"><a href="intro.html"><i class="fa fa-check"></i><b>1</b> Bahasa Pemrograman R</a>
+<li class="chapter" data-level="1" data-path="pengantar-metode-numerik.html"><a href="pengantar-metode-numerik.html"><i class="fa fa-check"></i><b>1</b> Pengantar Metode Numerik</a>
 <ul>
-<li class="chapter" data-level="1.1" data-path="intro.html"><a href="intro.html#sejarahR"><i class="fa fa-check"></i><b>1.1</b> Sejarah R</a></li>
-<li class="chapter" data-level="1.2" data-path="intro.html"><a href="intro.html#fiturR"><i class="fa fa-check"></i><b>1.2</b> Fitur dan Karakteristik R</a></li>
-<li class="chapter" data-level="1.3" data-path="intro.html"><a href="intro.html#prosconsR"><i class="fa fa-check"></i><b>1.3</b> Kelebihan dan Kekurangan R</a></li>
-<li class="chapter" data-level="1.4" data-path="intro.html"><a href="intro.html#rstudio"><i class="fa fa-check"></i><b>1.4</b> RStudio</a></li>
-<li class="chapter" data-level="1.5" data-path="intro.html"><a href="intro.html#installR"><i class="fa fa-check"></i><b>1.5</b> Menginstall R dan RStudio</a></li>
-<li class="chapter" data-level="1.6" data-path="intro.html"><a href="intro.html#wdR"><i class="fa fa-check"></i><b>1.6</b> Working Directory</a>
+<li class="chapter" data-level="1.1" data-path="pengantar-metode-numerik.html"><a href="pengantar-metode-numerik.html#metode-vs-analitik-numerik"><i class="fa fa-check"></i><b>1.1</b> Metode vs Analitik Numerik</a></li>
+<li class="chapter" data-level="1.2" data-path="pengantar-metode-numerik.html"><a href="pengantar-metode-numerik.html#tahapan-metode-numerik"><i class="fa fa-check"></i><b>1.2</b> Tahapan Metode Numerik</a></li>
+<li class="chapter" data-level="1.3" data-path="pengantar-metode-numerik.html"><a href="pengantar-metode-numerik.html#acuracy"><i class="fa fa-check"></i><b>1.3</b> Akurasi dan Presisi</a></li>
+<li class="chapter" data-level="1.4" data-path="pengantar-metode-numerik.html"><a href="pengantar-metode-numerik.html#error-numerik"><i class="fa fa-check"></i><b>1.4</b> Error Numerik</a>
 <ul>
-<li class="chapter" data-level="1.6.1" data-path="intro.html"><a href="intro.html#changewdR"><i class="fa fa-check"></i><b>1.6.1</b> Mengubah Lokasi Working Directory</a></li>
-<li class="chapter" data-level="1.6.2" data-path="intro.html"><a href="intro.html#defaultwdR"><i class="fa fa-check"></i><b>1.6.2</b> Mengubah Lokasi Working Directory Default</a></li>
+<li class="chapter" data-level="1.4.1" data-path="pengantar-metode-numerik.html"><a href="pengantar-metode-numerik.html#error-mutlak-absolute-error"><i class="fa fa-check"></i><b>1.4.1</b> Error Mutlak <em>(Absolute Error)</em></a></li>
+<li class="chapter" data-level="1.4.2" data-path="pengantar-metode-numerik.html"><a href="pengantar-metode-numerik.html#error-relatif-relative-error"><i class="fa fa-check"></i><b>1.4.2</b> Error Relatif <em>(Relative Error)</em></a></li>
+<li class="chapter" data-level="1.4.3" data-path="pengantar-metode-numerik.html"><a href="pengantar-metode-numerik.html#truncation-error-error-pemotongan"><i class="fa fa-check"></i><b>1.4.3</b> Truncation Error (Error Pemotongan)</a></li>
+<li class="chapter" data-level="1.4.4" data-path="pengantar-metode-numerik.html"><a href="pengantar-metode-numerik.html#error-pembulatan-round-off-error"><i class="fa fa-check"></i><b>1.4.4</b> Error Pembulatan <em>(Round-off Error)</em></a></li>
+<li class="chapter" data-level="1.4.5" data-path="pengantar-metode-numerik.html"><a href="pengantar-metode-numerik.html#error-stabilitas-stability-error"><i class="fa fa-check"></i><b>1.4.5</b> Error Stabilitas <em>(Stability Error)</em></a></li>
 </ul></li>
-<li class="chapter" data-level="1.7" data-path="intro.html"><a href="intro.html#installlibraryR"><i class="fa fa-check"></i><b>1.7</b> Memasang dan Mengaktifkan Paket R</a></li>
-<li class="chapter" data-level="1.8" data-path="intro.html"><a href="intro.html#helpR"><i class="fa fa-check"></i><b>1.8</b> Fasilitas Help</a>
-<ul>
-<li class="chapter" data-level="1.8.1" data-path="intro.html"><a href="intro.html#searchhelp"><i class="fa fa-check"></i><b>1.8.1</b> Mencari Help dari Suatu Perintah Tertentu</a></li>
-<li class="chapter" data-level="1.8.2" data-path="intro.html"><a href="intro.html#generalhelp"><i class="fa fa-check"></i><b>1.8.2</b> General Help</a></li>
-<li class="chapter" data-level="1.8.3" data-path="intro.html"><a href="intro.html#othershelp"><i class="fa fa-check"></i><b>1.8.3</b> Fasilitas Help Lainnya</a></li>
+<li class="chapter" data-level="1.5" data-path="pengantar-metode-numerik.html"><a href="pengantar-metode-numerik.html#referensi"><i class="fa fa-check"></i><b>1.5</b> Referensi</a></li>
 </ul></li>
-<li class="chapter" data-level="1.9" data-path="intro.html"><a href="intro.html#referensi"><i class="fa fa-check"></i><b>1.9</b> Referensi</a></li>
-</ul></li>
-<li class="chapter" data-level="2" data-path="calculation.html"><a href="calculation.html"><i class="fa fa-check"></i><b>2</b> Kalkulasi Menggunakan R</a>
+<li class="chapter" data-level="2" data-path="linearaljabar.html"><a href="linearaljabar.html"><i class="fa fa-check"></i><b>2</b> Aljabar Linier</a>
 <ul>
-<li class="chapter" data-level="2.1" data-path="calculation.html"><a href="calculation.html#aritmetikoperator"><i class="fa fa-check"></i><b>2.1</b> Operator Aritmatik</a></li>
-<li class="chapter" data-level="2.2" data-path="calculation.html"><a href="calculation.html#aritmaticfunction"><i class="fa fa-check"></i><b>2.2</b> Fungsi Aritmetik</a></li>
-<li class="chapter" data-level="2.3" data-path="calculation.html"><a href="calculation.html#relationoperators"><i class="fa fa-check"></i><b>2.3</b> Operator Relasi</a></li>
-<li class="chapter" data-level="2.4" data-path="calculation.html"><a href="calculation.html#logicoperators"><i class="fa fa-check"></i><b>2.4</b> Operator Logika</a></li>
-<li class="chapter" data-level="2.5" data-path="calculation.html"><a href="calculation.html#assigningvar"><i class="fa fa-check"></i><b>2.5</b> Memasukkan Nilai Kedalam Variabel</a></li>
-<li class="chapter" data-level="2.6" data-path="calculation.html"><a href="calculation.html#typedata"><i class="fa fa-check"></i><b>2.6</b> Tipe dan Struktur Data</a></li>
-<li class="chapter" data-level="2.7" data-path="calculation.html"><a href="calculation.html#vector"><i class="fa fa-check"></i><b>2.7</b> Vektor</a>
+<li class="chapter" data-level="2.1" data-path="linearaljabar.html"><a href="linearaljabar.html#vecmat"><i class="fa fa-check"></i><b>2.1</b> Vektor dan matriks</a>
 <ul>
-<li class="chapter" data-level="2.7.1" data-path="calculation.html"><a href="calculation.html#createvector"><i class="fa fa-check"></i><b>2.7.1</b> Membuat vektor</a></li>
-<li class="chapter" data-level="2.7.2" data-path="calculation.html"><a href="calculation.html#missingvalue"><i class="fa fa-check"></i><b>2.7.2</b> Missing Values</a></li>
-<li class="chapter" data-level="2.7.3" data-path="calculation.html"><a href="calculation.html#subsetvector"><i class="fa fa-check"></i><b>2.7.3</b> Subset Pada Vektor</a></li>
-<li class="chapter" data-level="2.7.4" data-path="calculation.html"><a href="calculation.html#vectorops"><i class="fa fa-check"></i><b>2.7.4</b> Operasi Matematis Menggunakan Vektor</a></li>
-<li class="chapter" data-level="2.7.5" data-path="calculation.html"><a href="calculation.html#seq"><i class="fa fa-check"></i><b>2.7.5</b> Membuat Deret Angka</a></li>
-<li class="chapter" data-level="2.7.6" data-path="calculation.html"><a href="calculation.html#repseq"><i class="fa fa-check"></i><b>2.7.6</b> Nilai Berulang</a></li>
-<li class="chapter" data-level="2.7.7" data-path="calculation.html"><a href="calculation.html#randnumb"><i class="fa fa-check"></i><b>2.7.7</b> Deret Bilangan Acak</a></li>
+<li class="chapter" data-level="2.1.1" data-path="linearaljabar.html"><a href="linearaljabar.html#operasivektor"><i class="fa fa-check"></i><b>2.1.1</b> Operasi Vektor</a></li>
+<li class="chapter" data-level="2.1.2" data-path="linearaljabar.html"><a href="linearaljabar.html#operasimatrik"><i class="fa fa-check"></i><b>2.1.2</b> Operasi matriks</a></li>
 </ul></li>
-<li class="chapter" data-level="2.8" data-path="calculation.html"><a href="calculation.html#matriks"><i class="fa fa-check"></i><b>2.8</b> Matriks</a>
+<li class="chapter" data-level="2.2" data-path="linearaljabar.html"><a href="linearaljabar.html#rowoperation"><i class="fa fa-check"></i><b>2.2</b> Operasi Baris Elementer</a></li>
+<li class="chapter" data-level="2.3" data-path="linearaljabar.html"><a href="linearaljabar.html#gausselimination"><i class="fa fa-check"></i><b>2.3</b> Eliminasi Gauss</a>
 <ul>
-<li class="chapter" data-level="2.8.1" data-path="calculation.html"><a href="calculation.html#creatematrix"><i class="fa fa-check"></i><b>2.8.1</b> Membuat matriks</a></li>
-<li class="chapter" data-level="2.8.2" data-path="calculation.html"><a href="calculation.html#subsetmatrix"><i class="fa fa-check"></i><b>2.8.2</b> Subset Pada Matriks</a></li>
-<li class="chapter" data-level="2.8.3" data-path="calculation.html"><a href="calculation.html#matrixcalculation"><i class="fa fa-check"></i><b>2.8.3</b> Perhitungan Menggunakan Matriks</a></li>
+<li class="chapter" data-level="2.3.1" data-path="linearaljabar.html"><a href="linearaljabar.html#rowechelonform"><i class="fa fa-check"></i><b>2.3.1</b> <em>Row Echelon Form</em></a></li>
+<li class="chapter" data-level="2.3.2" data-path="linearaljabar.html"><a href="linearaljabar.html#redrowechelonform"><i class="fa fa-check"></i><b>2.3.2</b> Eliminasi Gauss-Jordan</a></li>
+<li class="chapter" data-level="2.3.3" data-path="linearaljabar.html"><a href="linearaljabar.html#matriktridiagonal"><i class="fa fa-check"></i><b>2.3.3</b> Matrik Tridiagonal</a></li>
+<li class="chapter" data-level="2.3.4" data-path="linearaljabar.html"><a href="linearaljabar.html#solvefunc"><i class="fa fa-check"></i><b>2.3.4</b> Penyelesaian Sistem Persamaan Linier Menggunakan Fungsi <code>solve()</code></a></li>
+<li class="chapter" data-level="2.3.5" data-path="linearaljabar.html"><a href="linearaljabar.html#solvetridiagfunct"><i class="fa fa-check"></i><b>2.3.5</b> Penyelesaian Sistem Persamaan Linier Menggunakan Fungsi ’Solve.tridiag()`</a></li>
 </ul></li>
-<li class="chapter" data-level="2.9" data-path="calculation.html"><a href="calculation.html#referensi-1"><i class="fa fa-check"></i><b>2.9</b> Referensi</a></li>
-</ul></li>
-<li class="chapter" data-level="3" data-path="dataviz.html"><a href="dataviz.html"><i class="fa fa-check"></i><b>3</b> Visualisasi Data</a>
+<li class="chapter" data-level="2.4" data-path="linearaljabar.html"><a href="linearaljabar.html#dekomposisimatriks"><i class="fa fa-check"></i><b>2.4</b> Dekomposisi Matriks</a>
 <ul>
-<li class="chapter" data-level="3.1" data-path="dataviz.html"><a href="dataviz.html#plotfunc"><i class="fa fa-check"></i><b>3.1</b> Visualisasi Data Menggunakan Fungsi plot()</a></li>
-<li class="chapter" data-level="3.2" data-path="dataviz.html"><a href="dataviz.html#otherviz"><i class="fa fa-check"></i><b>3.2</b> Visualisasi Lainnya</a>
-<ul>
-<li class="chapter" data-level="3.2.1" data-path="dataviz.html"><a href="dataviz.html#barplot"><i class="fa fa-check"></i><b>3.2.1</b> Bar Plot</a></li>
-<li class="chapter" data-level="3.2.2" data-path="dataviz.html"><a href="dataviz.html#histogram"><i class="fa fa-check"></i><b>3.2.2</b> Histogram dan Density Plot</a></li>
-<li class="chapter" data-level="3.2.3" data-path="dataviz.html"><a href="dataviz.html#boxplot"><i class="fa fa-check"></i><b>3.2.3</b> Box plot</a></li>
+<li class="chapter" data-level="2.4.1" data-path="linearaljabar.html"><a href="linearaljabar.html#ludecomp"><i class="fa fa-check"></i><b>2.4.1</b> Dekomposisi LU</a></li>
+<li class="chapter" data-level="2.4.2" data-path="linearaljabar.html"><a href="linearaljabar.html#dekomposisi-cholesky"><i class="fa fa-check"></i><b>2.4.2</b> Dekomposisi Cholesky</a></li>
+<li class="chapter" data-level="2.4.3" data-path="linearaljabar.html"><a href="linearaljabar.html#othersdecomp"><i class="fa fa-check"></i><b>2.4.3</b> Dekomposisi Lainnya</a></li>
 </ul></li>
-<li class="chapter" data-level="3.3" data-path="dataviz.html"><a href="dataviz.html#customise"><i class="fa fa-check"></i><b>3.3</b> Kustomisasi Parameter Grafik</a>
+<li class="chapter" data-level="2.5" data-path="linearaljabar.html"><a href="linearaljabar.html#iteratif"><i class="fa fa-check"></i><b>2.5</b> Metode Iterasi</a>
 <ul>
-<li class="chapter" data-level="3.3.1" data-path="dataviz.html"><a href="dataviz.html#addtitle"><i class="fa fa-check"></i><b>3.3.1</b> Menambahkan Judul</a></li>
-<li class="chapter" data-level="3.3.2" data-path="dataviz.html"><a href="dataviz.html#addlegend"><i class="fa fa-check"></i><b>3.3.2</b> Menambahkan Legend</a></li>
-<li class="chapter" data-level="3.3.3" data-path="dataviz.html"><a href="dataviz.html#addtext"><i class="fa fa-check"></i><b>3.3.3</b> Menambahkan Teks Pada Grafik</a></li>
-<li class="chapter" data-level="3.3.4" data-path="dataviz.html"><a href="dataviz.html#addlines"><i class="fa fa-check"></i><b>3.3.4</b> Menambahkan Garis Pada Plot</a></li>
-<li class="chapter" data-level="3.3.5" data-path="dataviz.html"><a href="dataviz.html#changepoint"><i class="fa fa-check"></i><b>3.3.5</b> Merubah Simbol plot dan Jenis Garis</a></li>
-<li class="chapter" data-level="3.3.6" data-path="dataviz.html"><a href="dataviz.html#mengatur-axis-plot"><i class="fa fa-check"></i><b>3.3.6</b> Mengatur Axis Plot</a></li>
-<li class="chapter" data-level="3.3.7" data-path="dataviz.html"><a href="dataviz.html#changecolor"><i class="fa fa-check"></i><b>3.3.7</b> Mengatur Warna</a></li>
+<li class="chapter" data-level="2.5.1" data-path="linearaljabar.html"><a href="linearaljabar.html#jacobiiter"><i class="fa fa-check"></i><b>2.5.1</b> Iterasi Jacobi</a></li>
+<li class="chapter" data-level="2.5.2" data-path="linearaljabar.html"><a href="linearaljabar.html#seideliter"><i class="fa fa-check"></i><b>2.5.2</b> Iterasi Gauss-Seidel</a></li>
 </ul></li>
-<li class="chapter" data-level="3.4" data-path="dataviz.html"><a href="dataviz.html#plot-dua-dan-tiga-dimensi"><i class="fa fa-check"></i><b>3.4</b> Plot Dua dan Tiga Dimensi</a></li>
-<li class="chapter" data-level="3.5" data-path="dataviz.html"><a href="dataviz.html#referensi-2"><i class="fa fa-check"></i><b>3.5</b> Referensi</a></li>
-</ul></li>
-<li class="chapter" data-level="4" data-path="programmingandfunction.html"><a href="programmingandfunction.html"><i class="fa fa-check"></i><b>4</b> Pemrograman dan Fungsi</a>
+<li class="chapter" data-level="2.6" data-path="linearaljabar.html"><a href="linearaljabar.html#studikasus"><i class="fa fa-check"></i><b>2.6</b> Studi Kasus</a>
 <ul>
-<li class="chapter" data-level="4.1" data-path="programmingandfunction.html"><a href="programmingandfunction.html#loop"><i class="fa fa-check"></i><b>4.1</b> Loop</a>
-<ul>
-<li class="chapter" data-level="4.1.1" data-path="programmingandfunction.html"><a href="programmingandfunction.html#forloop"><i class="fa fa-check"></i><b>4.1.1</b> For Loop</a></li>
-<li class="chapter" data-level="4.1.2" data-path="programmingandfunction.html"><a href="programmingandfunction.html#whileloop"><i class="fa fa-check"></i><b>4.1.2</b> While Loop</a></li>
-<li class="chapter" data-level="4.1.3" data-path="programmingandfunction.html"><a href="programmingandfunction.html#repeatloop"><i class="fa fa-check"></i><b>4.1.3</b> Repeat Loop</a></li>
-<li class="chapter" data-level="4.1.4" data-path="programmingandfunction.html"><a href="programmingandfunction.html#break"><i class="fa fa-check"></i><b>4.1.4</b> Break</a></li>
+<li class="chapter" data-level="2.6.1" data-path="linearaljabar.html"><a href="linearaljabar.html#leastsquare"><i class="fa fa-check"></i><b>2.6.1</b> Metode Kuadrat Terkecil</a></li>
+<li class="chapter" data-level="2.6.2" data-path="linearaljabar.html"><a href="linearaljabar.html#reaktorkimia"><i class="fa fa-check"></i><b>2.6.2</b> Aliran Massa Dalam Reaktor</a></li>
 </ul></li>
-<li class="chapter" data-level="4.2" data-path="programmingandfunction.html"><a href="programmingandfunction.html#loopapply"><i class="fa fa-check"></i><b>4.2</b> Loop Menggunakan Apply Family Function</a>
-<ul>
-<li class="chapter" data-level="4.2.1" data-path="programmingandfunction.html"><a href="programmingandfunction.html#apply"><i class="fa fa-check"></i><b>4.2.1</b> Apply</a></li>
-<li class="chapter" data-level="4.2.2" data-path="programmingandfunction.html"><a href="programmingandfunction.html#lapply"><i class="fa fa-check"></i><b>4.2.2</b> lapply</a></li>
-<li class="chapter" data-level="4.2.3" data-path="programmingandfunction.html"><a href="programmingandfunction.html#sapply"><i class="fa fa-check"></i><b>4.2.3</b> sapply</a></li>
-<li class="chapter" data-level="4.2.4" data-path="programmingandfunction.html"><a href="programmingandfunction.html#vapply"><i class="fa fa-check"></i><b>4.2.4</b> vapply</a></li>
-<li class="chapter" data-level="4.2.5" data-path="programmingandfunction.html"><a href="programmingandfunction.html#tapply"><i class="fa fa-check"></i><b>4.2.5</b> tapply</a></li>
+<li class="chapter" data-level="2.7" data-path="linearaljabar.html"><a href="linearaljabar.html#referensi-1"><i class="fa fa-check"></i><b>2.7</b> Referensi</a></li>
+<li class="chapter" data-level="2.8" data-path="linearaljabar.html"><a href="linearaljabar.html#latihan"><i class="fa fa-check"></i><b>2.8</b> Latihan</a></li>
 </ul></li>
-<li class="chapter" data-level="4.3" data-path="programmingandfunction.html"><a href="programmingandfunction.html#dm"><i class="fa fa-check"></i><b>4.3</b> Decision Making</a>
+<li class="chapter" data-level="3" data-path="rootfinding.html"><a href="rootfinding.html"><i class="fa fa-check"></i><b>3</b> Akar Persamaan Non-Linier</a>
 <ul>
-<li class="chapter" data-level="4.3.1" data-path="programmingandfunction.html"><a href="programmingandfunction.html#ifstatement"><i class="fa fa-check"></i><b>4.3.1</b> if statement</a></li>
-<li class="chapter" data-level="4.3.2" data-path="programmingandfunction.html"><a href="programmingandfunction.html#ifelsestatement"><i class="fa fa-check"></i><b>4.3.2</b> if else statement</a></li>
-<li class="chapter" data-level="4.3.3" data-path="programmingandfunction.html"><a href="programmingandfunction.html#switchstatement"><i class="fa fa-check"></i><b>4.3.3</b> switch statement</a></li>
-</ul></li>
-<li class="chapter" data-level="4.4" data-path="programmingandfunction.html"><a href="programmingandfunction.html#fungsi"><i class="fa fa-check"></i><b>4.4</b> Fungsi</a></li>
-<li class="chapter" data-level="4.5" data-path="programmingandfunction.html"><a href="programmingandfunction.html#debugging"><i class="fa fa-check"></i><b>4.5</b> Debugging</a></li>
-<li class="chapter" data-level="4.6" data-path="programmingandfunction.html"><a href="programmingandfunction.html#referensi-3"><i class="fa fa-check"></i><b>4.6</b> Referensi</a></li>
-</ul></li>
-<li class="chapter" data-level="5" data-path="numericmethod.html"><a href="numericmethod.html"><i class="fa fa-check"></i><b>5</b> Pengantar Metode Numerik</a>
+<li class="chapter" data-level="3.1" data-path="rootfinding.html"><a href="rootfinding.html#bracketing"><i class="fa fa-check"></i><b>3.1</b> Metode Tertutup</a>
 <ul>
-<li class="chapter" data-level="5.1" data-path="numericmethod.html"><a href="numericmethod.html#numericmethodintro"><i class="fa fa-check"></i><b>5.1</b> Mengenal Metode Numerik</a>
-<ul>
-<li class="chapter" data-level="5.1.1" data-path="numericmethod.html"><a href="numericmethod.html#diffanalitycnumeric"><i class="fa fa-check"></i><b>5.1.1</b> Perbedaan Antara Metode Numerik dan Analitik</a></li>
-<li class="chapter" data-level="5.1.2" data-path="numericmethod.html"><a href="numericmethod.html#tahapan-penyelesaian-menggunakan-metode-numerik"><i class="fa fa-check"></i><b>5.1.2</b> Tahapan Penyelesaian Menggunakan Metode Numerik</a></li>
+<li class="chapter" data-level="3.1.1" data-path="rootfinding.html"><a href="rootfinding.html#table"><i class="fa fa-check"></i><b>3.1.1</b> Metode Tabel</a></li>
+<li class="chapter" data-level="3.1.2" data-path="rootfinding.html"><a href="rootfinding.html#bisection"><i class="fa fa-check"></i><b>3.1.2</b> Metode Biseksi</a></li>
+<li class="chapter" data-level="3.1.3" data-path="rootfinding.html"><a href="rootfinding.html#regulafalsi"><i class="fa fa-check"></i><b>3.1.3</b> Metode Regula Falsi</a></li>
 </ul></li>
-<li class="chapter" data-level="5.2" data-path="numericmethod.html"><a href="numericmethod.html#acuracy"><i class="fa fa-check"></i><b>5.2</b> Akurasi dan Presisi</a></li>
-<li class="chapter" data-level="5.3" data-path="numericmethod.html"><a href="numericmethod.html#numerror"><i class="fa fa-check"></i><b>5.3</b> Error Numerik</a></li>
-<li class="chapter" data-level="5.4" data-path="numericmethod.html"><a href="numericmethod.html#referensi-4"><i class="fa fa-check"></i><b>5.4</b> Referensi</a></li>
-</ul></li>
-<li class="chapter" data-level="6" data-path="linearaljabar.html"><a href="linearaljabar.html"><i class="fa fa-check"></i><b>6</b> Aljabar Linier</a>
+<li class="chapter" data-level="3.2" data-path="rootfinding.html"><a href="rootfinding.html#openmethod"><i class="fa fa-check"></i><b>3.2</b> Metode Terbuka</a>
 <ul>
-<li class="chapter" data-level="6.1" data-path="linearaljabar.html"><a href="linearaljabar.html#vecmat"><i class="fa fa-check"></i><b>6.1</b> Vektor dan matriks</a>
-<ul>
-<li class="chapter" data-level="6.1.1" data-path="linearaljabar.html"><a href="linearaljabar.html#operasivektor"><i class="fa fa-check"></i><b>6.1.1</b> Operasi Vektor</a></li>
-<li class="chapter" data-level="6.1.2" data-path="linearaljabar.html"><a href="linearaljabar.html#operasimatrik"><i class="fa fa-check"></i><b>6.1.2</b> Operasi matriks</a></li>
+<li class="chapter" data-level="3.2.1" data-path="rootfinding.html"><a href="rootfinding.html#fixpoint"><i class="fa fa-check"></i><b>3.2.1</b> Metode Iterasi Titik Tetap</a></li>
+<li class="chapter" data-level="3.2.2" data-path="rootfinding.html"><a href="rootfinding.html#newtonraphson"><i class="fa fa-check"></i><b>3.2.2</b> Metode Newton-Raphson</a></li>
+<li class="chapter" data-level="3.2.3" data-path="rootfinding.html"><a href="rootfinding.html#secant"><i class="fa fa-check"></i><b>3.2.3</b> Metode Secant</a></li>
 </ul></li>
-<li class="chapter" data-level="6.2" data-path="linearaljabar.html"><a href="linearaljabar.html#rowoperation"><i class="fa fa-check"></i><b>6.2</b> Operasi Baris Elementer</a></li>
-<li class="chapter" data-level="6.3" data-path="linearaljabar.html"><a href="linearaljabar.html#gausselimination"><i class="fa fa-check"></i><b>6.3</b> Eliminasi Gauss</a>
+<li class="chapter" data-level="3.3" data-path="rootfinding.html"><a href="rootfinding.html#uniroot"><i class="fa fa-check"></i><b>3.3</b> Penyelesaian Persamaan Non-Linier Menggunakan Fungsi <code>uniroot</code> dan <code>uniroot.all</code></a></li>
+<li class="chapter" data-level="3.4" data-path="rootfinding.html"><a href="rootfinding.html#akar-persamaan-polinomial-menggunakan-fungsi-polyroot"><i class="fa fa-check"></i><b>3.4</b> Akar Persamaan Polinomial Menggunakan Fungsi <code>polyroot</code></a></li>
+<li class="chapter" data-level="3.5" data-path="rootfinding.html"><a href="rootfinding.html#studi-kasus"><i class="fa fa-check"></i><b>3.5</b> Studi Kasus</a>
 <ul>
-<li class="chapter" data-level="6.3.1" data-path="linearaljabar.html"><a href="linearaljabar.html#rowechelonform"><i class="fa fa-check"></i><b>6.3.1</b> <em>Row Echelon Form</em></a></li>
-<li class="chapter" data-level="6.3.2" data-path="linearaljabar.html"><a href="linearaljabar.html#redrowechelonform"><i class="fa fa-check"></i><b>6.3.2</b> Eliminasi Gauss-Jordan</a></li>
-<li class="chapter" data-level="6.3.3" data-path="linearaljabar.html"><a href="linearaljabar.html#matriktridiagonal"><i class="fa fa-check"></i><b>6.3.3</b> Matrik Tridiagonal</a></li>
-<li class="chapter" data-level="6.3.4" data-path="linearaljabar.html"><a href="linearaljabar.html#solvefunc"><i class="fa fa-check"></i><b>6.3.4</b> Penyelesaian Sistem Persamaan Linier Menggunakan Fungsi <code>solve()</code></a></li>
-<li class="chapter" data-level="6.3.5" data-path="linearaljabar.html"><a href="linearaljabar.html#solvetridiagfunct"><i class="fa fa-check"></i><b>6.3.5</b> Penyelesaian Sistem Persamaan Linier Menggunakan Fungsi ’Solve.tridiag()`</a></li>
+<li class="chapter" data-level="3.5.1" data-path="rootfinding.html"><a href="rootfinding.html#persamaan-van-der-walls"><i class="fa fa-check"></i><b>3.5.1</b> Persamaan Van Der Walls</a></li>
+<li class="chapter" data-level="3.5.2" data-path="rootfinding.html"><a href="rootfinding.html#hukum-bernoulli"><i class="fa fa-check"></i><b>3.5.2</b> Hukum Bernoulli</a></li>
 </ul></li>
-<li class="chapter" data-level="6.4" data-path="linearaljabar.html"><a href="linearaljabar.html#dekomposisimatriks"><i class="fa fa-check"></i><b>6.4</b> Dekomposisi Matriks</a>
+<li class="chapter" data-level="3.6" data-path="rootfinding.html"><a href="rootfinding.html#referensi-2"><i class="fa fa-check"></i><b>3.6</b> Referensi</a></li>
+<li class="chapter" data-level="3.7" data-path="rootfinding.html"><a href="rootfinding.html#latihan-1"><i class="fa fa-check"></i><b>3.7</b> Latihan</a></li>
+</ul></li>
+<li class="chapter" data-level="4" data-path="interpolation.html"><a href="interpolation.html"><i class="fa fa-check"></i><b>4</b> Interpolasi dan Ekstrapolasi</a>
 <ul>
-<li class="chapter" data-level="6.4.1" data-path="linearaljabar.html"><a href="linearaljabar.html#ludecomp"><i class="fa fa-check"></i><b>6.4.1</b> Dekomposisi LU</a></li>
-<li class="chapter" data-level="6.4.2" data-path="linearaljabar.html"><a href="linearaljabar.html#dekomposisi-cholesky"><i class="fa fa-check"></i><b>6.4.2</b> Dekomposisi Cholesky</a></li>
-<li class="chapter" data-level="6.4.3" data-path="linearaljabar.html"><a href="linearaljabar.html#othersdecomp"><i class="fa fa-check"></i><b>6.4.3</b> Dekomposisi Lainnya</a></li>
-</ul></li>
-<li class="chapter" data-level="6.5" data-path="linearaljabar.html"><a href="linearaljabar.html#iteratif"><i class="fa fa-check"></i><b>6.5</b> Metode Iterasi</a>
+<li class="chapter" data-level="4.1" data-path="interpolation.html"><a href="interpolation.html#poliinterpolation"><i class="fa fa-check"></i><b>4.1</b> Interpolasi Polinomial</a>
 <ul>
-<li class="chapter" data-level="6.5.1" data-path="linearaljabar.html"><a href="linearaljabar.html#jacobiiter"><i class="fa fa-check"></i><b>6.5.1</b> Iterasi Jacobi</a></li>
-<li class="chapter" data-level="6.5.2" data-path="linearaljabar.html"><a href="linearaljabar.html#seideliter"><i class="fa fa-check"></i><b>6.5.2</b> Iterasi Gauss-Seidel</a></li>
+<li class="chapter" data-level="4.1.1" data-path="interpolation.html"><a href="interpolation.html#mengevaluasi-polinomial"><i class="fa fa-check"></i><b>4.1.1</b> Mengevaluasi Polinomial</a></li>
+<li class="chapter" data-level="4.1.2" data-path="interpolation.html"><a href="interpolation.html#lininterpol"><i class="fa fa-check"></i><b>4.1.2</b> Interpolasi Linier</a></li>
+<li class="chapter" data-level="4.1.3" data-path="interpolation.html"><a href="interpolation.html#hopoliinter"><i class="fa fa-check"></i><b>4.1.3</b> Interpolasi Polinomial Orde Tinggi</a></li>
 </ul></li>
-<li class="chapter" data-level="6.6" data-path="linearaljabar.html"><a href="linearaljabar.html#studikasus"><i class="fa fa-check"></i><b>6.6</b> Studi Kasus</a>
+<li class="chapter" data-level="4.2" data-path="interpolation.html"><a href="interpolation.html#pwinter"><i class="fa fa-check"></i><b>4.2</b> Interpolasi Piecewise</a>
 <ul>
-<li class="chapter" data-level="6.6.1" data-path="linearaljabar.html"><a href="linearaljabar.html#leastsquare"><i class="fa fa-check"></i><b>6.6.1</b> Metode Kuadrat Terkecil</a></li>
-<li class="chapter" data-level="6.6.2" data-path="linearaljabar.html"><a href="linearaljabar.html#reaktorkimia"><i class="fa fa-check"></i><b>6.6.2</b> Aliran Massa Dalam Reaktor</a></li>
+<li class="chapter" data-level="4.2.1" data-path="interpolation.html"><a href="interpolation.html#pwlininter"><i class="fa fa-check"></i><b>4.2.1</b> Interpolasi Linier Piecewise</a></li>
+<li class="chapter" data-level="4.2.2" data-path="interpolation.html"><a href="interpolation.html#cubicspline"><i class="fa fa-check"></i><b>4.2.2</b> Interpolasi Spline Kubik</a></li>
 </ul></li>
-<li class="chapter" data-level="6.7" data-path="linearaljabar.html"><a href="linearaljabar.html#referensi-5"><i class="fa fa-check"></i><b>6.7</b> Referensi</a></li>
-<li class="chapter" data-level="6.8" data-path="linearaljabar.html"><a href="linearaljabar.html#latihan"><i class="fa fa-check"></i><b>6.8</b> Latihan</a></li>
-</ul></li>
-<li class="chapter" data-level="7" data-path="rootfinding.html"><a href="rootfinding.html"><i class="fa fa-check"></i><b>7</b> Akar Persamaan Non-Linier</a>
+<li class="chapter" data-level="4.3" data-path="interpolation.html"><a href="interpolation.html#studi-kasus-1"><i class="fa fa-check"></i><b>4.3</b> Studi Kasus</a>
 <ul>
-<li class="chapter" data-level="7.1" data-path="rootfinding.html"><a href="rootfinding.html#bracketing"><i class="fa fa-check"></i><b>7.1</b> Metode Tertutup</a>
-<ul>
-<li class="chapter" data-level="7.1.1" data-path="rootfinding.html"><a href="rootfinding.html#table"><i class="fa fa-check"></i><b>7.1.1</b> Metode Tabel</a></li>
-<li class="chapter" data-level="7.1.2" data-path="rootfinding.html"><a href="rootfinding.html#bisection"><i class="fa fa-check"></i><b>7.1.2</b> Metode Biseksi</a></li>
-<li class="chapter" data-level="7.1.3" data-path="rootfinding.html"><a href="rootfinding.html#regulafalsi"><i class="fa fa-check"></i><b>7.1.3</b> Metode Regula Falsi</a></li>
+<li class="chapter" data-level="4.3.1" data-path="interpolation.html"><a href="interpolation.html#interpolasi-data-runtun-waktu"><i class="fa fa-check"></i><b>4.3.1</b> Interpolasi Data Runtun Waktu</a></li>
 </ul></li>
-<li class="chapter" data-level="7.2" data-path="rootfinding.html"><a href="rootfinding.html#openmethod"><i class="fa fa-check"></i><b>7.2</b> Metode Terbuka</a>
-<ul>
-<li class="chapter" data-level="7.2.1" data-path="rootfinding.html"><a href="rootfinding.html#fixpoint"><i class="fa fa-check"></i><b>7.2.1</b> Metode Iterasi Titik Tetap</a></li>
-<li class="chapter" data-level="7.2.2" data-path="rootfinding.html"><a href="rootfinding.html#newtonraphson"><i class="fa fa-check"></i><b>7.2.2</b> Metode Newton-Raphson</a></li>
-<li class="chapter" data-level="7.2.3" data-path="rootfinding.html"><a href="rootfinding.html#secant"><i class="fa fa-check"></i><b>7.2.3</b> Metode Secant</a></li>
+<li class="chapter" data-level="4.4" data-path="interpolation.html"><a href="interpolation.html#referensi-3"><i class="fa fa-check"></i><b>4.4</b> Referensi</a></li>
+<li class="chapter" data-level="4.5" data-path="interpolation.html"><a href="interpolation.html#latihan-2"><i class="fa fa-check"></i><b>4.5</b> Latihan</a></li>
 </ul></li>
-<li class="chapter" data-level="7.3" data-path="rootfinding.html"><a href="rootfinding.html#uniroot"><i class="fa fa-check"></i><b>7.3</b> Penyelesaian Persamaan Non-Linier Menggunakan Fungsi <code>uniroot</code> dan <code>uniroot.all</code></a></li>
-<li class="chapter" data-level="7.4" data-path="rootfinding.html"><a href="rootfinding.html#akar-persamaan-polinomial-menggunakan-fungsi-polyroot"><i class="fa fa-check"></i><b>7.4</b> Akar Persamaan Polinomial Menggunakan Fungsi <code>polyroot</code></a></li>
-<li class="chapter" data-level="7.5" data-path="rootfinding.html"><a href="rootfinding.html#studi-kasus"><i class="fa fa-check"></i><b>7.5</b> Studi Kasus</a>
+<li class="chapter" data-level="5" data-path="diffinteg.html"><a href="diffinteg.html"><i class="fa fa-check"></i><b>5</b> Diferensiasi dan Integrasi Numerik</a>
 <ul>
-<li class="chapter" data-level="7.5.1" data-path="rootfinding.html"><a href="rootfinding.html#persamaan-van-der-walls"><i class="fa fa-check"></i><b>7.5.1</b> Persamaan Van Der Walls</a></li>
-<li class="chapter" data-level="7.5.2" data-path="rootfinding.html"><a href="rootfinding.html#hukum-bernoulli"><i class="fa fa-check"></i><b>7.5.2</b> Hukum Bernoulli</a></li>
-</ul></li>
-<li class="chapter" data-level="7.6" data-path="rootfinding.html"><a href="rootfinding.html#referensi-6"><i class="fa fa-check"></i><b>7.6</b> Referensi</a></li>
-<li class="chapter" data-level="7.7" data-path="rootfinding.html"><a href="rootfinding.html#latihan-1"><i class="fa fa-check"></i><b>7.7</b> Latihan</a></li>
-</ul></li>
-<li class="chapter" data-level="8" data-path="interpolation.html"><a href="interpolation.html"><i class="fa fa-check"></i><b>8</b> Interpolasi dan Ekstrapolasi</a>
+<li class="chapter" data-level="5.1" data-path="diffinteg.html"><a href="diffinteg.html#finitediff"><i class="fa fa-check"></i><b>5.1</b> Metode Beda Hingga</a></li>
+<li class="chapter" data-level="5.2" data-path="diffinteg.html"><a href="diffinteg.html#diffother"><i class="fa fa-check"></i><b>5.2</b> Diferensiasi Menggunakan Fungsi Lainnya di R</a>
 <ul>
-<li class="chapter" data-level="8.1" data-path="interpolation.html"><a href="interpolation.html#poliinterpolation"><i class="fa fa-check"></i><b>8.1</b> Interpolasi Polinomial</a>
-<ul>
-<li class="chapter" data-level="8.1.1" data-path="interpolation.html"><a href="interpolation.html#mengevaluasi-polinomial"><i class="fa fa-check"></i><b>8.1.1</b> Mengevaluasi Polinomial</a></li>
-<li class="chapter" data-level="8.1.2" data-path="interpolation.html"><a href="interpolation.html#lininterpol"><i class="fa fa-check"></i><b>8.1.2</b> Interpolasi Linier</a></li>
-<li class="chapter" data-level="8.1.3" data-path="interpolation.html"><a href="interpolation.html#hopoliinter"><i class="fa fa-check"></i><b>8.1.3</b> Interpolasi Polinomial Orde Tinggi</a></li>
+<li class="chapter" data-level="5.2.1" data-path="diffinteg.html"><a href="diffinteg.html#diferensiasi-metode-titik-pusat-mengggunakan-fungsidiff"><i class="fa fa-check"></i><b>5.2.1</b> Diferensiasi Metode Titik Pusat Mengggunakan Fungsi<code>diff()</code></a></li>
+<li class="chapter" data-level="5.2.2" data-path="diffinteg.html"><a href="diffinteg.html#diferensiasi-menggunakan-paket-numderiv"><i class="fa fa-check"></i><b>5.2.2</b> Diferensiasi Menggunakan Paket <code>numDeriv</code></a></li>
+<li class="chapter" data-level="5.2.3" data-path="diffinteg.html"><a href="diffinteg.html#diferensiasi-menggunakan-paket-pracma"><i class="fa fa-check"></i><b>5.2.3</b> DIferensiasi Menggunakan Paket <code>pracma</code></a></li>
 </ul></li>
-<li class="chapter" data-level="8.2" data-path="interpolation.html"><a href="interpolation.html#pwinter"><i class="fa fa-check"></i><b>8.2</b> Interpolasi Piecewise</a>
+<li class="chapter" data-level="5.3" data-path="diffinteg.html"><a href="diffinteg.html#newtoncotes"><i class="fa fa-check"></i><b>5.3</b> Metode Integrasi Newton-Cotes</a>
 <ul>
-<li class="chapter" data-level="8.2.1" data-path="interpolation.html"><a href="interpolation.html#pwlininter"><i class="fa fa-check"></i><b>8.2.1</b> Interpolasi Linier Piecewise</a></li>
-<li class="chapter" data-level="8.2.2" data-path="interpolation.html"><a href="interpolation.html#cubicspline"><i class="fa fa-check"></i><b>8.2.2</b> Interpolasi Spline Kubik</a></li>
+<li class="chapter" data-level="5.3.1" data-path="diffinteg.html"><a href="diffinteg.html#riemann"><i class="fa fa-check"></i><b>5.3.1</b> Metode Integral Riemann</a></li>
+<li class="chapter" data-level="5.3.2" data-path="diffinteg.html"><a href="diffinteg.html#trapezoida"><i class="fa fa-check"></i><b>5.3.2</b> Metode Trapezoida</a></li>
+<li class="chapter" data-level="5.3.3" data-path="diffinteg.html"><a href="diffinteg.html#simpson"><i class="fa fa-check"></i><b>5.3.3</b> Metode Simpson</a></li>
+<li class="chapter" data-level="5.3.4" data-path="diffinteg.html"><a href="diffinteg.html#simpson38"><i class="fa fa-check"></i><b>5.3.4</b> Metode Simpson 3/8</a></li>
 </ul></li>
-<li class="chapter" data-level="8.3" data-path="interpolation.html"><a href="interpolation.html#studi-kasus-1"><i class="fa fa-check"></i><b>8.3</b> Studi Kasus</a>
+<li class="chapter" data-level="5.4" data-path="diffinteg.html"><a href="diffinteg.html#metode-integrasi-newton-cotes-mengunakan-fungsi-lainnya"><i class="fa fa-check"></i><b>5.4</b> Metode Integrasi Newton-Cotes Mengunakan Fungsi Lainnya</a></li>
+<li class="chapter" data-level="5.5" data-path="diffinteg.html"><a href="diffinteg.html#kuadgauss"><i class="fa fa-check"></i><b>5.5</b> Metode Kuadratur Gauss</a></li>
+<li class="chapter" data-level="5.6" data-path="diffinteg.html"><a href="diffinteg.html#othergauss"><i class="fa fa-check"></i><b>5.6</b> Metode Gauss-Legendre Menggunakan Fungsi <code>legendre.quadrature()</code></a></li>
+<li class="chapter" data-level="5.7" data-path="diffinteg.html"><a href="diffinteg.html#adaptifint"><i class="fa fa-check"></i><b>5.7</b> Metode Integrasi Adaptif</a></li>
+<li class="chapter" data-level="5.8" data-path="diffinteg.html"><a href="diffinteg.html#metode-integral-adaptif-menggunakan-fungsi-lainnya-pada-r"><i class="fa fa-check"></i><b>5.8</b> Metode Integral Adaptif Menggunakan Fungsi Lainnya Pada <code>R</code></a></li>
+<li class="chapter" data-level="5.9" data-path="diffinteg.html"><a href="diffinteg.html#romberg"><i class="fa fa-check"></i><b>5.9</b> Metode Integrasi Romberg</a></li>
+<li class="chapter" data-level="5.10" data-path="diffinteg.html"><a href="diffinteg.html#metode-integrasi-romberg-menggunakan-fungsi-lainnya"><i class="fa fa-check"></i><b>5.10</b> Metode Integrasi Romberg Menggunakan Fungsi Lainnya</a></li>
+<li class="chapter" data-level="5.11" data-path="diffinteg.html"><a href="diffinteg.html#montecarlo"><i class="fa fa-check"></i><b>5.11</b> Metode Integrasi Monte Carlo</a></li>
+<li class="chapter" data-level="5.12" data-path="diffinteg.html"><a href="diffinteg.html#studi-kasus-2"><i class="fa fa-check"></i><b>5.12</b> Studi Kasus</a>
 <ul>
-<li class="chapter" data-level="8.3.1" data-path="interpolation.html"><a href="interpolation.html#interpolasi-data-runtun-waktu"><i class="fa fa-check"></i><b>8.3.1</b> Interpolasi Data Runtun Waktu</a></li>
+<li class="chapter" data-level="5.12.1" data-path="diffinteg.html"><a href="diffinteg.html#penerjung-payung"><i class="fa fa-check"></i><b>5.12.1</b> Penerjung Payung</a></li>
 </ul></li>
-<li class="chapter" data-level="8.4" data-path="interpolation.html"><a href="interpolation.html#referensi-7"><i class="fa fa-check"></i><b>8.4</b> Referensi</a></li>
-<li class="chapter" data-level="8.5" data-path="interpolation.html"><a href="interpolation.html#latihan-2"><i class="fa fa-check"></i><b>8.5</b> Latihan</a></li>
+<li class="chapter" data-level="5.13" data-path="diffinteg.html"><a href="diffinteg.html#referensi-4"><i class="fa fa-check"></i><b>5.13</b> Referensi</a></li>
+<li class="chapter" data-level="5.14" data-path="diffinteg.html"><a href="diffinteg.html#latihan-3"><i class="fa fa-check"></i><b>5.14</b> Latihan</a></li>
 </ul></li>
-<li class="chapter" data-level="9" data-path="diffinteg.html"><a href="diffinteg.html"><i class="fa fa-check"></i><b>9</b> Diferensiasi dan Integrasi Numerik</a>
+<li class="chapter" data-level="6" data-path="diffeq.html"><a href="diffeq.html"><i class="fa fa-check"></i><b>6</b> Persamaan Diferensial</a>
 <ul>
-<li class="chapter" data-level="9.1" data-path="diffinteg.html"><a href="diffinteg.html#finitediff"><i class="fa fa-check"></i><b>9.1</b> Metode Beda Hingga</a></li>
-<li class="chapter" data-level="9.2" data-path="diffinteg.html"><a href="diffinteg.html#diffother"><i class="fa fa-check"></i><b>9.2</b> Diferensiasi Menggunakan Fungsi Lainnya di R</a>
+<li class="chapter" data-level="6.1" data-path="diffeq.html"><a href="diffeq.html#ivp"><i class="fa fa-check"></i><b>6.1</b> <em>Initial value problems</em></a>
 <ul>
-<li class="chapter" data-level="9.2.1" data-path="diffinteg.html"><a href="diffinteg.html#diferensiasi-metode-titik-pusat-mengggunakan-fungsidiff"><i class="fa fa-check"></i><b>9.2.1</b> Diferensiasi Metode Titik Pusat Mengggunakan Fungsi<code>diff()</code></a></li>
-<li class="chapter" data-level="9.2.2" data-path="diffinteg.html"><a href="diffinteg.html#diferensiasi-menggunakan-paket-numderiv"><i class="fa fa-check"></i><b>9.2.2</b> Diferensiasi Menggunakan Paket <code>numDeriv</code></a></li>
-<li class="chapter" data-level="9.2.3" data-path="diffinteg.html"><a href="diffinteg.html#diferensiasi-menggunakan-paket-pracma"><i class="fa fa-check"></i><b>9.2.3</b> DIferensiasi Menggunakan Paket <code>pracma</code></a></li>
+<li class="chapter" data-level="6.1.1" data-path="diffeq.html"><a href="diffeq.html#eulermethod"><i class="fa fa-check"></i><b>6.1.1</b> Metode Euler</a></li>
+<li class="chapter" data-level="6.1.2" data-path="diffeq.html"><a href="diffeq.html#heun"><i class="fa fa-check"></i><b>6.1.2</b> Metode Heun</a></li>
+<li class="chapter" data-level="6.1.3" data-path="diffeq.html"><a href="diffeq.html#midpt"><i class="fa fa-check"></i><b>6.1.3</b> Metode Titik Tengah</a></li>
+<li class="chapter" data-level="6.1.4" data-path="diffeq.html"><a href="diffeq.html#rungekutta"><i class="fa fa-check"></i><b>6.1.4</b> Metode Runge-Kutta Orde 4</a></li>
+<li class="chapter" data-level="6.1.5" data-path="diffeq.html"><a href="diffeq.html#mml"><i class="fa fa-check"></i><b>6.1.5</b> Metode Multistep Linier</a></li>
 </ul></li>
-<li class="chapter" data-level="9.3" data-path="diffinteg.html"><a href="diffinteg.html#newtoncotes"><i class="fa fa-check"></i><b>9.3</b> Metode Integrasi Newton-Cotes</a>
+<li class="chapter" data-level="6.2" data-path="diffeq.html"><a href="diffeq.html#sysdiff"><i class="fa fa-check"></i><b>6.2</b> Sistem Persamaan Diferensial</a></li>
+<li class="chapter" data-level="6.3" data-path="diffeq.html"><a href="diffeq.html#penyelesaian-persamaan-diferensial-dan-sistem-persamaan-diferensial-menggunakan-fungsi-ode"><i class="fa fa-check"></i><b>6.3</b> Penyelesaian Persamaan Diferensial dan Sistem Persamaan Diferensial Menggunakan Fungsi <code>ode()</code></a></li>
+<li class="chapter" data-level="6.4" data-path="diffeq.html"><a href="diffeq.html#pasialdiff"><i class="fa fa-check"></i><b>6.4</b> Persamaan Diferensial Parsial</a>
 <ul>
-<li class="chapter" data-level="9.3.1" data-path="diffinteg.html"><a href="diffinteg.html#riemann"><i class="fa fa-check"></i><b>9.3.1</b> Metode Integral Riemann</a></li>
-<li class="chapter" data-level="9.3.2" data-path="diffinteg.html"><a href="diffinteg.html#trapezoida"><i class="fa fa-check"></i><b>9.3.2</b> Metode Trapezoida</a></li>
-<li class="chapter" data-level="9.3.3" data-path="diffinteg.html"><a href="diffinteg.html#simpson"><i class="fa fa-check"></i><b>9.3.3</b> Metode Simpson</a></li>
-<li class="chapter" data-level="9.3.4" data-path="diffinteg.html"><a href="diffinteg.html#simpson38"><i class="fa fa-check"></i><b>9.3.4</b> Metode Simpson 3/8</a></li>
+<li class="chapter" data-level="6.4.1" data-path="diffeq.html"><a href="diffeq.html#persamaan-difusi"><i class="fa fa-check"></i><b>6.4.1</b> Persamaan Difusi</a></li>
+<li class="chapter" data-level="6.4.2" data-path="diffeq.html"><a href="diffeq.html#persamaan-gelombang"><i class="fa fa-check"></i><b>6.4.2</b> Persamaan Gelombang</a></li>
+<li class="chapter" data-level="6.4.3" data-path="diffeq.html"><a href="diffeq.html#laplace"><i class="fa fa-check"></i><b>6.4.3</b> Persamaan Laplace</a></li>
+<li class="chapter" data-level="6.4.4" data-path="diffeq.html"><a href="diffeq.html#setup.grid.1d"><i class="fa fa-check"></i><b>6.4.4</b> <code>setup.grid.1D()</code></a></li>
+<li class="chapter" data-level="6.4.5" data-path="diffeq.html"><a href="diffeq.html#setup.prop.1d"><i class="fa fa-check"></i><b>6.4.5</b> <code>setup.prop.1D()</code></a></li>
+<li class="chapter" data-level="6.4.6" data-path="diffeq.html"><a href="diffeq.html#tran.1d"><i class="fa fa-check"></i><b>6.4.6</b> <code>tran.1D()</code></a></li>
+<li class="chapter" data-level="6.4.7" data-path="diffeq.html"><a href="diffeq.html#ode.1d-atau-steady.1d"><i class="fa fa-check"></i><b>6.4.7</b> <code>ode.1D()</code> atau <code>steady.1D()</code></a></li>
 </ul></li>
-<li class="chapter" data-level="9.4" data-path="diffinteg.html"><a href="diffinteg.html#metode-integrasi-newton-cotes-mengunakan-fungsi-lainnya"><i class="fa fa-check"></i><b>9.4</b> Metode Integrasi Newton-Cotes Mengunakan Fungsi Lainnya</a></li>
-<li class="chapter" data-level="9.5" data-path="diffinteg.html"><a href="diffinteg.html#kuadgauss"><i class="fa fa-check"></i><b>9.5</b> Metode Kuadratur Gauss</a></li>
-<li class="chapter" data-level="9.6" data-path="diffinteg.html"><a href="diffinteg.html#othergauss"><i class="fa fa-check"></i><b>9.6</b> Metode Gauss-Legendre Menggunakan Fungsi <code>legendre.quadrature()</code></a></li>
-<li class="chapter" data-level="9.7" data-path="diffinteg.html"><a href="diffinteg.html#adaptifint"><i class="fa fa-check"></i><b>9.7</b> Metode Integrasi Adaptif</a></li>
-<li class="chapter" data-level="9.8" data-path="diffinteg.html"><a href="diffinteg.html#metode-integral-adaptif-menggunakan-fungsi-lainnya-pada-r"><i class="fa fa-check"></i><b>9.8</b> Metode Integral Adaptif Menggunakan Fungsi Lainnya Pada <code>R</code></a></li>
-<li class="chapter" data-level="9.9" data-path="diffinteg.html"><a href="diffinteg.html#romberg"><i class="fa fa-check"></i><b>9.9</b> Metode Integrasi Romberg</a></li>
-<li class="chapter" data-level="9.10" data-path="diffinteg.html"><a href="diffinteg.html#metode-integrasi-romberg-menggunakan-fungsi-lainnya"><i class="fa fa-check"></i><b>9.10</b> Metode Integrasi Romberg Menggunakan Fungsi Lainnya</a></li>
-<li class="chapter" data-level="9.11" data-path="diffinteg.html"><a href="diffinteg.html#montecarlo"><i class="fa fa-check"></i><b>9.11</b> Metode Integrasi Monte Carlo</a></li>
-<li class="chapter" data-level="9.12" data-path="diffinteg.html"><a href="diffinteg.html#studi-kasus-2"><i class="fa fa-check"></i><b>9.12</b> Studi Kasus</a>
+<li class="chapter" data-level="6.5" data-path="diffeq.html"><a href="diffeq.html#contoh-penerapan-paket-reactran"><i class="fa fa-check"></i><b>6.5</b> Contoh Penerapan Paket <code>ReacTran</code></a>
 <ul>
-<li class="chapter" data-level="9.12.1" data-path="diffinteg.html"><a href="diffinteg.html#penerjung-payung"><i class="fa fa-check"></i><b>9.12.1</b> Penerjung Payung</a></li>
+<li class="chapter" data-level="6.5.1" data-path="diffeq.html"><a href="diffeq.html#persamaan-adveksi-difuksi-1d"><i class="fa fa-check"></i><b>6.5.1</b> Persamaan Adveksi-Difuksi 1D</a></li>
+<li class="chapter" data-level="6.5.2" data-path="diffeq.html"><a href="diffeq.html#persamaan-gelombang-1d"><i class="fa fa-check"></i><b>6.5.2</b> Persamaan Gelombang 1D</a></li>
+<li class="chapter" data-level="6.5.3" data-path="diffeq.html"><a href="diffeq.html#persamaan-laplace"><i class="fa fa-check"></i><b>6.5.3</b> Persamaan Laplace</a></li>
+<li class="chapter" data-level="6.5.4" data-path="diffeq.html"><a href="diffeq.html#persamaan-poisson-untuk-dipol"><i class="fa fa-check"></i><b>6.5.4</b> Persamaan Poisson untuk Dipol</a></li>
 </ul></li>
-<li class="chapter" data-level="9.13" data-path="diffinteg.html"><a href="diffinteg.html#referensi-8"><i class="fa fa-check"></i><b>9.13</b> Referensi</a></li>
-<li class="chapter" data-level="9.14" data-path="diffinteg.html"><a href="diffinteg.html#latihan-3"><i class="fa fa-check"></i><b>9.14</b> Latihan</a></li>
-</ul></li>
-<li class="chapter" data-level="10" data-path="diffeq.html"><a href="diffeq.html"><i class="fa fa-check"></i><b>10</b> Persamaan Diferensial</a>
+<li class="chapter" data-level="6.6" data-path="diffeq.html"><a href="diffeq.html#studi-kasus-3"><i class="fa fa-check"></i><b>6.6</b> Studi Kasus</a>
 <ul>
-<li class="chapter" data-level="10.1" data-path="diffeq.html"><a href="diffeq.html#ivp"><i class="fa fa-check"></i><b>10.1</b> <em>Initial value problems</em></a>
-<ul>
-<li class="chapter" data-level="10.1.1" data-path="diffeq.html"><a href="diffeq.html#eulermethod"><i class="fa fa-check"></i><b>10.1.1</b> Metode Euler</a></li>
-<li class="chapter" data-level="10.1.2" data-path="diffeq.html"><a href="diffeq.html#heun"><i class="fa fa-check"></i><b>10.1.2</b> Metode Heun</a></li>
-<li class="chapter" data-level="10.1.3" data-path="diffeq.html"><a href="diffeq.html#midpt"><i class="fa fa-check"></i><b>10.1.3</b> Metode Titik Tengah</a></li>
-<li class="chapter" data-level="10.1.4" data-path="diffeq.html"><a href="diffeq.html#rungekutta"><i class="fa fa-check"></i><b>10.1.4</b> Metode Runge-Kutta Orde 4</a></li>
-<li class="chapter" data-level="10.1.5" data-path="diffeq.html"><a href="diffeq.html#mml"><i class="fa fa-check"></i><b>10.1.5</b> Metode Multistep Linier</a></li>
+<li class="chapter" data-level="6.6.1" data-path="diffeq.html"><a href="diffeq.html#model-lotka-voltera"><i class="fa fa-check"></i><b>6.6.1</b> Model Lotka-Voltera</a></li>
 </ul></li>
-<li class="chapter" data-level="10.2" data-path="diffeq.html"><a href="diffeq.html#sysdiff"><i class="fa fa-check"></i><b>10.2</b> Sistem Persamaan Diferensial</a></li>
-<li class="chapter" data-level="10.3" data-path="diffeq.html"><a href="diffeq.html#penyelesaian-persamaan-diferensial-dan-sistem-persamaan-diferensial-menggunakan-fungsi-ode"><i class="fa fa-check"></i><b>10.3</b> Penyelesaian Persamaan Diferensial dan Sistem Persamaan Diferensial Menggunakan Fungsi <code>ode()</code></a></li>
-<li class="chapter" data-level="10.4" data-path="diffeq.html"><a href="diffeq.html#pasialdiff"><i class="fa fa-check"></i><b>10.4</b> Persamaan Diferensial Parsial</a>
-<ul>
-<li class="chapter" data-level="10.4.1" data-path="diffeq.html"><a href="diffeq.html#persamaan-difusi"><i class="fa fa-check"></i><b>10.4.1</b> Persamaan Difusi</a></li>
-<li class="chapter" data-level="10.4.2" data-path="diffeq.html"><a href="diffeq.html#persamaan-gelombang"><i class="fa fa-check"></i><b>10.4.2</b> Persamaan Gelombang</a></li>
-<li class="chapter" data-level="10.4.3" data-path="diffeq.html"><a href="diffeq.html#laplace"><i class="fa fa-check"></i><b>10.4.3</b> Persamaan Laplace</a></li>
-<li class="chapter" data-level="10.4.4" data-path="diffeq.html"><a href="diffeq.html#setup.grid.1d"><i class="fa fa-check"></i><b>10.4.4</b> <code>setup.grid.1D()</code></a></li>
-<li class="chapter" data-level="10.4.5" data-path="diffeq.html"><a href="diffeq.html#setup.prop.1d"><i class="fa fa-check"></i><b>10.4.5</b> <code>setup.prop.1D()</code></a></li>
-<li class="chapter" data-level="10.4.6" data-path="diffeq.html"><a href="diffeq.html#tran.1d"><i class="fa fa-check"></i><b>10.4.6</b> <code>tran.1D()</code></a></li>
-<li class="chapter" data-level="10.4.7" data-path="diffeq.html"><a href="diffeq.html#ode.1d-atau-steady.1d"><i class="fa fa-check"></i><b>10.4.7</b> <code>ode.1D()</code> atau <code>steady.1D()</code></a></li>
+<li class="chapter" data-level="6.7" data-path="diffeq.html"><a href="diffeq.html#referensi-5"><i class="fa fa-check"></i><b>6.7</b> Referensi</a></li>
+<li class="chapter" data-level="6.8" data-path="diffeq.html"><a href="diffeq.html#latihan-4"><i class="fa fa-check"></i><b>6.8</b> Latihan</a></li>
 </ul></li>
-<li class="chapter" data-level="10.5" data-path="diffeq.html"><a href="diffeq.html#contoh-penerapan-paket-reactran"><i class="fa fa-check"></i><b>10.5</b> Contoh Penerapan Paket <code>ReacTran</code></a>
+<li class="chapter" data-level="7" data-path="dataanalysis.html"><a href="dataanalysis.html"><i class="fa fa-check"></i><b>7</b> Analisis Data</a>
 <ul>
-<li class="chapter" data-level="10.5.1" data-path="diffeq.html"><a href="diffeq.html#persamaan-adveksi-difuksi-1d"><i class="fa fa-check"></i><b>10.5.1</b> Persamaan Adveksi-Difuksi 1D</a></li>
-<li class="chapter" data-level="10.5.2" data-path="diffeq.html"><a href="diffeq.html#persamaan-gelombang-1d"><i class="fa fa-check"></i><b>10.5.2</b> Persamaan Gelombang 1D</a></li>
-<li class="chapter" data-level="10.5.3" data-path="diffeq.html"><a href="diffeq.html#persamaan-laplace"><i class="fa fa-check"></i><b>10.5.3</b> Persamaan Laplace</a></li>
-<li class="chapter" data-level="10.5.4" data-path="diffeq.html"><a href="diffeq.html#persamaan-poisson-untuk-dipol"><i class="fa fa-check"></i><b>10.5.4</b> Persamaan Poisson untuk Dipol</a></li>
-</ul></li>
-<li class="chapter" data-level="10.6" data-path="diffeq.html"><a href="diffeq.html#studi-kasus-3"><i class="fa fa-check"></i><b>10.6</b> Studi Kasus</a>
+<li class="chapter" data-level="7.1" data-path="dataanalysis.html"><a href="dataanalysis.html#importdata"><i class="fa fa-check"></i><b>7.1</b> Import Data</a></li>
+<li class="chapter" data-level="7.2" data-path="dataanalysis.html"><a href="dataanalysis.html#librarydata"><i class="fa fa-check"></i><b>7.2</b> Membaca Data Dari <em>Library</em></a></li>
+<li class="chapter" data-level="7.3" data-path="dataanalysis.html"><a href="dataanalysis.html#summarystats"><i class="fa fa-check"></i><b>7.3</b> Ringkasan Data</a></li>
+<li class="chapter" data-level="7.4" data-path="dataanalysis.html"><a href="dataanalysis.html#norm"><i class="fa fa-check"></i><b>7.4</b> Uji Normalitas Data Tunggal</a></li>
+<li class="chapter" data-level="7.5" data-path="dataanalysis.html"><a href="dataanalysis.html#uji-rata-rata-satu-dan-dua-sampel"><i class="fa fa-check"></i><b>7.5</b> Uji Rata-Rata Satu dan Dua Sampel</a></li>
+<li class="chapter" data-level="7.6" data-path="dataanalysis.html"><a href="dataanalysis.html#korelasi-antar-variabel"><i class="fa fa-check"></i><b>7.6</b> Korelasi Antar Variabel</a></li>
+<li class="chapter" data-level="7.7" data-path="dataanalysis.html"><a href="dataanalysis.html#analisis-varians"><i class="fa fa-check"></i><b>7.7</b> Analisis Varians</a></li>
+<li class="chapter" data-level="7.8" data-path="dataanalysis.html"><a href="dataanalysis.html#analisis-komponen-utama"><i class="fa fa-check"></i><b>7.8</b> Analisis Komponen Utama</a></li>
+<li class="chapter" data-level="7.9" data-path="dataanalysis.html"><a href="dataanalysis.html#analisis-cluster"><i class="fa fa-check"></i><b>7.9</b> Analisis Cluster</a>
 <ul>
-<li class="chapter" data-level="10.6.1" data-path="diffeq.html"><a href="diffeq.html#model-lotka-voltera"><i class="fa fa-check"></i><b>10.6.1</b> Model Lotka-Voltera</a></li>
+<li class="chapter" data-level="7.9.1" data-path="dataanalysis.html"><a href="dataanalysis.html#analisis-cluster-menggunakan-algoritma-pengelompokan-hierarkis-aglomeratif"><i class="fa fa-check"></i><b>7.9.1</b> Analisis Cluster Menggunakan Algoritma Pengelompokan Hierarkis Aglomeratif</a></li>
+<li class="chapter" data-level="7.9.2" data-path="dataanalysis.html"><a href="dataanalysis.html#pengelompokan-hierarkis-divisif"><i class="fa fa-check"></i><b>7.9.2</b> Pengelompokan Hierarkis Divisif</a></li>
+<li class="chapter" data-level="7.9.3" data-path="dataanalysis.html"><a href="dataanalysis.html#pengelompokan-menggunakan-algoritma-k-mean"><i class="fa fa-check"></i><b>7.9.3</b> Pengelompokan Menggunakan Algoritma K-Mean</a></li>
+<li class="chapter" data-level="7.9.4" data-path="dataanalysis.html"><a href="dataanalysis.html#pengelompokan-menggunakan-algoritma-pam"><i class="fa fa-check"></i><b>7.9.4</b> Pengelompokan Menggunakan Algoritma PAM</a></li>
 </ul></li>
-<li class="chapter" data-level="10.7" data-path="diffeq.html"><a href="diffeq.html#referensi-9"><i class="fa fa-check"></i><b>10.7</b> Referensi</a></li>
-<li class="chapter" data-level="10.8" data-path="diffeq.html"><a href="diffeq.html#latihan-4"><i class="fa fa-check"></i><b>10.8</b> Latihan</a></li>
+<li class="chapter" data-level="7.10" data-path="dataanalysis.html"><a href="dataanalysis.html#referensi-6"><i class="fa fa-check"></i><b>7.10</b> Referensi</a></li>
 </ul></li>
-<li class="chapter" data-level="11" data-path="dataanalysis.html"><a href="dataanalysis.html"><i class="fa fa-check"></i><b>11</b> Analisis Data</a>
+<li class="chapter" data-level="8" data-path="datamod.html"><a href="datamod.html"><i class="fa fa-check"></i><b>8</b> Pemodelan Data</a>
 <ul>
-<li class="chapter" data-level="11.1" data-path="dataanalysis.html"><a href="dataanalysis.html#importdata"><i class="fa fa-check"></i><b>11.1</b> Import Data</a></li>
-<li class="chapter" data-level="11.2" data-path="dataanalysis.html"><a href="dataanalysis.html#librarydata"><i class="fa fa-check"></i><b>11.2</b> Membaca Data Dari <em>Library</em></a></li>
-<li class="chapter" data-level="11.3" data-path="dataanalysis.html"><a href="dataanalysis.html#summarystats"><i class="fa fa-check"></i><b>11.3</b> Ringkasan Data</a></li>
-<li class="chapter" data-level="11.4" data-path="dataanalysis.html"><a href="dataanalysis.html#norm"><i class="fa fa-check"></i><b>11.4</b> Uji Normalitas Data Tunggal</a></li>
-<li class="chapter" data-level="11.5" data-path="dataanalysis.html"><a href="dataanalysis.html#uji-rata-rata-satu-dan-dua-sampel"><i class="fa fa-check"></i><b>11.5</b> Uji Rata-Rata Satu dan Dua Sampel</a></li>
-<li class="chapter" data-level="11.6" data-path="dataanalysis.html"><a href="dataanalysis.html#korelasi-antar-variabel"><i class="fa fa-check"></i><b>11.6</b> Korelasi Antar Variabel</a></li>
-<li class="chapter" data-level="11.7" data-path="dataanalysis.html"><a href="dataanalysis.html#analisis-varians"><i class="fa fa-check"></i><b>11.7</b> Analisis Varians</a></li>
-<li class="chapter" data-level="11.8" data-path="dataanalysis.html"><a href="dataanalysis.html#analisis-komponen-utama"><i class="fa fa-check"></i><b>11.8</b> Analisis Komponen Utama</a></li>
-<li class="chapter" data-level="11.9" data-path="dataanalysis.html"><a href="dataanalysis.html#analisis-cluster"><i class="fa fa-check"></i><b>11.9</b> Analisis Cluster</a>
+<li class="chapter" data-level="8.1" data-path="datamod.html"><a href="datamod.html#reglin"><i class="fa fa-check"></i><b>8.1</b> Regresi Linier</a>
 <ul>
-<li class="chapter" data-level="11.9.1" data-path="dataanalysis.html"><a href="dataanalysis.html#analisis-cluster-menggunakan-algoritma-pengelompokan-hierarkis-aglomeratif"><i class="fa fa-check"></i><b>11.9.1</b> Analisis Cluster Menggunakan Algoritma Pengelompokan Hierarkis Aglomeratif</a></li>
-<li class="chapter" data-level="11.9.2" data-path="dataanalysis.html"><a href="dataanalysis.html#pengelompokan-hierarkis-divisif"><i class="fa fa-check"></i><b>11.9.2</b> Pengelompokan Hierarkis Divisif</a></li>
-<li class="chapter" data-level="11.9.3" data-path="dataanalysis.html"><a href="dataanalysis.html#pengelompokan-menggunakan-algoritma-k-mean"><i class="fa fa-check"></i><b>11.9.3</b> Pengelompokan Menggunakan Algoritma K-Mean</a></li>
-<li class="chapter" data-level="11.9.4" data-path="dataanalysis.html"><a href="dataanalysis.html#pengelompokan-menggunakan-algoritma-pam"><i class="fa fa-check"></i><b>11.9.4</b> Pengelompokan Menggunakan Algoritma PAM</a></li>
+<li class="chapter" data-level="8.1.1" data-path="datamod.html"><a href="datamod.html#SLR"><i class="fa fa-check"></i><b>8.1.1</b> Regrasi Linier Sederhana (<em>Simple Linear Regression</em>)</a></li>
+<li class="chapter" data-level="8.1.2" data-path="datamod.html"><a href="datamod.html#MLR"><i class="fa fa-check"></i><b>8.1.2</b> Regresi Linier Berganda (<em>Multiple Linier Regression</em>)</a></li>
+<li class="chapter" data-level="8.1.3" data-path="datamod.html"><a href="datamod.html#lminter"><i class="fa fa-check"></i><b>8.1.3</b> Model Linier dengan Interaksi Antar Variabel Prediktor</a></li>
+<li class="chapter" data-level="8.1.4" data-path="datamod.html"><a href="datamod.html#nlinpred"><i class="fa fa-check"></i><b>8.1.4</b> Transformasi Non-linier Pada Prediktor</a></li>
+<li class="chapter" data-level="8.1.5" data-path="datamod.html"><a href="datamod.html#model-linier-dengan-prediktor-kategorikal"><i class="fa fa-check"></i><b>8.1.5</b> Model Linier dengan Prediktor Kategorikal</a></li>
+<li class="chapter" data-level="8.1.6" data-path="datamod.html"><a href="datamod.html#wlr"><i class="fa fa-check"></i><b>8.1.6</b> Regresi linier dengan Pembobotan</a></li>
 </ul></li>
-<li class="chapter" data-level="11.10" data-path="dataanalysis.html"><a href="dataanalysis.html#referensi-10"><i class="fa fa-check"></i><b>11.10</b> Referensi</a></li>
-</ul></li>
-<li class="chapter" data-level="12" data-path="datamod.html"><a href="datamod.html"><i class="fa fa-check"></i><b>12</b> Pemodelan Data</a>
-<ul>
-<li class="chapter" data-level="12.1" data-path="datamod.html"><a href="datamod.html#reglin"><i class="fa fa-check"></i><b>12.1</b> Regresi Linier</a>
-<ul>
-<li class="chapter" data-level="12.1.1" data-path="datamod.html"><a href="datamod.html#SLR"><i class="fa fa-check"></i><b>12.1.1</b> Regrasi Linier Sederhana (<em>Simple Linear Regression</em>)</a></li>
-<li class="chapter" data-level="12.1.2" data-path="datamod.html"><a href="datamod.html#MLR"><i class="fa fa-check"></i><b>12.1.2</b> Regresi Linier Berganda (<em>Multiple Linier Regression</em>)</a></li>
-<li class="chapter" data-level="12.1.3" data-path="datamod.html"><a href="datamod.html#lminter"><i class="fa fa-check"></i><b>12.1.3</b> Model Linier dengan Interaksi Antar Variabel Prediktor</a></li>
-<li class="chapter" data-level="12.1.4" data-path="datamod.html"><a href="datamod.html#nlinpred"><i class="fa fa-check"></i><b>12.1.4</b> Transformasi Non-linier Pada Prediktor</a></li>
-<li class="chapter" data-level="12.1.5" data-path="datamod.html"><a href="datamod.html#model-linier-dengan-prediktor-kategorikal"><i class="fa fa-check"></i><b>12.1.5</b> Model Linier dengan Prediktor Kategorikal</a></li>
-<li class="chapter" data-level="12.1.6" data-path="datamod.html"><a href="datamod.html#wlr"><i class="fa fa-check"></i><b>12.1.6</b> Regresi linier dengan Pembobotan</a></li>
-</ul></li>
-<li class="chapter" data-level="12.2" data-path="datamod.html"><a href="datamod.html#logreg"><i class="fa fa-check"></i><b>12.2</b> Regresi Logistik</a></li>
-<li class="chapter" data-level="12.3" data-path="datamod.html"><a href="datamod.html#referensi-11"><i class="fa fa-check"></i><b>12.3</b> Referensi</a></li>
+<li class="chapter" data-level="8.2" data-path="datamod.html"><a href="datamod.html#logreg"><i class="fa fa-check"></i><b>8.2</b> Regresi Logistik</a></li>
+<li class="chapter" data-level="8.3" data-path="datamod.html"><a href="datamod.html#referensi-7"><i class="fa fa-check"></i><b>8.3</b> Referensi</a></li>
 </ul></li>
 <li class="divider"></li>
 <li><a href="https://github.com/rstudio/bookdown" target="blank">Published with bookdown</a></li>
@@ -452,27 +361,27 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
           <div class="page-inner">
 
             <section class="normal" id="section-">
-<div id="datamod" class="section level1 hasAnchor" number="12">
-<h1><span class="header-section-number">Bab 12</span> Pemodelan Data<a href="datamod.html#datamod" class="anchor-section" aria-label="Anchor link to header"></a></h1>
-<p>Pada Chapter <a href="datamod.html#datamod">12</a>, kita akan membahas cara membentuk model statistik menggunakan <code>R</code>. Terdapat 2 buah jenis model yang akan dibahas pada <em>Chapter</em> ini, yaitu: regresi dan klasifikasi. Untuk informasi terkait cara untuk melakukan inferensi berdasarkan hasil yang diperoleh dan cara untuk melakukan prediksi menggunakan model yang terbentuk tidak akan dijelaskan dalam buku ini. Pembaca dapat membaca lebih lanjut pada referensi berikut:</p>
+<div id="datamod" class="section level1 hasAnchor" number="8">
+<h1><span class="header-section-number">Bab 8</span> Pemodelan Data<a href="datamod.html#datamod" class="anchor-section" aria-label="Anchor link to header"></a></h1>
+<p>Pada Chapter <a href="datamod.html#datamod">8</a>, kita akan membahas cara membentuk model statistik menggunakan <code>R</code>. Terdapat 2 buah jenis model yang akan dibahas pada <em>Chapter</em> ini, yaitu: regresi dan klasifikasi. Untuk informasi terkait cara untuk melakukan inferensi berdasarkan hasil yang diperoleh dan cara untuk melakukan prediksi menggunakan model yang terbentuk tidak akan dijelaskan dalam buku ini. Pembaca dapat membaca lebih lanjut pada referensi berikut:</p>
 <ul>
 <li><a href="http://ipsur.r-forge.r-project.org/book/download/IPSUR.pdf">Introduction to Probability and Statistics Using R</a></li>
 <li><a href="http://www.sthda.com/english/">STHDA</a></li>
 <li><a href="https://faculty.marshall.usc.edu/gareth-james/ISL/ISLR%20Seventh%20Printing.pdf">An Introduction to Statistical Learning</a></li>
 </ul>
-<div id="reglin" class="section level2 hasAnchor" number="12.1">
-<h2><span class="header-section-number">12.1</span> Regresi Linier<a href="datamod.html#reglin" class="anchor-section" aria-label="Anchor link to header"></a></h2>
+<div id="reglin" class="section level2 hasAnchor" number="8.1">
+<h2><span class="header-section-number">8.1</span> Regresi Linier<a href="datamod.html#reglin" class="anchor-section" aria-label="Anchor link to header"></a></h2>
 <p>Regresi linier merupakan model sederhana yang paling sering dibahas dalam buku-buku statistika. Modelnya cukup sederhana dimana kita berusaha membentuk model dengan pendekatan garis linier dengan prinsip meminimalkan jumlah kuadrat residual pada data. Model yang tebentuk akan menghasilkan dua buah nilai yaitu nilai konstanta (titik potong sumbu y) dan nilai slope kurva. Model yang terbentuk secara umum haruslah memenuhi asumsi dasar model linier berikut:</p>
 <ol style="list-style-type: decimal">
 <li><strong>Asumsi liniearitas</strong>: kurva relasi yang terbentuk antara variabel independen terhadap variabel dependen harus linier. Asumsi ini dapat dipelajari melalui plot residual terhadap nilai <em>fitted value</em>. Jika asumsi liniearitas terpenuhi, maka titik-titik residual yang di plotkan akan membentuk pola acak. Jika pada plot yang dihasilkan terbentuk pola tidak linear maka transformasi data pada variabel prediktor atau independen diperlukan.</li>
-<li><strong>Error atau residu berdristribusi normal</strong>: normalitas error di cek menggunakan qq-plot atau uji normalitas yang telah dibahas pada Chapter <a href="dataanalysis.html#norm">11.4</a>.</li>
+<li><strong>Error atau residu berdristribusi normal</strong>: normalitas error di cek menggunakan qq-plot atau uji normalitas yang telah dibahas pada Chapter <a href="dataanalysis.html#norm">7.4</a>.</li>
 <li><strong><em>Outlier</em> dan <em>high influence point</em></strong>: kedua pengamatan tersebut dideteksi melalui qq-plot, plot residual terhadap nilai <em>fitted value</em>, dan plot <em>residuals vs leverage</em>. Jika <em>outlier</em> terjadi akibat adanya error selama pengukuran maka <em>outlier</em> dapat dihilangkan.</li>
 <li><strong>Error bersifat independen</strong>: independensi residual dapat dideteksi melaui plot korelasi serial dengan mengeplotkan <span class="math inline">\(r_i\)</span> vs <span class="math inline">\(r_{i-1}\)</span>.</li>
 <li><strong>Varians bersifat konstan</strong>: Varians bersifat konstan dicek melalui plot <strong>square root standardize residual vs fitted value</strong>. Pada kasus dimana varians tidak bersifat konstan, kita dapat memberikan bobot pada model yang akan kita bentuk (<em>weighted least square</em>), dimana bobot yang diberikan proporsional dengan invers varians.</li>
 <li><strong>multikolinearitas</strong>: tidak ada variabel dependen yang saling berfkorelasi. Multikolinearitas dapat dideteksi melalui plot matriks korelasi. Pada model adanya kolinearitas ditunjukkan dari nilai <em>variance inflation factor</em> (VIF) yang tinggi. Secara umum nilai VIF terkecil sebesar 1 dan jika kolinearitas terjadi nilainya dapat lebih besar dari 5 atau 10. Untuk mengatasi kolinearitas pada model dapat dilakukan dengan dua cara, yaitu: mengeluarkan variabel dengan nilai VIF yang tinggi pada model atau menggabungkan dua variabel prediktor yang saling berkorelasi menjadi satu variabel baru.</li>
 </ol>
 <p>Pembentukan model linier pada <code>R</code> dilakukan dengan menggunakan fungsi <code>lm()</code>. Format umum fungsi tersebut adalah sebagai berikut:</p>
-<div class="sourceCode" id="cb849"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb849-1"><a href="datamod.html#cb849-1" tabindex="-1"></a><span class="fu">lm</span>(formula, data, subset, weights)</span></code></pre></div>
+<div class="sourceCode" id="cb490"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb490-1"><a href="datamod.html#cb490-1" tabindex="-1"></a><span class="fu">lm</span>(formula, data, subset, weights)</span></code></pre></div>
 <blockquote>
 <p><strong>Catatan:</strong></p>
 <ul>
@@ -482,12 +391,12 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
 <li><code>weight</code> : nilai pembobotan dalam pembentukan model.</li>
 </ul>
 </blockquote>
-<div id="SLR" class="section level3 hasAnchor" number="12.1.1">
-<h3><span class="header-section-number">12.1.1</span> Regrasi Linier Sederhana (<em>Simple Linear Regression</em>)<a href="datamod.html#SLR" class="anchor-section" aria-label="Anchor link to header"></a></h3>
-<p>Pada Chapter <a href="datamod.html#SLR">12.1.1</a> akan diberikan contoh pembentukan model linier sederhana menggunakan dataset <code>Boston</code> dari <em>library</em> <code>MASS</code> dengan jumlah observasi sebesar 506 observasi. Pada contoh kali ini kita akan mencoba membentuk model dengan variabel dependen berupa <code>medv</code> (median harga rumah) dan variabel independen berupa <code>lstat</code> (persen rumah tangga dengan status ekonomi menengah ke bawah). Berikut adalh sintaks untuk membentuk model tersebut:</p>
-<div class="sourceCode" id="cb850"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb850-1"><a href="datamod.html#cb850-1" tabindex="-1"></a><span class="fu">library</span>(MASS)</span></code></pre></div>
-<div class="sourceCode" id="cb851"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb851-1"><a href="datamod.html#cb851-1" tabindex="-1"></a>lm.fit <span class="ot">&lt;-</span> <span class="fu">lm</span>(medv<span class="sc">~</span>lstat, <span class="at">data=</span>Boston)</span>
-<span id="cb851-2"><a href="datamod.html#cb851-2" tabindex="-1"></a><span class="fu">anova</span>(lm.fit)</span></code></pre></div>
+<div id="SLR" class="section level3 hasAnchor" number="8.1.1">
+<h3><span class="header-section-number">8.1.1</span> Regrasi Linier Sederhana (<em>Simple Linear Regression</em>)<a href="datamod.html#SLR" class="anchor-section" aria-label="Anchor link to header"></a></h3>
+<p>Pada Chapter <a href="datamod.html#SLR">8.1.1</a> akan diberikan contoh pembentukan model linier sederhana menggunakan dataset <code>Boston</code> dari <em>library</em> <code>MASS</code> dengan jumlah observasi sebesar 506 observasi. Pada contoh kali ini kita akan mencoba membentuk model dengan variabel dependen berupa <code>medv</code> (median harga rumah) dan variabel independen berupa <code>lstat</code> (persen rumah tangga dengan status ekonomi menengah ke bawah). Berikut adalh sintaks untuk membentuk model tersebut:</p>
+<div class="sourceCode" id="cb491"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb491-1"><a href="datamod.html#cb491-1" tabindex="-1"></a><span class="fu">library</span>(MASS)</span></code></pre></div>
+<div class="sourceCode" id="cb492"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb492-1"><a href="datamod.html#cb492-1" tabindex="-1"></a>lm.fit <span class="ot">&lt;-</span> <span class="fu">lm</span>(medv<span class="sc">~</span>lstat, <span class="at">data=</span>Boston)</span>
+<span id="cb492-2"><a href="datamod.html#cb492-2" tabindex="-1"></a><span class="fu">anova</span>(lm.fit)</span></code></pre></div>
 <pre><code>## Analysis of Variance Table
 ## 
 ## Response: medv
@@ -497,7 +406,7 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
 ## ---
 ## Signif. codes:  
 ## 0 &#39;***&#39; 0.001 &#39;**&#39; 0.01 &#39;*&#39; 0.05 &#39;.&#39; 0.1 &#39; &#39; 1</code></pre>
-<div class="sourceCode" id="cb853"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb853-1"><a href="datamod.html#cb853-1" tabindex="-1"></a><span class="fu">summary</span>(lm.fit)</span></code></pre></div>
+<div class="sourceCode" id="cb494"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb494-1"><a href="datamod.html#cb494-1" tabindex="-1"></a><span class="fu">summary</span>(lm.fit)</span></code></pre></div>
 <pre><code>## 
 ## Call:
 ## lm(formula = medv ~ lstat, data = Boston)
@@ -517,43 +426,43 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
 ## Residual standard error: 6.22 on 504 degrees of freedom
 ## Multiple R-squared:  0.544,  Adjusted R-squared:  0.543 
 ## F-statistic:  602 on 1 and 504 DF,  p-value: &lt;2e-16</code></pre>
-<p>Plot residual disajikan pada Gambar <a href="datamod.html#fig:slr">12.1</a>.</p>
+<p>Plot residual disajikan pada Gambar <a href="datamod.html#fig:slr">8.1</a>.</p>
 <div class="figure" style="text-align: center"><span style="display:block;" id="fig:slr"></span>
 <img src="Metode_Numerik_files/figure-html/slr-1.png" alt="Analisis residual model linier medv vs lstat pada dataset Boston." width="80%" />
 <p class="caption">
-Gambar 12.1: Analisis residual model linier medv vs lstat pada dataset Boston.
+Gambar 8.1: Analisis residual model linier medv vs lstat pada dataset Boston.
 </p>
 </div>
 <p>Berdasarkan hasil plot dapat dilihat bahwa seluruh asumsi model linier tidak terpenuhi. Selain melalui plot residual, uji asumsi model linier dapat juga dilakukan secara matematis. Berikut adalah sintaks yang digunakan:</p>
-<div class="sourceCode" id="cb855"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb855-1"><a href="datamod.html#cb855-1" tabindex="-1"></a><span class="co"># error berdistribusi normal </span></span>
-<span id="cb855-2"><a href="datamod.html#cb855-2" tabindex="-1"></a><span class="co"># (data tidak berdistribusi normal)</span></span>
-<span id="cb855-3"><a href="datamod.html#cb855-3" tabindex="-1"></a><span class="fu">shapiro.test</span>(<span class="fu">residuals</span>(lm.fit))</span></code></pre></div>
+<div class="sourceCode" id="cb496"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb496-1"><a href="datamod.html#cb496-1" tabindex="-1"></a><span class="co"># error berdistribusi normal </span></span>
+<span id="cb496-2"><a href="datamod.html#cb496-2" tabindex="-1"></a><span class="co"># (data tidak berdistribusi normal)</span></span>
+<span id="cb496-3"><a href="datamod.html#cb496-3" tabindex="-1"></a><span class="fu">shapiro.test</span>(<span class="fu">residuals</span>(lm.fit))</span></code></pre></div>
 <pre><code>## 
 ##  Shapiro-Wilk normality test
 ## 
 ## data:  residuals(lm.fit)
 ## W = 0.88, p-value &lt;2e-16</code></pre>
-<div class="sourceCode" id="cb857"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb857-1"><a href="datamod.html#cb857-1" tabindex="-1"></a><span class="co"># varians bersifat konstan </span></span>
-<span id="cb857-2"><a href="datamod.html#cb857-2" tabindex="-1"></a><span class="co"># (varians tidak konstan)</span></span>
-<span id="cb857-3"><a href="datamod.html#cb857-3" tabindex="-1"></a><span class="fu">library</span>(lmtest)</span>
-<span id="cb857-4"><a href="datamod.html#cb857-4" tabindex="-1"></a><span class="fu">bptest</span>(lm.fit)</span></code></pre></div>
+<div class="sourceCode" id="cb498"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb498-1"><a href="datamod.html#cb498-1" tabindex="-1"></a><span class="co"># varians bersifat konstan </span></span>
+<span id="cb498-2"><a href="datamod.html#cb498-2" tabindex="-1"></a><span class="co"># (varians tidak konstan)</span></span>
+<span id="cb498-3"><a href="datamod.html#cb498-3" tabindex="-1"></a><span class="fu">library</span>(lmtest)</span>
+<span id="cb498-4"><a href="datamod.html#cb498-4" tabindex="-1"></a><span class="fu">bptest</span>(lm.fit)</span></code></pre></div>
 <pre><code>## 
 ##  studentized Breusch-Pagan test
 ## 
 ## data:  lm.fit
 ## BP = 15, df = 1, p-value = 8e-05</code></pre>
-<div class="sourceCode" id="cb859"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb859-1"><a href="datamod.html#cb859-1" tabindex="-1"></a><span class="co"># error bersifat independen</span></span>
-<span id="cb859-2"><a href="datamod.html#cb859-2" tabindex="-1"></a><span class="co"># (error tidak bersifat independen)</span></span>
-<span id="cb859-3"><a href="datamod.html#cb859-3" tabindex="-1"></a><span class="fu">dwtest</span>(lm.fit, <span class="at">alternative =</span> <span class="st">&quot;two.sided&quot;</span>)</span></code></pre></div>
+<div class="sourceCode" id="cb500"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb500-1"><a href="datamod.html#cb500-1" tabindex="-1"></a><span class="co"># error bersifat independen</span></span>
+<span id="cb500-2"><a href="datamod.html#cb500-2" tabindex="-1"></a><span class="co"># (error tidak bersifat independen)</span></span>
+<span id="cb500-3"><a href="datamod.html#cb500-3" tabindex="-1"></a><span class="fu">dwtest</span>(lm.fit, <span class="at">alternative =</span> <span class="st">&quot;two.sided&quot;</span>)</span></code></pre></div>
 <pre><code>## 
 ##  Durbin-Watson test
 ## 
 ## data:  lm.fit
 ## DW = 0.89, p-value &lt;2e-16
 ## alternative hypothesis: true autocorrelation is not 0</code></pre>
-<div class="sourceCode" id="cb861"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb861-1"><a href="datamod.html#cb861-1" tabindex="-1"></a><span class="co"># deteksi outlier (stdres &gt; 2)</span></span>
-<span id="cb861-2"><a href="datamod.html#cb861-2" tabindex="-1"></a>sres <span class="ot">&lt;-</span> <span class="fu">rstandard</span>(lm.fit)</span>
-<span id="cb861-3"><a href="datamod.html#cb861-3" tabindex="-1"></a>sres[<span class="fu">which</span>(<span class="fu">abs</span>(sres)<span class="sc">&gt;</span><span class="dv">2</span>)] <span class="co"># nomor observasi outlier</span></span></code></pre></div>
+<div class="sourceCode" id="cb502"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb502-1"><a href="datamod.html#cb502-1" tabindex="-1"></a><span class="co"># deteksi outlier (stdres &gt; 2)</span></span>
+<span id="cb502-2"><a href="datamod.html#cb502-2" tabindex="-1"></a>sres <span class="ot">&lt;-</span> <span class="fu">rstandard</span>(lm.fit)</span>
+<span id="cb502-3"><a href="datamod.html#cb502-3" tabindex="-1"></a>sres[<span class="fu">which</span>(<span class="fu">abs</span>(sres)<span class="sc">&gt;</span><span class="dv">2</span>)] <span class="co"># nomor observasi outlier</span></span></code></pre></div>
 <pre><code>##     99    142    162    163    164    167    181 
 ##  2.038  2.038  2.759  2.787  3.000  3.058  2.003 
 ##    187    196    204    205    215    225    226 
@@ -564,21 +473,21 @@ Gambar 12.1: Analisis residual model linier medv vs lstat pada dataset Boston.
 ##  2.326  2.308  2.976  2.991  3.063  2.946  3.946 
 ##    373    375    413    506 
 ##  3.847  2.498  2.601 -2.444</code></pre>
-<div class="sourceCode" id="cb863"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb863-1"><a href="datamod.html#cb863-1" tabindex="-1"></a><span class="co"># influential observation</span></span>
-<span id="cb863-2"><a href="datamod.html#cb863-2" tabindex="-1"></a><span class="co"># observasi &gt; percentil 50</span></span>
-<span id="cb863-3"><a href="datamod.html#cb863-3" tabindex="-1"></a><span class="co"># tidak ada observasi dengan jarak cook yang extrim</span></span>
-<span id="cb863-4"><a href="datamod.html#cb863-4" tabindex="-1"></a>cooksD <span class="ot">&lt;-</span> <span class="fu">cooks.distance</span>(lm.fit)</span>
-<span id="cb863-5"><a href="datamod.html#cb863-5" tabindex="-1"></a>p50 <span class="ot">&lt;-</span> <span class="fu">qf</span>(<span class="fl">0.5</span>, <span class="at">df1=</span><span class="dv">2</span>, <span class="at">df2=</span><span class="dv">560-2</span>)</span>
-<span id="cb863-6"><a href="datamod.html#cb863-6" tabindex="-1"></a><span class="fu">any</span>(cooksD<span class="sc">&gt;</span>p50)</span></code></pre></div>
+<div class="sourceCode" id="cb504"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb504-1"><a href="datamod.html#cb504-1" tabindex="-1"></a><span class="co"># influential observation</span></span>
+<span id="cb504-2"><a href="datamod.html#cb504-2" tabindex="-1"></a><span class="co"># observasi &gt; percentil 50</span></span>
+<span id="cb504-3"><a href="datamod.html#cb504-3" tabindex="-1"></a><span class="co"># tidak ada observasi dengan jarak cook yang extrim</span></span>
+<span id="cb504-4"><a href="datamod.html#cb504-4" tabindex="-1"></a>cooksD <span class="ot">&lt;-</span> <span class="fu">cooks.distance</span>(lm.fit)</span>
+<span id="cb504-5"><a href="datamod.html#cb504-5" tabindex="-1"></a>p50 <span class="ot">&lt;-</span> <span class="fu">qf</span>(<span class="fl">0.5</span>, <span class="at">df1=</span><span class="dv">2</span>, <span class="at">df2=</span><span class="dv">560-2</span>)</span>
+<span id="cb504-6"><a href="datamod.html#cb504-6" tabindex="-1"></a><span class="fu">any</span>(cooksD<span class="sc">&gt;</span>p50)</span></code></pre></div>
 <pre><code>## [1] FALSE</code></pre>
 </div>
-<div id="MLR" class="section level3 hasAnchor" number="12.1.2">
-<h3><span class="header-section-number">12.1.2</span> Regresi Linier Berganda (<em>Multiple Linier Regression</em>)<a href="datamod.html#MLR" class="anchor-section" aria-label="Anchor link to header"></a></h3>
-<p>Pada Chapter <a href="datamod.html#MLR">12.1.2</a>, kita akan membuat tiga buah model regresi linier. Model pertama akan menambahkan variabel <code>age</code> (usia bangunan) pada model sebelumnya, model kedua akan menggunakan seluruh ariabel yang ada, dan model ketiga akan melakukan pembaharuan dengan mengeluarkan variabel dengan VIF paling tinggi dari model kedua. Berikut adalah sintaks untuk membentuk ketiag model tersebut:</p>
-<div class="sourceCode" id="cb865"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb865-1"><a href="datamod.html#cb865-1" tabindex="-1"></a><span class="fu">library</span>(car)</span>
-<span id="cb865-2"><a href="datamod.html#cb865-2" tabindex="-1"></a><span class="co"># Model pertama</span></span>
-<span id="cb865-3"><a href="datamod.html#cb865-3" tabindex="-1"></a>lm.fit1 <span class="ot">&lt;-</span> <span class="fu">lm</span>(medv <span class="sc">~</span> lstat<span class="sc">+</span>age, <span class="at">data=</span>Boston)</span>
-<span id="cb865-4"><a href="datamod.html#cb865-4" tabindex="-1"></a><span class="fu">anova</span>(lm.fit1)</span></code></pre></div>
+<div id="MLR" class="section level3 hasAnchor" number="8.1.2">
+<h3><span class="header-section-number">8.1.2</span> Regresi Linier Berganda (<em>Multiple Linier Regression</em>)<a href="datamod.html#MLR" class="anchor-section" aria-label="Anchor link to header"></a></h3>
+<p>Pada Chapter <a href="datamod.html#MLR">8.1.2</a>, kita akan membuat tiga buah model regresi linier. Model pertama akan menambahkan variabel <code>age</code> (usia bangunan) pada model sebelumnya, model kedua akan menggunakan seluruh ariabel yang ada, dan model ketiga akan melakukan pembaharuan dengan mengeluarkan variabel dengan VIF paling tinggi dari model kedua. Berikut adalah sintaks untuk membentuk ketiag model tersebut:</p>
+<div class="sourceCode" id="cb506"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb506-1"><a href="datamod.html#cb506-1" tabindex="-1"></a><span class="fu">library</span>(car)</span>
+<span id="cb506-2"><a href="datamod.html#cb506-2" tabindex="-1"></a><span class="co"># Model pertama</span></span>
+<span id="cb506-3"><a href="datamod.html#cb506-3" tabindex="-1"></a>lm.fit1 <span class="ot">&lt;-</span> <span class="fu">lm</span>(medv <span class="sc">~</span> lstat<span class="sc">+</span>age, <span class="at">data=</span>Boston)</span>
+<span id="cb506-4"><a href="datamod.html#cb506-4" tabindex="-1"></a><span class="fu">anova</span>(lm.fit1)</span></code></pre></div>
 <pre><code>## Analysis of Variance Table
 ## 
 ## Response: medv
@@ -589,7 +498,7 @@ Gambar 12.1: Analisis residual model linier medv vs lstat pada dataset Boston.
 ## ---
 ## Signif. codes:  
 ## 0 &#39;***&#39; 0.001 &#39;**&#39; 0.01 &#39;*&#39; 0.05 &#39;.&#39; 0.1 &#39; &#39; 1</code></pre>
-<div class="sourceCode" id="cb867"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb867-1"><a href="datamod.html#cb867-1" tabindex="-1"></a><span class="fu">summary</span>(lm.fit1)</span></code></pre></div>
+<div class="sourceCode" id="cb508"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb508-1"><a href="datamod.html#cb508-1" tabindex="-1"></a><span class="fu">summary</span>(lm.fit1)</span></code></pre></div>
 <pre><code>## 
 ## Call:
 ## lm(formula = medv ~ lstat + age, data = Boston)
@@ -610,19 +519,19 @@ Gambar 12.1: Analisis residual model linier medv vs lstat pada dataset Boston.
 ## Residual standard error: 6.17 on 503 degrees of freedom
 ## Multiple R-squared:  0.551,  Adjusted R-squared:  0.549 
 ## F-statistic:  309 on 2 and 503 DF,  p-value: &lt;2e-16</code></pre>
-<div class="sourceCode" id="cb869"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb869-1"><a href="datamod.html#cb869-1" tabindex="-1"></a><span class="fu">vif</span>(lm.fit1)</span></code></pre></div>
+<div class="sourceCode" id="cb510"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb510-1"><a href="datamod.html#cb510-1" tabindex="-1"></a><span class="fu">vif</span>(lm.fit1)</span></code></pre></div>
 <pre><code>## lstat   age 
 ## 1.569 1.569</code></pre>
-<p>Berdasarkan hasil perhitungan diketahui nilai VIF dari model &lt; 10, sehingga asumsi multikolinearitas terpenuhi. Untuk asumsi lainnya dapat dicek pada plot residual yang ditampilkan pada Gambar <a href="datamod.html#fig:mlr1">12.2</a>.</p>
+<p>Berdasarkan hasil perhitungan diketahui nilai VIF dari model &lt; 10, sehingga asumsi multikolinearitas terpenuhi. Untuk asumsi lainnya dapat dicek pada plot residual yang ditampilkan pada Gambar <a href="datamod.html#fig:mlr1">8.2</a>.</p>
 <div class="figure" style="text-align: center"><span style="display:block;" id="fig:mlr1"></span>
 <img src="Metode_Numerik_files/figure-html/mlr1-1.png" alt="Analisis residual model linier 1 pada dataset Boston." width="80%" />
 <p class="caption">
-Gambar 12.2: Analisis residual model linier 1 pada dataset Boston.
+Gambar 8.2: Analisis residual model linier 1 pada dataset Boston.
 </p>
 </div>
-<div class="sourceCode" id="cb871"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb871-1"><a href="datamod.html#cb871-1" tabindex="-1"></a><span class="co"># Model 2</span></span>
-<span id="cb871-2"><a href="datamod.html#cb871-2" tabindex="-1"></a>lm.fit2 <span class="ot">&lt;-</span> <span class="fu">lm</span>(medv<span class="sc">~</span>., <span class="at">data=</span>Boston)</span>
-<span id="cb871-3"><a href="datamod.html#cb871-3" tabindex="-1"></a><span class="fu">anova</span>(lm.fit2)</span></code></pre></div>
+<div class="sourceCode" id="cb512"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb512-1"><a href="datamod.html#cb512-1" tabindex="-1"></a><span class="co"># Model 2</span></span>
+<span id="cb512-2"><a href="datamod.html#cb512-2" tabindex="-1"></a>lm.fit2 <span class="ot">&lt;-</span> <span class="fu">lm</span>(medv<span class="sc">~</span>., <span class="at">data=</span>Boston)</span>
+<span id="cb512-3"><a href="datamod.html#cb512-3" tabindex="-1"></a><span class="fu">anova</span>(lm.fit2)</span></code></pre></div>
 <pre><code>## Analysis of Variance Table
 ## 
 ## Response: medv
@@ -644,7 +553,7 @@ Gambar 12.2: Analisis residual model linier 1 pada dataset Boston.
 ## ---
 ## Signif. codes:  
 ## 0 &#39;***&#39; 0.001 &#39;**&#39; 0.01 &#39;*&#39; 0.05 &#39;.&#39; 0.1 &#39; &#39; 1</code></pre>
-<div class="sourceCode" id="cb873"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb873-1"><a href="datamod.html#cb873-1" tabindex="-1"></a><span class="fu">summary</span>(lm.fit2)</span></code></pre></div>
+<div class="sourceCode" id="cb514"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb514-1"><a href="datamod.html#cb514-1" tabindex="-1"></a><span class="fu">summary</span>(lm.fit2)</span></code></pre></div>
 <pre><code>## 
 ## Call:
 ## lm(formula = medv ~ ., data = Boston)
@@ -676,28 +585,28 @@ Gambar 12.2: Analisis residual model linier 1 pada dataset Boston.
 ## Residual standard error: 4.75 on 492 degrees of freedom
 ## Multiple R-squared:  0.741,  Adjusted R-squared:  0.734 
 ## F-statistic:  108 on 13 and 492 DF,  p-value: &lt;2e-16</code></pre>
-<div class="sourceCode" id="cb875"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb875-1"><a href="datamod.html#cb875-1" tabindex="-1"></a><span class="fu">vif</span>(lm.fit2)</span></code></pre></div>
+<div class="sourceCode" id="cb516"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb516-1"><a href="datamod.html#cb516-1" tabindex="-1"></a><span class="fu">vif</span>(lm.fit2)</span></code></pre></div>
 <pre><code>##    crim      zn   indus    chas     nox      rm 
 ##   1.792   2.299   3.992   1.074   4.394   1.934 
 ##     age     dis     rad     tax ptratio   black 
 ##   3.101   3.956   7.484   9.009   1.799   1.349 
 ##   lstat 
 ##   2.941</code></pre>
-<p>Berdasarkan hasil perhitungan diperoleh nilai VIF untuk seluruh varaibel prediktor dalam model &lt; 10, sehingga asumsi multikolinearitas terpenuhi. Untuk asumsi lainnya dapat dicek pada plot residual yang ditampilkan pada Gambar <a href="datamod.html#fig:mlr2">12.3</a>.</p>
+<p>Berdasarkan hasil perhitungan diperoleh nilai VIF untuk seluruh varaibel prediktor dalam model &lt; 10, sehingga asumsi multikolinearitas terpenuhi. Untuk asumsi lainnya dapat dicek pada plot residual yang ditampilkan pada Gambar <a href="datamod.html#fig:mlr2">8.3</a>.</p>
 <div class="figure" style="text-align: center"><span style="display:block;" id="fig:mlr2"></span>
 <img src="Metode_Numerik_files/figure-html/mlr2-1.png" alt="Analisis residual model linier 2 pada dataset Boston." width="80%" />
 <p class="caption">
-Gambar 12.3: Analisis residual model linier 2 pada dataset Boston.
+Gambar 8.3: Analisis residual model linier 2 pada dataset Boston.
 </p>
 </div>
 <p>Pada model ketiga, kita akan mencoba untuk melakukan pembaharuan pada model kedua dengan melakukan drop variabel dengan vif yang paling tinggi. Pada hasil perhitungan sebelumnya, variabel <code>tax</code> (pajak) memiliki nilai VIF yang paling tinggi, sehingga pada model ketiga variabel tersebut tidak disertakan. Terdapat dua cara untuk melakukannya berikut adalah sintaks yang digunakan:</p>
-<div class="sourceCode" id="cb877"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb877-1"><a href="datamod.html#cb877-1" tabindex="-1"></a><span class="co"># Model 3 (cara 1)</span></span>
-<span id="cb877-2"><a href="datamod.html#cb877-2" tabindex="-1"></a>lm.fit3 <span class="ot">&lt;-</span> <span class="fu">lm</span>(medv<span class="sc">~</span>.<span class="sc">-</span>tax, <span class="at">data=</span>Boston)</span>
-<span id="cb877-3"><a href="datamod.html#cb877-3" tabindex="-1"></a></span>
-<span id="cb877-4"><a href="datamod.html#cb877-4" tabindex="-1"></a><span class="co"># Model 3 (cara 2)</span></span>
-<span id="cb877-5"><a href="datamod.html#cb877-5" tabindex="-1"></a>lm.fit3 <span class="ot">&lt;-</span> <span class="fu">update</span>(lm.fit2, <span class="sc">~</span>.<span class="sc">-</span>tax)</span>
-<span id="cb877-6"><a href="datamod.html#cb877-6" tabindex="-1"></a></span>
-<span id="cb877-7"><a href="datamod.html#cb877-7" tabindex="-1"></a><span class="fu">anova</span>(lm.fit3)</span></code></pre></div>
+<div class="sourceCode" id="cb518"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb518-1"><a href="datamod.html#cb518-1" tabindex="-1"></a><span class="co"># Model 3 (cara 1)</span></span>
+<span id="cb518-2"><a href="datamod.html#cb518-2" tabindex="-1"></a>lm.fit3 <span class="ot">&lt;-</span> <span class="fu">lm</span>(medv<span class="sc">~</span>.<span class="sc">-</span>tax, <span class="at">data=</span>Boston)</span>
+<span id="cb518-3"><a href="datamod.html#cb518-3" tabindex="-1"></a></span>
+<span id="cb518-4"><a href="datamod.html#cb518-4" tabindex="-1"></a><span class="co"># Model 3 (cara 2)</span></span>
+<span id="cb518-5"><a href="datamod.html#cb518-5" tabindex="-1"></a>lm.fit3 <span class="ot">&lt;-</span> <span class="fu">update</span>(lm.fit2, <span class="sc">~</span>.<span class="sc">-</span>tax)</span>
+<span id="cb518-6"><a href="datamod.html#cb518-6" tabindex="-1"></a></span>
+<span id="cb518-7"><a href="datamod.html#cb518-7" tabindex="-1"></a><span class="fu">anova</span>(lm.fit3)</span></code></pre></div>
 <pre><code>## Analysis of Variance Table
 ## 
 ## Response: medv
@@ -718,7 +627,7 @@ Gambar 12.3: Analisis residual model linier 2 pada dataset Boston.
 ## ---
 ## Signif. codes:  
 ## 0 &#39;***&#39; 0.001 &#39;**&#39; 0.01 &#39;*&#39; 0.05 &#39;.&#39; 0.1 &#39; &#39; 1</code></pre>
-<div class="sourceCode" id="cb879"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb879-1"><a href="datamod.html#cb879-1" tabindex="-1"></a><span class="fu">summary</span>(lm.fit3)</span></code></pre></div>
+<div class="sourceCode" id="cb520"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb520-1"><a href="datamod.html#cb520-1" tabindex="-1"></a><span class="fu">summary</span>(lm.fit3)</span></code></pre></div>
 <pre><code>## 
 ## Call:
 ## lm(formula = medv ~ crim + zn + indus + chas + nox + rm + age + 
@@ -750,25 +659,25 @@ Gambar 12.3: Analisis residual model linier 2 pada dataset Boston.
 ## Residual standard error: 4.79 on 493 degrees of freedom
 ## Multiple R-squared:  0.735,  Adjusted R-squared:  0.729 
 ## F-statistic:  114 on 12 and 493 DF,  p-value: &lt;2e-16</code></pre>
-<div class="sourceCode" id="cb881"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb881-1"><a href="datamod.html#cb881-1" tabindex="-1"></a><span class="fu">vif</span>(lm.fit3)</span></code></pre></div>
+<div class="sourceCode" id="cb522"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb522-1"><a href="datamod.html#cb522-1" tabindex="-1"></a><span class="fu">vif</span>(lm.fit3)</span></code></pre></div>
 <pre><code>##    crim      zn   indus    chas     nox      rm 
 ##   1.792   2.184   3.226   1.058   4.369   1.923 
 ##     age     dis     rad ptratio   black   lstat 
 ##   3.098   3.954   2.837   1.789   1.348   2.941</code></pre>
-<p>Plot residual ditampilkan pada Gambar <a href="datamod.html#fig:mlr3">12.4</a>.</p>
+<p>Plot residual ditampilkan pada Gambar <a href="datamod.html#fig:mlr3">8.4</a>.</p>
 <div class="figure" style="text-align: center"><span style="display:block;" id="fig:mlr3"></span>
 <img src="Metode_Numerik_files/figure-html/mlr3-1.png" alt="Analisis residual model linier 3 pada dataset Boston." width="80%" />
 <p class="caption">
-Gambar 12.4: Analisis residual model linier 3 pada dataset Boston.
+Gambar 8.4: Analisis residual model linier 3 pada dataset Boston.
 </p>
 </div>
 </div>
-<div id="lminter" class="section level3 hasAnchor" number="12.1.3">
-<h3><span class="header-section-number">12.1.3</span> Model Linier dengan Interaksi Antar Variabel Prediktor<a href="datamod.html#lminter" class="anchor-section" aria-label="Anchor link to header"></a></h3>
+<div id="lminter" class="section level3 hasAnchor" number="8.1.3">
+<h3><span class="header-section-number">8.1.3</span> Model Linier dengan Interaksi Antar Variabel Prediktor<a href="datamod.html#lminter" class="anchor-section" aria-label="Anchor link to header"></a></h3>
 <p>Interaksi antar variabel pada model linier dapat dengan mudah dimasukkan kedalam fungsi <code>lm()</code>. Terdapat dua buah cara untuk melakukannya. Cara pertama dengan menggunakan tanda <code>:</code> pada formula (contoh: <span class="math inline">\(y1 ~ x1+x2+x1:x2\)</span>). Tanda <code>:</code> menyatakan formula persamaan linier memasukkan interaksi antar variabel prediktor di dalamnya. Cara kedua adalah dengan menggunakan tanda <code>*</code>. Cara ini lebih sederhana, dimana fungsi <code>lm()</code> akan secara otomatis menerjemahkannya sebagai serangkaian variabel tunggal dan interaksinya. Berikut adalah contoh penerapannya menggunakan kedua cara tersebut:</p>
-<div class="sourceCode" id="cb883"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb883-1"><a href="datamod.html#cb883-1" tabindex="-1"></a><span class="co"># cara 1</span></span>
-<span id="cb883-2"><a href="datamod.html#cb883-2" tabindex="-1"></a>lm.inter <span class="ot">&lt;-</span> <span class="fu">lm</span>(medv<span class="sc">~</span>lstat<span class="sc">+</span>age<span class="sc">+</span>lstat<span class="sc">:</span>age, <span class="at">data=</span>Boston)</span>
-<span id="cb883-3"><a href="datamod.html#cb883-3" tabindex="-1"></a><span class="fu">anova</span>(lm.inter)</span></code></pre></div>
+<div class="sourceCode" id="cb524"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb524-1"><a href="datamod.html#cb524-1" tabindex="-1"></a><span class="co"># cara 1</span></span>
+<span id="cb524-2"><a href="datamod.html#cb524-2" tabindex="-1"></a>lm.inter <span class="ot">&lt;-</span> <span class="fu">lm</span>(medv<span class="sc">~</span>lstat<span class="sc">+</span>age<span class="sc">+</span>lstat<span class="sc">:</span>age, <span class="at">data=</span>Boston)</span>
+<span id="cb524-3"><a href="datamod.html#cb524-3" tabindex="-1"></a><span class="fu">anova</span>(lm.inter)</span></code></pre></div>
 <pre><code>## Analysis of Variance Table
 ## 
 ## Response: medv
@@ -780,7 +689,7 @@ Gambar 12.4: Analisis residual model linier 3 pada dataset Boston.
 ## ---
 ## Signif. codes:  
 ## 0 &#39;***&#39; 0.001 &#39;**&#39; 0.01 &#39;*&#39; 0.05 &#39;.&#39; 0.1 &#39; &#39; 1</code></pre>
-<div class="sourceCode" id="cb885"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb885-1"><a href="datamod.html#cb885-1" tabindex="-1"></a><span class="fu">summary</span>(lm.inter)</span></code></pre></div>
+<div class="sourceCode" id="cb526"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb526-1"><a href="datamod.html#cb526-1" tabindex="-1"></a><span class="fu">summary</span>(lm.inter)</span></code></pre></div>
 <pre><code>## 
 ## Call:
 ## lm(formula = medv ~ lstat + age + lstat:age, data = Boston)
@@ -802,9 +711,9 @@ Gambar 12.4: Analisis residual model linier 3 pada dataset Boston.
 ## Residual standard error: 6.15 on 502 degrees of freedom
 ## Multiple R-squared:  0.556,  Adjusted R-squared:  0.553 
 ## F-statistic:  209 on 3 and 502 DF,  p-value: &lt;2e-16</code></pre>
-<div class="sourceCode" id="cb887"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb887-1"><a href="datamod.html#cb887-1" tabindex="-1"></a><span class="co"># Cara 2</span></span>
-<span id="cb887-2"><a href="datamod.html#cb887-2" tabindex="-1"></a>lm.inter <span class="ot">&lt;-</span> <span class="fu">lm</span>(medv<span class="sc">~</span>lstat<span class="sc">*</span>age, <span class="at">data=</span>Boston)</span>
-<span id="cb887-3"><a href="datamod.html#cb887-3" tabindex="-1"></a><span class="fu">anova</span>(lm.inter)</span></code></pre></div>
+<div class="sourceCode" id="cb528"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb528-1"><a href="datamod.html#cb528-1" tabindex="-1"></a><span class="co"># Cara 2</span></span>
+<span id="cb528-2"><a href="datamod.html#cb528-2" tabindex="-1"></a>lm.inter <span class="ot">&lt;-</span> <span class="fu">lm</span>(medv<span class="sc">~</span>lstat<span class="sc">*</span>age, <span class="at">data=</span>Boston)</span>
+<span id="cb528-3"><a href="datamod.html#cb528-3" tabindex="-1"></a><span class="fu">anova</span>(lm.inter)</span></code></pre></div>
 <pre><code>## Analysis of Variance Table
 ## 
 ## Response: medv
@@ -816,7 +725,7 @@ Gambar 12.4: Analisis residual model linier 3 pada dataset Boston.
 ## ---
 ## Signif. codes:  
 ## 0 &#39;***&#39; 0.001 &#39;**&#39; 0.01 &#39;*&#39; 0.05 &#39;.&#39; 0.1 &#39; &#39; 1</code></pre>
-<div class="sourceCode" id="cb889"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb889-1"><a href="datamod.html#cb889-1" tabindex="-1"></a><span class="fu">summary</span>(lm.inter)</span></code></pre></div>
+<div class="sourceCode" id="cb530"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb530-1"><a href="datamod.html#cb530-1" tabindex="-1"></a><span class="fu">summary</span>(lm.inter)</span></code></pre></div>
 <pre><code>## 
 ## Call:
 ## lm(formula = medv ~ lstat * age, data = Boston)
@@ -838,19 +747,19 @@ Gambar 12.4: Analisis residual model linier 3 pada dataset Boston.
 ## Residual standard error: 6.15 on 502 degrees of freedom
 ## Multiple R-squared:  0.556,  Adjusted R-squared:  0.553 
 ## F-statistic:  209 on 3 and 502 DF,  p-value: &lt;2e-16</code></pre>
-<p>Plot residual ditampilkan pada Gambar <a href="datamod.html#fig:lminter">12.5</a>.</p>
+<p>Plot residual ditampilkan pada Gambar <a href="datamod.html#fig:lminter">8.5</a>.</p>
 <div class="figure" style="text-align: center"><span style="display:block;" id="fig:lminter"></span>
 <img src="Metode_Numerik_files/figure-html/lminter-1.png" alt="Analisis residual model dengan melibatkan interaksi antar variabel pada dataset Boston." width="80%" />
 <p class="caption">
-Gambar 12.5: Analisis residual model dengan melibatkan interaksi antar variabel pada dataset Boston.
+Gambar 8.5: Analisis residual model dengan melibatkan interaksi antar variabel pada dataset Boston.
 </p>
 </div>
 </div>
-<div id="nlinpred" class="section level3 hasAnchor" number="12.1.4">
-<h3><span class="header-section-number">12.1.4</span> Transformasi Non-linier Pada Prediktor<a href="datamod.html#nlinpred" class="anchor-section" aria-label="Anchor link to header"></a></h3>
+<div id="nlinpred" class="section level3 hasAnchor" number="8.1.4">
+<h3><span class="header-section-number">8.1.4</span> Transformasi Non-linier Pada Prediktor<a href="datamod.html#nlinpred" class="anchor-section" aria-label="Anchor link to header"></a></h3>
 <p>Fungsi <code>lm()</code> juga dapat melibatkan transformasi non-linier prediktor pada argumen <code>formula</code>-nya. Transformasi non-linier dilakukan dengan menambahkan fungsi identitas <code>I()</code>. Sebagai contoh model berikut melibatkan transformasi kuadrat pada variabel <code>lstat</code>:</p>
-<div class="sourceCode" id="cb891"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb891-1"><a href="datamod.html#cb891-1" tabindex="-1"></a>lm.trans <span class="ot">&lt;-</span> <span class="fu">lm</span>(medv<span class="sc">~</span>lstat<span class="sc">+</span><span class="fu">I</span>(lstat<span class="sc">^</span><span class="dv">2</span>), <span class="at">data=</span>Boston)</span>
-<span id="cb891-2"><a href="datamod.html#cb891-2" tabindex="-1"></a><span class="fu">anova</span>(lm.trans)</span></code></pre></div>
+<div class="sourceCode" id="cb532"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb532-1"><a href="datamod.html#cb532-1" tabindex="-1"></a>lm.trans <span class="ot">&lt;-</span> <span class="fu">lm</span>(medv<span class="sc">~</span>lstat<span class="sc">+</span><span class="fu">I</span>(lstat<span class="sc">^</span><span class="dv">2</span>), <span class="at">data=</span>Boston)</span>
+<span id="cb532-2"><a href="datamod.html#cb532-2" tabindex="-1"></a><span class="fu">anova</span>(lm.trans)</span></code></pre></div>
 <pre><code>## Analysis of Variance Table
 ## 
 ## Response: medv
@@ -861,7 +770,7 @@ Gambar 12.5: Analisis residual model dengan melibatkan interaksi antar variabel 
 ## ---
 ## Signif. codes:  
 ## 0 &#39;***&#39; 0.001 &#39;**&#39; 0.01 &#39;*&#39; 0.05 &#39;.&#39; 0.1 &#39; &#39; 1</code></pre>
-<div class="sourceCode" id="cb893"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb893-1"><a href="datamod.html#cb893-1" tabindex="-1"></a><span class="fu">summary</span>(lm.trans)</span></code></pre></div>
+<div class="sourceCode" id="cb534"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb534-1"><a href="datamod.html#cb534-1" tabindex="-1"></a><span class="fu">summary</span>(lm.trans)</span></code></pre></div>
 <pre><code>## 
 ## Call:
 ## lm(formula = medv ~ lstat + I(lstat^2), data = Boston)
@@ -883,8 +792,8 @@ Gambar 12.5: Analisis residual model dengan melibatkan interaksi antar variabel 
 ## Multiple R-squared:  0.641,  Adjusted R-squared:  0.639 
 ## F-statistic:  449 on 2 and 503 DF,  p-value: &lt;2e-16</code></pre>
 <p>Cara yang lebih sederhana untuk melibatkan tranformasi polinomial kedalam model linier adalah dengan menggunakan fungsi <code>poly()</code>. Berikut adalah contoh penerapannya:</p>
-<div class="sourceCode" id="cb895"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb895-1"><a href="datamod.html#cb895-1" tabindex="-1"></a>lm.trans <span class="ot">&lt;-</span> <span class="fu">lm</span>(medv<span class="sc">~</span><span class="fu">poly</span>(lstat,<span class="dv">2</span>), <span class="at">data=</span>Boston)</span>
-<span id="cb895-2"><a href="datamod.html#cb895-2" tabindex="-1"></a><span class="fu">anova</span>(lm.trans)</span></code></pre></div>
+<div class="sourceCode" id="cb536"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb536-1"><a href="datamod.html#cb536-1" tabindex="-1"></a>lm.trans <span class="ot">&lt;-</span> <span class="fu">lm</span>(medv<span class="sc">~</span><span class="fu">poly</span>(lstat,<span class="dv">2</span>), <span class="at">data=</span>Boston)</span>
+<span id="cb536-2"><a href="datamod.html#cb536-2" tabindex="-1"></a><span class="fu">anova</span>(lm.trans)</span></code></pre></div>
 <pre><code>## Analysis of Variance Table
 ## 
 ## Response: medv
@@ -894,7 +803,7 @@ Gambar 12.5: Analisis residual model dengan melibatkan interaksi antar variabel 
 ## ---
 ## Signif. codes:  
 ## 0 &#39;***&#39; 0.001 &#39;**&#39; 0.01 &#39;*&#39; 0.05 &#39;.&#39; 0.1 &#39; &#39; 1</code></pre>
-<div class="sourceCode" id="cb897"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb897-1"><a href="datamod.html#cb897-1" tabindex="-1"></a><span class="fu">summary</span>(lm.trans)</span></code></pre></div>
+<div class="sourceCode" id="cb538"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb538-1"><a href="datamod.html#cb538-1" tabindex="-1"></a><span class="fu">summary</span>(lm.trans)</span></code></pre></div>
 <pre><code>## 
 ## Call:
 ## lm(formula = medv ~ poly(lstat, 2), data = Boston)
@@ -919,15 +828,15 @@ Gambar 12.5: Analisis residual model dengan melibatkan interaksi antar variabel 
 ## Residual standard error: 5.52 on 503 degrees of freedom
 ## Multiple R-squared:  0.641,  Adjusted R-squared:  0.639 
 ## F-statistic:  449 on 2 and 503 DF,  p-value: &lt;2e-16</code></pre>
-<p>Plot residual ditampilkan pada Gambar <a href="datamod.html#fig:lmtrans">12.6</a>.</p>
+<p>Plot residual ditampilkan pada Gambar <a href="datamod.html#fig:lmtrans">8.6</a>.</p>
 <div class="figure" style="text-align: center"><span style="display:block;" id="fig:lmtrans"></span>
 <img src="Metode_Numerik_files/figure-html/lmtrans-1.png" alt="Analisis residual model dengan melibatkan transformasi non-linier variabel prediktor pada dataset Boston." width="80%" />
 <p class="caption">
-Gambar 12.6: Analisis residual model dengan melibatkan transformasi non-linier variabel prediktor pada dataset Boston.
+Gambar 8.6: Analisis residual model dengan melibatkan transformasi non-linier variabel prediktor pada dataset Boston.
 </p>
 </div>
 <p>FUngsi trasnformasi lainnya juga dapat digunakan pada pembentukan model linier. Berikut adalah contoh penerapan transformasi logaritmik dan eksponensial pada model linier:</p>
-<div class="sourceCode" id="cb899"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb899-1"><a href="datamod.html#cb899-1" tabindex="-1"></a><span class="fu">summary</span>(<span class="fu">lm</span>(medv<span class="sc">~</span><span class="fu">log</span>(lstat), <span class="at">data=</span>Boston))</span></code></pre></div>
+<div class="sourceCode" id="cb540"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb540-1"><a href="datamod.html#cb540-1" tabindex="-1"></a><span class="fu">summary</span>(<span class="fu">lm</span>(medv<span class="sc">~</span><span class="fu">log</span>(lstat), <span class="at">data=</span>Boston))</span></code></pre></div>
 <pre><code>## 
 ## Call:
 ## lm(formula = medv ~ log(lstat), data = Boston)
@@ -947,7 +856,7 @@ Gambar 12.6: Analisis residual model dengan melibatkan transformasi non-linier v
 ## Residual standard error: 5.33 on 504 degrees of freedom
 ## Multiple R-squared:  0.665,  Adjusted R-squared:  0.664 
 ## F-statistic: 1e+03 on 1 and 504 DF,  p-value: &lt;2e-16</code></pre>
-<div class="sourceCode" id="cb901"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb901-1"><a href="datamod.html#cb901-1" tabindex="-1"></a><span class="fu">summary</span>(<span class="fu">lm</span>(medv<span class="sc">~</span><span class="fu">exp</span>(lstat), <span class="at">data=</span>Boston))</span></code></pre></div>
+<div class="sourceCode" id="cb542"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb542-1"><a href="datamod.html#cb542-1" tabindex="-1"></a><span class="fu">summary</span>(<span class="fu">lm</span>(medv<span class="sc">~</span><span class="fu">exp</span>(lstat), <span class="at">data=</span>Boston))</span></code></pre></div>
 <pre><code>## 
 ## Call:
 ## lm(formula = medv ~ exp(lstat), data = Boston)
@@ -968,13 +877,13 @@ Gambar 12.6: Analisis residual model dengan melibatkan transformasi non-linier v
 ## Multiple R-squared:  0.00501,    Adjusted R-squared:  0.00303 
 ## F-statistic: 2.54 on 1 and 504 DF,  p-value: 0.112</code></pre>
 </div>
-<div id="model-linier-dengan-prediktor-kategorikal" class="section level3 hasAnchor" number="12.1.5">
-<h3><span class="header-section-number">12.1.5</span> Model Linier dengan Prediktor Kategorikal<a href="datamod.html#model-linier-dengan-prediktor-kategorikal" class="anchor-section" aria-label="Anchor link to header"></a></h3>
+<div id="model-linier-dengan-prediktor-kategorikal" class="section level3 hasAnchor" number="8.1.5">
+<h3><span class="header-section-number">8.1.5</span> Model Linier dengan Prediktor Kategorikal<a href="datamod.html#model-linier-dengan-prediktor-kategorikal" class="anchor-section" aria-label="Anchor link to header"></a></h3>
 <p>Regresi linier dapat pula dilakukan dengan jenis variabel prediktor berupa variabel kategorikal. Untuk dapat melakukannya jenis data variabel kategorikal terlebih dahulu dirubah kedalam factor.</p>
 <p>BELUM ADA contoh</p>
 </div>
-<div id="wlr" class="section level3 hasAnchor" number="12.1.6">
-<h3><span class="header-section-number">12.1.6</span> Regresi linier dengan Pembobotan<a href="datamod.html#wlr" class="anchor-section" aria-label="Anchor link to header"></a></h3>
+<div id="wlr" class="section level3 hasAnchor" number="8.1.6">
+<h3><span class="header-section-number">8.1.6</span> Regresi linier dengan Pembobotan<a href="datamod.html#wlr" class="anchor-section" aria-label="Anchor link to header"></a></h3>
 <p>Pada pembahasan sebelumnya kita telah menyaksikan bahwa sebagian model yang telah terbentuk tidak memenuhi asumsi varians yang konstan. Untuk mengatasi hal tersebut, kita dapat membentuk regresi dengan memberikan bobot sebesar invers variansnya. Untuk melakukannya diperlukan beberapa tahapan, antara lain:</p>
 <ol style="list-style-type: decimal">
 <li>Membentuk model linier dari variabel dataset: <code>fit &lt;- lm(y~(variabel prediktor))</code>.</li>
@@ -983,20 +892,20 @@ Gambar 12.6: Analisis residual model dengan melibatkan transformasi non-linier v
 <li>Gunakan nilai bobot <code>w &lt;- 1/shat^2</code> untuk membentuk model regresi dengan pembobotan (<code>fitw &lt;-lm(y~(variabel prediktor), weights=w)</code>).</li>
 </ol>
 <p>Kita akan membentuk kembali model menggunakan dataset <code>Boston</code> dengan menggunakan seluruh variabel, namun pada model kali ini kita akan memberikan bobot pada model yang terbentuk. Berikut adalah sintaks yang digunakan:</p>
-<div class="sourceCode" id="cb903"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb903-1"><a href="datamod.html#cb903-1" tabindex="-1"></a><span class="co"># langkah 1</span></span>
-<span id="cb903-2"><a href="datamod.html#cb903-2" tabindex="-1"></a>fit <span class="ot">&lt;-</span> <span class="fu">lm</span>(medv<span class="sc">~</span>., <span class="at">data=</span>Boston)</span>
-<span id="cb903-3"><a href="datamod.html#cb903-3" tabindex="-1"></a></span>
-<span id="cb903-4"><a href="datamod.html#cb903-4" tabindex="-1"></a><span class="co"># langkah 2</span></span>
-<span id="cb903-5"><a href="datamod.html#cb903-5" tabindex="-1"></a>abse <span class="ot">&lt;-</span> <span class="fu">abs</span>(<span class="fu">resid</span>(fit))</span>
-<span id="cb903-6"><a href="datamod.html#cb903-6" tabindex="-1"></a>yhat <span class="ot">&lt;-</span> <span class="fu">fitted</span>(fit)</span>
-<span id="cb903-7"><a href="datamod.html#cb903-7" tabindex="-1"></a></span>
-<span id="cb903-8"><a href="datamod.html#cb903-8" tabindex="-1"></a><span class="co"># langkah 3</span></span>
-<span id="cb903-9"><a href="datamod.html#cb903-9" tabindex="-1"></a>efit <span class="ot">&lt;-</span> <span class="fu">lm</span>(abse<span class="sc">~</span><span class="fu">poly</span>(yhat,<span class="dv">2</span>))</span>
-<span id="cb903-10"><a href="datamod.html#cb903-10" tabindex="-1"></a>shat <span class="ot">&lt;-</span> <span class="fu">fitted</span>(efit)</span>
-<span id="cb903-11"><a href="datamod.html#cb903-11" tabindex="-1"></a></span>
-<span id="cb903-12"><a href="datamod.html#cb903-12" tabindex="-1"></a><span class="co"># langkah 4</span></span>
-<span id="cb903-13"><a href="datamod.html#cb903-13" tabindex="-1"></a>fitw <span class="ot">&lt;-</span> <span class="fu">lm</span>(medv<span class="sc">~</span>., <span class="at">data =</span> Boston, <span class="at">weights =</span> <span class="dv">1</span><span class="sc">/</span>(shat<span class="sc">^</span><span class="dv">2</span>))</span>
-<span id="cb903-14"><a href="datamod.html#cb903-14" tabindex="-1"></a><span class="fu">anova</span>(fitw)</span></code></pre></div>
+<div class="sourceCode" id="cb544"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb544-1"><a href="datamod.html#cb544-1" tabindex="-1"></a><span class="co"># langkah 1</span></span>
+<span id="cb544-2"><a href="datamod.html#cb544-2" tabindex="-1"></a>fit <span class="ot">&lt;-</span> <span class="fu">lm</span>(medv<span class="sc">~</span>., <span class="at">data=</span>Boston)</span>
+<span id="cb544-3"><a href="datamod.html#cb544-3" tabindex="-1"></a></span>
+<span id="cb544-4"><a href="datamod.html#cb544-4" tabindex="-1"></a><span class="co"># langkah 2</span></span>
+<span id="cb544-5"><a href="datamod.html#cb544-5" tabindex="-1"></a>abse <span class="ot">&lt;-</span> <span class="fu">abs</span>(<span class="fu">resid</span>(fit))</span>
+<span id="cb544-6"><a href="datamod.html#cb544-6" tabindex="-1"></a>yhat <span class="ot">&lt;-</span> <span class="fu">fitted</span>(fit)</span>
+<span id="cb544-7"><a href="datamod.html#cb544-7" tabindex="-1"></a></span>
+<span id="cb544-8"><a href="datamod.html#cb544-8" tabindex="-1"></a><span class="co"># langkah 3</span></span>
+<span id="cb544-9"><a href="datamod.html#cb544-9" tabindex="-1"></a>efit <span class="ot">&lt;-</span> <span class="fu">lm</span>(abse<span class="sc">~</span><span class="fu">poly</span>(yhat,<span class="dv">2</span>))</span>
+<span id="cb544-10"><a href="datamod.html#cb544-10" tabindex="-1"></a>shat <span class="ot">&lt;-</span> <span class="fu">fitted</span>(efit)</span>
+<span id="cb544-11"><a href="datamod.html#cb544-11" tabindex="-1"></a></span>
+<span id="cb544-12"><a href="datamod.html#cb544-12" tabindex="-1"></a><span class="co"># langkah 4</span></span>
+<span id="cb544-13"><a href="datamod.html#cb544-13" tabindex="-1"></a>fitw <span class="ot">&lt;-</span> <span class="fu">lm</span>(medv<span class="sc">~</span>., <span class="at">data =</span> Boston, <span class="at">weights =</span> <span class="dv">1</span><span class="sc">/</span>(shat<span class="sc">^</span><span class="dv">2</span>))</span>
+<span id="cb544-14"><a href="datamod.html#cb544-14" tabindex="-1"></a><span class="fu">anova</span>(fitw)</span></code></pre></div>
 <pre><code>## Analysis of Variance Table
 ## 
 ## Response: medv
@@ -1018,7 +927,7 @@ Gambar 12.6: Analisis residual model dengan melibatkan transformasi non-linier v
 ## ---
 ## Signif. codes:  
 ## 0 &#39;***&#39; 0.001 &#39;**&#39; 0.01 &#39;*&#39; 0.05 &#39;.&#39; 0.1 &#39; &#39; 1</code></pre>
-<div class="sourceCode" id="cb905"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb905-1"><a href="datamod.html#cb905-1" tabindex="-1"></a><span class="fu">summary</span>(fitw)</span></code></pre></div>
+<div class="sourceCode" id="cb546"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb546-1"><a href="datamod.html#cb546-1" tabindex="-1"></a><span class="fu">summary</span>(fitw)</span></code></pre></div>
 <pre><code>## 
 ## Call:
 ## lm(formula = medv ~ ., data = Boston, weights = 1/(shat^2))
@@ -1050,21 +959,21 @@ Gambar 12.6: Analisis residual model dengan melibatkan transformasi non-linier v
 ## Residual standard error: 1.4 on 492 degrees of freedom
 ## Multiple R-squared:  0.642,  Adjusted R-squared:  0.633 
 ## F-statistic:   68 on 13 and 492 DF,  p-value: &lt;2e-16</code></pre>
-<p>Plot residual ditampilkan pada Gambar <a href="datamod.html#fig:lmw">12.7</a>.</p>
+<p>Plot residual ditampilkan pada Gambar <a href="datamod.html#fig:lmw">8.7</a>.</p>
 <div class="figure" style="text-align: center"><span style="display:block;" id="fig:lmw"></span>
 <img src="Metode_Numerik_files/figure-html/lmw-1.png" alt="Analisis residual model regresi linier dengan pembobotan pada dataset Boston." width="80%" />
 <p class="caption">
-Gambar 12.7: Analisis residual model regresi linier dengan pembobotan pada dataset Boston.
+Gambar 8.7: Analisis residual model regresi linier dengan pembobotan pada dataset Boston.
 </p>
 </div>
 </div>
 </div>
-<div id="logreg" class="section level2 hasAnchor" number="12.2">
-<h2><span class="header-section-number">12.2</span> Regresi Logistik<a href="datamod.html#logreg" class="anchor-section" aria-label="Anchor link to header"></a></h2>
-<p>Pada Chapter <a href="datamod.html#logreg">12.2</a>, kita telah membahas cara untuk membangun model dengan output berupa variabel dengan nilai numerik. Pada Chapter <a href="datamod.html#logreg">12.2</a>, kita akan belajar cara membentuk model regresi dengan 2 respons (0 dan 1). Pada regresi ini pembentukan model didasarkan oleh kurva logistik, dimana melalui kurva tersebut nilai yang dihasilkan akan memiliki rentang dari 0 sampai 1. Karena model yang dibuat bertujuan untuk memprediksi dua buah kemungkinan (0 atau 1), maka diperlukan suatu nilai ambang (y&lt;0,5 = 0 dan y &gt;= 0,5 = 1).</p>
+<div id="logreg" class="section level2 hasAnchor" number="8.2">
+<h2><span class="header-section-number">8.2</span> Regresi Logistik<a href="datamod.html#logreg" class="anchor-section" aria-label="Anchor link to header"></a></h2>
+<p>Pada Chapter <a href="datamod.html#logreg">8.2</a>, kita telah membahas cara untuk membangun model dengan output berupa variabel dengan nilai numerik. Pada Chapter <a href="datamod.html#logreg">8.2</a>, kita akan belajar cara membentuk model regresi dengan 2 respons (0 dan 1). Pada regresi ini pembentukan model didasarkan oleh kurva logistik, dimana melalui kurva tersebut nilai yang dihasilkan akan memiliki rentang dari 0 sampai 1. Karena model yang dibuat bertujuan untuk memprediksi dua buah kemungkinan (0 atau 1), maka diperlukan suatu nilai ambang (y&lt;0,5 = 0 dan y &gt;= 0,5 = 1).</p>
 <p>Fungsi <code>glm()</code> dapat digunakan untuk membentuk model regresi logistik. Format umum fungsi tersebut adalah sebagai berikut:</p>
-<div class="sourceCode" id="cb907"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb907-1"><a href="datamod.html#cb907-1" tabindex="-1"></a><span class="fu">glm</span>(formula, <span class="at">family =</span> gaussian, data, weights, subset,</span>
-<span id="cb907-2"><a href="datamod.html#cb907-2" tabindex="-1"></a>    )</span></code></pre></div>
+<div class="sourceCode" id="cb548"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb548-1"><a href="datamod.html#cb548-1" tabindex="-1"></a><span class="fu">glm</span>(formula, <span class="at">family =</span> gaussian, data, weights, subset,</span>
+<span id="cb548-2"><a href="datamod.html#cb548-2" tabindex="-1"></a>    )</span></code></pre></div>
 <blockquote>
 <p><strong>Catatan:</strong></p>
 <ul>
@@ -1077,8 +986,8 @@ Gambar 12.7: Analisis residual model regresi linier dengan pembobotan pada datas
 </blockquote>
 <p>Belum ADA Contoh</p>
 </div>
-<div id="referensi-11" class="section level2 hasAnchor" number="12.3">
-<h2><span class="header-section-number">12.3</span> Referensi<a href="datamod.html#referensi-11" class="anchor-section" aria-label="Anchor link to header"></a></h2>
+<div id="referensi-7" class="section level2 hasAnchor" number="8.3">
+<h2><span class="header-section-number">8.3</span> Referensi<a href="datamod.html#referensi-7" class="anchor-section" aria-label="Anchor link to header"></a></h2>
 <ol style="list-style-type: decimal">
 <li>Akritas, M. 2016. <strong>PROBABILITY &amp; STATISTICS WITH R FOR ENGINEERS AND SCIENTISTS</strong>. Pearson.</li>
 <li>Bloomfield, V.A. 2014. <strong>Using R for Numerical Analysis in Science and Engineering</strong>. CRC Press.</li>
