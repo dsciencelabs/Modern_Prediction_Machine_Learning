@@ -1,10 +1,10 @@
-# Metode Numerik Menggunakan R Untuk Teknik Lingkungan
+# Metode Numerik Menggunakan R
 
-Buku ini membahas mengenai metode numerik untuk menyelesaikan suatu fungsi matematik yang dikhususkan bagi mahasiswa Teknik Lingkungan. Buku ini berisi rangkuman metode numerik, contoh soal, dan penyelesaiannya yang dapat membantu mahasiswa untuk belajar dan menguasai setiap metode yang disajikan pada buku ini.
+Modul ini dikhususkan bagi mahasiswa Statistika Universitas Matana, berisi rangkuman pembelajaran **Metode Numerik** melalui contoh kasus dan penyelesaian menggunakan bahasa pemrogramana R yang dapat membantu mahasiswa-i untuk memahami konsep secara praktikum.
 
 ## Akses Buku
 
-Buku ini dapat diakses secara bebas oleh pembaca melalui tautan: <https://bookdown.org/moh_rosidi2610/Metode_Numerik/>
+Buku ini dapat diakses secara bebas oleh pembaca melalui tautan: <------->
 
 ## Konten Buku
 
