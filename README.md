@@ -27,7 +27,3 @@ Buku ini dapat diakses secara bebas oleh pembaca melalui tautan: <------->
 ## Ucapan Terimakasih
 
 Proyek ini dapat terlaksana atas paket [bookdown](https://bookdown.org/) yang dibuat oleh tim RStudio.
-
-## Lisensi
-
-<a rel="license" href="http://creativecommons.org/licenses/by-nc-sa/4.0/"><img alt="Lisensi Creative Commons" style="border-width:0" src="https://i.creativecommons.org/l/by-nc-sa/4.0/80x15.png" /></a><br />Ciptaan disebarluaskan di bawah <a rel="license" href="http://creativecommons.org/licenses/by-nc-sa/4.0/">Lisensi Creative Commons Atribusi-NonKomersial-BerbagiSerupa 4.0 Internasional</a>.
