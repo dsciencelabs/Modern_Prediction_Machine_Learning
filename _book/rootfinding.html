@@ -4,20 +4,20 @@
 
   <meta charset="utf-8" />
   <meta http-equiv="X-UA-Compatible" content="IE=edge" />
-  <title>Chapter 7 Akar Persamaan Non-Linier | Metode Numerik Menggunakan R</title>
-  <meta name="description" content="Komputasi metode numerik menggunakan R dengan contoh kasus di bidang teknik lingkungan. Buku ini dapat menjadi rujukan bagi mahasiswa yang ingin mendalami proses komputasi metode numerik menggunakan R. Buku ini disusun sedemikian rupa dengan bahasa yang sederhana agar mudah dipahami oleh mahasiswa." />
-  <meta name="generator" content="bookdown 0.35 and GitBook 2.6.7" />
+  <title>Bab 7 Akar Persamaan Non-Linier | Metode Numerik Menggunakan R</title>
+  <meta name="description" content="Modul ini dapat menjadi rujukan bagi mahasiswa yang ingin mendalami proses komputasi metode numerik dengan menggunakan R. Meteri disusun sedemikian rupa dengan bahasa yang lebih sederhana agar mudah dipahami oleh Mahasiswa (Pengguna)." />
+  <meta name="generator" content="bookdown 0.34 and GitBook 2.6.7" />
 
-  <meta property="og:title" content="Chapter 7 Akar Persamaan Non-Linier | Metode Numerik Menggunakan R" />
+  <meta property="og:title" content="Bab 7 Akar Persamaan Non-Linier | Metode Numerik Menggunakan R" />
   <meta property="og:type" content="book" />
   <meta property="og:image" content="/images/Cover_Metode_Numerik.png" />
-  <meta property="og:description" content="Komputasi metode numerik menggunakan R dengan contoh kasus di bidang teknik lingkungan. Buku ini dapat menjadi rujukan bagi mahasiswa yang ingin mendalami proses komputasi metode numerik menggunakan R. Buku ini disusun sedemikian rupa dengan bahasa yang sederhana agar mudah dipahami oleh mahasiswa." />
+  <meta property="og:description" content="Modul ini dapat menjadi rujukan bagi mahasiswa yang ingin mendalami proses komputasi metode numerik dengan menggunakan R. Meteri disusun sedemikian rupa dengan bahasa yang lebih sederhana agar mudah dipahami oleh Mahasiswa (Pengguna)." />
   <meta name="github-repo" content="dsciencelabs/Metode_Numerik_R" />
 
   <meta name="twitter:card" content="summary" />
-  <meta name="twitter:title" content="Chapter 7 Akar Persamaan Non-Linier | Metode Numerik Menggunakan R" />
+  <meta name="twitter:title" content="Bab 7 Akar Persamaan Non-Linier | Metode Numerik Menggunakan R" />
   
-  <meta name="twitter:description" content="Komputasi metode numerik menggunakan R dengan contoh kasus di bidang teknik lingkungan. Buku ini dapat menjadi rujukan bagi mahasiswa yang ingin mendalami proses komputasi metode numerik menggunakan R. Buku ini disusun sedemikian rupa dengan bahasa yang sederhana agar mudah dipahami oleh mahasiswa." />
+  <meta name="twitter:description" content="Modul ini dapat menjadi rujukan bagi mahasiswa yang ingin mendalami proses komputasi metode numerik dengan menggunakan R. Meteri disusun sedemikian rupa dengan bahasa yang lebih sederhana agar mudah dipahami oleh Mahasiswa (Pengguna)." />
   <meta name="twitter:image" content="/images/Cover_Metode_Numerik.png" />
 
 <meta name="author" content="Bakti Siregar, M.Sc, Trisha M.A. Januaviani, M.Mat &amp; Dr. Kalfin, M.Mat" />
@@ -136,13 +136,13 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
       <nav role="navigation">
 
 <ul class="summary">
-<li><a href="./">Metode Numerik Menggunakan R</a></li>
+<li><center><img src="images/Logo.png" alt="logo" width="50%" height="50%"style="margin: 15px 0 0 0"></center></li>
 
 <li class="divider"></li>
-<li class="chapter" data-level="" data-path="index.html"><a href="index.html"><i class="fa fa-check"></i>Pengantar</a>
+<li class="chapter" data-level="" data-path="index.html"><a href="index.html"><i class="fa fa-check"></i>Kata Pengantar</a>
 <ul>
-<li class="chapter" data-level="" data-path="index.html"><a href="index.html#gambaran-isi-buku"><i class="fa fa-check"></i>Gambaran Isi Buku</a></li>
-<li class="chapter" data-level="" data-path="index.html"><a href="index.html#cara-berkontribusi-dalam-buku-ini"><i class="fa fa-check"></i>Cara Berkontribusi dalam Buku Ini</a></li>
+<li class="chapter" data-level="" data-path="index.html"><a href="index.html#ringkasan"><i class="fa fa-check"></i>Ringkasan</a></li>
+<li class="chapter" data-level="" data-path="index.html"><a href="index.html#tim-penyusun"><i class="fa fa-check"></i>Tim Penyusun</a></li>
 <li class="chapter" data-level="" data-path="index.html"><a href="index.html#ucapan-terima-kasih"><i class="fa fa-check"></i>Ucapan Terima Kasih</a></li>
 <li class="chapter" data-level="" data-path="index.html"><a href="index.html#lisensi"><i class="fa fa-check"></i>Lisensi</a></li>
 </ul></li>
@@ -453,7 +453,7 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
 
             <section class="normal" id="section-">
 <div id="rootfinding" class="section level1 hasAnchor" number="7">
-<h1><span class="header-section-number">Chapter 7</span> Akar Persamaan Non-Linier<a href="rootfinding.html#rootfinding" class="anchor-section" aria-label="Anchor link to header"></a></h1>
+<h1><span class="header-section-number">Bab 7</span> Akar Persamaan Non-Linier<a href="rootfinding.html#rootfinding" class="anchor-section" aria-label="Anchor link to header"></a></h1>
 <p>Persamaan non-linier dapat diartikan sebagai persamaan yang tidak mengandung syarat seperti persamaan linier, sehingga persamaan non-linier dapat merupakan:</p>
 <ol style="list-style-type: lower-alpha">
 <li>Persamaan yang memiliki pangkat selain satu (misal: <span class="math inline">\(x^2\)</span>)</li>
@@ -715,7 +715,7 @@ f\left(x \right).f\left(a \right)&lt;0
 <span id="cb545-2"><a href="rootfinding.html#cb545-2" tabindex="-1"></a>               <span class="at">a=</span><span class="sc">-</span><span class="dv">1</span>, <span class="at">b=</span><span class="dv">0</span>)</span></code></pre></div>
 <pre><code>## $`function`
 ## function(x){x*exp(-x)+1}
-## &lt;bytecode: 0x0000022aafec5448&gt;
+## &lt;bytecode: 0x00000244227f2cf8&gt;
 ## 
 ## $root
 ## [1] -0.5671
@@ -814,7 +814,7 @@ f\left(x \right).f\left(a \right)&lt;0
 <span id="cb548-2"><a href="rootfinding.html#cb548-2" tabindex="-1"></a>               <span class="at">a=</span><span class="sc">-</span><span class="dv">1</span>, <span class="at">b=</span><span class="dv">0</span>)</span></code></pre></div>
 <pre><code>## $`function`
 ## function(x){x*exp(-x)+1}
-## &lt;bytecode: 0x0000022ab0ec6010&gt;
+## &lt;bytecode: 0x000002442386dee8&gt;
 ## 
 ## $root
 ## [1] -0.5671
@@ -885,7 +885,7 @@ x_2 = -\frac{1}{e^{2,718282}}=-0,06598802
 <div class="sourceCode" id="cb551"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb551-1"><a href="rootfinding.html#cb551-1" tabindex="-1"></a><span class="fu">root_fpi</span>(<span class="cf">function</span>(x){<span class="sc">-</span><span class="dv">1</span><span class="sc">/</span><span class="fu">exp</span>(<span class="sc">-</span>x)}, <span class="at">x0=</span><span class="sc">-</span><span class="dv">1</span>)</span></code></pre></div>
 <pre><code>## $`function`
 ## function(x){-1/exp(-x)}
-## &lt;bytecode: 0x0000022aa76a5bb8&gt;
+## &lt;bytecode: 0x00000244242ae7d8&gt;
 ## 
 ## $root
 ## [1] -0.5671
@@ -962,7 +962,7 @@ x_1=x_0-\frac{f\left(x_0\right)}{f&#39;\left(x_0\right)}=0-\frac{-1}{2}=0,5
 <span id="cb554-3"><a href="rootfinding.html#cb554-3" tabindex="-1"></a>              <span class="at">x0=</span><span class="dv">0</span>)</span></code></pre></div>
 <pre><code>## $`function`
 ## function(x){x-exp(-x)}
-## &lt;bytecode: 0x0000022aabeace20&gt;
+## &lt;bytecode: 0x000002441e2e4450&gt;
 ## 
 ## $root
 ## [1] 0.5671
@@ -1086,7 +1086,7 @@ x_2=0+0,999998\frac{10^{-6}-0}{-0,999998+1}=0,499999
 <div class="sourceCode" id="cb557"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb557-1"><a href="rootfinding.html#cb557-1" tabindex="-1"></a><span class="fu">root_secant</span>(<span class="cf">function</span>(x){x<span class="sc">-</span><span class="fu">exp</span>(<span class="sc">-</span>x)}, <span class="at">x=</span><span class="dv">0</span>)</span></code></pre></div>
 <pre><code>## $`function`
 ## function(x){x-exp(-x)}
-## &lt;bytecode: 0x0000022aae9b3fc8&gt;
+## &lt;bytecode: 0x00000244203604a0&gt;
 ## 
 ## $root
 ## [1] 0.5671
@@ -1213,7 +1213,7 @@ f\left(h\right)=h^3+\left(0,075-\frac{1,2^2}{2\times9,81\times1,8^2\times0,6^2}-
 ## function(h){
 ##   (h^3) + ((0.075-((1.2^2)/(2*9.81*(1.8^2)*(0.6^2))))*h^2)+ (1.2^2/(2*9.81*(1.8^2)))
 ## }
-## &lt;bytecode: 0x0000022ab04e0918&gt;
+## &lt;bytecode: 0x0000024422c70368&gt;
 ## 
 ## $root
 ## [1] -0.287

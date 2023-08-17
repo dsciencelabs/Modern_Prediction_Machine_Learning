@@ -115,14 +115,14 @@
 \IfFileExists{xurl.sty}{\usepackage{xurl}}{} % add URL line breaks if available
 \urlstyle{same}
 \hypersetup{
-  pdftitle={Metode Numerik Menggunakan R Untuk Teknik Lingkungan},
-  pdfauthor={Mohammad Rosidi},
+  pdftitle={Metode Numerik Menggunakan R},
+  pdfauthor={Bakti Siregar, M.Sc, Trisha M.A.~Januaviani, M.Mat \& Dr.~Kalfin, M.Mat},
   hidelinks,
   pdfcreator={LaTeX via pandoc}}
 
-\title{Metode Numerik Menggunakan R Untuk Teknik Lingkungan}
-\author{Mohammad Rosidi}
-\date{2023-08-10}
+\title{Metode Numerik Menggunakan R}
+\author{Bakti Siregar, M.Sc, Trisha M.A.~Januaviani, M.Mat \& Dr.~Kalfin, M.Mat}
+\date{06 Maret 2023}
 
 \usepackage{amsthm}
 \newtheorem{theorem}{Teorema}[chapter]
@@ -148,86 +148,46 @@
 \setcounter{tocdepth}{1}
 \tableofcontents
 }
-\hypertarget{pengantar}{%
-\chapter*{Pengantar}\label{pengantar}}
-\addcontentsline{toc}{chapter}{Pengantar}
+\hypertarget{kata-pengantar}{%
+\chapter*{Kata Pengantar}\label{kata-pengantar}}
+\addcontentsline{toc}{chapter}{Kata Pengantar}
 
-Metone Numerik Menggunakan R Untuk Teknik Lingkungan merupakan buku yang penulis tulis dengan harapan dapat menjadi salah satu rujukan mahasiswa khusunya Teknik Lingkungan yang tertarik untuk belajar \texttt{R}. Selain itu, buku ini merupakan salah satu cara pengabdian penulis guna menyediakan sumber pembelajaran yang bersifat terbuka dan dapat diakses seluruh kalangan secara gratis.
+Modul ini dirancang sebagai panduan bagi mahasiswa untuk melakukan praktikum Metode Numerik di Universitas Matana. Beberapa topik penting dalam analisis numerik dibahas dalam buku ini, seperti interpolasi, integrasi numerik, solusi persamaan nonlinear, dan pemecahan sistem persamaan linear. Modul ini dirancang agar mahasiswa dapat memahami konsep dan menerapkan dengan mudah dan praktis melalui studi kasus yang relevan dengan alat bantu bahasa pemrograman R. Setelah mempelajari modul ini, Mahasiswa (Pembaca) diharapkan untuk dapat mengembangkan keterampilan komputasi numerik mereka dalam proses analisis dan penyelesaian masalah, khususnya dalam perhitungan Matematika/Statistika yang lebih kompleks.
 
-\textbf{Mengapa perlu menulis buku ini?} Penulis merasa selama ini buku-buku metode numerik yang ada di pasaran masih didominasi oleh buku-buku pemrograman berbasis Matlab. Atas dasar tersebut, penulis merasa perlu adanya alternatif pembelajaran menggunakan bahasa pemrograman lain.
+\hypertarget{ringkasan}{%
+\section*{Ringkasan}\label{ringkasan}}
+\addcontentsline{toc}{section}{Ringkasan}
 
-\textbf{Mengapa harus \texttt{R}?} Sejak lama \texttt{R} dikenal secara luas sebagai bahasa pemrograman yang digunakan dalam bidang statistika dan \emph{data science}. Selain kedua hal tersebut, \texttt{R} menyediakan basis dalam melakukan komputasi numerik yang dapat digunakan untuk menyusun sebuah program atau paket yang dapat menyelesaikan persoalan-persoalan metode numerik. Saat ini telah banyak paket yang dikembangkan khusus untuk menangani penyelesaian persamaan matematika menggunakan metode numerik. Paket-paket yang penulis maksud dan penulis sertakan dalam buku ini, antara lain: \texttt{limSolve}, \texttt{gaussquad}, \texttt{pracma}, \texttt{orthopolynom}, \texttt{deSolve}, \texttt{ReacTran}, dll.
-
-\textbf{Apakah saya harus fasih \texttt{R} untuk dapat menggunakan buku ini?} tidak. Buku ini telah disusun sedemikian rupa sehingga pemula sekalipun dapat dengan mudah belajar dasar-dasar pemrograman \texttt{R}.
-
-\textbf{Apa saja yang tersedia dalam buku ini?} Pada buku ini telah penulis sediakan beberapa hal, antara lain:
+Adapun isi pembahasan dalam modul ini adalah sebagai berikut:
 
 \begin{itemize}
 \tightlist
 \item
-  teori dasar metode numerik
+  Pengantar metode numerik
 \item
-  algoritma penyelesaian menggunakan metode numerik
+  Aljabar linier
 \item
-  fungsi dan cara iterasi dalam menyelesaikan suatu persamaan menggunakan metode numerik
+  Akar persamaan non-linier
 \item
-  studi kasus dalam bidang Teknik Lingkungan, dan
+  Interpolasi dan ekstrapolasi
 \item
-  latihan soal
+  Diferensiasi dan integrasi numerik
+\item
+  Persamaan diferensial
+\item
+  Analisis data
 \end{itemize}
 
-\hypertarget{gambaran-isi-buku}{%
-\section*{Gambaran Isi Buku}\label{gambaran-isi-buku}}
-\addcontentsline{toc}{section}{Gambaran Isi Buku}
+\textbf{Catatan:} Sebelum mempelajari dan menggunakan modul ini Mahasiswa (Pengguna) diharapkan sudah mempunyai pengalaman yang cukup tentang dasar pemrograman R dan mampu untuk melakukan visualisasi data dengan bahasa pemrograman R.
 
-Buku ini disusun ke dalam 11 \textbf{Chapter}. Secara garis besar gambaran ke-11 \textbf{Chapter} tersebut antara lain:
-
-\textbf{Dasar pemrograman menggunakan \texttt{R}}
-
-\begin{itemize}
-\tightlist
-\item
-  \textbf{Chapter 1} : pada chapter ini dibahas sejarah, fitur dan karakteristik bahasa \texttt{R}, dan cara berinteraksi dengan \texttt{R} melalui \texttt{Rstudio}.
-\item
-  \textbf{Chapter 2} : pada chapter ini dibahas terkait cara melakukan perhitungan atau kalkulasi matematis menggunakan \texttt{R}. Selain itu, pada chapter ini juga dibahas terkait operator-operator yang digunakan dalam \texttt{R}, jenis data pada \texttt{R}, dan bagaimana cara menyimpan nilai ke dalam variabel.
-\item
-  \textbf{chapter 3} : chapter ini membahas cara membuat sebuah visualisasi data dan cara mengatur parameter visualisasi data pada \texttt{R}.
-\item
-  \textbf{chapter 4} : chapter ini membahas cara membentuk sebuah fungsi dan cara melakukan iterasi pada \texttt{R}.
-\end{itemize}
-
-\textbf{Metode Numerik Menggunakan \texttt{R}}
-
-Pada bagian ini pembaca akan belajar teori dan aplikasi metode numerik menggunakan \texttt{R}. Adapun hal-hal yang dibahas dalam bagian ini antara lain:
-
-\begin{itemize}
-\tightlist
-\item
-  pengantar metode numerik (\textbf{chapter 5})
-\item
-  aljabar linier (\textbf{chapter 6})
-\item
-  akar persamaan non-linier (\textbf{chapter 7})
-\item
-  interpolasi dan ekstrapolasi (\textbf{chapter 8})
-\item
-  diferensiasi dan integrasi numerik (\textbf{chapter 9})
-\item
-  persamaan diferensial (\textbf{chapter 10})
-\end{itemize}
-
-\textbf{Analisis dan pemodelan statistik}
-
-Pada bagian ini pembaca akan belajar bagaimana cara membaca data menggunakan \texttt{R} dan cara melakukan analisis data menggunakan \texttt{R} (\textbf{chapter 11}). Pada bagian lainnya pembaca akan belajar cara membentuk sebuah model regresi linier dan logistik pada \texttt{R} (\textbf{chapter 12})
-
-\hypertarget{cara-berkontribusi-dalam-buku-ini}{%
-\section*{Cara Berkontribusi dalam Buku Ini}\label{cara-berkontribusi-dalam-buku-ini}}
-\addcontentsline{toc}{section}{Cara Berkontribusi dalam Buku Ini}
+\hypertarget{tim-penyusun}{%
+\section*{Tim Penyusun}\label{tim-penyusun}}
+\addcontentsline{toc}{section}{Tim Penyusun}
 
 Buku ini tidaklah sempurna. Masih terdapat banyak kekurangan dalam buku ini. Namun, kekurangan tersebut tetaplah dapat diperbaiki. Penulis membuka ruang seluas-luasnya dalam melakukan perbaikan dalam buku ini bagi pembaca. Untuk dapat melakukannya pembaca hanya perlu melakukan \emph{pull request} ke akun github penulis atau pembaca dapat melakukannya melalui email yang selanjutnya akan penulis jadikan acuan perbaikan.
 
-Github : \url{https://github.com/mohrosidi/metode_numerik}
-Email : \href{mailto:moh.rosidi2610@gmail.com}{\nolinkurl{moh.rosidi2610@gmail.com}}
+Github : \url{https://github.com/dsciencelabs/Metode_Numerik_R}
+Email : \href{mailto:dsciencelabs@outlook.com}{\nolinkurl{dsciencelabs@outlook.com}}
 
 \hypertarget{ucapan-terima-kasih}{%
 \section*{Ucapan Terima Kasih}\label{ucapan-terima-kasih}}
@@ -2190,7 +2150,7 @@ Berikut adalah contoh pembuatan vektor menggunakan bilangan acak berdistribusi n
 \end{Shaded}
 
 \begin{verbatim}
-## [1] 2.283 3.283 4.283 5.283 6.283 7.283
+## [1] 1.205 2.205 3.205 4.205 5.205 6.205
 \end{verbatim}
 
 \hypertarget{matriks}{%
@@ -9215,7 +9175,7 @@ Untuk mempersingkat waktu iterasi kita akan menggunakan fungsi \texttt{root\_bis
 \begin{verbatim}
 ## $`function`
 ## function(x){x*exp(-x)+1}
-## <bytecode: 0x000001ba8086f4b0>
+## <bytecode: 0x000001dbe908b4a0>
 ## 
 ## $root
 ## [1] -0.5671
@@ -9367,7 +9327,7 @@ Untuk mempercepat proses iterasi, kita dapat pula menggunakan fungsi \texttt{roo
 \begin{verbatim}
 ## $`function`
 ## function(x){x*exp(-x)+1}
-## <bytecode: 0x000001ba835e2bd8>
+## <bytecode: 0x000001dbea09b988>
 ## 
 ## $root
 ## [1] -0.5671
@@ -9479,7 +9439,7 @@ Untuk mempercepat proses iterasi kita dapat menggunakan bantuan fungsi \texttt{r
 \begin{verbatim}
 ## $`function`
 ## function(x){-1/exp(-x)}
-## <bytecode: 0x000001ba85a67468>
+## <bytecode: 0x000001dbe5412500>
 ## 
 ## $root
 ## [1] -0.5671
@@ -9598,7 +9558,7 @@ Untuk mempercepat proses iterasi, kita dapat menggunakan fungsi \texttt{root\_ne
 \begin{verbatim}
 ## $`function`
 ## function(x){x-exp(-x)}
-## <bytecode: 0x000001ba80b0aee8>
+## <bytecode: 0x000001dbe6fca528>
 ## 
 ## $root
 ## [1] 0.5671
@@ -9792,7 +9752,7 @@ Untuk mempercepat proses iterasi kita dapat menggunakan fungsi \texttt{root\_sec
 \begin{verbatim}
 ## $`function`
 ## function(x){x-exp(-x)}
-## <bytecode: 0x000001ba839423d0>
+## <bytecode: 0x000001dbe9868f70>
 ## 
 ## $root
 ## [1] 0.5671
@@ -10025,7 +9985,7 @@ Untuk penyelesaiannya penulis akan memberikan tebakan awal nilai \(h=h_0=0,6\). 
 ## function(h){
 ##   (h^3) + ((0.075-((1.2^2)/(2*9.81*(1.8^2)*(0.6^2))))*h^2)+ (1.2^2/(2*9.81*(1.8^2)))
 ## }
-## <bytecode: 0x000001ba81ffb120>
+## <bytecode: 0x000001dbe68b12d0>
 ## 
 ## $root
 ## [1] -0.287

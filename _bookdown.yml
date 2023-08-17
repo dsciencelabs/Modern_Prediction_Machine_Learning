@@ -8,4 +8,4 @@ language:
     exm: 'Contoh '
     thm: 'Teorema '
   ui:
-    chapter_name: "Chapter "
+    chapter_name: "Bab "

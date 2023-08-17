@@ -5,19 +5,19 @@
   <meta charset="utf-8" />
   <meta http-equiv="X-UA-Compatible" content="IE=edge" />
   <title>Metode Numerik Menggunakan R</title>
-  <meta name="description" content="Komputasi metode numerik menggunakan R dengan contoh kasus di bidang teknik lingkungan. Buku ini dapat menjadi rujukan bagi mahasiswa yang ingin mendalami proses komputasi metode numerik menggunakan R. Buku ini disusun sedemikian rupa dengan bahasa yang sederhana agar mudah dipahami oleh mahasiswa." />
-  <meta name="generator" content="bookdown 0.35 and GitBook 2.6.7" />
+  <meta name="description" content="Modul ini dapat menjadi rujukan bagi mahasiswa yang ingin mendalami proses komputasi metode numerik dengan menggunakan R. Meteri disusun sedemikian rupa dengan bahasa yang lebih sederhana agar mudah dipahami oleh Mahasiswa (Pengguna)." />
+  <meta name="generator" content="bookdown 0.34 and GitBook 2.6.7" />
 
   <meta property="og:title" content="Metode Numerik Menggunakan R" />
   <meta property="og:type" content="book" />
   <meta property="og:image" content="/images/Cover_Metode_Numerik.png" />
-  <meta property="og:description" content="Komputasi metode numerik menggunakan R dengan contoh kasus di bidang teknik lingkungan. Buku ini dapat menjadi rujukan bagi mahasiswa yang ingin mendalami proses komputasi metode numerik menggunakan R. Buku ini disusun sedemikian rupa dengan bahasa yang sederhana agar mudah dipahami oleh mahasiswa." />
+  <meta property="og:description" content="Modul ini dapat menjadi rujukan bagi mahasiswa yang ingin mendalami proses komputasi metode numerik dengan menggunakan R. Meteri disusun sedemikian rupa dengan bahasa yang lebih sederhana agar mudah dipahami oleh Mahasiswa (Pengguna)." />
   <meta name="github-repo" content="dsciencelabs/Metode_Numerik_R" />
 
   <meta name="twitter:card" content="summary" />
   <meta name="twitter:title" content="Metode Numerik Menggunakan R" />
   
-  <meta name="twitter:description" content="Komputasi metode numerik menggunakan R dengan contoh kasus di bidang teknik lingkungan. Buku ini dapat menjadi rujukan bagi mahasiswa yang ingin mendalami proses komputasi metode numerik menggunakan R. Buku ini disusun sedemikian rupa dengan bahasa yang sederhana agar mudah dipahami oleh mahasiswa." />
+  <meta name="twitter:description" content="Modul ini dapat menjadi rujukan bagi mahasiswa yang ingin mendalami proses komputasi metode numerik dengan menggunakan R. Meteri disusun sedemikian rupa dengan bahasa yang lebih sederhana agar mudah dipahami oleh Mahasiswa (Pengguna)." />
   <meta name="twitter:image" content="/images/Cover_Metode_Numerik.png" />
 
 <meta name="author" content="Bakti Siregar, M.Sc, Trisha M.A. Januaviani, M.Mat &amp; Dr. Kalfin, M.Mat" />
@@ -53,6 +53,70 @@
 <script src="libs/anchor-sections/anchor-sections.js"></script>
 
 
+<style type="text/css">
+pre > code.sourceCode { white-space: pre; position: relative; }
+pre > code.sourceCode > span { display: inline-block; line-height: 1.25; }
+pre > code.sourceCode > span:empty { height: 1.2em; }
+.sourceCode { overflow: visible; }
+code.sourceCode > span { color: inherit; text-decoration: inherit; }
+pre.sourceCode { margin: 0; }
+@media screen {
+div.sourceCode { overflow: auto; }
+}
+@media print {
+pre > code.sourceCode { white-space: pre-wrap; }
+pre > code.sourceCode > span { text-indent: -5em; padding-left: 5em; }
+}
+pre.numberSource code
+  { counter-reset: source-line 0; }
+pre.numberSource code > span
+  { position: relative; left: -4em; counter-increment: source-line; }
+pre.numberSource code > span > a:first-child::before
+  { content: counter(source-line);
+    position: relative; left: -1em; text-align: right; vertical-align: baseline;
+    border: none; display: inline-block;
+    -webkit-touch-callout: none; -webkit-user-select: none;
+    -khtml-user-select: none; -moz-user-select: none;
+    -ms-user-select: none; user-select: none;
+    padding: 0 4px; width: 4em;
+    color: #aaaaaa;
+  }
+pre.numberSource { margin-left: 3em; border-left: 1px solid #aaaaaa;  padding-left: 4px; }
+div.sourceCode
+  {   }
+@media screen {
+pre > code.sourceCode > span > a:first-child::before { text-decoration: underline; }
+}
+code span.al { color: #ff0000; font-weight: bold; } /* Alert */
+code span.an { color: #60a0b0; font-weight: bold; font-style: italic; } /* Annotation */
+code span.at { color: #7d9029; } /* Attribute */
+code span.bn { color: #40a070; } /* BaseN */
+code span.bu { color: #008000; } /* BuiltIn */
+code span.cf { color: #007020; font-weight: bold; } /* ControlFlow */
+code span.ch { color: #4070a0; } /* Char */
+code span.cn { color: #880000; } /* Constant */
+code span.co { color: #60a0b0; font-style: italic; } /* Comment */
+code span.cv { color: #60a0b0; font-weight: bold; font-style: italic; } /* CommentVar */
+code span.do { color: #ba2121; font-style: italic; } /* Documentation */
+code span.dt { color: #902000; } /* DataType */
+code span.dv { color: #40a070; } /* DecVal */
+code span.er { color: #ff0000; font-weight: bold; } /* Error */
+code span.ex { } /* Extension */
+code span.fl { color: #40a070; } /* Float */
+code span.fu { color: #06287e; } /* Function */
+code span.im { color: #008000; font-weight: bold; } /* Import */
+code span.in { color: #60a0b0; font-weight: bold; font-style: italic; } /* Information */
+code span.kw { color: #007020; font-weight: bold; } /* Keyword */
+code span.op { color: #666666; } /* Operator */
+code span.ot { color: #007020; } /* Other */
+code span.pp { color: #bc7a00; } /* Preprocessor */
+code span.sc { color: #4070a0; } /* SpecialChar */
+code span.ss { color: #bb6688; } /* SpecialString */
+code span.st { color: #4070a0; } /* String */
+code span.va { color: #19177c; } /* Variable */
+code span.vs { color: #4070a0; } /* VerbatimString */
+code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warning */
+</style>
 
 <style type="text/css">
   
@@ -72,13 +136,13 @@
       <nav role="navigation">
 
 <ul class="summary">
-<li><a href="./">Metode Numerik Menggunakan R</a></li>
+<li><center><img src="images/Logo.png" alt="logo" width="50%" height="50%"style="margin: 15px 0 0 0"></center></li>
 
 <li class="divider"></li>
-<li class="chapter" data-level="" data-path="index.html"><a href="index.html"><i class="fa fa-check"></i>Pengantar</a>
+<li class="chapter" data-level="" data-path="index.html"><a href="index.html"><i class="fa fa-check"></i>Kata Pengantar</a>
 <ul>
-<li class="chapter" data-level="" data-path="index.html"><a href="index.html#gambaran-isi-buku"><i class="fa fa-check"></i>Gambaran Isi Buku</a></li>
-<li class="chapter" data-level="" data-path="index.html"><a href="index.html#cara-berkontribusi-dalam-buku-ini"><i class="fa fa-check"></i>Cara Berkontribusi dalam Buku Ini</a></li>
+<li class="chapter" data-level="" data-path="index.html"><a href="index.html#ringkasan"><i class="fa fa-check"></i>Ringkasan</a></li>
+<li class="chapter" data-level="" data-path="index.html"><a href="index.html#tim-penyusun"><i class="fa fa-check"></i>Tim Penyusun</a></li>
 <li class="chapter" data-level="" data-path="index.html"><a href="index.html#ucapan-terima-kasih"><i class="fa fa-check"></i>Ucapan Terima Kasih</a></li>
 <li class="chapter" data-level="" data-path="index.html"><a href="index.html#lisensi"><i class="fa fa-check"></i>Lisensi</a></li>
 </ul></li>
@@ -316,27 +380,24 @@
 <li class="chapter" data-level="10.4.1" data-path="diffeq.html"><a href="diffeq.html#persamaan-difusi"><i class="fa fa-check"></i><b>10.4.1</b> Persamaan Difusi</a></li>
 <li class="chapter" data-level="10.4.2" data-path="diffeq.html"><a href="diffeq.html#persamaan-gelombang"><i class="fa fa-check"></i><b>10.4.2</b> Persamaan Gelombang</a></li>
 <li class="chapter" data-level="10.4.3" data-path="diffeq.html"><a href="diffeq.html#laplace"><i class="fa fa-check"></i><b>10.4.3</b> Persamaan Laplace</a></li>
+<li class="chapter" data-level="10.4.4" data-path="diffeq.html"><a href="diffeq.html#setup.grid.1d"><i class="fa fa-check"></i><b>10.4.4</b> <code>setup.grid.1D()</code></a></li>
+<li class="chapter" data-level="10.4.5" data-path="diffeq.html"><a href="diffeq.html#setup.prop.1d"><i class="fa fa-check"></i><b>10.4.5</b> <code>setup.prop.1D()</code></a></li>
+<li class="chapter" data-level="10.4.6" data-path="diffeq.html"><a href="diffeq.html#tran.1d"><i class="fa fa-check"></i><b>10.4.6</b> <code>tran.1D()</code></a></li>
+<li class="chapter" data-level="10.4.7" data-path="diffeq.html"><a href="diffeq.html#ode.1d-atau-steady.1d"><i class="fa fa-check"></i><b>10.4.7</b> <code>ode.1D()</code> atau <code>steady.1D()</code></a></li>
 </ul></li>
-<li class="chapter" data-level="10.5" data-path="diffeq.html"><a href="diffeq.html#penyelesaian-persamaan-diferensial-parsial-menggunakan-paket-reactran"><i class="fa fa-check"></i><b>10.5</b> Penyelesaian Persamaan Diferensial Parsial Menggunakan Paket <code>ReacTran</code></a>
+<li class="chapter" data-level="10.5" data-path="diffeq.html"><a href="diffeq.html#contoh-penerapan-paket-reactran"><i class="fa fa-check"></i><b>10.5</b> Contoh Penerapan Paket <code>ReacTran</code></a>
 <ul>
-<li class="chapter" data-level="10.5.1" data-path="diffeq.html"><a href="diffeq.html#setup.grid.1d"><i class="fa fa-check"></i><b>10.5.1</b> <code>setup.grid.1D()</code></a></li>
-<li class="chapter" data-level="10.5.2" data-path="diffeq.html"><a href="diffeq.html#setup.prop.1d"><i class="fa fa-check"></i><b>10.5.2</b> <code>setup.prop.1D()</code></a></li>
-<li class="chapter" data-level="10.5.3" data-path="diffeq.html"><a href="diffeq.html#tran.1d"><i class="fa fa-check"></i><b>10.5.3</b> <code>tran.1D()</code></a></li>
-<li class="chapter" data-level="10.5.4" data-path="diffeq.html"><a href="diffeq.html#ode.1d-atau-steady.1d"><i class="fa fa-check"></i><b>10.5.4</b> <code>ode.1D()</code> atau <code>steady.1D()</code></a></li>
+<li class="chapter" data-level="10.5.1" data-path="diffeq.html"><a href="diffeq.html#persamaan-adveksi-difuksi-1d"><i class="fa fa-check"></i><b>10.5.1</b> Persamaan Adveksi-Difuksi 1D</a></li>
+<li class="chapter" data-level="10.5.2" data-path="diffeq.html"><a href="diffeq.html#persamaan-gelombang-1d"><i class="fa fa-check"></i><b>10.5.2</b> Persamaan Gelombang 1D</a></li>
+<li class="chapter" data-level="10.5.3" data-path="diffeq.html"><a href="diffeq.html#persamaan-laplace"><i class="fa fa-check"></i><b>10.5.3</b> Persamaan Laplace</a></li>
+<li class="chapter" data-level="10.5.4" data-path="diffeq.html"><a href="diffeq.html#persamaan-poisson-untuk-dipol"><i class="fa fa-check"></i><b>10.5.4</b> Persamaan Poisson untuk Dipol</a></li>
 </ul></li>
-<li class="chapter" data-level="10.6" data-path="diffeq.html"><a href="diffeq.html#contoh-penerapan-paket-reactran"><i class="fa fa-check"></i><b>10.6</b> Contoh Penerapan Paket <code>ReacTran</code></a>
+<li class="chapter" data-level="10.6" data-path="diffeq.html"><a href="diffeq.html#studi-kasus-3"><i class="fa fa-check"></i><b>10.6</b> Studi Kasus</a>
 <ul>
-<li class="chapter" data-level="10.6.1" data-path="diffeq.html"><a href="diffeq.html#persamaan-adveksi-difuksi-1d"><i class="fa fa-check"></i><b>10.6.1</b> Persamaan Adveksi-Difuksi 1D</a></li>
-<li class="chapter" data-level="10.6.2" data-path="diffeq.html"><a href="diffeq.html#persamaan-gelombang-1d"><i class="fa fa-check"></i><b>10.6.2</b> Persamaan Gelombang 1D</a></li>
-<li class="chapter" data-level="10.6.3" data-path="diffeq.html"><a href="diffeq.html#persamaan-laplace"><i class="fa fa-check"></i><b>10.6.3</b> Persamaan Laplace</a></li>
-<li class="chapter" data-level="10.6.4" data-path="diffeq.html"><a href="diffeq.html#persamaan-poisson-untuk-dipol"><i class="fa fa-check"></i><b>10.6.4</b> Persamaan Poisson untuk Dipol</a></li>
+<li class="chapter" data-level="10.6.1" data-path="diffeq.html"><a href="diffeq.html#model-lotka-voltera"><i class="fa fa-check"></i><b>10.6.1</b> Model Lotka-Voltera</a></li>
 </ul></li>
-<li class="chapter" data-level="10.7" data-path="diffeq.html"><a href="diffeq.html#studi-kasus-3"><i class="fa fa-check"></i><b>10.7</b> Studi Kasus</a>
-<ul>
-<li class="chapter" data-level="10.7.1" data-path="diffeq.html"><a href="diffeq.html#model-lotka-voltera"><i class="fa fa-check"></i><b>10.7.1</b> Model Lotka-Voltera</a></li>
-</ul></li>
-<li class="chapter" data-level="10.8" data-path="diffeq.html"><a href="diffeq.html#referensi-9"><i class="fa fa-check"></i><b>10.8</b> Referensi</a></li>
-<li class="chapter" data-level="10.9" data-path="diffeq.html"><a href="diffeq.html#latihan-4"><i class="fa fa-check"></i><b>10.9</b> Latihan</a></li>
+<li class="chapter" data-level="10.7" data-path="diffeq.html"><a href="diffeq.html#referensi-9"><i class="fa fa-check"></i><b>10.7</b> Referensi</a></li>
+<li class="chapter" data-level="10.8" data-path="diffeq.html"><a href="diffeq.html#latihan-4"><i class="fa fa-check"></i><b>10.8</b> Latihan</a></li>
 </ul></li>
 <li class="chapter" data-level="11" data-path="dataanalysis.html"><a href="dataanalysis.html"><i class="fa fa-check"></i><b>11</b> Analisis Data</a>
 <ul>
@@ -396,46 +457,26 @@
 <p class="author"><em>Bakti Siregar, M.Sc, Trisha M.A. Januaviani, M.Mat &amp; Dr. Kalfin, M.Mat</em></p>
 <p class="date"><em>06 Maret 2023</em></p>
 </div>
-<div id="pengantar" class="section level1 unnumbered hasAnchor">
-<h1>Pengantar<a href="index.html#pengantar" class="anchor-section" aria-label="Anchor link to header"></a></h1>
-<p><img src="images/Cover_Metode_Numerik.png" width="50%" style="display: block; margin: auto;" /></p>
-<p>Modul Metode Numerik menggunakan bahasa pemrograman R telah dirancang sebagai panduan esensial bagi mahasiswa dalam menjalani praktikum Metode Numerik di Universitas Matana. Modul ini mencakup beragam topik penting dalam analisis numerik, seperti interpolasi, integrasi numerik, solusi persamaan nonlinear, dan pemecahan sistem persamaan linear. Dengan penjelasan yang jelas dan contoh kode implementasi dalam R, mahasiswa akan mendapatkan pemahaman mendalam tentang konsep-konsep tersebut serta bagaimana menerapkannya secara praktis. Modul ini tidak hanya memberikan gambaran teoritis, tetapi juga memberi tumpuan pada aspek implementasi nyata melalui studi kasus yang relevan. Dengan memanfaatkan modul ini, mahasiswa diharapkan dapat mengembangkan keterampilan komputasi numerik mereka menggunakan bahasa R, yang merupakan alat yang kuat dalam menganalisis dan menyelesaikan masalah matematika yang kompleks.</p>
-<p><strong>Mengapa perlu menulis buku ini?</strong> Penulis merasa selama ini buku-buku metode numerik yang ada di pasaran masih didominasi oleh buku-buku pemrograman berbasis Matlab. Atas dasar tersebut, penulis merasa perlu adanya alternatif pembelajaran menggunakan bahasa pemrograman lain.</p>
-<p><strong>Mengapa harus <code>R</code>?</strong> Sejak lama <code>R</code> dikenal secara luas sebagai bahasa pemrograman yang digunakan dalam bidang statistika dan <em>data science</em>. Selain kedua hal tersebut, <code>R</code> menyediakan basis dalam melakukan komputasi numerik yang dapat digunakan untuk menyusun sebuah program atau paket yang dapat menyelesaikan persoalan-persoalan metode numerik. Saat ini telah banyak paket yang dikembangkan khusus untuk menangani penyelesaian persamaan matematika menggunakan metode numerik. Paket-paket yang penulis maksud dan penulis sertakan dalam buku ini, antara lain: <code>limSolve</code>, <code>gaussquad</code>, <code>pracma</code>, <code>orthopolynom</code>, <code>deSolve</code>, <code>ReacTran</code>, dll.</p>
-<p><strong>Apakah saya harus fasih <code>R</code> untuk dapat menggunakan buku ini?</strong> tidak. Buku ini telah disusun sedemikian rupa sehingga pemula sekalipun dapat dengan mudah belajar dasar-dasar pemrograman <code>R</code>.</p>
-<p><strong>Apa saja yang tersedia dalam buku ini?</strong> Pada buku ini telah penulis sediakan beberapa hal, antara lain:</p>
+<div id="kata-pengantar" class="section level1 unnumbered hasAnchor">
+<h1>Kata Pengantar<a href="index.html#kata-pengantar" class="anchor-section" aria-label="Anchor link to header"></a></h1>
+<p><img src="images/Cover_Metode_Numerik.png" width="100%" style="display: block; margin: auto;" /></p>
+<p>Modul ini dirancang sebagai panduan bagi mahasiswa untuk melakukan praktikum Metode Numerik di Universitas Matana. Beberapa topik penting dalam analisis numerik dibahas dalam buku ini, seperti interpolasi, integrasi numerik, solusi persamaan nonlinear, dan pemecahan sistem persamaan linear. Modul ini dirancang agar mahasiswa dapat memahami konsep dan menerapkan dengan mudah dan praktis melalui studi kasus yang relevan dengan alat bantu bahasa pemrograman R. Setelah mempelajari modul ini, Mahasiswa (Pembaca) diharapkan untuk dapat mengembangkan keterampilan komputasi numerik mereka dalam proses analisis dan penyelesaian masalah, khususnya dalam perhitungan Matematika/Statistika yang lebih kompleks.</p>
+<div id="ringkasan" class="section level2 unnumbered hasAnchor">
+<h2>Ringkasan<a href="index.html#ringkasan" class="anchor-section" aria-label="Anchor link to header"></a></h2>
+<p>Adapun isi pembahasan dalam modul ini adalah sebagai berikut:</p>
 <ul>
-<li>teori dasar metode numerik</li>
-<li>algoritma penyelesaian menggunakan metode numerik</li>
-<li>fungsi dan cara iterasi dalam menyelesaikan suatu persamaan menggunakan metode numerik</li>
-<li>studi kasus dalam bidang Teknik Lingkungan, dan</li>
-<li>latihan soal</li>
+<li>Pengantar metode numerik</li>
+<li>Aljabar linier</li>
+<li>Akar persamaan non-linier</li>
+<li>Interpolasi dan ekstrapolasi</li>
+<li>Diferensiasi dan integrasi numerik</li>
+<li>Persamaan diferensial</li>
+<li>Analisis data</li>
 </ul>
-<div id="gambaran-isi-buku" class="section level2 unnumbered hasAnchor">
-<h2>Gambaran Isi Buku<a href="index.html#gambaran-isi-buku" class="anchor-section" aria-label="Anchor link to header"></a></h2>
-<p>Buku ini disusun ke dalam 11 <strong>Chapter</strong>. Secara garis besar gambaran ke-11 <strong>Chapter</strong> tersebut antara lain:</p>
-<p><strong>Dasar pemrograman menggunakan <code>R</code></strong></p>
-<ul>
-<li><strong>Chapter 1</strong> : pada chapter ini dibahas sejarah, fitur dan karakteristik bahasa <code>R</code>, dan cara berinteraksi dengan <code>R</code> melalui <code>Rstudio</code>.</li>
-<li><strong>Chapter 2</strong> : pada chapter ini dibahas terkait cara melakukan perhitungan atau kalkulasi matematis menggunakan <code>R</code>. Selain itu, pada chapter ini juga dibahas terkait operator-operator yang digunakan dalam <code>R</code>, jenis data pada <code>R</code>, dan bagaimana cara menyimpan nilai ke dalam variabel.</li>
-<li><strong>chapter 3</strong> : chapter ini membahas cara membuat sebuah visualisasi data dan cara mengatur parameter visualisasi data pada <code>R</code>.</li>
-<li><strong>chapter 4</strong> : chapter ini membahas cara membentuk sebuah fungsi dan cara melakukan iterasi pada <code>R</code>.</li>
-</ul>
-<p><strong>Metode Numerik Menggunakan <code>R</code></strong></p>
-<p>Pada bagian ini pembaca akan belajar teori dan aplikasi metode numerik menggunakan <code>R</code>. Adapun hal-hal yang dibahas dalam bagian ini antara lain:</p>
-<ul>
-<li>pengantar metode numerik (<strong>chapter 5</strong>)</li>
-<li>aljabar linier (<strong>chapter 6</strong>)</li>
-<li>akar persamaan non-linier (<strong>chapter 7</strong>)</li>
-<li>interpolasi dan ekstrapolasi (<strong>chapter 8</strong>)</li>
-<li>diferensiasi dan integrasi numerik (<strong>chapter 9</strong>)</li>
-<li>persamaan diferensial (<strong>chapter 10</strong>)</li>
-</ul>
-<p><strong>Analisis dan pemodelan statistik</strong></p>
-<p>Pada bagian ini pembaca akan belajar bagaimana cara membaca data menggunakan <code>R</code> dan cara melakukan analisis data menggunakan <code>R</code> (<strong>chapter 11</strong>). Pada bagian lainnya pembaca akan belajar cara membentuk sebuah model regresi linier dan logistik pada <code>R</code> (<strong>chapter 12</strong>)</p>
+<p><strong>Catatan:</strong> Sebelum mempelajari dan menggunakan modul ini Mahasiswa (Pengguna) diharapkan sudah mempunyai pengalaman yang cukup tentang dasar pemrograman R dan mampu untuk melakukan visualisasi data dengan bahasa pemrograman R.</p>
 </div>
-<div id="cara-berkontribusi-dalam-buku-ini" class="section level2 unnumbered hasAnchor">
-<h2>Cara Berkontribusi dalam Buku Ini<a href="index.html#cara-berkontribusi-dalam-buku-ini" class="anchor-section" aria-label="Anchor link to header"></a></h2>
+<div id="tim-penyusun" class="section level2 unnumbered hasAnchor">
+<h2>Tim Penyusun<a href="index.html#tim-penyusun" class="anchor-section" aria-label="Anchor link to header"></a></h2>
 <p>Buku ini tidaklah sempurna. Masih terdapat banyak kekurangan dalam buku ini. Namun, kekurangan tersebut tetaplah dapat diperbaiki. Penulis membuka ruang seluas-luasnya dalam melakukan perbaikan dalam buku ini bagi pembaca. Untuk dapat melakukannya pembaca hanya perlu melakukan <em>pull request</em> ke akun github penulis atau pembaca dapat melakukannya melalui email yang selanjutnya akan penulis jadikan acuan perbaikan.</p>
 <p>Github : <a href="https://github.com/dsciencelabs/Metode_Numerik_R" class="uri">https://github.com/dsciencelabs/Metode_Numerik_R</a>
 Email : <a href="mailto:dsciencelabs@outlook.com" class="email">dsciencelabs@outlook.com</a></p>
@@ -455,6 +496,10 @@ body{
 text-align: justify}
 </style>
 
+<style>
+body{
+text-align: justify}
+</style>
 </div>
 </div>
             </section>
@@ -517,6 +562,20 @@ gitbook.start({
 });
 </script>
 
+<!-- dynamically load mathjax for compatibility with self-contained -->
+<script>
+  (function () {
+    var script = document.createElement("script");
+    script.type = "text/javascript";
+    var src = "true";
+    if (src === "" || src === "true") src = "https://cdnjs.cloudflare.com/ajax/libs/mathjax/2.7.9/latest.js?config=TeX-MML-AM_CHTML";
+    if (location.protocol !== "file:")
+      if (/^https?:/.test(src))
+        src = src.replace(/^https?:/, '');
+    script.src = src;
+    document.getElementsByTagName("head")[0].appendChild(script);
+  })();
+</script>
 </body>
 
 </html>
