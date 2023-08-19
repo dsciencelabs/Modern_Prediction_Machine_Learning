@@ -1,16 +1,16 @@
 --- 
-title: "Metode Numerik Menggunakan R"
-author: "Bakti Siregar, M.Sc, Trisha M.A. Januaviani, M.Mat & Dr. Kalfin, M.Mat"
+title: "Algoritma dan Pemrograman R"
+author: "Bakti Siregar, M.Sc"
 date: "06 April 2023" # date: "`r Sys.Date()`"
 site: bookdown::bookdown_site
 documentclass: book
 bibliography: [book.bib, packages.bib]
 biblio-style: apalike
 link-citations: yes
-github-repo: dsciencelabs/Metode_Numerik_R
-description: "Modul ini dapat menjadi rujukan bagi mahasiswa yang ingin mendalami proses komputasi metode numerik dengan menggunakan R. Meteri disusun sedemikian rupa dengan bahasa yang lebih sederhana agar mudah dipahami oleh Mahasiswa (Pengguna)."
-tags: [numerical-analysis,tutorial, r-programming]
-cover-image: images/Cover_Metode_Numerik.png
+github-repo: dsciencelabs/Algoritma_Pemrograman_R
+description: "Algoritma dan Pemrograman R akan mencakup konsep-konsep dasar dalam pemrograman, pemahaman algoritma, serta pengenalan terhadap bahasa pemrograman R."
+tags: [algoritma, pemrograman, r-programming]
+cover-image: images/Cover_Algoritma_Permrograman.png
 ---
 
 ```{r setup, include=FALSE}
@@ -37,35 +37,53 @@ lapply(c("rmarkdown","bookdown",
 
 ```
 
-<style>
-body{
-text-align: justify}
-</style>
-
 # Kata Pengantar{-}
+
+Bahasa pemrograman R telah menjadi alat yang kuat bagi para ilmuwan data, analis statistik, dan praktisi analisis numerik di seluruh dunia. Dengan kemampuan yang luar biasa dalam manipulasi data, visualisasi, dan analisis statistik, R memungkinkan para profesional untuk menggali wawasan berharga dari kumpulan data yang kompleks.
 
 ```{r fig.align='center', echo=FALSE, include=identical(knitr:::pandoc_to(), 'html'), out.width='50%'}
 
-knitr::include_graphics('images/Cover_Metode_Numerik.png', dpi = NA)
+knitr::include_graphics('images/Cover_Algoritma_Permrograman.png', dpi = NA)
 
 ```
 
-Modul ini dirancang sebagai panduan bagi mahasiswa untuk melakukan praktikum Metode Numerik di Universitas Matana. Beberapa topik penting dalam analisis numerik dibahas dalam buku ini, seperti interpolasi, integrasi numerik, solusi persamaan nonlinear, dan pemecahan sistem persamaan linear. Modul ini dirancang agar mahasiswa dapat memahami konsep dan menerapkan dengan mudah dan praktis melalui studi kasus yang relevan dengan alat bantu bahasa pemrograman R. Setelah mempelajari modul ini, Mahasiswa (Pembaca) diharapkan untuk dapat mengembangkan keterampilan komputasi numerik mereka dalam proses analisis dan penyelesaian masalah, khususnya dalam perhitungan Matematika/Statistika yang lebih kompleks.
+Dalam buku ini, penulis menyediakan materi dasar-dasar bahasa pemrograman R hingga tingkat yang lebih mendalam. Penulis juga menjelaskan beberapa konsep-konsep penting, sintaksis dasar, struktur data, serta memberikan contoh nyata tentang bagaimana R dapat digunakan dalam berbagai konteks. Modul ini dirancang untuk membantu pembaca yang baru mengenal pemrograman maupun yang telah memiliki pengalaman sebelumnya dalam bahasa lain.
 
 
-## Ringkasan {-}
+## Ringkasan Pembaelajaran {-}
 
-Adapun isi pembahasan dalam modul ini adalah sebagai berikut:
+Adapun isi pembelajaran dalam modul ini adalah sebagai berikut:
 
-* Pengantar metode numerik 
-* Aljabar linier 
-* Akar persamaan non-linier 
-* Interpolasi dan ekstrapolasi 
-* Diferensiasi dan integrasi numerik 
-* Persamaan diferensial
-* Analisis data
-
-**Catatan:** Sebelum mempelajari dan menggunakan modul ini Mahasiswa (Pengguna) diharapkan sudah mempunyai pengalaman yang cukup tentang dasar pemrograman R dan mampu untuk melakukan visualisasi data dengan bahasa pemrograman R.
+* **Minggu 1-2: Pengenalan Pemrograman R**
+  * Pengenalan konsep dasar pemrograman.
+  * Pengenalan lingkungan dan pengaturan awal bahasa R.
+  * Menulis program sederhana dalam R.
+* **Minggu 3-4: Variabel dan Tipe Data**
+  * Mengenal tipe data dasar dalam R: numerik, karakter, logika.
+  * Deklarasi dan penggunaan variabel.
+  * Konversi antar tipe data.
+* **Minggu 5-6: Struktur Kontrol**
+  * Penggunaan pernyataan kondisional (if, else).
+  * Penggunaan perulangan (for, while) untuk mengatur alur program.
+  * Studi kasus penggunaan struktur kontrol dalam pemrograman.
+* **Minggu 7-8: Fungsi**
+  * Pengenalan konsep fungsi dalam pemrograman.
+  * Membuat dan memanggil fungsi dalam R.
+  * Penggunaan parameter dalam fungsi.
+* **Minggu 9-10: Struktur Data**
+  * Pengenalan array dan matriks dalam R.
+  * Penggunaan vektor dan faktor.
+  * Pengenalan konsep dataframe untuk manipulasi data tabular.
+* **Minggu 11-12: Algoritma Dasar**
+  * Pengenalan konsep algoritma dan kompleksitas.
+  * Pemahaman tentang pencarian dan pengurutan.
+  * Implementasi algoritma pencarian dan pengurutan sederhana dalam R.
+* **Minggu 13-14: Pengenalan Analisis Data**
+  * Pengenalan pustaka dasar untuk analisis data di R.
+  * Pemahaman tentang statistik dasar dan visualisasi data.
+  * Penerapan analisis sederhana pada dataset kecil.
+* **Minggu 15-16: Proyek Akhir**
+Siswa diminta untuk membuat proyek kecil menggunakan R yang menggabungkan konsep-konsep yang telah dipelajari. Proyek dapat berupa analisis data, pemecahan masalah, atau aplikasi sederhana.
 
 
 ## Tim Penyusun {-}
@@ -77,22 +95,17 @@ Berikut ini adalah nama dan biografi singkat para penulis:
 
 - **Bakti Siregar, M.Sc** adalah Ketua Program Studi di Jurusan Statistika Universitas Matana. Lulusan Magister Matematika Terapan dari National Sun Yat Sen University, Taiwan. Beliau juga merupakan dosen dan konsultan Data Scientist di perusahaan-perusahaan ternama seperti JNE, Samora Group, Pertamina, dan lainnya. Beliau memiliki antusiasme khusus dalam mengajar Big Data Analytics, Machine Learning, Optimisasi, dan Analisis Time Series di bidang keuangan dan investasi. Keahliannya juga terlihat dalam penggunaan bahasa pemrograman Statistik seperti R Studio dan Python. Beliau mengaplikasikan sistem basis data MySQL/NoSQL dalam pembelajaran manajemen data, serta mahir dalam menggunakan tools Big Data seperti Spark dan Hadoop. Beberapa project beliau dapat dilihat di link berikut: [Rpubs](https://rpubs.com/dsciencelabs), [Github](https://github.com/dsciencelabs), [Website](https://dsciencelabs.github.io/web/index.html), dan [Kaggle](https://www.kaggle.com/baktisiregar/code). 
 
-<img src = "https://github.com/dsciencelabs/images/blob/master/Penulis/Kalfin.jpg?raw=true" width = "140" height = "160" style = "float:right; margin-left: 10px; margin-top: 7px" />
-
-- **Dr. Kalfin, M. Mat** juga seorang dosen Statistika Universitas Matana dengan perjalanan pendidikan yang mengesankan. Beliau menyelesaikan gelar Matematika dari Universitas Padjadjaran pada tahun 2023. Dr. Kalfin memiliki konsentrasi penelitian yang sangat berharga, yaitu Matematika Keuangan dan Aktuaria. Dalam ranah Matematika Keuangan, beliau telah menunjukkan komitmen tinggi dengan melakukan penelitian mendalam mengenai pemodelan optimasi portofolio investasi. Penelitian ini mencakup analisis matematis yang rumit untuk merumuskan strategi investasi yang optimal. Di sisi lain, dalam bidang Aktuaria, Dr. Kalfin juga telah memberikan kontribusi penting melalui penelitian tentang model penentuan premi asuransi bencana. Penelitian ini tidak hanya memiliki dampak praktis dalam industri asuransi, tetapi juga mendorong pemahaman lebih dalam tentang evaluasi risiko dan kebijakan tarif yang berlandaskan pada analisis matematis yang kuat.
-
-<img src = "https://github.com/dsciencelabs/images/blob/master/Penulis/Trisha.jpg?raw=true" width = "140" height = "160" style = "float:right; margin-left: 10px; margin-top: 7px" />
-
-- **Trisha Magdalena Adelheid Januaviani, M.Mat** adalah soerang dosen yang sekaligus menjabad sebagai Sekerataris Program Studi Statistika di Universitas Matana. Sebagai lulusan Magister Matematika dari Universitas Padjadjaran, Beliau telah mengembangkan kompetensi terbaiknya dalam Pengajaran, Penelitian dan Pengabdian Kepada Masyarakat. Penelitiannya difokuskan pada matematika keuangan dan sains data, dua bidang yang penting dalam kehidupan saat ini. Beliau mampu memberikan wawasan berharga tentang penerapan konsep matematika dalam konteks keuangan. Kemampuannya dalam ilmu data juga memungkinkannya menganalisis dan menginterpretasi data dengan cermat untuk pengambilan keputusan yang lebih baik. 
-
 
 ## Ucapan Terima Kasih{-}
 
-Kami juga ingin mengucapkan terima kasih yang sebesar-sebesar pada semua pihak yang terlibat dalam pengembangan buku ini, yakni; mahasiswa-i, dan dosen **Universitas Matana** atas dukungan dalam upaya bersama kami dalam merekomendasikan materi untuk modul ini. Ucapan terima kasih juga penulis sampaikan kepada komunitas pengembang packages metode numerik yang karyanya sangat membantu dalam proses menyusun modul ini. 
+Kami berharap modul ini akan menjadi panduan yang bermanfaat bagi Anda dalam menguasai bahasa pemrograman R. Semoga dengan memahami konsep-konsep yang disajikan dalam modul ini, Anda akan dapat mengaplikasikan R dalam proyek-proyek analisis data dan statistik yang sebenarnya.
+
+Terima kasih kepada semua yang telah berkontribusi dalam pembuatan modul ini, serta kepada Anda, pembaca, yang telah memilih modul ini sebagai sumber pengetahuan Anda. Kami berharap Anda menikmati perjalanan Anda dalam memahami bahasa pemrograman R.
+
 
 ## Masukan & Saran {-}
 
-Untuk masukan dan saran perbaikan modul perkuliahan ini dapat disampaikan melalui kontak dibawak ini!
+Semua masukan dan tanggapan Anda sangat berarti bagi kami untuk memperbaiki modul ini kedepannya. Bagi para pembaca/pengguna yang ingin menyampaikan masukan dan tanggapan, dipersilahkan melalui kontak dibawak ini!
 
 **Email:** dsciencelabs@outlook.com
 
