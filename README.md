@@ -1,29 +1,21 @@
-# Metode Numerik Menggunakan R
+# Algoritma dan Pemrograman R
 
-Modul ini dikhususkan bagi mahasiswa Statistika Universitas Matana, berisi rangkuman pembelajaran **Metode Numerik** melalui contoh kasus dan penyelesaian menggunakan bahasa pemrogramana R yang dapat membantu mahasiswa-i untuk memahami konsep secara praktikum.
+Algoritma dan Pemrograman R akan mencakup konsep-konsep dasar dalam pemrograman, pemahaman algoritma, serta pengenalan terhadap bahasa pemrograman R
 
-## Akses Buku
+# Kata Pengantar{-}
 
-Buku ini dapat diakses secara bebas oleh pembaca melalui tautan: <------->
+Bahasa pemrograman R telah menjadi alat yang kuat bagi para ilmuwan data, analis statistik, dan praktisi analisis numerik di seluruh dunia. Dengan kemampuan yang luar biasa dalam manipulasi data, visualisasi, dan analisis statistik, R memungkinkan para profesional untuk menggali wawasan berharga dari kumpulan data yang kompleks.
 
-## Konten Buku
+## Ucapan Terima Kasih {-}
 
-1. Pengenalan R 
+Kami berharap modul ini akan menjadi panduan yang bermanfaat bagi Anda dalam menguasai bahasa pemrograman R. Semoga dengan memahami konsep-konsep yang disajikan dalam modul ini, Anda akan dapat mengaplikasikan R dalam proyek-proyek analisis data dan statistik yang sebenarnya.
 
-  * [Bahasa Pemrograman R](https://bookdown.org/moh_rosidi2610/Metode_Numerik/intro.html), 
-  * [Kalkulasi Menggunakan R](https://bookdown.org/moh_rosidi2610/Metode_Numerik/calculation.html), 
-  * [Visualisasi Data](https://bookdown.org/moh_rosidi2610/Metode_Numerik/dataviz.html), dan 
-  * [Pemrograman dan Fungsi](https://bookdown.org/moh_rosidi2610/Metode_Numerik/programmingandfunction.html)
+Terima kasih kepada semua yang telah berkontribusi dalam pembuatan modul ini, serta kepada Anda, pembaca, yang telah memilih modul ini sebagai sumber pengetahuan Anda. Kami berharap Anda menikmati perjalanan Anda dalam memahami bahasa pemrograman R.
 
-2. [Pengantar Metode Numerik](https://bookdown.org/moh_rosidi2610/Metode_Numerik/numericmethod.html)
-3. [Aljabar Linier](https://bookdown.org/moh_rosidi2610/Metode_Numerik/linearaljabar.html)
-4. [Akar Persamaan Non-Linier](https://bookdown.org/moh_rosidi2610/Metode_Numerik/rootfinding.html)
-5. [Interpolasi dan Ekstrapolasi](https://bookdown.org/moh_rosidi2610/Metode_Numerik/interpolation.html)
-6. [Diferensiasi dan Integrasi Numerik](https://bookdown.org/moh_rosidi2610/Metode_Numerik/diffinteg.html)
-7. [Persamaan Diferensial](https://bookdown.org/moh_rosidi2610/Metode_Numerik/diffeq.html)
-8. [Pengantar Analisis Data Menggunakan R](https://bookdown.org/moh_rosidi2610/Metode_Numerik/dataanalysis.html)
-9. [Pengantar Pemodelan Data Menggunakan R](https://bookdown.org/moh_rosidi2610/Metode_Numerik/datamod.html)
 
-## Ucapan Terimakasih
+## Masukan & Saran {-}
 
-Proyek ini dapat terlaksana atas paket [bookdown](https://bookdown.org/) yang dibuat oleh tim RStudio.
+Semua masukan dan tanggapan Anda sangat berarti bagi kami untuk memperbaiki modul ini kedepannya. Bagi para pembaca/pengguna yang ingin menyampaikan masukan dan tanggapan, dipersilahkan melalui kontak dibawak ini!
+
+**Email:** dsciencelabs@outlook.com
+
