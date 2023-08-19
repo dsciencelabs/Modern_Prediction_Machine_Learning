@@ -50,11 +50,11 @@ knitr::include_graphics('images/Cover_Algoritma_Permrograman.png', dpi = NA)
 Dalam buku ini, penulis menyediakan materi dasar-dasar bahasa pemrograman R hingga tingkat yang lebih mendalam. Penulis juga menjelaskan beberapa konsep-konsep penting, sintaksis dasar, struktur data, serta memberikan contoh nyata tentang bagaimana R dapat digunakan dalam berbagai konteks. Modul ini dirancang untuk membantu pembaca yang baru mengenal pemrograman maupun yang telah memiliki pengalaman sebelumnya dalam bahasa lain.
 
 
-## Ringkasan Pembaelajaran {-}
+## Ringkasan Pembelajaran {-}
 
 Adapun isi pembelajaran dalam modul ini adalah sebagai berikut:
 
-* **Minggu 1-2: Pengenalan Pemrograman R**
+* **Minggu 1-2: Dasar Pemrograman R**
   * Pengenalan konsep dasar pemrograman.
   * Pengenalan lingkungan dan pengaturan awal bahasa R.
   * Menulis program sederhana dalam R.
@@ -93,7 +93,7 @@ Berikut ini adalah nama dan biografi singkat para penulis:
 
 <img src = "https://github.com/dsciencelabs/images/blob/master/Penulis/Bakti.jpg?raw=true" width = "150" height = "150" style = "float:right; margin-left: 10px; margin-top: 7px" />
 
-- **Bakti Siregar, M.Sc** adalah Ketua Program Studi di Jurusan Statistika Universitas Matana. Lulusan Magister Matematika Terapan dari National Sun Yat Sen University, Taiwan. Beliau juga merupakan dosen dan konsultan Data Scientist di perusahaan-perusahaan ternama seperti JNE, Samora Group, Pertamina, dan lainnya. Beliau memiliki antusiasme khusus dalam mengajar Big Data Analytics, Machine Learning, Optimisasi, dan Analisis Time Series di bidang keuangan dan investasi. Keahliannya juga terlihat dalam penggunaan bahasa pemrograman Statistik seperti R Studio dan Python. Beliau mengaplikasikan sistem basis data MySQL/NoSQL dalam pembelajaran manajemen data, serta mahir dalam menggunakan tools Big Data seperti Spark dan Hadoop. Beberapa project beliau dapat dilihat di link berikut: [Rpubs](https://rpubs.com/dsciencelabs), [Github](https://github.com/dsciencelabs), [Website](https://dsciencelabs.github.io/web/index.html), dan [Kaggle](https://www.kaggle.com/baktisiregar/code). 
+- **Bakti Siregar, M.Sc** adalah Ketua Program Studi di Jurusan Statistika Universitas Matana. Lulusan Magister Matematika Terapan dari National Sun Yat Sen University, Taiwan. Beliau juga merupakan dosen dan konsultan Data Scientist di perusahaan-perusahaan ternama seperti [JNE](https://www.jne.co.id/id/beranda), [Samora Group](https://www.samoragroup.co.id/home/en), [Pertamina](https://www.pertamina.com/), dan lainnya. Beliau memiliki antusiasme khusus dalam mengajar Big Data Analytics, Machine Learning, Optimisasi, dan Analisis Time Series di bidang keuangan dan investasi. Keahliannya juga terlihat dalam penggunaan bahasa pemrograman Statistik seperti R Studio dan Python. Beliau mengaplikasikan sistem basis data MySQL/NoSQL dalam pembelajaran manajemen data, serta mahir dalam menggunakan tools Big Data seperti Spark dan Hadoop. Beberapa project beliau dapat dilihat di link berikut: [Rpubs](https://rpubs.com/dsciencelabs), [Github](https://github.com/dsciencelabs), [Website](https://dsciencelabs.github.io/web/index.html), dan [Kaggle](https://www.kaggle.com/baktisiregar/code). 
 
 
 ## Ucapan Terima Kasih{-}
