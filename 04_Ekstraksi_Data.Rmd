@@ -1,4 +1,137 @@
 # Ekstraksi Data
 
+Ekstraksi data mengacu pada proses mengambil sebagian atau elemen tertentu dari struktur data seperti vektor, matriks, dataframe, atau list. 
+
+
+## Impor Dataset
+
+Berikut ini digunakan dataset yang sudah ada didalam R.
+
+```{r, eval=FALSE}
+library(stima)                        # Pustaka Dataset
+View(employee)                        # Data employee dari Pustaka stima
+typeof(employee)                      # Memeriksa jenis data
+class(employee)                       # Memeriksa kelas data
+```
+
+## Ekstraksi Baris
+
+Ekstraksi baris berdasarkan indeks dapat dilakukan dengan operator `[]`.
+
+```{r , eval=FALSE}
+employee[1,5]                        # ekstrak elemen di baris 1 dan kolom 5
+employee$gender                      # Mengekstrak kolom terntentu (`Gender`)
+employee[,c('jobcat','gender')]      # Mengekstrak kolom tertentu (jobcat, gender`)
+employee[1:5,]                       # Mengekstrak lima baris pertama dari employee
+employee[,1:5]                       # Mengekstrak lima kolom pertama dari employee
+employee$edu >12                     # Subset kolom dengan kondisi
+employee[employee$edu>12 & employee$salary>40200,] # Subset Kondisi Kombinasi indeks
+```
+
+## Ekstraksi Subset
+
+Ekstraksi subset mengacu pada proses mengambil sebagian data dari suatu struktur data berdasarkan kriteria tertentu. Ini memungkinkan Anda untuk fokus pada subset data yang relevan untuk analisis atau tugas tertentu tanpa harus memanipulasi atau mengakses keseluruhan data. Subset dapat diambil berdasarkan kondisi tertentu, indeks, atau kombinasi keduanya.
+
+Dalam R, Anda dapat melakukan ekstraksi subset menggunakan berbagai metode tergantung pada jenis struktur data yang Anda gunakan. Beberapa teknik umum untuk ekstraksi subset adalah:
+
+```{r ,eval=FALSE}
+subset(employee, select='jobcat')    # subset kolom tertentu
+subset(employee, select=6)           # subset kolom tertentu 
+subset(employee, select= c(6,7))     # subset kolom pertama dan kedua
+subset(employee, select= c(2:5))     # subset kolom tertentu
+```
+
+## Ekstraksi Dengan Variabel Baru
+
+Menambah variabel baru ke dalam dataframe dapat dilakukan dengan menetapkan vektor baru. Kekuatan objek dataframe adalah menerima hampir semua jenis vektor, mis. integer, numerik, logika, faktor, dan karakter.
+
+```{r , eval=FALSE}
+# Tambahkan variabel baru 'Tax' ke dataframe Employess
+employee$Tax <- employee$salary*0.03   
+
+# Tambahkan variabel baru 'Take_Home_Pay' ke dataframe Employess
+employee$Take_Home_Pay <- employee$salary-employee$Tax 
+
+ # Tambahkan variabel baru 'Category_Salary1' ke dataframe Employess
+employee$Category_Salary1 <- employee$salary > 92000    
+
+# Tambahkan variabel baru 'Category_Salary2' ke dataframe Employess
+employee$Category_Salary2<-ifelse(employee$salary > 92000, 
+                                    "High", 
+                                    "Low")                
+employee$Category_Salary2<-factor(employee$edu >12 & 
+                                   employee$salary>92000,
+                                   labels = c("level1",
+                                              "level2"))
+```
+
+
+## Ekstraksi Summary Statistik
+
+```{r, eval=FALSE}
+min(employee$salary)                  # Temukan nilai minimum dari `Salary`
+max(employee$salary)                  # Temukan nilai mksimum dari `Salary`
+mean(employee$salary)                 # Temukan nilai rata-rata dari `Salary`
+var(employee$salary)                  # Temukan nilai variansi dari `Salary`
+sd(employee$salary)                   # Temukan nilai standar deviasi dari `Salary`
+summary(employee)                     # Ringkasan statistik sederhana dari `employee`
+```
+
+**Catatan:** Berhati-hatilah saat mengekstrak kumpulan data yang berisi nilai yang hilang, jangan lupa mengabaikannya, atau menghapusnya terlebih dahulu. Lihat contoh berikut:
+
+```{r}
+#View(mtcars)                          # Lihat dataset `mtcars` (environment R)
+#?mtcars                               # Informasi detail tentang mtcars
+min(mtcars$mpg )                       # Temukan minimum gallon Miles/(US) 
+max(mtcars$mpg , na.rm = TRUE)         # Temukan maksimum gallon Miles/(US)
+mean(mtcars$mpg , na.rm = TRUE)        # Temukan rata-rata gallon Miles/(US)
+var(mtcars$mpg , na.rm = TRUE)         # Temukan varians gallon Miles/(US)
+sd(mtcars$mpg , na.rm = TRUE)          # Temukan standar deviasi gallon Miles/(US)
+```
+
+## Mengubah Nama
+
+Objek R dapat memiliki nama, yang sangat berguna untuk menulis kode yang dapat dibaca dan menggambarkan objek sendiri. Di sini, Anda akan belajar cara mengganti nama kolom dari dataframe pada R menggunakan fungsi `names()`.
+
+```{r ,eval=FALSE}
+rename_1<-employee[,1:5]               # Mengubah nama variabel
+names(rename_1)<-c("gaji", 
+                    "usia",
+                    "gaji_awal",
+                    "jam_kerja",
+                    "pengalaman_kerja")# Mengubah nama variabel menjadi Indonesia
+rename_1                               # Cetak hasilnya
+```
+
+Jika dataframe Anda dihasilkan dari fungsi `matrix()`, Anda dapat mengubah nama kolom dan barisnya.
+
+```{r , echo=T, results='show'}
+m <- matrix(1:52, nrow = 26, ncol = 2)
+dimnames(m) <- list(c(LETTERS), c("AA", "BB")) 
+m
+```
+
+Nama kolom dan nama baris dapat diatur secara terpisah menggunakan fungsi `colnames()` dan `rownames()`.
+
+```{r , echo=T, results='show'}
+colnames(m) <- c("Column 1", "Column 2") # Mengubah nama kolom
+rownames(m) <- c(letters)                # Mengubah nama baris
+m
+```
+
+## Latihan 
+
+Gunakan berikut ini: 
+
+```{r, eval=FALSE}
+data_frame <- fake_products(100)         # Rekayasa Data Produk 
+View(data_frame)
+```
+
+1.    Lakukan Proses ekstraksi data seperti materi diatas!
+2.    Hintunglah Jumlah produk yang berasal dari suatu Negara (Contoh: "Taiwan")!
+3.    Hitunglah Jumalah Produk yang ada dalam dataset tersebut!
+
+**Catatan:** Kumpulkan hasil latihan anda, tidak boleh sama dengan teman mahasiwa lainnya.
 
 
