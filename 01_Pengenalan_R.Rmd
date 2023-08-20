@@ -2,7 +2,7 @@
 
 R adalah bahasa pemrograman dan lingkungan komputasi yang digunakan untuk analisis statistik, visualisasi data, pengolahan data, dan pemodelan prediktif. R dikembangkan oleh Ross Ihaka dan Robert Gentleman di Universitas Auckland, Selandia Baru. R menjadi populer dalam dunia analisis data dan ilmu data karena kemampuannya dalam mengolah dan menganalisis data secara efisien.
 
-## Fitur Utama R:
+## Fitur Utama R
 
 1.    **Open Source:** R adalah perangkat lunak open source yang dapat diunduh dan digunakan secara gratis.
 2.    **Fleksibilitas:** Anda dapat membuat fungsi sendiri, mengontrol alur program, dan mengakses berbagai pustaka eksternal.
@@ -33,7 +33,7 @@ Berikut ini adalah beberapa alasan mengapa penting untuk belajar R:
 
 Berikut adalah panduan langkah demi langkah untuk menginstal R dan RStudio
 
-#### Instalasi R
+### Instalasi R
 
 R adalah bahasa pemrograman inti yang digunakan oleh RStudio. Ikuti langkah-langkah di bawah ini untuk menginstal R:
 
@@ -54,7 +54,7 @@ R adalah bahasa pemrograman inti yang digunakan oleh RStudio. Ikuti langkah-lang
 4.    Ikuti panduan instalasi, pilih opsi default kecuali jika Anda tahu persis apa yang Anda lakukan.
 5.    Setelah instalasi selesai, R akan terinstal di komputer Anda.
 
-### Linux {-}
+#### Linux {-}
 
 Di sistem Linux, Anda dapat menggunakan perintah terminal untuk menginstal R. Berikut adalah contoh untuk beberapa distribusi umum:
 
@@ -99,11 +99,9 @@ RStudio adalah Integrated Development Environment (IDE) yang mempermudah pengemb
 <iframe width="800" height="540" src="https://www.youtube.com/embed/Y20P3u3c_1c?si=JUeS4AIQYF8agn9j" title="YouTube video player" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" allowfullscreen></iframe>
 
 
-## Antarmuka R & RStudio:
+## Interface R & RStudio:
 
-Dalam konteks RStudio, "R interface" mengacu pada antarmuka pengguna yang disediakan oleh RStudio untuk berinteraksi dengan lingkungan R. RStudio adalah Integrated Development Environment (IDE) yang dirancang khusus untuk bekerja dengan bahasa pemrograman R. 
-
-Jendela aplikasi yang telah terpasang ditampilkan pada Gambar \@ref(fig:jendela-R) dan Gambar \@ref(fig:jendela-RStudio).
+Interface adalah tampilan aplikasi R dan Rstudio yang telah terpasang diperlihatkan pada Gambar \@ref(fig:jendela-R) dan Gambar \@ref(fig:jendela-RStudio).
 
 ```{r jendela-R,echo=FALSE, fig.cap='Jendela R.', tidy=FALSE, fig.align='center',out.width='100%'}
 library(knitr)
@@ -117,7 +115,7 @@ img1_path <- "./images/Bab1/Rstudio.png"
 include_graphics(img1_path)
 ```
 
-Antarmuka ini memiliki beberapa komponen utama, termasuk:
+Tampilan ini memiliki beberapa komponen utama, termasuk:
 
 * **Script Panel:** Tempat Anda menulis kode R dalam skrip.
 * **Console Panel:** Tempat hasil dari kode R ditampilkan, serta tempat Anda dapat menjalankan kode secara interaktif.
@@ -125,44 +123,54 @@ Antarmuka ini memiliki beberapa komponen utama, termasuk:
 * **History Panel:** Menampilkan riwayat perintah yang telah dijalankan.
 * **Files/Plots/Packages/Help Panel:** Panel tambahan yang membantu Anda mengelola file, visualisasi, pustaka, dan panduan bantuan.
 
-Antarmuka ini memudahkan pengguna untuk menulis, menjalankan, dan mengelola kode R serta menganalisis data dengan nyaman.
+Interface ini memudahkan pengguna untuk menulis, menjalankan, dan mengelola kode R serta menganalisis data dengan nyaman.
 
-## Bantuan Penggunaan R 
+## Sintaks Dasar R 
 
-Kita juga dapat membaca beberapa dokumen manual yang ada pada `R`. Untuk melakukannya jalankan perintah berikut:
+Berikut ini beberapa kode sederhana yang bisa dipelajari untuk memulai memahami cara kerja Bahasa pemrograman R. 
 
-```{r, eval=FALSE}
-help.start()
+```
+3+7
+3-7
+3^7
+3/7
+3*7
+9^(1/3)
 ```
 
-Output yang dihasilkan berupa link pada sejumlah dokumen yang dapat kita klik. Tampilan halaman yang dihasilkan disajikan pada Gambar \@ref(fig:generalhelp).
+## Bantuan (Help) R 
 
-```{r generalhelp,echo=FALSE, fig.cap='Jendela general help dokumentasi fungsi mean().', tidy=FALSE, fig.align='center',out.width='100%'}
-library(knitr)
-img1_path <- "./images/Bab1/generalhelp.png"
-include_graphics(img1_path)
+Salah satu bagian terpenting dalam bekerja dengan bahasa R adalah mengetahui di mana mencari bantuan. R memiliki beberapa fasilitas in-line, selain berbagai sumber daya bantuan di ekosistem R. Anda dapat menggunakan bantuan untuk fungsi tertentu. 
+
+```{r, eval=F}
+help.start()         # menu di mana Anda dapat menavigasi bantuan lokal berbasis web
+?help                # menu di mana Anda dapat menavigasi bantuan lokal berbasis web 
+?class               # mendapatkan bantuan untuk fungsi `class`
+help(class)          # mendapatkan bantuan untuk fungsi `class`
+??class              # jika Anda tidak tahu nama fungsi yang Anda cari
+help.search('class') # jika Anda tidak tahu nama fungsi yang Anda cari
 ```
 
-## Fasilitas Bantuan Lainnya
+## Shortcut Penggunaan Rstudio
 
-Kita juga dapat memanfaatkan fasilitas *help* lainnya melalui fungsi `help.search()`. `help.search ()` (sebagai alternatif ??): mencari dokumentasi yang cocok dengan karakter yang diberikan dengan cara yang berbeda. Ini mengembalikan daftar fungsi yang mengandung istilah yang pembaca cari dengan deskripsi singkat dari fungsi.
-
-Berikut adalah contoh penerapan dari fungsi tersebut:
-
-```{r, eval=FALSE}
-help.search("mean")
-
-# atau
-??mean
-```
-
-*Output* yang dihasilkan akan tampak seperti pada Gambar \@ref(fig:helpsearch).
-
-```{r helpsearch,echo=FALSE, fig.cap='Jendela help search dokumentasi fungsi mean().', tidy=FALSE, fig.align='center',out.width='100%'}
-library(knitr)
-img1_path <- "./images/Bab1/helpsearch.png"
-include_graphics(img1_path)
-```
+Beberapa petunjuk bermanfaat untuk Rstudio (IDE) meliputi:
+   
+Kata Kunci	                         Perintah	                             Detail
+----------------------     -------------------------------------    -----------------------
+Ctrl + Return (Enter)	      untuk menjalankan baris dari editor	           ~
+Ctrl + Shift + #	          untuk fokus pada tab bantuan	                 kontradiktif
+Alt + Shift + k	            untuk jalur pintas keyboard RStudio	           ~
+Ctrl + r	                  untuk menelusuri sejarah perintah	             ~
+Alt + Shift + j	            untuk menavigasi antar bagian kode	           ~
+Ctrl + 1	                  untuk melompat ke editor	                     tab untuk penyelesaian otomatis
+Ctrl + 2	                  untuk melompat ke konsol	                     tab untuk penyelesaian otomatis
+Ctrl + 8	                  untuk melompat ke environment list	           tab untuk pelengkapan otomatis
+Alt + l	                    Collapse chunk	                               Code Folding
+Alt + Shift + l	            Unfold chunk	                                 Code Folding
+Alt + o	                    Collapse all	                                 Code Folding
+Alt + Shift + o	            Unfold all	                                   Code Folding
+Alt + “-”	                  untuk operator penugasan <-	                   ~
+Alt + Shift + c	            kode komentar/tanda komentar dalam file .R	   kontradiktif
 
 
 ## Praktikum 

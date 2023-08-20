@@ -1,0 +1,221 @@
+# Strutur Data
+
+Struktur data dalam R adalah cara di mana Anda dapat mengatur dan menyimpan data dalam bentuk yang terstruktur agar mudah diakses, dikelola, dan dimanipulasi. Struktur data memungkinkan Anda untuk mengelompokkan nilai-nilai data ke dalam objek yang sesuai dengan jenis dan sifat data yang Anda miliki. R memiliki beberapa jenis struktur data yang dapat digunakan untuk berbagai tujuan.
+
+```{r struktur_data,echo=FALSE, fig.cap='Struktur Data dalam R', tidy=FALSE, out.width='100%', fig.align='center'}
+library(knitr)
+img1_path <- "./images/Bab3/Rstudio.png"
+include_graphics(img1_path)
+```
+
+## Vektor
+
+Elemen paling dasar dalam R adalah vektor, yang berisikan kumpulan elemen data dengan tipe yang sama. Terdapat dua jenis vector, yaitu vector numerik dan vector karakter. Misalnya:
+
+```{r , echo=T, results='hide'}
+vektor <- seq(from=10, to=21, by=1)      # fungsi `seq()` dengan "by"
+vektor<- seq(from=10, to=21, len=12)     # fungsi `seq()` dengan "len"
+vektor <- 10:21                          # tetapkan data dalam vektor 
+vektor <- vektor+2                       # Operasi berdasarkan elemen
+vektor <- vektor*2                       # Tambahkan 2 untuk setiap elemen 
+vektor <- vektor^2                       # Pangkat 2 untuk setiap elemen 
+vektor <- sqrt(vektor)                   # Akar kuadrat untuk setiap elemen
+vektor <- log(vektor)                    # Logaritma untuk setiap elemen
+vektor<- c(0.5, 0.6)                     # Numerik
+vektor <- c(TRUE, FALSE)                 # Logis
+vektor <- c(T, F)                        # Logis
+vektor <- c("a", "b", "c")               # Karakter
+vektor <- 9:29                           # Integer
+vektor <- c(1+0i, 2+4i)                  # Kompleks
+vektor <- vector("numeric", length = 10) # untuk inisialisasi vektor.
+```
+
+**Catatan:** Menurut [dokumentasi R](https://stat.ethz.ch/R-manual/R-devel/doc/manual/R-lang.html#Objects) untuk `typeof()` dan `class()`, pernyataan tentang "perbedaan utama/main difference" adalah tidak benar. Kelas adalah atribut dari objek yang dapat ditetapkan terlepas dari mode penyimpanan internalnya, sedangkan `typeof()` menentukan tipe (R internal) atau mode penyimpanan dari objek apa pun. Salah satu menggambarkan karakteristik logis sedangkan yang lain adalah karakteristik fisik dari suatu objek.
+
+```{r , echo=T, results='hide'}
+class(vektor)                            # Periksa kelas vektor
+as.numeric(vektor)                       # Menetapkan vektor sebagai numerik
+as.logical(vektor)                       # Menetapkan vektor sebagai logis
+as.character(vektor)                     # Menetapkan vektor sebagai karakter
+as.numeric(c(FALSE,TRUE,TRUE,FALSE))     # Menetapkan vektor logis sebagai angka 
+```
+
+Terkadang, R tidak dapat menemukan cara untuk memaksa suatu objek dan ini dapat menghasilkan NA.
+
+```{r , echo=T, results='hide'}
+vektor <- c("a", "b", "c","1")       	   # menetapkan nilai vektor
+as.numeric(vektor)                       # menetapkan vektor sebagai numerik
+as.logical(vektor)                       # menetapkan vektor sebagai logis
+as.complex(vektor)                       # menetapkan vektor sebagai karakter
+```
+
+**Catatan:** Saat paksaan tidak masuk akal terjadi, Anda biasanya akan mendapat peringatan dari R.
+
+Kita sudah melihat bahwa elemen dasar dari objek R adalah vektor. Vektor dapat ditetapkan dengan berbagai jenis berikut:
+
+*	**character:** di mana setiap elemen adalah string, mis., urutan simbol alfanumerik.
+*	**numeric:** di mana setiap elemen adalah [bilangan real](https://en.wikipedia.org/wiki/Real_number) dalam format floating point [presisi ganda](https://en.wikipedia.org/wiki/Double-precision_floating-point_format).
+*	**integer:** di mana setiap elemen adalah [integer](https://en.wikipedia.org/wiki/Integer).
+*	**logis:** di mana setiap elemen adalah TRUE, FALSE, atau NA3
+*	**complex:** di mana setiap elemen adalah bilangan kompleks.
+
+## Matriks
+
+Matriks adalah vektor dengan atribut dimensi. Matriks dibuat berdasarkan kolom, sehingga entri dapat dianggap dimulai dari sudut "kiri atas" dan mengalir di kolom.
+
+```{r , echo=T}
+matriks <- matrix(c(1, 2, 3, 4, 5, 6), nrow = 2, ncol = 3)
+matriks
+```
+
+Matriks juga dapat dibuat langsung dari vektor dengan menambahkan atribut dimensi.
+
+```{r , echo=T, results='hide'}
+matriks <- 1:6                         # Membuat vektor
+dim(matriks) <- c(2, 3)                # rubah vektor sebagai matriks sebesar 2x3
+matriks                                # Mencetak hasilnya
+```
+
+Matriks dapat dibuat dengan pengikatan kolom atau pengikatan baris dengan fungsi `cbind()` dan `rbind()`.
+
+```{r , echo=T, results='hide'}
+x <- 1:3                              # Membuat vektor `x`
+y <- 10:12                            # Membuat vektor `y`
+cbind(x, y)                           # Menggabungkan vektor `x` dan` y` dengan kolom
+rbind(x, y)                           # Menggabungkan vektor `x` dan` y` dengan baris
+```
+
+## Lists
+
+Lists adalah jenis vektor khusus yang dapat berisi elemen dari tipe data yang berbeda. Lists merupakan tipe data yang sangat penting dalam R dan Anda harus mengenalnya dengan baik. List dapat dibuat secara eksplisit menggunakan fungsi `list()`, yang mengambil sejumlah argumen arbitrer.
+
+Secara umum Anda dapat menggunakan dua operasi pengindeksan yang berbeda pada List:
+
+*	Kurung tunggal untuk mengembalikan daftar elemen yang dipilih `([])`
+*	Kurung ganda untuk mengembalikan elemen tunggal `([[]])`
+
+```{r , echo=T, results='hide'}
+x <- list(1:5,c("a","b","c"),TRUE,7,5)  # Membuat daftar (list) vektor `x`
+x[1]                                    # Kurung tunggal
+x[[1]]                                  # Kurung ganda
+typeof(x[2])                            # Memeriksa jenis objek menggunakan []
+typeof(x[[2]])                          # Memeriksa jenis objek menggunakan [[]]
+x[c(1,2)]                               # list vektor pertama dan kedua
+```
+
+Kita juga dapat membuat daftar (list) dengan mengganti objek kosong yang ada seperti yang Anda lihat dalam kode berikut:
+
+```{r , echo=T, results='hide'}
+x <- vector("list", length = 3)         # Membuat daftar (list) kosong (sesuai kebutuhan)
+name <- c("a","b","c","d")              # Membuat objek sebagai variabel `name`
+age  <- c(18, 19, 20, 21)               # Membuat objek sebagai variabel `age`
+gender<- c(1, 0, 0, 1)                  # Membuat objek sebagai variabel `gender`
+x[[1]] <- name                          # Tambah / ganti objek ke daftar `x`
+x[[2]] <- age                           # Tambah / ganti objek ke daftar `x`
+x[[3]] <- gender                        # Tambah / ganti objek ke daftar `x`
+x                                       # Cetak hasil akhir
+```
+
+## Faktor
+
+Faktor-faktor digunakan untuk mewakili data kategorikal dan dapat menjadi tidak teratur atau teratur. Orang dapat menganggap faktor sebagai vektor integer di mana setiap integer memiliki label. Faktor-faktor menjadi penting dalam pemodelan statistik dan diperlakukan secara khusus oleh fungsi pemodelan seperti `lm()` dan `glm()`.
+
+Menggunakan faktor dengan label lebih baik daripada menggunakan bilangan bulat karena faktor menggambarkan diri sendiri. Memiliki variabel yang memiliki nilai "Laki-laki" dan "Perempuan" lebih baik daripada variabel yang memiliki nilai 1 dan 2. Objek-objek dapat dibuat dengan fungsi `faktor()`.
+
+```{r , echo=T, results='hide'}
+x <- factor(c("yes","no","yes","no"))  # Membuat objek faktor
+x                                      # Cetak hasilnya
+table(x)                               # Tabel dari `x`
+unclass(x)                             # Melihat representasi faktor yang mendasarinya
+attr(x,"levels")                       # Melihat representasi faktor yang mendasarinya
+```
+
+## Data Frame
+
+Kerangka data (data frame) adalah tabel atau struktur mirip array dua dimensi di mana setiap kolom berisi nilai satu variabel dan setiap baris berisi satu set nilai dari setiap kolom.
+
+Berikut ini adalah karakteristik data frame.
+
+*	Nama kolom tidak boleh kosong;
+*	Nama baris harus unik;
+*	Data yang disimpan dalam data frame bisa dari numerik, faktor atau tipe karakter;
+*	Setiap kolom harus berisi jumlah item data yang sama.
+
+```{r , echo=T, results='hide'}
+# Buat data frame pertama.
+df1 <- data.frame(id = c (1:5), 
+                name = c("Julian","Vanessa","Jeffry","Angel","Nikki"),
+              salary = c(623.3,515.2,611.0,729.0,843.25), 
+          start_date = as.Date(c("2022-01-01", "2022-09-23", "2022-11-15",                                               "2022-05-11", "2022-03-27")),
+                dept = c("DS","DS","BA","DA","DS"), stringsAsFactors = F)
+df1
+```
+
+```{r , echo=T, results='hide'}
+# Buat data frame kedua.
+df2 <-data.frame(id = c (6:10), 
+               name = c("Ardifo","Irene","Kefas","Sherly","Bakti"),
+             salary = c(578.0,722.5,632.8,632.8,NA), 
+         start_date = as.Date(c("2022-05-21","2022-07-30","2022-06-17",
+                                "2022-07-30","2018-09-03")),
+               dept = c("Actuaries","Actuaries","CA","DE","Lecturer"),stringsAsFactors = F)
+df2
+```
+
+```{r , echo=T, results='hide'}
+df3 <- rbind(df1,df2)                  # Gabungkan dua frame data
+print(df3)                             # Cetak hasilnya `df3`
+head(df3)                              # Cetak enam baris pertama
+head(df3,6)                            # Cetak enam baris pertama
+#View(df3)                             # Menggunakan RStudio seperti penampil Excel
+class(df3)                             # objeknya bertipe data.frame
+str(df3)                               # Dapatkan struktur data frame
+dim(df3)                               # Periksa dimensi data
+```
+
+Data frame biasanya dibuat dengan membaca dalam dataset menggunakan `read.table()` atau `read.csv ()`. Namun, data frame juga dapat dibuat secara eksplisit dengan fungsi `data.frame()` atau mereka dapat dipaksakan dari jenis objek lain seperti list.
+
+## Menghasilkan Data Frame
+
+Sebagai seorang Data Scientist, ketika mencoba menyimulasikan proses analisis data, pemodelan, bahkan prediksi. Anda harus mampu secara intuitif membangun dataframe untuk memperkirakan kumpulan data sampel. Terutama, ketika Anda tidak memiliki kumpulan data sampel sama sekali. Oleh karena itu, pada bagian ini, kita akan belajar sedikit mengenai cara menghasilkan dataframe. Harap perhatikan baik-baik contoh berikut:
+
+```{r , echo=T, results='show'}
+# Misalkan Anda ingin membangun kumpulan data karyawan di sebuah perusahaan
+
+No<-(1:52)                                       # Menghasilkan bilangan 1-52
+Name<-c(LETTERS,letters)                         # 26 LETTERS dan 26 letters
+Gender<-sample(rep(c("Male","Female"),times=26)) # 26 Laki-laki dan 26 perempuan
+
+# Menghasilkan tanggal lahir
+year_in_3<-seq(as.Date("2000/01/01"), by="year", length.out=4)
+Birthday <- rep(year_in_3, times=13)
+
+# Menghasilkan kategori universitas
+univ1<-rep("National",times=26)                  # 26 universitas negeri
+univ2<-rep("Private",times=16)                   # 16 universitas swasta 
+univ3<-rep("Overseas",times=10)                  # 10 universitas luar negeri
+Universities<-sample(c(univ1,univ2,univ3))       # Menggabungkan data (vetor)
+
+gpa<-runif(52,min=3.00,max=4.00)                 # Menghasilkan 52 bilangan acak (min=3, dan max=4) 
+GPA<-round(gpa,digits=2)                         # Mengatur digit bilangan acak Anda
+Salary<-sample(600:1200,52,replace=T)            # Menghasilakn sampel antara 600-1200 (memungkinkan nilai duplikat)
+Employees<-data.frame(No,
+                      Name,
+                      Birthday,
+                      Gender,
+                      Universities,
+                      GPA,
+                      Salary)
+Employees
+```
+
+
+## Referensi
+
+Berikut adalah beberapa referensi yang dapat Anda gunakan untuk mempelajari dasar-dasar pemrograman dalam bahasa R:
+
+1.    "An Introduction to R": https://cran.r-project.org/manuals.html 
+2.    R for Data Science: https://r4ds.had.co.nz/
+3.    Codecademy - Learn R : https://www.codecademy.com/learn/learn-r
+4.    DataCamp: https://www.datacamp.com/courses/tech:r
+
