@@ -1,0 +1,821 @@
+--- 
+title: "Algoritma dan Pemrograman R"
+author: "Bakti Siregar, M.Sc"
+date: "20 Agustus 2022" # date: "`r Sys.Date()`"
+site: bookdown::bookdown_site
+documentclass: book
+bibliography: [book.bib, packages.bib]
+biblio-style: apalike
+link-citations: yes
+github-repo: dsciencelabs/Algoritma_Pemrograman_R
+description: "Algoritma dan Pemrograman R akan mencakup konsep-konsep dasar dalam pemrograman, pemahaman algoritma, serta pengenalan terhadap bahasa pemrograman R."
+tags: [algoritma, pemrograman, r-programming]
+cover-image: images/Cover_Algoritma_Permrograman.png
+---
+
+```{r setup, include=FALSE}
+
+options(
+
+  htmltools.dir.version = FALSE, formatR.indent = 2,
+
+  width = 55, digits = 4, warnPartialMatchAttr = FALSE, warnPartialMatchDollar = FALSE
+
+)
+
+
+lapply(c("rmarkdown","bookdown",
+         "limSolve","rootSolve",
+         "xts","numDeriv",
+         "pracma","gaussquad",
+         "deSolve","ReacTran",
+         "lmtest", "car"), function(pkg) {
+
+  if (system.file(package = pkg) == '') install.packages(pkg)
+
+})
+
+```
+
+# Kata Pengantar{-}
+
+Bahasa pemrograman R telah menjadi alat yang kuat bagi para ilmuwan data, analis statistik, dan praktisi analisis numerik di seluruh dunia. Dengan kemampuan yang luar biasa dalam manipulasi data, visualisasi, dan analisis statistik, R memungkinkan para profesional untuk menggali wawasan berharga dari kumpulan data yang kompleks.
+
+```{r fig.align='center', echo=FALSE, include=identical(knitr:::pandoc_to(), 'html'), out.width='50%'}
+
+knitr::include_graphics('images/Cover_Algoritma_Permrograman.png', dpi = NA)
+
+```
+
+Dalam buku ini, penulis menyediakan materi dasar-dasar bahasa pemrograman R hingga tingkat yang lebih mendalam. Penulis juga menjelaskan beberapa konsep-konsep penting, sintaksis dasar, struktur data, serta memberikan contoh nyata tentang bagaimana R dapat digunakan dalam berbagai konteks. Modul ini dirancang untuk membantu pembaca yang baru mengenal pemrograman maupun yang telah memiliki pengalaman sebelumnya dalam bahasa lain.
+
+
+## Ringkasan Pembelajaran {-}
+
+Adapun isi pembelajaran dalam modul ini adalah sebagai berikut:
+
+* **Minggu 1-2: Dasar Pemrograman R**
+  * Pengenalan konsep dasar pemrograman.
+  * Pengenalan lingkungan dan pengaturan awal bahasa R.
+  * Menulis program sederhana dalam R.
+* **Minggu 3-4: Variabel dan Tipe Data**
+  * Mengenal tipe data dasar dalam R: numerik, karakter, logika.
+  * Deklarasi dan penggunaan variabel.
+  * Konversi antar tipe data.
+* **Minggu 5-6: Struktur Kontrol**
+  * Penggunaan pernyataan kondisional (if, else).
+  * Penggunaan perulangan (for, while) untuk mengatur alur program.
+  * Studi kasus penggunaan struktur kontrol dalam pemrograman.
+* **Minggu 7-8: Fungsi**
+  * Pengenalan konsep fungsi dalam pemrograman.
+  * Membuat dan memanggil fungsi dalam R.
+  * Penggunaan parameter dalam fungsi.
+* **Minggu 9-10: Struktur Data**
+  * Pengenalan array dan matriks dalam R.
+  * Penggunaan vektor dan faktor.
+  * Pengenalan konsep dataframe untuk manipulasi data tabular.
+* **Minggu 11-12: Algoritma Dasar**
+  * Pengenalan konsep algoritma dan kompleksitas.
+  * Pemahaman tentang pencarian dan pengurutan.
+  * Implementasi algoritma pencarian dan pengurutan sederhana dalam R.
+* **Minggu 13-14: Pengenalan Analisis Data**
+  * Pengenalan pustaka dasar untuk analisis data di R.
+  * Pemahaman tentang statistik dasar dan visualisasi data.
+  * Penerapan analisis sederhana pada dataset kecil.
+* **Minggu 15-16: Proyek Akhir**
+Siswa diminta untuk membuat proyek kecil menggunakan R yang menggabungkan konsep-konsep yang telah dipelajari. Proyek dapat berupa analisis data, pemecahan masalah, atau aplikasi sederhana.
+
+
+## Tim Penyusun {-}
+
+Berikut ini adalah nama dan biografi singkat para penulis:
+
+
+<img src = "https://github.com/dsciencelabs/images/blob/master/Penulis/Bakti.jpg?raw=true" width = "150" height = "150" style = "float:right; margin-left: 10px; margin-top: 7px" />
+
+- **Bakti Siregar, M.Sc** adalah Ketua Program Studi di Jurusan Statistika Universitas Matana. Lulusan Magister Matematika Terapan dari National Sun Yat Sen University, Taiwan. Beliau juga merupakan dosen dan konsultan Data Scientist di perusahaan-perusahaan ternama seperti [JNE](https://www.jne.co.id/id/beranda), [Samora Group](https://www.samoragroup.co.id/home/en), [Pertamina](https://www.pertamina.com/), dan lainnya. Beliau memiliki antusiasme khusus dalam mengajar Big Data Analytics, Machine Learning, Optimisasi, dan Analisis Time Series di bidang keuangan dan investasi. Keahliannya juga terlihat dalam penggunaan bahasa pemrograman Statistik seperti R Studio dan Python. Beliau mengaplikasikan sistem basis data MySQL/NoSQL dalam pembelajaran manajemen data, serta mahir dalam menggunakan tools Big Data seperti Spark dan Hadoop. Beberapa project beliau dapat dilihat di link berikut: [Rpubs](https://rpubs.com/dsciencelabs), [Github](https://github.com/dsciencelabs), [Website](https://dsciencelabs.github.io/web/index.html), dan [Kaggle](https://www.kaggle.com/baktisiregar/code). 
+
+
+## Ucapan Terima Kasih{-}
+
+Kami berharap modul ini akan menjadi panduan yang bermanfaat bagi Anda dalam menguasai bahasa pemrograman R. Semoga dengan memahami konsep-konsep yang disajikan dalam modul ini, Anda akan dapat mengaplikasikan R dalam proyek-proyek analisis data dan statistik yang sebenarnya.
+
+Terima kasih kepada semua yang telah berkontribusi dalam pembuatan modul ini, serta kepada Anda, pembaca, yang telah memilih modul ini sebagai sumber pengetahuan Anda. Kami berharap Anda menikmati perjalanan Anda dalam memahami bahasa pemrograman R.
+
+
+## Masukan & Saran {-}
+
+Semua masukan dan tanggapan Anda sangat berarti bagi kami untuk memperbaiki modul ini kedepannya. Bagi para pembaca/pengguna yang ingin menyampaikan masukan dan tanggapan, dipersilahkan melalui kontak dibawak ini!
+
+**Email:** dsciencelabs@outlook.com
+
+
+<!--chapter:end:index.Rmd-->
+
+# Pengenalan R?
+
+R adalah bahasa pemrograman dan lingkungan komputasi yang digunakan untuk analisis statistik, visualisasi data, pengolahan data, dan pemodelan prediktif. R dikembangkan oleh Ross Ihaka dan Robert Gentleman di Universitas Auckland, Selandia Baru. R menjadi populer dalam dunia analisis data dan ilmu data karena kemampuannya dalam mengolah dan menganalisis data secara efisien.
+
+## Fitur Utama R
+
+1.    **Open Source:** R adalah perangkat lunak open source yang dapat diunduh dan digunakan secara gratis.
+2.    **Fleksibilitas:** Anda dapat membuat fungsi sendiri, mengontrol alur program, dan mengakses berbagai pustaka eksternal.
+3. **Mengimpor dan Mengekspor Data:** R mendukung berbagai format file, seperti CSV, Excel, SQL, dan format data lainnya.
+4. **Data Manipulasi:** R memiliki pustaka seperti dplyr dan tidyr yang memudahkan manipulasi dan transformasi data.
+5.    **Lingkungan Komputasi:** R tidak hanya bahasa pemrograman, tetapi juga lingkungan komputasi lengkap yang menyediakan alat untuk analisis dan visualisasi data.
+5.    **Statistik dan Analisis Data:** R memiliki beragam pustaka dan paket yang mendukung analisis statistik, visualisasi data, dan pemodelan prediktif.
+6.    **Grafik dan Visualisasi:** R memiliki kemampuan visualisasi yang kuat dengan pustaka seperti ggplot2 untuk membuat grafik yang informatif dan menarik.
+7. **Komunitas Aktif:** Komunitas R sangat aktif, dan ada banyak sumber daya online, forum, dan pustaka yang dapat membantu dalam pembelajaran dan pemecahan masalah.
+
+
+## Mengapa Belajar R?
+
+Berikut ini adalah beberapa alasan mengapa penting untuk belajar R:
+
+1.    **Pengolahan Data:** R dapat membantu Anda membersihkan, merubah format, dan mengolah data sebelum analisis lebih lanjut.
+2.    **Analisis Data:** R adalah alat yang kuat untuk menganalisis data, membuat visualisasi yang menarik, dan mengidentifikasi pola dalam dataset.
+3.    **Karir di Ilmu Data:** Penguasaan R menjadi salah satu keahlian yang sangat dihargai dalam industri ilmu data dan analisis data.
+4.    **Komunitas Besar:** Anda akan menjadi bagian dari komunitas besar yang mendukung dan berkontribusi dalam pengembangan R serta membagikan pengetahuan.
+
+## Download R & Rstudio:
+
+1. **Unduh dan Instalasi:** Kunjungi situs resmi R (https://www.r-project.org/) untuk mengunduh installer sesuai dengan sistem operasi Anda.
+2. **RStudio (Opsional tapi Disarankan):** RStudio adalah lingkungan pengembangan terintegrasi (IDE) yang mempermudah pengembangan dalam R. Anda dapat mengunduh RStudio (https://www.rstudio.com/) dan menggunakannya untuk menulis dan menjalankan kode R.
+
+
+## Tutorial Instal R & Studio
+
+Berikut adalah panduan langkah demi langkah untuk menginstal R dan RStudio
+
+### Instalasi R
+
+R adalah bahasa pemrograman inti yang digunakan oleh RStudio. Ikuti langkah-langkah di bawah ini untuk menginstal R:
+
+#### Windows {-}
+
+1.    Kunjungi situs resmi R di https://cran.r-project.org/mirrors.html.
+2.    Pilih cermin (mirror) terdekat untuk mengunduh installer R.
+3.    Unduh installer R untuk Windows dan jalankan file installer yang diunduh.
+4.    Ikuti panduan instalasi, pilih opsi default kecuali jika Anda tahu persis apa yang Anda lakukan.
+5.    Setelah instalasi selesai, R akan terinstal di komputer Anda.
+
+
+#### MacOS {-}
+
+1.    Kunjungi situs resmi R di https://cran.r-project.org/mirrors.html.
+2.    Pilih cermin (mirror) terdekat untuk mengunduh installer R.
+3.    Unduh installer R untuk macOS dan jalankan file installer yang diunduh.
+4.    Ikuti panduan instalasi, pilih opsi default kecuali jika Anda tahu persis apa yang Anda lakukan.
+5.    Setelah instalasi selesai, R akan terinstal di komputer Anda.
+
+#### Linux {-}
+
+Di sistem Linux, Anda dapat menggunakan perintah terminal untuk menginstal R. Berikut adalah contoh untuk beberapa distribusi umum:
+
+**Ubuntu/Debian:**
+
+Buka Program `csharp` anda dan run koding dibawah ini!
+
+```
+Copy code
+sudo apt-get update
+sudo apt-get install r-base
+```
+
+**CentOS/Fedora:**
+
+Buka Program `Command Prompt` anda dan run koding dibawah ini!
+
+```
+sudo yum install R
+```
+
+### Instalasi RStudio:
+
+RStudio adalah Integrated Development Environment (IDE) yang mempermudah pengembangan dalam R. Ikuti langkah-langkah di bawah ini untuk menginstal RStudio:
+
+**Windows, macOS, dan Linux:**
+
+1.    Kunjungi situs resmi RStudio di https://www.rstudio.com/products/rstudio/download/.
+2.    Pilih "RStudio Desktop" yang sesuai dengan sistem operasi Anda.
+3.    Unduh installer RStudio dan jalankan file installer yang diunduh.
+4.    Ikuti panduan instalasi dan pilih opsi default kecuali jika Anda tahu persis apa yang Anda lakukan.
+5.    Setelah instalasi selesai, RStudio akan terinstal di komputer Anda.
+
+## Video Instalasi R & RStudio 
+
+### Windows
+
+<iframe width="800" height="540" src="https://www.youtube.com/embed/bVbCm_nE974?si=tLHLLl6c2LW-Q_-0" title="YouTube video player" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" allowfullscreen></iframe>
+
+### MacOS
+
+<iframe width="800" height="540" src="https://www.youtube.com/embed/Y20P3u3c_1c?si=JUeS4AIQYF8agn9j" title="YouTube video player" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" allowfullscreen></iframe>
+
+
+## Interface R & RStudio:
+
+Interface adalah tampilan aplikasi R dan Rstudio yang telah terpasang diperlihatkan pada Gambar \@ref(fig:jendela-R) dan Gambar \@ref(fig:jendela-RStudio).
+
+```{r jendela-R,echo=FALSE, fig.cap='Jendela R.', tidy=FALSE, fig.align='center',out.width='100%'}
+library(knitr)
+img1_path <- "./images/Bab1/jendela_r.png"
+include_graphics(img1_path)
+```
+
+```{r jendela-RStudio,echo=FALSE, fig.cap='Jendela RStudio.', tidy=FALSE, out.width='100%', fig.align='center'}
+library(knitr)
+img1_path <- "./images/Bab1/Rstudio.png"
+include_graphics(img1_path)
+```
+
+Tampilan ini memiliki beberapa komponen utama, termasuk:
+
+* **Script Panel:** Tempat Anda menulis kode R dalam skrip.
+* **Console Panel:** Tempat hasil dari kode R ditampilkan, serta tempat Anda dapat menjalankan kode secara interaktif.
+* **Environment Panel:** Menampilkan daftar variabel yang ada dalam sesi R Anda.
+* **History Panel:** Menampilkan riwayat perintah yang telah dijalankan.
+* **Files/Plots/Packages/Help Panel:** Panel tambahan yang membantu Anda mengelola file, visualisasi, pustaka, dan panduan bantuan.
+
+Interface ini memudahkan pengguna untuk menulis, menjalankan, dan mengelola kode R serta menganalisis data dengan nyaman.
+
+## Sintaks Dasar R 
+
+Berikut ini beberapa kode sederhana yang bisa dipelajari untuk memulai memahami cara kerja Bahasa pemrograman R. 
+
+```
+3+7
+3-7
+3^7
+3/7
+3*7
+9^(1/3)
+```
+
+## Bantuan (Help) R 
+
+Salah satu bagian terpenting dalam bekerja dengan bahasa R adalah mengetahui di mana mencari bantuan. R memiliki beberapa fasilitas in-line, selain berbagai sumber daya bantuan di ekosistem R. Anda dapat menggunakan bantuan untuk fungsi tertentu. 
+
+```{r, eval=F}
+help.start()         # menu di mana Anda dapat menavigasi bantuan lokal berbasis web
+?help                # menu di mana Anda dapat menavigasi bantuan lokal berbasis web 
+?class               # mendapatkan bantuan untuk fungsi `class`
+help(class)          # mendapatkan bantuan untuk fungsi `class`
+??class              # jika Anda tidak tahu nama fungsi yang Anda cari
+help.search('class') # jika Anda tidak tahu nama fungsi yang Anda cari
+```
+
+## Shortcut Penggunaan Rstudio
+
+Beberapa petunjuk bermanfaat untuk Rstudio (IDE) meliputi:
+   
+Kata Kunci	                         Perintah	                             Detail
+----------------------     -------------------------------------    -----------------------
+Ctrl + Return (Enter)	      untuk menjalankan baris dari editor	           ~
+Ctrl + Shift + #	          untuk fokus pada tab bantuan	                 kontradiktif
+Alt + Shift + k	            untuk jalur pintas keyboard RStudio	           ~
+Ctrl + r	                  untuk menelusuri sejarah perintah	             ~
+Alt + Shift + j	            untuk menavigasi antar bagian kode	           ~
+Ctrl + 1	                  untuk melompat ke editor	                     tab untuk penyelesaian otomatis
+Ctrl + 2	                  untuk melompat ke konsol	                     tab untuk penyelesaian otomatis
+Ctrl + 8	                  untuk melompat ke environment list	           tab untuk pelengkapan otomatis
+Alt + l	                    Collapse chunk	                               Code Folding
+Alt + Shift + l	            Unfold chunk	                                 Code Folding
+Alt + o	                    Collapse all	                                 Code Folding
+Alt + Shift + o	            Unfold all	                                   Code Folding
+Alt + “-”	                  untuk operator penugasan <-	                   ~
+Alt + Shift + c	            kode komentar/tanda komentar dalam file .R	   kontradiktif
+
+
+## Praktikum 
+
+Buatlah tutorial Instalasi R dan R Studio dalam M.word! Lengkapi setiap prosesnya dengan gambar dan penjelasan.
+
+## Referensi
+
+1. Primartha, R. 2018. **Belajar Machine Learning Teori dan Praktik**. Penerbit Informatika : Bandung
+2. Rosadi,D. 2016. **Analisis Statistika dengan R**. Gadjah Mada University Press: Yogyakarta
+3. STHDA. Running RStudio and Setting Up Your Working Directory - Easy R Programming .<http://www.sthda.com/english/wiki/running-rstudio-and-setting-up-your-working-directory-easy-r-programming#set-your-working-directory>
+4. STDHA. **Getting Help With Functions In R Programming**. <http://www.sthda.com/english/wiki/getting-help-with-functions-in-r-programming> .
+5. Venables, W.N. Smith D.M. and R Core Team. 2018. **An Introduction to R**. R Manuals.
+
+
+
+<!--chapter:end:01_Pengenalan_R.Rmd-->
+
+
+# Dasar Pemrograman R
+
+Pemrograman R merujuk pada proses menulis kode dan mengembangkan program menggunakan bahasa pemrograman R. R adalah bahasa pemrograman yang fokus pada analisis statistik, manipulasi data, dan visualisasi. Pada bab ini akan dibahas beberapa unsur utama dalam pemrograman menggunakan bahasa pemrograman R.
+
+
+## Variabel 
+
+Variabel dalam bahasa pemrograman R digunakan untuk menyimpan dan mengelola data. Variabel memungkinkan Anda untuk menampung nilai-nilai berbagai jenis, seperti angka, karakter (teks), atau nilai logika (benar/salah). Berikut ini adalah cara untuk mendefinisikan dan menggunakan variabel dalam R:
+
+
+### Mendefinisikan Variabel
+
+Untuk membuat variabel, Anda cukup menggunakan tanda <- atau = untuk memberikan nilai pada variabel.
+
+```{r}
+x <- 10          # Mendefinisikan variabel x 
+y = 12           # Mendefinisikan variabel y
+```
+
+
+### Aturan Nama Variabel
+
+* Nama variabel harus dimulai dengan huruf atau tanda `.`
+* Nama variabel bisa terdiri dari huruf, angka, dan tanda `_`.
+* Karakter khusus seperti +, -, *, /, ^ dll. tidak diperbolehkan dalam nama variabel.
+* Nama variabel bersifat case-sensitive, artinya `x` dan `X` dianggap berbeda.
+
+
+## Operator
+
+Operator adalah simbol yang mengarahkan compiler untuk melakukan berbagai macam operasi terhadap beberapa penugasan. Operator mensimulasikan berbagai operasi matematis, logika, dan keputusan yang dilakukan pada sekumpulan Bilangan Kompleks, Integer, dan Numerik sebagai penugasan masukan (input). R mendukung sebagian besar empat jenis operator biner antara satu set penugasan. Dalam ini, kita akan melihat berbagai jenis operator yang tersedia di R penggunaannya.
+
+### Aritmatika 
+
+Penggunaan operator aritmatika dalam program R  adalah untuk mensimulasikan berbagai operasi matematika, seperti penambahan, pengurangan, perkalian, pembagian, dan modulo. Operator aritmatika yang dilakukan bisa saja berupa nilai skalar, bilangan kompleks, atau vektor. 
+
+||||
+|:------:|:------:|
+|**Operator**|   **R**    | 
+|Penjumlahan|+|
+|Pengurangan|-|
+|Perkalian|* |
+|Divisi/Pembagian|/|
+|Pemangkatan| ^ |
+|Modulo|%%|
+
+
+Perhatikan cuplikan R berikut:
+
+```{r, eval=F}
+x <- c(2,3,5)    # memuat vektor x
+y <- c(2,4,6)    # memuat vektor y
+x+y              # hasil penjumahan vektor x dan y
+print (x+y)      # hasil penjumahan vektor x dan y
+print (x-y)      # hasil pengurangan vektor x dan y
+print (x*y)      # hasil perkalian vektor x dan y
+print (x/y)      # hasil pembagian vektor x dan y
+print (x^y)      # hasil pemangkatan vektor x dan y
+print (x%%y)     # hasil modulo vektor x dan y
+```
+
+Adakalanya anda perlu menampilkan keterangan/komentar yang juga melekat pada hasil perhitungan R itu sendiri. Maka anda dapat melakukannya dengan cara berikut:
+
+```{r, eval=F}
+cat("Penjumahan vektor x dan y :", x + y, "\n")
+cat("Pengurangan vektor x dan y :", x - y, "\n")
+cat("Perkalian vektor x dan y :", x * y, "\n")
+cat("Pembagian vektor x dan y :", x / y, "\n")
+cat ("Pemangkatan vektor x dan y :", x ^ y) 
+cat("Modulo vektor x dan y :", x %% y, "\n")
+```
+
+**Catatan:** Penjelasan lebih lekap mengenai modulo dapat lihat pada [link ini](https://www.omnicalculator.com/math/modulo) 
+
+
+### Relasional 
+
+Operator relasional melakukan operasi perbandingan antara elemen yang bersesuaian pada setiap operan. Mengembalikan nilai Boolean TRUE jika operan pertama memenuhi relasi dibandingkan dengan operan kedua. Nilai TRUE selalu dianggap lebih besar dari FALSE.
+
+||||
+|:------:|:------:|:--------:|
+|**Operator**|   **R**    |**Keterangan**|
+|Kurang dari|<|Mengembalikan TRUE jika elemen yang bersesuaian pada operan pertama lebih kecil dari operan kedua. Selain itu akan mengembalikan FALSE|
+|Kurang dari sama dengan|<=|Mengembalikan TRUE jika elemen yang bersesuaian pada operan pertama kurang dari atau sama dengan elemen operan kedua. Selain itu akan mengembalikan FALSE|
+|Lebih besar dari|>|Mengembalikan TRUE jika elemen yang bersesuaian pada operan pertama lebih besar dari operan kedua. Selain itu akan mengembalikan FALSE|
+|Lebih besar dari sama dengan|>=|Mengembalikan BENAR jika elemen yang bersesuaian pada operan pertama lebih besar atau sama dengan dari operan kedua. Selain itu akan mengembalikan FALSE|
+|Sama Dengan|==|Mengembalikan BENAR jika dan hanya jika kedua sisi bernilai sama|
+|Tidak Sama dengan|!=|Mengembalikan BENAR jika elemen yang bersesuaian pada operan pertama tidak sama dengan dari operan kedua|
+
+
+```{r, eval=FALSE}
+x <- c(2,3,5)    # memuat vektor x
+y <- c(2,4,6)    # memuat vektor y
+cat("Vektor x  kurang dari Vektor y:", x < y, "\n")
+cat("Vector x kurang dari sama dengan Vector y:", x <= y, "\n")
+cat("Vector x lebih besar dari Vector y :", x > y, "\n")
+cat("Vector x lebih besar dari sama dengan Vector y :", x >= y, "\n")
+cat("Vector x sama dengan Vector y:", x == y,"\n") 
+cat("Vector x tidak sama dengan Vector y:", x != y) 
+```
+
+### Logika
+
+Operator logis mensimulasikan operasi keputusan, berdasarkan operator yang ditentukan antara operan, yang kemudian dievaluasi ke nilai Boolean Benar atau Salah. Nilai bilangan bulat bukan nol dianggap sebagai nilai BENAR, baik itu bilangan kompleks atau bilangan real. 
+
+||||
+|:------:|:------:|:--------:|
+|**Operator**|  **R** |**Keterangan**|
+|NOT|!|Operasi negasi/kebalikan pada status elemen operan|
+|AND|&|Mengembalikan TRUE jika kedua operan bernilai Benar|
+|OR| $|$|Mengembalikan TRUE jika salah satu operan adalah Benar|
+|XOR| ^|Mengembalikan TRUE jika salah satu dari kedua elemen pertama operan bernilai Benar|
+
+```{r, eval=F}
+x <- c(0,TRUE,FALSE)
+y <- c(TRUE,0.1,4+3i)
+ 
+# Melakukan operasi logika pada Operan
+cat("Logika Negasi (~) untuk vektor x:", !x, "\n") 
+cat("Logika Negasi (~) untuk vektor y :", !y, "\n") 
+cat ("Logika Konjungsi (Dan) :", x & y, "\n")
+cat ("Logika Disjungsi (Atau) :", x | y, "\n")
+```
+
+
+### Operator Lain-lain 
+
+Berikut ini juga ada beberapa operator yang kemungkinan besar juga akan anda perlukan pada saat akan menggunakan R.
+
+```{r, eval=FALSE}
+x <- c(2,3,5)                          # memuat vektor x
+y <- c(2,4,6)                          # memuat vektor y
+sqrt(x*y)                              # Bentuk akar
+log(x)                                 # logaritma 
+exp(y)                                 # eksponen
+(x/y) + y                              # Tanda kurung
+```
+
+**Catatan:** [Sifat Komutatif Asosiatif dan Distributif](https://www.advernesia.com/blog/matematika/sifat-komutatif-asosiatif-dan-distributif/) juga berlaku dalam program R.
+
+
+## Tipe Data 
+
+Dalam pemrograman seperti R dan Python, tipe data merupakan konsep penting. Keduanya dapat menggunakan variabel untuk menyimpan tipe yang berbeda-beda, berikut adalah tipe data paling mendasar yang harus diketahui:
+
+|||||
+|:----------------:|:-------:|:------------:|
+|**Tipe Data**     |**R**  | **Penjelasan**   |
+|Double/Float      | 5.6   | Bilangan yang mempunyai koma|
+|Integer           | 5    | Bilangan bulat 1,2,...,n|      | 
+| Bolean/Logical   | TRUE/FALSE| Benar bernilai 1 dan Salah bernilai 0|
+| String/Character | 'Dsciencelabs'|karakter/kalimat bisa berupa huruf angka, dll (diapit tanda " atau ')|     
+| Complex          | 1 + 5i| Pasangan angka real dan imajiner|   
+
+
+Berikut ini adalah koding R yang dapat digunakan untuk menetapkan kelima tipe data diatas:
+
+```{r, eval=F}
+d1 = 5.6                # Tetapkan nilai desimal 
+d2 = as.integer(5)      # tetapkan nilai integer
+d2 = 5L                 # cara lain untuk memuat nilai integer di R
+d3 = c(TRUE,FALSE)      # Bolean/Logical
+d3 = as.logical(c(0,1)) # cara lain untuk memuat Bolean/Logical
+d4 = c("a",'b','123')   # String/Character
+d5 = 1 + 5i             # Complex 
+```
+
+Untuk memeriksa tipe data dalam R:
+
+```{r, eval=F}
+class(d1)            # cetak nama kelas variabel
+typeof(d1)           # cetak tipe variabel x
+```
+
+## Statistika Dasar
+
+```{r , echo=T, results='hide'}
+data <- c(85, 90, 78, 92, 88)  # Data
+sum(data)                      # Jumlahan data
+length(data)                   # Banyaknya data
+mean (data) 	                 # Menghitung rata-rata
+var (data) 	                   # Menghitung variansi
+sd (data) 		                 # Simpangan baku
+min(data)                      # Minimum
+max(data)                      # Maksimum
+
+```
+
+## Contoh Pemrograman Dasar
+
+Berikut ini dilampirkan contoh kasus dasar pemrograman R.
+
+### Menghitung Rata-rata
+
+```{r}
+data <- c(85, 90, 78, 92, 88)
+jumlah_data <- length(data)
+total <- sum(data)
+rata_rata <- total / jumlah_data
+print(paste("Rata-rata:", rata_rata))
+```
+
+### Membandingkan Angka
+
+```{r}
+a <- 10
+b <- 20
+
+if (a < b) {
+  print("a lebih kecil dari b")
+} else if (a > b) {
+  print("a lebih besar dari b")
+} else {
+  print("a sama dengan b")
+}
+```
+
+### Membandingkan Karakter
+
+```{r}
+kata1 <- "Apel"
+kata2 <- "apel"
+
+if (kata1 == kata2) {
+  print("kata1 sama dengan kata2")
+} else {
+  print("kata1 berbeda dari kata2")
+}
+```
+
+### Mengecek Kondisi Gabungan
+
+```{r}
+umur <- 25
+pendapatan <- 5000
+
+if (umur > 18 && pendapatan > 4000) {
+  print("Anda memenuhi syarat")
+} else {
+  print("Anda tidak memenuhi syarat")
+}
+```
+
+
+### Penggunaan Operator Logika
+
+```{r}
+x <- 5
+y <- 10
+
+if (x > 0 || y > 0) {
+  print("Salah satu variabel positif")
+} else {
+  print("Kedua variabel non-positif")
+}
+```
+
+### Pemeriksaan Kondisi dengan ifelse()
+
+```{r}
+nilai <- 75
+keterangan <- ifelse(nilai >= 70, "Lulus", "Tidak lulus")
+print(paste("Nilai:", nilai, "--> Status:", keterangan))
+```
+
+## Latihan 
+
+Berikut adalah beberapa contoh soal latihan dasar pemrograman dalam bahasa pemrograman R:
+
+1.   **Menghitung Luas Lingkaran:** Buatlah sebuah program R yang menerima input berupa jari-jari lingkaran dan menghitung serta mencetak luas lingkaran.
+2.   **Konversi Suhu:** Buatlah sebuah program R yang dapat mengonversi suhu dari Celsius ke Fahrenheit. Program harus menerima input suhu dalam Celsius dan menghasilkan output suhu dalam Fahrenheit.
+3.   **Menghitung Faktorial:** Buatlah sebuah program R yang menghitung faktorial dari sebuah bilangan bulat positif. Program harus menerima input bilangan bulat positif dan menghasilkan output faktorialnya.
+4.   **Mencari Bilangan Prima:** Buatlah sebuah program R yang menerima input sebuah bilangan bulat dan menghasilkan output apakah bilangan tersebut merupakan bilangan prima atau bukan.
+5.   **Menghitung Pangkat:** Buatlah sebuah program R yang menerima input bilangan dasar dan eksponen, kemudian menghitung hasil dari bilangan dasar dipangkatkan dengan eksponen tersebut.
+6.    **Menghitung Total Nilai:** Buatlah sebuah program R yang menerima input sejumlah nilai mata kuliah dan menghitung total nilai serta rata-ratanya. Program harus menerima input nilai-nilai mata kuliah dan menghasilkan total nilai serta rata-ratanya.
+7.    **Menentukan Ganjil/Genap:** Buatlah sebuah program R yang menerima input bilangan bulat dan mencetak apakah bilangan tersebut ganjil atau genap.
+8.    **Menghitung Keliling dan Luas Persegi:** Buatlah sebuah program R yang menerima input panjang sisi persegi dan menghitung serta mencetak keliling dan luasnya.
+
+
+## Referensi
+
+Berikut adalah beberapa referensi yang dapat Anda gunakan untuk mempelajari dasar-dasar pemrograman dalam bahasa R:
+
+1.    "An Introduction to R": https://cran.r-project.org/manuals.html 
+2.    R for Data Science: https://r4ds.had.co.nz/
+3.    Codecademy - Learn R : https://www.codecademy.com/learn/learn-r
+4.    DataCamp: https://www.datacamp.com/courses/tech:r
+
+
+<!--chapter:end:02_Dasar_Pemrograman_R.Rmd-->
+
+# Strutur Data
+
+Struktur data dalam R adalah cara di mana Anda dapat mengatur dan menyimpan data dalam bentuk yang terstruktur agar mudah diakses, dikelola, dan dimanipulasi. Struktur data memungkinkan Anda untuk mengelompokkan nilai-nilai data ke dalam objek yang sesuai dengan jenis dan sifat data yang Anda miliki. R memiliki beberapa jenis struktur data yang dapat digunakan untuk berbagai tujuan.
+
+```{r struktur_data,echo=FALSE, fig.cap='Struktur Data dalam R', tidy=FALSE, out.width='100%', fig.align='center'}
+library(knitr)
+img1_path <- "./images/Bab3/Rstudio.png"
+include_graphics(img1_path)
+```
+
+## Vektor
+
+Elemen paling dasar dalam R adalah vektor, yang berisikan kumpulan elemen data dengan tipe yang sama. Terdapat dua jenis vector, yaitu vector numerik dan vector karakter. Misalnya:
+
+```{r , echo=T, results='hide'}
+vektor <- seq(from=10, to=21, by=1)      # fungsi `seq()` dengan "by"
+vektor<- seq(from=10, to=21, len=12)     # fungsi `seq()` dengan "len"
+vektor <- 10:21                          # tetapkan data dalam vektor 
+vektor <- vektor+2                       # Operasi berdasarkan elemen
+vektor <- vektor*2                       # Tambahkan 2 untuk setiap elemen 
+vektor <- vektor^2                       # Pangkat 2 untuk setiap elemen 
+vektor <- sqrt(vektor)                   # Akar kuadrat untuk setiap elemen
+vektor <- log(vektor)                    # Logaritma untuk setiap elemen
+vektor<- c(0.5, 0.6)                     # Numerik
+vektor <- c(TRUE, FALSE)                 # Logis
+vektor <- c(T, F)                        # Logis
+vektor <- c("a", "b", "c")               # Karakter
+vektor <- 9:29                           # Integer
+vektor <- c(1+0i, 2+4i)                  # Kompleks
+vektor <- vector("numeric", length = 10) # untuk inisialisasi vektor.
+```
+
+**Catatan:** Menurut [dokumentasi R](https://stat.ethz.ch/R-manual/R-devel/doc/manual/R-lang.html#Objects) untuk `typeof()` dan `class()`, pernyataan tentang "perbedaan utama/main difference" adalah tidak benar. Kelas adalah atribut dari objek yang dapat ditetapkan terlepas dari mode penyimpanan internalnya, sedangkan `typeof()` menentukan tipe (R internal) atau mode penyimpanan dari objek apa pun. Salah satu menggambarkan karakteristik logis sedangkan yang lain adalah karakteristik fisik dari suatu objek.
+
+```{r , echo=T, results='hide'}
+class(vektor)                            # Periksa kelas vektor
+as.numeric(vektor)                       # Menetapkan vektor sebagai numerik
+as.logical(vektor)                       # Menetapkan vektor sebagai logis
+as.character(vektor)                     # Menetapkan vektor sebagai karakter
+as.numeric(c(FALSE,TRUE,TRUE,FALSE))     # Menetapkan vektor logis sebagai angka 
+```
+
+Terkadang, R tidak dapat menemukan cara untuk memaksa suatu objek dan ini dapat menghasilkan NA.
+
+```{r , echo=T, results='hide'}
+vektor <- c("a", "b", "c","1")       	   # menetapkan nilai vektor
+as.numeric(vektor)                       # menetapkan vektor sebagai numerik
+as.logical(vektor)                       # menetapkan vektor sebagai logis
+as.complex(vektor)                       # menetapkan vektor sebagai karakter
+```
+
+**Catatan:** Saat paksaan tidak masuk akal terjadi, Anda biasanya akan mendapat peringatan dari R.
+
+Kita sudah melihat bahwa elemen dasar dari objek R adalah vektor. Vektor dapat ditetapkan dengan berbagai jenis berikut:
+
+*	**character:** di mana setiap elemen adalah string, mis., urutan simbol alfanumerik.
+*	**numeric:** di mana setiap elemen adalah [bilangan real](https://en.wikipedia.org/wiki/Real_number) dalam format floating point [presisi ganda](https://en.wikipedia.org/wiki/Double-precision_floating-point_format).
+*	**integer:** di mana setiap elemen adalah [integer](https://en.wikipedia.org/wiki/Integer).
+*	**logis:** di mana setiap elemen adalah TRUE, FALSE, atau NA3
+*	**complex:** di mana setiap elemen adalah bilangan kompleks.
+
+## Matriks
+
+Matriks adalah vektor dengan atribut dimensi. Matriks dibuat berdasarkan kolom, sehingga entri dapat dianggap dimulai dari sudut "kiri atas" dan mengalir di kolom.
+
+```{r , echo=T}
+matriks <- matrix(c(1, 2, 3, 4, 5, 6), nrow = 2, ncol = 3)
+matriks
+```
+
+Matriks juga dapat dibuat langsung dari vektor dengan menambahkan atribut dimensi.
+
+```{r , echo=T, results='hide'}
+matriks <- 1:6                         # Membuat vektor
+dim(matriks) <- c(2, 3)                # rubah vektor sebagai matriks sebesar 2x3
+matriks                                # Mencetak hasilnya
+```
+
+Matriks dapat dibuat dengan pengikatan kolom atau pengikatan baris dengan fungsi `cbind()` dan `rbind()`.
+
+```{r , echo=T, results='hide'}
+x <- 1:3                              # Membuat vektor `x`
+y <- 10:12                            # Membuat vektor `y`
+cbind(x, y)                           # Menggabungkan vektor `x` dan` y` dengan kolom
+rbind(x, y)                           # Menggabungkan vektor `x` dan` y` dengan baris
+```
+
+## Lists
+
+Lists adalah jenis vektor khusus yang dapat berisi elemen dari tipe data yang berbeda. Lists merupakan tipe data yang sangat penting dalam R dan Anda harus mengenalnya dengan baik. List dapat dibuat secara eksplisit menggunakan fungsi `list()`, yang mengambil sejumlah argumen arbitrer.
+
+Secara umum Anda dapat menggunakan dua operasi pengindeksan yang berbeda pada List:
+
+*	Kurung tunggal untuk mengembalikan daftar elemen yang dipilih `([])`
+*	Kurung ganda untuk mengembalikan elemen tunggal `([[]])`
+
+```{r , echo=T, results='hide'}
+x <- list(1:5,c("a","b","c"),TRUE,7,5)  # Membuat daftar (list) vektor `x`
+x[1]                                    # Kurung tunggal
+x[[1]]                                  # Kurung ganda
+typeof(x[2])                            # Memeriksa jenis objek menggunakan []
+typeof(x[[2]])                          # Memeriksa jenis objek menggunakan [[]]
+x[c(1,2)]                               # list vektor pertama dan kedua
+```
+
+Kita juga dapat membuat daftar (list) dengan mengganti objek kosong yang ada seperti yang Anda lihat dalam kode berikut:
+
+```{r , echo=T, results='hide'}
+x <- vector("list", length = 3)         # Membuat daftar (list) kosong (sesuai kebutuhan)
+name <- c("a","b","c","d")              # Membuat objek sebagai variabel `name`
+age  <- c(18, 19, 20, 21)               # Membuat objek sebagai variabel `age`
+gender<- c(1, 0, 0, 1)                  # Membuat objek sebagai variabel `gender`
+x[[1]] <- name                          # Tambah / ganti objek ke daftar `x`
+x[[2]] <- age                           # Tambah / ganti objek ke daftar `x`
+x[[3]] <- gender                        # Tambah / ganti objek ke daftar `x`
+x                                       # Cetak hasil akhir
+```
+
+## Faktor
+
+Faktor-faktor digunakan untuk mewakili data kategorikal dan dapat menjadi tidak teratur atau teratur. Orang dapat menganggap faktor sebagai vektor integer di mana setiap integer memiliki label. Faktor-faktor menjadi penting dalam pemodelan statistik dan diperlakukan secara khusus oleh fungsi pemodelan seperti `lm()` dan `glm()`.
+
+Menggunakan faktor dengan label lebih baik daripada menggunakan bilangan bulat karena faktor menggambarkan diri sendiri. Memiliki variabel yang memiliki nilai "Laki-laki" dan "Perempuan" lebih baik daripada variabel yang memiliki nilai 1 dan 2. Objek-objek dapat dibuat dengan fungsi `faktor()`.
+
+```{r , echo=T, results='hide'}
+x <- factor(c("yes","no","yes","no"))  # Membuat objek faktor
+x                                      # Cetak hasilnya
+table(x)                               # Tabel dari `x`
+unclass(x)                             # Melihat representasi faktor yang mendasarinya
+attr(x,"levels")                       # Melihat representasi faktor yang mendasarinya
+```
+
+## Data Frame
+
+Kerangka data (data frame) adalah tabel atau struktur mirip array dua dimensi di mana setiap kolom berisi nilai satu variabel dan setiap baris berisi satu set nilai dari setiap kolom.
+
+Berikut ini adalah karakteristik data frame.
+
+*	Nama kolom tidak boleh kosong;
+*	Nama baris harus unik;
+*	Data yang disimpan dalam data frame bisa dari numerik, faktor atau tipe karakter;
+*	Setiap kolom harus berisi jumlah item data yang sama.
+
+```{r , echo=T, results='hide'}
+# Buat data frame pertama.
+df1 <- data.frame(id = c (1:5), 
+                name = c("Julian","Vanessa","Jeffry","Angel","Nikki"),
+              salary = c(623.3,515.2,611.0,729.0,843.25), 
+          start_date = as.Date(c("2022-01-01", "2022-09-23", "2022-11-15",                                               "2022-05-11", "2022-03-27")),
+                dept = c("DS","DS","BA","DA","DS"), stringsAsFactors = F)
+df1
+```
+
+```{r , echo=T, results='hide'}
+# Buat data frame kedua.
+df2 <-data.frame(id = c (6:10), 
+               name = c("Ardifo","Irene","Kefas","Sherly","Bakti"),
+             salary = c(578.0,722.5,632.8,632.8,NA), 
+         start_date = as.Date(c("2022-05-21","2022-07-30","2022-06-17",
+                                "2022-07-30","2018-09-03")),
+               dept = c("Actuaries","Actuaries","CA","DE","Lecturer"),stringsAsFactors = F)
+df2
+```
+
+```{r , echo=T, results='hide'}
+df3 <- rbind(df1,df2)                  # Gabungkan dua frame data
+print(df3)                             # Cetak hasilnya `df3`
+head(df3)                              # Cetak enam baris pertama
+head(df3,6)                            # Cetak enam baris pertama
+#View(df3)                             # Menggunakan RStudio seperti penampil Excel
+class(df3)                             # objeknya bertipe data.frame
+str(df3)                               # Dapatkan struktur data frame
+dim(df3)                               # Periksa dimensi data
+```
+
+Data frame biasanya dibuat dengan membaca dalam dataset menggunakan `read.table()` atau `read.csv ()`. Namun, data frame juga dapat dibuat secara eksplisit dengan fungsi `data.frame()` atau mereka dapat dipaksakan dari jenis objek lain seperti list.
+
+## Menghasilkan Data Frame
+
+Sebagai seorang Data Scientist, ketika mencoba menyimulasikan proses analisis data, pemodelan, bahkan prediksi. Anda harus mampu secara intuitif membangun dataframe untuk memperkirakan kumpulan data sampel. Terutama, ketika Anda tidak memiliki kumpulan data sampel sama sekali. Oleh karena itu, pada bagian ini, kita akan belajar sedikit mengenai cara menghasilkan dataframe. Harap perhatikan baik-baik contoh berikut:
+
+```{r , echo=T, results='show'}
+# Misalkan Anda ingin membangun kumpulan data karyawan di sebuah perusahaan
+
+No<-(1:52)                                       # Menghasilkan bilangan 1-52
+Name<-c(LETTERS,letters)                         # 26 LETTERS dan 26 letters
+Gender<-sample(rep(c("Male","Female"),times=26)) # 26 Laki-laki dan 26 perempuan
+
+# Menghasilkan tanggal lahir
+year_in_3<-seq(as.Date("2000/01/01"), by="year", length.out=4)
+Birthday <- rep(year_in_3, times=13)
+
+# Menghasilkan kategori universitas
+univ1<-rep("National",times=26)                  # 26 universitas negeri
+univ2<-rep("Private",times=16)                   # 16 universitas swasta 
+univ3<-rep("Overseas",times=10)                  # 10 universitas luar negeri
+Universities<-sample(c(univ1,univ2,univ3))       # Menggabungkan data (vetor)
+
+gpa<-runif(52,min=3.00,max=4.00)                 # Menghasilkan 52 bilangan acak (min=3, dan max=4) 
+GPA<-round(gpa,digits=2)                         # Mengatur digit bilangan acak Anda
+Salary<-sample(600:1200,52,replace=T)            # Menghasilakn sampel antara 600-1200 (memungkinkan nilai duplikat)
+Employees<-data.frame(No,
+                      Name,
+                      Birthday,
+                      Gender,
+                      Universities,
+                      GPA,
+                      Salary)
+Employees
+```
+
+
+## Referensi
+
+Berikut adalah beberapa referensi yang dapat Anda gunakan untuk mempelajari dasar-dasar pemrograman dalam bahasa R:
+
+1.    "An Introduction to R": https://cran.r-project.org/manuals.html 
+2.    R for Data Science: https://r4ds.had.co.nz/
+3.    Codecademy - Learn R : https://www.codecademy.com/learn/learn-r
+4.    DataCamp: https://www.datacamp.com/courses/tech:r
+
+
+<!--chapter:end:03_Struktur_Data.Rmd-->
+

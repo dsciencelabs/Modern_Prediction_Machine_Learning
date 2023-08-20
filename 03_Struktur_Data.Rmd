@@ -4,7 +4,7 @@ Struktur data dalam R adalah cara di mana Anda dapat mengatur dan menyimpan data
 
 ```{r struktur_data,echo=FALSE, fig.cap='Struktur Data dalam R', tidy=FALSE, out.width='100%', fig.align='center'}
 library(knitr)
-img1_path <- "./images/Bab3/Rstudio.png"
+img1_path <- "./images/Bab3/Struktur_Data.png"
 include_graphics(img1_path)
 ```
 
