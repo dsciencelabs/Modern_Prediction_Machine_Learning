@@ -2,7 +2,7 @@
 
 Struktur data dalam R adalah cara di mana Anda dapat mengatur dan menyimpan data dalam bentuk yang terstruktur agar mudah diakses, dikelola, dan dimanipulasi. Struktur data memungkinkan Anda untuk mengelompokkan nilai-nilai data ke dalam objek yang sesuai dengan jenis dan sifat data yang Anda miliki. R memiliki beberapa jenis struktur data yang dapat digunakan untuk berbagai tujuan.
 
-```{r struktur_data,echo=FALSE, fig.cap='Struktur Data dalam R', tidy=FALSE, out.width='100%', fig.align='center'}
+```{r struktur-data,echo=FALSE, fig.cap='Struktur Data dalam R', tidy=FALSE, out.width='100%', fig.align='center'}
 library(knitr)
 img1_path <- "./images/Bab3/Struktur_Data.png"
 include_graphics(img1_path)
@@ -85,42 +85,18 @@ cbind(x, y)                           # Menggabungkan vektor `x` dan` y` dengan 
 rbind(x, y)                           # Menggabungkan vektor `x` dan` y` dengan baris
 ```
 
-## Lists
+## Array
 
-Lists adalah jenis vektor khusus yang dapat berisi elemen dari tipe data yang berbeda. Lists merupakan tipe data yang sangat penting dalam R dan Anda harus mengenalnya dengan baik. List dapat dibuat secara eksplisit menggunakan fungsi `list()`, yang mengambil sejumlah argumen arbitrer.
+Array mirip dengan matrix, tetapi dapat memiliki lebih dari dua dimensi. Masing-masing dimensi dalam array memiliki ukuran tertentu.
 
-Secara umum Anda dapat menggunakan dua operasi pengindeksan yang berbeda pada List:
-
-*	Kurung tunggal untuk mengembalikan daftar elemen yang dipilih `([])`
-*	Kurung ganda untuk mengembalikan elemen tunggal `([[]])`
-
-```{r , echo=T, results='hide'}
-x <- list(1:5,c("a","b","c"),TRUE,7,5)  # Membuat daftar (list) vektor `x`
-x[1]                                    # Kurung tunggal
-x[[1]]                                  # Kurung ganda
-typeof(x[2])                            # Memeriksa jenis objek menggunakan []
-typeof(x[[2]])                          # Memeriksa jenis objek menggunakan [[]]
-x[c(1,2)]                               # list vektor pertama dan kedua
+```{r}
+array_data <- array(c(1, 2, 3, 4, 5, 6), dim = c(2, 3, 1))
 ```
 
-Kita juga dapat membuat daftar (list) dengan mengganti objek kosong yang ada seperti yang Anda lihat dalam kode berikut:
-
-```{r , echo=T, results='hide'}
-x <- vector("list", length = 3)         # Membuat daftar (list) kosong (sesuai kebutuhan)
-name <- c("a","b","c","d")              # Membuat objek sebagai variabel `name`
-age  <- c(18, 19, 20, 21)               # Membuat objek sebagai variabel `age`
-gender<- c(1, 0, 0, 1)                  # Membuat objek sebagai variabel `gender`
-x[[1]] <- name                          # Tambah / ganti objek ke daftar `x`
-x[[2]] <- age                           # Tambah / ganti objek ke daftar `x`
-x[[3]] <- gender                        # Tambah / ganti objek ke daftar `x`
-x                                       # Cetak hasil akhir
-```
 
 ## Faktor
 
-Faktor-faktor digunakan untuk mewakili data kategorikal dan dapat menjadi tidak teratur atau teratur. Orang dapat menganggap faktor sebagai vektor integer di mana setiap integer memiliki label. Faktor-faktor menjadi penting dalam pemodelan statistik dan diperlakukan secara khusus oleh fungsi pemodelan seperti `lm()` dan `glm()`.
-
-Menggunakan faktor dengan label lebih baik daripada menggunakan bilangan bulat karena faktor menggambarkan diri sendiri. Memiliki variabel yang memiliki nilai "Laki-laki" dan "Perempuan" lebih baik daripada variabel yang memiliki nilai 1 dan 2. Objek-objek dapat dibuat dengan fungsi `faktor()`.
+Faktor-faktor digunakan untuk mewakili data kategorikal dan dapat menjadi tidak teratur atau teratur. Orang dapat menganggap faktor sebagai vektor integer di mana setiap integer memiliki label.  Menggunakan faktor dengan label lebih baik daripada menggunakan bilangan bulat karena faktor menggambarkan diri sendiri. Memiliki variabel yang memiliki nilai "Laki-laki" dan "Perempuan" lebih baik daripada variabel yang memiliki nilai 1 dan 2. Objek-objek dapat dibuat dengan fungsi `faktor()`.
 
 ```{r , echo=T, results='hide'}
 x <- factor(c("yes","no","yes","no"))  # Membuat objek faktor
@@ -162,7 +138,7 @@ df2 <-data.frame(id = c (6:10),
 df2
 ```
 
-```{r , echo=T, results='hide'}
+```{r ,echo=T, results='hide'}
 df3 <- rbind(df1,df2)                  # Gabungkan dua frame data
 print(df3)                             # Cetak hasilnya `df3`
 head(df3)                              # Cetak enam baris pertama
@@ -175,7 +151,80 @@ dim(df3)                               # Periksa dimensi data
 
 Data frame biasanya dibuat dengan membaca dalam dataset menggunakan `read.table()` atau `read.csv ()`. Namun, data frame juga dapat dibuat secara eksplisit dengan fungsi `data.frame()` atau mereka dapat dipaksakan dari jenis objek lain seperti list.
 
-## Menghasilkan Data Frame
+## Lists
+
+List dalam R adalah struktur data yang mengizinkan Anda untuk menyimpan berbagai jenis objek, termasuk vektor, matriks, array, dataframe, dan objek list lainnya, dalam satu objek tunggal. Ini memungkinkan Anda untuk membuat struktur data yang kompleks dan fleksibel dengan menggabungkan objek-objek yang berbeda ke dalam satu wadah. List sering digunakan ketika Anda perlu mengorganisir dan mengelompokkan objek-objek yang terkait.
+
+Berikut adalah contoh penggunaan dan pembuatan list dalam R:
+
+```{r ,echo=T, results='hide'}
+# Membuat vektor dan matriks
+vektor <- c(1.5, 2.7, 3.2, 4.0)
+matriks <- matrix(c(1, 2, 3, 4, 5, 6), nrow = 2, ncol = 3)
+```
+
+```{r ,echo=T, results='hide'}
+# Membuat dataframe
+data_frame <- data.frame(name = c("Alice", "Bakti", "Charlie"),
+                         age = c(25, 30, 28),
+                         score = c(95, 88, 76))
+```
+
+```{r ,echo=T, results='hide'}
+faktor <- "List, Sudah Jadi"
+```
+
+
+
+```{r ,echo=T, results='hide'}
+# Membuat list
+my_list <- list(vektor, matriks, data_frame, faktor)
+```
+
+
+```{r,echo=T, results='hide'}
+# Menampilkan list
+print(my_list)
+```
+
+Anda juga dapat memberi nama pada setiap elemen dalam list untuk membuat list yang lebih mudah dibaca:
+
+```{r}
+nama_list <- list(elemen1 = vektor, 
+                  elemen2 = matriks, 
+                  elemen3 = data_frame, 
+                  elemen4 = faktor)
+
+# Menampilkan elemen dalam list berdasarkan nama
+print(nama_list$elemen1)
+print(nama_list$elemen2)
+print(nama_list$elemen3)
+print(nama_list$elemen4)
+```
+
+Anda dapat mengakses elemen-elemen dalam list menggunakan indeks atau nama. Misalnya:
+
+```{r,echo=T, results='hide'}
+# Mengakses elemen pertama dalam list menggunakan indeks
+elemen1 <- my_list[[1]]
+elemen2 <- my_list[[2]]
+elemen3 <- my_list[[2]]
+elemen4 <- my_list[[2]]
+
+# Menampilkan hasil
+print(elemen1)
+print(elemen2)
+print(elemen3)
+print(elemen4)
+```
+
+List memungkinkan Anda mengorganisir, mengelompokkan, dan mengakses objek-objek yang beragam dalam struktur data tunggal, sehingga sangat berguna dalam analisis data yang kompleks dan beragam.
+
+
+## Rekayasa Data Frame 
+
+
+### Tanpa Packages
 
 Sebagai seorang Data Scientist, ketika mencoba menyimulasikan proses analisis data, pemodelan, bahkan prediksi. Anda harus mampu secara intuitif membangun dataframe untuk memperkirakan kumpulan data sampel. Terutama, ketika Anda tidak memiliki kumpulan data sampel sama sekali. Oleh karena itu, pada bagian ini, kita akan belajar sedikit mengenai cara menghasilkan dataframe. Harap perhatikan baik-baik contoh berikut:
 
@@ -210,12 +259,39 @@ Employees
 ```
 
 
-## Referensi
+### Mengunakan Packages
 
-Berikut adalah beberapa referensi yang dapat Anda gunakan untuk mempelajari dasar-dasar pemrograman dalam bahasa R:
+Dalam contoh kedua ini, digunakan pustaka *(Packages)* `faker` untuk menghasilkan data palsu seperti nama, alamat, dan lain-lain. Pastikan Anda telah menginstal pustaka tersebut menggunakan perintah `install.packages("fakir")` jika belum terinstal, mengikuti langkah berikut.
 
-1.    "An Introduction to R": https://cran.r-project.org/manuals.html 
-2.    R for Data Science: https://r4ds.had.co.nz/
-3.    Codecademy - Learn R : https://www.codecademy.com/learn/learn-r
-4.    DataCamp: https://www.datacamp.com/courses/tech:r
+```{r, eval=F}
+install.packages("remotes")
+remotes::install_github("ThinkR-open/fakir")
+```
+
+Selanjutnya, anda dapat membuat data frame palsu seperti diperlihatkan berikut:
+
+```{r}
+library(fakir)
+fake_ticket_client(vol = 10)
+```
+
+**Catatan:** Pustaka `fakir` Menyimpan beberapa dataset didalamnya, antara lain:
+
+```{r, eval=F}
+fake_products(10)                                   # Rekayasa Data Produk 
+fake_visits(from = "2017-01-01", to = "2017-01-31") # Pengunjung Website
+fake_sondage_answers(n = 10)                        # Kuisioner transfortasi
+```
+
+## Latihan
+
+1.    Buatlah Rekayasa dataframe Mahasiswa dengan empat kolom: "Nama", "Usia", "Kota",  dan "Nilai". Sebanyak 100 baris, dengan syarat tidak boleh ada nama yang sama. 
+
+2.    Buatlah Rekayasa dataframe Karyawan dengan tujuh kolom: "No", "Name", "Birthday", "Gender", "Universities", "GPA", "Salary". Sebanyak 100 baris, dengan syarat tidak boleh ada nama yang sama.
+
+3.    Buatlah Rekayasa dataframe pengunjung Website, sebanyak 200 baris.
+
+
+**Catatan:** Kumpulkan hasil latihan anda, tidak boleh sama dengan teman mahasiwa lainnya.
+
 

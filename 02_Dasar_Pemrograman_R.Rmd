@@ -129,12 +129,12 @@ cat ("Logika Disjungsi (Atau) :", x | y, "\n")
 Berikut ini juga ada beberapa operator yang kemungkinan besar juga akan anda perlukan pada saat akan menggunakan R.
 
 ```{r, eval=FALSE}
-x <- c(2,3,5)                          # memuat vektor x
-y <- c(2,4,6)                          # memuat vektor y
-sqrt(x*y)                              # Bentuk akar
-log(x)                                 # logaritma 
-exp(y)                                 # eksponen
-(x/y) + y                              # Tanda kurung
+x <- c(2,3,5)                    # memuat vektor x
+y <- c(2,4,6)                    # memuat vektor y
+sqrt(x*y)                        # Bentuk akar
+log(x)                           # logaritma 
+exp(y)                           # eksponen
+(x/y) + y                        # Tanda kurung
 ```
 
 **Catatan:** [Sifat Komutatif Asosiatif dan Distributif](https://www.advernesia.com/blog/matematika/sifat-komutatif-asosiatif-dan-distributif/) juga berlaku dalam program R.
@@ -157,20 +157,20 @@ Dalam pemrograman seperti R dan Python, tipe data merupakan konsep penting. Kedu
 Berikut ini adalah koding R yang dapat digunakan untuk menetapkan kelima tipe data diatas:
 
 ```{r, eval=F}
-d1 = 5.6                # Tetapkan nilai desimal 
-d2 = as.integer(5)      # tetapkan nilai integer
-d2 = 5L                 # cara lain untuk memuat nilai integer di R
-d3 = c(TRUE,FALSE)      # Bolean/Logical
-d3 = as.logical(c(0,1)) # cara lain untuk memuat Bolean/Logical
-d4 = c("a",'b','123')   # String/Character
-d5 = 1 + 5i             # Complex 
+d1 = 5.6                       # Tetapkan nilai desimal 
+d2 = as.integer(5)             # tetapkan nilai integer
+d2 = 5L                        # cara lain untuk memuat nilai integer di R
+d3 = c(TRUE,FALSE)             # Bolean/Logical
+d3 = as.logical(c(0,1))        # cara lain untuk memuat Bolean/Logical
+d4 = c("a",'b','123')          # String/Character
+d5 = 1 + 5i                    # Complex 
 ```
 
 Untuk memeriksa tipe data dalam R:
 
 ```{r, eval=F}
-class(d1)            # cetak nama kelas variabel
-typeof(d1)           # cetak tipe variabel x
+class(d1)                      # cetak nama kelas variabel
+typeof(d1)                     # cetak tipe variabel x
 ```
 
 ## Statistika Dasar
@@ -277,13 +277,4 @@ Berikut adalah beberapa contoh soal latihan dasar pemrograman dalam bahasa pemro
 7.    **Menentukan Ganjil/Genap:** Buatlah sebuah program R yang menerima input bilangan bulat dan mencetak apakah bilangan tersebut ganjil atau genap.
 8.    **Menghitung Keliling dan Luas Persegi:** Buatlah sebuah program R yang menerima input panjang sisi persegi dan menghitung serta mencetak keliling dan luasnya.
 
-
-## Referensi
-
-Berikut adalah beberapa referensi yang dapat Anda gunakan untuk mempelajari dasar-dasar pemrograman dalam bahasa R:
-
-1.    "An Introduction to R": https://cran.r-project.org/manuals.html 
-2.    R for Data Science: https://r4ds.had.co.nz/
-3.    Codecademy - Learn R : https://www.codecademy.com/learn/learn-r
-4.    DataCamp: https://www.datacamp.com/courses/tech:r
 
