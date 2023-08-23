@@ -1,0 +1,685 @@
+<!DOCTYPE html>
+<html lang="" xml:lang="">
+<head>
+
+  <meta charset="utf-8" />
+  <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+  <title>Bab 2 Operasi Dasar R | Algoritma dan Pemrograman R</title>
+  <meta name="description" content="Bab 2 Operasi Dasar R | Algoritma dan Pemrograman R akan mencakup konsep-konsep dasar dalam pemrograman, pemahaman algoritma, serta pengenalan terhadap bahasa pemrograman R." />
+  <meta name="generator" content="bookdown 0.34 and GitBook 2.6.7" />
+
+  <meta property="og:title" content="Bab 2 Operasi Dasar R | Algoritma dan Pemrograman R" />
+  <meta property="og:type" content="book" />
+  <meta property="og:image" content="/images/Cover_Algoritma_Permrograman.png" />
+  <meta property="og:description" content="Bab 2 Operasi Dasar R | Algoritma dan Pemrograman R akan mencakup konsep-konsep dasar dalam pemrograman, pemahaman algoritma, serta pengenalan terhadap bahasa pemrograman R." />
+  <meta name="github-repo" content="dsciencelabs/Algoritma_Pemrograman_R" />
+
+  <meta name="twitter:card" content="summary" />
+  <meta name="twitter:title" content="Bab 2 Operasi Dasar R | Algoritma dan Pemrograman R" />
+  
+  <meta name="twitter:description" content="Bab 2 Operasi Dasar R | Algoritma dan Pemrograman R akan mencakup konsep-konsep dasar dalam pemrograman, pemahaman algoritma, serta pengenalan terhadap bahasa pemrograman R." />
+  <meta name="twitter:image" content="/images/Cover_Algoritma_Permrograman.png" />
+
+<meta name="author" content="Bakti Siregar, M.Sc" />
+
+
+
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <meta name="apple-mobile-web-app-capable" content="yes" />
+  <meta name="apple-mobile-web-app-status-bar-style" content="black" />
+  
+  
+<link rel="prev" href="pengenalan-r.html"/>
+<link rel="next" href="struktur-data.html"/>
+<script src="libs/jquery/jquery-3.6.0.min.js"></script>
+<script src="https://cdn.jsdelivr.net/npm/fuse.js@6.4.6/dist/fuse.min.js"></script>
+<link href="libs/gitbook/css/style.css" rel="stylesheet" />
+<link href="libs/gitbook/css/plugin-table.css" rel="stylesheet" />
+<link href="libs/gitbook/css/plugin-bookdown.css" rel="stylesheet" />
+<link href="libs/gitbook/css/plugin-highlight.css" rel="stylesheet" />
+<link href="libs/gitbook/css/plugin-search.css" rel="stylesheet" />
+<link href="libs/gitbook/css/plugin-fontsettings.css" rel="stylesheet" />
+<link href="libs/gitbook/css/plugin-clipboard.css" rel="stylesheet" />
+
+
+
+
+
+
+
+
+<link href="libs/anchor-sections/anchor-sections.css" rel="stylesheet" />
+<link href="libs/anchor-sections/anchor-sections-hash.css" rel="stylesheet" />
+<script src="libs/anchor-sections/anchor-sections.js"></script>
+
+
+<style type="text/css">
+pre > code.sourceCode { white-space: pre; position: relative; }
+pre > code.sourceCode > span { display: inline-block; line-height: 1.25; }
+pre > code.sourceCode > span:empty { height: 1.2em; }
+.sourceCode { overflow: visible; }
+code.sourceCode > span { color: inherit; text-decoration: inherit; }
+pre.sourceCode { margin: 0; }
+@media screen {
+div.sourceCode { overflow: auto; }
+}
+@media print {
+pre > code.sourceCode { white-space: pre-wrap; }
+pre > code.sourceCode > span { text-indent: -5em; padding-left: 5em; }
+}
+pre.numberSource code
+  { counter-reset: source-line 0; }
+pre.numberSource code > span
+  { position: relative; left: -4em; counter-increment: source-line; }
+pre.numberSource code > span > a:first-child::before
+  { content: counter(source-line);
+    position: relative; left: -1em; text-align: right; vertical-align: baseline;
+    border: none; display: inline-block;
+    -webkit-touch-callout: none; -webkit-user-select: none;
+    -khtml-user-select: none; -moz-user-select: none;
+    -ms-user-select: none; user-select: none;
+    padding: 0 4px; width: 4em;
+    color: #aaaaaa;
+  }
+pre.numberSource { margin-left: 3em; border-left: 1px solid #aaaaaa;  padding-left: 4px; }
+div.sourceCode
+  {   }
+@media screen {
+pre > code.sourceCode > span > a:first-child::before { text-decoration: underline; }
+}
+code span.al { color: #ff0000; font-weight: bold; } /* Alert */
+code span.an { color: #60a0b0; font-weight: bold; font-style: italic; } /* Annotation */
+code span.at { color: #7d9029; } /* Attribute */
+code span.bn { color: #40a070; } /* BaseN */
+code span.bu { color: #008000; } /* BuiltIn */
+code span.cf { color: #007020; font-weight: bold; } /* ControlFlow */
+code span.ch { color: #4070a0; } /* Char */
+code span.cn { color: #880000; } /* Constant */
+code span.co { color: #60a0b0; font-style: italic; } /* Comment */
+code span.cv { color: #60a0b0; font-weight: bold; font-style: italic; } /* CommentVar */
+code span.do { color: #ba2121; font-style: italic; } /* Documentation */
+code span.dt { color: #902000; } /* DataType */
+code span.dv { color: #40a070; } /* DecVal */
+code span.er { color: #ff0000; font-weight: bold; } /* Error */
+code span.ex { } /* Extension */
+code span.fl { color: #40a070; } /* Float */
+code span.fu { color: #06287e; } /* Function */
+code span.im { color: #008000; font-weight: bold; } /* Import */
+code span.in { color: #60a0b0; font-weight: bold; font-style: italic; } /* Information */
+code span.kw { color: #007020; font-weight: bold; } /* Keyword */
+code span.op { color: #666666; } /* Operator */
+code span.ot { color: #007020; } /* Other */
+code span.pp { color: #bc7a00; } /* Preprocessor */
+code span.sc { color: #4070a0; } /* SpecialChar */
+code span.ss { color: #bb6688; } /* SpecialString */
+code span.st { color: #4070a0; } /* String */
+code span.va { color: #19177c; } /* Variable */
+code span.vs { color: #4070a0; } /* VerbatimString */
+code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warning */
+</style>
+
+<style type="text/css">
+  
+  div.hanging-indent{margin-left: 1.5em; text-indent: -1.5em;}
+</style>
+
+<link rel="stylesheet" href="style.css" type="text/css" />
+</head>
+
+<body>
+
+
+
+  <div class="book without-animation with-summary font-size-2 font-family-1" data-basepath=".">
+
+    <div class="book-summary">
+      <nav role="navigation">
+
+<ul class="summary">
+<li><center><img src="images/logo.png" alt="logo" width="50%" height="50%"style="margin: 15px 0 0 0"></center></li>
+
+<li class="divider"></li>
+<li class="chapter" data-level="" data-path="index.html"><a href="index.html"><i class="fa fa-check"></i>Kata Pengantar</a>
+<ul>
+<li class="chapter" data-level="" data-path="index.html"><a href="index.html#ringkasan-pembelajaran"><i class="fa fa-check"></i>Ringkasan Pembelajaran</a></li>
+<li class="chapter" data-level="" data-path="index.html"><a href="index.html#tim-penyusun"><i class="fa fa-check"></i>Tim Penyusun</a></li>
+<li class="chapter" data-level="" data-path="index.html"><a href="index.html#ucapan-terima-kasih"><i class="fa fa-check"></i>Ucapan Terima Kasih</a></li>
+<li class="chapter" data-level="" data-path="index.html"><a href="index.html#masukan-saran"><i class="fa fa-check"></i>Masukan &amp; Saran</a></li>
+</ul></li>
+<li class="chapter" data-level="1" data-path="pengenalan-r.html"><a href="pengenalan-r.html"><i class="fa fa-check"></i><b>1</b> Pengenalan R?</a>
+<ul>
+<li class="chapter" data-level="1.1" data-path="pengenalan-r.html"><a href="pengenalan-r.html#fitur-utama-r"><i class="fa fa-check"></i><b>1.1</b> Fitur Utama R</a></li>
+<li class="chapter" data-level="1.2" data-path="pengenalan-r.html"><a href="pengenalan-r.html#mengapa-belajar-r"><i class="fa fa-check"></i><b>1.2</b> Mengapa Belajar R?</a></li>
+<li class="chapter" data-level="1.3" data-path="pengenalan-r.html"><a href="pengenalan-r.html#download-r-rstudio"><i class="fa fa-check"></i><b>1.3</b> Download R &amp; Rstudio:</a></li>
+<li class="chapter" data-level="1.4" data-path="pengenalan-r.html"><a href="pengenalan-r.html#tutorial-instal-r-studio"><i class="fa fa-check"></i><b>1.4</b> Tutorial Instal R &amp; Studio</a>
+<ul>
+<li class="chapter" data-level="1.4.1" data-path="pengenalan-r.html"><a href="pengenalan-r.html#instalasi-r"><i class="fa fa-check"></i><b>1.4.1</b> Instalasi R</a></li>
+<li class="chapter" data-level="1.4.2" data-path="pengenalan-r.html"><a href="pengenalan-r.html#instalasi-rstudio"><i class="fa fa-check"></i><b>1.4.2</b> Instalasi RStudio:</a></li>
+</ul></li>
+<li class="chapter" data-level="1.5" data-path="pengenalan-r.html"><a href="pengenalan-r.html#video-instalasi-r-rstudio"><i class="fa fa-check"></i><b>1.5</b> Video Instalasi R &amp; RStudio</a>
+<ul>
+<li class="chapter" data-level="1.5.1" data-path="pengenalan-r.html"><a href="pengenalan-r.html#windows-1"><i class="fa fa-check"></i><b>1.5.1</b> Windows</a></li>
+<li class="chapter" data-level="1.5.2" data-path="pengenalan-r.html"><a href="pengenalan-r.html#macos-1"><i class="fa fa-check"></i><b>1.5.2</b> MacOS</a></li>
+</ul></li>
+<li class="chapter" data-level="1.6" data-path="pengenalan-r.html"><a href="pengenalan-r.html#interface-r-rstudio"><i class="fa fa-check"></i><b>1.6</b> Interface R &amp; RStudio:</a></li>
+<li class="chapter" data-level="1.7" data-path="pengenalan-r.html"><a href="pengenalan-r.html#sintaks-dasar-r"><i class="fa fa-check"></i><b>1.7</b> Sintaks Dasar R</a></li>
+<li class="chapter" data-level="1.8" data-path="pengenalan-r.html"><a href="pengenalan-r.html#bantuan-help-r"><i class="fa fa-check"></i><b>1.8</b> Bantuan (Help) R</a></li>
+<li class="chapter" data-level="1.9" data-path="pengenalan-r.html"><a href="pengenalan-r.html#shortcut-penggunaan-rstudio"><i class="fa fa-check"></i><b>1.9</b> Shortcut Penggunaan Rstudio</a></li>
+<li class="chapter" data-level="1.10" data-path="pengenalan-r.html"><a href="pengenalan-r.html#praktikum"><i class="fa fa-check"></i><b>1.10</b> Praktikum</a></li>
+</ul></li>
+<li class="chapter" data-level="2" data-path="operasi-dasar-r.html"><a href="operasi-dasar-r.html"><i class="fa fa-check"></i><b>2</b> Operasi Dasar R</a>
+<ul>
+<li class="chapter" data-level="2.1" data-path="operasi-dasar-r.html"><a href="operasi-dasar-r.html#variabel"><i class="fa fa-check"></i><b>2.1</b> Variabel</a>
+<ul>
+<li class="chapter" data-level="2.1.1" data-path="operasi-dasar-r.html"><a href="operasi-dasar-r.html#mendefinisikan-variabel"><i class="fa fa-check"></i><b>2.1.1</b> Mendefinisikan Variabel</a></li>
+<li class="chapter" data-level="2.1.2" data-path="operasi-dasar-r.html"><a href="operasi-dasar-r.html#aturan-nama-variabel"><i class="fa fa-check"></i><b>2.1.2</b> Aturan Nama Variabel</a></li>
+</ul></li>
+<li class="chapter" data-level="2.2" data-path="operasi-dasar-r.html"><a href="operasi-dasar-r.html#operator"><i class="fa fa-check"></i><b>2.2</b> Operator</a>
+<ul>
+<li class="chapter" data-level="2.2.1" data-path="operasi-dasar-r.html"><a href="operasi-dasar-r.html#aritmatika"><i class="fa fa-check"></i><b>2.2.1</b> Aritmatika</a></li>
+<li class="chapter" data-level="2.2.2" data-path="operasi-dasar-r.html"><a href="operasi-dasar-r.html#relasional"><i class="fa fa-check"></i><b>2.2.2</b> Relasional</a></li>
+<li class="chapter" data-level="2.2.3" data-path="operasi-dasar-r.html"><a href="operasi-dasar-r.html#logika"><i class="fa fa-check"></i><b>2.2.3</b> Logika</a></li>
+<li class="chapter" data-level="2.2.4" data-path="operasi-dasar-r.html"><a href="operasi-dasar-r.html#operator-lain-lain"><i class="fa fa-check"></i><b>2.2.4</b> Operator Lain-lain</a></li>
+</ul></li>
+<li class="chapter" data-level="2.3" data-path="operasi-dasar-r.html"><a href="operasi-dasar-r.html#tipe-data"><i class="fa fa-check"></i><b>2.3</b> Tipe Data</a></li>
+<li class="chapter" data-level="2.4" data-path="operasi-dasar-r.html"><a href="operasi-dasar-r.html#statistika-dasar"><i class="fa fa-check"></i><b>2.4</b> Statistika Dasar</a></li>
+<li class="chapter" data-level="2.5" data-path="operasi-dasar-r.html"><a href="operasi-dasar-r.html#contoh-pemrograman-dasar"><i class="fa fa-check"></i><b>2.5</b> Contoh Pemrograman Dasar</a>
+<ul>
+<li class="chapter" data-level="2.5.1" data-path="operasi-dasar-r.html"><a href="operasi-dasar-r.html#menghitung-rata-rata"><i class="fa fa-check"></i><b>2.5.1</b> Menghitung Rata-rata</a></li>
+<li class="chapter" data-level="2.5.2" data-path="operasi-dasar-r.html"><a href="operasi-dasar-r.html#membandingkan-angka"><i class="fa fa-check"></i><b>2.5.2</b> Membandingkan Angka</a></li>
+<li class="chapter" data-level="2.5.3" data-path="operasi-dasar-r.html"><a href="operasi-dasar-r.html#membandingkan-karakter"><i class="fa fa-check"></i><b>2.5.3</b> Membandingkan Karakter</a></li>
+<li class="chapter" data-level="2.5.4" data-path="operasi-dasar-r.html"><a href="operasi-dasar-r.html#mengecek-kondisi-gabungan"><i class="fa fa-check"></i><b>2.5.4</b> Mengecek Kondisi Gabungan</a></li>
+<li class="chapter" data-level="2.5.5" data-path="operasi-dasar-r.html"><a href="operasi-dasar-r.html#penggunaan-operator-logika"><i class="fa fa-check"></i><b>2.5.5</b> Penggunaan Operator Logika</a></li>
+<li class="chapter" data-level="2.5.6" data-path="operasi-dasar-r.html"><a href="operasi-dasar-r.html#pemeriksaan-kondisi-dengan-ifelse"><i class="fa fa-check"></i><b>2.5.6</b> Pemeriksaan Kondisi dengan ifelse()</a></li>
+</ul></li>
+<li class="chapter" data-level="2.6" data-path="operasi-dasar-r.html"><a href="operasi-dasar-r.html#latihan"><i class="fa fa-check"></i><b>2.6</b> Latihan</a></li>
+</ul></li>
+<li class="chapter" data-level="3" data-path="struktur-data.html"><a href="struktur-data.html"><i class="fa fa-check"></i><b>3</b> Struktur Data</a>
+<ul>
+<li class="chapter" data-level="3.1" data-path="struktur-data.html"><a href="struktur-data.html#vektor"><i class="fa fa-check"></i><b>3.1</b> Vektor</a></li>
+<li class="chapter" data-level="3.2" data-path="struktur-data.html"><a href="struktur-data.html#matriks"><i class="fa fa-check"></i><b>3.2</b> Matriks</a></li>
+<li class="chapter" data-level="3.3" data-path="struktur-data.html"><a href="struktur-data.html#array"><i class="fa fa-check"></i><b>3.3</b> Array</a></li>
+<li class="chapter" data-level="3.4" data-path="struktur-data.html"><a href="struktur-data.html#faktor"><i class="fa fa-check"></i><b>3.4</b> Faktor</a></li>
+<li class="chapter" data-level="3.5" data-path="struktur-data.html"><a href="struktur-data.html#data-frame"><i class="fa fa-check"></i><b>3.5</b> Data Frame</a></li>
+<li class="chapter" data-level="3.6" data-path="struktur-data.html"><a href="struktur-data.html#lists"><i class="fa fa-check"></i><b>3.6</b> Lists</a></li>
+<li class="chapter" data-level="3.7" data-path="struktur-data.html"><a href="struktur-data.html#rekayasa-data-frame"><i class="fa fa-check"></i><b>3.7</b> Rekayasa Data Frame</a>
+<ul>
+<li class="chapter" data-level="3.7.1" data-path="struktur-data.html"><a href="struktur-data.html#tanpa-packages"><i class="fa fa-check"></i><b>3.7.1</b> Tanpa Packages</a></li>
+<li class="chapter" data-level="3.7.2" data-path="struktur-data.html"><a href="struktur-data.html#mengunakan-packages"><i class="fa fa-check"></i><b>3.7.2</b> Mengunakan Packages</a></li>
+</ul></li>
+<li class="chapter" data-level="3.8" data-path="struktur-data.html"><a href="struktur-data.html#latihan-1"><i class="fa fa-check"></i><b>3.8</b> Latihan</a></li>
+</ul></li>
+<li class="chapter" data-level="4" data-path="ekstraksi-data.html"><a href="ekstraksi-data.html"><i class="fa fa-check"></i><b>4</b> Ekstraksi Data</a>
+<ul>
+<li class="chapter" data-level="4.1" data-path="ekstraksi-data.html"><a href="ekstraksi-data.html#impor-dataset"><i class="fa fa-check"></i><b>4.1</b> Impor Dataset</a></li>
+<li class="chapter" data-level="4.2" data-path="ekstraksi-data.html"><a href="ekstraksi-data.html#ekstraksi-baris"><i class="fa fa-check"></i><b>4.2</b> Ekstraksi Baris</a></li>
+<li class="chapter" data-level="4.3" data-path="ekstraksi-data.html"><a href="ekstraksi-data.html#ekstraksi-subset"><i class="fa fa-check"></i><b>4.3</b> Ekstraksi Subset</a></li>
+<li class="chapter" data-level="4.4" data-path="ekstraksi-data.html"><a href="ekstraksi-data.html#ekstraksi-dengan-variabel-baru"><i class="fa fa-check"></i><b>4.4</b> Ekstraksi Dengan Variabel Baru</a></li>
+<li class="chapter" data-level="4.5" data-path="ekstraksi-data.html"><a href="ekstraksi-data.html#ekstraksi-summary-statistik"><i class="fa fa-check"></i><b>4.5</b> Ekstraksi Summary Statistik</a></li>
+<li class="chapter" data-level="4.6" data-path="ekstraksi-data.html"><a href="ekstraksi-data.html#mengubah-nama"><i class="fa fa-check"></i><b>4.6</b> Mengubah Nama</a></li>
+<li class="chapter" data-level="4.7" data-path="ekstraksi-data.html"><a href="ekstraksi-data.html#latihan-2"><i class="fa fa-check"></i><b>4.7</b> Latihan</a></li>
+</ul></li>
+<li class="chapter" data-level="5" data-path="fungsi-dalam-r.html"><a href="fungsi-dalam-r.html"><i class="fa fa-check"></i><b>5</b> Fungsi dalam R</a>
+<ul>
+<li class="chapter" data-level="5.1" data-path="fungsi-dalam-r.html"><a href="fungsi-dalam-r.html#fungsi-satu-argumen"><i class="fa fa-check"></i><b>5.1</b> Fungsi Satu Argumen</a>
+<ul>
+<li class="chapter" data-level="5.1.1" data-path="fungsi-dalam-r.html"><a href="fungsi-dalam-r.html#fungsi-kuadrat"><i class="fa fa-check"></i><b>5.1.1</b> Fungsi Kuadrat</a></li>
+<li class="chapter" data-level="5.1.2" data-path="fungsi-dalam-r.html"><a href="fungsi-dalam-r.html#fungsi-akar"><i class="fa fa-check"></i><b>5.1.2</b> Fungsi Akar</a></li>
+<li class="chapter" data-level="5.1.3" data-path="fungsi-dalam-r.html"><a href="fungsi-dalam-r.html#nilai-rerata"><i class="fa fa-check"></i><b>5.1.3</b> Nilai Rerata</a></li>
+<li class="chapter" data-level="5.1.4" data-path="fungsi-dalam-r.html"><a href="fungsi-dalam-r.html#konversi-persen"><i class="fa fa-check"></i><b>5.1.4</b> Konversi Persen</a></li>
+</ul></li>
+<li class="chapter" data-level="5.2" data-path="fungsi-dalam-r.html"><a href="fungsi-dalam-r.html#simpan-fungsi"><i class="fa fa-check"></i><b>5.2</b> Simpan Fungsi</a></li>
+<li class="chapter" data-level="5.3" data-path="fungsi-dalam-r.html"><a href="fungsi-dalam-r.html#fungsi-multi-argumen"><i class="fa fa-check"></i><b>5.3</b> Fungsi Multi Argumen</a>
+<ul>
+<li class="chapter" data-level="5.3.1" data-path="fungsi-dalam-r.html"><a href="fungsi-dalam-r.html#luas-keliling"><i class="fa fa-check"></i><b>5.3.1</b> Luas &amp; Keliling</a></li>
+<li class="chapter" data-level="5.3.2" data-path="fungsi-dalam-r.html"><a href="fungsi-dalam-r.html#luas-keliling-dan-volume"><i class="fa fa-check"></i><b>5.3.2</b> Luas, Keliling dan Volume</a></li>
+<li class="chapter" data-level="5.3.3" data-path="fungsi-dalam-r.html"><a href="fungsi-dalam-r.html#rerata-frekuensi"><i class="fa fa-check"></i><b>5.3.3</b> Rerata Frekuensi</a></li>
+</ul></li>
+<li class="chapter" data-level="5.4" data-path="fungsi-dalam-r.html"><a href="fungsi-dalam-r.html#fungsi-untuk-data-frame"><i class="fa fa-check"></i><b>5.4</b> Fungsi untuk Data Frame</a>
+<ul>
+<li class="chapter" data-level="5.4.1" data-path="fungsi-dalam-r.html"><a href="fungsi-dalam-r.html#normalisasi"><i class="fa fa-check"></i><b>5.4.1</b> Normalisasi</a></li>
+</ul></li>
+<li class="chapter" data-level="5.5" data-path="fungsi-dalam-r.html"><a href="fungsi-dalam-r.html#latihan-3"><i class="fa fa-check"></i><b>5.5</b> Latihan</a></li>
+</ul></li>
+<li class="chapter" data-level="6" data-path="referensi.html"><a href="referensi.html"><i class="fa fa-check"></i><b>6</b> Referensi</a></li>
+<li class="divider"></li>
+<li><a href="https://github.com/rstudio/bookdown" target="blank">Published with bookdown</a></li>
+
+</ul>
+
+      </nav>
+    </div>
+
+    <div class="book-body">
+      <div class="body-inner">
+        <div class="book-header" role="navigation">
+          <h1>
+            <i class="fa fa-circle-o-notch fa-spin"></i><a href="./">Algoritma dan Pemrograman R</a>
+          </h1>
+        </div>
+
+        <div class="page-wrapper" tabindex="-1" role="main">
+          <div class="page-inner">
+
+            <section class="normal" id="section-">
+<div id="operasi-dasar-r" class="section level1 hasAnchor" number="2">
+<h1><span class="header-section-number">Bab 2</span> Operasi Dasar R<a href="operasi-dasar-r.html#operasi-dasar-r" class="anchor-section" aria-label="Anchor link to header"></a></h1>
+<p>Pemrograman R merujuk pada proses menulis kode dan mengembangkan program menggunakan bahasa pemrograman R. R adalah bahasa pemrograman yang fokus pada analisis statistik, manipulasi data, dan visualisasi. Pada bab ini akan dibahas beberapa unsur utama dalam pemrograman menggunakan bahasa pemrograman R.</p>
+<div id="variabel" class="section level2 hasAnchor" number="2.1">
+<h2><span class="header-section-number">2.1</span> Variabel<a href="operasi-dasar-r.html#variabel" class="anchor-section" aria-label="Anchor link to header"></a></h2>
+<p>Variabel dalam bahasa pemrograman R digunakan untuk menyimpan dan mengelola data. Variabel memungkinkan Anda untuk menampung nilai-nilai berbagai jenis, seperti angka, karakter (teks), atau nilai logika (benar/salah). Berikut ini adalah cara untuk mendefinisikan dan menggunakan variabel dalam R:</p>
+<div id="mendefinisikan-variabel" class="section level3 hasAnchor" number="2.1.1">
+<h3><span class="header-section-number">2.1.1</span> Mendefinisikan Variabel<a href="operasi-dasar-r.html#mendefinisikan-variabel" class="anchor-section" aria-label="Anchor link to header"></a></h3>
+<p>Untuk membuat variabel, Anda cukup menggunakan tanda &lt;- atau = untuk memberikan nilai pada variabel.</p>
+<div class="sourceCode" id="cb5"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb5-1"><a href="operasi-dasar-r.html#cb5-1" tabindex="-1"></a>x <span class="ot">&lt;-</span> <span class="dv">10</span>          <span class="co"># Mendefinisikan variabel x </span></span>
+<span id="cb5-2"><a href="operasi-dasar-r.html#cb5-2" tabindex="-1"></a>y <span class="ot">=</span> <span class="dv">12</span>           <span class="co"># Mendefinisikan variabel y</span></span></code></pre></div>
+</div>
+<div id="aturan-nama-variabel" class="section level3 hasAnchor" number="2.1.2">
+<h3><span class="header-section-number">2.1.2</span> Aturan Nama Variabel<a href="operasi-dasar-r.html#aturan-nama-variabel" class="anchor-section" aria-label="Anchor link to header"></a></h3>
+<ul>
+<li>Nama variabel harus dimulai dengan huruf atau tanda <code>.</code></li>
+<li>Nama variabel bisa terdiri dari huruf, angka, dan tanda <code>_</code>.</li>
+<li>Karakter khusus seperti +, -, *, /, ^ dll. tidak diperbolehkan dalam nama variabel.</li>
+<li>Nama variabel bersifat case-sensitive, artinya <code>x</code> dan <code>X</code> dianggap berbeda.</li>
+</ul>
+</div>
+</div>
+<div id="operator" class="section level2 hasAnchor" number="2.2">
+<h2><span class="header-section-number">2.2</span> Operator<a href="operasi-dasar-r.html#operator" class="anchor-section" aria-label="Anchor link to header"></a></h2>
+<p>Operator adalah simbol yang mengarahkan compiler untuk melakukan berbagai macam operasi terhadap beberapa penugasan. Operator mensimulasikan berbagai operasi matematis, logika, dan keputusan yang dilakukan pada sekumpulan Bilangan Kompleks, Integer, dan Numerik sebagai penugasan masukan (input). R mendukung sebagian besar empat jenis operator biner antara satu set penugasan. Dalam ini, kita akan melihat berbagai jenis operator yang tersedia di R penggunaannya.</p>
+<div id="aritmatika" class="section level3 hasAnchor" number="2.2.1">
+<h3><span class="header-section-number">2.2.1</span> Aritmatika<a href="operasi-dasar-r.html#aritmatika" class="anchor-section" aria-label="Anchor link to header"></a></h3>
+<p>Penggunaan operator aritmatika dalam program R adalah untuk mensimulasikan berbagai operasi matematika, seperti penambahan, pengurangan, perkalian, pembagian, dan modulo. Operator aritmatika yang dilakukan bisa saja berupa nilai skalar, bilangan kompleks, atau vektor.</p>
+<table>
+<tbody>
+<tr class="odd">
+<td align="center"><strong>Operator</strong></td>
+<td align="center"><strong>R</strong></td>
+</tr>
+<tr class="even">
+<td align="center">Penjumlahan</td>
+<td align="center">+</td>
+</tr>
+<tr class="odd">
+<td align="center">Pengurangan</td>
+<td align="center">-</td>
+</tr>
+<tr class="even">
+<td align="center">Perkalian</td>
+<td align="center">*</td>
+</tr>
+<tr class="odd">
+<td align="center">Divisi/Pembagian</td>
+<td align="center">/</td>
+</tr>
+<tr class="even">
+<td align="center">Pemangkatan</td>
+<td align="center">^</td>
+</tr>
+<tr class="odd">
+<td align="center">Modulo</td>
+<td align="center">%%</td>
+</tr>
+</tbody>
+</table>
+<p>Perhatikan cuplikan R berikut:</p>
+<div class="sourceCode" id="cb6"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb6-1"><a href="operasi-dasar-r.html#cb6-1" tabindex="-1"></a>x <span class="ot">&lt;-</span> <span class="fu">c</span>(<span class="dv">2</span>,<span class="dv">3</span>,<span class="dv">5</span>)    <span class="co"># memuat vektor x</span></span>
+<span id="cb6-2"><a href="operasi-dasar-r.html#cb6-2" tabindex="-1"></a>y <span class="ot">&lt;-</span> <span class="fu">c</span>(<span class="dv">2</span>,<span class="dv">4</span>,<span class="dv">6</span>)    <span class="co"># memuat vektor y</span></span>
+<span id="cb6-3"><a href="operasi-dasar-r.html#cb6-3" tabindex="-1"></a>x<span class="sc">+</span>y              <span class="co"># hasil penjumahan vektor x dan y</span></span>
+<span id="cb6-4"><a href="operasi-dasar-r.html#cb6-4" tabindex="-1"></a><span class="fu">print</span> (x<span class="sc">+</span>y)      <span class="co"># hasil penjumahan vektor x dan y</span></span>
+<span id="cb6-5"><a href="operasi-dasar-r.html#cb6-5" tabindex="-1"></a><span class="fu">print</span> (x<span class="sc">-</span>y)      <span class="co"># hasil pengurangan vektor x dan y</span></span>
+<span id="cb6-6"><a href="operasi-dasar-r.html#cb6-6" tabindex="-1"></a><span class="fu">print</span> (x<span class="sc">*</span>y)      <span class="co"># hasil perkalian vektor x dan y</span></span>
+<span id="cb6-7"><a href="operasi-dasar-r.html#cb6-7" tabindex="-1"></a><span class="fu">print</span> (x<span class="sc">/</span>y)      <span class="co"># hasil pembagian vektor x dan y</span></span>
+<span id="cb6-8"><a href="operasi-dasar-r.html#cb6-8" tabindex="-1"></a><span class="fu">print</span> (x<span class="sc">^</span>y)      <span class="co"># hasil pemangkatan vektor x dan y</span></span>
+<span id="cb6-9"><a href="operasi-dasar-r.html#cb6-9" tabindex="-1"></a><span class="fu">print</span> (x<span class="sc">%%</span>y)     <span class="co"># hasil modulo vektor x dan y</span></span></code></pre></div>
+<p>Adakalanya anda perlu menampilkan keterangan/komentar yang juga melekat pada hasil perhitungan R itu sendiri. Maka anda dapat melakukannya dengan cara berikut:</p>
+<div class="sourceCode" id="cb7"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb7-1"><a href="operasi-dasar-r.html#cb7-1" tabindex="-1"></a><span class="fu">cat</span>(<span class="st">&quot;Penjumahan vektor x dan y :&quot;</span>, x <span class="sc">+</span> y, <span class="st">&quot;</span><span class="sc">\n</span><span class="st">&quot;</span>)</span>
+<span id="cb7-2"><a href="operasi-dasar-r.html#cb7-2" tabindex="-1"></a><span class="fu">cat</span>(<span class="st">&quot;Pengurangan vektor x dan y :&quot;</span>, x <span class="sc">-</span> y, <span class="st">&quot;</span><span class="sc">\n</span><span class="st">&quot;</span>)</span>
+<span id="cb7-3"><a href="operasi-dasar-r.html#cb7-3" tabindex="-1"></a><span class="fu">cat</span>(<span class="st">&quot;Perkalian vektor x dan y :&quot;</span>, x <span class="sc">*</span> y, <span class="st">&quot;</span><span class="sc">\n</span><span class="st">&quot;</span>)</span>
+<span id="cb7-4"><a href="operasi-dasar-r.html#cb7-4" tabindex="-1"></a><span class="fu">cat</span>(<span class="st">&quot;Pembagian vektor x dan y :&quot;</span>, x <span class="sc">/</span> y, <span class="st">&quot;</span><span class="sc">\n</span><span class="st">&quot;</span>)</span>
+<span id="cb7-5"><a href="operasi-dasar-r.html#cb7-5" tabindex="-1"></a><span class="fu">cat</span> (<span class="st">&quot;Pemangkatan vektor x dan y :&quot;</span>, x <span class="sc">^</span> y) </span>
+<span id="cb7-6"><a href="operasi-dasar-r.html#cb7-6" tabindex="-1"></a><span class="fu">cat</span>(<span class="st">&quot;Modulo vektor x dan y :&quot;</span>, x <span class="sc">%%</span> y, <span class="st">&quot;</span><span class="sc">\n</span><span class="st">&quot;</span>)</span></code></pre></div>
+<p><strong>Catatan:</strong> Penjelasan lebih lekap mengenai modulo dapat lihat pada <a href="https://www.omnicalculator.com/math/modulo">link ini</a></p>
+</div>
+<div id="relasional" class="section level3 hasAnchor" number="2.2.2">
+<h3><span class="header-section-number">2.2.2</span> Relasional<a href="operasi-dasar-r.html#relasional" class="anchor-section" aria-label="Anchor link to header"></a></h3>
+<p>Operator relasional melakukan operasi perbandingan antara elemen yang bersesuaian pada setiap operan. Mengembalikan nilai Boolean TRUE jika operan pertama memenuhi relasi dibandingkan dengan operan kedua. Nilai TRUE selalu dianggap lebih besar dari FALSE.</p>
+<table>
+<colgroup>
+<col width="30%" />
+<col width="30%" />
+<col width="38%" />
+</colgroup>
+<tbody>
+<tr class="odd">
+<td align="center"><strong>Operator</strong></td>
+<td align="center"><strong>R</strong></td>
+<td align="center"><strong>Keterangan</strong></td>
+</tr>
+<tr class="even">
+<td align="center">Kurang dari</td>
+<td align="center">&lt;</td>
+<td align="center">Mengembalikan TRUE jika elemen yang bersesuaian pada operan pertama lebih kecil dari operan kedua. Selain itu akan mengembalikan FALSE</td>
+</tr>
+<tr class="odd">
+<td align="center">Kurang dari sama dengan</td>
+<td align="center">&lt;=</td>
+<td align="center">Mengembalikan TRUE jika elemen yang bersesuaian pada operan pertama kurang dari atau sama dengan elemen operan kedua. Selain itu akan mengembalikan FALSE</td>
+</tr>
+<tr class="even">
+<td align="center">Lebih besar dari</td>
+<td align="center">&gt;</td>
+<td align="center">Mengembalikan TRUE jika elemen yang bersesuaian pada operan pertama lebih besar dari operan kedua. Selain itu akan mengembalikan FALSE</td>
+</tr>
+<tr class="odd">
+<td align="center">Lebih besar dari sama dengan</td>
+<td align="center">&gt;=</td>
+<td align="center">Mengembalikan BENAR jika elemen yang bersesuaian pada operan pertama lebih besar atau sama dengan dari operan kedua. Selain itu akan mengembalikan FALSE</td>
+</tr>
+<tr class="even">
+<td align="center">Sama Dengan</td>
+<td align="center">==</td>
+<td align="center">Mengembalikan BENAR jika dan hanya jika kedua sisi bernilai sama</td>
+</tr>
+<tr class="odd">
+<td align="center">Tidak Sama dengan</td>
+<td align="center">!=</td>
+<td align="center">Mengembalikan BENAR jika elemen yang bersesuaian pada operan pertama tidak sama dengan dari operan kedua</td>
+</tr>
+</tbody>
+</table>
+<div class="sourceCode" id="cb8"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb8-1"><a href="operasi-dasar-r.html#cb8-1" tabindex="-1"></a>x <span class="ot">&lt;-</span> <span class="fu">c</span>(<span class="dv">2</span>,<span class="dv">3</span>,<span class="dv">5</span>)    <span class="co"># memuat vektor x</span></span>
+<span id="cb8-2"><a href="operasi-dasar-r.html#cb8-2" tabindex="-1"></a>y <span class="ot">&lt;-</span> <span class="fu">c</span>(<span class="dv">2</span>,<span class="dv">4</span>,<span class="dv">6</span>)    <span class="co"># memuat vektor y</span></span>
+<span id="cb8-3"><a href="operasi-dasar-r.html#cb8-3" tabindex="-1"></a><span class="fu">cat</span>(<span class="st">&quot;Vektor x  kurang dari Vektor y:&quot;</span>, x <span class="sc">&lt;</span> y, <span class="st">&quot;</span><span class="sc">\n</span><span class="st">&quot;</span>)</span>
+<span id="cb8-4"><a href="operasi-dasar-r.html#cb8-4" tabindex="-1"></a><span class="fu">cat</span>(<span class="st">&quot;Vector x kurang dari sama dengan Vector y:&quot;</span>, x <span class="sc">&lt;=</span> y, <span class="st">&quot;</span><span class="sc">\n</span><span class="st">&quot;</span>)</span>
+<span id="cb8-5"><a href="operasi-dasar-r.html#cb8-5" tabindex="-1"></a><span class="fu">cat</span>(<span class="st">&quot;Vector x lebih besar dari Vector y :&quot;</span>, x <span class="sc">&gt;</span> y, <span class="st">&quot;</span><span class="sc">\n</span><span class="st">&quot;</span>)</span>
+<span id="cb8-6"><a href="operasi-dasar-r.html#cb8-6" tabindex="-1"></a><span class="fu">cat</span>(<span class="st">&quot;Vector x lebih besar dari sama dengan Vector y :&quot;</span>, x <span class="sc">&gt;=</span> y, <span class="st">&quot;</span><span class="sc">\n</span><span class="st">&quot;</span>)</span>
+<span id="cb8-7"><a href="operasi-dasar-r.html#cb8-7" tabindex="-1"></a><span class="fu">cat</span>(<span class="st">&quot;Vector x sama dengan Vector y:&quot;</span>, x <span class="sc">==</span> y,<span class="st">&quot;</span><span class="sc">\n</span><span class="st">&quot;</span>) </span>
+<span id="cb8-8"><a href="operasi-dasar-r.html#cb8-8" tabindex="-1"></a><span class="fu">cat</span>(<span class="st">&quot;Vector x tidak sama dengan Vector y:&quot;</span>, x <span class="sc">!=</span> y) </span></code></pre></div>
+</div>
+<div id="logika" class="section level3 hasAnchor" number="2.2.3">
+<h3><span class="header-section-number">2.2.3</span> Logika<a href="operasi-dasar-r.html#logika" class="anchor-section" aria-label="Anchor link to header"></a></h3>
+<p>Operator logis mensimulasikan operasi keputusan, berdasarkan operator yang ditentukan antara operan, yang kemudian dievaluasi ke nilai Boolean Benar atau Salah. Nilai bilangan bulat bukan nol dianggap sebagai nilai BENAR, baik itu bilangan kompleks atau bilangan real.</p>
+<table>
+<colgroup>
+<col width="30%" />
+<col width="30%" />
+<col width="38%" />
+</colgroup>
+<tbody>
+<tr class="odd">
+<td align="center"><strong>Operator</strong></td>
+<td align="center"><strong>R</strong></td>
+<td align="center"><strong>Keterangan</strong></td>
+</tr>
+<tr class="even">
+<td align="center">NOT</td>
+<td align="center">!</td>
+<td align="center">Operasi negasi/kebalikan pada status elemen operan</td>
+</tr>
+<tr class="odd">
+<td align="center">AND</td>
+<td align="center">&amp;</td>
+<td align="center">Mengembalikan TRUE jika kedua operan bernilai Benar</td>
+</tr>
+<tr class="even">
+<td align="center">OR</td>
+<td align="center"><span class="math inline">\(|\)</span></td>
+<td align="center">Mengembalikan TRUE jika salah satu operan adalah Benar</td>
+</tr>
+<tr class="odd">
+<td align="center">XOR</td>
+<td align="center">^</td>
+<td align="center">Mengembalikan TRUE jika salah satu dari kedua elemen pertama operan bernilai Benar</td>
+</tr>
+</tbody>
+</table>
+<div class="sourceCode" id="cb9"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb9-1"><a href="operasi-dasar-r.html#cb9-1" tabindex="-1"></a>x <span class="ot">&lt;-</span> <span class="fu">c</span>(<span class="dv">0</span>,<span class="cn">TRUE</span>,<span class="cn">FALSE</span>)</span>
+<span id="cb9-2"><a href="operasi-dasar-r.html#cb9-2" tabindex="-1"></a>y <span class="ot">&lt;-</span> <span class="fu">c</span>(<span class="cn">TRUE</span>,<span class="fl">0.1</span>,<span class="dv">4</span><span class="sc">+</span>3i)</span>
+<span id="cb9-3"><a href="operasi-dasar-r.html#cb9-3" tabindex="-1"></a> </span>
+<span id="cb9-4"><a href="operasi-dasar-r.html#cb9-4" tabindex="-1"></a><span class="co"># Melakukan operasi logika pada Operan</span></span>
+<span id="cb9-5"><a href="operasi-dasar-r.html#cb9-5" tabindex="-1"></a><span class="fu">cat</span>(<span class="st">&quot;Logika Negasi (~) untuk vektor x:&quot;</span>, <span class="sc">!</span>x, <span class="st">&quot;</span><span class="sc">\n</span><span class="st">&quot;</span>) </span>
+<span id="cb9-6"><a href="operasi-dasar-r.html#cb9-6" tabindex="-1"></a><span class="fu">cat</span>(<span class="st">&quot;Logika Negasi (~) untuk vektor y :&quot;</span>, <span class="sc">!</span>y, <span class="st">&quot;</span><span class="sc">\n</span><span class="st">&quot;</span>) </span>
+<span id="cb9-7"><a href="operasi-dasar-r.html#cb9-7" tabindex="-1"></a><span class="fu">cat</span> (<span class="st">&quot;Logika Konjungsi (Dan) :&quot;</span>, x <span class="sc">&amp;</span> y, <span class="st">&quot;</span><span class="sc">\n</span><span class="st">&quot;</span>)</span>
+<span id="cb9-8"><a href="operasi-dasar-r.html#cb9-8" tabindex="-1"></a><span class="fu">cat</span> (<span class="st">&quot;Logika Disjungsi (Atau) :&quot;</span>, x <span class="sc">|</span> y, <span class="st">&quot;</span><span class="sc">\n</span><span class="st">&quot;</span>)</span></code></pre></div>
+</div>
+<div id="operator-lain-lain" class="section level3 hasAnchor" number="2.2.4">
+<h3><span class="header-section-number">2.2.4</span> Operator Lain-lain<a href="operasi-dasar-r.html#operator-lain-lain" class="anchor-section" aria-label="Anchor link to header"></a></h3>
+<p>Berikut ini juga ada beberapa operator yang kemungkinan besar juga akan anda perlukan pada saat akan menggunakan R.</p>
+<div class="sourceCode" id="cb10"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb10-1"><a href="operasi-dasar-r.html#cb10-1" tabindex="-1"></a>x <span class="ot">&lt;-</span> <span class="fu">c</span>(<span class="dv">2</span>,<span class="dv">3</span>,<span class="dv">5</span>)                    <span class="co"># memuat vektor x</span></span>
+<span id="cb10-2"><a href="operasi-dasar-r.html#cb10-2" tabindex="-1"></a>y <span class="ot">&lt;-</span> <span class="fu">c</span>(<span class="dv">2</span>,<span class="dv">4</span>,<span class="dv">6</span>)                    <span class="co"># memuat vektor y</span></span>
+<span id="cb10-3"><a href="operasi-dasar-r.html#cb10-3" tabindex="-1"></a><span class="fu">sqrt</span>(x<span class="sc">*</span>y)                        <span class="co"># Bentuk akar</span></span>
+<span id="cb10-4"><a href="operasi-dasar-r.html#cb10-4" tabindex="-1"></a><span class="fu">log</span>(x)                           <span class="co"># logaritma </span></span>
+<span id="cb10-5"><a href="operasi-dasar-r.html#cb10-5" tabindex="-1"></a><span class="fu">exp</span>(y)                           <span class="co"># eksponen</span></span>
+<span id="cb10-6"><a href="operasi-dasar-r.html#cb10-6" tabindex="-1"></a>(x<span class="sc">/</span>y) <span class="sc">+</span> y                        <span class="co"># Tanda kurung</span></span></code></pre></div>
+<p><strong>Catatan:</strong> <a href="https://www.advernesia.com/blog/matematika/sifat-komutatif-asosiatif-dan-distributif/">Sifat Komutatif Asosiatif dan Distributif</a> juga berlaku dalam program R.</p>
+</div>
+</div>
+<div id="tipe-data" class="section level2 hasAnchor" number="2.3">
+<h2><span class="header-section-number">2.3</span> Tipe Data<a href="operasi-dasar-r.html#tipe-data" class="anchor-section" aria-label="Anchor link to header"></a></h2>
+<p>Dalam pemrograman seperti R dan Python, tipe data merupakan konsep penting. Keduanya dapat menggunakan variabel untuk menyimpan tipe yang berbeda-beda, berikut adalah tipe data paling mendasar yang harus diketahui:</p>
+<table>
+<colgroup>
+<col width="43%" />
+<col width="21%" />
+<col width="34%" />
+</colgroup>
+<tbody>
+<tr class="odd">
+<td align="center"><strong>Tipe Data</strong></td>
+<td align="center"><strong>R</strong></td>
+<td align="center"><strong>Penjelasan</strong></td>
+</tr>
+<tr class="even">
+<td align="center">Double/Float</td>
+<td align="center">5.6</td>
+<td align="center">Bilangan yang mempunyai koma</td>
+</tr>
+<tr class="odd">
+<td align="center">Integer</td>
+<td align="center">5</td>
+<td align="center">Bilangan bulat 1,2,…,n</td>
+</tr>
+<tr class="even">
+<td align="center">Bolean/Logical</td>
+<td align="center">TRUE/FALSE</td>
+<td align="center">Benar bernilai 1 dan Salah bernilai 0</td>
+</tr>
+<tr class="odd">
+<td align="center">String/Character</td>
+<td align="center">‘Dsciencelabs’</td>
+<td align="center">karakter/kalimat bisa berupa huruf angka, dll (diapit tanda ” atau ’)</td>
+</tr>
+<tr class="even">
+<td align="center">Complex</td>
+<td align="center">1 + 5i</td>
+<td align="center">Pasangan angka real dan imajiner</td>
+</tr>
+</tbody>
+</table>
+<p>Berikut ini adalah koding R yang dapat digunakan untuk menetapkan kelima tipe data diatas:</p>
+<div class="sourceCode" id="cb11"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb11-1"><a href="operasi-dasar-r.html#cb11-1" tabindex="-1"></a>d1 <span class="ot">=</span> <span class="fl">5.6</span>                       <span class="co"># Tetapkan nilai desimal </span></span>
+<span id="cb11-2"><a href="operasi-dasar-r.html#cb11-2" tabindex="-1"></a>d2 <span class="ot">=</span> <span class="fu">as.integer</span>(<span class="dv">5</span>)             <span class="co"># tetapkan nilai integer</span></span>
+<span id="cb11-3"><a href="operasi-dasar-r.html#cb11-3" tabindex="-1"></a>d2 <span class="ot">=</span> 5L                        <span class="co"># cara lain untuk memuat nilai integer di R</span></span>
+<span id="cb11-4"><a href="operasi-dasar-r.html#cb11-4" tabindex="-1"></a>d3 <span class="ot">=</span> <span class="fu">c</span>(<span class="cn">TRUE</span>,<span class="cn">FALSE</span>)             <span class="co"># Bolean/Logical</span></span>
+<span id="cb11-5"><a href="operasi-dasar-r.html#cb11-5" tabindex="-1"></a>d3 <span class="ot">=</span> <span class="fu">as.logical</span>(<span class="fu">c</span>(<span class="dv">0</span>,<span class="dv">1</span>))        <span class="co"># cara lain untuk memuat Bolean/Logical</span></span>
+<span id="cb11-6"><a href="operasi-dasar-r.html#cb11-6" tabindex="-1"></a>d4 <span class="ot">=</span> <span class="fu">c</span>(<span class="st">&quot;a&quot;</span>,<span class="st">&#39;b&#39;</span>,<span class="st">&#39;123&#39;</span>)          <span class="co"># String/Character</span></span>
+<span id="cb11-7"><a href="operasi-dasar-r.html#cb11-7" tabindex="-1"></a>d5 <span class="ot">=</span> <span class="dv">1</span> <span class="sc">+</span> 5i                    <span class="co"># Complex </span></span></code></pre></div>
+<p>Untuk memeriksa tipe data dalam R:</p>
+<div class="sourceCode" id="cb12"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb12-1"><a href="operasi-dasar-r.html#cb12-1" tabindex="-1"></a><span class="fu">class</span>(d1)                      <span class="co"># cetak nama kelas variabel</span></span>
+<span id="cb12-2"><a href="operasi-dasar-r.html#cb12-2" tabindex="-1"></a><span class="fu">typeof</span>(d1)                     <span class="co"># cetak tipe variabel x</span></span></code></pre></div>
+</div>
+<div id="statistika-dasar" class="section level2 hasAnchor" number="2.4">
+<h2><span class="header-section-number">2.4</span> Statistika Dasar<a href="operasi-dasar-r.html#statistika-dasar" class="anchor-section" aria-label="Anchor link to header"></a></h2>
+<div class="sourceCode" id="cb13"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb13-1"><a href="operasi-dasar-r.html#cb13-1" tabindex="-1"></a>data <span class="ot">&lt;-</span> <span class="fu">c</span>(<span class="dv">85</span>, <span class="dv">90</span>, <span class="dv">78</span>, <span class="dv">92</span>, <span class="dv">88</span>)  <span class="co"># Data</span></span>
+<span id="cb13-2"><a href="operasi-dasar-r.html#cb13-2" tabindex="-1"></a><span class="fu">sum</span>(data)                      <span class="co"># Jumlahan data</span></span>
+<span id="cb13-3"><a href="operasi-dasar-r.html#cb13-3" tabindex="-1"></a><span class="fu">length</span>(data)                   <span class="co"># Banyaknya data</span></span>
+<span id="cb13-4"><a href="operasi-dasar-r.html#cb13-4" tabindex="-1"></a><span class="fu">mean</span> (data)                      <span class="co"># Menghitung rata-rata</span></span>
+<span id="cb13-5"><a href="operasi-dasar-r.html#cb13-5" tabindex="-1"></a><span class="fu">var</span> (data)                     <span class="co"># Menghitung variansi</span></span>
+<span id="cb13-6"><a href="operasi-dasar-r.html#cb13-6" tabindex="-1"></a><span class="fu">sd</span> (data)                        <span class="co"># Simpangan baku</span></span>
+<span id="cb13-7"><a href="operasi-dasar-r.html#cb13-7" tabindex="-1"></a><span class="fu">min</span>(data)                      <span class="co"># Minimum</span></span>
+<span id="cb13-8"><a href="operasi-dasar-r.html#cb13-8" tabindex="-1"></a><span class="fu">max</span>(data)                      <span class="co"># Maksimum</span></span></code></pre></div>
+</div>
+<div id="contoh-pemrograman-dasar" class="section level2 hasAnchor" number="2.5">
+<h2><span class="header-section-number">2.5</span> Contoh Pemrograman Dasar<a href="operasi-dasar-r.html#contoh-pemrograman-dasar" class="anchor-section" aria-label="Anchor link to header"></a></h2>
+<p>Berikut ini dilampirkan contoh kasus dasar pemrograman R.</p>
+<div id="menghitung-rata-rata" class="section level3 hasAnchor" number="2.5.1">
+<h3><span class="header-section-number">2.5.1</span> Menghitung Rata-rata<a href="operasi-dasar-r.html#menghitung-rata-rata" class="anchor-section" aria-label="Anchor link to header"></a></h3>
+<div class="sourceCode" id="cb14"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb14-1"><a href="operasi-dasar-r.html#cb14-1" tabindex="-1"></a>data <span class="ot">&lt;-</span> <span class="fu">c</span>(<span class="dv">85</span>, <span class="dv">90</span>, <span class="dv">78</span>, <span class="dv">92</span>, <span class="dv">88</span>)</span>
+<span id="cb14-2"><a href="operasi-dasar-r.html#cb14-2" tabindex="-1"></a>jumlah_data <span class="ot">&lt;-</span> <span class="fu">length</span>(data)</span>
+<span id="cb14-3"><a href="operasi-dasar-r.html#cb14-3" tabindex="-1"></a>total <span class="ot">&lt;-</span> <span class="fu">sum</span>(data)</span>
+<span id="cb14-4"><a href="operasi-dasar-r.html#cb14-4" tabindex="-1"></a>rata_rata <span class="ot">&lt;-</span> total <span class="sc">/</span> jumlah_data</span>
+<span id="cb14-5"><a href="operasi-dasar-r.html#cb14-5" tabindex="-1"></a><span class="fu">print</span>(<span class="fu">paste</span>(<span class="st">&quot;Rata-rata:&quot;</span>, rata_rata))</span></code></pre></div>
+<pre><code>## [1] &quot;Rata-rata: 86.6&quot;</code></pre>
+</div>
+<div id="membandingkan-angka" class="section level3 hasAnchor" number="2.5.2">
+<h3><span class="header-section-number">2.5.2</span> Membandingkan Angka<a href="operasi-dasar-r.html#membandingkan-angka" class="anchor-section" aria-label="Anchor link to header"></a></h3>
+<div class="sourceCode" id="cb16"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb16-1"><a href="operasi-dasar-r.html#cb16-1" tabindex="-1"></a>a <span class="ot">&lt;-</span> <span class="dv">10</span></span>
+<span id="cb16-2"><a href="operasi-dasar-r.html#cb16-2" tabindex="-1"></a>b <span class="ot">&lt;-</span> <span class="dv">20</span></span>
+<span id="cb16-3"><a href="operasi-dasar-r.html#cb16-3" tabindex="-1"></a></span>
+<span id="cb16-4"><a href="operasi-dasar-r.html#cb16-4" tabindex="-1"></a><span class="cf">if</span> (a <span class="sc">&lt;</span> b) {</span>
+<span id="cb16-5"><a href="operasi-dasar-r.html#cb16-5" tabindex="-1"></a>  <span class="fu">print</span>(<span class="st">&quot;a lebih kecil dari b&quot;</span>)</span>
+<span id="cb16-6"><a href="operasi-dasar-r.html#cb16-6" tabindex="-1"></a>} <span class="cf">else</span> <span class="cf">if</span> (a <span class="sc">&gt;</span> b) {</span>
+<span id="cb16-7"><a href="operasi-dasar-r.html#cb16-7" tabindex="-1"></a>  <span class="fu">print</span>(<span class="st">&quot;a lebih besar dari b&quot;</span>)</span>
+<span id="cb16-8"><a href="operasi-dasar-r.html#cb16-8" tabindex="-1"></a>} <span class="cf">else</span> {</span>
+<span id="cb16-9"><a href="operasi-dasar-r.html#cb16-9" tabindex="-1"></a>  <span class="fu">print</span>(<span class="st">&quot;a sama dengan b&quot;</span>)</span>
+<span id="cb16-10"><a href="operasi-dasar-r.html#cb16-10" tabindex="-1"></a>}</span></code></pre></div>
+<pre><code>## [1] &quot;a lebih kecil dari b&quot;</code></pre>
+</div>
+<div id="membandingkan-karakter" class="section level3 hasAnchor" number="2.5.3">
+<h3><span class="header-section-number">2.5.3</span> Membandingkan Karakter<a href="operasi-dasar-r.html#membandingkan-karakter" class="anchor-section" aria-label="Anchor link to header"></a></h3>
+<div class="sourceCode" id="cb18"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb18-1"><a href="operasi-dasar-r.html#cb18-1" tabindex="-1"></a>kata1 <span class="ot">&lt;-</span> <span class="st">&quot;Apel&quot;</span></span>
+<span id="cb18-2"><a href="operasi-dasar-r.html#cb18-2" tabindex="-1"></a>kata2 <span class="ot">&lt;-</span> <span class="st">&quot;apel&quot;</span></span>
+<span id="cb18-3"><a href="operasi-dasar-r.html#cb18-3" tabindex="-1"></a></span>
+<span id="cb18-4"><a href="operasi-dasar-r.html#cb18-4" tabindex="-1"></a><span class="cf">if</span> (kata1 <span class="sc">==</span> kata2) {</span>
+<span id="cb18-5"><a href="operasi-dasar-r.html#cb18-5" tabindex="-1"></a>  <span class="fu">print</span>(<span class="st">&quot;kata1 sama dengan kata2&quot;</span>)</span>
+<span id="cb18-6"><a href="operasi-dasar-r.html#cb18-6" tabindex="-1"></a>} <span class="cf">else</span> {</span>
+<span id="cb18-7"><a href="operasi-dasar-r.html#cb18-7" tabindex="-1"></a>  <span class="fu">print</span>(<span class="st">&quot;kata1 berbeda dari kata2&quot;</span>)</span>
+<span id="cb18-8"><a href="operasi-dasar-r.html#cb18-8" tabindex="-1"></a>}</span></code></pre></div>
+<pre><code>## [1] &quot;kata1 berbeda dari kata2&quot;</code></pre>
+</div>
+<div id="mengecek-kondisi-gabungan" class="section level3 hasAnchor" number="2.5.4">
+<h3><span class="header-section-number">2.5.4</span> Mengecek Kondisi Gabungan<a href="operasi-dasar-r.html#mengecek-kondisi-gabungan" class="anchor-section" aria-label="Anchor link to header"></a></h3>
+<div class="sourceCode" id="cb20"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb20-1"><a href="operasi-dasar-r.html#cb20-1" tabindex="-1"></a>umur <span class="ot">&lt;-</span> <span class="dv">25</span></span>
+<span id="cb20-2"><a href="operasi-dasar-r.html#cb20-2" tabindex="-1"></a>pendapatan <span class="ot">&lt;-</span> <span class="dv">5000</span></span>
+<span id="cb20-3"><a href="operasi-dasar-r.html#cb20-3" tabindex="-1"></a></span>
+<span id="cb20-4"><a href="operasi-dasar-r.html#cb20-4" tabindex="-1"></a><span class="cf">if</span> (umur <span class="sc">&gt;</span> <span class="dv">18</span> <span class="sc">&amp;&amp;</span> pendapatan <span class="sc">&gt;</span> <span class="dv">4000</span>) {</span>
+<span id="cb20-5"><a href="operasi-dasar-r.html#cb20-5" tabindex="-1"></a>  <span class="fu">print</span>(<span class="st">&quot;Anda memenuhi syarat&quot;</span>)</span>
+<span id="cb20-6"><a href="operasi-dasar-r.html#cb20-6" tabindex="-1"></a>} <span class="cf">else</span> {</span>
+<span id="cb20-7"><a href="operasi-dasar-r.html#cb20-7" tabindex="-1"></a>  <span class="fu">print</span>(<span class="st">&quot;Anda tidak memenuhi syarat&quot;</span>)</span>
+<span id="cb20-8"><a href="operasi-dasar-r.html#cb20-8" tabindex="-1"></a>}</span></code></pre></div>
+<pre><code>## [1] &quot;Anda memenuhi syarat&quot;</code></pre>
+</div>
+<div id="penggunaan-operator-logika" class="section level3 hasAnchor" number="2.5.5">
+<h3><span class="header-section-number">2.5.5</span> Penggunaan Operator Logika<a href="operasi-dasar-r.html#penggunaan-operator-logika" class="anchor-section" aria-label="Anchor link to header"></a></h3>
+<div class="sourceCode" id="cb22"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb22-1"><a href="operasi-dasar-r.html#cb22-1" tabindex="-1"></a>x <span class="ot">&lt;-</span> <span class="dv">5</span></span>
+<span id="cb22-2"><a href="operasi-dasar-r.html#cb22-2" tabindex="-1"></a>y <span class="ot">&lt;-</span> <span class="dv">10</span></span>
+<span id="cb22-3"><a href="operasi-dasar-r.html#cb22-3" tabindex="-1"></a></span>
+<span id="cb22-4"><a href="operasi-dasar-r.html#cb22-4" tabindex="-1"></a><span class="cf">if</span> (x <span class="sc">&gt;</span> <span class="dv">0</span> <span class="sc">||</span> y <span class="sc">&gt;</span> <span class="dv">0</span>) {</span>
+<span id="cb22-5"><a href="operasi-dasar-r.html#cb22-5" tabindex="-1"></a>  <span class="fu">print</span>(<span class="st">&quot;Salah satu variabel positif&quot;</span>)</span>
+<span id="cb22-6"><a href="operasi-dasar-r.html#cb22-6" tabindex="-1"></a>} <span class="cf">else</span> {</span>
+<span id="cb22-7"><a href="operasi-dasar-r.html#cb22-7" tabindex="-1"></a>  <span class="fu">print</span>(<span class="st">&quot;Kedua variabel non-positif&quot;</span>)</span>
+<span id="cb22-8"><a href="operasi-dasar-r.html#cb22-8" tabindex="-1"></a>}</span></code></pre></div>
+<pre><code>## [1] &quot;Salah satu variabel positif&quot;</code></pre>
+</div>
+<div id="pemeriksaan-kondisi-dengan-ifelse" class="section level3 hasAnchor" number="2.5.6">
+<h3><span class="header-section-number">2.5.6</span> Pemeriksaan Kondisi dengan ifelse()<a href="operasi-dasar-r.html#pemeriksaan-kondisi-dengan-ifelse" class="anchor-section" aria-label="Anchor link to header"></a></h3>
+<div class="sourceCode" id="cb24"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb24-1"><a href="operasi-dasar-r.html#cb24-1" tabindex="-1"></a>nilai <span class="ot">&lt;-</span> <span class="dv">75</span></span>
+<span id="cb24-2"><a href="operasi-dasar-r.html#cb24-2" tabindex="-1"></a>keterangan <span class="ot">&lt;-</span> <span class="fu">ifelse</span>(nilai <span class="sc">&gt;=</span> <span class="dv">70</span>, <span class="st">&quot;Lulus&quot;</span>, <span class="st">&quot;Tidak lulus&quot;</span>)</span>
+<span id="cb24-3"><a href="operasi-dasar-r.html#cb24-3" tabindex="-1"></a><span class="fu">print</span>(<span class="fu">paste</span>(<span class="st">&quot;Nilai:&quot;</span>, nilai, <span class="st">&quot;--&gt; Status:&quot;</span>, keterangan))</span></code></pre></div>
+<pre><code>## [1] &quot;Nilai: 75 --&gt; Status: Lulus&quot;</code></pre>
+</div>
+</div>
+<div id="latihan" class="section level2 hasAnchor" number="2.6">
+<h2><span class="header-section-number">2.6</span> Latihan<a href="operasi-dasar-r.html#latihan" class="anchor-section" aria-label="Anchor link to header"></a></h2>
+<p>Berikut adalah beberapa contoh soal latihan dasar pemrograman dalam bahasa pemrograman R:</p>
+<ol style="list-style-type: decimal">
+<li><strong>Menghitung Luas Lingkaran:</strong> Buatlah sebuah program R yang menerima input berupa jari-jari lingkaran dan menghitung serta mencetak luas lingkaran.</li>
+<li><strong>Konversi Suhu:</strong> Buatlah sebuah program R yang dapat mengonversi suhu dari Celsius ke Fahrenheit. Program harus menerima input suhu dalam Celsius dan menghasilkan output suhu dalam Fahrenheit.</li>
+<li><strong>Menghitung Faktorial:</strong> Buatlah sebuah program R yang menghitung faktorial dari sebuah bilangan bulat positif. Program harus menerima input bilangan bulat positif dan menghasilkan output faktorialnya.</li>
+<li><strong>Mencari Bilangan Prima:</strong> Buatlah sebuah program R yang menerima input sebuah bilangan bulat dan menghasilkan output apakah bilangan tersebut merupakan bilangan prima atau bukan.</li>
+<li><strong>Menghitung Pangkat:</strong> Buatlah sebuah program R yang menerima input bilangan dasar dan eksponen, kemudian menghitung hasil dari bilangan dasar dipangkatkan dengan eksponen tersebut.</li>
+<li><strong>Menghitung Total Nilai:</strong> Buatlah sebuah program R yang menerima input sejumlah nilai mata kuliah dan menghitung total nilai serta rata-ratanya. Program harus menerima input nilai-nilai mata kuliah dan menghasilkan total nilai serta rata-ratanya.</li>
+<li><strong>Menentukan Ganjil/Genap:</strong> Buatlah sebuah program R yang menerima input bilangan bulat dan mencetak apakah bilangan tersebut ganjil atau genap.</li>
+<li><strong>Menghitung Keliling dan Luas Persegi:</strong> Buatlah sebuah program R yang menerima input panjang sisi persegi dan menghitung serta mencetak keliling dan luasnya.</li>
+</ol>
+
+</div>
+</div>
+            </section>
+
+          </div>
+        </div>
+      </div>
+<a href="pengenalan-r.html" class="navigation navigation-prev " aria-label="Previous page"><i class="fa fa-angle-left"></i></a>
+<a href="struktur-data.html" class="navigation navigation-next " aria-label="Next page"><i class="fa fa-angle-right"></i></a>
+    </div>
+  </div>
+<script src="libs/gitbook/js/app.min.js"></script>
+<script src="libs/gitbook/js/clipboard.min.js"></script>
+<script src="libs/gitbook/js/plugin-search.js"></script>
+<script src="libs/gitbook/js/plugin-sharing.js"></script>
+<script src="libs/gitbook/js/plugin-fontsettings.js"></script>
+<script src="libs/gitbook/js/plugin-bookdown.js"></script>
+<script src="libs/gitbook/js/jquery.highlight.js"></script>
+<script src="libs/gitbook/js/plugin-clipboard.js"></script>
+<script>
+gitbook.require(["gitbook"], function(gitbook) {
+gitbook.start({
+"sharing": {
+"github": false,
+"facebook": true,
+"twitter": true,
+"linkedin": false,
+"weibo": false,
+"instapaper": false,
+"vk": false,
+"whatsapp": false,
+"all": ["facebook", "twitter", "linkedin", "weibo", "instapaper"]
+},
+"fontsettings": {
+"theme": "white",
+"family": "sans",
+"size": 2
+},
+"edit": {
+"link": null,
+"text": null
+},
+"history": {
+"link": null,
+"text": null
+},
+"view": {
+"link": null,
+"text": null
+},
+"download": null,
+"search": {
+"engine": "fuse",
+"options": null
+},
+"toc": {
+"collapse": "subsection"
+}
+});
+});
+</script>
+
+<!-- dynamically load mathjax for compatibility with self-contained -->
+<script>
+  (function () {
+    var script = document.createElement("script");
+    script.type = "text/javascript";
+    var src = "true";
+    if (src === "" || src === "true") src = "https://cdnjs.cloudflare.com/ajax/libs/mathjax/2.7.9/latest.js?config=TeX-MML-AM_CHTML";
+    if (location.protocol !== "file:")
+      if (/^https?:/.test(src))
+        src = src.replace(/^https?:/, '');
+    script.src = src;
+    document.getElementsByTagName("head")[0].appendChild(script);
+  })();
+</script>
+</body>
+
+</html>

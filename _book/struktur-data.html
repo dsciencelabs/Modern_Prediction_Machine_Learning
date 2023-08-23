@@ -1,0 +1,639 @@
+<!DOCTYPE html>
+<html lang="" xml:lang="">
+<head>
+
+  <meta charset="utf-8" />
+  <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+  <title>Bab 3 Struktur Data | Algoritma dan Pemrograman R</title>
+  <meta name="description" content="Bab 3 Struktur Data | Algoritma dan Pemrograman R akan mencakup konsep-konsep dasar dalam pemrograman, pemahaman algoritma, serta pengenalan terhadap bahasa pemrograman R." />
+  <meta name="generator" content="bookdown 0.34 and GitBook 2.6.7" />
+
+  <meta property="og:title" content="Bab 3 Struktur Data | Algoritma dan Pemrograman R" />
+  <meta property="og:type" content="book" />
+  <meta property="og:image" content="/images/Cover_Algoritma_Permrograman.png" />
+  <meta property="og:description" content="Bab 3 Struktur Data | Algoritma dan Pemrograman R akan mencakup konsep-konsep dasar dalam pemrograman, pemahaman algoritma, serta pengenalan terhadap bahasa pemrograman R." />
+  <meta name="github-repo" content="dsciencelabs/Algoritma_Pemrograman_R" />
+
+  <meta name="twitter:card" content="summary" />
+  <meta name="twitter:title" content="Bab 3 Struktur Data | Algoritma dan Pemrograman R" />
+  
+  <meta name="twitter:description" content="Bab 3 Struktur Data | Algoritma dan Pemrograman R akan mencakup konsep-konsep dasar dalam pemrograman, pemahaman algoritma, serta pengenalan terhadap bahasa pemrograman R." />
+  <meta name="twitter:image" content="/images/Cover_Algoritma_Permrograman.png" />
+
+<meta name="author" content="Bakti Siregar, M.Sc" />
+
+
+
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <meta name="apple-mobile-web-app-capable" content="yes" />
+  <meta name="apple-mobile-web-app-status-bar-style" content="black" />
+  
+  
+<link rel="prev" href="operasi-dasar-r.html"/>
+<link rel="next" href="ekstraksi-data.html"/>
+<script src="libs/jquery/jquery-3.6.0.min.js"></script>
+<script src="https://cdn.jsdelivr.net/npm/fuse.js@6.4.6/dist/fuse.min.js"></script>
+<link href="libs/gitbook/css/style.css" rel="stylesheet" />
+<link href="libs/gitbook/css/plugin-table.css" rel="stylesheet" />
+<link href="libs/gitbook/css/plugin-bookdown.css" rel="stylesheet" />
+<link href="libs/gitbook/css/plugin-highlight.css" rel="stylesheet" />
+<link href="libs/gitbook/css/plugin-search.css" rel="stylesheet" />
+<link href="libs/gitbook/css/plugin-fontsettings.css" rel="stylesheet" />
+<link href="libs/gitbook/css/plugin-clipboard.css" rel="stylesheet" />
+
+
+
+
+
+
+
+
+<link href="libs/anchor-sections/anchor-sections.css" rel="stylesheet" />
+<link href="libs/anchor-sections/anchor-sections-hash.css" rel="stylesheet" />
+<script src="libs/anchor-sections/anchor-sections.js"></script>
+
+
+<style type="text/css">
+pre > code.sourceCode { white-space: pre; position: relative; }
+pre > code.sourceCode > span { display: inline-block; line-height: 1.25; }
+pre > code.sourceCode > span:empty { height: 1.2em; }
+.sourceCode { overflow: visible; }
+code.sourceCode > span { color: inherit; text-decoration: inherit; }
+pre.sourceCode { margin: 0; }
+@media screen {
+div.sourceCode { overflow: auto; }
+}
+@media print {
+pre > code.sourceCode { white-space: pre-wrap; }
+pre > code.sourceCode > span { text-indent: -5em; padding-left: 5em; }
+}
+pre.numberSource code
+  { counter-reset: source-line 0; }
+pre.numberSource code > span
+  { position: relative; left: -4em; counter-increment: source-line; }
+pre.numberSource code > span > a:first-child::before
+  { content: counter(source-line);
+    position: relative; left: -1em; text-align: right; vertical-align: baseline;
+    border: none; display: inline-block;
+    -webkit-touch-callout: none; -webkit-user-select: none;
+    -khtml-user-select: none; -moz-user-select: none;
+    -ms-user-select: none; user-select: none;
+    padding: 0 4px; width: 4em;
+    color: #aaaaaa;
+  }
+pre.numberSource { margin-left: 3em; border-left: 1px solid #aaaaaa;  padding-left: 4px; }
+div.sourceCode
+  {   }
+@media screen {
+pre > code.sourceCode > span > a:first-child::before { text-decoration: underline; }
+}
+code span.al { color: #ff0000; font-weight: bold; } /* Alert */
+code span.an { color: #60a0b0; font-weight: bold; font-style: italic; } /* Annotation */
+code span.at { color: #7d9029; } /* Attribute */
+code span.bn { color: #40a070; } /* BaseN */
+code span.bu { color: #008000; } /* BuiltIn */
+code span.cf { color: #007020; font-weight: bold; } /* ControlFlow */
+code span.ch { color: #4070a0; } /* Char */
+code span.cn { color: #880000; } /* Constant */
+code span.co { color: #60a0b0; font-style: italic; } /* Comment */
+code span.cv { color: #60a0b0; font-weight: bold; font-style: italic; } /* CommentVar */
+code span.do { color: #ba2121; font-style: italic; } /* Documentation */
+code span.dt { color: #902000; } /* DataType */
+code span.dv { color: #40a070; } /* DecVal */
+code span.er { color: #ff0000; font-weight: bold; } /* Error */
+code span.ex { } /* Extension */
+code span.fl { color: #40a070; } /* Float */
+code span.fu { color: #06287e; } /* Function */
+code span.im { color: #008000; font-weight: bold; } /* Import */
+code span.in { color: #60a0b0; font-weight: bold; font-style: italic; } /* Information */
+code span.kw { color: #007020; font-weight: bold; } /* Keyword */
+code span.op { color: #666666; } /* Operator */
+code span.ot { color: #007020; } /* Other */
+code span.pp { color: #bc7a00; } /* Preprocessor */
+code span.sc { color: #4070a0; } /* SpecialChar */
+code span.ss { color: #bb6688; } /* SpecialString */
+code span.st { color: #4070a0; } /* String */
+code span.va { color: #19177c; } /* Variable */
+code span.vs { color: #4070a0; } /* VerbatimString */
+code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warning */
+</style>
+
+<style type="text/css">
+  
+  div.hanging-indent{margin-left: 1.5em; text-indent: -1.5em;}
+</style>
+
+<link rel="stylesheet" href="style.css" type="text/css" />
+</head>
+
+<body>
+
+
+
+  <div class="book without-animation with-summary font-size-2 font-family-1" data-basepath=".">
+
+    <div class="book-summary">
+      <nav role="navigation">
+
+<ul class="summary">
+<li><center><img src="images/logo.png" alt="logo" width="50%" height="50%"style="margin: 15px 0 0 0"></center></li>
+
+<li class="divider"></li>
+<li class="chapter" data-level="" data-path="index.html"><a href="index.html"><i class="fa fa-check"></i>Kata Pengantar</a>
+<ul>
+<li class="chapter" data-level="" data-path="index.html"><a href="index.html#ringkasan-pembelajaran"><i class="fa fa-check"></i>Ringkasan Pembelajaran</a></li>
+<li class="chapter" data-level="" data-path="index.html"><a href="index.html#tim-penyusun"><i class="fa fa-check"></i>Tim Penyusun</a></li>
+<li class="chapter" data-level="" data-path="index.html"><a href="index.html#ucapan-terima-kasih"><i class="fa fa-check"></i>Ucapan Terima Kasih</a></li>
+<li class="chapter" data-level="" data-path="index.html"><a href="index.html#masukan-saran"><i class="fa fa-check"></i>Masukan &amp; Saran</a></li>
+</ul></li>
+<li class="chapter" data-level="1" data-path="pengenalan-r.html"><a href="pengenalan-r.html"><i class="fa fa-check"></i><b>1</b> Pengenalan R?</a>
+<ul>
+<li class="chapter" data-level="1.1" data-path="pengenalan-r.html"><a href="pengenalan-r.html#fitur-utama-r"><i class="fa fa-check"></i><b>1.1</b> Fitur Utama R</a></li>
+<li class="chapter" data-level="1.2" data-path="pengenalan-r.html"><a href="pengenalan-r.html#mengapa-belajar-r"><i class="fa fa-check"></i><b>1.2</b> Mengapa Belajar R?</a></li>
+<li class="chapter" data-level="1.3" data-path="pengenalan-r.html"><a href="pengenalan-r.html#download-r-rstudio"><i class="fa fa-check"></i><b>1.3</b> Download R &amp; Rstudio:</a></li>
+<li class="chapter" data-level="1.4" data-path="pengenalan-r.html"><a href="pengenalan-r.html#tutorial-instal-r-studio"><i class="fa fa-check"></i><b>1.4</b> Tutorial Instal R &amp; Studio</a>
+<ul>
+<li class="chapter" data-level="1.4.1" data-path="pengenalan-r.html"><a href="pengenalan-r.html#instalasi-r"><i class="fa fa-check"></i><b>1.4.1</b> Instalasi R</a></li>
+<li class="chapter" data-level="1.4.2" data-path="pengenalan-r.html"><a href="pengenalan-r.html#instalasi-rstudio"><i class="fa fa-check"></i><b>1.4.2</b> Instalasi RStudio:</a></li>
+</ul></li>
+<li class="chapter" data-level="1.5" data-path="pengenalan-r.html"><a href="pengenalan-r.html#video-instalasi-r-rstudio"><i class="fa fa-check"></i><b>1.5</b> Video Instalasi R &amp; RStudio</a>
+<ul>
+<li class="chapter" data-level="1.5.1" data-path="pengenalan-r.html"><a href="pengenalan-r.html#windows-1"><i class="fa fa-check"></i><b>1.5.1</b> Windows</a></li>
+<li class="chapter" data-level="1.5.2" data-path="pengenalan-r.html"><a href="pengenalan-r.html#macos-1"><i class="fa fa-check"></i><b>1.5.2</b> MacOS</a></li>
+</ul></li>
+<li class="chapter" data-level="1.6" data-path="pengenalan-r.html"><a href="pengenalan-r.html#interface-r-rstudio"><i class="fa fa-check"></i><b>1.6</b> Interface R &amp; RStudio:</a></li>
+<li class="chapter" data-level="1.7" data-path="pengenalan-r.html"><a href="pengenalan-r.html#sintaks-dasar-r"><i class="fa fa-check"></i><b>1.7</b> Sintaks Dasar R</a></li>
+<li class="chapter" data-level="1.8" data-path="pengenalan-r.html"><a href="pengenalan-r.html#bantuan-help-r"><i class="fa fa-check"></i><b>1.8</b> Bantuan (Help) R</a></li>
+<li class="chapter" data-level="1.9" data-path="pengenalan-r.html"><a href="pengenalan-r.html#shortcut-penggunaan-rstudio"><i class="fa fa-check"></i><b>1.9</b> Shortcut Penggunaan Rstudio</a></li>
+<li class="chapter" data-level="1.10" data-path="pengenalan-r.html"><a href="pengenalan-r.html#praktikum"><i class="fa fa-check"></i><b>1.10</b> Praktikum</a></li>
+</ul></li>
+<li class="chapter" data-level="2" data-path="operasi-dasar-r.html"><a href="operasi-dasar-r.html"><i class="fa fa-check"></i><b>2</b> Operasi Dasar R</a>
+<ul>
+<li class="chapter" data-level="2.1" data-path="operasi-dasar-r.html"><a href="operasi-dasar-r.html#variabel"><i class="fa fa-check"></i><b>2.1</b> Variabel</a>
+<ul>
+<li class="chapter" data-level="2.1.1" data-path="operasi-dasar-r.html"><a href="operasi-dasar-r.html#mendefinisikan-variabel"><i class="fa fa-check"></i><b>2.1.1</b> Mendefinisikan Variabel</a></li>
+<li class="chapter" data-level="2.1.2" data-path="operasi-dasar-r.html"><a href="operasi-dasar-r.html#aturan-nama-variabel"><i class="fa fa-check"></i><b>2.1.2</b> Aturan Nama Variabel</a></li>
+</ul></li>
+<li class="chapter" data-level="2.2" data-path="operasi-dasar-r.html"><a href="operasi-dasar-r.html#operator"><i class="fa fa-check"></i><b>2.2</b> Operator</a>
+<ul>
+<li class="chapter" data-level="2.2.1" data-path="operasi-dasar-r.html"><a href="operasi-dasar-r.html#aritmatika"><i class="fa fa-check"></i><b>2.2.1</b> Aritmatika</a></li>
+<li class="chapter" data-level="2.2.2" data-path="operasi-dasar-r.html"><a href="operasi-dasar-r.html#relasional"><i class="fa fa-check"></i><b>2.2.2</b> Relasional</a></li>
+<li class="chapter" data-level="2.2.3" data-path="operasi-dasar-r.html"><a href="operasi-dasar-r.html#logika"><i class="fa fa-check"></i><b>2.2.3</b> Logika</a></li>
+<li class="chapter" data-level="2.2.4" data-path="operasi-dasar-r.html"><a href="operasi-dasar-r.html#operator-lain-lain"><i class="fa fa-check"></i><b>2.2.4</b> Operator Lain-lain</a></li>
+</ul></li>
+<li class="chapter" data-level="2.3" data-path="operasi-dasar-r.html"><a href="operasi-dasar-r.html#tipe-data"><i class="fa fa-check"></i><b>2.3</b> Tipe Data</a></li>
+<li class="chapter" data-level="2.4" data-path="operasi-dasar-r.html"><a href="operasi-dasar-r.html#statistika-dasar"><i class="fa fa-check"></i><b>2.4</b> Statistika Dasar</a></li>
+<li class="chapter" data-level="2.5" data-path="operasi-dasar-r.html"><a href="operasi-dasar-r.html#contoh-pemrograman-dasar"><i class="fa fa-check"></i><b>2.5</b> Contoh Pemrograman Dasar</a>
+<ul>
+<li class="chapter" data-level="2.5.1" data-path="operasi-dasar-r.html"><a href="operasi-dasar-r.html#menghitung-rata-rata"><i class="fa fa-check"></i><b>2.5.1</b> Menghitung Rata-rata</a></li>
+<li class="chapter" data-level="2.5.2" data-path="operasi-dasar-r.html"><a href="operasi-dasar-r.html#membandingkan-angka"><i class="fa fa-check"></i><b>2.5.2</b> Membandingkan Angka</a></li>
+<li class="chapter" data-level="2.5.3" data-path="operasi-dasar-r.html"><a href="operasi-dasar-r.html#membandingkan-karakter"><i class="fa fa-check"></i><b>2.5.3</b> Membandingkan Karakter</a></li>
+<li class="chapter" data-level="2.5.4" data-path="operasi-dasar-r.html"><a href="operasi-dasar-r.html#mengecek-kondisi-gabungan"><i class="fa fa-check"></i><b>2.5.4</b> Mengecek Kondisi Gabungan</a></li>
+<li class="chapter" data-level="2.5.5" data-path="operasi-dasar-r.html"><a href="operasi-dasar-r.html#penggunaan-operator-logika"><i class="fa fa-check"></i><b>2.5.5</b> Penggunaan Operator Logika</a></li>
+<li class="chapter" data-level="2.5.6" data-path="operasi-dasar-r.html"><a href="operasi-dasar-r.html#pemeriksaan-kondisi-dengan-ifelse"><i class="fa fa-check"></i><b>2.5.6</b> Pemeriksaan Kondisi dengan ifelse()</a></li>
+</ul></li>
+<li class="chapter" data-level="2.6" data-path="operasi-dasar-r.html"><a href="operasi-dasar-r.html#latihan"><i class="fa fa-check"></i><b>2.6</b> Latihan</a></li>
+</ul></li>
+<li class="chapter" data-level="3" data-path="struktur-data.html"><a href="struktur-data.html"><i class="fa fa-check"></i><b>3</b> Struktur Data</a>
+<ul>
+<li class="chapter" data-level="3.1" data-path="struktur-data.html"><a href="struktur-data.html#vektor"><i class="fa fa-check"></i><b>3.1</b> Vektor</a></li>
+<li class="chapter" data-level="3.2" data-path="struktur-data.html"><a href="struktur-data.html#matriks"><i class="fa fa-check"></i><b>3.2</b> Matriks</a></li>
+<li class="chapter" data-level="3.3" data-path="struktur-data.html"><a href="struktur-data.html#array"><i class="fa fa-check"></i><b>3.3</b> Array</a></li>
+<li class="chapter" data-level="3.4" data-path="struktur-data.html"><a href="struktur-data.html#faktor"><i class="fa fa-check"></i><b>3.4</b> Faktor</a></li>
+<li class="chapter" data-level="3.5" data-path="struktur-data.html"><a href="struktur-data.html#data-frame"><i class="fa fa-check"></i><b>3.5</b> Data Frame</a></li>
+<li class="chapter" data-level="3.6" data-path="struktur-data.html"><a href="struktur-data.html#lists"><i class="fa fa-check"></i><b>3.6</b> Lists</a></li>
+<li class="chapter" data-level="3.7" data-path="struktur-data.html"><a href="struktur-data.html#rekayasa-data-frame"><i class="fa fa-check"></i><b>3.7</b> Rekayasa Data Frame</a>
+<ul>
+<li class="chapter" data-level="3.7.1" data-path="struktur-data.html"><a href="struktur-data.html#tanpa-packages"><i class="fa fa-check"></i><b>3.7.1</b> Tanpa Packages</a></li>
+<li class="chapter" data-level="3.7.2" data-path="struktur-data.html"><a href="struktur-data.html#mengunakan-packages"><i class="fa fa-check"></i><b>3.7.2</b> Mengunakan Packages</a></li>
+</ul></li>
+<li class="chapter" data-level="3.8" data-path="struktur-data.html"><a href="struktur-data.html#latihan-1"><i class="fa fa-check"></i><b>3.8</b> Latihan</a></li>
+</ul></li>
+<li class="chapter" data-level="4" data-path="ekstraksi-data.html"><a href="ekstraksi-data.html"><i class="fa fa-check"></i><b>4</b> Ekstraksi Data</a>
+<ul>
+<li class="chapter" data-level="4.1" data-path="ekstraksi-data.html"><a href="ekstraksi-data.html#impor-dataset"><i class="fa fa-check"></i><b>4.1</b> Impor Dataset</a></li>
+<li class="chapter" data-level="4.2" data-path="ekstraksi-data.html"><a href="ekstraksi-data.html#ekstraksi-baris"><i class="fa fa-check"></i><b>4.2</b> Ekstraksi Baris</a></li>
+<li class="chapter" data-level="4.3" data-path="ekstraksi-data.html"><a href="ekstraksi-data.html#ekstraksi-subset"><i class="fa fa-check"></i><b>4.3</b> Ekstraksi Subset</a></li>
+<li class="chapter" data-level="4.4" data-path="ekstraksi-data.html"><a href="ekstraksi-data.html#ekstraksi-dengan-variabel-baru"><i class="fa fa-check"></i><b>4.4</b> Ekstraksi Dengan Variabel Baru</a></li>
+<li class="chapter" data-level="4.5" data-path="ekstraksi-data.html"><a href="ekstraksi-data.html#ekstraksi-summary-statistik"><i class="fa fa-check"></i><b>4.5</b> Ekstraksi Summary Statistik</a></li>
+<li class="chapter" data-level="4.6" data-path="ekstraksi-data.html"><a href="ekstraksi-data.html#mengubah-nama"><i class="fa fa-check"></i><b>4.6</b> Mengubah Nama</a></li>
+<li class="chapter" data-level="4.7" data-path="ekstraksi-data.html"><a href="ekstraksi-data.html#latihan-2"><i class="fa fa-check"></i><b>4.7</b> Latihan</a></li>
+</ul></li>
+<li class="chapter" data-level="5" data-path="fungsi-dalam-r.html"><a href="fungsi-dalam-r.html"><i class="fa fa-check"></i><b>5</b> Fungsi dalam R</a>
+<ul>
+<li class="chapter" data-level="5.1" data-path="fungsi-dalam-r.html"><a href="fungsi-dalam-r.html#fungsi-satu-argumen"><i class="fa fa-check"></i><b>5.1</b> Fungsi Satu Argumen</a>
+<ul>
+<li class="chapter" data-level="5.1.1" data-path="fungsi-dalam-r.html"><a href="fungsi-dalam-r.html#fungsi-kuadrat"><i class="fa fa-check"></i><b>5.1.1</b> Fungsi Kuadrat</a></li>
+<li class="chapter" data-level="5.1.2" data-path="fungsi-dalam-r.html"><a href="fungsi-dalam-r.html#fungsi-akar"><i class="fa fa-check"></i><b>5.1.2</b> Fungsi Akar</a></li>
+<li class="chapter" data-level="5.1.3" data-path="fungsi-dalam-r.html"><a href="fungsi-dalam-r.html#nilai-rerata"><i class="fa fa-check"></i><b>5.1.3</b> Nilai Rerata</a></li>
+<li class="chapter" data-level="5.1.4" data-path="fungsi-dalam-r.html"><a href="fungsi-dalam-r.html#konversi-persen"><i class="fa fa-check"></i><b>5.1.4</b> Konversi Persen</a></li>
+</ul></li>
+<li class="chapter" data-level="5.2" data-path="fungsi-dalam-r.html"><a href="fungsi-dalam-r.html#simpan-fungsi"><i class="fa fa-check"></i><b>5.2</b> Simpan Fungsi</a></li>
+<li class="chapter" data-level="5.3" data-path="fungsi-dalam-r.html"><a href="fungsi-dalam-r.html#fungsi-multi-argumen"><i class="fa fa-check"></i><b>5.3</b> Fungsi Multi Argumen</a>
+<ul>
+<li class="chapter" data-level="5.3.1" data-path="fungsi-dalam-r.html"><a href="fungsi-dalam-r.html#luas-keliling"><i class="fa fa-check"></i><b>5.3.1</b> Luas &amp; Keliling</a></li>
+<li class="chapter" data-level="5.3.2" data-path="fungsi-dalam-r.html"><a href="fungsi-dalam-r.html#luas-keliling-dan-volume"><i class="fa fa-check"></i><b>5.3.2</b> Luas, Keliling dan Volume</a></li>
+<li class="chapter" data-level="5.3.3" data-path="fungsi-dalam-r.html"><a href="fungsi-dalam-r.html#rerata-frekuensi"><i class="fa fa-check"></i><b>5.3.3</b> Rerata Frekuensi</a></li>
+</ul></li>
+<li class="chapter" data-level="5.4" data-path="fungsi-dalam-r.html"><a href="fungsi-dalam-r.html#fungsi-untuk-data-frame"><i class="fa fa-check"></i><b>5.4</b> Fungsi untuk Data Frame</a>
+<ul>
+<li class="chapter" data-level="5.4.1" data-path="fungsi-dalam-r.html"><a href="fungsi-dalam-r.html#normalisasi"><i class="fa fa-check"></i><b>5.4.1</b> Normalisasi</a></li>
+</ul></li>
+<li class="chapter" data-level="5.5" data-path="fungsi-dalam-r.html"><a href="fungsi-dalam-r.html#latihan-3"><i class="fa fa-check"></i><b>5.5</b> Latihan</a></li>
+</ul></li>
+<li class="chapter" data-level="6" data-path="referensi.html"><a href="referensi.html"><i class="fa fa-check"></i><b>6</b> Referensi</a></li>
+<li class="divider"></li>
+<li><a href="https://github.com/rstudio/bookdown" target="blank">Published with bookdown</a></li>
+
+</ul>
+
+      </nav>
+    </div>
+
+    <div class="book-body">
+      <div class="body-inner">
+        <div class="book-header" role="navigation">
+          <h1>
+            <i class="fa fa-circle-o-notch fa-spin"></i><a href="./">Algoritma dan Pemrograman R</a>
+          </h1>
+        </div>
+
+        <div class="page-wrapper" tabindex="-1" role="main">
+          <div class="page-inner">
+
+            <section class="normal" id="section-">
+<div id="struktur-data" class="section level1 hasAnchor" number="3">
+<h1><span class="header-section-number">Bab 3</span> Struktur Data<a href="struktur-data.html#struktur-data" class="anchor-section" aria-label="Anchor link to header"></a></h1>
+<p>Struktur data dalam R adalah cara di mana Anda dapat mengatur dan menyimpan data dalam bentuk yang terstruktur agar mudah diakses, dikelola, dan dimanipulasi. Struktur data memungkinkan Anda untuk mengelompokkan nilai-nilai data ke dalam objek yang sesuai dengan jenis dan sifat data yang Anda miliki. R memiliki beberapa jenis struktur data yang dapat digunakan untuk berbagai tujuan.</p>
+<div class="figure" style="text-align: center"><span style="display:block;" id="fig:struktur-data"></span>
+<img src="images/Bab3/Struktur_Data.png" alt="Struktur Data dalam R" width="100%" />
+<p class="caption">
+Gambar 3.1: Struktur Data dalam R
+</p>
+</div>
+<div id="vektor" class="section level2 hasAnchor" number="3.1">
+<h2><span class="header-section-number">3.1</span> Vektor<a href="struktur-data.html#vektor" class="anchor-section" aria-label="Anchor link to header"></a></h2>
+<p>Elemen paling dasar dalam R adalah vektor, yang berisikan kumpulan elemen data dengan tipe yang sama. Terdapat dua jenis vector, yaitu vector numerik dan vector karakter. Misalnya:</p>
+<div class="sourceCode" id="cb26"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb26-1"><a href="struktur-data.html#cb26-1" tabindex="-1"></a>vektor <span class="ot">&lt;-</span> <span class="fu">seq</span>(<span class="at">from=</span><span class="dv">10</span>, <span class="at">to=</span><span class="dv">21</span>, <span class="at">by=</span><span class="dv">1</span>)      <span class="co"># fungsi `seq()` dengan &quot;by&quot;</span></span>
+<span id="cb26-2"><a href="struktur-data.html#cb26-2" tabindex="-1"></a>vektor<span class="ot">&lt;-</span> <span class="fu">seq</span>(<span class="at">from=</span><span class="dv">10</span>, <span class="at">to=</span><span class="dv">21</span>, <span class="at">len=</span><span class="dv">12</span>)     <span class="co"># fungsi `seq()` dengan &quot;len&quot;</span></span>
+<span id="cb26-3"><a href="struktur-data.html#cb26-3" tabindex="-1"></a>vektor <span class="ot">&lt;-</span> <span class="dv">10</span><span class="sc">:</span><span class="dv">21</span>                          <span class="co"># tetapkan data dalam vektor </span></span>
+<span id="cb26-4"><a href="struktur-data.html#cb26-4" tabindex="-1"></a>vektor <span class="ot">&lt;-</span> vektor<span class="sc">+</span><span class="dv">2</span>                       <span class="co"># Operasi berdasarkan elemen</span></span>
+<span id="cb26-5"><a href="struktur-data.html#cb26-5" tabindex="-1"></a>vektor <span class="ot">&lt;-</span> vektor<span class="sc">*</span><span class="dv">2</span>                       <span class="co"># Tambahkan 2 untuk setiap elemen </span></span>
+<span id="cb26-6"><a href="struktur-data.html#cb26-6" tabindex="-1"></a>vektor <span class="ot">&lt;-</span> vektor<span class="sc">^</span><span class="dv">2</span>                       <span class="co"># Pangkat 2 untuk setiap elemen </span></span>
+<span id="cb26-7"><a href="struktur-data.html#cb26-7" tabindex="-1"></a>vektor <span class="ot">&lt;-</span> <span class="fu">sqrt</span>(vektor)                   <span class="co"># Akar kuadrat untuk setiap elemen</span></span>
+<span id="cb26-8"><a href="struktur-data.html#cb26-8" tabindex="-1"></a>vektor <span class="ot">&lt;-</span> <span class="fu">log</span>(vektor)                    <span class="co"># Logaritma untuk setiap elemen</span></span>
+<span id="cb26-9"><a href="struktur-data.html#cb26-9" tabindex="-1"></a>vektor<span class="ot">&lt;-</span> <span class="fu">c</span>(<span class="fl">0.5</span>, <span class="fl">0.6</span>)                     <span class="co"># Numerik</span></span>
+<span id="cb26-10"><a href="struktur-data.html#cb26-10" tabindex="-1"></a>vektor <span class="ot">&lt;-</span> <span class="fu">c</span>(<span class="cn">TRUE</span>, <span class="cn">FALSE</span>)                 <span class="co"># Logis</span></span>
+<span id="cb26-11"><a href="struktur-data.html#cb26-11" tabindex="-1"></a>vektor <span class="ot">&lt;-</span> <span class="fu">c</span>(T, F)                        <span class="co"># Logis</span></span>
+<span id="cb26-12"><a href="struktur-data.html#cb26-12" tabindex="-1"></a>vektor <span class="ot">&lt;-</span> <span class="fu">c</span>(<span class="st">&quot;a&quot;</span>, <span class="st">&quot;b&quot;</span>, <span class="st">&quot;c&quot;</span>)               <span class="co"># Karakter</span></span>
+<span id="cb26-13"><a href="struktur-data.html#cb26-13" tabindex="-1"></a>vektor <span class="ot">&lt;-</span> <span class="dv">9</span><span class="sc">:</span><span class="dv">29</span>                           <span class="co"># Integer</span></span>
+<span id="cb26-14"><a href="struktur-data.html#cb26-14" tabindex="-1"></a>vektor <span class="ot">&lt;-</span> <span class="fu">c</span>(<span class="dv">1</span><span class="sc">+</span>0i, <span class="dv">2</span><span class="sc">+</span>4i)                  <span class="co"># Kompleks</span></span>
+<span id="cb26-15"><a href="struktur-data.html#cb26-15" tabindex="-1"></a>vektor <span class="ot">&lt;-</span> <span class="fu">vector</span>(<span class="st">&quot;numeric&quot;</span>, <span class="at">length =</span> <span class="dv">10</span>) <span class="co"># untuk inisialisasi vektor.</span></span></code></pre></div>
+<p><strong>Catatan:</strong> Menurut <a href="https://stat.ethz.ch/R-manual/R-devel/doc/manual/R-lang.html#Objects">dokumentasi R</a> untuk <code>typeof()</code> dan <code>class()</code>, pernyataan tentang “perbedaan utama/main difference” adalah tidak benar. Kelas adalah atribut dari objek yang dapat ditetapkan terlepas dari mode penyimpanan internalnya, sedangkan <code>typeof()</code> menentukan tipe (R internal) atau mode penyimpanan dari objek apa pun. Salah satu menggambarkan karakteristik logis sedangkan yang lain adalah karakteristik fisik dari suatu objek.</p>
+<div class="sourceCode" id="cb27"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb27-1"><a href="struktur-data.html#cb27-1" tabindex="-1"></a><span class="fu">class</span>(vektor)                            <span class="co"># Periksa kelas vektor</span></span>
+<span id="cb27-2"><a href="struktur-data.html#cb27-2" tabindex="-1"></a><span class="fu">as.numeric</span>(vektor)                       <span class="co"># Menetapkan vektor sebagai numerik</span></span>
+<span id="cb27-3"><a href="struktur-data.html#cb27-3" tabindex="-1"></a><span class="fu">as.logical</span>(vektor)                       <span class="co"># Menetapkan vektor sebagai logis</span></span>
+<span id="cb27-4"><a href="struktur-data.html#cb27-4" tabindex="-1"></a><span class="fu">as.character</span>(vektor)                     <span class="co"># Menetapkan vektor sebagai karakter</span></span>
+<span id="cb27-5"><a href="struktur-data.html#cb27-5" tabindex="-1"></a><span class="fu">as.numeric</span>(<span class="fu">c</span>(<span class="cn">FALSE</span>,<span class="cn">TRUE</span>,<span class="cn">TRUE</span>,<span class="cn">FALSE</span>))     <span class="co"># Menetapkan vektor logis sebagai angka </span></span></code></pre></div>
+<p>Terkadang, R tidak dapat menemukan cara untuk memaksa suatu objek dan ini dapat menghasilkan NA.</p>
+<div class="sourceCode" id="cb28"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb28-1"><a href="struktur-data.html#cb28-1" tabindex="-1"></a>vektor <span class="ot">&lt;-</span> <span class="fu">c</span>(<span class="st">&quot;a&quot;</span>, <span class="st">&quot;b&quot;</span>, <span class="st">&quot;c&quot;</span>,<span class="st">&quot;1&quot;</span>)             <span class="co"># menetapkan nilai vektor</span></span>
+<span id="cb28-2"><a href="struktur-data.html#cb28-2" tabindex="-1"></a><span class="fu">as.numeric</span>(vektor)                       <span class="co"># menetapkan vektor sebagai numerik</span></span></code></pre></div>
+<pre><code>## Warning: NAs introduced by coercion</code></pre>
+<div class="sourceCode" id="cb30"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb30-1"><a href="struktur-data.html#cb30-1" tabindex="-1"></a><span class="fu">as.logical</span>(vektor)                       <span class="co"># menetapkan vektor sebagai logis</span></span>
+<span id="cb30-2"><a href="struktur-data.html#cb30-2" tabindex="-1"></a><span class="fu">as.complex</span>(vektor)                       <span class="co"># menetapkan vektor sebagai karakter</span></span></code></pre></div>
+<pre><code>## Warning: NAs introduced by coercion</code></pre>
+<p><strong>Catatan:</strong> Saat paksaan tidak masuk akal terjadi, Anda biasanya akan mendapat peringatan dari R.</p>
+<p>Kita sudah melihat bahwa elemen dasar dari objek R adalah vektor. Vektor dapat ditetapkan dengan berbagai jenis berikut:</p>
+<ul>
+<li><strong>character:</strong> di mana setiap elemen adalah string, mis., urutan simbol alfanumerik.</li>
+<li><strong>numeric:</strong> di mana setiap elemen adalah <a href="https://en.wikipedia.org/wiki/Real_number">bilangan real</a> dalam format floating point <a href="https://en.wikipedia.org/wiki/Double-precision_floating-point_format">presisi ganda</a>.</li>
+<li><strong>integer:</strong> di mana setiap elemen adalah <a href="https://en.wikipedia.org/wiki/Integer">integer</a>.</li>
+<li><strong>logis:</strong> di mana setiap elemen adalah TRUE, FALSE, atau NA3</li>
+<li><strong>complex:</strong> di mana setiap elemen adalah bilangan kompleks.</li>
+</ul>
+</div>
+<div id="matriks" class="section level2 hasAnchor" number="3.2">
+<h2><span class="header-section-number">3.2</span> Matriks<a href="struktur-data.html#matriks" class="anchor-section" aria-label="Anchor link to header"></a></h2>
+<p>Matriks adalah vektor dengan atribut dimensi. Matriks dibuat berdasarkan kolom, sehingga entri dapat dianggap dimulai dari sudut “kiri atas” dan mengalir di kolom.</p>
+<div class="sourceCode" id="cb32"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb32-1"><a href="struktur-data.html#cb32-1" tabindex="-1"></a>matriks <span class="ot">&lt;-</span> <span class="fu">matrix</span>(<span class="fu">c</span>(<span class="dv">1</span>, <span class="dv">2</span>, <span class="dv">3</span>, <span class="dv">4</span>, <span class="dv">5</span>, <span class="dv">6</span>), <span class="at">nrow =</span> <span class="dv">2</span>, <span class="at">ncol =</span> <span class="dv">3</span>)</span>
+<span id="cb32-2"><a href="struktur-data.html#cb32-2" tabindex="-1"></a>matriks</span></code></pre></div>
+<pre><code>##      [,1] [,2] [,3]
+## [1,]    1    3    5
+## [2,]    2    4    6</code></pre>
+<p>Matriks juga dapat dibuat langsung dari vektor dengan menambahkan atribut dimensi.</p>
+<div class="sourceCode" id="cb34"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb34-1"><a href="struktur-data.html#cb34-1" tabindex="-1"></a>matriks <span class="ot">&lt;-</span> <span class="dv">1</span><span class="sc">:</span><span class="dv">6</span>                         <span class="co"># Membuat vektor</span></span>
+<span id="cb34-2"><a href="struktur-data.html#cb34-2" tabindex="-1"></a><span class="fu">dim</span>(matriks) <span class="ot">&lt;-</span> <span class="fu">c</span>(<span class="dv">2</span>, <span class="dv">3</span>)                <span class="co"># rubah vektor sebagai matriks sebesar 2x3</span></span>
+<span id="cb34-3"><a href="struktur-data.html#cb34-3" tabindex="-1"></a>matriks                                <span class="co"># Mencetak hasilnya</span></span></code></pre></div>
+<p>Matriks dapat dibuat dengan pengikatan kolom atau pengikatan baris dengan fungsi <code>cbind()</code> dan <code>rbind()</code>.</p>
+<div class="sourceCode" id="cb35"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb35-1"><a href="struktur-data.html#cb35-1" tabindex="-1"></a>x <span class="ot">&lt;-</span> <span class="dv">1</span><span class="sc">:</span><span class="dv">3</span>                              <span class="co"># Membuat vektor `x`</span></span>
+<span id="cb35-2"><a href="struktur-data.html#cb35-2" tabindex="-1"></a>y <span class="ot">&lt;-</span> <span class="dv">10</span><span class="sc">:</span><span class="dv">12</span>                            <span class="co"># Membuat vektor `y`</span></span>
+<span id="cb35-3"><a href="struktur-data.html#cb35-3" tabindex="-1"></a><span class="fu">cbind</span>(x, y)                           <span class="co"># Menggabungkan vektor `x` dan` y` dengan kolom</span></span>
+<span id="cb35-4"><a href="struktur-data.html#cb35-4" tabindex="-1"></a><span class="fu">rbind</span>(x, y)                           <span class="co"># Menggabungkan vektor `x` dan` y` dengan baris</span></span></code></pre></div>
+</div>
+<div id="array" class="section level2 hasAnchor" number="3.3">
+<h2><span class="header-section-number">3.3</span> Array<a href="struktur-data.html#array" class="anchor-section" aria-label="Anchor link to header"></a></h2>
+<p>Array mirip dengan matrix, tetapi dapat memiliki lebih dari dua dimensi. Masing-masing dimensi dalam array memiliki ukuran tertentu.</p>
+<div class="sourceCode" id="cb36"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb36-1"><a href="struktur-data.html#cb36-1" tabindex="-1"></a>array_data <span class="ot">&lt;-</span> <span class="fu">array</span>(<span class="fu">c</span>(<span class="dv">1</span>, <span class="dv">2</span>, <span class="dv">3</span>, <span class="dv">4</span>, <span class="dv">5</span>, <span class="dv">6</span>), <span class="at">dim =</span> <span class="fu">c</span>(<span class="dv">2</span>, <span class="dv">3</span>, <span class="dv">1</span>))</span></code></pre></div>
+</div>
+<div id="faktor" class="section level2 hasAnchor" number="3.4">
+<h2><span class="header-section-number">3.4</span> Faktor<a href="struktur-data.html#faktor" class="anchor-section" aria-label="Anchor link to header"></a></h2>
+<p>Faktor-faktor digunakan untuk mewakili data kategorikal dan dapat menjadi tidak teratur atau teratur. Orang dapat menganggap faktor sebagai vektor integer di mana setiap integer memiliki label. Menggunakan faktor dengan label lebih baik daripada menggunakan bilangan bulat karena faktor menggambarkan diri sendiri. Memiliki variabel yang memiliki nilai “Laki-laki” dan “Perempuan” lebih baik daripada variabel yang memiliki nilai 1 dan 2. Objek-objek dapat dibuat dengan fungsi <code>faktor()</code>.</p>
+<div class="sourceCode" id="cb37"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb37-1"><a href="struktur-data.html#cb37-1" tabindex="-1"></a>x <span class="ot">&lt;-</span> <span class="fu">factor</span>(<span class="fu">c</span>(<span class="st">&quot;yes&quot;</span>,<span class="st">&quot;no&quot;</span>,<span class="st">&quot;yes&quot;</span>,<span class="st">&quot;no&quot;</span>))  <span class="co"># Membuat objek faktor</span></span>
+<span id="cb37-2"><a href="struktur-data.html#cb37-2" tabindex="-1"></a>x                                      <span class="co"># Cetak hasilnya</span></span>
+<span id="cb37-3"><a href="struktur-data.html#cb37-3" tabindex="-1"></a><span class="fu">table</span>(x)                               <span class="co"># Tabel dari `x`</span></span>
+<span id="cb37-4"><a href="struktur-data.html#cb37-4" tabindex="-1"></a><span class="fu">unclass</span>(x)                             <span class="co"># Melihat representasi faktor yang mendasarinya</span></span>
+<span id="cb37-5"><a href="struktur-data.html#cb37-5" tabindex="-1"></a><span class="fu">attr</span>(x,<span class="st">&quot;levels&quot;</span>)                       <span class="co"># Melihat representasi faktor yang mendasarinya</span></span></code></pre></div>
+</div>
+<div id="data-frame" class="section level2 hasAnchor" number="3.5">
+<h2><span class="header-section-number">3.5</span> Data Frame<a href="struktur-data.html#data-frame" class="anchor-section" aria-label="Anchor link to header"></a></h2>
+<p>Kerangka data (data frame) adalah tabel atau struktur mirip array dua dimensi di mana setiap kolom berisi nilai satu variabel dan setiap baris berisi satu set nilai dari setiap kolom.</p>
+<p>Berikut ini adalah karakteristik data frame.</p>
+<ul>
+<li>Nama kolom tidak boleh kosong;</li>
+<li>Nama baris harus unik;</li>
+<li>Data yang disimpan dalam data frame bisa dari numerik, faktor atau tipe karakter;</li>
+<li>Setiap kolom harus berisi jumlah item data yang sama.</li>
+</ul>
+<div class="sourceCode" id="cb38"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb38-1"><a href="struktur-data.html#cb38-1" tabindex="-1"></a><span class="co"># Buat data frame pertama.</span></span>
+<span id="cb38-2"><a href="struktur-data.html#cb38-2" tabindex="-1"></a>df1 <span class="ot">&lt;-</span> <span class="fu">data.frame</span>(<span class="at">id =</span> <span class="fu">c</span> (<span class="dv">1</span><span class="sc">:</span><span class="dv">5</span>), </span>
+<span id="cb38-3"><a href="struktur-data.html#cb38-3" tabindex="-1"></a>                <span class="at">name =</span> <span class="fu">c</span>(<span class="st">&quot;Julian&quot;</span>,<span class="st">&quot;Vanessa&quot;</span>,<span class="st">&quot;Jeffry&quot;</span>,<span class="st">&quot;Angel&quot;</span>,<span class="st">&quot;Nikki&quot;</span>),</span>
+<span id="cb38-4"><a href="struktur-data.html#cb38-4" tabindex="-1"></a>              <span class="at">salary =</span> <span class="fu">c</span>(<span class="fl">623.3</span>,<span class="fl">515.2</span>,<span class="fl">611.0</span>,<span class="fl">729.0</span>,<span class="fl">843.25</span>), </span>
+<span id="cb38-5"><a href="struktur-data.html#cb38-5" tabindex="-1"></a>          <span class="at">start_date =</span> <span class="fu">as.Date</span>(<span class="fu">c</span>(<span class="st">&quot;2022-01-01&quot;</span>, <span class="st">&quot;2022-09-23&quot;</span>, <span class="st">&quot;2022-11-15&quot;</span>,                                               <span class="st">&quot;2022-05-11&quot;</span>, <span class="st">&quot;2022-03-27&quot;</span>)),</span>
+<span id="cb38-6"><a href="struktur-data.html#cb38-6" tabindex="-1"></a>                <span class="at">dept =</span> <span class="fu">c</span>(<span class="st">&quot;DS&quot;</span>,<span class="st">&quot;DS&quot;</span>,<span class="st">&quot;BA&quot;</span>,<span class="st">&quot;DA&quot;</span>,<span class="st">&quot;DS&quot;</span>), <span class="at">stringsAsFactors =</span> F)</span>
+<span id="cb38-7"><a href="struktur-data.html#cb38-7" tabindex="-1"></a>df1</span></code></pre></div>
+<div class="sourceCode" id="cb39"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb39-1"><a href="struktur-data.html#cb39-1" tabindex="-1"></a><span class="co"># Buat data frame kedua.</span></span>
+<span id="cb39-2"><a href="struktur-data.html#cb39-2" tabindex="-1"></a>df2 <span class="ot">&lt;-</span><span class="fu">data.frame</span>(<span class="at">id =</span> <span class="fu">c</span> (<span class="dv">6</span><span class="sc">:</span><span class="dv">10</span>), </span>
+<span id="cb39-3"><a href="struktur-data.html#cb39-3" tabindex="-1"></a>               <span class="at">name =</span> <span class="fu">c</span>(<span class="st">&quot;Ardifo&quot;</span>,<span class="st">&quot;Irene&quot;</span>,<span class="st">&quot;Kefas&quot;</span>,<span class="st">&quot;Sherly&quot;</span>,<span class="st">&quot;Bakti&quot;</span>),</span>
+<span id="cb39-4"><a href="struktur-data.html#cb39-4" tabindex="-1"></a>             <span class="at">salary =</span> <span class="fu">c</span>(<span class="fl">578.0</span>,<span class="fl">722.5</span>,<span class="fl">632.8</span>,<span class="fl">632.8</span>,<span class="cn">NA</span>), </span>
+<span id="cb39-5"><a href="struktur-data.html#cb39-5" tabindex="-1"></a>         <span class="at">start_date =</span> <span class="fu">as.Date</span>(<span class="fu">c</span>(<span class="st">&quot;2022-05-21&quot;</span>,<span class="st">&quot;2022-07-30&quot;</span>,<span class="st">&quot;2022-06-17&quot;</span>,</span>
+<span id="cb39-6"><a href="struktur-data.html#cb39-6" tabindex="-1"></a>                                <span class="st">&quot;2022-07-30&quot;</span>,<span class="st">&quot;2018-09-03&quot;</span>)),</span>
+<span id="cb39-7"><a href="struktur-data.html#cb39-7" tabindex="-1"></a>               <span class="at">dept =</span> <span class="fu">c</span>(<span class="st">&quot;Actuaries&quot;</span>,<span class="st">&quot;Actuaries&quot;</span>,<span class="st">&quot;CA&quot;</span>,<span class="st">&quot;DE&quot;</span>,<span class="st">&quot;Lecturer&quot;</span>),<span class="at">stringsAsFactors =</span> F)</span>
+<span id="cb39-8"><a href="struktur-data.html#cb39-8" tabindex="-1"></a>df2</span></code></pre></div>
+<div class="sourceCode" id="cb40"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb40-1"><a href="struktur-data.html#cb40-1" tabindex="-1"></a>df3 <span class="ot">&lt;-</span> <span class="fu">rbind</span>(df1,df2)                  <span class="co"># Gabungkan dua frame data</span></span>
+<span id="cb40-2"><a href="struktur-data.html#cb40-2" tabindex="-1"></a><span class="fu">print</span>(df3)                             <span class="co"># Cetak hasilnya `df3`</span></span>
+<span id="cb40-3"><a href="struktur-data.html#cb40-3" tabindex="-1"></a><span class="fu">head</span>(df3)                              <span class="co"># Cetak enam baris pertama</span></span>
+<span id="cb40-4"><a href="struktur-data.html#cb40-4" tabindex="-1"></a><span class="fu">head</span>(df3,<span class="dv">6</span>)                            <span class="co"># Cetak enam baris pertama</span></span>
+<span id="cb40-5"><a href="struktur-data.html#cb40-5" tabindex="-1"></a><span class="co">#View(df3)                             # Menggunakan RStudio seperti penampil Excel</span></span>
+<span id="cb40-6"><a href="struktur-data.html#cb40-6" tabindex="-1"></a><span class="fu">class</span>(df3)                             <span class="co"># objeknya bertipe data.frame</span></span>
+<span id="cb40-7"><a href="struktur-data.html#cb40-7" tabindex="-1"></a><span class="fu">str</span>(df3)                               <span class="co"># Dapatkan struktur data frame</span></span>
+<span id="cb40-8"><a href="struktur-data.html#cb40-8" tabindex="-1"></a><span class="fu">dim</span>(df3)                               <span class="co"># Periksa dimensi data</span></span></code></pre></div>
+<p>Data frame biasanya dibuat dengan membaca dalam dataset menggunakan <code>read.table()</code> atau <code>read.csv ()</code>. Namun, data frame juga dapat dibuat secara eksplisit dengan fungsi <code>data.frame()</code> atau mereka dapat dipaksakan dari jenis objek lain seperti list.</p>
+</div>
+<div id="lists" class="section level2 hasAnchor" number="3.6">
+<h2><span class="header-section-number">3.6</span> Lists<a href="struktur-data.html#lists" class="anchor-section" aria-label="Anchor link to header"></a></h2>
+<p>List dalam R adalah struktur data yang mengizinkan Anda untuk menyimpan berbagai jenis objek, termasuk vektor, matriks, array, dataframe, dan objek list lainnya, dalam satu objek tunggal. Ini memungkinkan Anda untuk membuat struktur data yang kompleks dan fleksibel dengan menggabungkan objek-objek yang berbeda ke dalam satu wadah. List sering digunakan ketika Anda perlu mengorganisir dan mengelompokkan objek-objek yang terkait.</p>
+<p>Berikut adalah contoh penggunaan dan pembuatan list dalam R:</p>
+<div class="sourceCode" id="cb41"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb41-1"><a href="struktur-data.html#cb41-1" tabindex="-1"></a><span class="co"># Membuat vektor dan matriks</span></span>
+<span id="cb41-2"><a href="struktur-data.html#cb41-2" tabindex="-1"></a>vektor <span class="ot">&lt;-</span> <span class="fu">c</span>(<span class="fl">1.5</span>, <span class="fl">2.7</span>, <span class="fl">3.2</span>, <span class="fl">4.0</span>)</span>
+<span id="cb41-3"><a href="struktur-data.html#cb41-3" tabindex="-1"></a>matriks <span class="ot">&lt;-</span> <span class="fu">matrix</span>(<span class="fu">c</span>(<span class="dv">1</span>, <span class="dv">2</span>, <span class="dv">3</span>, <span class="dv">4</span>, <span class="dv">5</span>, <span class="dv">6</span>), <span class="at">nrow =</span> <span class="dv">2</span>, <span class="at">ncol =</span> <span class="dv">3</span>)</span></code></pre></div>
+<div class="sourceCode" id="cb42"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb42-1"><a href="struktur-data.html#cb42-1" tabindex="-1"></a><span class="co"># Membuat dataframe</span></span>
+<span id="cb42-2"><a href="struktur-data.html#cb42-2" tabindex="-1"></a>data_frame <span class="ot">&lt;-</span> <span class="fu">data.frame</span>(<span class="at">name =</span> <span class="fu">c</span>(<span class="st">&quot;Alice&quot;</span>, <span class="st">&quot;Bakti&quot;</span>, <span class="st">&quot;Charlie&quot;</span>),</span>
+<span id="cb42-3"><a href="struktur-data.html#cb42-3" tabindex="-1"></a>                         <span class="at">age =</span> <span class="fu">c</span>(<span class="dv">25</span>, <span class="dv">30</span>, <span class="dv">28</span>),</span>
+<span id="cb42-4"><a href="struktur-data.html#cb42-4" tabindex="-1"></a>                         <span class="at">score =</span> <span class="fu">c</span>(<span class="dv">95</span>, <span class="dv">88</span>, <span class="dv">76</span>))</span></code></pre></div>
+<div class="sourceCode" id="cb43"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb43-1"><a href="struktur-data.html#cb43-1" tabindex="-1"></a>faktor <span class="ot">&lt;-</span> <span class="st">&quot;List, Sudah Jadi&quot;</span></span></code></pre></div>
+<div class="sourceCode" id="cb44"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb44-1"><a href="struktur-data.html#cb44-1" tabindex="-1"></a><span class="co"># Membuat list</span></span>
+<span id="cb44-2"><a href="struktur-data.html#cb44-2" tabindex="-1"></a>my_list <span class="ot">&lt;-</span> <span class="fu">list</span>(vektor, matriks, data_frame, faktor)</span></code></pre></div>
+<div class="sourceCode" id="cb45"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb45-1"><a href="struktur-data.html#cb45-1" tabindex="-1"></a><span class="co"># Menampilkan list</span></span>
+<span id="cb45-2"><a href="struktur-data.html#cb45-2" tabindex="-1"></a><span class="fu">print</span>(my_list)</span></code></pre></div>
+<p>Anda juga dapat memberi nama pada setiap elemen dalam list untuk membuat list yang lebih mudah dibaca:</p>
+<div class="sourceCode" id="cb46"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb46-1"><a href="struktur-data.html#cb46-1" tabindex="-1"></a>nama_list <span class="ot">&lt;-</span> <span class="fu">list</span>(<span class="at">elemen1 =</span> vektor, </span>
+<span id="cb46-2"><a href="struktur-data.html#cb46-2" tabindex="-1"></a>                  <span class="at">elemen2 =</span> matriks, </span>
+<span id="cb46-3"><a href="struktur-data.html#cb46-3" tabindex="-1"></a>                  <span class="at">elemen3 =</span> data_frame, </span>
+<span id="cb46-4"><a href="struktur-data.html#cb46-4" tabindex="-1"></a>                  <span class="at">elemen4 =</span> faktor)</span>
+<span id="cb46-5"><a href="struktur-data.html#cb46-5" tabindex="-1"></a></span>
+<span id="cb46-6"><a href="struktur-data.html#cb46-6" tabindex="-1"></a><span class="co"># Menampilkan elemen dalam list berdasarkan nama</span></span>
+<span id="cb46-7"><a href="struktur-data.html#cb46-7" tabindex="-1"></a><span class="fu">print</span>(nama_list<span class="sc">$</span>elemen1)</span></code></pre></div>
+<pre><code>## [1] 1.5 2.7 3.2 4.0</code></pre>
+<div class="sourceCode" id="cb48"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb48-1"><a href="struktur-data.html#cb48-1" tabindex="-1"></a><span class="fu">print</span>(nama_list<span class="sc">$</span>elemen2)</span></code></pre></div>
+<pre><code>##      [,1] [,2] [,3]
+## [1,]    1    3    5
+## [2,]    2    4    6</code></pre>
+<div class="sourceCode" id="cb50"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb50-1"><a href="struktur-data.html#cb50-1" tabindex="-1"></a><span class="fu">print</span>(nama_list<span class="sc">$</span>elemen3)</span></code></pre></div>
+<pre><code>##      name age score
+## 1   Alice  25    95
+## 2   Bakti  30    88
+## 3 Charlie  28    76</code></pre>
+<div class="sourceCode" id="cb52"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb52-1"><a href="struktur-data.html#cb52-1" tabindex="-1"></a><span class="fu">print</span>(nama_list<span class="sc">$</span>elemen4)</span></code></pre></div>
+<pre><code>## [1] &quot;List, Sudah Jadi&quot;</code></pre>
+<p>Anda dapat mengakses elemen-elemen dalam list menggunakan indeks atau nama. Misalnya:</p>
+<div class="sourceCode" id="cb54"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb54-1"><a href="struktur-data.html#cb54-1" tabindex="-1"></a><span class="co"># Mengakses elemen pertama dalam list menggunakan indeks</span></span>
+<span id="cb54-2"><a href="struktur-data.html#cb54-2" tabindex="-1"></a>elemen1 <span class="ot">&lt;-</span> my_list[[<span class="dv">1</span>]]</span>
+<span id="cb54-3"><a href="struktur-data.html#cb54-3" tabindex="-1"></a>elemen2 <span class="ot">&lt;-</span> my_list[[<span class="dv">2</span>]]</span>
+<span id="cb54-4"><a href="struktur-data.html#cb54-4" tabindex="-1"></a>elemen3 <span class="ot">&lt;-</span> my_list[[<span class="dv">2</span>]]</span>
+<span id="cb54-5"><a href="struktur-data.html#cb54-5" tabindex="-1"></a>elemen4 <span class="ot">&lt;-</span> my_list[[<span class="dv">2</span>]]</span>
+<span id="cb54-6"><a href="struktur-data.html#cb54-6" tabindex="-1"></a></span>
+<span id="cb54-7"><a href="struktur-data.html#cb54-7" tabindex="-1"></a><span class="co"># Menampilkan hasil</span></span>
+<span id="cb54-8"><a href="struktur-data.html#cb54-8" tabindex="-1"></a><span class="fu">print</span>(elemen1)</span>
+<span id="cb54-9"><a href="struktur-data.html#cb54-9" tabindex="-1"></a><span class="fu">print</span>(elemen2)</span>
+<span id="cb54-10"><a href="struktur-data.html#cb54-10" tabindex="-1"></a><span class="fu">print</span>(elemen3)</span>
+<span id="cb54-11"><a href="struktur-data.html#cb54-11" tabindex="-1"></a><span class="fu">print</span>(elemen4)</span></code></pre></div>
+<p>List memungkinkan Anda mengorganisir, mengelompokkan, dan mengakses objek-objek yang beragam dalam struktur data tunggal, sehingga sangat berguna dalam analisis data yang kompleks dan beragam.</p>
+</div>
+<div id="rekayasa-data-frame" class="section level2 hasAnchor" number="3.7">
+<h2><span class="header-section-number">3.7</span> Rekayasa Data Frame<a href="struktur-data.html#rekayasa-data-frame" class="anchor-section" aria-label="Anchor link to header"></a></h2>
+<div id="tanpa-packages" class="section level3 hasAnchor" number="3.7.1">
+<h3><span class="header-section-number">3.7.1</span> Tanpa Packages<a href="struktur-data.html#tanpa-packages" class="anchor-section" aria-label="Anchor link to header"></a></h3>
+<p>Sebagai seorang Data Scientist, ketika mencoba menyimulasikan proses analisis data, pemodelan, bahkan prediksi. Anda harus mampu secara intuitif membangun dataframe untuk memperkirakan kumpulan data sampel. Terutama, ketika Anda tidak memiliki kumpulan data sampel sama sekali. Oleh karena itu, pada bagian ini, kita akan belajar sedikit mengenai cara menghasilkan dataframe. Harap perhatikan baik-baik contoh berikut:</p>
+<div class="sourceCode" id="cb55"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb55-1"><a href="struktur-data.html#cb55-1" tabindex="-1"></a><span class="co"># Misalkan Anda ingin membangun kumpulan data karyawan di sebuah perusahaan</span></span>
+<span id="cb55-2"><a href="struktur-data.html#cb55-2" tabindex="-1"></a></span>
+<span id="cb55-3"><a href="struktur-data.html#cb55-3" tabindex="-1"></a>No<span class="ot">&lt;-</span>(<span class="dv">1</span><span class="sc">:</span><span class="dv">52</span>)                                       <span class="co"># Menghasilkan bilangan 1-52</span></span>
+<span id="cb55-4"><a href="struktur-data.html#cb55-4" tabindex="-1"></a>Name<span class="ot">&lt;-</span><span class="fu">c</span>(LETTERS,letters)                         <span class="co"># 26 LETTERS dan 26 letters</span></span>
+<span id="cb55-5"><a href="struktur-data.html#cb55-5" tabindex="-1"></a>Gender<span class="ot">&lt;-</span><span class="fu">sample</span>(<span class="fu">rep</span>(<span class="fu">c</span>(<span class="st">&quot;Male&quot;</span>,<span class="st">&quot;Female&quot;</span>),<span class="at">times=</span><span class="dv">26</span>)) <span class="co"># 26 Laki-laki dan 26 perempuan</span></span>
+<span id="cb55-6"><a href="struktur-data.html#cb55-6" tabindex="-1"></a></span>
+<span id="cb55-7"><a href="struktur-data.html#cb55-7" tabindex="-1"></a><span class="co"># Menghasilkan tanggal lahir</span></span>
+<span id="cb55-8"><a href="struktur-data.html#cb55-8" tabindex="-1"></a>year_in_3<span class="ot">&lt;-</span><span class="fu">seq</span>(<span class="fu">as.Date</span>(<span class="st">&quot;2000/01/01&quot;</span>), <span class="at">by=</span><span class="st">&quot;year&quot;</span>, <span class="at">length.out=</span><span class="dv">4</span>)</span>
+<span id="cb55-9"><a href="struktur-data.html#cb55-9" tabindex="-1"></a>Birthday <span class="ot">&lt;-</span> <span class="fu">rep</span>(year_in_3, <span class="at">times=</span><span class="dv">13</span>)</span>
+<span id="cb55-10"><a href="struktur-data.html#cb55-10" tabindex="-1"></a></span>
+<span id="cb55-11"><a href="struktur-data.html#cb55-11" tabindex="-1"></a><span class="co"># Menghasilkan kategori universitas</span></span>
+<span id="cb55-12"><a href="struktur-data.html#cb55-12" tabindex="-1"></a>univ1<span class="ot">&lt;-</span><span class="fu">rep</span>(<span class="st">&quot;National&quot;</span>,<span class="at">times=</span><span class="dv">26</span>)                  <span class="co"># 26 universitas negeri</span></span>
+<span id="cb55-13"><a href="struktur-data.html#cb55-13" tabindex="-1"></a>univ2<span class="ot">&lt;-</span><span class="fu">rep</span>(<span class="st">&quot;Private&quot;</span>,<span class="at">times=</span><span class="dv">16</span>)                   <span class="co"># 16 universitas swasta </span></span>
+<span id="cb55-14"><a href="struktur-data.html#cb55-14" tabindex="-1"></a>univ3<span class="ot">&lt;-</span><span class="fu">rep</span>(<span class="st">&quot;Overseas&quot;</span>,<span class="at">times=</span><span class="dv">10</span>)                  <span class="co"># 10 universitas luar negeri</span></span>
+<span id="cb55-15"><a href="struktur-data.html#cb55-15" tabindex="-1"></a>Universities<span class="ot">&lt;-</span><span class="fu">sample</span>(<span class="fu">c</span>(univ1,univ2,univ3))       <span class="co"># Menggabungkan data (vetor)</span></span>
+<span id="cb55-16"><a href="struktur-data.html#cb55-16" tabindex="-1"></a></span>
+<span id="cb55-17"><a href="struktur-data.html#cb55-17" tabindex="-1"></a>gpa<span class="ot">&lt;-</span><span class="fu">runif</span>(<span class="dv">52</span>,<span class="at">min=</span><span class="fl">3.00</span>,<span class="at">max=</span><span class="fl">4.00</span>)                 <span class="co"># Menghasilkan 52 bilangan acak (min=3, dan max=4) </span></span>
+<span id="cb55-18"><a href="struktur-data.html#cb55-18" tabindex="-1"></a>GPA<span class="ot">&lt;-</span><span class="fu">round</span>(gpa,<span class="at">digits=</span><span class="dv">2</span>)                         <span class="co"># Mengatur digit bilangan acak Anda</span></span>
+<span id="cb55-19"><a href="struktur-data.html#cb55-19" tabindex="-1"></a>Salary<span class="ot">&lt;-</span><span class="fu">sample</span>(<span class="dv">600</span><span class="sc">:</span><span class="dv">1200</span>,<span class="dv">52</span>,<span class="at">replace=</span>T)            <span class="co"># Menghasilakn sampel antara 600-1200 (memungkinkan nilai duplikat)</span></span>
+<span id="cb55-20"><a href="struktur-data.html#cb55-20" tabindex="-1"></a>Employees<span class="ot">&lt;-</span><span class="fu">data.frame</span>(No,</span>
+<span id="cb55-21"><a href="struktur-data.html#cb55-21" tabindex="-1"></a>                      Name,</span>
+<span id="cb55-22"><a href="struktur-data.html#cb55-22" tabindex="-1"></a>                      Birthday,</span>
+<span id="cb55-23"><a href="struktur-data.html#cb55-23" tabindex="-1"></a>                      Gender,</span>
+<span id="cb55-24"><a href="struktur-data.html#cb55-24" tabindex="-1"></a>                      Universities,</span>
+<span id="cb55-25"><a href="struktur-data.html#cb55-25" tabindex="-1"></a>                      GPA,</span>
+<span id="cb55-26"><a href="struktur-data.html#cb55-26" tabindex="-1"></a>                      Salary)</span>
+<span id="cb55-27"><a href="struktur-data.html#cb55-27" tabindex="-1"></a>Employees</span></code></pre></div>
+<pre><code>##    No Name   Birthday Gender Universities  GPA Salary
+## 1   1    A 2000-01-01   Male     National 3.17    736
+## 2   2    B 2001-01-01   Male     National 3.59    923
+## 3   3    C 2002-01-01   Male      Private 3.71    931
+## 4   4    D 2003-01-01   Male     Overseas 3.38   1040
+## 5   5    E 2000-01-01 Female     Overseas 3.80   1023
+## 6   6    F 2001-01-01   Male     Overseas 3.35   1010
+## 7   7    G 2002-01-01 Female     Overseas 3.83    917
+## 8   8    H 2003-01-01 Female      Private 3.57    913
+## 9   9    I 2000-01-01 Female     National 3.62    788
+## 10 10    J 2001-01-01 Female     National 3.80    681
+## 11 11    K 2002-01-01   Male     Overseas 3.63    678
+## 12 12    L 2003-01-01   Male      Private 3.82    799
+## 13 13    M 2000-01-01   Male      Private 3.01   1051
+## 14 14    N 2001-01-01   Male     National 3.04    690
+## 15 15    O 2002-01-01 Female      Private 3.62   1082
+## 16 16    P 2003-01-01 Female      Private 3.17    677
+## 17 17    Q 2000-01-01 Female     National 3.48    624
+## 18 18    R 2001-01-01 Female     National 3.90   1128
+## 19 19    S 2002-01-01   Male     National 3.30   1160
+## 20 20    T 2003-01-01 Female     National 3.70    688
+## 21 21    U 2000-01-01   Male     National 3.82   1012
+## 22 22    V 2001-01-01   Male     National 3.34    726
+## 23 23    W 2002-01-01   Male     National 3.93    731
+## 24 24    X 2003-01-01 Female      Private 3.62    837
+## 25 25    Y 2000-01-01 Female      Private 3.34   1137
+## 26 26    Z 2001-01-01 Female     National 3.59    907
+## 27 27    a 2002-01-01 Female     National 3.49    627
+## 28 28    b 2003-01-01   Male      Private 3.75    688
+## 29 29    c 2000-01-01 Female     National 3.81   1087
+## 30 30    d 2001-01-01   Male     National 3.69   1128
+## 31 31    e 2002-01-01 Female     Overseas 3.62    769
+## 32 32    f 2003-01-01   Male      Private 3.49    973
+## 33 33    g 2000-01-01   Male     Overseas 3.36    853
+## 34 34    h 2001-01-01 Female     National 3.51    961
+## 35 35    i 2002-01-01 Female      Private 3.45   1123
+## 36 36    j 2003-01-01   Male     Overseas 3.52   1108
+## 37 37    k 2000-01-01   Male     National 3.82    848
+## 38 38    l 2001-01-01 Female     National 3.46    618
+## 39 39    m 2002-01-01 Female      Private 3.54   1127
+## 40 40    n 2003-01-01   Male     National 3.07   1134
+## 41 41    o 2000-01-01   Male     Overseas 3.90    657
+## 42 42    p 2001-01-01 Female      Private 3.32    843
+## 43 43    q 2002-01-01   Male     National 3.98    676
+## 44 44    r 2003-01-01 Female     National 3.77    965
+## 45 45    s 2000-01-01   Male     National 3.33    728
+## 46 46    t 2001-01-01   Male     Overseas 3.58    654
+## 47 47    u 2002-01-01   Male     National 3.16    795
+## 48 48    v 2003-01-01   Male     National 3.71   1075
+## 49 49    w 2000-01-01 Female     National 3.52    690
+## 50 50    x 2001-01-01 Female      Private 3.59   1077
+## 51 51    y 2002-01-01 Female      Private 3.48    801
+## 52 52    z 2003-01-01 Female      Private 3.46    822</code></pre>
+</div>
+<div id="mengunakan-packages" class="section level3 hasAnchor" number="3.7.2">
+<h3><span class="header-section-number">3.7.2</span> Mengunakan Packages<a href="struktur-data.html#mengunakan-packages" class="anchor-section" aria-label="Anchor link to header"></a></h3>
+<p>Dalam contoh kedua ini, digunakan pustaka <em>(Packages)</em> <code>faker</code> untuk menghasilkan data palsu seperti nama, alamat, dan lain-lain. Pastikan Anda telah menginstal pustaka tersebut menggunakan perintah <code>install.packages("fakir")</code> jika belum terinstal, mengikuti langkah berikut.</p>
+<div class="sourceCode" id="cb57"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb57-1"><a href="struktur-data.html#cb57-1" tabindex="-1"></a><span class="fu">install.packages</span>(<span class="st">&quot;remotes&quot;</span>)</span>
+<span id="cb57-2"><a href="struktur-data.html#cb57-2" tabindex="-1"></a>remotes<span class="sc">::</span><span class="fu">install_github</span>(<span class="st">&quot;ThinkR-open/fakir&quot;</span>)</span></code></pre></div>
+<p>Selanjutnya, anda dapat membuat data frame palsu seperti diperlihatkan berikut:</p>
+<div class="sourceCode" id="cb58"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb58-1"><a href="struktur-data.html#cb58-1" tabindex="-1"></a><span class="fu">library</span>(fakir)</span>
+<span id="cb58-2"><a href="struktur-data.html#cb58-2" tabindex="-1"></a><span class="fu">fake_ticket_client</span>(<span class="at">vol =</span> <span class="dv">10</span>)</span></code></pre></div>
+<pre><code>## # A tibble: 10 × 25
+##    ref        num_client first last  job     age region
+##    &lt;chr&gt;      &lt;chr&gt;      &lt;chr&gt; &lt;chr&gt; &lt;chr&gt; &lt;dbl&gt; &lt;chr&gt; 
+##  1 DOSS-AMQN… 79         Jovan O&#39;Ke… Gene…    22 Nord-…
+##  2 DOSS-NCKJ… 69         Miss  Lean… Emer…    68 Picar…
+##  3 DOSS-GPBE… 120        Odell Stok… Engi…    24 Breta…
+##  4 DOSS-GRLN… 31         Loren Lars… &lt;NA&gt;     NA Île-d…
+##  5 DOSS-LEPJ… 59         Mayb… Maye… Furt…    18 &lt;NA&gt;  
+##  6 DOSS-DUCL… 118        Jama… Ober… Engi…    18 &lt;NA&gt;  
+##  7 DOSS-OCED… 77         Lee   Scha… Admi…    NA Île-d…
+##  8 DOSS-KXSJ… 65         Deme… Auer  Cont…    21 Île-d…
+##  9 DOSS-UITD… 141        Wilf… Harv… Educ…    53 Centre
+## 10 DOSS-SHKL… 182        Addy… Nien… Earl…    65 Aquit…
+## # ℹ 18 more variables: id_dpt &lt;chr&gt;,
+## #   departement &lt;chr&gt;, cb_provider &lt;chr&gt;, name &lt;chr&gt;,
+## #   entry_date &lt;dttm&gt;, fidelity_points &lt;dbl&gt;,
+## #   priority_encoded &lt;dbl&gt;, priority &lt;fct&gt;,
+## #   timestamp &lt;date&gt;, year &lt;dbl&gt;, month &lt;dbl&gt;,
+## #   day &lt;int&gt;, supported &lt;chr&gt;,
+## #   supported_encoded &lt;int&gt;, type &lt;chr&gt;, …</code></pre>
+<p><strong>Catatan:</strong> Pustaka <code>fakir</code> Menyimpan beberapa dataset didalamnya, antara lain:</p>
+<div class="sourceCode" id="cb60"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb60-1"><a href="struktur-data.html#cb60-1" tabindex="-1"></a><span class="fu">fake_products</span>(<span class="dv">10</span>)                                   <span class="co"># Rekayasa Data Produk </span></span>
+<span id="cb60-2"><a href="struktur-data.html#cb60-2" tabindex="-1"></a><span class="fu">fake_visits</span>(<span class="at">from =</span> <span class="st">&quot;2017-01-01&quot;</span>, <span class="at">to =</span> <span class="st">&quot;2017-01-31&quot;</span>) <span class="co"># Pengunjung Website</span></span>
+<span id="cb60-3"><a href="struktur-data.html#cb60-3" tabindex="-1"></a><span class="fu">fake_sondage_answers</span>(<span class="at">n =</span> <span class="dv">10</span>)                        <span class="co"># Kuisioner transfortasi</span></span></code></pre></div>
+</div>
+</div>
+<div id="latihan-1" class="section level2 hasAnchor" number="3.8">
+<h2><span class="header-section-number">3.8</span> Latihan<a href="struktur-data.html#latihan-1" class="anchor-section" aria-label="Anchor link to header"></a></h2>
+<ol style="list-style-type: decimal">
+<li><p>Buatlah Rekayasa dataframe Mahasiswa dengan empat kolom: “Nama”, “Usia”, “Kota”, dan “Nilai”. Sebanyak 100 baris, dengan syarat tidak boleh ada nama yang sama.</p></li>
+<li><p>Buatlah Rekayasa dataframe Karyawan dengan tujuh kolom: “No”, “Name”, “Birthday”, “Gender”, “Universities”, “GPA”, “Salary”. Sebanyak 100 baris, dengan syarat tidak boleh ada nama yang sama.</p></li>
+<li><p>Buatlah Rekayasa dataframe pengunjung Website, sebanyak 200 baris.</p></li>
+</ol>
+<p><strong>Catatan:</strong> Kumpulkan hasil latihan anda, tidak boleh sama dengan teman mahasiwa lainnya.</p>
+
+</div>
+</div>
+            </section>
+
+          </div>
+        </div>
+      </div>
+<a href="operasi-dasar-r.html" class="navigation navigation-prev " aria-label="Previous page"><i class="fa fa-angle-left"></i></a>
+<a href="ekstraksi-data.html" class="navigation navigation-next " aria-label="Next page"><i class="fa fa-angle-right"></i></a>
+    </div>
+  </div>
+<script src="libs/gitbook/js/app.min.js"></script>
+<script src="libs/gitbook/js/clipboard.min.js"></script>
+<script src="libs/gitbook/js/plugin-search.js"></script>
+<script src="libs/gitbook/js/plugin-sharing.js"></script>
+<script src="libs/gitbook/js/plugin-fontsettings.js"></script>
+<script src="libs/gitbook/js/plugin-bookdown.js"></script>
+<script src="libs/gitbook/js/jquery.highlight.js"></script>
+<script src="libs/gitbook/js/plugin-clipboard.js"></script>
+<script>
+gitbook.require(["gitbook"], function(gitbook) {
+gitbook.start({
+"sharing": {
+"github": false,
+"facebook": true,
+"twitter": true,
+"linkedin": false,
+"weibo": false,
+"instapaper": false,
+"vk": false,
+"whatsapp": false,
+"all": ["facebook", "twitter", "linkedin", "weibo", "instapaper"]
+},
+"fontsettings": {
+"theme": "white",
+"family": "sans",
+"size": 2
+},
+"edit": {
+"link": null,
+"text": null
+},
+"history": {
+"link": null,
+"text": null
+},
+"view": {
+"link": null,
+"text": null
+},
+"download": null,
+"search": {
+"engine": "fuse",
+"options": null
+},
+"toc": {
+"collapse": "subsection"
+}
+});
+});
+</script>
+
+<!-- dynamically load mathjax for compatibility with self-contained -->
+<script>
+  (function () {
+    var script = document.createElement("script");
+    script.type = "text/javascript";
+    var src = "true";
+    if (src === "" || src === "true") src = "https://cdnjs.cloudflare.com/ajax/libs/mathjax/2.7.9/latest.js?config=TeX-MML-AM_CHTML";
+    if (location.protocol !== "file:")
+      if (/^https?:/.test(src))
+        src = src.replace(/^https?:/, '');
+    script.src = src;
+    document.getElementsByTagName("head")[0].appendChild(script);
+  })();
+</script>
+</body>
+
+</html>
