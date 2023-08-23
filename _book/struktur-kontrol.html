@@ -1,0 +1,701 @@
+<!DOCTYPE html>
+<html lang="" xml:lang="">
+<head>
+
+  <meta charset="utf-8" />
+  <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+  <title>Bab 6 Struktur Kontrol | Algoritma dan Pemrograman R</title>
+  <meta name="description" content="Bab 6 Struktur Kontrol | Algoritma dan Pemrograman R akan mencakup konsep-konsep dasar dalam pemrograman, pemahaman algoritma, serta pengenalan terhadap bahasa pemrograman R." />
+  <meta name="generator" content="bookdown 0.34 and GitBook 2.6.7" />
+
+  <meta property="og:title" content="Bab 6 Struktur Kontrol | Algoritma dan Pemrograman R" />
+  <meta property="og:type" content="book" />
+  <meta property="og:image" content="/images/Cover_Algoritma_Permrograman.png" />
+  <meta property="og:description" content="Bab 6 Struktur Kontrol | Algoritma dan Pemrograman R akan mencakup konsep-konsep dasar dalam pemrograman, pemahaman algoritma, serta pengenalan terhadap bahasa pemrograman R." />
+  <meta name="github-repo" content="dsciencelabs/Algoritma_Pemrograman_R" />
+
+  <meta name="twitter:card" content="summary" />
+  <meta name="twitter:title" content="Bab 6 Struktur Kontrol | Algoritma dan Pemrograman R" />
+  
+  <meta name="twitter:description" content="Bab 6 Struktur Kontrol | Algoritma dan Pemrograman R akan mencakup konsep-konsep dasar dalam pemrograman, pemahaman algoritma, serta pengenalan terhadap bahasa pemrograman R." />
+  <meta name="twitter:image" content="/images/Cover_Algoritma_Permrograman.png" />
+
+<meta name="author" content="Bakti Siregar, M.Sc" />
+
+
+
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <meta name="apple-mobile-web-app-capable" content="yes" />
+  <meta name="apple-mobile-web-app-status-bar-style" content="black" />
+  
+  
+<link rel="prev" href="fungsi-dalam-r.html"/>
+<link rel="next" href="referensi.html"/>
+<script src="libs/jquery/jquery-3.6.0.min.js"></script>
+<script src="https://cdn.jsdelivr.net/npm/fuse.js@6.4.6/dist/fuse.min.js"></script>
+<link href="libs/gitbook/css/style.css" rel="stylesheet" />
+<link href="libs/gitbook/css/plugin-table.css" rel="stylesheet" />
+<link href="libs/gitbook/css/plugin-bookdown.css" rel="stylesheet" />
+<link href="libs/gitbook/css/plugin-highlight.css" rel="stylesheet" />
+<link href="libs/gitbook/css/plugin-search.css" rel="stylesheet" />
+<link href="libs/gitbook/css/plugin-fontsettings.css" rel="stylesheet" />
+<link href="libs/gitbook/css/plugin-clipboard.css" rel="stylesheet" />
+
+
+
+
+
+
+
+
+<link href="libs/anchor-sections/anchor-sections.css" rel="stylesheet" />
+<link href="libs/anchor-sections/anchor-sections-hash.css" rel="stylesheet" />
+<script src="libs/anchor-sections/anchor-sections.js"></script>
+
+
+<style type="text/css">
+pre > code.sourceCode { white-space: pre; position: relative; }
+pre > code.sourceCode > span { display: inline-block; line-height: 1.25; }
+pre > code.sourceCode > span:empty { height: 1.2em; }
+.sourceCode { overflow: visible; }
+code.sourceCode > span { color: inherit; text-decoration: inherit; }
+pre.sourceCode { margin: 0; }
+@media screen {
+div.sourceCode { overflow: auto; }
+}
+@media print {
+pre > code.sourceCode { white-space: pre-wrap; }
+pre > code.sourceCode > span { text-indent: -5em; padding-left: 5em; }
+}
+pre.numberSource code
+  { counter-reset: source-line 0; }
+pre.numberSource code > span
+  { position: relative; left: -4em; counter-increment: source-line; }
+pre.numberSource code > span > a:first-child::before
+  { content: counter(source-line);
+    position: relative; left: -1em; text-align: right; vertical-align: baseline;
+    border: none; display: inline-block;
+    -webkit-touch-callout: none; -webkit-user-select: none;
+    -khtml-user-select: none; -moz-user-select: none;
+    -ms-user-select: none; user-select: none;
+    padding: 0 4px; width: 4em;
+    color: #aaaaaa;
+  }
+pre.numberSource { margin-left: 3em; border-left: 1px solid #aaaaaa;  padding-left: 4px; }
+div.sourceCode
+  {   }
+@media screen {
+pre > code.sourceCode > span > a:first-child::before { text-decoration: underline; }
+}
+code span.al { color: #ff0000; font-weight: bold; } /* Alert */
+code span.an { color: #60a0b0; font-weight: bold; font-style: italic; } /* Annotation */
+code span.at { color: #7d9029; } /* Attribute */
+code span.bn { color: #40a070; } /* BaseN */
+code span.bu { color: #008000; } /* BuiltIn */
+code span.cf { color: #007020; font-weight: bold; } /* ControlFlow */
+code span.ch { color: #4070a0; } /* Char */
+code span.cn { color: #880000; } /* Constant */
+code span.co { color: #60a0b0; font-style: italic; } /* Comment */
+code span.cv { color: #60a0b0; font-weight: bold; font-style: italic; } /* CommentVar */
+code span.do { color: #ba2121; font-style: italic; } /* Documentation */
+code span.dt { color: #902000; } /* DataType */
+code span.dv { color: #40a070; } /* DecVal */
+code span.er { color: #ff0000; font-weight: bold; } /* Error */
+code span.ex { } /* Extension */
+code span.fl { color: #40a070; } /* Float */
+code span.fu { color: #06287e; } /* Function */
+code span.im { color: #008000; font-weight: bold; } /* Import */
+code span.in { color: #60a0b0; font-weight: bold; font-style: italic; } /* Information */
+code span.kw { color: #007020; font-weight: bold; } /* Keyword */
+code span.op { color: #666666; } /* Operator */
+code span.ot { color: #007020; } /* Other */
+code span.pp { color: #bc7a00; } /* Preprocessor */
+code span.sc { color: #4070a0; } /* SpecialChar */
+code span.ss { color: #bb6688; } /* SpecialString */
+code span.st { color: #4070a0; } /* String */
+code span.va { color: #19177c; } /* Variable */
+code span.vs { color: #4070a0; } /* VerbatimString */
+code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warning */
+</style>
+
+<style type="text/css">
+  
+  div.hanging-indent{margin-left: 1.5em; text-indent: -1.5em;}
+</style>
+
+<link rel="stylesheet" href="style.css" type="text/css" />
+</head>
+
+<body>
+
+
+
+  <div class="book without-animation with-summary font-size-2 font-family-1" data-basepath=".">
+
+    <div class="book-summary">
+      <nav role="navigation">
+
+<ul class="summary">
+<li><center><img src="images/logo.png" alt="logo" width="50%" height="50%"style="margin: 15px 0 0 0"></center></li>
+
+<li class="divider"></li>
+<li class="chapter" data-level="" data-path="index.html"><a href="index.html"><i class="fa fa-check"></i>Kata Pengantar</a>
+<ul>
+<li class="chapter" data-level="" data-path="index.html"><a href="index.html#ringkasan-pembelajaran"><i class="fa fa-check"></i>Ringkasan Pembelajaran</a></li>
+<li class="chapter" data-level="" data-path="index.html"><a href="index.html#tim-penyusun"><i class="fa fa-check"></i>Tim Penyusun</a></li>
+<li class="chapter" data-level="" data-path="index.html"><a href="index.html#ucapan-terima-kasih"><i class="fa fa-check"></i>Ucapan Terima Kasih</a></li>
+<li class="chapter" data-level="" data-path="index.html"><a href="index.html#masukan-saran"><i class="fa fa-check"></i>Masukan &amp; Saran</a></li>
+</ul></li>
+<li class="chapter" data-level="1" data-path="pengenalan-r.html"><a href="pengenalan-r.html"><i class="fa fa-check"></i><b>1</b> Pengenalan R?</a>
+<ul>
+<li class="chapter" data-level="1.1" data-path="pengenalan-r.html"><a href="pengenalan-r.html#fitur-utama-r"><i class="fa fa-check"></i><b>1.1</b> Fitur Utama R</a></li>
+<li class="chapter" data-level="1.2" data-path="pengenalan-r.html"><a href="pengenalan-r.html#mengapa-belajar-r"><i class="fa fa-check"></i><b>1.2</b> Mengapa Belajar R?</a></li>
+<li class="chapter" data-level="1.3" data-path="pengenalan-r.html"><a href="pengenalan-r.html#download-r-rstudio"><i class="fa fa-check"></i><b>1.3</b> Download R &amp; Rstudio:</a></li>
+<li class="chapter" data-level="1.4" data-path="pengenalan-r.html"><a href="pengenalan-r.html#tutorial-instal-r-studio"><i class="fa fa-check"></i><b>1.4</b> Tutorial Instal R &amp; Studio</a>
+<ul>
+<li class="chapter" data-level="1.4.1" data-path="pengenalan-r.html"><a href="pengenalan-r.html#instalasi-r"><i class="fa fa-check"></i><b>1.4.1</b> Instalasi R</a></li>
+<li class="chapter" data-level="1.4.2" data-path="pengenalan-r.html"><a href="pengenalan-r.html#instalasi-rstudio"><i class="fa fa-check"></i><b>1.4.2</b> Instalasi RStudio:</a></li>
+</ul></li>
+<li class="chapter" data-level="1.5" data-path="pengenalan-r.html"><a href="pengenalan-r.html#video-instalasi-r-rstudio"><i class="fa fa-check"></i><b>1.5</b> Video Instalasi R &amp; RStudio</a>
+<ul>
+<li class="chapter" data-level="1.5.1" data-path="pengenalan-r.html"><a href="pengenalan-r.html#windows-1"><i class="fa fa-check"></i><b>1.5.1</b> Windows</a></li>
+<li class="chapter" data-level="1.5.2" data-path="pengenalan-r.html"><a href="pengenalan-r.html#macos-1"><i class="fa fa-check"></i><b>1.5.2</b> MacOS</a></li>
+</ul></li>
+<li class="chapter" data-level="1.6" data-path="pengenalan-r.html"><a href="pengenalan-r.html#interface-r-rstudio"><i class="fa fa-check"></i><b>1.6</b> Interface R &amp; RStudio:</a></li>
+<li class="chapter" data-level="1.7" data-path="pengenalan-r.html"><a href="pengenalan-r.html#sintaks-dasar-r"><i class="fa fa-check"></i><b>1.7</b> Sintaks Dasar R</a></li>
+<li class="chapter" data-level="1.8" data-path="pengenalan-r.html"><a href="pengenalan-r.html#bantuan-help-r"><i class="fa fa-check"></i><b>1.8</b> Bantuan (Help) R</a></li>
+<li class="chapter" data-level="1.9" data-path="pengenalan-r.html"><a href="pengenalan-r.html#shortcut-penggunaan-rstudio"><i class="fa fa-check"></i><b>1.9</b> Shortcut Penggunaan Rstudio</a></li>
+<li class="chapter" data-level="1.10" data-path="pengenalan-r.html"><a href="pengenalan-r.html#praktikum"><i class="fa fa-check"></i><b>1.10</b> Praktikum</a></li>
+</ul></li>
+<li class="chapter" data-level="2" data-path="operasi-dasar-r.html"><a href="operasi-dasar-r.html"><i class="fa fa-check"></i><b>2</b> Operasi Dasar R</a>
+<ul>
+<li class="chapter" data-level="2.1" data-path="operasi-dasar-r.html"><a href="operasi-dasar-r.html#variabel"><i class="fa fa-check"></i><b>2.1</b> Variabel</a>
+<ul>
+<li class="chapter" data-level="2.1.1" data-path="operasi-dasar-r.html"><a href="operasi-dasar-r.html#mendefinisikan-variabel"><i class="fa fa-check"></i><b>2.1.1</b> Mendefinisikan Variabel</a></li>
+<li class="chapter" data-level="2.1.2" data-path="operasi-dasar-r.html"><a href="operasi-dasar-r.html#aturan-nama-variabel"><i class="fa fa-check"></i><b>2.1.2</b> Aturan Nama Variabel</a></li>
+</ul></li>
+<li class="chapter" data-level="2.2" data-path="operasi-dasar-r.html"><a href="operasi-dasar-r.html#operator"><i class="fa fa-check"></i><b>2.2</b> Operator</a>
+<ul>
+<li class="chapter" data-level="2.2.1" data-path="operasi-dasar-r.html"><a href="operasi-dasar-r.html#aritmatika"><i class="fa fa-check"></i><b>2.2.1</b> Aritmatika</a></li>
+<li class="chapter" data-level="2.2.2" data-path="operasi-dasar-r.html"><a href="operasi-dasar-r.html#relasional"><i class="fa fa-check"></i><b>2.2.2</b> Relasional</a></li>
+<li class="chapter" data-level="2.2.3" data-path="operasi-dasar-r.html"><a href="operasi-dasar-r.html#logika"><i class="fa fa-check"></i><b>2.2.3</b> Logika</a></li>
+<li class="chapter" data-level="2.2.4" data-path="operasi-dasar-r.html"><a href="operasi-dasar-r.html#operator-lain-lain"><i class="fa fa-check"></i><b>2.2.4</b> Operator Lain-lain</a></li>
+</ul></li>
+<li class="chapter" data-level="2.3" data-path="operasi-dasar-r.html"><a href="operasi-dasar-r.html#tipe-data"><i class="fa fa-check"></i><b>2.3</b> Tipe Data</a></li>
+<li class="chapter" data-level="2.4" data-path="operasi-dasar-r.html"><a href="operasi-dasar-r.html#statistika-dasar"><i class="fa fa-check"></i><b>2.4</b> Statistika Dasar</a></li>
+<li class="chapter" data-level="2.5" data-path="operasi-dasar-r.html"><a href="operasi-dasar-r.html#contoh-pemrograman-dasar"><i class="fa fa-check"></i><b>2.5</b> Contoh Pemrograman Dasar</a>
+<ul>
+<li class="chapter" data-level="2.5.1" data-path="operasi-dasar-r.html"><a href="operasi-dasar-r.html#menghitung-rata-rata"><i class="fa fa-check"></i><b>2.5.1</b> Menghitung Rata-rata</a></li>
+<li class="chapter" data-level="2.5.2" data-path="operasi-dasar-r.html"><a href="operasi-dasar-r.html#membandingkan-angka"><i class="fa fa-check"></i><b>2.5.2</b> Membandingkan Angka</a></li>
+<li class="chapter" data-level="2.5.3" data-path="operasi-dasar-r.html"><a href="operasi-dasar-r.html#membandingkan-karakter"><i class="fa fa-check"></i><b>2.5.3</b> Membandingkan Karakter</a></li>
+<li class="chapter" data-level="2.5.4" data-path="operasi-dasar-r.html"><a href="operasi-dasar-r.html#mengecek-kondisi-gabungan"><i class="fa fa-check"></i><b>2.5.4</b> Mengecek Kondisi Gabungan</a></li>
+<li class="chapter" data-level="2.5.5" data-path="operasi-dasar-r.html"><a href="operasi-dasar-r.html#penggunaan-operator-logika"><i class="fa fa-check"></i><b>2.5.5</b> Penggunaan Operator Logika</a></li>
+<li class="chapter" data-level="2.5.6" data-path="operasi-dasar-r.html"><a href="operasi-dasar-r.html#pemeriksaan-kondisi-dengan-ifelse"><i class="fa fa-check"></i><b>2.5.6</b> Pemeriksaan Kondisi dengan ifelse()</a></li>
+</ul></li>
+<li class="chapter" data-level="2.6" data-path="operasi-dasar-r.html"><a href="operasi-dasar-r.html#latihan"><i class="fa fa-check"></i><b>2.6</b> Latihan</a></li>
+</ul></li>
+<li class="chapter" data-level="3" data-path="struktur-data.html"><a href="struktur-data.html"><i class="fa fa-check"></i><b>3</b> Struktur Data</a>
+<ul>
+<li class="chapter" data-level="3.1" data-path="struktur-data.html"><a href="struktur-data.html#vektor"><i class="fa fa-check"></i><b>3.1</b> Vektor</a></li>
+<li class="chapter" data-level="3.2" data-path="struktur-data.html"><a href="struktur-data.html#matriks"><i class="fa fa-check"></i><b>3.2</b> Matriks</a></li>
+<li class="chapter" data-level="3.3" data-path="struktur-data.html"><a href="struktur-data.html#array"><i class="fa fa-check"></i><b>3.3</b> Array</a></li>
+<li class="chapter" data-level="3.4" data-path="struktur-data.html"><a href="struktur-data.html#faktor"><i class="fa fa-check"></i><b>3.4</b> Faktor</a></li>
+<li class="chapter" data-level="3.5" data-path="struktur-data.html"><a href="struktur-data.html#data-frame"><i class="fa fa-check"></i><b>3.5</b> Data Frame</a></li>
+<li class="chapter" data-level="3.6" data-path="struktur-data.html"><a href="struktur-data.html#lists"><i class="fa fa-check"></i><b>3.6</b> Lists</a></li>
+<li class="chapter" data-level="3.7" data-path="struktur-data.html"><a href="struktur-data.html#rekayasa-data-frame"><i class="fa fa-check"></i><b>3.7</b> Rekayasa Data Frame</a>
+<ul>
+<li class="chapter" data-level="3.7.1" data-path="struktur-data.html"><a href="struktur-data.html#tanpa-packages"><i class="fa fa-check"></i><b>3.7.1</b> Tanpa Packages</a></li>
+<li class="chapter" data-level="3.7.2" data-path="struktur-data.html"><a href="struktur-data.html#mengunakan-packages"><i class="fa fa-check"></i><b>3.7.2</b> Mengunakan Packages</a></li>
+</ul></li>
+<li class="chapter" data-level="3.8" data-path="struktur-data.html"><a href="struktur-data.html#latihan-1"><i class="fa fa-check"></i><b>3.8</b> Latihan</a></li>
+</ul></li>
+<li class="chapter" data-level="4" data-path="ekstraksi-data.html"><a href="ekstraksi-data.html"><i class="fa fa-check"></i><b>4</b> Ekstraksi Data</a>
+<ul>
+<li class="chapter" data-level="4.1" data-path="ekstraksi-data.html"><a href="ekstraksi-data.html#impor-dataset"><i class="fa fa-check"></i><b>4.1</b> Impor Dataset</a></li>
+<li class="chapter" data-level="4.2" data-path="ekstraksi-data.html"><a href="ekstraksi-data.html#ekstraksi-baris"><i class="fa fa-check"></i><b>4.2</b> Ekstraksi Baris</a></li>
+<li class="chapter" data-level="4.3" data-path="ekstraksi-data.html"><a href="ekstraksi-data.html#ekstraksi-subset"><i class="fa fa-check"></i><b>4.3</b> Ekstraksi Subset</a></li>
+<li class="chapter" data-level="4.4" data-path="ekstraksi-data.html"><a href="ekstraksi-data.html#ekstraksi-dengan-variabel-baru"><i class="fa fa-check"></i><b>4.4</b> Ekstraksi Dengan Variabel Baru</a></li>
+<li class="chapter" data-level="4.5" data-path="ekstraksi-data.html"><a href="ekstraksi-data.html#ekstraksi-summary-statistik"><i class="fa fa-check"></i><b>4.5</b> Ekstraksi Summary Statistik</a></li>
+<li class="chapter" data-level="4.6" data-path="ekstraksi-data.html"><a href="ekstraksi-data.html#mengubah-nama"><i class="fa fa-check"></i><b>4.6</b> Mengubah Nama</a></li>
+<li class="chapter" data-level="4.7" data-path="ekstraksi-data.html"><a href="ekstraksi-data.html#latihan-2"><i class="fa fa-check"></i><b>4.7</b> Latihan</a></li>
+</ul></li>
+<li class="chapter" data-level="5" data-path="fungsi-dalam-r.html"><a href="fungsi-dalam-r.html"><i class="fa fa-check"></i><b>5</b> Fungsi dalam R</a>
+<ul>
+<li class="chapter" data-level="5.1" data-path="fungsi-dalam-r.html"><a href="fungsi-dalam-r.html#fungsi-satu-argumen"><i class="fa fa-check"></i><b>5.1</b> Fungsi Satu Argumen</a>
+<ul>
+<li class="chapter" data-level="5.1.1" data-path="fungsi-dalam-r.html"><a href="fungsi-dalam-r.html#fungsi-kuadrat"><i class="fa fa-check"></i><b>5.1.1</b> Fungsi Kuadrat</a></li>
+<li class="chapter" data-level="5.1.2" data-path="fungsi-dalam-r.html"><a href="fungsi-dalam-r.html#fungsi-akar"><i class="fa fa-check"></i><b>5.1.2</b> Fungsi Akar</a></li>
+<li class="chapter" data-level="5.1.3" data-path="fungsi-dalam-r.html"><a href="fungsi-dalam-r.html#nilai-rerata"><i class="fa fa-check"></i><b>5.1.3</b> Nilai Rerata</a></li>
+<li class="chapter" data-level="5.1.4" data-path="fungsi-dalam-r.html"><a href="fungsi-dalam-r.html#konversi-persen"><i class="fa fa-check"></i><b>5.1.4</b> Konversi Persen</a></li>
+</ul></li>
+<li class="chapter" data-level="5.2" data-path="fungsi-dalam-r.html"><a href="fungsi-dalam-r.html#simpan-fungsi"><i class="fa fa-check"></i><b>5.2</b> Simpan Fungsi</a></li>
+<li class="chapter" data-level="5.3" data-path="fungsi-dalam-r.html"><a href="fungsi-dalam-r.html#fungsi-multi-argumen"><i class="fa fa-check"></i><b>5.3</b> Fungsi Multi Argumen</a>
+<ul>
+<li class="chapter" data-level="5.3.1" data-path="fungsi-dalam-r.html"><a href="fungsi-dalam-r.html#luas-keliling"><i class="fa fa-check"></i><b>5.3.1</b> Luas &amp; Keliling</a></li>
+<li class="chapter" data-level="5.3.2" data-path="fungsi-dalam-r.html"><a href="fungsi-dalam-r.html#luas-keliling-dan-volume"><i class="fa fa-check"></i><b>5.3.2</b> Luas, Keliling dan Volume</a></li>
+<li class="chapter" data-level="5.3.3" data-path="fungsi-dalam-r.html"><a href="fungsi-dalam-r.html#rerata-frekuensi"><i class="fa fa-check"></i><b>5.3.3</b> Rerata Frekuensi</a></li>
+</ul></li>
+<li class="chapter" data-level="5.4" data-path="fungsi-dalam-r.html"><a href="fungsi-dalam-r.html#fungsi-untuk-data-frame"><i class="fa fa-check"></i><b>5.4</b> Fungsi untuk Data Frame</a>
+<ul>
+<li class="chapter" data-level="5.4.1" data-path="fungsi-dalam-r.html"><a href="fungsi-dalam-r.html#normalisasi"><i class="fa fa-check"></i><b>5.4.1</b> Normalisasi</a></li>
+</ul></li>
+<li class="chapter" data-level="5.5" data-path="fungsi-dalam-r.html"><a href="fungsi-dalam-r.html#latihan-3"><i class="fa fa-check"></i><b>5.5</b> Latihan</a></li>
+</ul></li>
+<li class="chapter" data-level="6" data-path="struktur-kontrol.html"><a href="struktur-kontrol.html"><i class="fa fa-check"></i><b>6</b> Struktur Kontrol</a>
+<ul>
+<li class="chapter" data-level="6.1" data-path="struktur-kontrol.html"><a href="struktur-kontrol.html#pengambilan-keputusan"><i class="fa fa-check"></i><b>6.1</b> Pengambilan Keputusan</a>
+<ul>
+<li class="chapter" data-level="6.1.1" data-path="struktur-kontrol.html"><a href="struktur-kontrol.html#sintaks-if-else-if-dan-else"><i class="fa fa-check"></i><b>6.1.1</b> Sintaks <code>if, else-if</code>, dan <code>else</code></a></li>
+<li class="chapter" data-level="6.1.2" data-path="struktur-kontrol.html"><a href="struktur-kontrol.html#program-penilaian"><i class="fa fa-check"></i><b>6.1.2</b> Program Penilaian</a></li>
+<li class="chapter" data-level="6.1.3" data-path="struktur-kontrol.html"><a href="struktur-kontrol.html#program-hitung-faktorial"><i class="fa fa-check"></i><b>6.1.3</b> Program Hitung Faktorial</a></li>
+</ul></li>
+<li class="chapter" data-level="6.2" data-path="struktur-kontrol.html"><a href="struktur-kontrol.html#pengulangan-rekursif"><i class="fa fa-check"></i><b>6.2</b> Pengulangan Rekursif</a>
+<ul>
+<li class="chapter" data-level="6.2.1" data-path="struktur-kontrol.html"><a href="struktur-kontrol.html#sintaks-for"><i class="fa fa-check"></i><b>6.2.1</b> Sintaks <code>for</code></a></li>
+<li class="chapter" data-level="6.2.2" data-path="struktur-kontrol.html"><a href="struktur-kontrol.html#sintaks-while"><i class="fa fa-check"></i><b>6.2.2</b> Sintaks <code>while</code></a></li>
+</ul></li>
+<li class="chapter" data-level="6.3" data-path="struktur-kontrol.html"><a href="struktur-kontrol.html#interupsi-pengulangan"><i class="fa fa-check"></i><b>6.3</b> Interupsi Pengulangan</a></li>
+<li class="chapter" data-level="6.4" data-path="struktur-kontrol.html"><a href="struktur-kontrol.html#pengulangan-berkala"><i class="fa fa-check"></i><b>6.4</b> Pengulangan Berkala</a></li>
+<li class="chapter" data-level="6.5" data-path="struktur-kontrol.html"><a href="struktur-kontrol.html#skip-iterasi-pengulangan"><i class="fa fa-check"></i><b>6.5</b> Skip Iterasi Pengulangan</a></li>
+<li class="chapter" data-level="6.6" data-path="struktur-kontrol.html"><a href="struktur-kontrol.html#latihan-4"><i class="fa fa-check"></i><b>6.6</b> Latihan</a></li>
+</ul></li>
+<li class="chapter" data-level="7" data-path="referensi.html"><a href="referensi.html"><i class="fa fa-check"></i><b>7</b> Referensi</a></li>
+<li class="divider"></li>
+<li><a href="https://github.com/rstudio/bookdown" target="blank">Published with bookdown</a></li>
+
+</ul>
+
+      </nav>
+    </div>
+
+    <div class="book-body">
+      <div class="body-inner">
+        <div class="book-header" role="navigation">
+          <h1>
+            <i class="fa fa-circle-o-notch fa-spin"></i><a href="./">Algoritma dan Pemrograman R</a>
+          </h1>
+        </div>
+
+        <div class="page-wrapper" tabindex="-1" role="main">
+          <div class="page-inner">
+
+            <section class="normal" id="section-">
+<div id="struktur-kontrol" class="section level1 hasAnchor" number="6">
+<h1><span class="header-section-number">Bab 6</span> Struktur Kontrol<a href="struktur-kontrol.html#struktur-kontrol" class="anchor-section" aria-label="Anchor link to header"></a></h1>
+<p>Pada dasarnya, struktur kontrol memungkinkan Anda untuk memasukkan beberapa “logika” ke dalam kode R Anda, daripada hanya mengeksekusi kode R yang sama setiap saat. Struktur kontrol memungkinkan Anda untuk merespons input atau fitur data dan mengeksekusi ekspresi R yang berbeda. Struktur kontrol yang umum digunakan adalah</p>
+<ul>
+<li><code>if</code> dan <code>else</code> menguji suatu kondisi dan menindaklanjutinya</li>
+<li><code>for</code> mengeksekusi loop beberapa kali</li>
+<li><code>while</code> menjalankan loop saat kondisi benar</li>
+<li><code>break</code> mengeksekusi fraagmen loop yang rusak</li>
+<li><code>repeat</code> menjalankan loop tak terbatas (harus keluar dari itu untuk berhenti)</li>
+<li><code>next</code> melewati interasi dari sebuah loop</li>
+</ul>
+<p>Sebagian besar struktur kontrol tidak digunakan dalam sesi interaktif, melainkan saat menulis fungsi atau ekspresi yang lebih panjang. Namun, konstruksi ini tidak harus digunakan dalam fungsi dan ada baiknya Anda memahaminya sebelumnya.</p>
+<div id="pengambilan-keputusan" class="section level2 hasAnchor" number="6.1">
+<h2><span class="header-section-number">6.1</span> Pengambilan Keputusan<a href="struktur-kontrol.html#pengambilan-keputusan" class="anchor-section" aria-label="Anchor link to header"></a></h2>
+<p>Gambaran pengambilan Keputusan <em>(Decision Tree)</em> dalam dunia pemrograman adalah proses penentuan keputusan dengan pernyataan bersyarat. Dalam hal ini, programer menginstruksikan komputer untuk melakukan suatu aksi tertentu <span class="math inline">\((X)\)</span>, hanya jika suatu kondisi <span class="math inline">\(Y\)</span> terpenuhi.</p>
+<div class="figure" style="text-align: center"><span style="display:block;" id="fig:if-else"></span>
+<img src="images/Bab6/if-else.jpg" alt="Struktur Kontrol if else" width="100%" />
+<p class="caption">
+Gambar 6.1: Struktur Kontrol if else
+</p>
+</div>
+<div id="sintaks-if-else-if-dan-else" class="section level3 hasAnchor" number="6.1.1">
+<h3><span class="header-section-number">6.1.1</span> Sintaks <code>if, else-if</code>, dan <code>else</code><a href="struktur-kontrol.html#sintaks-if-else-if-dan-else" class="anchor-section" aria-label="Anchor link to header"></a></h3>
+<p>Secara garis besar struktur kontrol pengambilan keputasan yang paling umum digunakan dalam bahasa pemrograman R adalah kombinasi <code>if-else</code>, bahkan untuk semua bahasa pemrograman lainnya. Struktur kontrol ini memungkinkan untuk menguji suatu kondisi dan menindaklanjutinya tergantung pada apakah itu benar atau salah.</p>
+<p>Anda dapat memiliki serangkaian tes dengan mengikuti inisial <code>if</code> dengan sejumlah <code>else if</code> dan <code>else</code> itu sendiri. Fungsi umum untuk ini, seperti kode berikut:</p>
+<pre><code>nama.fungsi &lt;- function(argumen){
+  if (kondisi1) {
+      lakukan sesuatu 
+      } 
+  else if (kondisi2) {
+      lakukan sesuatu yang berbeda dibandingkan dengan kondisi 1} 
+  else if (kondisi3) {
+      lakukan sesuatu yang berbeda dibandingkan dengan kondisi 1,2} 
+  else if (kondisi4) {
+      lakukan sesuatu yang berbeda dibandingkan dengan kondisi 1,2,3} 
+  else (opsional){
+      melakukan sesuatu yang berbeda dibandingkan semua kondisi semua}
+}</code></pre>
+</div>
+<div id="program-penilaian" class="section level3 hasAnchor" number="6.1.2">
+<h3><span class="header-section-number">6.1.2</span> Program Penilaian<a href="struktur-kontrol.html#program-penilaian" class="anchor-section" aria-label="Anchor link to header"></a></h3>
+<p>Andaikan anda ingin membuat suatu program yang dapat memudahkan anda untuk memberikan peringkat kepada nilai mahasiswa sesuai dengan standar yang berlaku. Perhatikan contoh berikut dalam R:</p>
+<div class="sourceCode" id="cb118"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb118-1"><a href="struktur-kontrol.html#cb118-1" tabindex="-1"></a>x <span class="ot">&lt;-</span> <span class="fu">runif</span>(<span class="dv">1</span>, <span class="dv">50</span>, <span class="dv">100</span>)                      <span class="co"># pilih satu nomor acak dari 0~100</span></span>
+<span id="cb118-2"><a href="struktur-kontrol.html#cb118-2" tabindex="-1"></a>nilai <span class="ot">&lt;-</span> <span class="cf">function</span>(x){</span>
+<span id="cb118-3"><a href="struktur-kontrol.html#cb118-3" tabindex="-1"></a>            <span class="cf">if</span> (x<span class="sc">&gt;=</span><span class="dv">85</span>){                     <span class="co"># kondisi 1</span></span>
+<span id="cb118-4"><a href="struktur-kontrol.html#cb118-4" tabindex="-1"></a>              <span class="fu">print</span>(<span class="st">&#39;Peringkat A&#39;</span>)}         <span class="co"># hasil untuk kondisi 1 </span></span>
+<span id="cb118-5"><a href="struktur-kontrol.html#cb118-5" tabindex="-1"></a>            <span class="cf">else</span> <span class="cf">if</span> (x<span class="sc">&lt;</span><span class="dv">85</span> <span class="sc">&amp;</span> x <span class="sc">&gt;=</span><span class="dv">70</span>){        <span class="co"># kondisi 2 </span></span>
+<span id="cb118-6"><a href="struktur-kontrol.html#cb118-6" tabindex="-1"></a>              <span class="fu">print</span>(<span class="st">&#39;Peringkat B&#39;</span>)}         <span class="co"># hasil untuk kondisi 2</span></span>
+<span id="cb118-7"><a href="struktur-kontrol.html#cb118-7" tabindex="-1"></a>            <span class="cf">else</span> <span class="cf">if</span> (x<span class="sc">&lt;=</span><span class="dv">69</span> <span class="sc">&amp;</span> x <span class="sc">&gt;=</span><span class="dv">60</span>){       <span class="co"># kondisi 3 </span></span>
+<span id="cb118-8"><a href="struktur-kontrol.html#cb118-8" tabindex="-1"></a>              <span class="fu">print</span>(<span class="st">&#39;Peringkat C&#39;</span>)}         <span class="co"># hasil untuk kondisi 3</span></span>
+<span id="cb118-9"><a href="struktur-kontrol.html#cb118-9" tabindex="-1"></a>            <span class="cf">else</span> <span class="cf">if</span> (x<span class="sc">&lt;=</span><span class="dv">59</span> <span class="sc">&amp;</span> x <span class="sc">&gt;=</span><span class="dv">50</span>){       <span class="co"># kondisi 4 </span></span>
+<span id="cb118-10"><a href="struktur-kontrol.html#cb118-10" tabindex="-1"></a>              <span class="fu">print</span>(<span class="st">&#39;Peringkat D&#39;</span>)}         <span class="co"># hasil untuk kondisi 4</span></span>
+<span id="cb118-11"><a href="struktur-kontrol.html#cb118-11" tabindex="-1"></a>            <span class="cf">else</span>{                           <span class="co"># kondisi 5</span></span>
+<span id="cb118-12"><a href="struktur-kontrol.html#cb118-12" tabindex="-1"></a>              <span class="fu">print</span>(<span class="st">&#39;Gagal&#39;</span>)}               <span class="co"># hasil untuk kondisi 5</span></span>
+<span id="cb118-13"><a href="struktur-kontrol.html#cb118-13" tabindex="-1"></a>}</span>
+<span id="cb118-14"><a href="struktur-kontrol.html#cb118-14" tabindex="-1"></a><span class="fu">nilai</span>(x)</span></code></pre></div>
+<pre><code>## [1] &quot;Peringkat C&quot;</code></pre>
+</div>
+<div id="program-hitung-faktorial" class="section level3 hasAnchor" number="6.1.3">
+<h3><span class="header-section-number">6.1.3</span> Program Hitung Faktorial<a href="struktur-kontrol.html#program-hitung-faktorial" class="anchor-section" aria-label="Anchor link to header"></a></h3>
+<p>Untuk menambah pemahaman terkait pengambilan keputusan dalam pemrograman, mari kita perhatiakan contoh berikut: fungsi factorial menghitung faktorial dari suatu bilangan n.</p>
+<div class="sourceCode" id="cb120"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb120-1"><a href="struktur-kontrol.html#cb120-1" tabindex="-1"></a>factorial <span class="ot">&lt;-</span> <span class="cf">function</span>(n) {</span>
+<span id="cb120-2"><a href="struktur-kontrol.html#cb120-2" tabindex="-1"></a>  <span class="cf">if</span> (n <span class="sc">==</span> <span class="dv">0</span> <span class="sc">||</span> n <span class="sc">==</span> <span class="dv">1</span>) {</span>
+<span id="cb120-3"><a href="struktur-kontrol.html#cb120-3" tabindex="-1"></a>    <span class="fu">return</span>(<span class="dv">1</span>)</span>
+<span id="cb120-4"><a href="struktur-kontrol.html#cb120-4" tabindex="-1"></a>  } <span class="cf">else</span> {</span>
+<span id="cb120-5"><a href="struktur-kontrol.html#cb120-5" tabindex="-1"></a>    <span class="fu">return</span>(n <span class="sc">*</span> <span class="fu">factorial</span>(n <span class="sc">-</span> <span class="dv">1</span>))</span>
+<span id="cb120-6"><a href="struktur-kontrol.html#cb120-6" tabindex="-1"></a>  }</span>
+<span id="cb120-7"><a href="struktur-kontrol.html#cb120-7" tabindex="-1"></a>}</span>
+<span id="cb120-8"><a href="struktur-kontrol.html#cb120-8" tabindex="-1"></a></span>
+<span id="cb120-9"><a href="struktur-kontrol.html#cb120-9" tabindex="-1"></a>result <span class="ot">&lt;-</span> <span class="fu">factorial</span>(<span class="dv">5</span>)</span>
+<span id="cb120-10"><a href="struktur-kontrol.html#cb120-10" tabindex="-1"></a><span class="fu">print</span>(result)  <span class="co"># Output: 120</span></span></code></pre></div>
+<pre><code>## [1] 120</code></pre>
+<p>Faktorial dari n (dilambangkan sebagai n!) adalah hasil perkalian semua bilangan bulat positif dari 1 hingga n. Dalam implementasi tersebut, fungsi factorial memanggil dirinya sendiri dengan argumen yang lebih kecil hingga mencapai kasus dasar (n = 0 atau n = 1), di mana hasil faktorialnya adalah 1.</p>
+<p>Namun, perlu diingat bahwa pengulangan rekursif dapat menyebabkan pemanggilan berulang yang dalam beberapa kasus dapat mengakibatkan penumpukan memori (stack overflow) atau kinerja yang buruk. Oleh karena itu, perlu dipastikan bahwa ada kondisi berhenti yang jelas untuk menghindari pengulangan tak terbatas. Selain itu, dalam beberapa situasi, solusi non-rekursif atau pendekatan lain mungkin lebih efisien.</p>
+</div>
+</div>
+<div id="pengulangan-rekursif" class="section level2 hasAnchor" number="6.2">
+<h2><span class="header-section-number">6.2</span> Pengulangan Rekursif<a href="struktur-kontrol.html#pengulangan-rekursif" class="anchor-section" aria-label="Anchor link to header"></a></h2>
+<p>Pada saat melakukan analisis data, terkadang seorang data analis atau data scientist perlu menggunakan fungsi pengulangan dalam proses pembentukan, perhitungan, manipulasi struktur data seperti halnya vektor, matriks, list, data frame, atau objek lainnya.</p>
+<div id="sintaks-for" class="section level3 hasAnchor" number="6.2.1">
+<h3><span class="header-section-number">6.2.1</span> Sintaks <code>for</code><a href="struktur-kontrol.html#sintaks-for" class="anchor-section" aria-label="Anchor link to header"></a></h3>
+<p>Dalam porose perulangan ini digunakan fungsi kontrol ‘for’, dimana setiap iterasi pada beberapa perintah akan dievaluasi melalui perulangan yang diinginkan.</p>
+<div class="figure" style="text-align: center"><span style="display:block;" id="fig:for"></span>
+<img src="images/Bab6/for.jpg" alt="Struktur Kontrol for" width="100%" />
+<p class="caption">
+Gambar 6.2: Struktur Kontrol for
+</p>
+</div>
+<p>Pada gambar di atas bisa dilihat bahwa perulangan juga memerlukan tes kondisi. Bila hasil tes kondisi terpenuhi, maka blok kode kembali dieksekusi. Tapi jika tidak terpenuhi, maka keluar dari perulangan. Sintaks pengulangan for di R sangat sederhana, dapat diperlihatkan sebagai berikut:</p>
+<pre><code>For (i in vector) {
+    lakukan sesuatu     
+}</code></pre>
+<p>Jika anda ingin mencetak <span class="math inline">\(i + 1\)</span>, menjadi <span class="math inline">\(i = 1,\cdots 10,\)</span> pada setiap iterasi pengulangan (loop). Anda dapat menggunakan sintaks <code>for</code> untuk mencetak angka dengan yang dimulai <span class="math inline">\(i = 0\)</span> dan berakhir pada <span class="math inline">\(i = 10\)</span>, sebagai berikut:</p>
+<div class="sourceCode" id="cb123"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb123-1"><a href="struktur-kontrol.html#cb123-1" tabindex="-1"></a><span class="cf">for</span> (i <span class="cf">in</span> <span class="dv">0</span><span class="sc">:</span><span class="dv">10</span>) {</span>
+<span id="cb123-2"><a href="struktur-kontrol.html#cb123-2" tabindex="-1"></a>  <span class="fu">print</span>(i <span class="sc">+</span> <span class="dv">1</span>)</span>
+<span id="cb123-3"><a href="struktur-kontrol.html#cb123-3" tabindex="-1"></a>}</span></code></pre></div>
+<pre><code>## [1] 1
+## [1] 2
+## [1] 3
+## [1] 4
+## [1] 5
+## [1] 6
+## [1] 7
+## [1] 8
+## [1] 9
+## [1] 10
+## [1] 11</code></pre>
+<p>Selain dapat digunakan pada data numerik, pengulangan for ini dapat juga diterapkan pada data karakter sebagai berikut:</p>
+<div class="sourceCode" id="cb125"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb125-1"><a href="struktur-kontrol.html#cb125-1" tabindex="-1"></a>mapel <span class="ot">=</span> <span class="fu">c</span>(<span class="st">&#39;Data Science&#39;</span>, <span class="st">&#39;Statistika&#39;</span>, <span class="st">&#39;Fisika&#39;</span>,<span class="st">&#39;Algoritma dan Struktur Data&#39;</span>)</span>
+<span id="cb125-2"><a href="struktur-kontrol.html#cb125-2" tabindex="-1"></a></span>
+<span id="cb125-3"><a href="struktur-kontrol.html#cb125-3" tabindex="-1"></a><span class="cf">for</span> (i <span class="cf">in</span> mapel){</span>
+<span id="cb125-4"><a href="struktur-kontrol.html#cb125-4" tabindex="-1"></a>   <span class="fu">print</span>(<span class="fu">paste0</span>(<span class="st">&quot;Saya suka: &quot;</span>, i))</span>
+<span id="cb125-5"><a href="struktur-kontrol.html#cb125-5" tabindex="-1"></a>}</span></code></pre></div>
+<pre><code>## [1] &quot;Saya suka: Data Science&quot;
+## [1] &quot;Saya suka: Statistika&quot;
+## [1] &quot;Saya suka: Fisika&quot;
+## [1] &quot;Saya suka: Algoritma dan Struktur Data&quot;</code></pre>
+<p>Selain itu, anda juga dapat melakukan pengulangan bersarang untuk siklus tertentu. Sintaksnya direpresentasikan sebagai berikut:</p>
+<div class="sourceCode" id="cb127"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb127-1"><a href="struktur-kontrol.html#cb127-1" tabindex="-1"></a>nama <span class="ot">=</span> <span class="fu">c</span>(<span class="st">&quot;Bakti: &quot;</span>, <span class="st">&quot;Alexander: &quot;</span>, <span class="st">&quot;Siregar: &quot;</span>)</span>
+<span id="cb127-2"><a href="struktur-kontrol.html#cb127-2" tabindex="-1"></a>mapel <span class="ot">=</span> <span class="fu">c</span>(<span class="st">&#39;Data Science&#39;</span>, <span class="st">&#39;Statistika&#39;</span>,<span class="st">&#39;Algoritma dan Struktur Data&#39;</span>)</span>
+<span id="cb127-3"><a href="struktur-kontrol.html#cb127-3" tabindex="-1"></a></span>
+<span id="cb127-4"><a href="struktur-kontrol.html#cb127-4" tabindex="-1"></a><span class="cf">for</span> (x <span class="cf">in</span> nama)</span>
+<span id="cb127-5"><a href="struktur-kontrol.html#cb127-5" tabindex="-1"></a>  <span class="cf">for</span> (y <span class="cf">in</span> mapel){</span>
+<span id="cb127-6"><a href="struktur-kontrol.html#cb127-6" tabindex="-1"></a>    <span class="fu">print</span>(<span class="fu">paste0</span>(x, y))</span>
+<span id="cb127-7"><a href="struktur-kontrol.html#cb127-7" tabindex="-1"></a>  }</span></code></pre></div>
+<pre><code>## [1] &quot;Bakti: Data Science&quot;
+## [1] &quot;Bakti: Statistika&quot;
+## [1] &quot;Bakti: Algoritma dan Struktur Data&quot;
+## [1] &quot;Alexander: Data Science&quot;
+## [1] &quot;Alexander: Statistika&quot;
+## [1] &quot;Alexander: Algoritma dan Struktur Data&quot;
+## [1] &quot;Siregar: Data Science&quot;
+## [1] &quot;Siregar: Statistika&quot;
+## [1] &quot;Siregar: Algoritma dan Struktur Data&quot;</code></pre>
+</div>
+<div id="sintaks-while" class="section level3 hasAnchor" number="6.2.2">
+<h3><span class="header-section-number">6.2.2</span> Sintaks <code>while</code><a href="struktur-kontrol.html#sintaks-while" class="anchor-section" aria-label="Anchor link to header"></a></h3>
+<p>Terkadang anda bahkan tidak tahu berapa lama urutan input harus dijalankan. Hal ini biasa terjadi saat melakukan simulasi. Misalnya, Anda mungkin ingin mengulang sampai anda mendapatkan tiga kepala berturut-turut. Anda tidak dapat melakukan iterasi semacam itu dengan pengulangan <code>for</code>. Sebagai gantinya, Anda dapat menggunakan pengulangan <code>while</code>. Perulangan <code>while</code> lebih sederhana daripada perulangan for karena hanya memiliki dua komponen, kondisi, dan badan.</p>
+<div class="figure" style="text-align: center"><span style="display:block;" id="fig:while"></span>
+<img src="images/Bab6/while.jpg" alt="Struktur Kontrol while" width="100%" />
+<p class="caption">
+Gambar 6.3: Struktur Kontrol while
+</p>
+</div>
+<p>Perulangan <code>while</code> dimulai dengan menguji suatu kondisi. Jika benar, maka mereka mengeksekusi badan perulangan. Setelah tubuh loop dieksekusi, kondisinya diuji lagi, dan seterusnya, sampai kondisinya salah, setelah itu loop akan melakukan eksekusi pada kodisi lainnya jika ada. Sintaks untuk <code>while</code> loop adalah sebagai berikut:</p>
+<pre><code>while (Kondisi) {
+     lakukan sesuatu 
+}</code></pre>
+<p>Pengulangan while dalam bahasa pemrograman R digunakan untuk menjalankan serangkaian pernyataan selama kondisi tertentu tetap terpenuhi. Berikut adalah contoh penggunaan pengulangan while dalam R:</p>
+<div class="sourceCode" id="cb130"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb130-1"><a href="struktur-kontrol.html#cb130-1" tabindex="-1"></a>x <span class="ot">&lt;-</span> <span class="dv">1</span></span>
+<span id="cb130-2"><a href="struktur-kontrol.html#cb130-2" tabindex="-1"></a></span>
+<span id="cb130-3"><a href="struktur-kontrol.html#cb130-3" tabindex="-1"></a><span class="cf">while</span> (x <span class="sc">&lt;=</span> <span class="dv">5</span>) {</span>
+<span id="cb130-4"><a href="struktur-kontrol.html#cb130-4" tabindex="-1"></a>  <span class="fu">print</span>(x)</span>
+<span id="cb130-5"><a href="struktur-kontrol.html#cb130-5" tabindex="-1"></a>  x <span class="ot">&lt;-</span> x <span class="sc">+</span> <span class="dv">1</span></span>
+<span id="cb130-6"><a href="struktur-kontrol.html#cb130-6" tabindex="-1"></a>}</span></code></pre></div>
+<pre><code>## [1] 1
+## [1] 2
+## [1] 3
+## [1] 4
+## [1] 5</code></pre>
+<p>Dalam contoh di atas, loop while akan menjalankan blok pernyataan selama nilai x masih kurang dari atau sama dengan 5. Setiap kali loop dijalankan, nilai x akan ditambah 1, sehingga pada akhirnya, kondisi x &lt;= 5 akan menjadi salah dan loop akan berhenti.</p>
+<p>Anda perlu memastikan bahwa ada pernyataan di dalam blok while yang mengubah nilai yang digunakan dalam kondisi. Ini penting untuk menghindari terjebak dalam loop tak berakhir.</p>
+<p>Berikut adalah contoh lain dengan menggunakan pengulangan while untuk menghitung jumlah bilangan genap antara 1 dan 10:</p>
+<div class="sourceCode" id="cb132"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb132-1"><a href="struktur-kontrol.html#cb132-1" tabindex="-1"></a>count <span class="ot">&lt;-</span> <span class="dv">1</span></span>
+<span id="cb132-2"><a href="struktur-kontrol.html#cb132-2" tabindex="-1"></a>even_sum <span class="ot">&lt;-</span> <span class="dv">0</span></span>
+<span id="cb132-3"><a href="struktur-kontrol.html#cb132-3" tabindex="-1"></a></span>
+<span id="cb132-4"><a href="struktur-kontrol.html#cb132-4" tabindex="-1"></a><span class="cf">while</span> (count <span class="sc">&lt;=</span> <span class="dv">10</span>) {</span>
+<span id="cb132-5"><a href="struktur-kontrol.html#cb132-5" tabindex="-1"></a>  <span class="cf">if</span> (count <span class="sc">%%</span> <span class="dv">2</span> <span class="sc">==</span> <span class="dv">0</span>) {</span>
+<span id="cb132-6"><a href="struktur-kontrol.html#cb132-6" tabindex="-1"></a>    even_sum <span class="ot">&lt;-</span> even_sum <span class="sc">+</span> count</span>
+<span id="cb132-7"><a href="struktur-kontrol.html#cb132-7" tabindex="-1"></a>  }</span>
+<span id="cb132-8"><a href="struktur-kontrol.html#cb132-8" tabindex="-1"></a>  count <span class="ot">&lt;-</span> count <span class="sc">+</span> <span class="dv">1</span></span>
+<span id="cb132-9"><a href="struktur-kontrol.html#cb132-9" tabindex="-1"></a>}</span>
+<span id="cb132-10"><a href="struktur-kontrol.html#cb132-10" tabindex="-1"></a></span>
+<span id="cb132-11"><a href="struktur-kontrol.html#cb132-11" tabindex="-1"></a><span class="fu">print</span>(even_sum)  <span class="co"># Output: 30 (2 + 4 + 6 + 8 + 10)</span></span></code></pre></div>
+<pre><code>## [1] 30</code></pre>
+<p>Dalam contoh ini, kita menggunakan loop while untuk menghitung jumlah bilangan genap antara 1 dan 10. Kita memeriksa apakah count (bilangan saat ini) adalah bilangan genap dengan menggunakan operator modulo (%%). Jika ya, kita menambahkan bilangan tersebut ke even_sum.</p>
+<p>Penting untuk selalu memastikan bahwa kondisi dalam loop while pada suatu titik akan menjadi salah, sehingga loop akan berhenti dan program tidak terjebak dalam perulangan tak berakhir.</p>
+</div>
+</div>
+<div id="interupsi-pengulangan" class="section level2 hasAnchor" number="6.3">
+<h2><span class="header-section-number">6.3</span> Interupsi Pengulangan<a href="struktur-kontrol.html#interupsi-pengulangan" class="anchor-section" aria-label="Anchor link to header"></a></h2>
+<p>Interupsi Pengulangan dalam bahasa pemrograman dilakukan dengan pernyataan <code>break</code> pada suatu fungsi. Biasanya digunakan untuk melewati/menghentikan iterasi dan mengalirkan perintah pengulangan seperti (for, while, repeat). Meskipun, ini tidak umum digunakan dalam aplikasi statistik atau analisis data tetapi mereka memiliki peran penting dalam proses penyederhanaan program atau algoritma.</p>
+<div class="figure" style="text-align: center"><span style="display:block;" id="fig:break"></span>
+<img src="images/Bab6/break.jpg" alt="Struktur Kontrol break" width="100%" />
+<p class="caption">
+Gambar 6.4: Struktur Kontrol break
+</p>
+</div>
+<pre><code>if (Test Kondisi) {
+break
+}</code></pre>
+<p>Andaikan kita ingin melakukan pengulangan suatu nilai pada vektor x, yang memiliki angka berurutan dari 1 hingga 5. Di dalam pengulangan <code>for</code>, kita telah menggunakan kondisi <code>if</code> untuk memutuskan pengulangan pada saat ditemukan nilai sama dengan 3. Dalam hal ini, loop akan berakhir ketika sesat pernyataan break terpenuhi.</p>
+<div class="sourceCode" id="cb135"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb135-1"><a href="struktur-kontrol.html#cb135-1" tabindex="-1"></a>x <span class="ot">&lt;-</span> <span class="dv">1</span><span class="sc">:</span><span class="dv">100</span></span>
+<span id="cb135-2"><a href="struktur-kontrol.html#cb135-2" tabindex="-1"></a><span class="cf">for</span> (val <span class="cf">in</span> x) {</span>
+<span id="cb135-3"><a href="struktur-kontrol.html#cb135-3" tabindex="-1"></a><span class="cf">if</span> (val <span class="sc">==</span> <span class="dv">50</span>){</span>
+<span id="cb135-4"><a href="struktur-kontrol.html#cb135-4" tabindex="-1"></a><span class="cf">break</span></span>
+<span id="cb135-5"><a href="struktur-kontrol.html#cb135-5" tabindex="-1"></a>}</span>
+<span id="cb135-6"><a href="struktur-kontrol.html#cb135-6" tabindex="-1"></a><span class="fu">print</span>(val)</span>
+<span id="cb135-7"><a href="struktur-kontrol.html#cb135-7" tabindex="-1"></a>}</span></code></pre></div>
+<pre><code>## [1] 1
+## [1] 2
+## [1] 3
+## [1] 4
+## [1] 5
+## [1] 6
+## [1] 7
+## [1] 8
+## [1] 9
+## [1] 10
+## [1] 11
+## [1] 12
+## [1] 13
+## [1] 14
+## [1] 15
+## [1] 16
+## [1] 17
+## [1] 18
+## [1] 19
+## [1] 20
+## [1] 21
+## [1] 22
+## [1] 23
+## [1] 24
+## [1] 25
+## [1] 26
+## [1] 27
+## [1] 28
+## [1] 29
+## [1] 30
+## [1] 31
+## [1] 32
+## [1] 33
+## [1] 34
+## [1] 35
+## [1] 36
+## [1] 37
+## [1] 38
+## [1] 39
+## [1] 40
+## [1] 41
+## [1] 42
+## [1] 43
+## [1] 44
+## [1] 45
+## [1] 46
+## [1] 47
+## [1] 48
+## [1] 49</code></pre>
+</div>
+<div id="pengulangan-berkala" class="section level2 hasAnchor" number="6.4">
+<h2><span class="header-section-number">6.4</span> Pengulangan Berkala<a href="struktur-kontrol.html#pengulangan-berkala" class="anchor-section" aria-label="Anchor link to header"></a></h2>
+<p>Kondisi perulangan yang digunakan adalah <code>repeat</code> untuk mengulangi perintah beberapa kali. Tidak ada pemeriksaan kondisi di loop untuk keluar dalam fungsi pengulangan ini. Kita sendiri harus menempatkan kondisi secara eksplisit di dalam tubuh loop.</p>
+<div class="figure" style="text-align: center"><span style="display:block;" id="fig:repeat"></span>
+<img src="images/Bab6/repeat.jpg" alt="Struktur Kontrol repeat" width="100%" />
+<p class="caption">
+Gambar 6.5: Struktur Kontrol repeat
+</p>
+</div>
+<p>Adapun sintak yang digunakan untuk melakukan pengulangan dengan repeat adalah sebgai berikut:</p>
+<pre><code>repeat {
+lakukan sesuatu
+}</code></pre>
+<p>Mari kita gunakan kondisi ini untuk memeriksa dan keluar dari loop ketika <span class="math inline">\(x\)</span> mengambil nilai 6. Oleh karena itu, kita melihat dalam output bahwa hanya ada nilai dari 1 hingga 5 yang akan dicetak.</p>
+<div class="sourceCode" id="cb138"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb138-1"><a href="struktur-kontrol.html#cb138-1" tabindex="-1"></a>x <span class="ot">&lt;-</span> <span class="dv">1</span></span>
+<span id="cb138-2"><a href="struktur-kontrol.html#cb138-2" tabindex="-1"></a><span class="cf">repeat</span> {</span>
+<span id="cb138-3"><a href="struktur-kontrol.html#cb138-3" tabindex="-1"></a>  <span class="fu">print</span>(x)</span>
+<span id="cb138-4"><a href="struktur-kontrol.html#cb138-4" tabindex="-1"></a>    x <span class="ot">=</span> x<span class="sc">+</span><span class="dv">1</span></span>
+<span id="cb138-5"><a href="struktur-kontrol.html#cb138-5" tabindex="-1"></a>  <span class="cf">if</span> (x <span class="sc">==</span> <span class="dv">6</span>){</span>
+<span id="cb138-6"><a href="struktur-kontrol.html#cb138-6" tabindex="-1"></a>  <span class="cf">break</span></span>
+<span id="cb138-7"><a href="struktur-kontrol.html#cb138-7" tabindex="-1"></a>  }</span>
+<span id="cb138-8"><a href="struktur-kontrol.html#cb138-8" tabindex="-1"></a>}</span></code></pre></div>
+<pre><code>## [1] 1
+## [1] 2
+## [1] 3
+## [1] 4
+## [1] 5</code></pre>
+</div>
+<div id="skip-iterasi-pengulangan" class="section level2 hasAnchor" number="6.5">
+<h2><span class="header-section-number">6.5</span> Skip Iterasi Pengulangan<a href="struktur-kontrol.html#skip-iterasi-pengulangan" class="anchor-section" aria-label="Anchor link to header"></a></h2>
+<p>Penyataan skip iterasi digunakan untuk melewati sisa kode di dalam satu lingkaran untuk iterasi saat ini saja. Artinya, tidak seperti pernyataan break, pengulangan tidak berhenti tetapi terus berlanjut dengan iterasi berikutnya.</p>
+<div class="figure" style="text-align: center"><span style="display:block;" id="fig:next"></span>
+<img src="images/Bab6/next.jpg" alt="Struktur Kontrol next" width="100%" />
+<p class="caption">
+Gambar 6.6: Struktur Kontrol next
+</p>
+</div>
+<pre><code>for pengulangan {
+  if (kondisi){
+  next
+  }
+  print(val)
+}</code></pre>
+<p>Gunakan pernyataan <code>next</code>, misalnya untuk memeriksa apakah nilainya sama dengan 5. Jika nilainya sama dengan 5, evaluasi saat ini berhenti (nilai tidak dicetak) tetapi perulangan berlanjut dengan iterasi berikutnya.</p>
+<div class="sourceCode" id="cb141"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb141-1"><a href="struktur-kontrol.html#cb141-1" tabindex="-1"></a>x <span class="ot">&lt;-</span> <span class="dv">1</span><span class="sc">:</span><span class="dv">11</span></span>
+<span id="cb141-2"><a href="struktur-kontrol.html#cb141-2" tabindex="-1"></a> <span class="cf">for</span> (val <span class="cf">in</span> x) {</span>
+<span id="cb141-3"><a href="struktur-kontrol.html#cb141-3" tabindex="-1"></a> <span class="cf">if</span> (val <span class="sc">==</span> <span class="dv">5</span>){</span>
+<span id="cb141-4"><a href="struktur-kontrol.html#cb141-4" tabindex="-1"></a> <span class="cf">next</span></span>
+<span id="cb141-5"><a href="struktur-kontrol.html#cb141-5" tabindex="-1"></a> }</span>
+<span id="cb141-6"><a href="struktur-kontrol.html#cb141-6" tabindex="-1"></a><span class="fu">print</span>(val)</span>
+<span id="cb141-7"><a href="struktur-kontrol.html#cb141-7" tabindex="-1"></a>}</span></code></pre></div>
+<pre><code>## [1] 1
+## [1] 2
+## [1] 3
+## [1] 4
+## [1] 6
+## [1] 7
+## [1] 8
+## [1] 9
+## [1] 10
+## [1] 11</code></pre>
+</div>
+<div id="latihan-4" class="section level2 hasAnchor" number="6.6">
+<h2><span class="header-section-number">6.6</span> Latihan<a href="struktur-kontrol.html#latihan-4" class="anchor-section" aria-label="Anchor link to header"></a></h2>
+<ol style="list-style-type: decimal">
+<li><p>Pernyataan Kondisional (if-else):
+Buatlah sebuah program yang memeriksa apakah suatu bilangan adalah positif, negatif, atau nol, dan mencetak pesan yang sesuai.</p></li>
+<li><p>Pengulangan (for):
+Hitunglah jumlah dari semua bilangan bulat genap antara 1 dan 50 menggunakan loop for.</p></li>
+<li><p>Pengulangan (while):
+Buatlah program yang meminta pengguna untuk menebak suatu angka acak antara 1 dan 100. Berikan petunjuk apakah angka yang ditebak terlalu besar atau terlalu kecil, dan berhenti ketika pengguna berhasil menebak angka tersebut.</p></li>
+<li><p>Pernyataan Switch:
+Buatlah program yang mengonversi nama hari dalam bahasa Inggris menjadi nama hari dalam bahasa Indonesia menggunakan pernyataan switch.</p></li>
+<li><p>Pengulangan dan Pernyataan Kondisional Gabungan:
+Hitunglah jumlah bilangan bulat positif yang dapat dibagi habis oleh 3 atau 5 di antara 1 dan 1000, lalu cetak hasilnya.</p></li>
+<li><p>Nested Loop:
+Buatlah pola segitiga angka seperti berikut menggunakan nested loop:</p></li>
+</ol>
+<pre><code>1
+12
+123
+1234
+12345</code></pre>
+<ol start="7" style="list-style-type: decimal">
+<li><p>Penggunaan break:
+Buatlah sebuah program yang mencari bilangan prima pertama yang lebih dari 100.</p></li>
+<li><p>Fungsi Rekursif:
+Buatlah fungsi rekursif untuk menghitung bilangan Fibonacci ke-n.</p></li>
+</ol>
+<p><strong>Catatan:</strong> Kumpulkan hasil latihan anda, tidak boleh sama dengan teman mahasiwa lainnya.</p>
+
+</div>
+</div>
+            </section>
+
+          </div>
+        </div>
+      </div>
+<a href="fungsi-dalam-r.html" class="navigation navigation-prev " aria-label="Previous page"><i class="fa fa-angle-left"></i></a>
+<a href="referensi.html" class="navigation navigation-next " aria-label="Next page"><i class="fa fa-angle-right"></i></a>
+    </div>
+  </div>
+<script src="libs/gitbook/js/app.min.js"></script>
+<script src="libs/gitbook/js/clipboard.min.js"></script>
+<script src="libs/gitbook/js/plugin-search.js"></script>
+<script src="libs/gitbook/js/plugin-sharing.js"></script>
+<script src="libs/gitbook/js/plugin-fontsettings.js"></script>
+<script src="libs/gitbook/js/plugin-bookdown.js"></script>
+<script src="libs/gitbook/js/jquery.highlight.js"></script>
+<script src="libs/gitbook/js/plugin-clipboard.js"></script>
+<script>
+gitbook.require(["gitbook"], function(gitbook) {
+gitbook.start({
+"sharing": {
+"github": false,
+"facebook": true,
+"twitter": true,
+"linkedin": false,
+"weibo": false,
+"instapaper": false,
+"vk": false,
+"whatsapp": false,
+"all": ["facebook", "twitter", "linkedin", "weibo", "instapaper"]
+},
+"fontsettings": {
+"theme": "white",
+"family": "sans",
+"size": 2
+},
+"edit": {
+"link": null,
+"text": null
+},
+"history": {
+"link": null,
+"text": null
+},
+"view": {
+"link": null,
+"text": null
+},
+"download": null,
+"search": {
+"engine": "fuse",
+"options": null
+},
+"toc": {
+"collapse": "subsection"
+}
+});
+});
+</script>
+
+<!-- dynamically load mathjax for compatibility with self-contained -->
+<script>
+  (function () {
+    var script = document.createElement("script");
+    script.type = "text/javascript";
+    var src = "true";
+    if (src === "" || src === "true") src = "https://cdnjs.cloudflare.com/ajax/libs/mathjax/2.7.9/latest.js?config=TeX-MML-AM_CHTML";
+    if (location.protocol !== "file:")
+      if (/^https?:/.test(src))
+        src = src.replace(/^https?:/, '');
+    script.src = src;
+    document.getElementsByTagName("head")[0].appendChild(script);
+  })();
+</script>
+</body>
+
+</html>
