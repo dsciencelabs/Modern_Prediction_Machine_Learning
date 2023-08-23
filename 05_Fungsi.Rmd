@@ -2,11 +2,9 @@
 
 Suatu fungsi *(function)* dalam lingkungan pemrograman adalah satu set instruksi untuk melaksanakan tugas-tugas tertentu. Seorang programmer membangun sebuah fungsi untuk menghindari pengulangan tugas yang sama atau mengurangi kompleksitas. 
 
-```{r fungsi,echo=FALSE, fig.cap='Fungsi dalam R', tidy=FALSE, out.width='100%', fig.align='center'}
-library(knitr)
-img1_path <- "./images/Bab5/functionmachine.gif"
-include_graphics(img1_path)
-```
+<center>
+<img src="https://github.com/dsciencelabs/Algoritma_Pemrograman_R/blob/main/images/Bab5/functionmachine.gif?raw=true" style = "width:100%;">
+</center>
 
 
 Dari gambar diata diperlihatkan bahwa:
@@ -231,7 +229,7 @@ rerata_frek(Tinggi,Frek)                     # menggunakan fungsi
 
 Seperti yang telah saya sebutkan sebelumnya, ilmuwan data perlu melakukan banyak tugas berulang. Sebagian besar waktu, kami menyalin dan menempelkan potongan kode berulang-ulang. Contoh lain, normalisasi suatu variabel sangat disarankan sebelum kita menjalankan algoritma pembelajaran mesin. Rumus untuk menormalkan variabel adalah: 
 
-$$\text{Normalisasi}={x-x_{min} \over x_{max} - x_{min}}$$
+$$\text{Normalisasi}={x-x_{min} / x_{max} - x_{min}}$$
 
 Mari kita buat kerangka data seperti yang telah kita pelajari di dasar-dasar R di bagian terakhir. 
 
