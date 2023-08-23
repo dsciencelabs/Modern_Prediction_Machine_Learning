@@ -130,11 +130,11 @@ persen(x)
 
 ## Simpan Fungsi
 
-Jika anda menyimpan skrip ini sebagai file `.R`: misalnya, `addPercent.R` ke komputer/PC anda dalam sebuah folder. Kemudian, kapapun anda dapat memanggil skrip ini di konsol dengan perintah berikut: 
+Jika anda menyimpan skrip ini sebagai file `.R`: misalnya, [`percent.R`](https://github.com/dsciencelabs/Algoritma_Pemrograman_R/blob/main/persen.R) ke komputer/PC anda dalam sebuah folder. Kemudian, kapapun anda dapat memanggil skrip ini di konsol dengan perintah berikut: 
 
 ```{r}
 x <- c(0.8765, 0.4321, 0.1234, 0.05678)
-source('Fungsi/persen.R')                   # pastikan direktori anda benar
+source('persen.R')                   # pastikan direktori anda benar
 persen(x)                                   # menggunakan fungsi anda 
 ```
 
