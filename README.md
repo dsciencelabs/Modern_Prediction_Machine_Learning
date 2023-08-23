@@ -19,3 +19,8 @@ Semua masukan dan tanggapan Anda sangat berarti bagi kami untuk memperbaiki modu
 
 **Email:** dsciencelabs@outlook.com
 
+
+## Petunjuk untuk untuk Publish di bookdown.org
+
+Copy Paste saja link ini "https://bookdown.org/" kemudian anda akan diminta login ke account dan setelah boleh publish
+
