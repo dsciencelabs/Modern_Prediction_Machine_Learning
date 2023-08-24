@@ -1,0 +1,82 @@
+<RECORDS>
+   <EMPLOYEE>
+      <id>1</id>
+      <name>Julian</name>
+      <salary>623.3</salary>
+      <start_date>1/1/2022</start_date>
+      <dept>DS</dept>
+   </EMPLOYEE>
+	
+   <EMPLOYEE>
+      <id>2</id>
+      <name>Vanessa</name>
+      <salary>515.2</salary>
+      <start_date>9/23/2022</start_date>
+      <dept>DS</dept>
+   </EMPLOYEE>
+   
+   <EMPLOYEE>
+      <id>3</id>
+      <name>Jeffry</name>
+      <salary>611</salary>
+      <start_date>11/15/2022</start_date>
+      <dept>BA</dept>
+   </EMPLOYEE>
+   
+   <EMPLOYEE>
+      <id>4</id>
+      <name>Angel</name>
+      <salary>729</salary>
+      <start_date>5/11/2022</start_date>
+      <dept>BA</dept>
+   </EMPLOYEE>
+   
+   <EMPLOYEE>
+      <id>5</id>
+      <name>Nikki</name>
+      <salary>843.25</salary>
+      <start_date>3/27/2022</start_date>
+      <dept>DS</dept>
+   </EMPLOYEE>
+   
+   <EMPLOYEE>
+      <id>6</id>
+      <name>Ardifo</name>
+      <salary>578</salary>
+      <start_date>5/21/2022</start_date>
+      <dept>Actuaries</dept>
+   </EMPLOYEE>
+   
+   <EMPLOYEE>
+      <id>7</id>
+      <name>Irene</name>
+      <salary>722.5</salary>
+      <start_date>7/30/2022</start_date>
+      <dept>Actuaries</dept>
+   </EMPLOYEE>
+   
+   <EMPLOYEE>
+      <id>8</id>
+      <name>Kefas</name>
+      <salary>632.8</salary>
+      <start_date>6/17/2022</start_date>
+      <dept>CA</dept>
+   </EMPLOYEE>
+
+   <EMPLOYEE>
+      <id>9</id>
+      <name>Sherly</name>
+      <salary>632.8</salary>
+      <start_date>7/30/2022</start_date>
+      <dept>DE</dept>
+   </EMPLOYEE>
+
+   <EMPLOYEE>
+      <id>10</id>
+      <name>Bakti</name>
+      <salary>NA</salary>
+      <start_date>9/03/2018</start_date>
+      <dept>Lecturer</dept>
+   </EMPLOYEE>
+	
+</RECORDS>
