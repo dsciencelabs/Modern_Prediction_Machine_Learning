@@ -1,6 +1,6 @@
 # Eksplorasi Data & Analisis
 
-**Eksplorasi Data Analisis (EDA)** adalah pendekatan analisis data untuk meringkas dan memvisualisasikan karakteristik penting dari data. EDA dapat dianggap sebagai asumsi bebas, biasanya dilakukan dalam perilaku analisis data. EDA juga dikenal sebagai analitik visual atau statistik deskriptif. EDA juga merupakan praktik pengamatan, dan mengeksplorasi data, sebelum Anda menekankan beberapa hipotesis, menyesuaikan prediktor, dan tujuan lainnya pada statistik inferensial. EDA biasanya mencakup penghitungan ringkasan statistika sederhana yang menangkap beberapa properti yang diminati dalam data dan visualisasi.
+**Eksplorasi Data & Analisis (EDA)** adalah pendekatan analisis data untuk meringkas dan memvisualisasikan karakteristik penting dari data. EDA dapat dianggap sebagai asumsi bebas, biasanya dilakukan dalam perilaku analisis data. EDA juga dikenal sebagai analitik visual atau statistik deskriptif. EDA juga merupakan praktik pengamatan, dan mengeksplorasi data, sebelum Anda menekankan beberapa hipotesis, menyesuaikan prediktor, dan tujuan lainnya pada statistik inferensial. EDA biasanya mencakup penghitungan ringkasan statistika sederhana yang menangkap beberapa properti yang diminati dalam data dan visualisasi.
 
 Seseorang yang bekerja dengan data, salah satu aktivitasnya yang paling menarik adalah mengeksplorasi dataset yang baru. Anda harus memahami variabel apa saja yang Anda miliki, berapa banyak records yang ada di dalam dataset, berapa banyak data yang hilang, apa struktur variabelnya, apa hubungan variabelnya, dan masih banyak lagi. Oleh karena itu, pada bagian ini akan kita akan menampilkan beberapa poin penting dalam EDA dasar sebagai berikut:
 
@@ -8,7 +8,7 @@ Seseorang yang bekerja dengan data, salah satu aktivitasnya yang paling menarik 
 * Berapa banyak variabel yang dianalisis secara bersamaan: univariat, bivariat, atau multivariat?
 * Apa tipe dari variabel: kategorikal atau kontinu?
 
-Pada bagian ini, kita menggunakan [dataset Students](https://raw.githubusercontent.com/Bakti-Siregar/dataset/master/Bookdown-Data-Science-for-Beginners/students.csv), unduh dan simpan di komputer (PC) Anda .
+Pada bagian ini, kita menggunakan [dataset Students](https://raw.githubusercontent.com/dsciencelabs/Algoritma_Pemrograman_R/main/Data/students.csv), unduh dan simpan di komputer (PC) Anda .
 
 ## Kualitatif
 
@@ -25,7 +25,7 @@ data yang levelnya adalah label atau deskripsi, dan yang tidak dapat dipesan. Co
 
 Analisis univariat mengeksplorasi variabel (atribut) satu per satu. Variabel dapat berupa kategorikal atau numerik. Ada perbedaan teknik statistik dan visualisasi dari penyelidikan untuk setiap jenis variabel. Variabel numerik dapat diubah menjadi bagian kategorikal dengan proses yang disebut [binning atau diskritisasi](https://www.saedsayad.com/binning.htm). Dimungkinkan juga untuk mengubah variabel kategorikal menjadi bagian numerik dengan proses yang disebut [pengkodean](https://www.saedsayad.com/encoding.htm). Terakhir, penanganan yang tepat atas nilai yang hilang merupakan masalah penting dalam penambahan data. Sekarang, mari kita lihat cara mengeksplor data kategorikal univariat:
 
-```{r, echo=T, results='hide', message=FALSE}
+```{r, eval=F}
 library(readr)                                     # antarmuka dataset
 #setwd("C:/Users/Bakti/Desktop/")                  # mengatur working directory Anda
 df= read_csv("Data/students.csv")                  # mengimpor dataset
@@ -39,7 +39,7 @@ Cat1
 
 Jika seandainya Anda menginginkan proporsi dari jumlah level, Anda dapat menggunakan `prop.table`.
 
-```{r, echo=T, results='hide'}
+```{r, eval=F}
 prop.table(table(df$Gender))
 ```
 
@@ -47,7 +47,7 @@ prop.table(table(df$Gender))
 
 Contoh data bivariat dapat diberikan untuk membantu Anda memahami hubungan antara dua variabel dan untuk memahami ide di balik definisi dan makna analisis data bivariat. Perlu diperhatikan bahwa, dalam kasus ini, kita fokus pada variabel kategorikal.
 
-```{r, echo=T, results='hide', message=FALSE}
+```{r, eval=F}
 library(readr)                                     # antarmuka dataset
 library(dplyr)                                     # untuk memanipulasi data
 library(magrittr)                                  # untuk memanipulasi data mirip dengan dplyr
@@ -62,7 +62,7 @@ Cat2                                               # mencetak hasilnya
 
 Anda mungkin bertanya-tanya bagaimana R menangani tabel dengan lebih dari dua dimensi. Memang tidak mudah untuk menyampaikan hal ini dengan cara yang bisa dibaca oleh manusia. R menawarkan beberapa solusi: `tabel` agar lebih mudah dihitung, dan `ftable` dapat dibaca manusia.
 
-```{r, echo=T, results='hide'}
+```{r, eval=F}
 Cat3 <- df %>%                                     # memuat data
 select(Gender, Horoscope, Subject) %>%             # memilih vector ke dalam matriks dan periksalah
 #table()                                           # tabel yang dapat dibaca mesin
@@ -101,7 +101,7 @@ $$
 
 Berikut ini adalah implementasi R:
 
-```{r, echo=T, results='hide'}
+```{r, eval=F}
 Quan <- df %>% 
 select_if(is.numeric)                              # hanya memilih kolom numerik
 names(Quan)                                        # memeriksa nama-nama variabel Kuantitatif
@@ -132,7 +132,7 @@ $\sigma=\sqrt{\frac{1}{N-1}{\Sigma^n_{i=1}{(x_i-\mu)^2}}}$
 
 Berikut ini adalah implementasi R:
 
-```{r, echo=T, results='hide'}
+```{r, eval=F}
 var(Quan$Grade)                                    # Varian dari `Grade`
 sd(Quan$Grade)                                     # Deviasi standar dari `Grade`
 mad(Quan$Grade)                                    # Deviasi Absolut Median dari `Grade`
@@ -143,7 +143,7 @@ IQR(Quan$Grade)                                    # Antar Rentang Kuantile dari
 
 Kecondongan (Skewness) mengacu pada distorsi atau asimetri dalam kurva lonceng simetris, atau [distribusi normal](https://www.investopedia.com/terms/n/normaldistribution.asp), dalam dataset. Jika kurva bergeser ke kiri atau ke kanan, maka dikatakan condong. Kecondongan dapat dikuantifikasi sebagai representasi dari sejauh mana suatu distribusi bervariasi dari distribusi normal. Distribusi normal memiliki kemiringan nol, sedangkan [distribusi normal log](https://www.investopedia.com/articles/investing/102014/lognormal-and-normal-distribution.asp), sebagai contoh, akan menunjukkan beberapa derajat kemiringan ke kanan.
 
-```{r, echo=T, results='hide'}
+```{r, eval=F}
 library(e1071)                                      # memuat e1071
 skewness(Quan$Grade)                                # menerapkan fungsi kecondongan `skewness`
 ```
@@ -154,7 +154,7 @@ Kecondongan variabel `Quan$Grade` adalah 0.2625807. Itu menunjukkan bahwa distri
 
 Kurtosis dari distribusi normal univariat adalah 3. Membandingkan distribusi kurtosis dengan nilai ini (3) adalah umum. Distribusi dengan kurtosis kurang dari 3 disebut platykurtic, meskipun ini tidak berarti distribusinya "flat-topped" seperti yang kadang-kadang dinyatakan. Sebaliknya, ini berarti distribusi menghassilkan outlier yang lebih sedikit dan tidak terlalu ekstrim daripada distribusi normal.
 
-```{r, echo=T, results='hide'}
+```{r, eval=F}
 kurtosis(Quan$Grade)                                # menerapkan fungsi `kurtosis`
 ```
 
@@ -184,7 +184,7 @@ Skor-z dari sampel $x$ didefinisikan sebagai observasi yang dinormalisasi dengan
 $$z_i(x):=\frac{x_i-\bar{x}}{\sigma_x}$$
 Jadi kita punya, $\rho(x,y):=Cov(z(x),z(y))$
 
-```{r, echo=T, results='hide'}
+```{r, eval=F}
 cov(Quan$Grade,Quan$Sleep)                          # menerapkan fungsi `cov()`
 cor(Quan$Grade,Quan$Sleep)                          # menerapkan fungsi `corr()`
 zscore=(Quan$Grade-mean(Quan$Grade))/sd(Quan$Grade) # manual skor-z
@@ -218,12 +218,72 @@ $Y_{j,k}=$ koefisien korelasi $x_j$ dan $x_k$
 
 Berikut ini adalah implementasi R:
 
-```{r, echo=T, results='hide'}
+```{r, eval=F}
 cov(Quan)                                           # menerapkan fungsi `cov()`
 cor(Quan)                                           # menerapkan fungsi `corr()`
 ```
 
-## EDA dengan cara Lazy-way
+## Contoh Kasus EDA
+
+Pada contoh ini, kita akan menggunakan paket data bawaan mtcars yang berisi informasi tentang mobil-mobil. EDA adalah proses untuk memahami karakteristik data dan pola yang mungkin ada di dalamnya sebelum melakukan analisis lebih lanjut.
+
+```{r}
+# Install and load necessary packages
+library(ggplot2)
+
+# Load the mtcars dataset
+data(mtcars)
+
+# Print the first few rows of the dataset
+head(mtcars)
+
+# Summary statistics of the dataset
+summary(mtcars)
+```
+
+```{r}
+# Create a scatter plot of mpg vs. hp
+ggplot(mtcars, aes(x = hp, y = mpg)) +
+  geom_point() +
+  labs(title = "Scatter Plot of MPG vs. Horsepower",
+       x = "Horsepower",
+       y = "Miles per Gallon")
+```
+
+```{r}
+# Create a histogram of mpg
+ggplot(mtcars, aes(x = mpg)) +
+  geom_histogram(binwidth = 2, fill = "blue", color = "black") +
+  labs(title = "Histogram of MPG",
+       x = "Miles per Gallon",
+       y = "Frequency")
+```
+
+```{r}
+# Create a box plot of mpg by number of cylinders
+ggplot(mtcars, aes(x = factor(cyl), y = mpg)) +
+  geom_boxplot(fill = "lightgreen") +
+  labs(title = "Box Plot of MPG by Number of Cylinders",
+       x = "Number of Cylinders",
+       y = "Miles per Gallon")
+```
+
+
+```{r}
+library(reshape2)
+# Create a correlation matrix heatmap
+correlation_matrix <- cor(mtcars)
+ggplot(data = melt(correlation_matrix), aes(x = Var1, y = Var2, fill = value)) +
+  geom_tile() +
+  scale_fill_gradient(low = "white", high = "blue") +
+  labs(title = "Correlation Matrix Heatmap")
+```
+
+
+Pada contoh di atas, kita menggunakan paket ggplot2 untuk membuat visualisasi data, seperti scatter plot, histogram, box plot, dan heatmap. Selain itu, kita juga menggunakan fungsi summary() untuk melihat ringkasan statistik dari dataset. Pastikan Anda telah menginstal paket ggplot2 sebelum menjalankan kode tersebut. Anda dapat menginstalnya dengan menggunakan perintah install.packages("ggplot2"). Pastikan juga Anda membaca dokumentasi paket-paket yang digunakan untuk memahami lebih lanjut tentang fungsi dan argumen yang digunakan dalam contoh di atas.
+
+m
+## EDA Menggunakan Pustaka
 
 Jalankan semua fungsi di posting ini satu kali dengan fungsi berikut:
 
@@ -272,3 +332,10 @@ Dan akhirnya pièce de résistance, daya tarik utama dan alasan saya menulis blo
 library(DataExplorer)
 DataExplorer::create_report(df)
 ```
+
+
+## Latihan
+
+Carilah dataset yang dapat anda gunakan untuk melakukan proses EDA seperti yang telah diuriakan diatas. Jelaskan setiap proses yang anda lakukan.
+
+**Catatan:** Kumpulkan hasil latihan anda, tidak boleh sama dengan teman mahasiwa lainnya.

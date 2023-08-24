@@ -454,3 +454,12 @@ test<-mtcars[-intrain,]
 dim(train)                                        # mengecek dimensi set latihan
 dim(test)                                         # mengecek dimensi set percobaan
 ```
+
+
+## Latihan
+
+Carilah dataset yang dapat anda gunakan untuk melakukan proses manipulasi seperti yang telah diuriakan diatas. Jelaskan setiap proses yang anda lakukan.
+
+**Catatan:** Kumpulkan hasil latihan anda, tidak boleh sama dengan teman mahasiwa lainnya.
+
+
