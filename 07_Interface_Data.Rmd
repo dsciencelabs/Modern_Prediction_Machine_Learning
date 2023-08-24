@@ -127,7 +127,12 @@ saveRDS(df8, "Data/Output/output8.ascii", ascii=TRUE)
 
 ## Impor/Ekspor XML
 
-XML adalah kumpulan berbagi format file dan data di World Wide Web, intranet, dan di tempat lain menggunakan teks ASCII standar. XML adalah singkatan dari eXtensible Markup Language. Untuk penjelasan lebih lengkap silahkan kunjungi [Youtube](https://www.youtube.com/embed/KeLiQXqVgMI)
+XML adalah kumpulan berbagi format file dan data di World Wide Web, intranet, dan di tempat lain menggunakan teks ASCII standar. XML adalah singkatan dari eXtensible Markup Language. Untuk penjelasan lebih lengkap silahkan kunjungi
+
+```{r echo=FALSE, results='asis'}
+cat('<iframe width="800" height="430" src="https://www.youtube.com/embed/KeLiQXqVgMI" frameborder="0" allowfullscreen></iframe>')
+```
+
 
 Sebenarnya XML sangat mirip dengan HTML, diman sintak-sintaknya berisi markup. Tetapi, perlu dicatat bahwa XML tidak sama dalam hal tag markup HTML yang menjelaskan laman struktur datanya terdapat dalam file tersebut. Silahkah perhatikan video penjelasan mengenai HTML [Youtube](https://www.youtube.com/embed/rs5hz_oZywI)
 
@@ -184,4 +189,6 @@ Catatan: Kita akan mempelajari bagian ini di bagian khusus yang disebut “Siste
 Pengikisan data dari web (Webscraping Data) adalah proses menggunakan bot untuk mengekstrak konten dan data dari situs web. Tidak seperti screen scraping, yang hanya menyalin piksel yang ditampilkan di layar, web scraping mengekstrak kode HTML yang mendasarinya yang pada dasarnya disimpan dalam database. Pengikisan data ini dapat mereplikasi seluruh konten dari berbagai situs web yang target.
 
 **Catatan:** Kita akan mempelajari bagian ini di bagian khusus yang disebut "Ilmu Data Terapan". 
+
+
 
