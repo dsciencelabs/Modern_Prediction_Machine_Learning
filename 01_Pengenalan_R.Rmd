@@ -92,12 +92,14 @@ RStudio adalah Integrated Development Environment (IDE) yang mempermudah pengemb
 
 ### Windows
 
-<iframe width="800" height="540" src="https://www.youtube.com/embed/bVbCm_nE974?si=tLHLLl6c2LW-Q_-0" title="YouTube video player" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" allowfullscreen></iframe>
-
+```{r echo=FALSE, results='asis'}
+cat('<iframe width="800" height="430" src="https://www.youtube.com/embed/bVbCm_nE974?si=tLHLLl6c2LW-Q_-0" frameborder="0" allowfullscreen></iframe>')
+```
 ### MacOS
 
-<iframe width="800" height="540" src="https://www.youtube.com/embed/Y20P3u3c_1c?si=JUeS4AIQYF8agn9j" title="YouTube video player" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" allowfullscreen></iframe>
-
+```{r echo=FALSE, results='asis'}
+cat('<iframe width="800" height="430" src="https://www.youtube.com/embed/Y20P3u3c_1c?si=JUeS4AIQYF8agn9j" frameborder="0" allowfullscreen></iframe>')
+```
 
 ## Interface R & RStudio:
 

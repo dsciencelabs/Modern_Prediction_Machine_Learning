@@ -2,12 +2,13 @@
 
 Suatu fungsi *(function)* dalam lingkungan pemrograman adalah satu set instruksi untuk melaksanakan tugas-tugas tertentu. Seorang programmer membangun sebuah fungsi untuk menghindari pengulangan tugas yang sama atau mengurangi kompleksitas. 
 
-<center>
-<img src="https://github.com/dsciencelabs/Algoritma_Pemrograman_R/blob/main/images/Bab5/functionmachine.gif?raw=true" style = "width:100%;">
-</center>
+```{r fungsi,echo=FALSE, fig.cap='Cara Kerja Fungsi', tidy=FALSE, out.width='100%', fig.align='center'}
+library(knitr)
+img1_path <- "./images/Bab5/functionmachine.gif"
+include_graphics(img1_path)
+```
 
-
-Dari gambar diata diperlihatkan bahwa:
+Dari gambar \@ref(fig:fungsi) diperlihatkan bahwa:
 
 * Jika $x=5$ adalah masukan *(input)*
 * Diberikan instruksi (fungsi) $f(x)=x+3$, yang disebut badan progam *(body)*
