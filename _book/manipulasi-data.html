@@ -1,0 +1,756 @@
+<!DOCTYPE html>
+<html lang="" xml:lang="">
+<head>
+
+  <meta charset="utf-8" />
+  <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+  <title>Bab 8 Manipulasi Data | Algoritma dan Pemrograman R</title>
+  <meta name="description" content="Bab 8 Manipulasi Data | Algoritma dan Pemrograman R akan mencakup konsep-konsep dasar dalam pemrograman, pemahaman algoritma, serta pengenalan terhadap bahasa pemrograman R." />
+  <meta name="generator" content="bookdown 0.34 and GitBook 2.6.7" />
+
+  <meta property="og:title" content="Bab 8 Manipulasi Data | Algoritma dan Pemrograman R" />
+  <meta property="og:type" content="book" />
+  <meta property="og:image" content="/images/Cover_Algoritma_Permrograman.png" />
+  <meta property="og:description" content="Bab 8 Manipulasi Data | Algoritma dan Pemrograman R akan mencakup konsep-konsep dasar dalam pemrograman, pemahaman algoritma, serta pengenalan terhadap bahasa pemrograman R." />
+  <meta name="github-repo" content="dsciencelabs/Algoritma_Pemrograman_R" />
+
+  <meta name="twitter:card" content="summary" />
+  <meta name="twitter:title" content="Bab 8 Manipulasi Data | Algoritma dan Pemrograman R" />
+  
+  <meta name="twitter:description" content="Bab 8 Manipulasi Data | Algoritma dan Pemrograman R akan mencakup konsep-konsep dasar dalam pemrograman, pemahaman algoritma, serta pengenalan terhadap bahasa pemrograman R." />
+  <meta name="twitter:image" content="/images/Cover_Algoritma_Permrograman.png" />
+
+<meta name="author" content="Bakti Siregar, M.Sc" />
+
+
+
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <meta name="apple-mobile-web-app-capable" content="yes" />
+  <meta name="apple-mobile-web-app-status-bar-style" content="black" />
+  
+  
+<link rel="prev" href="interface-data.html"/>
+<link rel="next" href="referensi.html"/>
+<script src="libs/jquery/jquery-3.6.0.min.js"></script>
+<script src="https://cdn.jsdelivr.net/npm/fuse.js@6.4.6/dist/fuse.min.js"></script>
+<link href="libs/gitbook/css/style.css" rel="stylesheet" />
+<link href="libs/gitbook/css/plugin-table.css" rel="stylesheet" />
+<link href="libs/gitbook/css/plugin-bookdown.css" rel="stylesheet" />
+<link href="libs/gitbook/css/plugin-highlight.css" rel="stylesheet" />
+<link href="libs/gitbook/css/plugin-search.css" rel="stylesheet" />
+<link href="libs/gitbook/css/plugin-fontsettings.css" rel="stylesheet" />
+<link href="libs/gitbook/css/plugin-clipboard.css" rel="stylesheet" />
+
+
+
+
+
+
+
+
+<link href="libs/anchor-sections/anchor-sections.css" rel="stylesheet" />
+<link href="libs/anchor-sections/anchor-sections-hash.css" rel="stylesheet" />
+<script src="libs/anchor-sections/anchor-sections.js"></script>
+
+
+<style type="text/css">
+pre > code.sourceCode { white-space: pre; position: relative; }
+pre > code.sourceCode > span { display: inline-block; line-height: 1.25; }
+pre > code.sourceCode > span:empty { height: 1.2em; }
+.sourceCode { overflow: visible; }
+code.sourceCode > span { color: inherit; text-decoration: inherit; }
+pre.sourceCode { margin: 0; }
+@media screen {
+div.sourceCode { overflow: auto; }
+}
+@media print {
+pre > code.sourceCode { white-space: pre-wrap; }
+pre > code.sourceCode > span { text-indent: -5em; padding-left: 5em; }
+}
+pre.numberSource code
+  { counter-reset: source-line 0; }
+pre.numberSource code > span
+  { position: relative; left: -4em; counter-increment: source-line; }
+pre.numberSource code > span > a:first-child::before
+  { content: counter(source-line);
+    position: relative; left: -1em; text-align: right; vertical-align: baseline;
+    border: none; display: inline-block;
+    -webkit-touch-callout: none; -webkit-user-select: none;
+    -khtml-user-select: none; -moz-user-select: none;
+    -ms-user-select: none; user-select: none;
+    padding: 0 4px; width: 4em;
+    color: #aaaaaa;
+  }
+pre.numberSource { margin-left: 3em; border-left: 1px solid #aaaaaa;  padding-left: 4px; }
+div.sourceCode
+  {   }
+@media screen {
+pre > code.sourceCode > span > a:first-child::before { text-decoration: underline; }
+}
+code span.al { color: #ff0000; font-weight: bold; } /* Alert */
+code span.an { color: #60a0b0; font-weight: bold; font-style: italic; } /* Annotation */
+code span.at { color: #7d9029; } /* Attribute */
+code span.bn { color: #40a070; } /* BaseN */
+code span.bu { color: #008000; } /* BuiltIn */
+code span.cf { color: #007020; font-weight: bold; } /* ControlFlow */
+code span.ch { color: #4070a0; } /* Char */
+code span.cn { color: #880000; } /* Constant */
+code span.co { color: #60a0b0; font-style: italic; } /* Comment */
+code span.cv { color: #60a0b0; font-weight: bold; font-style: italic; } /* CommentVar */
+code span.do { color: #ba2121; font-style: italic; } /* Documentation */
+code span.dt { color: #902000; } /* DataType */
+code span.dv { color: #40a070; } /* DecVal */
+code span.er { color: #ff0000; font-weight: bold; } /* Error */
+code span.ex { } /* Extension */
+code span.fl { color: #40a070; } /* Float */
+code span.fu { color: #06287e; } /* Function */
+code span.im { color: #008000; font-weight: bold; } /* Import */
+code span.in { color: #60a0b0; font-weight: bold; font-style: italic; } /* Information */
+code span.kw { color: #007020; font-weight: bold; } /* Keyword */
+code span.op { color: #666666; } /* Operator */
+code span.ot { color: #007020; } /* Other */
+code span.pp { color: #bc7a00; } /* Preprocessor */
+code span.sc { color: #4070a0; } /* SpecialChar */
+code span.ss { color: #bb6688; } /* SpecialString */
+code span.st { color: #4070a0; } /* String */
+code span.va { color: #19177c; } /* Variable */
+code span.vs { color: #4070a0; } /* VerbatimString */
+code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warning */
+</style>
+
+<style type="text/css">
+  
+  div.hanging-indent{margin-left: 1.5em; text-indent: -1.5em;}
+</style>
+
+<link rel="stylesheet" href="style.css" type="text/css" />
+</head>
+
+<body>
+
+
+
+  <div class="book without-animation with-summary font-size-2 font-family-1" data-basepath=".">
+
+    <div class="book-summary">
+      <nav role="navigation">
+
+<ul class="summary">
+<li><center><img src="images/logo.png" alt="logo" width="50%" height="50%"style="margin: 15px 0 0 0"></center></li>
+
+<li class="divider"></li>
+<li class="chapter" data-level="" data-path="index.html"><a href="index.html"><i class="fa fa-check"></i>Kata Pengantar</a>
+<ul>
+<li class="chapter" data-level="" data-path="index.html"><a href="index.html#ringkasan-pembelajaran"><i class="fa fa-check"></i>Ringkasan Pembelajaran</a></li>
+<li class="chapter" data-level="" data-path="index.html"><a href="index.html#tim-penyusun"><i class="fa fa-check"></i>Tim Penyusun</a></li>
+<li class="chapter" data-level="" data-path="index.html"><a href="index.html#ucapan-terima-kasih"><i class="fa fa-check"></i>Ucapan Terima Kasih</a></li>
+<li class="chapter" data-level="" data-path="index.html"><a href="index.html#masukan-saran"><i class="fa fa-check"></i>Masukan &amp; Saran</a></li>
+</ul></li>
+<li class="chapter" data-level="1" data-path="pengenalan-r.html"><a href="pengenalan-r.html"><i class="fa fa-check"></i><b>1</b> Pengenalan R?</a>
+<ul>
+<li class="chapter" data-level="1.1" data-path="pengenalan-r.html"><a href="pengenalan-r.html#fitur-utama-r"><i class="fa fa-check"></i><b>1.1</b> Fitur Utama R</a></li>
+<li class="chapter" data-level="1.2" data-path="pengenalan-r.html"><a href="pengenalan-r.html#mengapa-belajar-r"><i class="fa fa-check"></i><b>1.2</b> Mengapa Belajar R?</a></li>
+<li class="chapter" data-level="1.3" data-path="pengenalan-r.html"><a href="pengenalan-r.html#download-r-rstudio"><i class="fa fa-check"></i><b>1.3</b> Download R &amp; Rstudio:</a></li>
+<li class="chapter" data-level="1.4" data-path="pengenalan-r.html"><a href="pengenalan-r.html#tutorial-instal-r-studio"><i class="fa fa-check"></i><b>1.4</b> Tutorial Instal R &amp; Studio</a>
+<ul>
+<li class="chapter" data-level="1.4.1" data-path="pengenalan-r.html"><a href="pengenalan-r.html#instalasi-r"><i class="fa fa-check"></i><b>1.4.1</b> Instalasi R</a></li>
+<li class="chapter" data-level="1.4.2" data-path="pengenalan-r.html"><a href="pengenalan-r.html#instalasi-rstudio"><i class="fa fa-check"></i><b>1.4.2</b> Instalasi RStudio:</a></li>
+</ul></li>
+<li class="chapter" data-level="1.5" data-path="pengenalan-r.html"><a href="pengenalan-r.html#video-instalasi-r-rstudio"><i class="fa fa-check"></i><b>1.5</b> Video Instalasi R &amp; RStudio</a>
+<ul>
+<li class="chapter" data-level="1.5.1" data-path="pengenalan-r.html"><a href="pengenalan-r.html#windows-1"><i class="fa fa-check"></i><b>1.5.1</b> Windows</a></li>
+<li class="chapter" data-level="1.5.2" data-path="pengenalan-r.html"><a href="pengenalan-r.html#macos-1"><i class="fa fa-check"></i><b>1.5.2</b> MacOS</a></li>
+</ul></li>
+<li class="chapter" data-level="1.6" data-path="pengenalan-r.html"><a href="pengenalan-r.html#interface-r-rstudio"><i class="fa fa-check"></i><b>1.6</b> Interface R &amp; RStudio:</a></li>
+<li class="chapter" data-level="1.7" data-path="pengenalan-r.html"><a href="pengenalan-r.html#sintaks-dasar-r"><i class="fa fa-check"></i><b>1.7</b> Sintaks Dasar R</a></li>
+<li class="chapter" data-level="1.8" data-path="pengenalan-r.html"><a href="pengenalan-r.html#bantuan-help-r"><i class="fa fa-check"></i><b>1.8</b> Bantuan (Help) R</a></li>
+<li class="chapter" data-level="1.9" data-path="pengenalan-r.html"><a href="pengenalan-r.html#shortcut-penggunaan-rstudio"><i class="fa fa-check"></i><b>1.9</b> Shortcut Penggunaan Rstudio</a></li>
+<li class="chapter" data-level="1.10" data-path="pengenalan-r.html"><a href="pengenalan-r.html#praktikum"><i class="fa fa-check"></i><b>1.10</b> Praktikum</a></li>
+</ul></li>
+<li class="chapter" data-level="2" data-path="operasi-dasar-r.html"><a href="operasi-dasar-r.html"><i class="fa fa-check"></i><b>2</b> Operasi Dasar R</a>
+<ul>
+<li class="chapter" data-level="2.1" data-path="operasi-dasar-r.html"><a href="operasi-dasar-r.html#variabel"><i class="fa fa-check"></i><b>2.1</b> Variabel</a>
+<ul>
+<li class="chapter" data-level="2.1.1" data-path="operasi-dasar-r.html"><a href="operasi-dasar-r.html#mendefinisikan-variabel"><i class="fa fa-check"></i><b>2.1.1</b> Mendefinisikan Variabel</a></li>
+<li class="chapter" data-level="2.1.2" data-path="operasi-dasar-r.html"><a href="operasi-dasar-r.html#aturan-nama-variabel"><i class="fa fa-check"></i><b>2.1.2</b> Aturan Nama Variabel</a></li>
+</ul></li>
+<li class="chapter" data-level="2.2" data-path="operasi-dasar-r.html"><a href="operasi-dasar-r.html#operator"><i class="fa fa-check"></i><b>2.2</b> Operator</a>
+<ul>
+<li class="chapter" data-level="2.2.1" data-path="operasi-dasar-r.html"><a href="operasi-dasar-r.html#aritmatika"><i class="fa fa-check"></i><b>2.2.1</b> Aritmatika</a></li>
+<li class="chapter" data-level="2.2.2" data-path="operasi-dasar-r.html"><a href="operasi-dasar-r.html#relasional"><i class="fa fa-check"></i><b>2.2.2</b> Relasional</a></li>
+<li class="chapter" data-level="2.2.3" data-path="operasi-dasar-r.html"><a href="operasi-dasar-r.html#logika"><i class="fa fa-check"></i><b>2.2.3</b> Logika</a></li>
+<li class="chapter" data-level="2.2.4" data-path="operasi-dasar-r.html"><a href="operasi-dasar-r.html#operator-lain-lain"><i class="fa fa-check"></i><b>2.2.4</b> Operator Lain-lain</a></li>
+</ul></li>
+<li class="chapter" data-level="2.3" data-path="operasi-dasar-r.html"><a href="operasi-dasar-r.html#tipe-data"><i class="fa fa-check"></i><b>2.3</b> Tipe Data</a></li>
+<li class="chapter" data-level="2.4" data-path="operasi-dasar-r.html"><a href="operasi-dasar-r.html#statistika-dasar"><i class="fa fa-check"></i><b>2.4</b> Statistika Dasar</a></li>
+<li class="chapter" data-level="2.5" data-path="operasi-dasar-r.html"><a href="operasi-dasar-r.html#contoh-pemrograman-dasar"><i class="fa fa-check"></i><b>2.5</b> Contoh Pemrograman Dasar</a>
+<ul>
+<li class="chapter" data-level="2.5.1" data-path="operasi-dasar-r.html"><a href="operasi-dasar-r.html#menghitung-rata-rata"><i class="fa fa-check"></i><b>2.5.1</b> Menghitung Rata-rata</a></li>
+<li class="chapter" data-level="2.5.2" data-path="operasi-dasar-r.html"><a href="operasi-dasar-r.html#membandingkan-angka"><i class="fa fa-check"></i><b>2.5.2</b> Membandingkan Angka</a></li>
+<li class="chapter" data-level="2.5.3" data-path="operasi-dasar-r.html"><a href="operasi-dasar-r.html#membandingkan-karakter"><i class="fa fa-check"></i><b>2.5.3</b> Membandingkan Karakter</a></li>
+<li class="chapter" data-level="2.5.4" data-path="operasi-dasar-r.html"><a href="operasi-dasar-r.html#mengecek-kondisi-gabungan"><i class="fa fa-check"></i><b>2.5.4</b> Mengecek Kondisi Gabungan</a></li>
+<li class="chapter" data-level="2.5.5" data-path="operasi-dasar-r.html"><a href="operasi-dasar-r.html#penggunaan-operator-logika"><i class="fa fa-check"></i><b>2.5.5</b> Penggunaan Operator Logika</a></li>
+<li class="chapter" data-level="2.5.6" data-path="operasi-dasar-r.html"><a href="operasi-dasar-r.html#pemeriksaan-kondisi-dengan-ifelse"><i class="fa fa-check"></i><b>2.5.6</b> Pemeriksaan Kondisi dengan ifelse()</a></li>
+</ul></li>
+<li class="chapter" data-level="2.6" data-path="operasi-dasar-r.html"><a href="operasi-dasar-r.html#latihan"><i class="fa fa-check"></i><b>2.6</b> Latihan</a></li>
+</ul></li>
+<li class="chapter" data-level="3" data-path="struktur-data.html"><a href="struktur-data.html"><i class="fa fa-check"></i><b>3</b> Struktur Data</a>
+<ul>
+<li class="chapter" data-level="3.1" data-path="struktur-data.html"><a href="struktur-data.html#vektor"><i class="fa fa-check"></i><b>3.1</b> Vektor</a></li>
+<li class="chapter" data-level="3.2" data-path="struktur-data.html"><a href="struktur-data.html#matriks"><i class="fa fa-check"></i><b>3.2</b> Matriks</a></li>
+<li class="chapter" data-level="3.3" data-path="struktur-data.html"><a href="struktur-data.html#array"><i class="fa fa-check"></i><b>3.3</b> Array</a></li>
+<li class="chapter" data-level="3.4" data-path="struktur-data.html"><a href="struktur-data.html#faktor"><i class="fa fa-check"></i><b>3.4</b> Faktor</a></li>
+<li class="chapter" data-level="3.5" data-path="struktur-data.html"><a href="struktur-data.html#data-frame"><i class="fa fa-check"></i><b>3.5</b> Data Frame</a></li>
+<li class="chapter" data-level="3.6" data-path="struktur-data.html"><a href="struktur-data.html#lists"><i class="fa fa-check"></i><b>3.6</b> Lists</a></li>
+<li class="chapter" data-level="3.7" data-path="struktur-data.html"><a href="struktur-data.html#rekayasa-data-frame"><i class="fa fa-check"></i><b>3.7</b> Rekayasa Data Frame</a>
+<ul>
+<li class="chapter" data-level="3.7.1" data-path="struktur-data.html"><a href="struktur-data.html#tanpa-packages"><i class="fa fa-check"></i><b>3.7.1</b> Tanpa Packages</a></li>
+<li class="chapter" data-level="3.7.2" data-path="struktur-data.html"><a href="struktur-data.html#mengunakan-packages"><i class="fa fa-check"></i><b>3.7.2</b> Mengunakan Packages</a></li>
+</ul></li>
+<li class="chapter" data-level="3.8" data-path="struktur-data.html"><a href="struktur-data.html#latihan-1"><i class="fa fa-check"></i><b>3.8</b> Latihan</a></li>
+</ul></li>
+<li class="chapter" data-level="4" data-path="ekstraksi-data.html"><a href="ekstraksi-data.html"><i class="fa fa-check"></i><b>4</b> Ekstraksi Data</a>
+<ul>
+<li class="chapter" data-level="4.1" data-path="ekstraksi-data.html"><a href="ekstraksi-data.html#impor-dataset"><i class="fa fa-check"></i><b>4.1</b> Impor Dataset</a></li>
+<li class="chapter" data-level="4.2" data-path="ekstraksi-data.html"><a href="ekstraksi-data.html#ekstraksi-baris"><i class="fa fa-check"></i><b>4.2</b> Ekstraksi Baris</a></li>
+<li class="chapter" data-level="4.3" data-path="ekstraksi-data.html"><a href="ekstraksi-data.html#ekstraksi-subset"><i class="fa fa-check"></i><b>4.3</b> Ekstraksi Subset</a></li>
+<li class="chapter" data-level="4.4" data-path="ekstraksi-data.html"><a href="ekstraksi-data.html#ekstraksi-dengan-variabel-baru"><i class="fa fa-check"></i><b>4.4</b> Ekstraksi Dengan Variabel Baru</a></li>
+<li class="chapter" data-level="4.5" data-path="ekstraksi-data.html"><a href="ekstraksi-data.html#ekstraksi-summary-statistik"><i class="fa fa-check"></i><b>4.5</b> Ekstraksi Summary Statistik</a></li>
+<li class="chapter" data-level="4.6" data-path="ekstraksi-data.html"><a href="ekstraksi-data.html#mengubah-nama"><i class="fa fa-check"></i><b>4.6</b> Mengubah Nama</a></li>
+<li class="chapter" data-level="4.7" data-path="ekstraksi-data.html"><a href="ekstraksi-data.html#latihan-2"><i class="fa fa-check"></i><b>4.7</b> Latihan</a></li>
+</ul></li>
+<li class="chapter" data-level="5" data-path="fungsi-dalam-r.html"><a href="fungsi-dalam-r.html"><i class="fa fa-check"></i><b>5</b> Fungsi dalam R</a>
+<ul>
+<li class="chapter" data-level="5.1" data-path="fungsi-dalam-r.html"><a href="fungsi-dalam-r.html#fungsi-satu-argumen"><i class="fa fa-check"></i><b>5.1</b> Fungsi Satu Argumen</a>
+<ul>
+<li class="chapter" data-level="5.1.1" data-path="fungsi-dalam-r.html"><a href="fungsi-dalam-r.html#fungsi-kuadrat"><i class="fa fa-check"></i><b>5.1.1</b> Fungsi Kuadrat</a></li>
+<li class="chapter" data-level="5.1.2" data-path="fungsi-dalam-r.html"><a href="fungsi-dalam-r.html#fungsi-akar"><i class="fa fa-check"></i><b>5.1.2</b> Fungsi Akar</a></li>
+<li class="chapter" data-level="5.1.3" data-path="fungsi-dalam-r.html"><a href="fungsi-dalam-r.html#nilai-rerata"><i class="fa fa-check"></i><b>5.1.3</b> Nilai Rerata</a></li>
+<li class="chapter" data-level="5.1.4" data-path="fungsi-dalam-r.html"><a href="fungsi-dalam-r.html#konversi-persen"><i class="fa fa-check"></i><b>5.1.4</b> Konversi Persen</a></li>
+</ul></li>
+<li class="chapter" data-level="5.2" data-path="fungsi-dalam-r.html"><a href="fungsi-dalam-r.html#simpan-fungsi"><i class="fa fa-check"></i><b>5.2</b> Simpan Fungsi</a></li>
+<li class="chapter" data-level="5.3" data-path="fungsi-dalam-r.html"><a href="fungsi-dalam-r.html#fungsi-multi-argumen"><i class="fa fa-check"></i><b>5.3</b> Fungsi Multi Argumen</a>
+<ul>
+<li class="chapter" data-level="5.3.1" data-path="fungsi-dalam-r.html"><a href="fungsi-dalam-r.html#luas-keliling"><i class="fa fa-check"></i><b>5.3.1</b> Luas &amp; Keliling</a></li>
+<li class="chapter" data-level="5.3.2" data-path="fungsi-dalam-r.html"><a href="fungsi-dalam-r.html#luas-keliling-dan-volume"><i class="fa fa-check"></i><b>5.3.2</b> Luas, Keliling dan Volume</a></li>
+<li class="chapter" data-level="5.3.3" data-path="fungsi-dalam-r.html"><a href="fungsi-dalam-r.html#rerata-frekuensi"><i class="fa fa-check"></i><b>5.3.3</b> Rerata Frekuensi</a></li>
+</ul></li>
+<li class="chapter" data-level="5.4" data-path="fungsi-dalam-r.html"><a href="fungsi-dalam-r.html#fungsi-untuk-data-frame"><i class="fa fa-check"></i><b>5.4</b> Fungsi untuk Data Frame</a>
+<ul>
+<li class="chapter" data-level="5.4.1" data-path="fungsi-dalam-r.html"><a href="fungsi-dalam-r.html#normalisasi"><i class="fa fa-check"></i><b>5.4.1</b> Normalisasi</a></li>
+</ul></li>
+<li class="chapter" data-level="5.5" data-path="fungsi-dalam-r.html"><a href="fungsi-dalam-r.html#latihan-3"><i class="fa fa-check"></i><b>5.5</b> Latihan</a></li>
+</ul></li>
+<li class="chapter" data-level="6" data-path="struktur-kontrol.html"><a href="struktur-kontrol.html"><i class="fa fa-check"></i><b>6</b> Struktur Kontrol</a>
+<ul>
+<li class="chapter" data-level="6.1" data-path="struktur-kontrol.html"><a href="struktur-kontrol.html#pengambilan-keputusan"><i class="fa fa-check"></i><b>6.1</b> Pengambilan Keputusan</a>
+<ul>
+<li class="chapter" data-level="6.1.1" data-path="struktur-kontrol.html"><a href="struktur-kontrol.html#sintaks-if-else-if-dan-else"><i class="fa fa-check"></i><b>6.1.1</b> Sintaks <code>if, else-if</code>, dan <code>else</code></a></li>
+<li class="chapter" data-level="6.1.2" data-path="struktur-kontrol.html"><a href="struktur-kontrol.html#program-penilaian"><i class="fa fa-check"></i><b>6.1.2</b> Program Penilaian</a></li>
+<li class="chapter" data-level="6.1.3" data-path="struktur-kontrol.html"><a href="struktur-kontrol.html#program-hitung-faktorial"><i class="fa fa-check"></i><b>6.1.3</b> Program Hitung Faktorial</a></li>
+</ul></li>
+<li class="chapter" data-level="6.2" data-path="struktur-kontrol.html"><a href="struktur-kontrol.html#pengulangan-rekursif"><i class="fa fa-check"></i><b>6.2</b> Pengulangan Rekursif</a>
+<ul>
+<li class="chapter" data-level="6.2.1" data-path="struktur-kontrol.html"><a href="struktur-kontrol.html#sintaks-for"><i class="fa fa-check"></i><b>6.2.1</b> Sintaks <code>for</code></a></li>
+<li class="chapter" data-level="6.2.2" data-path="struktur-kontrol.html"><a href="struktur-kontrol.html#sintaks-while"><i class="fa fa-check"></i><b>6.2.2</b> Sintaks <code>while</code></a></li>
+</ul></li>
+<li class="chapter" data-level="6.3" data-path="struktur-kontrol.html"><a href="struktur-kontrol.html#interupsi-pengulangan"><i class="fa fa-check"></i><b>6.3</b> Interupsi Pengulangan</a></li>
+<li class="chapter" data-level="6.4" data-path="struktur-kontrol.html"><a href="struktur-kontrol.html#pengulangan-berkala"><i class="fa fa-check"></i><b>6.4</b> Pengulangan Berkala</a></li>
+<li class="chapter" data-level="6.5" data-path="struktur-kontrol.html"><a href="struktur-kontrol.html#skip-iterasi-pengulangan"><i class="fa fa-check"></i><b>6.5</b> Skip Iterasi Pengulangan</a></li>
+<li class="chapter" data-level="6.6" data-path="struktur-kontrol.html"><a href="struktur-kontrol.html#latihan-4"><i class="fa fa-check"></i><b>6.6</b> Latihan</a></li>
+</ul></li>
+<li class="chapter" data-level="7" data-path="interface-data.html"><a href="interface-data.html"><i class="fa fa-check"></i><b>7</b> Interface Data</a>
+<ul>
+<li class="chapter" data-level="7.1" data-path="interface-data.html"><a href="interface-data.html#imporekspor-csv"><i class="fa fa-check"></i><b>7.1</b> Impor/Ekspor CSV</a>
+<ul>
+<li class="chapter" data-level="7.1.1" data-path="interface-data.html"><a href="interface-data.html#cara-1"><i class="fa fa-check"></i><b>7.1.1</b> Cara 1</a></li>
+<li class="chapter" data-level="7.1.2" data-path="interface-data.html"><a href="interface-data.html#cara-2"><i class="fa fa-check"></i><b>7.1.2</b> Cara 2</a></li>
+<li class="chapter" data-level="7.1.3" data-path="interface-data.html"><a href="interface-data.html#cara-3"><i class="fa fa-check"></i><b>7.1.3</b> Cara 3</a></li>
+</ul></li>
+<li class="chapter" data-level="7.2" data-path="interface-data.html"><a href="interface-data.html#imporekspor-excel"><i class="fa fa-check"></i><b>7.2</b> Impor/Ekspor Excel</a></li>
+<li class="chapter" data-level="7.3" data-path="interface-data.html"><a href="interface-data.html#imporekspor-txt-and-rds"><i class="fa fa-check"></i><b>7.3</b> Impor/Ekspor TXT and RDS</a></li>
+<li class="chapter" data-level="7.4" data-path="interface-data.html"><a href="interface-data.html#imporekspor-xml"><i class="fa fa-check"></i><b>7.4</b> Impor/Ekspor XML</a></li>
+<li class="chapter" data-level="7.5" data-path="interface-data.html"><a href="interface-data.html#imporekspor-json"><i class="fa fa-check"></i><b>7.5</b> Impor/Ekspor JSON</a></li>
+<li class="chapter" data-level="7.6" data-path="interface-data.html"><a href="interface-data.html#impor-data-dari-web"><i class="fa fa-check"></i><b>7.6</b> Impor Data dari Web</a>
+<ul>
+<li class="chapter" data-level="7.6.1" data-path="interface-data.html"><a href="interface-data.html#csv"><i class="fa fa-check"></i><b>7.6.1</b> CSV:</a></li>
+<li class="chapter" data-level="7.6.2" data-path="interface-data.html"><a href="interface-data.html#xlsx"><i class="fa fa-check"></i><b>7.6.2</b> XLSX:</a></li>
+</ul></li>
+<li class="chapter" data-level="7.7" data-path="interface-data.html"><a href="interface-data.html#basis-data-r"><i class="fa fa-check"></i><b>7.7</b> Basis Data R</a></li>
+<li class="chapter" data-level="7.8" data-path="interface-data.html"><a href="interface-data.html#menambang-data-web"><i class="fa fa-check"></i><b>7.8</b> Menambang Data Web</a></li>
+<li class="chapter" data-level="7.9" data-path="interface-data.html"><a href="interface-data.html#latihan-5"><i class="fa fa-check"></i><b>7.9</b> Latihan</a></li>
+</ul></li>
+<li class="chapter" data-level="8" data-path="manipulasi-data.html"><a href="manipulasi-data.html"><i class="fa fa-check"></i><b>8</b> Manipulasi Data</a>
+<ul>
+<li class="chapter" data-level="8.1" data-path="manipulasi-data.html"><a href="manipulasi-data.html#impor-data"><i class="fa fa-check"></i><b>8.1</b> Impor Data</a></li>
+<li class="chapter" data-level="8.2" data-path="manipulasi-data.html"><a href="manipulasi-data.html#struktur-data-1"><i class="fa fa-check"></i><b>8.2</b> Struktur Data</a></li>
+<li class="chapter" data-level="8.3" data-path="manipulasi-data.html"><a href="manipulasi-data.html#missing-value"><i class="fa fa-check"></i><b>8.3</b> Missing Value</a></li>
+<li class="chapter" data-level="8.4" data-path="manipulasi-data.html"><a href="manipulasi-data.html#mengganti-nilai-yang-hilang"><i class="fa fa-check"></i><b>8.4</b> Mengganti Nilai yang Hilang</a></li>
+<li class="chapter" data-level="8.5" data-path="manipulasi-data.html"><a href="manipulasi-data.html#memilih-data"><i class="fa fa-check"></i><b>8.5</b> Memilih Data</a></li>
+<li class="chapter" data-level="8.6" data-path="manipulasi-data.html"><a href="manipulasi-data.html#menyaring-dan-mengurutkan-data"><i class="fa fa-check"></i><b>8.6</b> Menyaring dan Mengurutkan Data</a></li>
+<li class="chapter" data-level="8.7" data-path="manipulasi-data.html"><a href="manipulasi-data.html#mengganti-nama-dan-mengubah-mutate"><i class="fa fa-check"></i><b>8.7</b> Mengganti Nama dan Mengubah (Mutate)</a></li>
+<li class="chapter" data-level="8.8" data-path="manipulasi-data.html"><a href="manipulasi-data.html#menggabungkan-data"><i class="fa fa-check"></i><b>8.8</b> Menggabungkan Data</a></li>
+<li class="chapter" data-level="8.9" data-path="manipulasi-data.html"><a href="manipulasi-data.html#kelompok-dan-ringkasan"><i class="fa fa-check"></i><b>8.9</b> Kelompok dan Ringkasan</a></li>
+<li class="chapter" data-level="8.10" data-path="manipulasi-data.html"><a href="manipulasi-data.html#membagi-data"><i class="fa fa-check"></i><b>8.10</b> Membagi Data</a>
+<ul>
+<li class="chapter" data-level="8.10.1" data-path="manipulasi-data.html"><a href="manipulasi-data.html#dplyr"><i class="fa fa-check"></i><b>8.10.1</b> dplyr</a></li>
+<li class="chapter" data-level="8.10.2" data-path="manipulasi-data.html"><a href="manipulasi-data.html#catools"><i class="fa fa-check"></i><b>8.10.2</b> caTools</a></li>
+<li class="chapter" data-level="8.10.3" data-path="manipulasi-data.html"><a href="manipulasi-data.html#caret"><i class="fa fa-check"></i><b>8.10.3</b> caret</a></li>
+</ul></li>
+</ul></li>
+<li class="chapter" data-level="9" data-path="referensi.html"><a href="referensi.html"><i class="fa fa-check"></i><b>9</b> Referensi</a></li>
+<li class="divider"></li>
+<li><a href="https://github.com/rstudio/bookdown" target="blank">Published with bookdown</a></li>
+
+</ul>
+
+      </nav>
+    </div>
+
+    <div class="book-body">
+      <div class="body-inner">
+        <div class="book-header" role="navigation">
+          <h1>
+            <i class="fa fa-circle-o-notch fa-spin"></i><a href="./">Algoritma dan Pemrograman R</a>
+          </h1>
+        </div>
+
+        <div class="page-wrapper" tabindex="-1" role="main">
+          <div class="page-inner">
+
+            <section class="normal" id="section-">
+<div id="manipulasi-data" class="section level1 hasAnchor" number="8">
+<h1><span class="header-section-number">Bab 8</span> Manipulasi Data<a href="manipulasi-data.html#manipulasi-data" class="anchor-section" aria-label="Anchor link to header"></a></h1>
+<p>Salah satu keterampilan paling mendasar yang harus dimiliki seorang Data Scientist adalah memanipulasi data. Untuk menjadi seseorang yang sangat efektif, Anda harus ahli dalam memanipulasi data penting. Hal ini perlu diperhatikan karena sebagian besar pekerjaan Anda akan melibatkan <a href="https://www.forbes.com/sites/gilpress/2016/03/23/data-preparation-most-time-consuming-least-enjoyable-data-science-task-survey-says/#4b432fa66f63">pengambilan dan pembersihan data</a>.</p>
+<p><img src="images/Bab8/dataillustration.gif"></p>
+<p>Data Scientist menghabiskan 60% waktunya untuk membersihkan dan mengatur data. Di urutan kedua, 19% waktunya untuk mengumpulkan dataset, yang berarti Data Scientist menghabiskan sekitar 80% waktunya untuk menyiapkan dan mengelola data untuk analisis.</p>
+<p>Pada bagian ini, Anda akan mempelajari bagaimana memanipulasi data dengan mudah menggunakan R. Kita akan membahas fungsi-fungsi manipulasi data mendasar yang sebagian besar akan Anda gunakan untuk memanipulasi data Anda.</p>
+<ul>
+<li><code>read_csv()</code> Mengimpor data (Anda bisa menggunakan fungsi lainnya)</li>
+<li><code>str()</code> Struktur Data</li>
+<li><code>apply()</code> Untuk mengecek dan mengganti data yang hilang.</li>
+<li><code>select()</code> Memilih kolom yang akan disertakan.</li>
+<li><code>filter()</code> Memilih subset yang ada di dalam data.</li>
+<li><code>arrange()</code> Mengurutkan data, berdasarkan ukuran dari variabel kontinu, berdasarkan tanggal, atau menurut abjad.</li>
+<li><code>rename()</code> Mengganti nama kolom.</li>
+<li><code>mutate()</code> Membuat kolom baru di dalam data, atau mengganti kolom yang sudah ada.</li>
+<li><code>bind_rows()</code> Menggabungkan dua data frame menjadi satu, menggabungkan data dari kolom-kolom dengan nama yang sama.</li>
+<li><code>group_by()</code> Mengelompokkan data berdasarkan variabel kategorikal.</li>
+<li><code>summarize()</code> Meringkas, atau mengagregat (untuk setiap kelompok jika mengikuti <code>group_by</code>). Sering digunakan bersama fungsi sebagai berikut:
+<ul>
+<li><code>mean()</code> Menghitung rata-rata.</li>
+<li><code>median()</code> Menghitung median.</li>
+<li><code>max()</code> Mencari nilai maksimum.</li>
+<li><code>min()</code> Mencari nilai minimum.</li>
+<li><code>sum()</code> Menambahkan semua nilai secara bersamaan.</li>
+<li><code>n()</code> Menghitung jumlah record.</li>
+</ul></li>
+</ul>
+<p>Saya menyarankan Anda untuk menginstal package <a href="https://www.tidyverse.org/packages/"><code>tidyverse</code></a>. Karena inti dari <code>tidyverse</code> mencakup packages yang cendrung Anda gunakan dalam analisis data sehari-hari.</p>
+<div class="sourceCode" id="cb156"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb156-1"><a href="manipulasi-data.html#cb156-1" tabindex="-1"></a><span class="fu">install.packages</span>(<span class="st">&quot;tidyverse&quot;</span>)</span></code></pre></div>
+<p>Kita sebagian besar akan bekerja dengan dua package yang sangat berguna yang dikembangkan oleh <a href="http://hadley.nz/">Hardley Wickham</a>, kepala scientist di RStudio:</p>
+<ul>
+<li><a href="https://readr.tidyverse.org/"><code>readr</code></a> Untuk membaca dan menulis CSV dan file teks lainnya.</li>
+<li><a href="https://dplyr.tidyverse.org/"><code>dplyr</code></a> Untuk memproses dan memanipulasi data.</li>
+</ul>
+<div id="impor-data" class="section level2 hasAnchor" number="8.1">
+<h2><span class="header-section-number">8.1</span> Impor Data<a href="manipulasi-data.html#impor-data" class="anchor-section" aria-label="Anchor link to header"></a></h2>
+<p><a href="https://raw.githubusercontent.com/dsciencelabs/Algoritma_Pemrograman_R/main/Data/pfizer.csv">Data</a> yang akan kita gunakan pada bagian ini adalah <code>pfizer.csv</code> dan <code>fda.csv</code>, silakan unduh dan tempatkan di desktop Anda. Sebagai opsional, Anda dapat memuat data ke sesi R saat ini dengan memilih <code>Import Dataset&gt;From Teks File...</code> di tab Environment. Tapi, dalam hal ini kita akan menggunakan fungsi <code>read_csv()</code> dari package <code>readr</code>. Salinlah kode berikut ke skrip Anda dan jalankan:</p>
+<div class="sourceCode" id="cb157"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb157-1"><a href="manipulasi-data.html#cb157-1" tabindex="-1"></a><span class="fu">suppressPackageStartupMessages</span>(<span class="fu">library</span>(tidyverse))<span class="co"># memuat tidyverse</span></span>
+<span id="cb157-2"><a href="manipulasi-data.html#cb157-2" tabindex="-1"></a><span class="co">#setwd(&quot;C:/Users/Bakti/Desktop/&quot;)                 # ingatlah untuk mengatur working directory Anda</span></span>
+<span id="cb157-3"><a href="manipulasi-data.html#cb157-3" tabindex="-1"></a>pfizer <span class="ot">&lt;-</span> <span class="fu">read_csv</span>(<span class="st">&quot;Data/pfizer.csv&quot;</span>)             <span class="co"># memuat data `pfizer` </span></span></code></pre></div>
+<div class="sourceCode" id="cb158"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb158-1"><a href="manipulasi-data.html#cb158-1" tabindex="-1"></a>fda <span class="ot">&lt;-</span> <span class="fu">read_csv</span>(<span class="st">&quot;Data/fda.csv&quot;</span>)</span></code></pre></div>
+</div>
+<div id="struktur-data-1" class="section level2 hasAnchor" number="8.2">
+<h2><span class="header-section-number">8.2</span> Struktur Data<a href="manipulasi-data.html#struktur-data-1" class="anchor-section" aria-label="Anchor link to header"></a></h2>
+<p>Perhatikan bahwa Anda akan membutuhkan pemahaman yang kuat mengenai tipe-tipe data mendasar dan struktur data dan bagaimana cara mengoprasikannya. Fungsi <code>str()</code> akan memberi tahu lebih banyak mengenai kolom dalam data Anda, termasuk tipe datanya. Salinlah kode berikut ke skrip Anda dan jalankan:</p>
+<div class="sourceCode" id="cb159"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb159-1"><a href="manipulasi-data.html#cb159-1" tabindex="-1"></a><span class="fu">str</span>(pfizer)                                       <span class="co"># melihat struktur dari data `pfizer`</span></span>
+<span id="cb159-2"><a href="manipulasi-data.html#cb159-2" tabindex="-1"></a><span class="fu">str</span>(fda)                                          <span class="co"># melihat struktur dari data `fda`</span></span></code></pre></div>
+<p>Sangat penting untuk dipahami karena ini adalah objek yang akan Anda manipulasi di R setiap saat. Jika Anda perlu mengubah tipe data untuk kolom apa pun, gunakan fungsi-fungsi di bawah ini:</p>
+<ul>
+<li><code>as.character()</code> mengubah ke teks string.</li>
+<li><code>as.numeric()</code> mengubah ke angka.</li>
+<li><code>as.factor()</code> mengubah ke variabel kategorikal.</li>
+<li><code>as.integer()</code> mengubah ke bilangan bulat.</li>
+<li><code>as.Date()</code> mengubah ke tanggal.</li>
+<li><code>as.POSIXct()</code> mengubah ke tanggal dan waktu penuh.</li>
+</ul>
+<p>Misalnya, tambahkan kode berikut ke skrip Anda untuk mengubah total konversi dalam data <code>pfizer</code> ke variabel numerik (yang memungkinkannya menyimpan nilai desimal, jika ada).</p>
+<div class="sourceCode" id="cb160"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb160-1"><a href="manipulasi-data.html#cb160-1" tabindex="-1"></a>pfizer<span class="sc">$</span>total <span class="ot">&lt;-</span> <span class="fu">as.numeric</span>(pfizer<span class="sc">$</span>total)          <span class="co"># konversi total ke variabel numerik</span></span>
+<span id="cb160-2"><a href="manipulasi-data.html#cb160-2" tabindex="-1"></a><span class="fu">str</span>(pfizer<span class="sc">$</span>total)                                 <span class="co"># mari periksa struktur datanya lagi</span></span></code></pre></div>
+</div>
+<div id="missing-value" class="section level2 hasAnchor" number="8.3">
+<h2><span class="header-section-number">8.3</span> Missing Value<a href="manipulasi-data.html#missing-value" class="anchor-section" aria-label="Anchor link to header"></a></h2>
+<p>Tidak seperti pemrograman biasa, ketika bekerja dengan data sesungguhnya, Anda mungkin menemukan <strong>nilai yang hilang:</strong> pengukuran yang tidak terekam/tersimpan/dll. R memiliki mekanisme yang cukup canggih untuk menangani nilai-nilai yang hilang. Ini membedakan antara jenis berikut:</p>
+<ul>
+<li><code>NA</code> : Not Available (Nilai NA juga memiliki kelas, ada bilangan bulat NA, karakter NA, dll).</li>
+<li><code>NaN</code> : Not a Number (Nilai NaN juga merupakan NA tetapi NA bukan merupakan NaN)</li>
+</ul>
+<p>Temukan nilai yang hilang di kolom dataframe <code>pfizer</code></p>
+<div class="sourceCode" id="cb161"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb161-1"><a href="manipulasi-data.html#cb161-1" tabindex="-1"></a><span class="fu">is.na</span>(pfizer)                                     <span class="co"># cara untuk mengecek NA</span></span>
+<span id="cb161-2"><a href="manipulasi-data.html#cb161-2" tabindex="-1"></a><span class="fu">sum</span>(<span class="fu">is.na</span>(pfizer))                                <span class="co"># menghitung jumlah NA</span></span>
+<span id="cb161-3"><a href="manipulasi-data.html#cb161-3" tabindex="-1"></a><span class="fu">apply</span>(<span class="fu">is.na</span>(pfizer),<span class="dv">2</span>, which)                     <span class="co"># indeks NA (hanya df)</span></span>
+<span id="cb161-4"><a href="manipulasi-data.html#cb161-4" tabindex="-1"></a><span class="fu">which</span>(<span class="fu">complete.cases</span>(pfizer))                     <span class="co"># mengidentifikasi nilai lengkap yang diamati</span></span></code></pre></div>
+<p>Mekanisme yang lebih umum adalah menghapusnya secara manual:</p>
+<div class="sourceCode" id="cb162"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb162-1"><a href="manipulasi-data.html#cb162-1" tabindex="-1"></a>clean.vector<span class="ot">&lt;-</span> <span class="fu">na.omit</span>(pfizer<span class="sc">$</span>first_name)         <span class="co"># bersihkan/hapus NA di vektor</span></span>
+<span id="cb162-2"><a href="manipulasi-data.html#cb162-2" tabindex="-1"></a>clean.df <span class="ot">&lt;-</span> <span class="fu">na.omit</span>(pfizer)                       <span class="co"># berishkan/hapus NA di dataframe</span></span>
+<span id="cb162-3"><a href="manipulasi-data.html#cb162-3" tabindex="-1"></a><span class="fu">apply</span>(<span class="fu">is.na</span>(clean.df),<span class="dv">2</span>, which)                   <span class="co"># pastikan jika ada nilai yang hilang</span></span></code></pre></div>
+</div>
+<div id="mengganti-nilai-yang-hilang" class="section level2 hasAnchor" number="8.4">
+<h2><span class="header-section-number">8.4</span> Mengganti Nilai yang Hilang<a href="manipulasi-data.html#mengganti-nilai-yang-hilang" class="anchor-section" aria-label="Anchor link to header"></a></h2>
+<p>Kita juga dapat mengganti nilai yang hilang dengan rata-rata (median). Praktik yang baik adalah dengan membuat dua variabel terpisah untuk mean. Setelah dibuat, kita dapat mengganti nilai yang hilang dengan variabel yang baru dibentuk. Mari unggah dan memeriksa data yang hilang.</p>
+<div class="sourceCode" id="cb163"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb163-1"><a href="manipulasi-data.html#cb163-1" tabindex="-1"></a>PATH <span class="ot">&lt;-</span> <span class="st">&quot;https://raw.githubusercontent.com/dsciencelabs/Algoritma_Pemrograman_R/main/Data/Missing_Values.csv&quot;</span></span>
+<span id="cb163-2"><a href="manipulasi-data.html#cb163-2" tabindex="-1"></a>titanic <span class="ot">&lt;-</span> <span class="fu">read.csv</span>(PATH, <span class="at">sep =</span> <span class="st">&quot;,&quot;</span>)</span>
+<span id="cb163-3"><a href="manipulasi-data.html#cb163-3" tabindex="-1"></a>list_na <span class="ot">&lt;-</span> <span class="fu">colnames</span>(titanic)[ <span class="fu">apply</span>(titanic, <span class="dv">2</span>, anyNA) ]</span>
+<span id="cb163-4"><a href="manipulasi-data.html#cb163-4" tabindex="-1"></a>list_na</span></code></pre></div>
+<p>Dalam hal ini, kita tidak menghapus semua nilai yang hilang, tetapi kita menggunakan metode <code>apply()</code> untuk menghitung rata-rata kolom dengan <code>NA</code>. Pertama, kita perlu menghitung rata-rata dengan argumen <code>na.rm = TRUE</code>. Argumen ini wajib karena kolom memiliki data yang hilang dan ini memberi tahu R untuk mengabaikannya.</p>
+<div class="sourceCode" id="cb164"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb164-1"><a href="manipulasi-data.html#cb164-1" tabindex="-1"></a>average_missing <span class="ot">&lt;-</span> <span class="fu">apply</span>(titanic[,<span class="fu">colnames</span>(titanic) <span class="sc">%in%</span> list_na],</span>
+<span id="cb164-2"><a href="manipulasi-data.html#cb164-2" tabindex="-1"></a>                         <span class="dv">2</span>,</span>
+<span id="cb164-3"><a href="manipulasi-data.html#cb164-3" tabindex="-1"></a>                         mean,</span>
+<span id="cb164-4"><a href="manipulasi-data.html#cb164-4" tabindex="-1"></a>                         <span class="at">na.rm =</span>  <span class="cn">TRUE</span>)</span>
+<span id="cb164-5"><a href="manipulasi-data.html#cb164-5" tabindex="-1"></a>average_missing</span></code></pre></div>
+<p><strong>Penjelasan Kode:</strong> Terdapat 4 argumen di metode apply yang kita jalankan.</p>
+<ul>
+<li><code>df</code> titanic[,colnames(titanic) %in% list_na]. Kode ini akan mengembalikan nama kolom dari objek list_na (mis. “age” dan “fare”).</li>
+<li><code>2</code> Menghitung fungsi pada kolom.</li>
+<li><code>mean</code> Menghitung rata-rata.</li>
+<li><code>na.rm = TRUE</code> Menolak nilai yang hilang.</li>
+</ul>
+<p>Selanjutnya, kita dapat mengganti nilai-nilai <code>NA</code>. Fungsi mutate dari library <code>dplyr</code> berguna untuk membuat variabel baru. Kita tidak perlu mengubah kolom asli, jadi kita dapat membuat sebuah variabel baru tanpa <code>NA</code>. Fungsi mutate mudah digunakan, kita hanya perlu memilih nama variabel dan menentukan bagaimana cara membuat variabel tersebut. Berikut ini kode lengkapnya:</p>
+<div class="sourceCode" id="cb165"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb165-1"><a href="manipulasi-data.html#cb165-1" tabindex="-1"></a><span class="fu">library</span>(dplyr)</span>
+<span id="cb165-2"><a href="manipulasi-data.html#cb165-2" tabindex="-1"></a>titanic_replace <span class="ot">&lt;-</span> titanic <span class="sc">%&gt;%</span></span>
+<span id="cb165-3"><a href="manipulasi-data.html#cb165-3" tabindex="-1"></a><span class="fu">mutate</span>(<span class="at">age  =</span> <span class="fu">ifelse</span>(<span class="fu">is.na</span>(Age), average_missing[<span class="dv">1</span>], Age),</span>
+<span id="cb165-4"><a href="manipulasi-data.html#cb165-4" tabindex="-1"></a><span class="at">fare =</span> <span class="fu">ifelse</span>(<span class="fu">is.na</span>(Fare), average_missing[<span class="dv">2</span>], Fare))</span>
+<span id="cb165-5"><a href="manipulasi-data.html#cb165-5" tabindex="-1"></a><span class="fu">sum</span>(<span class="fu">is.na</span>(titanic_replace<span class="sc">$</span>Age))</span>
+<span id="cb165-6"><a href="manipulasi-data.html#cb165-6" tabindex="-1"></a><span class="fu">sum</span>(<span class="fu">is.na</span>(titanic_replace<span class="sc">$</span>Fare))</span></code></pre></div>
+<p>Kolom usia asli memiliki 86 nilai yang hilang sementara variabel yang baru dibuat telah mengganti nilai yang hilang dengan rata-rata usia variabel. Anda dapat mencoba sendiri mengganti penelitian yang hilang dengan nilai median juga.</p>
+</div>
+<div id="memilih-data" class="section level2 hasAnchor" number="8.5">
+<h2><span class="header-section-number">8.5</span> Memilih Data<a href="manipulasi-data.html#memilih-data" class="anchor-section" aria-label="Anchor link to header"></a></h2>
+<p>Pada bagian ini, Anda akan mempelajari bagaimana cara memilih atau mengelompokkan kolom dataframe berdasarkan nama dan posisi menggunakan fungsi R yaitu <code>select()</code> dalam package <a href="https://dplyr.tidyverse.org/reference/summarise.html"><code>dplyr</code></a>. Anda akan belajar cara menggunakan fungsi berikut ini:</p>
+<ul>
+<li><code>pull()</code> mengekstrak nilai kolom sebagai sebuah vektor. Kolom bunga dapat ditentukan berdasarkan nama atau indeks.</li>
+<li><code>select()</code> mengekstrak satu atau beberapa kolom sebagai tabel data. Fungsi ini juga dapat menghapus kolom dari data frame.</li>
+<li><code>select_if()</code> Memilih kolom berdasarkan kondisi tertentu. Seseorang dapat menggunakan fungsi ini, misalnya untuk memilih kolom jika numerik.</li>
+<li><strong>Fungsi Pembantu:</strong> <code>starts_with()</code>, <code>ends_with()</code>, <code>contains()</code>, <code>matches()</code>: Pilihlah kolom/variabel berdasarkan namanya.</li>
+</ul>
+<div class="sourceCode" id="cb166"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb166-1"><a href="manipulasi-data.html#cb166-1" tabindex="-1"></a><span class="fu">library</span>(tidyverse)                                <span class="co"># muat `tidyverse`, yang termasuk dalam `dplyr`</span></span>
+<span id="cb166-2"><a href="manipulasi-data.html#cb166-2" tabindex="-1"></a>pfizer <span class="sc">%&gt;%</span> <span class="fu">pull</span>(state) <span class="sc">%&gt;%</span> <span class="fu">head</span>()                 <span class="co"># ekstrak nilai kolom `state` sebagai vektor</span></span>
+<span id="cb166-3"><a href="manipulasi-data.html#cb166-3" tabindex="-1"></a>pfizer <span class="sc">%&gt;%</span> <span class="fu">select</span>(<span class="dv">1</span><span class="sc">:</span><span class="dv">3</span>)                            <span class="co"># memilih kolom 1 sampai 3</span></span>
+<span id="cb166-4"><a href="manipulasi-data.html#cb166-4" tabindex="-1"></a>pfizer <span class="sc">%&gt;%</span> <span class="fu">select</span>(<span class="dv">1</span>,<span class="dv">3</span>)                            <span class="co"># memilih kolom 1 dan 3, tidak termasuk 2</span></span>
+<span id="cb166-5"><a href="manipulasi-data.html#cb166-5" tabindex="-1"></a>pfizer <span class="sc">%&gt;%</span> <span class="fu">select</span>(state<span class="sc">:</span>total)                    <span class="co"># memilih semua kolom dari `state` sampai `total`</span></span>
+<span id="cb166-6"><a href="manipulasi-data.html#cb166-6" tabindex="-1"></a>pfizer <span class="sc">%&gt;%</span> <span class="fu">select</span>(state,total)                    <span class="co"># memilih kolom berdasarkan nama variabel</span></span>
+<span id="cb166-7"><a href="manipulasi-data.html#cb166-7" tabindex="-1"></a>pfizer <span class="sc">%&gt;%</span> <span class="fu">select_if</span>(is.numeric)                  <span class="co"># hanya memilih kolom numerik</span></span>
+<span id="cb166-8"><a href="manipulasi-data.html#cb166-8" tabindex="-1"></a>pfizer <span class="sc">%&gt;%</span> <span class="fu">select_if</span>(is.character)                <span class="co"># hanya memilih kolom karakter</span></span>
+<span id="cb166-9"><a href="manipulasi-data.html#cb166-9" tabindex="-1"></a>pfizer <span class="sc">%&gt;%</span> <span class="fu">select</span>(<span class="fu">starts_with</span>(<span class="st">&quot;first&quot;</span>))           <span class="co"># hanya memilih kolom yang dimulai dengan `first`</span></span>
+<span id="cb166-10"><a href="manipulasi-data.html#cb166-10" tabindex="-1"></a>pfizer <span class="sc">%&gt;%</span> <span class="fu">select</span>(<span class="fu">ends_with</span>(<span class="st">&quot;name&quot;</span>))              <span class="co"># hanya memilih kolom yang diakhiri dengan `name`</span></span>
+<span id="cb166-11"><a href="manipulasi-data.html#cb166-11" tabindex="-1"></a>pfizer <span class="sc">%&gt;%</span> <span class="fu">select</span>(<span class="fu">contains</span>(<span class="st">&quot;rst&quot;</span>))                <span class="co"># memilih kolom yang namanya mengandung `rst`</span></span>
+<span id="cb166-12"><a href="manipulasi-data.html#cb166-12" tabindex="-1"></a>pfizer <span class="sc">%&gt;%</span> <span class="fu">select</span>(<span class="fu">matches</span>(<span class="st">&quot;_&quot;</span>))                   <span class="co"># memilih kolom yang namanya cocok dengan reguler</span></span>
+<span id="cb166-13"><a href="manipulasi-data.html#cb166-13" tabindex="-1"></a>pfizer <span class="sc">%&gt;%</span> <span class="fu">select</span>(<span class="sc">-</span>(state<span class="sc">:</span>total))                 <span class="co"># menghapus semua kolom dari `state` sampai `total`</span></span>
+<span id="cb166-14"><a href="manipulasi-data.html#cb166-14" tabindex="-1"></a>pfizer <span class="sc">%&gt;%</span> <span class="fu">select</span>(<span class="sc">-</span>state, <span class="sc">-</span>total)                 <span class="co"># menghapus kolom `state` dan `total`</span></span></code></pre></div>
+</div>
+<div id="menyaring-dan-mengurutkan-data" class="section level2 hasAnchor" number="8.6">
+<h2><span class="header-section-number">8.6</span> Menyaring dan Mengurutkan Data<a href="manipulasi-data.html#menyaring-dan-mengurutkan-data" class="anchor-section" aria-label="Anchor link to header"></a></h2>
+<p>Sekarang kita akan <code>filter()</code> dan <code>arrange()</code> data dengan cara tertentu. Untuk setiap contoh berikut, salin kode berikut ke dalam skrip Anda, dan lihat hasilnya. Perhatikan bagaimana kita membuat objek baru untuk menampung data yang diproses.</p>
+<p><strong>Contoh 1:</strong> Temukan dokter di California yang dibayar $10.000 atau lebih oleh Pfizer untuk menjalankan “Professional Advising”!</p>
+<div class="sourceCode" id="cb167"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb167-1"><a href="manipulasi-data.html#cb167-1" tabindex="-1"></a>ca_expert_10000 <span class="ot">&lt;-</span> pfizer <span class="sc">%&gt;%</span>                     <span class="co"># memuat semua `pfizer`    </span></span>
+<span id="cb167-2"><a href="manipulasi-data.html#cb167-2" tabindex="-1"></a>  <span class="fu">filter</span>(state <span class="sc">==</span> <span class="st">&quot;CA&quot;</span> <span class="sc">&amp;</span>                          <span class="co"># memuat semua `pfizer` disaring berdasarkan `state`</span></span>
+<span id="cb167-3"><a href="manipulasi-data.html#cb167-3" tabindex="-1"></a>         total <span class="sc">&gt;=</span> <span class="dv">10000</span> <span class="sc">&amp;</span>                         <span class="co"># dan juga disaring berdasarkan `total` lebih besar sama dengan 10000</span></span>
+<span id="cb167-4"><a href="manipulasi-data.html#cb167-4" tabindex="-1"></a>         category <span class="sc">==</span> <span class="st">&quot;Professional Advising&quot;</span>)     <span class="co"># kemudian disaring berdasarkan `category`</span></span>
+<span id="cb167-5"><a href="manipulasi-data.html#cb167-5" tabindex="-1"></a>ca_expert_10000                                   <span class="co"># cetak hasilnya</span></span></code></pre></div>
+<p><strong>Contoh 2:</strong> Sekarang tambahkan daftar urutan secara menurun pembayaran yang diterima oleh dokter di bagian akhir kode!</p>
+<div class="sourceCode" id="cb168"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb168-1"><a href="manipulasi-data.html#cb168-1" tabindex="-1"></a>ca_expert_10000 <span class="ot">&lt;-</span> pfizer <span class="sc">%&gt;%</span>                     <span class="co"># memuat semua `pfizer`    </span></span>
+<span id="cb168-2"><a href="manipulasi-data.html#cb168-2" tabindex="-1"></a>  <span class="fu">filter</span>(state <span class="sc">==</span> <span class="st">&quot;CA&quot;</span> <span class="sc">&amp;</span>                          <span class="co"># disaring berdasarkan `state`di California</span></span>
+<span id="cb168-3"><a href="manipulasi-data.html#cb168-3" tabindex="-1"></a>         total <span class="sc">&gt;=</span> <span class="dv">10000</span> <span class="sc">&amp;</span>                         <span class="co"># dan juga disaring berdasarkan `total` lebih besar sama dengan 10000</span></span>
+<span id="cb168-4"><a href="manipulasi-data.html#cb168-4" tabindex="-1"></a>         category <span class="sc">==</span> <span class="st">&quot;Professional Advising&quot;</span>)<span class="sc">%&gt;%</span>  <span class="co"># kemudian disaring berdasarkan `category`</span></span>
+<span id="cb168-5"><a href="manipulasi-data.html#cb168-5" tabindex="-1"></a>  <span class="fu">arrange</span>(<span class="fu">desc</span>(total))                            <span class="co"># mengurutkan secara menurun pembayaran yang diterima</span></span>
+<span id="cb168-6"><a href="manipulasi-data.html#cb168-6" tabindex="-1"></a>ca_expert_10000                                   <span class="co"># cetak hasilnya</span></span>
+<span id="cb168-7"><a href="manipulasi-data.html#cb168-7" tabindex="-1"></a></span>
+<span id="cb168-8"><a href="manipulasi-data.html#cb168-8" tabindex="-1"></a><span class="co"># arrange((total))                                # mengurutkan secara menaik telah ditetapkan sebagai R default</span></span></code></pre></div>
+<p><strong>Contoh 3:</strong> Temukan dokter di California atau New York yang dibayar $10.000 atau lebih oelh Pfizer untuk menjalankan “Professional Advising”!</p>
+<p>Perhatikan bahwa, dalam kasus ini kita menggunakan <code>|</code> operator Boolean, dan tanda kurung di sekitar bagian kueri tersebut. Ini memastikan bahwa bagian kueri ini dijalankan terlebih dahulu. Lihat apa yang terjadi jika Anda mengecualikan mereka.</p>
+<div class="sourceCode" id="cb169"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb169-1"><a href="manipulasi-data.html#cb169-1" tabindex="-1"></a>ca_ny_expert_10000 <span class="ot">&lt;-</span> pfizer <span class="sc">%&gt;%</span>                  <span class="co"># memuat semua `pfizer`    </span></span>
+<span id="cb169-2"><a href="manipulasi-data.html#cb169-2" tabindex="-1"></a>  <span class="fu">filter</span>((state <span class="sc">==</span> <span class="st">&quot;CA&quot;</span> <span class="sc">|</span> state <span class="sc">==</span> <span class="st">&quot;NY&quot;</span>)  <span class="sc">&amp;</span>       <span class="co"># disaring berdasarkan `state` California atau New York</span></span>
+<span id="cb169-3"><a href="manipulasi-data.html#cb169-3" tabindex="-1"></a>         total <span class="sc">&gt;=</span> <span class="dv">10000</span> <span class="sc">&amp;</span>                         <span class="co"># dan juga disaring berdasarkan `total` lebih besar sama dengan 10000</span></span>
+<span id="cb169-4"><a href="manipulasi-data.html#cb169-4" tabindex="-1"></a>         category <span class="sc">==</span> <span class="st">&quot;Professional Advising&quot;</span>)<span class="sc">%&gt;%</span>  <span class="co"># kemudian disaring berdasarkan `category`</span></span>
+<span id="cb169-5"><a href="manipulasi-data.html#cb169-5" tabindex="-1"></a>  <span class="fu">arrange</span>(<span class="fu">desc</span>(total))                            <span class="co"># mengurutkan secara menurun pembayaran yang diterima</span></span>
+<span id="cb169-6"><a href="manipulasi-data.html#cb169-6" tabindex="-1"></a>ca_ny_expert_10000                                <span class="co"># cetak hasilnya</span></span></code></pre></div>
+<p><strong>Contoh 4:</strong> Temukan dokter di negara bagian selain California yang dibayar $10.000 atau lebih oleh Pfizer untuk menjalankan “Professional Advising”!</p>
+<div class="sourceCode" id="cb170"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb170-1"><a href="manipulasi-data.html#cb170-1" tabindex="-1"></a>not_ca_expert_10000 <span class="ot">&lt;-</span> pfizer <span class="sc">%&gt;%</span>                 <span class="co"># memuat semua `pfizer`    </span></span>
+<span id="cb170-2"><a href="manipulasi-data.html#cb170-2" tabindex="-1"></a>  <span class="fu">filter</span>(state <span class="sc">!=</span> <span class="st">&quot;CA&quot;</span> <span class="sc">&amp;</span>                          <span class="co"># disaring berdasarkan `state` selain California</span></span>
+<span id="cb170-3"><a href="manipulasi-data.html#cb170-3" tabindex="-1"></a>         total <span class="sc">&gt;=</span> <span class="dv">10000</span> <span class="sc">&amp;</span>                         <span class="co"># dan juga disaring berdasarkan `total` lebih besar sama dengan 10000</span></span>
+<span id="cb170-4"><a href="manipulasi-data.html#cb170-4" tabindex="-1"></a>         category <span class="sc">==</span> <span class="st">&quot;Professional Advising&quot;</span>)<span class="sc">%&gt;%</span>  <span class="co"># kemudian disaring berdasarkan `category`</span></span>
+<span id="cb170-5"><a href="manipulasi-data.html#cb170-5" tabindex="-1"></a>  <span class="fu">arrange</span>(<span class="fu">desc</span>(total))                            <span class="co"># mengurutkan secara menurun pembayaran yang diterima</span></span>
+<span id="cb170-6"><a href="manipulasi-data.html#cb170-6" tabindex="-1"></a>not_ca_expert_10000                               <span class="co"># cetak hasilnya</span></span></code></pre></div>
+<p><strong>Contoh 5:</strong> Temukan 20 dokter di empat negara bagian terbesar (CA, TX, FL, NY) yang dibayar paling tinggi untuk “Expert-Led Forums”!</p>
+<div class="sourceCode" id="cb171"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb171-1"><a href="manipulasi-data.html#cb171-1" tabindex="-1"></a>ca_ny_tx_fl_prof_top20 <span class="ot">&lt;-</span> pfizer <span class="sc">%&gt;%</span></span>
+<span id="cb171-2"><a href="manipulasi-data.html#cb171-2" tabindex="-1"></a>  <span class="fu">filter</span>((state <span class="sc">==</span> <span class="st">&quot;CA&quot;</span> <span class="sc">|</span> </span>
+<span id="cb171-3"><a href="manipulasi-data.html#cb171-3" tabindex="-1"></a>          state <span class="sc">==</span> <span class="st">&quot;NY&quot;</span> <span class="sc">|</span></span>
+<span id="cb171-4"><a href="manipulasi-data.html#cb171-4" tabindex="-1"></a>          state <span class="sc">==</span> <span class="st">&quot;TX&quot;</span> <span class="sc">|</span> </span>
+<span id="cb171-5"><a href="manipulasi-data.html#cb171-5" tabindex="-1"></a>          state <span class="sc">==</span> <span class="st">&quot;FL&quot;</span>) <span class="sc">&amp;</span></span>
+<span id="cb171-6"><a href="manipulasi-data.html#cb171-6" tabindex="-1"></a>          category <span class="sc">==</span> <span class="st">&quot;Expert-Led Forums&quot;</span>) <span class="sc">%&gt;%</span></span>
+<span id="cb171-7"><a href="manipulasi-data.html#cb171-7" tabindex="-1"></a>  <span class="fu">arrange</span>(<span class="fu">desc</span>(total)) <span class="sc">%&gt;%</span></span>
+<span id="cb171-8"><a href="manipulasi-data.html#cb171-8" tabindex="-1"></a>  <span class="fu">head</span>(<span class="dv">20</span>)</span>
+<span id="cb171-9"><a href="manipulasi-data.html#cb171-9" tabindex="-1"></a>ca_ny_tx_fl_prof_top20</span></code></pre></div>
+<p><strong>Contoh 6:</strong> Saring data <code>pfizer</code> untuk semua pembayaran untuk menjalankan “Expert-Led Forums” atau untuk “Professional Advising”, dan urutkan nama dokter berdasarkan abjad (nama belakang, kemudian nama depan)</p>
+<div class="sourceCode" id="cb172"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb172-1"><a href="manipulasi-data.html#cb172-1" tabindex="-1"></a>expert_professional_advice <span class="ot">&lt;-</span> pfizer <span class="sc">%&gt;%</span></span>
+<span id="cb172-2"><a href="manipulasi-data.html#cb172-2" tabindex="-1"></a>  <span class="fu">filter</span>(category <span class="sc">==</span> <span class="st">&quot;Expert-Led Forums&quot;</span> <span class="sc">|</span> </span>
+<span id="cb172-3"><a href="manipulasi-data.html#cb172-3" tabindex="-1"></a>         category <span class="sc">==</span> <span class="st">&quot;Professional Advising&quot;</span>) <span class="sc">%&gt;%</span></span>
+<span id="cb172-4"><a href="manipulasi-data.html#cb172-4" tabindex="-1"></a>  <span class="fu">arrange</span>(last_name, first_name)</span>
+<span id="cb172-5"><a href="manipulasi-data.html#cb172-5" tabindex="-1"></a>expert_professional_advice</span></code></pre></div>
+</div>
+<div id="mengganti-nama-dan-mengubah-mutate" class="section level2 hasAnchor" number="8.7">
+<h2><span class="header-section-number">8.7</span> Mengganti Nama dan Mengubah (Mutate)<a href="manipulasi-data.html#mengganti-nama-dan-mengubah-mutate" class="anchor-section" aria-label="Anchor link to header"></a></h2>
+<p>Di bagian ini, Anda akan belajar bagaimana mengganti nama kolom dari sebuah data frame di R. Kemudian, Anda akan belajar bagaimana cara menghitung dan menambah variabel baru ke data frame di R. Anda akan belajar fungsi-fungsi R berikut ini dari package R yaitu dplyr:</p>
+<ul>
+<li><code>rename()</code> Kode ini digunakan untuk mengganti nama kolom dari sebuah data frame di R.</li>
+<li><code>mutate()</code> Menghitung dan menambah variabel baru ke dalam sebuah tabel data. Hal ini tidak menghilangkan variabel yang ada.</li>
+<li><code>transmute()</code> Menghitung kolom baru tetapi menghilangkan variabel yang ada.</li>
+</ul>
+<div class="sourceCode" id="cb173"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb173-1"><a href="manipulasi-data.html#cb173-1" tabindex="-1"></a><span class="co"># Mengganti nama kolom dari data `pfizer` dengan fungsi-fungsi dasar R:</span></span>
+<span id="cb173-2"><a href="manipulasi-data.html#cb173-2" tabindex="-1"></a><span class="fu">names</span>(pfizer)[<span class="fu">names</span>(pfizer) <span class="sc">==</span> <span class="st">&quot;org_indiv&quot;</span>] <span class="ot">&lt;-</span> <span class="st">&quot;rename1&quot;</span></span>
+<span id="cb173-3"><a href="manipulasi-data.html#cb173-3" tabindex="-1"></a><span class="fu">names</span>(pfizer)[<span class="dv">1</span>] <span class="ot">&lt;-</span> <span class="st">&quot;rename2&quot;</span></span>
+<span id="cb173-4"><a href="manipulasi-data.html#cb173-4" tabindex="-1"></a><span class="fu">names</span>(pfizer)[<span class="fu">names</span>(pfizer)<span class="sc">==</span><span class="fu">names</span>(pfizer)] <span class="ot">&lt;-</span> <span class="fu">c</span>(<span class="st">&quot;rename3&quot;</span>,</span>
+<span id="cb173-5"><a href="manipulasi-data.html#cb173-5" tabindex="-1"></a>                                                 <span class="st">&quot;rename4&quot;</span>,</span>
+<span id="cb173-6"><a href="manipulasi-data.html#cb173-6" tabindex="-1"></a>                                                 <span class="st">&quot;first_name&quot;</span>,</span>
+<span id="cb173-7"><a href="manipulasi-data.html#cb173-7" tabindex="-1"></a>                                                 <span class="st">&quot;last_name&quot;</span>,</span>
+<span id="cb173-8"><a href="manipulasi-data.html#cb173-8" tabindex="-1"></a>                                                 <span class="st">&quot;city&quot;</span>,</span>
+<span id="cb173-9"><a href="manipulasi-data.html#cb173-9" tabindex="-1"></a>                                                 <span class="st">&quot;state&quot;</span>,</span>
+<span id="cb173-10"><a href="manipulasi-data.html#cb173-10" tabindex="-1"></a>                                                 <span class="st">&quot;category&quot;</span>,</span>
+<span id="cb173-11"><a href="manipulasi-data.html#cb173-11" tabindex="-1"></a>                                                 <span class="st">&quot;cash&quot;</span>,</span>
+<span id="cb173-12"><a href="manipulasi-data.html#cb173-12" tabindex="-1"></a>                                                 <span class="st">&quot;other&quot;</span>,</span>
+<span id="cb173-13"><a href="manipulasi-data.html#cb173-13" tabindex="-1"></a>                                                 <span class="st">&quot;total&quot;</span>)</span>
+<span id="cb173-14"><a href="manipulasi-data.html#cb173-14" tabindex="-1"></a><span class="co"># Mengganti nama kolom dari data `pfizer` dengan `dplyr::rename()`:</span></span>
+<span id="cb173-15"><a href="manipulasi-data.html#cb173-15" tabindex="-1"></a>pfizer <span class="sc">%&gt;%</span> </span>
+<span id="cb173-16"><a href="manipulasi-data.html#cb173-16" tabindex="-1"></a>  <span class="fu">rename</span>(</span>
+<span id="cb173-17"><a href="manipulasi-data.html#cb173-17" tabindex="-1"></a>    <span class="at">org_indiv =</span> rename3 ,</span>
+<span id="cb173-18"><a href="manipulasi-data.html#cb173-18" tabindex="-1"></a>    <span class="at">first_plus =</span> rename4  </span>
+<span id="cb173-19"><a href="manipulasi-data.html#cb173-19" tabindex="-1"></a>    )</span>
+<span id="cb173-20"><a href="manipulasi-data.html#cb173-20" tabindex="-1"></a><span class="co"># Menambahkan kolom baru (year*) dengan mempertahankan data `fda` yang ada:</span></span>
+<span id="cb173-21"><a href="manipulasi-data.html#cb173-21" tabindex="-1"></a>letters_year <span class="ot">&lt;-</span> fda <span class="sc">%&gt;%</span></span>
+<span id="cb173-22"><a href="manipulasi-data.html#cb173-22" tabindex="-1"></a>  <span class="fu">mutate</span>(<span class="at">year =</span> <span class="fu">format</span>(issued, <span class="st">&quot;%Y&quot;</span>)) <span class="sc">%&gt;%</span></span>
+<span id="cb173-23"><a href="manipulasi-data.html#cb173-23" tabindex="-1"></a>  <span class="fu">group_by</span>(year)</span>
+<span id="cb173-24"><a href="manipulasi-data.html#cb173-24" tabindex="-1"></a>letters_year</span>
+<span id="cb173-25"><a href="manipulasi-data.html#cb173-25" tabindex="-1"></a><span class="co"># Menambahkan kolom baru (year*) dan (last_name*) dengan menghilangkan data `fda` yang ada:</span></span>
+<span id="cb173-26"><a href="manipulasi-data.html#cb173-26" tabindex="-1"></a>fda <span class="sc">%&gt;%</span></span>
+<span id="cb173-27"><a href="manipulasi-data.html#cb173-27" tabindex="-1"></a>  <span class="fu">transmute</span>(</span>
+<span id="cb173-28"><a href="manipulasi-data.html#cb173-28" tabindex="-1"></a>    <span class="at">year =</span> <span class="fu">format</span>(issued, <span class="st">&quot;%Y&quot;</span>),</span>
+<span id="cb173-29"><a href="manipulasi-data.html#cb173-29" tabindex="-1"></a>    <span class="at">last_name =</span> name_last  </span>
+<span id="cb173-30"><a href="manipulasi-data.html#cb173-30" tabindex="-1"></a>    )</span></code></pre></div>
+</div>
+<div id="menggabungkan-data" class="section level2 hasAnchor" number="8.8">
+<h2><span class="header-section-number">8.8</span> Menggabungkan Data<a href="manipulasi-data.html#menggabungkan-data" class="anchor-section" aria-label="Anchor link to header"></a></h2>
+<p>Ada juga beberapa fungsi gabungan di <code>dplyr</code> untuk menggabungkan data dari dua data frame. Berikut ini adalah fungsi yang paling berguna:</p>
+<ul>
+<li><code>inner_join()</code> Mengembalikan nilai dari kedua tabel hanya jika ada kecocokan.</li>
+<li><code>left_join()</code> Mengembalikan semua nilai dari tabel yang pertama disebutkan, ditambah nilai dari tabel kedua yang cocok.</li>
+<li><code>semi_join()</code> Menyaring tabel yang pertama disebutkan untuk mendapatkan nilai yang memiliki kecocokan dengan tabel kedua.</li>
+<li><code>anti_join()</code> Menyaring tabel yang pertama disebutkan untuk mendapatkan nilai yang tidak memiliki kecocokan dengan table kedua.</li>
+</ul>
+<p>Sebagai ilustrasinya, gabungan ini akan menemukan dokter yang dibayar oleh <code>Pfizer</code> untuk menjalankan Expertp-Led Forums yang juga menerima surat peringatan dari <code>fda</code>:</p>
+<div class="sourceCode" id="cb174"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb174-1"><a href="manipulasi-data.html#cb174-1" tabindex="-1"></a>expert_warned_inner <span class="ot">&lt;-</span> <span class="fu">inner_join</span>(pfizer, fda, </span>
+<span id="cb174-2"><a href="manipulasi-data.html#cb174-2" tabindex="-1"></a>                                  <span class="at">by=</span><span class="fu">c</span>(<span class="st">&quot;first_name&quot;</span> <span class="ot">=</span> <span class="st">&quot;name_first&quot;</span>, </span>
+<span id="cb174-3"><a href="manipulasi-data.html#cb174-3" tabindex="-1"></a>                                       <span class="st">&quot;last_name&quot;</span> <span class="ot">=</span> <span class="st">&quot;name_last&quot;</span>)) <span class="sc">%&gt;%</span></span>
+<span id="cb174-4"><a href="manipulasi-data.html#cb174-4" tabindex="-1"></a>                                  <span class="fu">filter</span>(category<span class="sc">==</span><span class="st">&quot;Expert-Led Forums&quot;</span>)</span>
+<span id="cb174-5"><a href="manipulasi-data.html#cb174-5" tabindex="-1"></a></span>
+<span id="cb174-6"><a href="manipulasi-data.html#cb174-6" tabindex="-1"></a>expert_warned_semi <span class="ot">&lt;-</span> <span class="fu">semi_join</span>(pfizer, fda, </span>
+<span id="cb174-7"><a href="manipulasi-data.html#cb174-7" tabindex="-1"></a>                                <span class="at">by=</span><span class="fu">c</span>(<span class="st">&quot;first_name&quot;</span> <span class="ot">=</span> <span class="st">&quot;name_first&quot;</span>, </span>
+<span id="cb174-8"><a href="manipulasi-data.html#cb174-8" tabindex="-1"></a>                                     <span class="st">&quot;last_name&quot;</span> <span class="ot">=</span> <span class="st">&quot;name_last&quot;</span>)) <span class="sc">%&gt;%</span></span>
+<span id="cb174-9"><a href="manipulasi-data.html#cb174-9" tabindex="-1"></a>                                <span class="fu">filter</span>(category<span class="sc">==</span><span class="st">&quot;Expert-Led Forums&quot;</span>)</span></code></pre></div>
+<p>Kode dalam <code>by=c()</code> menentukan bagaimana gabungan harus dibuat. Jika instruksi tentang bagaimana cara menggabungkan tabel tidak disediakan, <code>dplyr</code> akan mencari kolom dengan nama yang cocok, dan melakukan penggabungan berdasarkan hal tersebut. Perbedaan antara dua gabungan di atas adalah yang pertama berisi semua kolom dari kedua data frame, sedangkan yang kedua hanya memberikan kolom dari data frame <code>pfizer</code>.</p>
+<p>Dalam praktiknya, mungkin Anda ingin <code>inner_join</code>dan kemudian menggunakan fungsi select dari <code>dplyr</code> untuk memilih kolom yang ingin Anda pertahankan, misalnya:</p>
+<div class="sourceCode" id="cb175"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb175-1"><a href="manipulasi-data.html#cb175-1" tabindex="-1"></a>expert_warned <span class="ot">&lt;-</span> <span class="fu">inner_join</span>(pfizer, fda, </span>
+<span id="cb175-2"><a href="manipulasi-data.html#cb175-2" tabindex="-1"></a>                            <span class="at">by=</span><span class="fu">c</span>(<span class="st">&quot;first_name&quot;</span> <span class="ot">=</span> <span class="st">&quot;name_first&quot;</span>, </span>
+<span id="cb175-3"><a href="manipulasi-data.html#cb175-3" tabindex="-1"></a>                                 <span class="st">&quot;last_name&quot;</span> <span class="ot">=</span> <span class="st">&quot;name_last&quot;</span>)) <span class="sc">%&gt;%</span></span>
+<span id="cb175-4"><a href="manipulasi-data.html#cb175-4" tabindex="-1"></a>                            <span class="fu">filter</span>(category<span class="sc">==</span><span class="st">&quot;Expert-Led Forums&quot;</span>) <span class="sc">%&gt;%</span></span>
+<span id="cb175-5"><a href="manipulasi-data.html#cb175-5" tabindex="-1"></a>                            <span class="fu">select</span>(last_name, </span>
+<span id="cb175-6"><a href="manipulasi-data.html#cb175-6" tabindex="-1"></a>                                   city, </span>
+<span id="cb175-7"><a href="manipulasi-data.html#cb175-7" tabindex="-1"></a>                                   state, </span>
+<span id="cb175-8"><a href="manipulasi-data.html#cb175-8" tabindex="-1"></a>                                   total, </span>
+<span id="cb175-9"><a href="manipulasi-data.html#cb175-9" tabindex="-1"></a>                                   issued)</span>
+<span id="cb175-10"><a href="manipulasi-data.html#cb175-10" tabindex="-1"></a></span>
+<span id="cb175-11"><a href="manipulasi-data.html#cb175-11" tabindex="-1"></a>expert_warned <span class="ot">&lt;-</span> <span class="fu">inner_join</span>(pfizer, fda, </span>
+<span id="cb175-12"><a href="manipulasi-data.html#cb175-12" tabindex="-1"></a>                            <span class="at">by=</span><span class="fu">c</span>(<span class="st">&quot;first_name&quot;</span> <span class="ot">=</span> <span class="st">&quot;name_first&quot;</span>,</span>
+<span id="cb175-13"><a href="manipulasi-data.html#cb175-13" tabindex="-1"></a>                                 <span class="st">&quot;last_name&quot;</span> <span class="ot">=</span> <span class="st">&quot;name_last&quot;</span>)) <span class="sc">%&gt;%</span></span>
+<span id="cb175-14"><a href="manipulasi-data.html#cb175-14" tabindex="-1"></a>                            <span class="fu">filter</span>(category<span class="sc">==</span><span class="st">&quot;Expert-Led Forums&quot;</span>) <span class="sc">%&gt;%</span></span>
+<span id="cb175-15"><a href="manipulasi-data.html#cb175-15" tabindex="-1"></a>                            <span class="fu">select</span>(<span class="dv">2</span><span class="sc">:</span><span class="dv">5</span>,<span class="dv">10</span>,<span class="dv">12</span>)</span></code></pre></div>
+<p><a href="https://www.guru99.com/r-dplyr-tutorial.html">Klik di sini</a> untuk referensi yang lebih berguna untuk mengelola gabungan dengan dplyr.</p>
+</div>
+<div id="kelompok-dan-ringkasan" class="section level2 hasAnchor" number="8.9">
+<h2><span class="header-section-number">8.9</span> Kelompok dan Ringkasan<a href="manipulasi-data.html#kelompok-dan-ringkasan" class="anchor-section" aria-label="Anchor link to header"></a></h2>
+<p>Bagian ini memperkenalkan cara menghitung ringkasan statistik dengan mudah di R menggunakan package <code>dplyr</code>. Anda akan belajar, bagaimana:</p>
+<ul>
+<li>Menghitung ringkasan statistik untuk data yang tidak dikelompokkan, serta untuk data yang dikelompokan menurut satu atau beberapa variabel. Fungsi R: <code>summarise()</code> dan <code>group_by()</code>.</li>
+<li>Meringkas beberapa kolom variabel. Fungsi R:
+<ul>
+<li><code>summarise_all()</code> Menerapkan fungsi ringkasan ke setiap kolom dalam data frame.</li>
+<li><code>summarise_at()</code> Menerapkan fungsi ringkasan ke kolom tertentu yang dipilih dengan vektor karakter.</li>
+<li><code>summarise_if()</code> Menerapkan fungsi ringkasan ke kolom yang dipilih dengan fungsi yang menampilkan TRUE</li>
+</ul></li>
+</ul>
+<p><strong>Contoh 7:</strong> Hitunglah total pembayaran data <code>pfizer</code>, dengan urutan negara bagian secara menurun!</p>
+<div class="sourceCode" id="cb176"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb176-1"><a href="manipulasi-data.html#cb176-1" tabindex="-1"></a>state_sum <span class="ot">&lt;-</span> pfizer <span class="sc">%&gt;%</span></span>
+<span id="cb176-2"><a href="manipulasi-data.html#cb176-2" tabindex="-1"></a>  <span class="fu">group_by</span>(state) <span class="sc">%&gt;%</span></span>
+<span id="cb176-3"><a href="manipulasi-data.html#cb176-3" tabindex="-1"></a>  <span class="fu">summarize</span>(<span class="at">sum =</span> <span class="fu">sum</span>(total)) <span class="sc">%&gt;%</span></span>
+<span id="cb176-4"><a href="manipulasi-data.html#cb176-4" tabindex="-1"></a>  <span class="fu">arrange</span>(<span class="fu">desc</span>(sum))</span>
+<span id="cb176-5"><a href="manipulasi-data.html#cb176-5" tabindex="-1"></a></span>
+<span id="cb176-6"><a href="manipulasi-data.html#cb176-6" tabindex="-1"></a>state_sum</span></code></pre></div>
+<p><strong>Contoh 8:</strong> Hitunglah beberapa ringkasan statistik tambahan dari data <code>pfizer</code>, dengan urutan negara bagian secara menurun!</p>
+<div class="sourceCode" id="cb177"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb177-1"><a href="manipulasi-data.html#cb177-1" tabindex="-1"></a>state_summary <span class="ot">&lt;-</span> pfizer <span class="sc">%&gt;%</span></span>
+<span id="cb177-2"><a href="manipulasi-data.html#cb177-2" tabindex="-1"></a>  <span class="fu">group_by</span>(state) <span class="sc">%&gt;%</span></span>
+<span id="cb177-3"><a href="manipulasi-data.html#cb177-3" tabindex="-1"></a>  <span class="fu">summarize</span>(<span class="at">sum =</span> <span class="fu">sum</span>(total), </span>
+<span id="cb177-4"><a href="manipulasi-data.html#cb177-4" tabindex="-1"></a>        <span class="at">average =</span> <span class="fu">mean</span>(total), </span>
+<span id="cb177-5"><a href="manipulasi-data.html#cb177-5" tabindex="-1"></a>         <span class="at">median =</span> <span class="fu">median</span>(total),</span>
+<span id="cb177-6"><a href="manipulasi-data.html#cb177-6" tabindex="-1"></a>            <span class="at">min =</span> <span class="fu">min</span>(total),</span>
+<span id="cb177-7"><a href="manipulasi-data.html#cb177-7" tabindex="-1"></a>            <span class="at">max =</span> <span class="fu">max</span>(total),</span>
+<span id="cb177-8"><a href="manipulasi-data.html#cb177-8" tabindex="-1"></a>            <span class="at">count =</span> <span class="fu">n</span>()) <span class="sc">%&gt;%</span></span>
+<span id="cb177-9"><a href="manipulasi-data.html#cb177-9" tabindex="-1"></a>  <span class="fu">arrange</span>(<span class="fu">desc</span>(sum))</span>
+<span id="cb177-10"><a href="manipulasi-data.html#cb177-10" tabindex="-1"></a></span>
+<span id="cb177-11"><a href="manipulasi-data.html#cb177-11" tabindex="-1"></a>state_summary</span></code></pre></div>
+<p><strong>Contoh 9:</strong> Kelompokkan dan rangkum data <code>pfizer</code> untuk beberapa kategori naik!</p>
+<div class="sourceCode" id="cb178"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb178-1"><a href="manipulasi-data.html#cb178-1" tabindex="-1"></a>state_summary <span class="ot">&lt;-</span> pfizer <span class="sc">%&gt;%</span></span>
+<span id="cb178-2"><a href="manipulasi-data.html#cb178-2" tabindex="-1"></a>  <span class="fu">group_by</span>(state, category) <span class="sc">%&gt;%</span></span>
+<span id="cb178-3"><a href="manipulasi-data.html#cb178-3" tabindex="-1"></a>  <span class="fu">summarize</span>(<span class="at">sum =</span> <span class="fu">sum</span>(total), </span>
+<span id="cb178-4"><a href="manipulasi-data.html#cb178-4" tabindex="-1"></a>        <span class="at">average =</span> <span class="fu">mean</span>(total), </span>
+<span id="cb178-5"><a href="manipulasi-data.html#cb178-5" tabindex="-1"></a>         <span class="at">median =</span> <span class="fu">median</span>(total),</span>
+<span id="cb178-6"><a href="manipulasi-data.html#cb178-6" tabindex="-1"></a>            <span class="at">min =</span> <span class="fu">min</span>(total),</span>
+<span id="cb178-7"><a href="manipulasi-data.html#cb178-7" tabindex="-1"></a>            <span class="at">max =</span> <span class="fu">max</span>(total),</span>
+<span id="cb178-8"><a href="manipulasi-data.html#cb178-8" tabindex="-1"></a>            <span class="at">count =</span> <span class="fu">n</span>()) <span class="sc">%&gt;%</span></span>
+<span id="cb178-9"><a href="manipulasi-data.html#cb178-9" tabindex="-1"></a>  <span class="fu">arrange</span>(state, category)</span>
+<span id="cb178-10"><a href="manipulasi-data.html#cb178-10" tabindex="-1"></a></span>
+<span id="cb178-11"><a href="manipulasi-data.html#cb178-11" tabindex="-1"></a>state_summary</span></code></pre></div>
+<p><strong>Contoh 10:</strong> Saring data <code>fda</code> untuk surat-surat yang telah dikirim dari awal tahun 2006 dan seterusnya dan rangkum!</p>
+<div class="sourceCode" id="cb179"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb179-1"><a href="manipulasi-data.html#cb179-1" tabindex="-1"></a>year_summary <span class="ot">&lt;-</span> fda <span class="sc">%&gt;%</span></span>
+<span id="cb179-2"><a href="manipulasi-data.html#cb179-2" tabindex="-1"></a>  <span class="fu">filter</span>(issued <span class="sc">&gt;=</span> <span class="st">&quot;2005-01-01&quot;</span>) <span class="sc">%&gt;%</span></span>
+<span id="cb179-3"><a href="manipulasi-data.html#cb179-3" tabindex="-1"></a>  <span class="fu">arrange</span>(issued) <span class="sc">%&gt;%</span></span>
+<span id="cb179-4"><a href="manipulasi-data.html#cb179-4" tabindex="-1"></a>  <span class="fu">mutate</span>(<span class="at">year =</span> <span class="fu">format</span>(issued, <span class="st">&quot;%Y&quot;</span>)) <span class="sc">%&gt;%</span></span>
+<span id="cb179-5"><a href="manipulasi-data.html#cb179-5" tabindex="-1"></a>  <span class="fu">group_by</span>(year) <span class="sc">%&gt;%</span></span>
+<span id="cb179-6"><a href="manipulasi-data.html#cb179-6" tabindex="-1"></a>  <span class="fu">summarize</span>(<span class="at">letters=</span><span class="fu">n</span>())</span>
+<span id="cb179-7"><a href="manipulasi-data.html#cb179-7" tabindex="-1"></a></span>
+<span id="cb179-8"><a href="manipulasi-data.html#cb179-8" tabindex="-1"></a>year_summary</span></code></pre></div>
+<p><strong>Waspada:</strong> Menggunakan kembali variabel dapat menyebabkan hasil yang tidak dapat diharapkan, tetapi jangan khawatir. R akan memberikan peringatan seperti <code>summarise() ungrouping output (override with .groups argument)</code>.</p>
+</div>
+<div id="membagi-data" class="section level2 hasAnchor" number="8.10">
+<h2><span class="header-section-number">8.10</span> Membagi Data<a href="manipulasi-data.html#membagi-data" class="anchor-section" aria-label="Anchor link to header"></a></h2>
+<p>Seperti yang sudah saya sampaikan pada bab Pemrograman R tentang menulis fungsi untuk membagi data latihan dan data percobaan. Di sini, kita akan mempelajari lebih lanjut tentang bagaimana menggunakan beberapa packages untuk membagi data. Karena bagian ini sangat penting sebagai seorang data scientist khususnya ketika Anda menerapkan tugas <a href="https://bookdown.org/BaktiSiregar/data-science-for-beginners/Manipulation.html">Machine Learning</a> untuk menganalisis data. Pada bagian ini biasanya kita perlu membagi dataset antara set latihan dan set percobaan. Set latihan memungkinkan algoritme untuk belajar dari data. untuk menguji kinerja model kita, kita dapat menggunakan set percobaan untuk mengembalikan ukuran kinerja. Jadi, mari kita lihat beberapa packages yang dapat Anda gunakan untuk membagi data:</p>
+<div id="dplyr" class="section level3 hasAnchor" number="8.10.1">
+<h3><span class="header-section-number">8.10.1</span> dplyr<a href="manipulasi-data.html#dplyr" class="anchor-section" aria-label="Anchor link to header"></a></h3>
+<p>Anda dapat menggunakan <code>dplyr</code> untuk ini, membuat jadi sangat sederhana. itu memang memerlukan variabel id dalam dataset Anda, yang mana ini merupakan ide yang bagus, tidak hanya untuk membuat set-set tetapi juga untuk keterlacakan selama proyek Anda. Tambahkan jika belum ada.</p>
+<div class="sourceCode" id="cb180"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb180-1"><a href="manipulasi-data.html#cb180-1" tabindex="-1"></a><span class="fu">library</span>(dplyr)                                    <span class="co"># memuat package `dplyr`</span></span>
+<span id="cb180-2"><a href="manipulasi-data.html#cb180-2" tabindex="-1"></a><span class="fu">data</span>(mtcars)                                      <span class="co"># menggunakan data dari environment R</span></span>
+<span id="cb180-3"><a href="manipulasi-data.html#cb180-3" tabindex="-1"></a><span class="fu">set.seed</span>(<span class="dv">123</span>)                                     <span class="co"># untuk memastikan kita menghasilkan data yang sama</span></span>
+<span id="cb180-4"><a href="manipulasi-data.html#cb180-4" tabindex="-1"></a>mtcars<span class="sc">$</span>id <span class="ot">&lt;-</span> <span class="dv">1</span><span class="sc">:</span><span class="fu">nrow</span>(mtcars)                       <span class="co"># menambahkan `id` jika belum ada</span></span>
+<span id="cb180-5"><a href="manipulasi-data.html#cb180-5" tabindex="-1"></a>train<span class="ot">&lt;-</span>mtcars <span class="sc">%&gt;%</span> dplyr<span class="sc">::</span><span class="fu">sample_frac</span>(.<span class="dv">75</span>)         <span class="co"># beri nama untuk set latihan</span></span>
+<span id="cb180-6"><a href="manipulasi-data.html#cb180-6" tabindex="-1"></a>test<span class="ot">&lt;-</span>dplyr<span class="sc">::</span><span class="fu">anti_join</span>(mtcars, train, <span class="at">by =</span> <span class="st">&#39;id&#39;</span>)  <span class="co"># beri nama untuk set percobaan</span></span>
+<span id="cb180-7"><a href="manipulasi-data.html#cb180-7" tabindex="-1"></a><span class="fu">dim</span>(train)                                        <span class="co"># mengecek dimensi set latihan</span></span>
+<span id="cb180-8"><a href="manipulasi-data.html#cb180-8" tabindex="-1"></a><span class="fu">dim</span>(test)                                         <span class="co"># mengecek dimensi set percobaan </span></span></code></pre></div>
+<p><strong>Catatan:</strong> Dataset ini hanya sebagai contoh, ini tidak cocok untuk tugas machine learning karena datanya terlalu sedikit.</p>
+</div>
+<div id="catools" class="section level3 hasAnchor" number="8.10.2">
+<h3><span class="header-section-number">8.10.2</span> caTools<a href="manipulasi-data.html#catools" class="anchor-section" aria-label="Anchor link to header"></a></h3>
+<p>Ada banyak pendekatan untuk mencapai partisi data. Untuk pendekatan yang lebih lengkap, lihat fungsi <code>createDataPartition</code> dalam package <code>caTools</code>.</p>
+<div class="sourceCode" id="cb181"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb181-1"><a href="manipulasi-data.html#cb181-1" tabindex="-1"></a><span class="fu">library</span>(caTools)                                  <span class="co"># memuat package `caTools`</span></span>
+<span id="cb181-2"><a href="manipulasi-data.html#cb181-2" tabindex="-1"></a><span class="fu">data</span>(mtcars)                                      <span class="co"># menggunakan data dari environment R</span></span>
+<span id="cb181-3"><a href="manipulasi-data.html#cb181-3" tabindex="-1"></a><span class="fu">set.seed</span>(<span class="dv">123</span>)                                     <span class="co"># untuk memastikan kita mendapatkan data yang sama</span></span>
+<span id="cb181-4"><a href="manipulasi-data.html#cb181-4" tabindex="-1"></a>smp_size <span class="ot">&lt;-</span> <span class="fu">floor</span>(<span class="fl">0.75</span> <span class="sc">*</span> <span class="fu">nrow</span>(mtcars))            <span class="co"># 75% dari ukuran sampel</span></span>
+<span id="cb181-5"><a href="manipulasi-data.html#cb181-5" tabindex="-1"></a>train_ind <span class="ot">&lt;-</span> <span class="fu">sample</span>(<span class="fu">seq_len</span>(<span class="fu">nrow</span>(mtcars)), </span>
+<span id="cb181-6"><a href="manipulasi-data.html#cb181-6" tabindex="-1"></a>                    <span class="at">size =</span> smp_size)</span>
+<span id="cb181-7"><a href="manipulasi-data.html#cb181-7" tabindex="-1"></a>train <span class="ot">&lt;-</span> mtcars[train_ind, ]                      <span class="co"># memberi nama untuk set latihan</span></span>
+<span id="cb181-8"><a href="manipulasi-data.html#cb181-8" tabindex="-1"></a>test <span class="ot">&lt;-</span> mtcars[<span class="sc">-</span>train_ind, ]                      <span class="co"># memberi nama untuk set percobaan</span></span>
+<span id="cb181-9"><a href="manipulasi-data.html#cb181-9" tabindex="-1"></a><span class="fu">dim</span>(train)                                        <span class="co"># mengecek dimensi set latihan</span></span>
+<span id="cb181-10"><a href="manipulasi-data.html#cb181-10" tabindex="-1"></a><span class="fu">dim</span>(test)                                         <span class="co"># mengecek dimensi set percobaan</span></span></code></pre></div>
+</div>
+<div id="caret" class="section level3 hasAnchor" number="8.10.3">
+<h3><span class="header-section-number">8.10.3</span> caret<a href="manipulasi-data.html#caret" class="anchor-section" aria-label="Anchor link to header"></a></h3>
+<p>Packages hebat lainnya yang dapat Anda gunakan untuk membagi dataset adalah <code>caret</code>.</p>
+<div class="sourceCode" id="cb182"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb182-1"><a href="manipulasi-data.html#cb182-1" tabindex="-1"></a><span class="fu">library</span>(caret)                                    <span class="co"># memuat package `caret`</span></span>
+<span id="cb182-2"><a href="manipulasi-data.html#cb182-2" tabindex="-1"></a></span>
+<span id="cb182-3"><a href="manipulasi-data.html#cb182-3" tabindex="-1"></a><span class="fu">data</span>(mtcars)                                      <span class="co"># menggunakan data dari environment R</span></span>
+<span id="cb182-4"><a href="manipulasi-data.html#cb182-4" tabindex="-1"></a><span class="fu">set.seed</span>(<span class="dv">123</span>)                                     <span class="co"># untuk memastikan kita mendapatkan data yang sama</span></span>
+<span id="cb182-5"><a href="manipulasi-data.html#cb182-5" tabindex="-1"></a>intrain<span class="ot">&lt;-</span><span class="fu">createDataPartition</span>(mtcars<span class="sc">$</span>mpg,</span>
+<span id="cb182-6"><a href="manipulasi-data.html#cb182-6" tabindex="-1"></a>                             <span class="at">p=</span><span class="fl">0.75</span>,<span class="at">list=</span><span class="cn">FALSE</span>)</span>
+<span id="cb182-7"><a href="manipulasi-data.html#cb182-7" tabindex="-1"></a>train<span class="ot">&lt;-</span>mtcars[intrain,]</span>
+<span id="cb182-8"><a href="manipulasi-data.html#cb182-8" tabindex="-1"></a>test<span class="ot">&lt;-</span>mtcars[<span class="sc">-</span>intrain,]</span>
+<span id="cb182-9"><a href="manipulasi-data.html#cb182-9" tabindex="-1"></a><span class="fu">dim</span>(train)                                        <span class="co"># mengecek dimensi set latihan</span></span>
+<span id="cb182-10"><a href="manipulasi-data.html#cb182-10" tabindex="-1"></a><span class="fu">dim</span>(test)                                         <span class="co"># mengecek dimensi set percobaan</span></span></code></pre></div>
+
+</div>
+</div>
+</div>
+            </section>
+
+          </div>
+        </div>
+      </div>
+<a href="interface-data.html" class="navigation navigation-prev " aria-label="Previous page"><i class="fa fa-angle-left"></i></a>
+<a href="referensi.html" class="navigation navigation-next " aria-label="Next page"><i class="fa fa-angle-right"></i></a>
+    </div>
+  </div>
+<script src="libs/gitbook/js/app.min.js"></script>
+<script src="libs/gitbook/js/clipboard.min.js"></script>
+<script src="libs/gitbook/js/plugin-search.js"></script>
+<script src="libs/gitbook/js/plugin-sharing.js"></script>
+<script src="libs/gitbook/js/plugin-fontsettings.js"></script>
+<script src="libs/gitbook/js/plugin-bookdown.js"></script>
+<script src="libs/gitbook/js/jquery.highlight.js"></script>
+<script src="libs/gitbook/js/plugin-clipboard.js"></script>
+<script>
+gitbook.require(["gitbook"], function(gitbook) {
+gitbook.start({
+"sharing": {
+"github": false,
+"facebook": true,
+"twitter": true,
+"linkedin": false,
+"weibo": false,
+"instapaper": false,
+"vk": false,
+"whatsapp": false,
+"all": ["facebook", "twitter", "linkedin", "weibo", "instapaper"]
+},
+"fontsettings": {
+"theme": "white",
+"family": "sans",
+"size": 2
+},
+"edit": {
+"link": null,
+"text": null
+},
+"history": {
+"link": null,
+"text": null
+},
+"view": {
+"link": null,
+"text": null
+},
+"download": ["Algoritma_Pemrograman_R.pdf", "Algoritma_Pemrograman_R.epub"],
+"search": {
+"engine": "fuse",
+"options": null
+},
+"toc": {
+"collapse": "subsection"
+}
+});
+});
+</script>
+
+<!-- dynamically load mathjax for compatibility with self-contained -->
+<script>
+  (function () {
+    var script = document.createElement("script");
+    script.type = "text/javascript";
+    var src = "true";
+    if (src === "" || src === "true") src = "https://cdnjs.cloudflare.com/ajax/libs/mathjax/2.7.9/latest.js?config=TeX-MML-AM_CHTML";
+    if (location.protocol !== "file:")
+      if (/^https?:/.test(src))
+        src = src.replace(/^https?:/, '');
+    script.src = src;
+    document.getElementsByTagName("head")[0].appendChild(script);
+  })();
+</script>
+</body>
+
+</html>

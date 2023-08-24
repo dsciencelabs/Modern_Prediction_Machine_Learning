@@ -102,8 +102,6 @@ xlsx
 basis-data-r
 menambang-data-web
 latihan-5
-referensi
-fig:fungsi
 manipulasi-data
 impor-data
 struktur-data-1
@@ -118,3 +116,4 @@ membagi-data
 dplyr
 catools
 caret
+referensi
