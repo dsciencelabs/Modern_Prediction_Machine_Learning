@@ -124,7 +124,7 @@ for (i in 0:10) {
 Selain dapat digunakan pada data numerik, pengulangan for ini dapat juga diterapkan pada data karakter sebagai berikut:
 
 ```{r}
-mapel = c('Data Science', 'Statistika', 'Fisika','Algoritma dan Struktur Data')
+mapel = c('Data Science', 'Statistika','Algoritma dan Pemrograman')
 
 for (i in mapel){
    print(paste0("Saya suka: ", i))
@@ -137,7 +137,7 @@ Selain itu, anda juga dapat melakukan pengulangan bersarang untuk siklus tertent
 
 ```{r}
 nama = c("Bakti: ", "Alexander: ", "Siregar: ")
-mapel = c('Data Science', 'Statistika','Algoritma dan Struktur Data')
+mapel = c('Data Science', 'Statistika','Algoritma dan Pemrograman')
 
 for (x in nama)
   for (y in mapel){

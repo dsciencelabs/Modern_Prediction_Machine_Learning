@@ -1,0 +1,340 @@
+# Pengumpulan Data
+
+Pada dasarnya, struktur kontrol memungkinkan Anda untuk memasukkan beberapa "logika" ke dalam kode R Anda, daripada hanya mengeksekusi kode R yang sama setiap saat. Struktur kontrol memungkinkan Anda untuk merespons input atau fitur data dan mengeksekusi ekspresi R yang berbeda. Struktur kontrol yang umum digunakan adalah
+
+* `if` dan `else` menguji suatu kondisi dan menindaklanjutinya
+* `for` mengeksekusi loop beberapa kali
+* `while` menjalankan loop saat kondisi benar
+* `break`  mengeksekusi fraagmen loop yang rusak
+* `repeat` menjalankan loop tak terbatas (harus keluar dari itu untuk berhenti)
+* `next` melewati interasi dari sebuah loop
+
+Sebagian besar struktur kontrol tidak digunakan dalam sesi interaktif, melainkan saat menulis fungsi atau ekspresi yang lebih panjang. Namun, konstruksi ini tidak harus digunakan dalam fungsi dan ada baiknya Anda memahaminya sebelumnya.
+
+
+## Pengambilan Keputusan 
+
+Gambaran pengambilan Keputusan *(Decision Tree)* dalam dunia pemrograman adalah proses penentuan keputusan dengan pernyataan bersyarat. Dalam hal ini, programer menginstruksikan komputer untuk melakukan suatu aksi tertentu $(X)$, hanya jika suatu kondisi $Y$ terpenuhi.
+
+
+```{r if-else,echo=FALSE, fig.cap='Struktur Kontrol if else', tidy=FALSE, out.width='100%', fig.align='center'}
+library(knitr)
+img1_path <- "./images/Bab6/if-else.jpg"
+include_graphics(img1_path)
+```
+
+### Sintaks `if, else-if`, dan `else` 
+
+Secara garis besar struktur kontrol pengambilan keputasan yang paling umum digunakan dalam bahasa pemrograman R adalah kombinasi `if-else`, bahkan untuk semua bahasa pemrograman lainnya. Struktur kontrol ini memungkinkan untuk menguji suatu kondisi dan menindaklanjutinya tergantung pada apakah itu benar atau salah. 
+
+Anda dapat memiliki serangkaian tes dengan mengikuti inisial `if` dengan sejumlah `else if` dan `else` itu sendiri. Fungsi umum untuk ini, seperti kode berikut:
+
+```
+nama.fungsi <- function(argumen){
+  if (kondisi1) {
+      lakukan sesuatu 
+      } 
+  else if (kondisi2) {
+      lakukan sesuatu yang berbeda dibandingkan dengan kondisi 1} 
+  else if (kondisi3) {
+      lakukan sesuatu yang berbeda dibandingkan dengan kondisi 1,2} 
+  else if (kondisi4) {
+      lakukan sesuatu yang berbeda dibandingkan dengan kondisi 1,2,3} 
+  else (opsional){
+      melakukan sesuatu yang berbeda dibandingkan semua kondisi semua}
+}
+```
+
+### Program Penilaian 
+
+Andaikan anda ingin membuat suatu program yang dapat memudahkan anda untuk memberikan peringkat kepada nilai mahasiswa sesuai dengan standar yang berlaku. Perhatikan contoh berikut dalam R: 
+
+```{r}
+x <- runif(1, 50, 100)                      # pilih satu nomor acak dari 0~100
+nilai <- function(x){
+            if (x>=85){                     # kondisi 1
+              print('Peringkat A')}         # hasil untuk kondisi 1 
+            else if (x<85 & x >=70){        # kondisi 2 
+              print('Peringkat B')}         # hasil untuk kondisi 2
+            else if (x<=69 & x >=60){       # kondisi 3 
+              print('Peringkat C')}         # hasil untuk kondisi 3
+            else if (x<=59 & x >=50){       # kondisi 4 
+              print('Peringkat D')}         # hasil untuk kondisi 4
+            else{                           # kondisi 5
+              print('Gagal')}               # hasil untuk kondisi 5
+}
+nilai(x)
+```
+
+### Program Hitung Faktorial
+
+Untuk menambah pemahaman terkait pengambilan keputusan dalam pemrograman, mari kita perhatiakan contoh berikut: fungsi factorial menghitung faktorial dari suatu bilangan n.
+
+
+```{r}
+factorial <- function(n) {
+  if (n == 0 || n == 1) {
+    return(1)
+  } else {
+    return(n * factorial(n - 1))
+  }
+}
+
+result <- factorial(5)
+print(result)  # Output: 120
+
+```
+
+Faktorial dari n (dilambangkan sebagai n!) adalah hasil perkalian semua bilangan bulat positif dari 1 hingga n. Dalam implementasi tersebut, fungsi factorial memanggil dirinya sendiri dengan argumen yang lebih kecil hingga mencapai kasus dasar (n = 0 atau n = 1), di mana hasil faktorialnya adalah 1.
+
+Namun, perlu diingat bahwa pengulangan rekursif dapat menyebabkan pemanggilan berulang yang dalam beberapa kasus dapat mengakibatkan penumpukan memori (stack overflow) atau kinerja yang buruk. Oleh karena itu, perlu dipastikan bahwa ada kondisi berhenti yang jelas untuk menghindari pengulangan tak terbatas. Selain itu, dalam beberapa situasi, solusi non-rekursif atau pendekatan lain mungkin lebih efisien.
+
+
+## Pengulangan Rekursif
+
+Pada saat melakukan analisis data, terkadang seorang data analis atau data scientist perlu menggunakan fungsi pengulangan dalam proses pembentukan, perhitungan, manipulasi struktur data seperti halnya vektor, matriks, list, data frame, atau objek lainnya. 
+
+### Sintaks `for` 
+
+Dalam porose perulangan ini digunakan fungsi kontrol 'for', dimana setiap iterasi pada beberapa perintah akan dievaluasi melalui  perulangan yang diinginkan. 
+
+
+```{r for,echo=FALSE, fig.cap='Struktur Kontrol for', tidy=FALSE, out.width='100%', fig.align='center'}
+library(knitr)
+img1_path <- "./images/Bab6/for.jpg"
+include_graphics(img1_path)
+```
+
+Pada gambar di atas bisa dilihat bahwa perulangan juga memerlukan tes kondisi. Bila hasil tes kondisi terpenuhi, maka blok kode kembali dieksekusi. Tapi jika tidak terpenuhi, maka keluar dari perulangan. Sintaks pengulangan for di R sangat sederhana, dapat diperlihatkan sebagai berikut:
+
+```
+For (i in vector) {
+    lakukan sesuatu 	
+}
+```
+
+Jika anda ingin mencetak $i + 1$, menjadi $i = 1,\cdots 10,$ pada setiap iterasi pengulangan (loop). Anda dapat menggunakan sintaks `for` untuk mencetak angka dengan yang dimulai $i = 0$ dan berakhir pada $i = 10$, sebagai berikut:
+
+```{r}
+for (i in 0:10) {
+  print(i + 1)
+}
+```
+
+Selain dapat digunakan pada data numerik, pengulangan for ini dapat juga diterapkan pada data karakter sebagai berikut:
+
+```{r}
+mapel = c('Data Science', 'Statistika','Algoritma dan Pemrograman')
+
+for (i in mapel){
+   print(paste0("Saya suka: ", i))
+}
+```
+
+
+Selain itu, anda juga dapat melakukan pengulangan bersarang untuk siklus tertentu. Sintaksnya direpresentasikan sebagai berikut:
+
+
+```{r}
+nama = c("Bakti: ", "Alexander: ", "Siregar: ")
+mapel = c('Data Science', 'Statistika','Algoritma dan Pemrograman')
+
+for (x in nama)
+  for (y in mapel){
+    print(paste0(x, y))
+  }
+```
+
+### Sintaks `while` 
+
+Terkadang anda bahkan tidak tahu berapa lama urutan input harus dijalankan. Hal ini biasa terjadi saat melakukan simulasi. Misalnya, Anda mungkin ingin mengulang sampai anda mendapatkan tiga kepala berturut-turut. Anda tidak dapat melakukan iterasi semacam itu dengan pengulangan `for`. Sebagai gantinya, Anda dapat menggunakan pengulangan `while`. Perulangan `while` lebih sederhana daripada perulangan for karena hanya memiliki dua komponen, kondisi, dan badan.
+
+
+```{r while,echo=FALSE, fig.cap='Struktur Kontrol while', tidy=FALSE, out.width='100%', fig.align='center'}
+library(knitr)
+img1_path <- "./images/Bab6/while.jpg"
+include_graphics(img1_path)
+```
+
+
+Perulangan `while` dimulai dengan menguji suatu kondisi. Jika benar, maka mereka mengeksekusi badan perulangan. Setelah tubuh loop dieksekusi, kondisinya diuji lagi, dan seterusnya, sampai kondisinya salah, setelah itu loop akan melakukan eksekusi pada kodisi lainnya jika ada.  Sintaks untuk `while` loop adalah sebagai berikut: 
+
+```
+while (Kondisi) {
+     lakukan sesuatu 
+}
+```
+
+Pengulangan while dalam bahasa pemrograman R digunakan untuk menjalankan serangkaian pernyataan selama kondisi tertentu tetap terpenuhi. Berikut adalah contoh penggunaan pengulangan while dalam R:
+
+```{r}
+x <- 1
+
+while (x <= 5) {
+  print(x)
+  x <- x + 1
+}
+```
+
+Dalam contoh di atas, loop while akan menjalankan blok pernyataan selama nilai x masih kurang dari atau sama dengan 5. Setiap kali loop dijalankan, nilai x akan ditambah 1, sehingga pada akhirnya, kondisi x <= 5 akan menjadi salah dan loop akan berhenti.
+
+Anda perlu memastikan bahwa ada pernyataan di dalam blok while yang mengubah nilai yang digunakan dalam kondisi. Ini penting untuk menghindari terjebak dalam loop tak berakhir.
+
+Berikut adalah contoh lain dengan menggunakan pengulangan while untuk menghitung jumlah bilangan genap antara 1 dan 10:
+
+```{r}
+count <- 1
+even_sum <- 0
+
+while (count <= 10) {
+  if (count %% 2 == 0) {
+    even_sum <- even_sum + count
+  }
+  count <- count + 1
+}
+
+print(even_sum)  # Output: 30 (2 + 4 + 6 + 8 + 10)
+```
+
+Dalam contoh ini, kita menggunakan loop while untuk menghitung jumlah bilangan genap antara 1 dan 10. Kita memeriksa apakah count (bilangan saat ini) adalah bilangan genap dengan menggunakan operator modulo (%%). Jika ya, kita menambahkan bilangan tersebut ke even_sum.
+
+Penting untuk selalu memastikan bahwa kondisi dalam loop while pada suatu titik akan menjadi salah, sehingga loop akan berhenti dan program tidak terjebak dalam perulangan tak berakhir.
+
+
+## Interupsi Pengulangan
+
+Interupsi Pengulangan dalam bahasa pemrograman dilakukan dengan pernyataan `break` pada suatu fungsi. Biasanya digunakan untuk melewati/menghentikan iterasi dan mengalirkan perintah pengulangan seperti (for, while, repeat). Meskipun, ini tidak umum digunakan dalam aplikasi statistik atau analisis data tetapi mereka memiliki peran penting dalam proses penyederhanaan program atau algoritma. 
+
+
+```{r break,echo=FALSE, fig.cap='Struktur Kontrol break', tidy=FALSE, out.width='100%', fig.align='center'}
+library(knitr)
+img1_path <- "./images/Bab6/break.jpg"
+include_graphics(img1_path)
+```
+
+
+```
+if (Test Kondisi) {
+break
+}
+```
+
+Andaikan kita ingin melakukan pengulangan suatu nilai pada vektor x, yang memiliki angka berurutan dari 1 hingga 5. Di dalam pengulangan `for`, kita telah menggunakan kondisi `if` untuk memutuskan pengulangan pada saat ditemukan nilai sama dengan 3. Dalam hal ini, loop akan berakhir ketika sesat pernyataan break terpenuhi. 
+
+
+```{r}
+x <- 1:100
+for (val in x) {
+if (val == 50){
+break
+}
+print(val)
+}
+```
+
+
+## Pengulangan Berkala
+
+Kondisi perulangan yang digunakan adalah `repeat` untuk mengulangi perintah beberapa kali. Tidak ada pemeriksaan kondisi di loop untuk keluar dalam fungsi pengulangan ini. Kita sendiri harus menempatkan kondisi secara eksplisit di dalam tubuh loop. 
+
+
+```{r repeat,echo=FALSE, fig.cap='Struktur Kontrol repeat', tidy=FALSE, out.width='100%', fig.align='center'}
+library(knitr)
+img1_path <- "./images/Bab6/repeat.jpg"
+include_graphics(img1_path)
+```
+
+
+Adapun sintak yang digunakan untuk melakukan pengulangan dengan repeat adalah sebgai berikut:
+
+```
+repeat {
+lakukan sesuatu
+}
+```
+
+Mari kita gunakan kondisi ini untuk memeriksa dan keluar dari loop ketika $x$ mengambil nilai 6. Oleh karena itu, kita melihat dalam output bahwa hanya ada nilai dari 1 hingga 5 yang akan dicetak. 
+
+```{r}
+x <- 1
+repeat {
+  print(x)
+    x = x+1
+  if (x == 6){
+  break
+  }
+}
+```
+
+
+## Skip Iterasi Pengulangan
+
+Penyataan skip iterasi digunakan untuk melewati sisa kode di dalam satu lingkaran untuk iterasi saat ini saja. Artinya, tidak seperti pernyataan break, pengulangan tidak berhenti tetapi terus berlanjut dengan iterasi berikutnya. 
+
+
+```{r next,echo=FALSE, fig.cap='Struktur Kontrol next', tidy=FALSE, out.width='100%', fig.align='center'}
+library(knitr)
+img1_path <- "./images/Bab6/next.jpg"
+include_graphics(img1_path)
+```
+
+
+```
+for pengulangan {
+  if (kondisi){
+  next
+  }
+  print(val)
+}
+```
+
+Gunakan pernyataan `next`,  misalnya untuk memeriksa apakah nilainya sama dengan 5. Jika nilainya sama dengan 5, evaluasi saat ini berhenti (nilai tidak dicetak) tetapi perulangan berlanjut dengan iterasi berikutnya. 
+
+
+```{r}
+x <- 1:11
+ for (val in x) {
+ if (val == 5){
+ next
+ }
+print(val)
+}
+```
+
+## Latihan 
+
+1. Pernyataan Kondisional (if-else):
+Buatlah sebuah program yang memeriksa apakah suatu bilangan adalah positif, negatif, atau nol, dan mencetak pesan yang sesuai.
+
+2. Pengulangan (for):
+Hitunglah jumlah dari semua bilangan bulat genap antara 1 dan 50 menggunakan loop for.
+
+3. Pengulangan (while):
+Buatlah program yang meminta pengguna untuk menebak suatu angka acak antara 1 dan 100. Berikan petunjuk apakah angka yang ditebak terlalu besar atau terlalu kecil, dan berhenti ketika pengguna berhasil menebak angka tersebut.
+
+4. Pernyataan Switch:
+Buatlah program yang mengonversi nama hari dalam bahasa Inggris menjadi nama hari dalam bahasa Indonesia menggunakan pernyataan switch.
+
+5. Pengulangan dan Pernyataan Kondisional Gabungan:
+Hitunglah jumlah bilangan bulat positif yang dapat dibagi habis oleh 3 atau 5 di antara 1 dan 1000, lalu cetak hasilnya.
+
+6. Nested Loop:
+Buatlah pola segitiga angka seperti berikut menggunakan nested loop:
+
+```
+1
+12
+123
+1234
+12345
+```
+
+7. Penggunaan break:
+Buatlah sebuah program yang mencari bilangan prima pertama yang lebih dari 100.
+
+8. Fungsi Rekursif:
+Buatlah fungsi rekursif untuk menghitung bilangan Fibonacci ke-n.
+
+**Catatan:** Kumpulkan hasil latihan anda, tidak boleh sama dengan teman mahasiwa lainnya.
+
+
