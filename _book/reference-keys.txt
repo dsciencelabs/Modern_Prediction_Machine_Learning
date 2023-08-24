@@ -87,3 +87,17 @@ pengulangan-berkala
 skip-iterasi-pengulangan
 latihan-4
 referensi
+pengumpulan-data
+imporekspor-csv
+cara-1
+cara-2
+cara-3
+imporekspor-excel
+imporekspor-txt-and-rds
+imporekspor-xml
+imporekspor-json
+impor-data-dari-web
+csv
+xlsx
+basis-data-r
+menambang-data-web

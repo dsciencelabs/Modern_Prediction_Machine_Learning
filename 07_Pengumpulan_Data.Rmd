@@ -4,7 +4,7 @@ Terhubung dengan data adalah hal paling mendasar dalam preses olah data (Data Sc
 
 ```{r if-else,echo=FALSE, fig.cap='Pengumpulan Data', tidy=FALSE, out.width='100%', fig.align='center'}
 library(knitr)
-img1_path <- "./images/Bab7/antarmuka_data.png"
+img1_path <- "./images/Bab7/Pegumpulan_Data.png"
 include_graphics(img1_path)
 ```
 
@@ -183,5 +183,5 @@ Catatan: Kita akan mempelajari bagian ini di bagian khusus yang disebut “Siste
 
 Pengikisan data dari web (Webscraping Data) adalah proses menggunakan bot untuk mengekstrak konten dan data dari situs web. Tidak seperti screen scraping, yang hanya menyalin piksel yang ditampilkan di layar, web scraping mengekstrak kode HTML yang mendasarinya yang pada dasarnya disimpan dalam database. Pengikisan data ini dapat mereplikasi seluruh konten dari berbagai situs web yang target.
 
-Catatan: Kita akan mempelajari bagian ini di bagian khusus yang disebut "Ilmu Data Terapan". 
+**Catatan:** Kita akan mempelajari bagian ini di bagian khusus yang disebut "Ilmu Data Terapan". 
 
