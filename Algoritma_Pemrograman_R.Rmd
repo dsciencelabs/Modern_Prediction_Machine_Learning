@@ -1,3 +1,160 @@
+--- 
+title: "Algoritma dan Pemrograman R"
+author: "Bakti Siregar, M.Sc"
+date: "20 Agustus 2022" # date: "`r Sys.Date()`"
+site: bookdown::bookdown_site
+documentclass: book
+bibliography: [book.bib, packages.bib]
+biblio-style: apalike
+link-citations: yes
+github-repo: dsciencelabs/Algoritma_Pemrograman_R
+description: "Algoritma dan Pemrograman R akan mencakup konsep-konsep dasar dalam pemrograman, pemahaman algoritma, serta pengenalan terhadap bahasa pemrograman R."
+tags: [algoritma, pemrograman, r-programming]
+cover-image: images/Cover_Algoritma_Permrograman.png
+---
+
+# Kata Pengantar{-}
+
+Placeholder
+
+
+## Ringkasan Pembelajaran {-}
+## Tim Penyusun {-}
+## Ucapan Terima Kasih{-}
+## Masukan & Saran {-}
+
+<!--chapter:end:index.Rmd-->
+
+
+# Pengenalan R?
+
+Placeholder
+
+
+## Fitur Utama R
+## Mengapa Belajar R?
+## Download R & Rstudio:
+## Tutorial Instal R & Studio
+### Instalasi R
+#### Windows {-}
+#### MacOS {-}
+#### Linux {-}
+### Instalasi RStudio:
+## Video Instalasi R & RStudio 
+### Windows
+### MacOS
+## Interface R & RStudio:
+## Sintaks Dasar R 
+## Bantuan (Help) R 
+## Shortcut Penggunaan Rstudio
+## Praktikum 
+
+<!--chapter:end:01_Pengenalan_R.Rmd-->
+
+
+# Operasi Dasar R
+
+Placeholder
+
+
+## Variabel 
+### Mendefinisikan Variabel
+### Aturan Nama Variabel
+## Operator
+### Aritmatika 
+### Relasional 
+### Logika
+### Operator Lain-lain 
+## Tipe Data 
+## Statistika Dasar
+## Contoh Pemrograman Dasar
+### Menghitung Rata-rata
+### Membandingkan Angka
+### Membandingkan Karakter
+### Mengecek Kondisi Gabungan
+### Penggunaan Operator Logika
+### Pemeriksaan Kondisi dengan ifelse()
+## Latihan 
+
+<!--chapter:end:02_Operasi_Dasar_R.Rmd-->
+
+
+# Struktur Data
+
+Placeholder
+
+
+## Vektor
+## Matriks
+## Array
+## Faktor
+## Data Frame
+## Lists
+## Rekayasa Data Frame 
+### Tanpa Packages
+### Mengunakan Packages
+## Latihan
+
+<!--chapter:end:03_Struktur_Data.Rmd-->
+
+
+# Ekstraksi Data
+
+Placeholder
+
+
+## Impor Dataset
+## Ekstraksi Baris
+## Ekstraksi Subset
+## Ekstraksi Dengan Variabel Baru
+## Ekstraksi Summary Statistik
+## Mengubah Nama
+## Latihan 
+
+<!--chapter:end:04_Ekstraksi_Data.Rmd-->
+
+
+# Fungsi dalam R 
+
+Placeholder
+
+
+## Fungsi Satu Argumen 
+### Fungsi Kuadrat 
+### Fungsi Akar 
+### Nilai Rerata 
+### Konversi Persen
+## Simpan Fungsi
+## Fungsi Multi Argumen
+### Luas & Keliling
+### Luas, Keliling dan Volume 
+### Rerata Frekuensi 
+## Fungsi untuk Data Frame
+### Normalisasi
+## Latihan
+
+<!--chapter:end:05_Fungsi.Rmd-->
+
+
+# Struktur Kontrol
+
+Placeholder
+
+
+## Pengambilan Keputusan 
+### Sintaks `if, else-if`, dan `else` 
+### Program Penilaian 
+### Program Hitung Faktorial
+## Pengulangan Rekursif
+### Sintaks `for` 
+### Sintaks `while` 
+## Interupsi Pengulangan
+## Pengulangan Berkala
+## Skip Iterasi Pengulangan
+## Latihan 
+
+<!--chapter:end:06_Struktur_Kontrol.Rmd-->
+
 # Pengumpulan Data
 
 Terhubung dengan data adalah hal paling mendasar dalam preses olah data (Data Science). Pada bagian ini akan dibahas bagaimana proses antarmuka data yang paling sederhana dengan menggunakan R. Secara garis besar R dapat membaca data dari file yang disimpan di dalam maupun luar direktorinya. Selain itu, sistem operasi R juga dapat menyimpan dan membaca data dalam berbagai format file seperti csv, excel, txt, rds, xml, json, dll.
@@ -181,4 +338,23 @@ Catatan: Kita akan mempelajari bagian ini di bagian khusus yang disebut “Siste
 Pengikisan data dari web (Webscraping Data) adalah proses menggunakan bot untuk mengekstrak konten dan data dari situs web. Tidak seperti screen scraping, yang hanya menyalin piksel yang ditampilkan di layar, web scraping mengekstrak kode HTML yang mendasarinya yang pada dasarnya disimpan dalam database. Pengikisan data ini dapat mereplikasi seluruh konten dari berbagai situs web yang target.
 
 Catatan: Kita akan mempelajari bagian ini di bagian khusus yang disebut "Ilmu Data Terapan". 
+
+
+<!--chapter:end:07_Pengumpulan_Data.Rmd-->
+
+# Referensi
+
+Berikut adalah beberapa referensi yang dapat Anda gunakan untuk mempelajari dasar-dasar pemrograman dalam bahasa R:
+
+1.    Venables, W.N. Smith D.M. and R Core Team. 2018. **An Introduction to R**: https://cran.r-project.org/manuals.html 
+2.    R for Data Science: https://r4ds.had.co.nz/
+3.    Codecademy - Learn R : https://www.codecademy.com/learn/learn-r
+4.    DataCamp: https://www.datacamp.com/courses/tech:r
+5.    Primartha, R. 2018. **Belajar Machine Learning Teori dan Praktik**. Penerbit Informatika : Bandung
+6.    Rosadi,D. 2016. **Analisis Statistika dengan R**. Gadjah Mada University Press: Yogyakarta
+7.    STHDA. Running RStudio and Setting Up Your Working Directory - Easy R Programming .<http://www.sthda.com/english/wiki/running-rstudio-and-setting-up-your-working-directory-easy-r-programming#set-your-working-directory>
+8.    STDHA. **Getting Help With Functions In R Programming**. <http://www.sthda.com/english/wiki/getting-help-with-functions-in-r-programming> .
+  
+
+<!--chapter:end:Referensi.Rmd-->
 
