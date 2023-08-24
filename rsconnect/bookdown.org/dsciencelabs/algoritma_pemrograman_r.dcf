@@ -5,10 +5,10 @@ account: dsciencelabs
 server: bookdown.org
 hostUrl: https://bookdown.org/__api__
 appId: 12764
-bundleId: 87708
+bundleId: 87709
 url: https://bookdown.org/dsciencelabs/algoritma_pemrograman_r/
-when: 1692870507.52549
-lastSyncTime: 1692870507.5255
+when: 1692870826.95782
+lastSyncTime: 1692870826.95783
 asMultiple: FALSE
 asStatic: FALSE
-ignoredFiles: _bookdown.yml|_output.yml|01_Pengenalan_R.Rmd|02_Operasi_Dasar_R.Rmd|03_Struktur_Data.Rmd|04_Ekstraksi_Data.Rmd|05_Fungsi.Rmd|06_Struktur_Kontrol.Rmd|07_Interface_Data.Rmd|08_Manipulasi_Data.Rmd|09_Eksplorasi_Data.Rmd|book.bib|customBlocks.toc|desktop.ini|EnvStat.aux|index.Rmd|LICENSE|packages.bib|persen.R|preamble.tex|README.md|Referensi.Rmd|style.css|_bookdown_files|Data|images
+ignoredFiles: _bookdown.yml|_output.yml|01_Pengenalan_R.Rmd|02_Operasi_Dasar_R.Rmd|03_Struktur_Data.Rmd|04_Ekstraksi_Data.Rmd|05_Fungsi.Rmd|06_Struktur_Kontrol.Rmd|07_Interface_Data.Rmd|08_Manipulasi_Data.Rmd|09_Eksplorasi_Data.Rmd|book.bib|customBlocks.toc|desktop.ini|EnvStat.aux|index.Rmd|LICENSE|packages.bib|persen.R|preamble.tex|README.md|Referensi.Rmd|style.css

@@ -54,7 +54,16 @@ Dalam buku ini, penulis menyediakan materi dasar-dasar bahasa pemrograman R hing
 
 Adapun isi pembelajaran dalam modul ini adalah sebagai berikut:
 
-* 
+* Pengenalan R
+* Operasi Dasar R
+* Struktur Data 
+* Ekstraksi Data
+* Fungsi
+* Struktur Kontrol
+* Interface Data
+* Manipulasi Data
+* Eksplorasi Data & Analisis
+
 
 Siswa diminta untuk membuat proyek kecil menggunakan R yang menggabungkan konsep-konsep yang telah dipelajari. Proyek dapat berupa analisis data, pemecahan masalah, atau aplikasi sederhana.
 
