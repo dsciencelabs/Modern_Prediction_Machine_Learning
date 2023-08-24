@@ -30,7 +30,7 @@
   
   
 <link rel="prev" href="fungsi-dalam-r.html"/>
-<link rel="next" href="referensi.html"/>
+<link rel="next" href="interface-data.html"/>
 <script src="libs/jquery/jquery-3.6.0.min.js"></script>
 <script src="https://cdn.jsdelivr.net/npm/fuse.js@6.4.6/dist/fuse.min.js"></script>
 <link href="libs/gitbook/css/style.css" rel="stylesheet" />
@@ -259,7 +259,28 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
 <li class="chapter" data-level="6.5" data-path="struktur-kontrol.html"><a href="struktur-kontrol.html#skip-iterasi-pengulangan"><i class="fa fa-check"></i><b>6.5</b> Skip Iterasi Pengulangan</a></li>
 <li class="chapter" data-level="6.6" data-path="struktur-kontrol.html"><a href="struktur-kontrol.html#latihan-4"><i class="fa fa-check"></i><b>6.6</b> Latihan</a></li>
 </ul></li>
-<li class="chapter" data-level="7" data-path="referensi.html"><a href="referensi.html"><i class="fa fa-check"></i><b>7</b> Referensi</a></li>
+<li class="chapter" data-level="7" data-path="interface-data.html"><a href="interface-data.html"><i class="fa fa-check"></i><b>7</b> Interface Data</a>
+<ul>
+<li class="chapter" data-level="7.1" data-path="interface-data.html"><a href="interface-data.html#imporekspor-csv"><i class="fa fa-check"></i><b>7.1</b> Impor/Ekspor CSV</a>
+<ul>
+<li class="chapter" data-level="7.1.1" data-path="interface-data.html"><a href="interface-data.html#cara-1"><i class="fa fa-check"></i><b>7.1.1</b> Cara 1</a></li>
+<li class="chapter" data-level="7.1.2" data-path="interface-data.html"><a href="interface-data.html#cara-2"><i class="fa fa-check"></i><b>7.1.2</b> Cara 2</a></li>
+<li class="chapter" data-level="7.1.3" data-path="interface-data.html"><a href="interface-data.html#cara-3"><i class="fa fa-check"></i><b>7.1.3</b> Cara 3</a></li>
+</ul></li>
+<li class="chapter" data-level="7.2" data-path="interface-data.html"><a href="interface-data.html#imporekspor-excel"><i class="fa fa-check"></i><b>7.2</b> Impor/Ekspor Excel</a></li>
+<li class="chapter" data-level="7.3" data-path="interface-data.html"><a href="interface-data.html#imporekspor-txt-and-rds"><i class="fa fa-check"></i><b>7.3</b> Impor/Ekspor TXT and RDS</a></li>
+<li class="chapter" data-level="7.4" data-path="interface-data.html"><a href="interface-data.html#imporekspor-xml"><i class="fa fa-check"></i><b>7.4</b> Impor/Ekspor XML</a></li>
+<li class="chapter" data-level="7.5" data-path="interface-data.html"><a href="interface-data.html#imporekspor-json"><i class="fa fa-check"></i><b>7.5</b> Impor/Ekspor JSON</a></li>
+<li class="chapter" data-level="7.6" data-path="interface-data.html"><a href="interface-data.html#impor-data-dari-web"><i class="fa fa-check"></i><b>7.6</b> Impor Data dari Web</a>
+<ul>
+<li class="chapter" data-level="7.6.1" data-path="interface-data.html"><a href="interface-data.html#csv"><i class="fa fa-check"></i><b>7.6.1</b> CSV:</a></li>
+<li class="chapter" data-level="7.6.2" data-path="interface-data.html"><a href="interface-data.html#xlsx"><i class="fa fa-check"></i><b>7.6.2</b> XLSX:</a></li>
+</ul></li>
+<li class="chapter" data-level="7.7" data-path="interface-data.html"><a href="interface-data.html#basis-data-r"><i class="fa fa-check"></i><b>7.7</b> Basis Data R</a></li>
+<li class="chapter" data-level="7.8" data-path="interface-data.html"><a href="interface-data.html#menambang-data-web"><i class="fa fa-check"></i><b>7.8</b> Menambang Data Web</a></li>
+<li class="chapter" data-level="7.9" data-path="interface-data.html"><a href="interface-data.html#latihan-5"><i class="fa fa-check"></i><b>7.9</b> Latihan</a></li>
+</ul></li>
+<li class="chapter" data-level="8" data-path="referensi.html"><a href="referensi.html"><i class="fa fa-check"></i><b>8</b> Referensi</a></li>
 <li class="divider"></li>
 <li><a href="https://github.com/rstudio/bookdown" target="blank">Published with bookdown</a></li>
 
@@ -388,18 +409,17 @@ Gambar 6.2: Struktur Kontrol for
 ## [1] 10
 ## [1] 11</code></pre>
 <p>Selain dapat digunakan pada data numerik, pengulangan for ini dapat juga diterapkan pada data karakter sebagai berikut:</p>
-<div class="sourceCode" id="cb125"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb125-1"><a href="struktur-kontrol.html#cb125-1" tabindex="-1"></a>mapel <span class="ot">=</span> <span class="fu">c</span>(<span class="st">&#39;Data Science&#39;</span>, <span class="st">&#39;Statistika&#39;</span>, <span class="st">&#39;Fisika&#39;</span>,<span class="st">&#39;Algoritma dan Struktur Data&#39;</span>)</span>
+<div class="sourceCode" id="cb125"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb125-1"><a href="struktur-kontrol.html#cb125-1" tabindex="-1"></a>mapel <span class="ot">=</span> <span class="fu">c</span>(<span class="st">&#39;Data Science&#39;</span>, <span class="st">&#39;Statistika&#39;</span>,<span class="st">&#39;Algoritma dan Pemrograman&#39;</span>)</span>
 <span id="cb125-2"><a href="struktur-kontrol.html#cb125-2" tabindex="-1"></a></span>
 <span id="cb125-3"><a href="struktur-kontrol.html#cb125-3" tabindex="-1"></a><span class="cf">for</span> (i <span class="cf">in</span> mapel){</span>
 <span id="cb125-4"><a href="struktur-kontrol.html#cb125-4" tabindex="-1"></a>   <span class="fu">print</span>(<span class="fu">paste0</span>(<span class="st">&quot;Saya suka: &quot;</span>, i))</span>
 <span id="cb125-5"><a href="struktur-kontrol.html#cb125-5" tabindex="-1"></a>}</span></code></pre></div>
 <pre><code>## [1] &quot;Saya suka: Data Science&quot;
 ## [1] &quot;Saya suka: Statistika&quot;
-## [1] &quot;Saya suka: Fisika&quot;
-## [1] &quot;Saya suka: Algoritma dan Struktur Data&quot;</code></pre>
+## [1] &quot;Saya suka: Algoritma dan Pemrograman&quot;</code></pre>
 <p>Selain itu, anda juga dapat melakukan pengulangan bersarang untuk siklus tertentu. Sintaksnya direpresentasikan sebagai berikut:</p>
 <div class="sourceCode" id="cb127"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb127-1"><a href="struktur-kontrol.html#cb127-1" tabindex="-1"></a>nama <span class="ot">=</span> <span class="fu">c</span>(<span class="st">&quot;Bakti: &quot;</span>, <span class="st">&quot;Alexander: &quot;</span>, <span class="st">&quot;Siregar: &quot;</span>)</span>
-<span id="cb127-2"><a href="struktur-kontrol.html#cb127-2" tabindex="-1"></a>mapel <span class="ot">=</span> <span class="fu">c</span>(<span class="st">&#39;Data Science&#39;</span>, <span class="st">&#39;Statistika&#39;</span>,<span class="st">&#39;Algoritma dan Struktur Data&#39;</span>)</span>
+<span id="cb127-2"><a href="struktur-kontrol.html#cb127-2" tabindex="-1"></a>mapel <span class="ot">=</span> <span class="fu">c</span>(<span class="st">&#39;Data Science&#39;</span>, <span class="st">&#39;Statistika&#39;</span>,<span class="st">&#39;Algoritma dan Pemrograman&#39;</span>)</span>
 <span id="cb127-3"><a href="struktur-kontrol.html#cb127-3" tabindex="-1"></a></span>
 <span id="cb127-4"><a href="struktur-kontrol.html#cb127-4" tabindex="-1"></a><span class="cf">for</span> (x <span class="cf">in</span> nama)</span>
 <span id="cb127-5"><a href="struktur-kontrol.html#cb127-5" tabindex="-1"></a>  <span class="cf">for</span> (y <span class="cf">in</span> mapel){</span>
@@ -407,13 +427,13 @@ Gambar 6.2: Struktur Kontrol for
 <span id="cb127-7"><a href="struktur-kontrol.html#cb127-7" tabindex="-1"></a>  }</span></code></pre></div>
 <pre><code>## [1] &quot;Bakti: Data Science&quot;
 ## [1] &quot;Bakti: Statistika&quot;
-## [1] &quot;Bakti: Algoritma dan Struktur Data&quot;
+## [1] &quot;Bakti: Algoritma dan Pemrograman&quot;
 ## [1] &quot;Alexander: Data Science&quot;
 ## [1] &quot;Alexander: Statistika&quot;
-## [1] &quot;Alexander: Algoritma dan Struktur Data&quot;
+## [1] &quot;Alexander: Algoritma dan Pemrograman&quot;
 ## [1] &quot;Siregar: Data Science&quot;
 ## [1] &quot;Siregar: Statistika&quot;
-## [1] &quot;Siregar: Algoritma dan Struktur Data&quot;</code></pre>
+## [1] &quot;Siregar: Algoritma dan Pemrograman&quot;</code></pre>
 </div>
 <div id="sintaks-while" class="section level3 hasAnchor" number="6.2.2">
 <h3><span class="header-section-number">6.2.2</span> Sintaks <code>while</code><a href="struktur-kontrol.html#sintaks-while" class="anchor-section" aria-label="Anchor link to header"></a></h3>
@@ -628,7 +648,7 @@ Buatlah fungsi rekursif untuk menghitung bilangan Fibonacci ke-n.</p></li>
         </div>
       </div>
 <a href="fungsi-dalam-r.html" class="navigation navigation-prev " aria-label="Previous page"><i class="fa fa-angle-left"></i></a>
-<a href="referensi.html" class="navigation navigation-next " aria-label="Next page"><i class="fa fa-angle-right"></i></a>
+<a href="interface-data.html" class="navigation navigation-next " aria-label="Next page"><i class="fa fa-angle-right"></i></a>
     </div>
   </div>
 <script src="libs/gitbook/js/app.min.js"></script>

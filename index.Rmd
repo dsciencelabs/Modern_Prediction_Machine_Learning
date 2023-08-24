@@ -54,35 +54,8 @@ Dalam buku ini, penulis menyediakan materi dasar-dasar bahasa pemrograman R hing
 
 Adapun isi pembelajaran dalam modul ini adalah sebagai berikut:
 
-* **Minggu 1-2: Dasar Pemrograman R**
-  * Pengenalan konsep dasar pemrograman.
-  * Pengenalan lingkungan dan pengaturan awal bahasa R.
-  * Menulis program sederhana dalam R.
-* **Minggu 3-4: Variabel dan Tipe Data**
-  * Mengenal tipe data dasar dalam R: numerik, karakter, logika.
-  * Deklarasi dan penggunaan variabel.
-  * Konversi antar tipe data.
-* **Minggu 5-6: Struktur Kontrol**
-  * Penggunaan pernyataan kondisional (if, else).
-  * Penggunaan perulangan (for, while) untuk mengatur alur program.
-  * Studi kasus penggunaan struktur kontrol dalam pemrograman.
-* **Minggu 7-8: Fungsi**
-  * Pengenalan konsep fungsi dalam pemrograman.
-  * Membuat dan memanggil fungsi dalam R.
-  * Penggunaan parameter dalam fungsi.
-* **Minggu 9-10: Struktur Data**
-  * Pengenalan array dan matriks dalam R.
-  * Penggunaan vektor dan faktor.
-  * Pengenalan konsep dataframe untuk manipulasi data tabular.
-* **Minggu 11-12: Algoritma Dasar**
-  * Pengenalan konsep algoritma dan kompleksitas.
-  * Pemahaman tentang pencarian dan pengurutan.
-  * Implementasi algoritma pencarian dan pengurutan sederhana dalam R.
-* **Minggu 13-14: Pengenalan Analisis Data**
-  * Pengenalan pustaka dasar untuk analisis data di R.
-  * Pemahaman tentang statistik dasar dan visualisasi data.
-  * Penerapan analisis sederhana pada dataset kecil.
-* **Minggu 15-16: Proyek Akhir**
+* 
+
 Siswa diminta untuk membuat proyek kecil menggunakan R yang menggabungkan konsep-konsep yang telah dipelajari. Proyek dapat berupa analisis data, pemecahan masalah, atau aplikasi sederhana.
 
 
@@ -91,13 +64,18 @@ Siswa diminta untuk membuat proyek kecil menggunakan R yang menggabungkan konsep
 Berikut ini adalah nama dan biografi singkat para penulis:
 
 
-<img src = "https://github.com/dsciencelabs/images/blob/master/Penulis/Bakti.jpg?raw=true" width = "150" height = "150" style = "float:right; margin-left: 10px; margin-top: 7px" />
+<img src = "https://github.com/dsciencelabs/Algoritma_Pemrograman_R/blob/main/images/Penulis/Bakti.jpg?raw=true" width = "150" height = "150" style = "float:right; margin-left: 10px; margin-top: 7px" />
 
 - **Bakti Siregar, M.Sc** adalah Ketua Program Studi di Jurusan Statistika Universitas Matana. Lulusan Magister Matematika Terapan dari National Sun Yat Sen University, Taiwan. Beliau juga merupakan dosen dan konsultan Data Scientist di perusahaan-perusahaan ternama seperti [JNE](https://www.jne.co.id/id/beranda), [Samora Group](https://www.samoragroup.co.id/home/en), [Pertamina](https://www.pertamina.com/), dan lainnya. Beliau memiliki antusiasme khusus dalam mengajar Big Data Analytics, Machine Learning, Optimisasi, dan Analisis Time Series di bidang keuangan dan investasi. Keahliannya juga terlihat dalam penggunaan bahasa pemrograman Statistik seperti R Studio dan Python. Beliau mengaplikasikan sistem basis data MySQL/NoSQL dalam pembelajaran manajemen data, serta mahir dalam menggunakan tools Big Data seperti Spark dan Hadoop. Beberapa project beliau dapat dilihat di link berikut: [Rpubs](https://rpubs.com/dsciencelabs), [Github](https://github.com/dsciencelabs), [Website](https://dsciencelabs.github.io/web/index.html), dan [Kaggle](https://www.kaggle.com/baktisiregar/code). 
 
-<img src = "https://github.com/dsciencelabs/images/blob/master/Penulis/Yonathan.jpg?raw=true" width = "150" height = "150" style = "float:right; margin-left: 10px; margin-top: 7px" />
+<img src = "https://github.com/dsciencelabs/Algoritma_Pemrograman_R/blob/main/images/Penulis/Yonathan.jpg?raw=true" width = "140" height = "160" style = "float:right; margin-left: 10px; margin-top: 7px" />
 
-- **Yonathan Anggraiwan, S.Stat** adalah seorang mahasiswa yang bersemangat dalam dunia pemrograman dan analisis data. Lahir di Tangerang, minatnya terhadap teknologi dan komputer muncul sejak usia dini. Ia tumbuh dengan rasa ingin tahu yang kuat terhadap bahasa pemrograman, dan ini membawanya menuju dunia analisis data menggunakan bahasa pemrograman R dan Python. Selama menjalankan tugas sebagai asisten lab, Yonathan Anggraiwan berperan dalam membantu mahasiswa dalam memahami konsep-konsep dasar dan kompleks dalam pemrograman R dan Python. Ia memberikan penjelasan yang jelas dan dukungan kepada mahasiswa yang mengalami kesulitan. Selain itu, ia juga terlibat dalam merancang tugas dan ujian praktikum, serta memberikan umpan balik konstruktif kepada para mahasiswa. Dalam perjalanan waktu, Yonathan Anggraiwan mulai mengambil tanggung jawab lebih besar dalam laboratorium. Ia membantu mengembangkan materi pembelajaran tambahan, seperti tutorial online tentang analisis data menggunakan R dan Python. Ia juga aktif dalam berbagai proyek penelitian di bawah bimbingan dosen, yang melibatkan pengolahan data besar untuk analisis statistik dan visualisasi. Dengan semangat yang tinggi, dedikasi, dan keterampilan yang dimilikinya, Yonathan Anggraiwan Ridwan adalah contoh nyata dari seorang mahasiswa yang berhasil menggabungkan minatnya dalam pemrograman R dan Python dengan peran yang produktif sebagai asisten laboratorium dan kontributor dalam dunia analisis data.
+- **Trisha Magdalena Adelheid Januaviani, M.Mat** adalah soerang dosen yang sekaligus menjabad sebagai Sekerataris Program Studi Statistika di Universitas Matana. Sebagai lulusan Magister Matematika dari Universitas Padjadjaran, Beliau telah mengembangkan kompetensi terbaiknya dalam Pengajaran, Penelitian dan Pengabdian Kepada Masyarakat. Penelitiannya difokuskan pada matematika keuangan dan sains data, dua bidang yang penting dalam kehidupan saat ini. Beliau mampu memberikan wawasan berharga tentang penerapan konsep matematika dalam konteks keuangan. Kemampuannya dalam ilmu data juga memungkinkannya menganalisis dan menginterpretasi data dengan cermat untuk pengambilan keputusan yang lebih baik. 
+
+
+<img src = "https://github.com/dsciencelabs/Algoritma_Pemrograman_R/blob/main/images/Penulis/Yonathan.jpg?raw=true" width = "150" height = "150" style = "float:right; margin-left: 10px; margin-top: 7px" />
+
+- **Yonathan Anggraiwan, S.Stat** adalah seorang alumni Statistika yang bersemangat dalam dunia pemrograman dan analisis data. Lahir di Tangerang, minatnya terhadap teknologi dan komputer muncul sejak usia dini. Ia tumbuh dengan rasa ingin tahu yang kuat terhadap bahasa pemrograman, dan ini membawanya menuju dunia analisis data menggunakan bahasa pemrograman R dan Python. Selama menjalankan tugas sebagai asisten lab, Yonathan Anggraiwan berperan dalam membantu mahasiswa dalam memahami konsep-konsep dasar dan kompleks dalam pemrograman R dan Python. Ia memberikan penjelasan yang jelas dan dukungan kepada mahasiswa yang mengalami kesulitan. Selain itu, ia juga terlibat dalam merancang tugas dan ujian praktikum, serta memberikan umpan balik konstruktif kepada para mahasiswa. Dalam perjalanan waktu, Yonathan Anggraiwan mulai mengambil tanggung jawab lebih besar dalam laboratorium. Ia membantu mengembangkan materi pembelajaran tambahan, seperti tutorial online tentang analisis data menggunakan R dan Python. Ia juga aktif dalam berbagai proyek penelitian di bawah bimbingan dosen, yang melibatkan pengolahan data besar untuk analisis statistik dan visualisasi. Dengan semangat yang tinggi, dedikasi, dan keterampilan yang dimilikinya, Yonathan Anggraiwan adalah contoh nyata dari seorang mahasiswa yang berhasil menggabungkan minatnya dalam pemrograman R dan Python dengan peran yang produktif sebagai asisten laboratorium dan kontributor dalam dunia analisis data.
 
 
 ## Ucapan Terima Kasih{-}

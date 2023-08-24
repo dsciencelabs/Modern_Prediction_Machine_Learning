@@ -2,7 +2,7 @@
 
 Terhubung dengan data adalah hal paling mendasar dalam preses olah data (Data Science). Pada bagian ini akan dibahas bagaimana proses antarmuka data yang paling sederhana dengan menggunakan R. Secara garis besar R dapat membaca data dari file yang disimpan di dalam maupun luar direktorinya. Selain itu, sistem operasi R juga dapat menyimpan dan membaca data dalam berbagai format file seperti csv, excel, txt, rds, xml, json, dll.
 
-```{r if-else,echo=FALSE, fig.cap='Pengumpulan Data', tidy=FALSE, out.width='100%', fig.align='center'}
+```{r interface,echo=FALSE, fig.cap='Interface Data', tidy=FALSE, out.width='100%', fig.align='center'}
 library(knitr)
 img1_path <- "./images/Bab7/Interface_Data.png"
 include_graphics(img1_path)
@@ -198,6 +198,15 @@ Sistem basis data adalah data relasional yang disimpan dalam format yang dinorma
 Pengikisan data dari web (Webscraping Data) adalah proses menggunakan bot untuk mengekstrak konten dan data dari situs web. Tidak seperti screen scraping, yang hanya menyalin piksel yang ditampilkan di layar, web scraping mengekstrak kode HTML yang mendasarinya yang pada dasarnya disimpan dalam database. Pengikisan data ini dapat mereplikasi seluruh konten dari berbagai situs web yang target.
 
 **Catatan:** Kita akan mempelajari bagian ini di bagian khusus yang disebut "Ilmu Data Terapan". 
+
+
+## Latihan 
+
+Buatlah tutorial Baca dan Simpan data dengan mengikuti materi yang sudah dipelajari diatas. Lengkapi dengan Gambar dan penjelasan setiap prosesnya.
+
+**Catatan:** Kumpulkan hasil latihan anda, tidak boleh sama dengan teman mahasiwa lainnya.
+
+
 
 
 

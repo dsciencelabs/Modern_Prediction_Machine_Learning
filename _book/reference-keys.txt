@@ -7,6 +7,7 @@ fig:while
 fig:break
 fig:repeat
 fig:next
+fig:interface
 pengenalan-r
 fitur-utama-r
 mengapa-belajar-r
@@ -86,8 +87,7 @@ interupsi-pengulangan
 pengulangan-berkala
 skip-iterasi-pengulangan
 latihan-4
-referensi
-pengumpulan-data
+interface-data
 imporekspor-csv
 cara-1
 cara-2
@@ -101,4 +101,5 @@ csv
 xlsx
 basis-data-r
 menambang-data-web
-interface-data
+latihan-5
+referensi

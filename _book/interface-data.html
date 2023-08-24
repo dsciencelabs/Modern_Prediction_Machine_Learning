@@ -31,15 +31,15 @@
   
 <link rel="prev" href="struktur-kontrol.html"/>
 <link rel="next" href="referensi.html"/>
-<script src="libs/jquery-3.6.0/jquery-3.6.0.min.js"></script>
+<script src="libs/jquery/jquery-3.6.0.min.js"></script>
 <script src="https://cdn.jsdelivr.net/npm/fuse.js@6.4.6/dist/fuse.min.js"></script>
-<link href="libs/gitbook-2.6.7/css/style.css" rel="stylesheet" />
-<link href="libs/gitbook-2.6.7/css/plugin-table.css" rel="stylesheet" />
-<link href="libs/gitbook-2.6.7/css/plugin-bookdown.css" rel="stylesheet" />
-<link href="libs/gitbook-2.6.7/css/plugin-highlight.css" rel="stylesheet" />
-<link href="libs/gitbook-2.6.7/css/plugin-search.css" rel="stylesheet" />
-<link href="libs/gitbook-2.6.7/css/plugin-fontsettings.css" rel="stylesheet" />
-<link href="libs/gitbook-2.6.7/css/plugin-clipboard.css" rel="stylesheet" />
+<link href="libs/gitbook/css/style.css" rel="stylesheet" />
+<link href="libs/gitbook/css/plugin-table.css" rel="stylesheet" />
+<link href="libs/gitbook/css/plugin-bookdown.css" rel="stylesheet" />
+<link href="libs/gitbook/css/plugin-highlight.css" rel="stylesheet" />
+<link href="libs/gitbook/css/plugin-search.css" rel="stylesheet" />
+<link href="libs/gitbook/css/plugin-fontsettings.css" rel="stylesheet" />
+<link href="libs/gitbook/css/plugin-clipboard.css" rel="stylesheet" />
 
 
 
@@ -48,9 +48,9 @@
 
 
 
-<link href="libs/anchor-sections-1.1.0/anchor-sections.css" rel="stylesheet" />
-<link href="libs/anchor-sections-1.1.0/anchor-sections-hash.css" rel="stylesheet" />
-<script src="libs/anchor-sections-1.1.0/anchor-sections.js"></script>
+<link href="libs/anchor-sections/anchor-sections.css" rel="stylesheet" />
+<link href="libs/anchor-sections/anchor-sections-hash.css" rel="stylesheet" />
+<script src="libs/anchor-sections/anchor-sections.js"></script>
 
 
 <style type="text/css">
@@ -278,6 +278,7 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
 </ul></li>
 <li class="chapter" data-level="7.7" data-path="interface-data.html"><a href="interface-data.html#basis-data-r"><i class="fa fa-check"></i><b>7.7</b> Basis Data R</a></li>
 <li class="chapter" data-level="7.8" data-path="interface-data.html"><a href="interface-data.html#menambang-data-web"><i class="fa fa-check"></i><b>7.8</b> Menambang Data Web</a></li>
+<li class="chapter" data-level="7.9" data-path="interface-data.html"><a href="interface-data.html#latihan-5"><i class="fa fa-check"></i><b>7.9</b> Latihan</a></li>
 </ul></li>
 <li class="chapter" data-level="8" data-path="referensi.html"><a href="referensi.html"><i class="fa fa-check"></i><b>8</b> Referensi</a></li>
 <li class="divider"></li>
@@ -303,10 +304,10 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
 <div id="interface-data" class="section level1 hasAnchor" number="7">
 <h1><span class="header-section-number">Bab 7</span> Interface Data<a href="interface-data.html#interface-data" class="anchor-section" aria-label="Anchor link to header"></a></h1>
 <p>Terhubung dengan data adalah hal paling mendasar dalam preses olah data (Data Science). Pada bagian ini akan dibahas bagaimana proses antarmuka data yang paling sederhana dengan menggunakan R. Secara garis besar R dapat membaca data dari file yang disimpan di dalam maupun luar direktorinya. Selain itu, sistem operasi R juga dapat menyimpan dan membaca data dalam berbagai format file seperti csv, excel, txt, rds, xml, json, dll.</p>
-<div class="figure" style="text-align: center"><span style="display:block;" id="fig:if-else"></span>
-<img src="images/Bab7/Interface_Data.png" alt="Pengumpulan Data" width="100%" />
+<div class="figure" style="text-align: center"><span style="display:block;" id="fig:interface"></span>
+<img src="images/Bab7/Interface_Data.png" alt="Interface Data" width="100%" />
 <p class="caption">
-Gambar 7.1: Pengumpulan Data
+Gambar 7.1: Interface Data
 </p>
 </div>
 <p><strong>Catatan:</strong> Data yang digunakan dalam pembelajaran ini, dapat download pada link berikut!</p>
@@ -328,67 +329,67 @@ Gambar 7.1: Pengumpulan Data
 <div id="cara-1" class="section level3 hasAnchor" number="7.1.1">
 <h3><span class="header-section-number">7.1.1</span> Cara 1<a href="interface-data.html#cara-1" class="anchor-section" aria-label="Anchor link to header"></a></h3>
 <p>Pertama-tama pastikan direktori kerja anda dalam koneksi yang benar, periksalah dengan menggunakan fungsi <code>getwd()</code>. Kemudian, anda dapat mengatur direktori kerja baru menggunakan fungsi <code>setwd()</code>.</p>
-<div class="sourceCode" id="cb1"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb1-1"><a href="interface-data.html#cb1-1" tabindex="-1"></a><span class="fu">print</span>(<span class="fu">getwd</span>())                                   <span class="co"># cetak direktori kerja R</span></span>
-<span id="cb1-2"><a href="interface-data.html#cb1-2" tabindex="-1"></a><span class="fu">getwd</span>()                                          <span class="co"># cetak direktori kerja R</span></span>
-<span id="cb1-3"><a href="interface-data.html#cb1-3" tabindex="-1"></a><span class="co">#setwd(&quot;C:/Users/Bakti/Desktop/&quot;)                # atur direktori (ini contoh)</span></span>
-<span id="cb1-4"><a href="interface-data.html#cb1-4" tabindex="-1"></a><span class="co">#setwd(&quot;C:\\Users\\Bakti\\Desktop\\&quot;)            # atau dengan cara ini</span></span></code></pre></div>
+<div class="sourceCode" id="cb144"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb144-1"><a href="interface-data.html#cb144-1" tabindex="-1"></a><span class="fu">print</span>(<span class="fu">getwd</span>())                                   <span class="co"># cetak direktori kerja R</span></span>
+<span id="cb144-2"><a href="interface-data.html#cb144-2" tabindex="-1"></a><span class="fu">getwd</span>()                                          <span class="co"># cetak direktori kerja R</span></span>
+<span id="cb144-3"><a href="interface-data.html#cb144-3" tabindex="-1"></a><span class="co">#setwd(&quot;C:/Users/Bakti/Desktop/&quot;)                # atur direktori (ini contoh)</span></span>
+<span id="cb144-4"><a href="interface-data.html#cb144-4" tabindex="-1"></a><span class="co">#setwd(&quot;C:\\Users\\Bakti\\Desktop\\&quot;)            # atau dengan cara ini</span></span></code></pre></div>
 <p>Selanjutnya, proses impor data CSV dengan menggunakan fungsi <code>read.csv()</code>.</p>
-<div class="sourceCode" id="cb2"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb2-1"><a href="interface-data.html#cb2-1" tabindex="-1"></a><span class="fu">setwd</span>(<span class="fu">getwd</span>())                                    <span class="co"># setting direktori</span></span>
-<span id="cb2-2"><a href="interface-data.html#cb2-2" tabindex="-1"></a>df1 <span class="ot">&lt;-</span><span class="fu">read.csv</span>(<span class="st">&quot;Data/Input/input1.csv&quot;</span>,<span class="at">sep =</span> <span class="st">&quot;,&quot;</span>) <span class="co"># format pemisah koma </span></span>
-<span id="cb2-3"><a href="interface-data.html#cb2-3" tabindex="-1"></a>df2 <span class="ot">&lt;-</span><span class="fu">read.csv</span>(<span class="st">&quot;Data/Input/input2.csv&quot;</span>,<span class="at">sep =</span> <span class="st">&quot;;&quot;</span>) <span class="co"># format pemisah titik koma</span></span></code></pre></div>
+<div class="sourceCode" id="cb145"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb145-1"><a href="interface-data.html#cb145-1" tabindex="-1"></a><span class="fu">setwd</span>(<span class="fu">getwd</span>())                                    <span class="co"># setting direktori</span></span>
+<span id="cb145-2"><a href="interface-data.html#cb145-2" tabindex="-1"></a>df1 <span class="ot">&lt;-</span><span class="fu">read.csv</span>(<span class="st">&quot;Data/Input/input1.csv&quot;</span>,<span class="at">sep =</span> <span class="st">&quot;,&quot;</span>) <span class="co"># format pemisah koma </span></span>
+<span id="cb145-3"><a href="interface-data.html#cb145-3" tabindex="-1"></a>df2 <span class="ot">&lt;-</span><span class="fu">read.csv</span>(<span class="st">&quot;Data/Input/input2.csv&quot;</span>,<span class="at">sep =</span> <span class="st">&quot;;&quot;</span>) <span class="co"># format pemisah titik koma</span></span></code></pre></div>
 <p>Jika anda ingin melakukan expor data (simpan) ke direktori yang diinginkan maka dapat dilakukan dengan menggunakan fungsi <code>write.csv()</code> untuk format data dengan pemisah koma <code>(",")</code> dan fungsi <code>write.csv2()</code> untuk format data dengan pemisah semicolon <code>(";")</code>.</p>
-<div class="sourceCode" id="cb3"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb3-1"><a href="interface-data.html#cb3-1" tabindex="-1"></a><span class="fu">write.csv</span>(df1,<span class="st">&quot;Data/Output/output1.csv&quot;</span>, <span class="at">row.names =</span> <span class="cn">FALSE</span>)  </span>
-<span id="cb3-2"><a href="interface-data.html#cb3-2" tabindex="-1"></a><span class="fu">write.csv2</span>(df2,<span class="st">&quot;Data/Output/output2.csv&quot;</span>, <span class="at">row.names =</span> <span class="cn">FALSE</span>)    </span></code></pre></div>
+<div class="sourceCode" id="cb146"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb146-1"><a href="interface-data.html#cb146-1" tabindex="-1"></a><span class="fu">write.csv</span>(df1,<span class="st">&quot;Data/Output/output1.csv&quot;</span>, <span class="at">row.names =</span> <span class="cn">FALSE</span>)  </span>
+<span id="cb146-2"><a href="interface-data.html#cb146-2" tabindex="-1"></a><span class="fu">write.csv2</span>(df2,<span class="st">&quot;Data/Output/output2.csv&quot;</span>, <span class="at">row.names =</span> <span class="cn">FALSE</span>)    </span></code></pre></div>
 </div>
 <div id="cara-2" class="section level3 hasAnchor" number="7.1.2">
 <h3><span class="header-section-number">7.1.2</span> Cara 2<a href="interface-data.html#cara-2" class="anchor-section" aria-label="Anchor link to header"></a></h3>
 <p>Bagi anda yang lebih menyukai koneksi direktori secara automatis, cara ini adalah pilihan yang yang lebih bijak dan praktis.</p>
-<div class="sourceCode" id="cb4"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb4-1"><a href="interface-data.html#cb4-1" tabindex="-1"></a><span class="co"># setting direktori</span></span>
-<span id="cb4-2"><a href="interface-data.html#cb4-2" tabindex="-1"></a>(WD <span class="ot">&lt;-</span> <span class="fu">getwd</span>())</span>
-<span id="cb4-3"><a href="interface-data.html#cb4-3" tabindex="-1"></a><span class="cf">if</span> (<span class="sc">!</span><span class="fu">is.null</span>(WD)) <span class="fu">setwd</span>(WD)</span></code></pre></div>
-<div class="sourceCode" id="cb5"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb5-1"><a href="interface-data.html#cb5-1" tabindex="-1"></a><span class="co"># impor data</span></span>
-<span id="cb5-2"><a href="interface-data.html#cb5-2" tabindex="-1"></a>df1 <span class="ot">&lt;-</span> <span class="fu">read.csv</span>(<span class="fu">file.path</span>(WD, <span class="st">&#39;Data/Input&#39;</span>, <span class="st">&#39;input1.csv&#39;</span>))</span>
-<span id="cb5-3"><a href="interface-data.html#cb5-3" tabindex="-1"></a>df2 <span class="ot">&lt;-</span> <span class="fu">read.csv</span>(<span class="fu">file.path</span>(WD, <span class="st">&#39;Data/Input&#39;</span>, <span class="st">&#39;input2.csv&#39;</span>))</span>
-<span id="cb5-4"><a href="interface-data.html#cb5-4" tabindex="-1"></a></span>
-<span id="cb5-5"><a href="interface-data.html#cb5-5" tabindex="-1"></a><span class="co"># ekspor data</span></span>
-<span id="cb5-6"><a href="interface-data.html#cb5-6" tabindex="-1"></a><span class="fu">write.csv</span>(df1, <span class="fu">file.path</span>(WD, <span class="st">&#39;Data/Output&#39;</span>, <span class="st">&#39;output1.csv&#39;</span>),<span class="at">row.names =</span> <span class="cn">FALSE</span>)</span>
-<span id="cb5-7"><a href="interface-data.html#cb5-7" tabindex="-1"></a><span class="fu">write.csv</span>(df2, <span class="fu">file.path</span>(WD, <span class="st">&#39;Data/Output&#39;</span>, <span class="st">&#39;output2.csv&#39;</span>),<span class="at">row.names =</span> <span class="cn">FALSE</span>)</span></code></pre></div>
+<div class="sourceCode" id="cb147"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb147-1"><a href="interface-data.html#cb147-1" tabindex="-1"></a><span class="co"># setting direktori</span></span>
+<span id="cb147-2"><a href="interface-data.html#cb147-2" tabindex="-1"></a>(WD <span class="ot">&lt;-</span> <span class="fu">getwd</span>())</span>
+<span id="cb147-3"><a href="interface-data.html#cb147-3" tabindex="-1"></a><span class="cf">if</span> (<span class="sc">!</span><span class="fu">is.null</span>(WD)) <span class="fu">setwd</span>(WD)</span></code></pre></div>
+<div class="sourceCode" id="cb148"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb148-1"><a href="interface-data.html#cb148-1" tabindex="-1"></a><span class="co"># impor data</span></span>
+<span id="cb148-2"><a href="interface-data.html#cb148-2" tabindex="-1"></a>df1 <span class="ot">&lt;-</span> <span class="fu">read.csv</span>(<span class="fu">file.path</span>(WD, <span class="st">&#39;Data/Input&#39;</span>, <span class="st">&#39;input1.csv&#39;</span>))</span>
+<span id="cb148-3"><a href="interface-data.html#cb148-3" tabindex="-1"></a>df2 <span class="ot">&lt;-</span> <span class="fu">read.csv</span>(<span class="fu">file.path</span>(WD, <span class="st">&#39;Data/Input&#39;</span>, <span class="st">&#39;input2.csv&#39;</span>))</span>
+<span id="cb148-4"><a href="interface-data.html#cb148-4" tabindex="-1"></a></span>
+<span id="cb148-5"><a href="interface-data.html#cb148-5" tabindex="-1"></a><span class="co"># ekspor data</span></span>
+<span id="cb148-6"><a href="interface-data.html#cb148-6" tabindex="-1"></a><span class="fu">write.csv</span>(df1, <span class="fu">file.path</span>(WD, <span class="st">&#39;Data/Output&#39;</span>, <span class="st">&#39;output1.csv&#39;</span>),<span class="at">row.names =</span> <span class="cn">FALSE</span>)</span>
+<span id="cb148-7"><a href="interface-data.html#cb148-7" tabindex="-1"></a><span class="fu">write.csv</span>(df2, <span class="fu">file.path</span>(WD, <span class="st">&#39;Data/Output&#39;</span>, <span class="st">&#39;output2.csv&#39;</span>),<span class="at">row.names =</span> <span class="cn">FALSE</span>)</span></code></pre></div>
 </div>
 <div id="cara-3" class="section level3 hasAnchor" number="7.1.3">
 <h3><span class="header-section-number">7.1.3</span> Cara 3<a href="interface-data.html#cara-3" class="anchor-section" aria-label="Anchor link to header"></a></h3>
 <p>Cara ini adalah langkah alternatif bagi anda yang lebih nyaman untuk memilih data yang tersimpan di komputer (PC) tanpa harus melakukan pengaturan direktori terlebih dahulu sebelum melakukan proses impor data.</p>
-<div class="sourceCode" id="cb6"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb6-1"><a href="interface-data.html#cb6-1" tabindex="-1"></a>df3 <span class="ot">&lt;-</span> <span class="fu">read.csv</span>(<span class="fu">file.choose</span>())</span></code></pre></div>
+<div class="sourceCode" id="cb149"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb149-1"><a href="interface-data.html#cb149-1" tabindex="-1"></a>df3 <span class="ot">&lt;-</span> <span class="fu">read.csv</span>(<span class="fu">file.choose</span>())</span></code></pre></div>
 <p><strong>Catatan:</strong> Proses impor/eskpor data selanjutnya akan dilakukan dengan cara 1 satu saja.</p>
 </div>
 </div>
 <div id="imporekspor-excel" class="section level2 hasAnchor" number="7.2">
 <h2><span class="header-section-number">7.2</span> Impor/Ekspor Excel<a href="interface-data.html#imporekspor-excel" class="anchor-section" aria-label="Anchor link to header"></a></h2>
 <p>Microsoft Excel adalah program spreadsheet yang paling banyak digunakan yang menyimpan data dalam format <code>.xls</code> atau <code>.xlsx</code>. R dapat membaca langsung dari file-file ini menggunakan paket <code>readxl</code>.</p>
-<div class="sourceCode" id="cb7"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb7-1"><a href="interface-data.html#cb7-1" tabindex="-1"></a><span class="co"># install.packages(c(&quot;readxl&quot;, &quot;writexl&quot;))       # install `readxl &amp; writexl` </span></span>
-<span id="cb7-2"><a href="interface-data.html#cb7-2" tabindex="-1"></a>pacman<span class="sc">::</span><span class="fu">p_load</span>(readxl, writexl)                  <span class="co"># load `readxl &amp; writexl`</span></span>
-<span id="cb7-3"><a href="interface-data.html#cb7-3" tabindex="-1"></a></span>
-<span id="cb7-4"><a href="interface-data.html#cb7-4" tabindex="-1"></a><span class="co"># impor data</span></span>
-<span id="cb7-5"><a href="interface-data.html#cb7-5" tabindex="-1"></a>df3<span class="ot">&lt;-</span><span class="fu">read_excel</span>(<span class="st">&quot;Data/Input/input3.xls&quot;</span>)         <span class="co"># impor data xls (97-2003)</span></span>
-<span id="cb7-6"><a href="interface-data.html#cb7-6" tabindex="-1"></a>df4<span class="ot">&lt;-</span><span class="fu">read_excel</span>(<span class="st">&quot;Data/Input/input4.xlsx&quot;</span>,<span class="at">sheet=</span><span class="dv">1</span>)<span class="co"># impor data xlsx (2003-up)</span></span>
-<span id="cb7-7"><a href="interface-data.html#cb7-7" tabindex="-1"></a></span>
-<span id="cb7-8"><a href="interface-data.html#cb7-8" tabindex="-1"></a><span class="co"># ekspor data</span></span>
-<span id="cb7-9"><a href="interface-data.html#cb7-9" tabindex="-1"></a><span class="fu">write_xlsx</span>(df3,<span class="st">&quot;Data/Output/output3.xls&quot;</span>) </span>
-<span id="cb7-10"><a href="interface-data.html#cb7-10" tabindex="-1"></a><span class="fu">write_xlsx</span>(df4,<span class="st">&quot;Data/Output/output4.xlsx&quot;</span>)</span></code></pre></div>
+<div class="sourceCode" id="cb150"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb150-1"><a href="interface-data.html#cb150-1" tabindex="-1"></a><span class="co"># install.packages(c(&quot;readxl&quot;, &quot;writexl&quot;))       # install `readxl &amp; writexl` </span></span>
+<span id="cb150-2"><a href="interface-data.html#cb150-2" tabindex="-1"></a>pacman<span class="sc">::</span><span class="fu">p_load</span>(readxl, writexl)                  <span class="co"># load `readxl &amp; writexl`</span></span>
+<span id="cb150-3"><a href="interface-data.html#cb150-3" tabindex="-1"></a></span>
+<span id="cb150-4"><a href="interface-data.html#cb150-4" tabindex="-1"></a><span class="co"># impor data</span></span>
+<span id="cb150-5"><a href="interface-data.html#cb150-5" tabindex="-1"></a>df3<span class="ot">&lt;-</span><span class="fu">read_excel</span>(<span class="st">&quot;Data/Input/input3.xls&quot;</span>)         <span class="co"># impor data xls (97-2003)</span></span>
+<span id="cb150-6"><a href="interface-data.html#cb150-6" tabindex="-1"></a>df4<span class="ot">&lt;-</span><span class="fu">read_excel</span>(<span class="st">&quot;Data/Input/input4.xlsx&quot;</span>,<span class="at">sheet=</span><span class="dv">1</span>)<span class="co"># impor data xlsx (2003-up)</span></span>
+<span id="cb150-7"><a href="interface-data.html#cb150-7" tabindex="-1"></a></span>
+<span id="cb150-8"><a href="interface-data.html#cb150-8" tabindex="-1"></a><span class="co"># ekspor data</span></span>
+<span id="cb150-9"><a href="interface-data.html#cb150-9" tabindex="-1"></a><span class="fu">write_xlsx</span>(df3,<span class="st">&quot;Data/Output/output3.xls&quot;</span>) </span>
+<span id="cb150-10"><a href="interface-data.html#cb150-10" tabindex="-1"></a><span class="fu">write_xlsx</span>(df4,<span class="st">&quot;Data/Output/output4.xlsx&quot;</span>)</span></code></pre></div>
 </div>
 <div id="imporekspor-txt-and-rds" class="section level2 hasAnchor" number="7.3">
 <h2><span class="header-section-number">7.3</span> Impor/Ekspor TXT and RDS<a href="interface-data.html#imporekspor-txt-and-rds" class="anchor-section" aria-label="Anchor link to header"></a></h2>
 <p>Format data paling umum yang sering digunakan untuk impor/ekspor data adalah file CSV dan XLSX. Namun, ukuran file CSV atau XLSX cendrung lebih besar dibanding format yang lainya seperti TXT atau file biner R (RDS). Sehingga, ini akan membutuhkan tambahan waktu pada saat anda melakukan impor/ekspor data. Tips, yang sangat saya rekomendasikan dalam hal ini adalah mengimpor dan ekspor data tersebut dengan format TXT atau binary.</p>
-<div class="sourceCode" id="cb8"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb8-1"><a href="interface-data.html#cb8-1" tabindex="-1"></a><span class="co"># impor data</span></span>
-<span id="cb8-2"><a href="interface-data.html#cb8-2" tabindex="-1"></a>df5 <span class="ot">&lt;-</span> <span class="fu">read.table</span>(<span class="st">&quot;Data/Input/input5.txt&quot;</span>)       <span class="co"># format TXT (notepad)</span></span>
-<span id="cb8-3"><a href="interface-data.html#cb8-3" tabindex="-1"></a>df6 <span class="ot">&lt;-</span> <span class="fu">source</span>(<span class="st">&quot;Data/Input/input6.Rdmpd&quot;</span>)         <span class="co"># format TXT (Rdmpd)</span></span>
-<span id="cb8-4"><a href="interface-data.html#cb8-4" tabindex="-1"></a>df7 <span class="ot">&lt;-</span> <span class="fu">readRDS</span>(<span class="st">&quot;Data/Input/input7.rds&quot;</span>)          <span class="co"># format binary RDS </span></span>
-<span id="cb8-5"><a href="interface-data.html#cb8-5" tabindex="-1"></a>df8 <span class="ot">&lt;-</span> <span class="fu">readRDS</span>(<span class="st">&quot;Data/Input/input8.ascii&quot;</span>)        <span class="co"># format binary ASCII </span></span>
-<span id="cb8-6"><a href="interface-data.html#cb8-6" tabindex="-1"></a></span>
-<span id="cb8-7"><a href="interface-data.html#cb8-7" tabindex="-1"></a><span class="co"># ekspor data</span></span>
-<span id="cb8-8"><a href="interface-data.html#cb8-8" tabindex="-1"></a><span class="fu">write.table</span>(df5,<span class="st">&quot;Data/Output/output5.txt&quot;</span>)                </span>
-<span id="cb8-9"><a href="interface-data.html#cb8-9" tabindex="-1"></a><span class="fu">dump</span>(<span class="st">&quot;df6&quot;</span>, <span class="st">&quot;Data/Output/output6.Rdmpd&quot;</span>)                    </span>
-<span id="cb8-10"><a href="interface-data.html#cb8-10" tabindex="-1"></a><span class="fu">saveRDS</span>(df7, <span class="st">&quot;Data/Output/output7.rds&quot;</span>)                      </span>
-<span id="cb8-11"><a href="interface-data.html#cb8-11" tabindex="-1"></a><span class="fu">saveRDS</span>(df8, <span class="st">&quot;Data/Output/output8.ascii&quot;</span>, <span class="at">ascii=</span><span class="cn">TRUE</span>)             </span></code></pre></div>
+<div class="sourceCode" id="cb151"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb151-1"><a href="interface-data.html#cb151-1" tabindex="-1"></a><span class="co"># impor data</span></span>
+<span id="cb151-2"><a href="interface-data.html#cb151-2" tabindex="-1"></a>df5 <span class="ot">&lt;-</span> <span class="fu">read.table</span>(<span class="st">&quot;Data/Input/input5.txt&quot;</span>)       <span class="co"># format TXT (notepad)</span></span>
+<span id="cb151-3"><a href="interface-data.html#cb151-3" tabindex="-1"></a>df6 <span class="ot">&lt;-</span> <span class="fu">source</span>(<span class="st">&quot;Data/Input/input6.Rdmpd&quot;</span>)         <span class="co"># format TXT (Rdmpd)</span></span>
+<span id="cb151-4"><a href="interface-data.html#cb151-4" tabindex="-1"></a>df7 <span class="ot">&lt;-</span> <span class="fu">readRDS</span>(<span class="st">&quot;Data/Input/input7.rds&quot;</span>)          <span class="co"># format binary RDS </span></span>
+<span id="cb151-5"><a href="interface-data.html#cb151-5" tabindex="-1"></a>df8 <span class="ot">&lt;-</span> <span class="fu">readRDS</span>(<span class="st">&quot;Data/Input/input8.ascii&quot;</span>)        <span class="co"># format binary ASCII </span></span>
+<span id="cb151-6"><a href="interface-data.html#cb151-6" tabindex="-1"></a></span>
+<span id="cb151-7"><a href="interface-data.html#cb151-7" tabindex="-1"></a><span class="co"># ekspor data</span></span>
+<span id="cb151-8"><a href="interface-data.html#cb151-8" tabindex="-1"></a><span class="fu">write.table</span>(df5,<span class="st">&quot;Data/Output/output5.txt&quot;</span>)                </span>
+<span id="cb151-9"><a href="interface-data.html#cb151-9" tabindex="-1"></a><span class="fu">dump</span>(<span class="st">&quot;df6&quot;</span>, <span class="st">&quot;Data/Output/output6.Rdmpd&quot;</span>)                    </span>
+<span id="cb151-10"><a href="interface-data.html#cb151-10" tabindex="-1"></a><span class="fu">saveRDS</span>(df7, <span class="st">&quot;Data/Output/output7.rds&quot;</span>)                      </span>
+<span id="cb151-11"><a href="interface-data.html#cb151-11" tabindex="-1"></a><span class="fu">saveRDS</span>(df8, <span class="st">&quot;Data/Output/output8.ascii&quot;</span>, <span class="at">ascii=</span><span class="cn">TRUE</span>)             </span></code></pre></div>
 <p><strong>Catatan:</strong> Format binary sangat lazim digunakan untuk meringkas file yang berukuran besar, terutama saat menggunakan sistem kontrol (API) seperti halnya <a href="https://git-scm.com/">Git</a>.</p>
 </div>
 <div id="imporekspor-xml" class="section level2 hasAnchor" number="7.4">
@@ -400,37 +401,37 @@ Gambar 7.1: Pengumpulan Data
 <iframe width="800" height="430" src="https://www.youtube.com/embed/rs5hz_oZywI" frameborder="0" allowfullscreen>
 </iframe>
 <p>Selanjutnya, mari kita lakukan impor/ekspor data dengan format XML.</p>
-<div class="sourceCode" id="cb9"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb9-1"><a href="interface-data.html#cb9-1" tabindex="-1"></a><span class="fu">library</span>(<span class="st">&quot;XML&quot;</span>)                                   <span class="co"># load paket XML </span></span>
-<span id="cb9-2"><a href="interface-data.html#cb9-2" tabindex="-1"></a><span class="fu">library</span>(<span class="st">&quot;kulife&quot;</span>)                                <span class="co"># load paket kulife</span></span>
-<span id="cb9-3"><a href="interface-data.html#cb9-3" tabindex="-1"></a><span class="fu">library</span>(<span class="st">&quot;methods&quot;</span>)                               <span class="co"># paket kondisional</span></span>
-<span id="cb9-4"><a href="interface-data.html#cb9-4" tabindex="-1"></a></span>
-<span id="cb9-5"><a href="interface-data.html#cb9-5" tabindex="-1"></a>df9 <span class="ot">&lt;-</span> <span class="fu">xmlParse</span>(<span class="st">&quot;Data/Input/input9.xml&quot;</span>)         <span class="co"># impor data XML</span></span>
-<span id="cb9-6"><a href="interface-data.html#cb9-6" tabindex="-1"></a>xml_df <span class="ot">&lt;-</span> <span class="fu">xmlToDataFrame</span>(df9)                    <span class="co"># konversi ke Dataframe</span></span>
-<span id="cb9-7"><a href="interface-data.html#cb9-7" tabindex="-1"></a><span class="fu">write.xml</span>(xml_df, <span class="st">&quot;Data/Output/output9.xml&quot;</span>)     <span class="co"># ekspor data XML</span></span></code></pre></div>
+<div class="sourceCode" id="cb152"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb152-1"><a href="interface-data.html#cb152-1" tabindex="-1"></a><span class="fu">library</span>(<span class="st">&quot;XML&quot;</span>)                                   <span class="co"># load paket XML </span></span>
+<span id="cb152-2"><a href="interface-data.html#cb152-2" tabindex="-1"></a><span class="fu">library</span>(<span class="st">&quot;kulife&quot;</span>)                                <span class="co"># load paket kulife</span></span>
+<span id="cb152-3"><a href="interface-data.html#cb152-3" tabindex="-1"></a><span class="fu">library</span>(<span class="st">&quot;methods&quot;</span>)                               <span class="co"># paket kondisional</span></span>
+<span id="cb152-4"><a href="interface-data.html#cb152-4" tabindex="-1"></a></span>
+<span id="cb152-5"><a href="interface-data.html#cb152-5" tabindex="-1"></a>df9 <span class="ot">&lt;-</span> <span class="fu">xmlParse</span>(<span class="st">&quot;Data/Input/input9.xml&quot;</span>)         <span class="co"># impor data XML</span></span>
+<span id="cb152-6"><a href="interface-data.html#cb152-6" tabindex="-1"></a>xml_df <span class="ot">&lt;-</span> <span class="fu">xmlToDataFrame</span>(df9)                    <span class="co"># konversi ke Dataframe</span></span>
+<span id="cb152-7"><a href="interface-data.html#cb152-7" tabindex="-1"></a><span class="fu">write.xml</span>(xml_df, <span class="st">&quot;Data/Output/output9.xml&quot;</span>)     <span class="co"># ekspor data XML</span></span></code></pre></div>
 </div>
 <div id="imporekspor-json" class="section level2 hasAnchor" number="7.5">
 <h2><span class="header-section-number">7.5</span> Impor/Ekspor JSON<a href="interface-data.html#imporekspor-json" class="anchor-section" aria-label="Anchor link to header"></a></h2>
 <p>File JSON menyimpan data sebagai teks dalam format yang dapat dibaca manusia. Json adalah singkatan dari JavaScript Object Notation. R dapat membaca file JSON menggunakan paket <code>jsonlite</code>. Selengkapnya tentang JSON</p>
 <iframe width="800" height="430" src="https://www.youtube.com/embed/2q5bAvNlBsc" frameborder="0" allowfullscreen>
 </iframe>
-<div class="sourceCode" id="cb10"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb10-1"><a href="interface-data.html#cb10-1" tabindex="-1"></a><span class="fu">library</span>(<span class="st">&quot;jsonlite&quot;</span>)                              <span class="co"># load paket JSON</span></span>
-<span id="cb10-2"><a href="interface-data.html#cb10-2" tabindex="-1"></a></span>
-<span id="cb10-3"><a href="interface-data.html#cb10-3" tabindex="-1"></a>df10 <span class="ot">&lt;-</span><span class="fu">fromJSON</span>(<span class="st">&quot;Data/Input/input10.json&quot;</span>)       <span class="co"># impor data</span></span>
-<span id="cb10-4"><a href="interface-data.html#cb10-4" tabindex="-1"></a>json_df <span class="ot">&lt;-</span> <span class="fu">as.data.frame</span>(df10)                   <span class="co"># konversi ke Dataframe</span></span>
-<span id="cb10-5"><a href="interface-data.html#cb10-5" tabindex="-1"></a><span class="fu">write_json</span>(json_df, <span class="st">&quot;Data/Output/output10.json&quot;</span>) <span class="co"># ekspor data JSON</span></span></code></pre></div>
+<div class="sourceCode" id="cb153"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb153-1"><a href="interface-data.html#cb153-1" tabindex="-1"></a><span class="fu">library</span>(<span class="st">&quot;jsonlite&quot;</span>)                              <span class="co"># load paket JSON</span></span>
+<span id="cb153-2"><a href="interface-data.html#cb153-2" tabindex="-1"></a></span>
+<span id="cb153-3"><a href="interface-data.html#cb153-3" tabindex="-1"></a>df10 <span class="ot">&lt;-</span><span class="fu">fromJSON</span>(<span class="st">&quot;Data/Input/input10.json&quot;</span>)       <span class="co"># impor data</span></span>
+<span id="cb153-4"><a href="interface-data.html#cb153-4" tabindex="-1"></a>json_df <span class="ot">&lt;-</span> <span class="fu">as.data.frame</span>(df10)                   <span class="co"># konversi ke Dataframe</span></span>
+<span id="cb153-5"><a href="interface-data.html#cb153-5" tabindex="-1"></a><span class="fu">write_json</span>(json_df, <span class="st">&quot;Data/Output/output10.json&quot;</span>) <span class="co"># ekspor data JSON</span></span></code></pre></div>
 </div>
 <div id="impor-data-dari-web" class="section level2 hasAnchor" number="7.6">
 <h2><span class="header-section-number">7.6</span> Impor Data dari Web<a href="interface-data.html#impor-data-dari-web" class="anchor-section" aria-label="Anchor link to header"></a></h2>
 <p>Ada banyak website menyediakan data untuk dikonsumsi oleh penggunanya. Dengan menggunakan program R, kita dapat mengekstrak data spesifik dari situs web tersebut secara terprogram. Di bagian ini, saya memberikan contoh cara mengimpor data dari repositori GitHub, tetapi Anda dapat melakukan hal yang sama ke situs web atau repositori lain.</p>
 <div id="csv" class="section level3 hasAnchor" number="7.6.1">
 <h3><span class="header-section-number">7.6.1</span> CSV:<a href="interface-data.html#csv" class="anchor-section" aria-label="Anchor link to header"></a></h3>
-<div class="sourceCode" id="cb11"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb11-1"><a href="interface-data.html#cb11-1" tabindex="-1"></a>web_csv <span class="ot">&lt;-</span> <span class="fu">read.csv</span>(<span class="st">&quot;https://raw.githubusercontent.com/dsciencelabs/Algoritma_Pemrograman_R/main/Data/Input/input1.csv&quot;</span>)</span></code></pre></div>
+<div class="sourceCode" id="cb154"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb154-1"><a href="interface-data.html#cb154-1" tabindex="-1"></a>web_csv <span class="ot">&lt;-</span> <span class="fu">read.csv</span>(<span class="st">&quot;https://raw.githubusercontent.com/dsciencelabs/Algoritma_Pemrograman_R/main/Data/Input/input1.csv&quot;</span>)</span></code></pre></div>
 </div>
 <div id="xlsx" class="section level3 hasAnchor" number="7.6.2">
 <h3><span class="header-section-number">7.6.2</span> XLSX:<a href="interface-data.html#xlsx" class="anchor-section" aria-label="Anchor link to header"></a></h3>
-<div class="sourceCode" id="cb12"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb12-1"><a href="interface-data.html#cb12-1" tabindex="-1"></a><span class="fu">library</span>(rio)                          <span class="co"># impor data dari github</span></span>
-<span id="cb12-2"><a href="interface-data.html#cb12-2" tabindex="-1"></a><span class="fu">install_formats</span>()                     <span class="co"># periksa auto paket yg disarankan</span></span>
-<span id="cb12-3"><a href="interface-data.html#cb12-3" tabindex="-1"></a>web_xlsx <span class="ot">&lt;-</span>rio<span class="sc">::</span><span class="fu">import</span>(<span class="st">&quot;https://github.com/dsciencelabs/Algoritma_Pemrograman_R/raw/main/Data/Input/input4.xlsx&quot;</span>)</span></code></pre></div>
+<div class="sourceCode" id="cb155"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb155-1"><a href="interface-data.html#cb155-1" tabindex="-1"></a><span class="fu">library</span>(rio)                          <span class="co"># impor data dari github</span></span>
+<span id="cb155-2"><a href="interface-data.html#cb155-2" tabindex="-1"></a><span class="fu">install_formats</span>()                     <span class="co"># periksa auto paket yg disarankan</span></span>
+<span id="cb155-3"><a href="interface-data.html#cb155-3" tabindex="-1"></a>web_xlsx <span class="ot">&lt;-</span>rio<span class="sc">::</span><span class="fu">import</span>(<span class="st">&quot;https://github.com/dsciencelabs/Algoritma_Pemrograman_R/raw/main/Data/Input/input4.xlsx&quot;</span>)</span></code></pre></div>
 </div>
 </div>
 <div id="basis-data-r" class="section level2 hasAnchor" number="7.7">
@@ -442,6 +443,11 @@ Gambar 7.1: Pengumpulan Data
 <h2><span class="header-section-number">7.8</span> Menambang Data Web<a href="interface-data.html#menambang-data-web" class="anchor-section" aria-label="Anchor link to header"></a></h2>
 <p>Pengikisan data dari web (Webscraping Data) adalah proses menggunakan bot untuk mengekstrak konten dan data dari situs web. Tidak seperti screen scraping, yang hanya menyalin piksel yang ditampilkan di layar, web scraping mengekstrak kode HTML yang mendasarinya yang pada dasarnya disimpan dalam database. Pengikisan data ini dapat mereplikasi seluruh konten dari berbagai situs web yang target.</p>
 <p><strong>Catatan:</strong> Kita akan mempelajari bagian ini di bagian khusus yang disebut “Ilmu Data Terapan”.</p>
+</div>
+<div id="latihan-5" class="section level2 hasAnchor" number="7.9">
+<h2><span class="header-section-number">7.9</span> Latihan<a href="interface-data.html#latihan-5" class="anchor-section" aria-label="Anchor link to header"></a></h2>
+<p>Buatlah tutorial Baca dan Simpan data dengan mengikuti materi yang sudah dipelajari diatas. Lengkapi dengan Gambar dan penjelasan setiap prosesnya.</p>
+<p><strong>Catatan:</strong> Kumpulkan hasil latihan anda, tidak boleh sama dengan teman mahasiwa lainnya.</p>
 
 </div>
 </div>
@@ -454,14 +460,14 @@ Gambar 7.1: Pengumpulan Data
 <a href="referensi.html" class="navigation navigation-next " aria-label="Next page"><i class="fa fa-angle-right"></i></a>
     </div>
   </div>
-<script src="libs/gitbook-2.6.7/js/app.min.js"></script>
-<script src="libs/gitbook-2.6.7/js/clipboard.min.js"></script>
-<script src="libs/gitbook-2.6.7/js/plugin-search.js"></script>
-<script src="libs/gitbook-2.6.7/js/plugin-sharing.js"></script>
-<script src="libs/gitbook-2.6.7/js/plugin-fontsettings.js"></script>
-<script src="libs/gitbook-2.6.7/js/plugin-bookdown.js"></script>
-<script src="libs/gitbook-2.6.7/js/jquery.highlight.js"></script>
-<script src="libs/gitbook-2.6.7/js/plugin-clipboard.js"></script>
+<script src="libs/gitbook/js/app.min.js"></script>
+<script src="libs/gitbook/js/clipboard.min.js"></script>
+<script src="libs/gitbook/js/plugin-search.js"></script>
+<script src="libs/gitbook/js/plugin-sharing.js"></script>
+<script src="libs/gitbook/js/plugin-fontsettings.js"></script>
+<script src="libs/gitbook/js/plugin-bookdown.js"></script>
+<script src="libs/gitbook/js/jquery.highlight.js"></script>
+<script src="libs/gitbook/js/plugin-clipboard.js"></script>
 <script>
 gitbook.require(["gitbook"], function(gitbook) {
 gitbook.start({
@@ -505,6 +511,20 @@ gitbook.start({
 });
 </script>
 
+<!-- dynamically load mathjax for compatibility with self-contained -->
+<script>
+  (function () {
+    var script = document.createElement("script");
+    script.type = "text/javascript";
+    var src = "true";
+    if (src === "" || src === "true") src = "https://cdnjs.cloudflare.com/ajax/libs/mathjax/2.7.9/latest.js?config=TeX-MML-AM_CHTML";
+    if (location.protocol !== "file:")
+      if (/^https?:/.test(src))
+        src = src.replace(/^https?:/, '');
+    script.src = src;
+    document.getElementsByTagName("head")[0].appendChild(script);
+  })();
+</script>
 </body>
 
 </html>
