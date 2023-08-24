@@ -1,0 +1,212 @@
+# Interface Data
+
+Terhubung dengan data adalah hal paling mendasar dalam preses olah data (Data Science). Pada bagian ini akan dibahas bagaimana proses antarmuka data yang paling sederhana dengan menggunakan R. Secara garis besar R dapat membaca data dari file yang disimpan di dalam maupun luar direktorinya. Selain itu, sistem operasi R juga dapat menyimpan dan membaca data dalam berbagai format file seperti csv, excel, txt, rds, xml, json, dll.
+
+```{r interface,echo=FALSE, fig.cap='Interface Data', tidy=FALSE, out.width='100%', fig.align='center'}
+library(knitr)
+img1_path <- "./images/Bab7/Interface_Data.png"
+include_graphics(img1_path)
+```
+
+
+**Catatan:** Data yang digunakan dalam pembelajaran ini, dapat download pada link berikut! 
+
+* [input1.csv](https://github.com/dsciencelabs/Algoritma_Pemrograman_R/blob/main/Data/Input/input1.csv)
+* [input2.csv](https://github.com/dsciencelabs/Algoritma_Pemrograman_R/blob/main/Data/Input/input2.csv)
+* [input3.xls](https://github.com/dsciencelabs/Algoritma_Pemrograman_R/blob/main/Data/Input/input3.xls)
+* [input4.xlsx](https://github.com/dsciencelabs/Algoritma_Pemrograman_R/blob/main/Data/Input/input4.xlsx)
+* [input5.txt](https://github.com/dsciencelabs/Algoritma_Pemrograman_R/blob/main/Data/Input/input5.txt)
+* [input6.Rdmpd](https://github.com/dsciencelabs/Algoritma_Pemrograman_R/blob/main/Data/Input/input6.Rdmpd)
+* [input7.rds](https://github.com/dsciencelabs/Algoritma_Pemrograman_R/blob/main/Data/Input/input7.rds)
+* [input8.ascii](https://github.com/dsciencelabs/Algoritma_Pemrograman_R/blob/main/Data/Input/input8.ascii)
+* [input9.xml](https://github.com/dsciencelabs/Algoritma_Pemrograman_R/blob/main/Data/Input/input9.xml)
+* [input10.json](https://github.com/dsciencelabs/Algoritma_Pemrograman_R/blob/main/Data/Input/input10.json)
+
+
+
+## Impor/Ekspor CSV 
+
+Terdapat beberapa cara yang dapat dilakukan untuk impor/expor data dengan R. Berikut ini, diperlihatkan 3 cara yang paling sering digunakan dalam proses antarmuka data.
+
+### Cara 1
+
+Pertama-tama pastikan direktori kerja anda dalam koneksi yang benar, periksalah dengan menggunakan fungsi `getwd()`. Kemudian, anda dapat mengatur direktori kerja baru menggunakan fungsi `setwd()`. 
+
+```{r, eval=F}
+print(getwd())                                   # cetak direktori kerja R
+getwd()                                          # cetak direktori kerja R
+#setwd("C:/Users/Bakti/Desktop/")                # atur direktori (ini contoh)
+#setwd("C:\\Users\\Bakti\\Desktop\\")            # atau dengan cara ini
+```
+
+Selanjutnya, proses impor data CSV dengan menggunakan fungsi `read.csv()`.
+
+```{r, eval=F}
+setwd(getwd())                                    # setting direktori
+df1 <-read.csv("Data/Input/input1.csv",sep = ",") # format pemisah koma 
+df2 <-read.csv("Data/Input/input2.csv",sep = ";") # format pemisah titik koma
+```
+
+Jika anda ingin melakukan expor data (simpan) ke direktori yang diinginkan maka dapat dilakukan dengan menggunakan fungsi `write.csv()` untuk format data dengan pemisah koma `(",")` dan fungsi `write.csv2()` untuk format data dengan pemisah semicolon `(";")`.
+
+```{r, eval=F}
+write.csv(df1,"Data/Output/output1.csv", row.names = FALSE)  
+write.csv2(df2,"Data/Output/output2.csv", row.names = FALSE)    
+```
+
+
+### Cara 2
+
+Bagi anda yang lebih menyukai koneksi direktori secara automatis, cara ini adalah pilihan yang yang lebih bijak dan praktis.
+
+```{r, eval=F}
+# setting direktori
+(WD <- getwd())
+if (!is.null(WD)) setwd(WD)
+```
+
+```{r, eval=F}
+# impor data
+df1 <- read.csv(file.path(WD, 'Data/Input', 'input1.csv'))
+df2 <- read.csv(file.path(WD, 'Data/Input', 'input2.csv'))
+
+# ekspor data
+write.csv(df1, file.path(WD, 'Data/Output', 'output1.csv'),row.names = FALSE)
+write.csv(df2, file.path(WD, 'Data/Output', 'output2.csv'),row.names = FALSE)
+```
+
+
+### Cara 3
+
+Cara ini adalah langkah alternatif bagi anda yang lebih nyaman untuk memilih data yang tersimpan di komputer (PC) tanpa harus melakukan pengaturan direktori terlebih dahulu sebelum melakukan proses impor data.
+
+```{r, eval=FALSE}
+df3 <- read.csv(file.choose())
+```
+
+**Catatan:** Proses impor/eskpor data selanjutnya akan dilakukan dengan cara 1 satu saja. 
+
+## Impor/Ekspor Excel
+
+Microsoft Excel adalah program spreadsheet yang paling banyak digunakan yang menyimpan data dalam format `.xls` atau `.xlsx`. R dapat membaca langsung dari file-file ini menggunakan paket `readxl`.
+
+
+```{r, eval=F}
+# install.packages(c("readxl", "writexl"))       # install `readxl & writexl` 
+pacman::p_load(readxl, writexl)                  # load `readxl & writexl`
+
+# impor data
+df3<-read_excel("Data/Input/input3.xls")         # impor data xls (97-2003)
+df4<-read_excel("Data/Input/input4.xlsx",sheet=1)# impor data xlsx (2003-up)
+
+# ekspor data
+write_xlsx(df3,"Data/Output/output3.xls") 
+write_xlsx(df4,"Data/Output/output4.xlsx")
+```
+
+
+## Impor/Ekspor TXT and RDS
+
+Format data paling umum yang sering digunakan untuk impor/ekspor data adalah file CSV dan XLSX. Namun, ukuran file CSV atau XLSX cendrung lebih besar dibanding format yang lainya seperti TXT atau file biner R (RDS). Sehingga, ini akan membutuhkan tambahan waktu pada saat anda melakukan impor/ekspor data. Tips, yang sangat saya rekomendasikan dalam hal ini adalah mengimpor dan ekspor data tersebut dengan format TXT atau binary. 
+
+```{r, eval=F}
+# impor data
+df5 <- read.table("Data/Input/input5.txt")       # format TXT (notepad)
+df6 <- source("Data/Input/input6.Rdmpd")         # format TXT (Rdmpd)
+df7 <- readRDS("Data/Input/input7.rds")          # format binary RDS 
+df8 <- readRDS("Data/Input/input8.ascii")        # format binary ASCII 
+
+# ekspor data
+write.table(df5,"Data/Output/output5.txt")                
+dump("df6", "Data/Output/output6.Rdmpd")                    
+saveRDS(df7, "Data/Output/output7.rds")                      
+saveRDS(df8, "Data/Output/output8.ascii", ascii=TRUE)             
+```
+
+**Catatan:** Format binary sangat lazim digunakan untuk meringkas file yang berukuran besar, terutama saat menggunakan sistem kontrol (API) seperti halnya [Git](https://git-scm.com/).
+
+## Impor/Ekspor XML
+
+XML adalah kumpulan berbagi format file dan data di World Wide Web, intranet, dan di tempat lain menggunakan teks ASCII standar. XML adalah singkatan dari eXtensible Markup Language. Untuk penjelasan lebih lengkap silahkan kunjungi
+
+```{r echo=FALSE, results='asis'}
+cat('<iframe width="800" height="430" src="https://www.youtube.com/embed/KeLiQXqVgMI" frameborder="0" allowfullscreen></iframe>')
+```
+
+
+Sebenarnya XML sangat mirip dengan HTML, diman sintak-sintaknya berisi markup. Tetapi, perlu dicatat bahwa XML tidak sama dalam hal tag markup HTML yang menjelaskan laman struktur datanya terdapat dalam file tersebut. Silahkah perhatikan video penjelasan mengenai HTML;
+
+```{r echo=FALSE, results='asis'}
+cat('<iframe width="800" height="430" src="https://www.youtube.com/embed/rs5hz_oZywI" frameborder="0" allowfullscreen></iframe>')
+```
+
+Selanjutnya, mari kita lakukan impor/ekspor data dengan format XML.
+
+```{r, eval=F}
+library("XML")                                   # load paket XML 
+library("kulife")                                # load paket kulife
+library("methods")                               # paket kondisional
+
+df9 <- xmlParse("Data/Input/input9.xml")         # impor data XML
+xml_df <- xmlToDataFrame(df9)                    # konversi ke Dataframe
+write.xml(xml_df, "Data/Output/output9.xml")     # ekspor data XML
+```
+
+## Impor/Ekspor JSON
+
+File JSON menyimpan data sebagai teks dalam format yang dapat dibaca manusia. Json adalah singkatan dari JavaScript Object Notation. R dapat membaca file JSON menggunakan paket `jsonlite`. Selengkapnya tentang JSON
+
+```{r echo=FALSE, results='asis'}
+cat('<iframe width="800" height="430" src="https://www.youtube.com/embed/2q5bAvNlBsc" frameborder="0" allowfullscreen></iframe>')
+```
+
+
+```{r, eval=F}
+library("jsonlite")                              # load paket JSON
+
+df10 <-fromJSON("Data/Input/input10.json")       # impor data
+json_df <- as.data.frame(df10)                   # konversi ke Dataframe
+write_json(json_df, "Data/Output/output10.json") # ekspor data JSON
+```
+
+## Impor Data dari Web
+
+Ada banyak website menyediakan data untuk dikonsumsi oleh penggunanya. Dengan menggunakan program R, kita dapat mengekstrak data spesifik dari situs web tersebut secara terprogram. Di bagian ini, saya memberikan contoh cara mengimpor data dari repositori GitHub, tetapi Anda dapat melakukan hal yang sama ke situs web atau repositori lain. 
+
+### CSV:
+
+```{r, eval=F}
+web_csv <- read.csv("https://raw.githubusercontent.com/dsciencelabs/Algoritma_Pemrograman_R/main/Data/Input/input1.csv")
+```
+
+### XLSX:
+
+```{r, eval=F}
+library(rio)                          # impor data dari github
+install_formats()                     # periksa auto paket yg disarankan
+web_xlsx <-rio::import("https://github.com/dsciencelabs/Algoritma_Pemrograman_R/raw/main/Data/Input/input4.xlsx")
+```
+
+## Basis Data R
+
+Sistem basis data adalah data relasional yang disimpan dalam format yang dinormalisasi. Jadi, untuk melakukan komputasi statistik kita akan membutuhkan query SQL yang sangat canggih dan kompleks. Tetapi R dapat terhubung dengan mudah ke banyak database relasional seperti MySql, Oracle, SQL Server, dll. Selanjutnya biasanya, kita akan mengubah basis data tersebut menjadi bingkai data (data frame). Setelah data tersedia di lingkungan R, kemudian dimanipulasi atau dilakukan analisis lebih lanjut.
+
+**Catatan:** Kita akan mempelajari bagian ini di bagian khusus yang disebut “Sistem Basis Data dengan R” semester berikutnya. 
+
+## Menambang Data Web 
+
+Pengikisan data dari web (Webscraping Data) adalah proses menggunakan bot untuk mengekstrak konten dan data dari situs web. Tidak seperti screen scraping, yang hanya menyalin piksel yang ditampilkan di layar, web scraping mengekstrak kode HTML yang mendasarinya yang pada dasarnya disimpan dalam database. Pengikisan data ini dapat mereplikasi seluruh konten dari berbagai situs web yang target.
+
+**Catatan:** Kita akan mempelajari bagian ini di bagian khusus yang disebut "Ilmu Data Terapan". 
+
+
+## Latihan 
+
+Buatlah tutorial Baca dan Simpan data dengan mengikuti materi yang sudah dipelajari diatas. Lengkapi dengan Gambar dan penjelasan setiap prosesnya.
+
+**Catatan:** Kumpulkan hasil latihan anda, tidak boleh sama dengan teman mahasiwa lainnya.
+
+
+
+
+
