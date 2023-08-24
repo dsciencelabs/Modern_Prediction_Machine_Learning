@@ -1,10 +1,10 @@
-# Pengumpulan Data
+# Interface Data
 
 Terhubung dengan data adalah hal paling mendasar dalam preses olah data (Data Science). Pada bagian ini akan dibahas bagaimana proses antarmuka data yang paling sederhana dengan menggunakan R. Secara garis besar R dapat membaca data dari file yang disimpan di dalam maupun luar direktorinya. Selain itu, sistem operasi R juga dapat menyimpan dan membaca data dalam berbagai format file seperti csv, excel, txt, rds, xml, json, dll.
 
 ```{r if-else,echo=FALSE, fig.cap='Pengumpulan Data', tidy=FALSE, out.width='100%', fig.align='center'}
 library(knitr)
-img1_path <- "./images/Bab7/Pegumpulan_Data.png"
+img1_path <- "./images/Bab7/Interface_Data.png"
 include_graphics(img1_path)
 ```
 
@@ -134,7 +134,11 @@ cat('<iframe width="800" height="430" src="https://www.youtube.com/embed/KeLiQXq
 ```
 
 
-Sebenarnya XML sangat mirip dengan HTML, diman sintak-sintaknya berisi markup. Tetapi, perlu dicatat bahwa XML tidak sama dalam hal tag markup HTML yang menjelaskan laman struktur datanya terdapat dalam file tersebut. Silahkah perhatikan video penjelasan mengenai HTML [Youtube](https://www.youtube.com/embed/rs5hz_oZywI)
+Sebenarnya XML sangat mirip dengan HTML, diman sintak-sintaknya berisi markup. Tetapi, perlu dicatat bahwa XML tidak sama dalam hal tag markup HTML yang menjelaskan laman struktur datanya terdapat dalam file tersebut. Silahkah perhatikan video penjelasan mengenai HTML;
+
+```{r echo=FALSE, results='asis'}
+cat('<iframe width="800" height="430" src="https://www.youtube.com/embed/rs5hz_oZywI" frameborder="0" allowfullscreen></iframe>')
+```
 
 Selanjutnya, mari kita lakukan impor/ekspor data dengan format XML.
 
@@ -150,7 +154,12 @@ write.xml(xml_df, "Data/Output/output9.xml")     # ekspor data XML
 
 ## Impor/Ekspor JSON
 
-File JSON menyimpan data sebagai teks dalam format yang dapat dibaca manusia. Json adalah singkatan dari JavaScript Object Notation. R dapat membaca file JSON menggunakan paket `jsonlite`. Selengkapnya tentang JSON [Youtube](https://www.youtube.com/embed/2q5bAvNlBsc). 
+File JSON menyimpan data sebagai teks dalam format yang dapat dibaca manusia. Json adalah singkatan dari JavaScript Object Notation. R dapat membaca file JSON menggunakan paket `jsonlite`. Selengkapnya tentang JSON
+
+```{r echo=FALSE, results='asis'}
+cat('<iframe width="800" height="430" src="https://www.youtube.com/embed/2q5bAvNlBsc" frameborder="0" allowfullscreen></iframe>')
+```
+
 
 ```{r, eval=F}
 library("jsonlite")                              # load paket JSON
@@ -182,7 +191,7 @@ web_xlsx <-rio::import("https://github.com/dsciencelabs/Algoritma_Pemrograman_R/
 
 Sistem basis data adalah data relasional yang disimpan dalam format yang dinormalisasi. Jadi, untuk melakukan komputasi statistik kita akan membutuhkan query SQL yang sangat canggih dan kompleks. Tetapi R dapat terhubung dengan mudah ke banyak database relasional seperti MySql, Oracle, SQL Server, dll. Selanjutnya biasanya, kita akan mengubah basis data tersebut menjadi bingkai data (data frame). Setelah data tersedia di lingkungan R, kemudian dimanipulasi atau dilakukan analisis lebih lanjut.
 
-Catatan: Kita akan mempelajari bagian ini di bagian khusus yang disebut “Sistem Basis Data dengan R” semester berikutnya. 
+**Catatan:** Kita akan mempelajari bagian ini di bagian khusus yang disebut “Sistem Basis Data dengan R” semester berikutnya. 
 
 ## Menambang Data Web 
 
