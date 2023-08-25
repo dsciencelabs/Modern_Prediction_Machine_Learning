@@ -1,13 +1,2 @@
 # Referensi
 
-Berikut adalah beberapa referensi yang dapat Anda gunakan untuk mempelajari dasar-dasar pemrograman dalam bahasa R:
-
-1.    Venables, W.N. Smith D.M. and R Core Team. 2018. **An Introduction to R**: https://cran.r-project.org/manuals.html 
-2.    R for Data Science: https://r4ds.had.co.nz/
-3.    Codecademy - Learn R : https://www.codecademy.com/learn/learn-r
-4.    DataCamp: https://www.datacamp.com/courses/tech:r
-5.    Primartha, R. 2018. **Belajar Machine Learning Teori dan Praktik**. Penerbit Informatika : Bandung
-6.    Rosadi,D. 2016. **Analisis Statistika dengan R**. Gadjah Mada University Press: Yogyakarta
-7.    STHDA. Running RStudio and Setting Up Your Working Directory - Easy R Programming .<http://www.sthda.com/english/wiki/running-rstudio-and-setting-up-your-working-directory-easy-r-programming#set-your-working-directory>
-8.    STDHA. **Getting Help With Functions In R Programming**. <http://www.sthda.com/english/wiki/getting-help-with-functions-in-r-programming> .
-  
