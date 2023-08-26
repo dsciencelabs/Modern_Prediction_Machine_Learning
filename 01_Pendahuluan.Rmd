@@ -1,25 +1,33 @@
 # Pendahuluan
 
-Sejak tahun 1970, **Structured Query Language (SQL)** telah digunakan oleh para programmer untuk membangun dan mengakses **Sistem Basis Data (SBD)**. Banyak sekali perdebatan mengenai cara penyebutan SQL ini, namun pada kenyataannya, kita dapat melafalkannya sebagai “sequel” ataupun “S.Q.L”. Mempelajari bahasa pemrograman umum seperti Python dan R adalah penting, namun tidak memiliki kemampuan SQL akan membuat kita amat sulit untuk mendapatkan pekerjaan dalam bidang pengolahan data. 
+Sejak tahun 1970, **Structured Query Language (SQL)** telah digunakan oleh para programmer untuk membangun dan mengakses **Sistem Basis Data (SBD)**. Banyak sekali perdebatan mengenai cara penyebutan SQL ini, namun pada kenyataannya, kita dapat melafalkannya sebagai “sequel” ataupun “S.Q.L”. Mempelajari bahasa pemrograman umum seperti R adalah penting dan akan lebih baik jika memiliki kemampuan SQL dalam bidang pengolahan data. 
 
-<img align="middle" src="images/Bab1/SQL.png"  width = 100% />
+```{r user-SQL,echo=FALSE, fig.cap='Beberapa Perusahaan Besar Pengguna SQL', tidy=FALSE, out.width='100%', fig.align='center'}
+library(knitr)
+include_graphics("./images/Bab1/SQL.png")
+```
 
-Hampir semua nama besar di bidang teknologi menggunakan SQL seperti Uber, Netflix, dan Airbnb. Bahkan dalam perusahaan seperti Facebook, Google dan Amazon, yang telah membuat sendiri **SBD** berkemampuan tinggi, tetap menggunakan SQL untuk melakukan query dan analisis data.
+Banyak perusahaan besar di bidang teknologi menggunakan SQL seperti Uber, Netflix, dan Airbnb. Bahkan dalam perusahaan seperti Facebook, Google dan Amazon, yang telah membuat sendiri **SBD** berkemampuan tinggi, tetap menggunakan SQL untuk melakukan query dan analisis data.
 
 
 ## Apa itu SBD?
 
 Secara umum **SBD** dapat didefinisikan sebagai berikut:
 
-
-<img align="middle" src="images/Bab1/definisi_DB.png"  width = 100% />
+```{r SBD,echo=FALSE, fig.cap='Definisi Sistem Basis Data', tidy=FALSE, out.width='100%', fig.align='center'}
+library(knitr)
+include_graphics("./images/Bab1/definisi_DB.png")
+```
 
 
 ### Komponen SBD
 
 Adapun beberapa komponen dasar yang diperlukan dalam SBD adalah:
 
-<img style="float: center; margin: 0px 0px 0px 0px; width:100%" src="images/Bab1/komponen_DB.png"/>
+```{r komponen,echo=FALSE, fig.cap='Komponen SBD', tidy=FALSE, out.width='100%', fig.align='center'}
+library(knitr)
+include_graphics("./images/Bab1/komponen_DB.png")
+```
 
 ***
 
@@ -27,17 +35,24 @@ Adapun beberapa komponen dasar yang diperlukan dalam SBD adalah:
 
 Manfaat atau kegunaan penerapan SBD cukup banyak dan cakupannya pun luas dalam mendukung keberadaan lembaga atau organisasi maupun perusahaan, diantaranya:
 
-<img style="float: center; margin: 0px 0px 0px 0px; width:100%" src="images/Bab1/manfaat_DB.png"/>
+```{r manfaat,echo=FALSE, fig.cap='Manfaat SBD', tidy=FALSE, out.width='100%', fig.align='center'}
+library(knitr)
+include_graphics("./images/Bab1/manfaat_DB.png")
+```
 
 ***
 
 ### Definisi SQL vs NoSQL
 
-Sebenarnya perbedaan antara [SQL](https://www.dewaweb.com/blog/sql-pengertian-fungsi-beserta-perintah-dasarnya/) dan [NoSQL](https://aws.amazon.com/id/nosql/) secara mendasar sudah dapat dijelaskan dari akronimnya. *SQL* basis data relasional yang menggunakan ‘relasi’ (yang biasanya disebut tabel) untuk menyimpan data dan mencocokkan data tersebut dengan memakai karakteristik umum di setiap dataset. 
+Sebenarnya perbedaan antara [SQL](https://www.dewaweb.com/blog/sql-pengertian-fungsi-beserta-perintah-dasarnya/) dan [NoSQL](https://aws.amazon.com/id/nosql/) secara mendasar sudah dapat dijelaskan dari akronimnya. 
 
-<img style="float: center; margin: 0px 0px 0px 0px; width:100%" src="images/Bab1/SQLvsNoSQL_DB.png"/>
+```{r SQLvsNoSQL,echo=FALSE, fig.cap='SQL vs NoSQL', tidy=FALSE, out.width='100%', fig.align='center'}
+library(knitr)
+include_graphics("./images/Bab1/SQLvsNoSQL_DB.png")
+```
 
-Sedangkan, *NoSQL* adalah database yang menggunakan format JSON untuk setiap dokumennya sehingga mudah dibaca dan dimengerti. NoSQL banyak diminati karena memiliki performa yang tinggi dan bersifat non-relasional sehingga dapat memakai berbagai model data. 
+
+*SQL* basis data relasional yang menggunakan ‘relasi’ (yang biasanya disebut tabel) untuk menyimpan data dan mencocokkan data tersebut dengan memakai karakteristik umum di setiap dataset. Sedangkan, *NoSQL* adalah database yang menggunakan format JSON untuk setiap dokumennya sehingga mudah dibaca dan dimengerti. NoSQL banyak diminati karena memiliki performa yang tinggi dan bersifat non-relasional sehingga dapat memakai berbagai model data. 
 
 ***
 
@@ -45,8 +60,10 @@ Sedangkan, *NoSQL* adalah database yang menggunakan format JSON untuk setiap dok
 
 Sebenarnya banyak perbedaan yang dimiliki di antara dua database tersebut tapi inilah perbedaan yang paling mencolok antara SQL dan NoSQL:
 
-<img style="float: center; margin: 0px 0px 0px 0px; width:100%" src="images/Bab1/Perbedaan_DB.png"/>
-
+```{r Perbedaan,echo=FALSE, fig.cap='Perbedaan SQL vs NoSQL', tidy=FALSE, out.width='100%', fig.align='center'}
+library(knitr)
+include_graphics("./images/Bab1/Perbedaan_DB.png")
+```
 
 ***
 
@@ -55,7 +72,11 @@ Sebenarnya banyak perbedaan yang dimiliki di antara dua database tersebut tapi i
 Tercatat sampai bulan Februari 2020 ada 334 jenis database menurut db-engines.com. Berikut ini saya merangkum daftar 7 database terpopuler yang menggunakan [SQL](https://qwords.com/blog/database-terpopuler/) (Relasional):
 
 
-<img style="float: center; margin: 0px 0px 0px 0px; width:100%" src="images/Bab1/7SQL_DB.png"/>
+```{r top7SQL,echo=FALSE, fig.cap='Top 7 Perangkat Lunak SQL', tidy=FALSE, out.width='100%', fig.align='center'}
+library(knitr)
+include_graphics("./images/Bab1/7SQL_DB.png")
+```
+
 
 ***
 
@@ -63,26 +84,60 @@ Tercatat sampai bulan Februari 2020 ada 334 jenis database menurut db-engines.co
 
 Kebanyakan basis data NoSQL digunakan dalam dunia aplikasi web waktu nyata (real-time web app). Berikut ini adalah ulasan 8 jenis basis data [NoSQL](https://www.codepolitan.com/7-basis-data-nosql-populer) yang paling populer digunakan diseluruh dunia: 
 
-<img style="float: center; margin: 0px 0px 0px 0px; width:100%" src="images/Bab1/8NoSQL_DB.png"/>
-
+```{r top8noSQL,echo=FALSE, fig.cap='Top 8 Perangkat Lunak NoSQL', tidy=FALSE, out.width='100%', fig.align='center'}
+library(knitr)
+include_graphics("./images/Bab1/8NoSQL_DB.png")
+```
 
 ***
 
-## Mengapa Python & SQL?
+## Mengapa R & SQL?
 
+Menggunakan R dan SQL merupakan kombinasi yang kuat untuk analisis data dan pengelolaan basis data. Keduanya memiliki peran yang berbeda dalam proses analisis dan pengelolaan data. Berikut adalah beberapa alasan mengapa menggunakan R dan SQL bersama:
 
-**Python** adalah sebuah bahasa pemrograman yang digunakan untuk membuat aplikasi, perintah komputer, dan melakukan analisis data. **SQL** adalah sintaks (bahasa) yang digunakan untuk mengatur dan mengambil informasi dari sistem basis data relasional dan yang juga dapat digunakan untuk membuat basis data sendiri. Jadi, kedua perangkat lunak ini mempunyai peran masing-masing. SQL ditujukan untuk mengakses dan mengambil data dari database. Sedangkan Python digunakan untuk menganalisis dan memanipulasi data dengan menggunakan regresi, time series maupun perhitungan lainnya.
+* **Kekuatan Analisis R**
 
-Jika kita ingin bekerja di bidang pengolahan data, kita harus fokus kepada kemampuan yang diinginkan oleh para perusahaan pemberi kerja tersebut. Untuk posisi analis data, SQL termasuk kemampuan yang diutamakan, sekitar 57.4% dari keseluruhan lowongan pekerjaan. Berdasarkan survei yang dilakukan Dataquest dan StackOverflow pada gambar dibawah ini, dapat dilihat bahwa SQL bahkan lebih populer di kalangan data scientist dan data engineer dibandingkan Python dan R. 
+R adalah bahasa pemrograman yang khusus dirancang untuk analisis statistik dan visualisasi data.
+R memiliki berbagai paket (packages) yang menawarkan fungsi statistik dan analisis yang kuat, termasuk regresi, pengelompokan, analisis deret waktu, dan banyak lagi.
+Visualisasi yang dapat dihasilkan dengan R sangat bervariasi, dari grafik sederhana hingga visualisasi interaktif yang kompleks.
 
-<img style="float: center; margin: 0px 0px 0px 0px; width:100%" src="images/Bab1/SQL1.png"/>
+* **Manipulasi dan Pengelolaan Data dengan SQL**
+
+SQL digunakan untuk mengelola dan mengambil data dari basis data terstruktur.
+SQL menyediakan cara efisien untuk membuat, mengubah, menghapus, dan memanipulasi data dalam basis data.
+SQL memiliki fitur untuk menggabungkan data dari berbagai tabel, melakukan agregasi, dan menyaring data.
+
+* **Integrasi Antara R dan SQL**
+
+Banyak perpustakaan R yang mendukung koneksi ke basis data menggunakan SQL.
+Anda dapat menggunakan perintah SQL dalam skrip R untuk mengambil data dari basis data, memanipulasi data di dalam R, dan kemudian menerapkan analisis statistik menggunakan paket R. Integrasi ini memungkinkan Anda menggabungkan kekuatan analisis statistik R dengan kemampuan pengelolaan data SQL.
+
+* **Skalabilitas dan Efisiensi**
+
+Menggunakan SQL untuk mengambil dan memanipulasi data dalam basis data bisa lebih efisien daripada melakukannya dalam R, terutama untuk dataset besar.
+SQL memungkinkan query yang dioptimalkan dan penggunaan indeks untuk kinerja yang lebih baik.
+
+* **Data Preprocessing**
+
+Sebelum menerapkan analisis di R, Anda mungkin perlu melakukan pra-pemrosesan pada data, seperti membersihkan data, menggabungkan tabel, dan mengisi data yang hilang. SQL dapat membantu dalam melakukan tugas-tugas ini.
+
+Jadi, menggunakan R dan SQL bersama memungkinkan Anda menggabungkan kekuatan analisis statistik R dengan kemampuan pengelolaan data SQL. Ini bisa sangat berguna ketika Anda ingin melakukan analisis data yang luas dan kompleks dari berbagai sumber data yang berbeda.
+
+```{r sql-r-friends,echo=FALSE, fig.cap='R dan SQL', tidy=FALSE, out.width='100%', fig.align='center'}
+library(knitr)
+include_graphics("./images/Bab1/sql-r-friends.png")
+```
+
 
 
 ## MySQL vs PostgreSQL
 
-MySQL adalah sistem manajemen basis data relasional yang memungkinkan Anda untuk menyimpan data sebagai tabel dengan baris dan kolom. Sistem ini populer sehingga digunakan di banyak aplikasi web, situs web dinamis, dan sistem tertanam. PostgreSQL adalah sistem manajemen basis data relasional-objek yang menawarkan lebih banyak fitur daripada MySQL. Sistem ini memberi Anda lebih banyak fleksibilitas dalam tipe data, skalabilitas, konkurensi, dan integritas data. 
+MySQL adalah sistem manajemen basis data relasional yang memungkinkan Anda untuk menyimpan data sebagai tabel dengan baris dan kolom. Sistem ini populer sehingga digunakan di banyak aplikasi web, situs web dinamis, dan sistem tertanam. PostgreSQL adalah sistem manajemen basis data relasional-objek yang menawarkan lebih banyak fitur daripada MySQL. Sistem ini memberi Anda lebih banyak fleksibilitas dalam tipe data, skalabilitas, konkurensi, dan integrasi data. 
 
-<img style="float: center; margin: 0px 0px 0px 0px; width:100%" src="images/Bab1/MySQL-VS-PostgreSQL.jpg"/>
+```{r MySQL-VS-PostgreSQL,echo=FALSE, fig.cap='MySQL vs PostgreSQL', tidy=FALSE, out.width='100%', fig.align='center'}
+library(knitr)
+include_graphics("./images/Bab1/MySQL-VS-PostgreSQL.jpg")
+```
 
 MySQL dan PostgreSQL, Keduanya menyimpan data di dalam tabel yang terkait satu sama lain melalui nilai kolom umum. Namun keduanya sering dibandingkan karena terdapat beberapa perbedaan. Ingin mengenal lebih dalam? Simak penjelasan di bawah.
 
@@ -108,62 +163,6 @@ MySQL dan PostgreSQL, Keduanya menyimpan data di dalam tabel yang terkait satu s
 |Technical support MySQL dinilai kurang baik;| Meski memiliki integrasi dan skalabilitas tinggi, kecepatan PostgreSQL kalah unggul dibandingkan RDBMS lain;|
 |Sulit diaplikasikan untuk manajemen database berskala besar.| Sistem kompatibilitas PostgreSQL menuntut pengguna untuk bekerja lebih keras dalam perbaikan dan perawatan.|
 
-## Instalasi Python (Anaconda)
-
-Berikut ini adalah proses langkah demi langkah tentang Cara Menginstal Anaconda di Windows:
-
-### Open site
-
-Buka [Situs Web Anaconda](https://www.anaconda.com/download/) Lalu pilih Download pada logo Windows
-
-<img style="float: center; margin: 0px 0px 0px 0px; width:100%" src="images/Bab1/Conda0.png"/>
-
-
-### Buka file exe yang telah didownload
-
-Ketika layar di bawah ini muncul, klik Next.
-
-<img style="float: center; margin: 0px 0px 0px 0px; width:100%" src="images/Bab1/Conda1.png"/>
-
-### Baca perjanjian lisensi dan klik **I Agree**.
-
-<img style="float: center; margin: 0px 0px 0px 0px; width:100%" src="images/Bab1/Conda2.webp"/>
-
-### Click on Next
-
-<img style="float: center; margin: 0px 0px 0px 0px; width:100%" src="images/Bab1/Conda3.webp"/>
-
-### Catat lokasi penginstalan Anda, lalu klik Next.
-
-<img style="float: center; margin: 0px 0px 0px 0px; width:100%" src="images/Bab1/Conda4.webp"/>
-
-### Customiza Anaconda
-
-Ini adalah bagian penting dari proses instalasi. approach yang disarankan adalah tidak mencentang kotak untuk menambahkan Anaconda ke path Anda. Ini berarti Anda harus menggunakan Anaconda Navigator atau Anaconda Command Prompt (terletak di Start Menu di bawah "Anaconda") ketika Anda ingin menggunakan Anaconda (Anda selalu dapat menambahkan Anaconda ke PATH Anda nanti jika Anda tidak mencentang kotak). Jika Anda ingin menggunakan Anaconda pada command prompt Anda (atau git bash, cmder, powershell, dll), gunakan alternative approach dan centang kotaknya.
-
-<img style="float: center; margin: 0px 0px 0px 0px; width:100%" src="images/Bab1/Conda5.webp"/>
-
-### Setup Complete
-
-<img style="float: center; margin: 0px 0px 0px 0px; width:100%" src="images/Bab1/Conda6.webp"/>
-
-###Install Microsoft VSCode
-
-Anda dapat menginstal Microsoft VSCode jika Anda mau, tetapi ini opsional.
-
-<img style="float: center; margin: 0px 0px 0px 0px; width:100%" src="images/Bab1/Conda7.webp"/>
-
-### Selesai
-
-Click on Finish.
-
-<img style="float: center; margin: 0px 0px 0px 0px; width:100%" src="images/Bab1/Conda8.webp"/>
-
-### Video Instalasi
-
-<iframe width="800" height="540" src="https://www.youtube.com/embed/lMS637XSBig" title="YouTube video player" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" allowfullscreen></iframe>
-
-* [Download Anaconda](https://www.anaconda.com/download)
 
 ## Instalasi MySQL (XAMPP)
 
