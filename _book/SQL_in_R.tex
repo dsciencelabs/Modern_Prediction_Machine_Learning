@@ -36,6 +36,46 @@
   \KOMAoptions{parskip=half}}
 \makeatother
 \usepackage{xcolor}
+\usepackage{color}
+\usepackage{fancyvrb}
+\newcommand{\VerbBar}{|}
+\newcommand{\VERB}{\Verb[commandchars=\\\{\}]}
+\DefineVerbatimEnvironment{Highlighting}{Verbatim}{commandchars=\\\{\}}
+% Add ',fontsize=\small' for more characters per line
+\usepackage{framed}
+\definecolor{shadecolor}{RGB}{248,248,248}
+\newenvironment{Shaded}{\begin{snugshade}}{\end{snugshade}}
+\newcommand{\AlertTok}[1]{\textcolor[rgb]{0.94,0.16,0.16}{#1}}
+\newcommand{\AnnotationTok}[1]{\textcolor[rgb]{0.56,0.35,0.01}{\textbf{\textit{#1}}}}
+\newcommand{\AttributeTok}[1]{\textcolor[rgb]{0.13,0.29,0.53}{#1}}
+\newcommand{\BaseNTok}[1]{\textcolor[rgb]{0.00,0.00,0.81}{#1}}
+\newcommand{\BuiltInTok}[1]{#1}
+\newcommand{\CharTok}[1]{\textcolor[rgb]{0.31,0.60,0.02}{#1}}
+\newcommand{\CommentTok}[1]{\textcolor[rgb]{0.56,0.35,0.01}{\textit{#1}}}
+\newcommand{\CommentVarTok}[1]{\textcolor[rgb]{0.56,0.35,0.01}{\textbf{\textit{#1}}}}
+\newcommand{\ConstantTok}[1]{\textcolor[rgb]{0.56,0.35,0.01}{#1}}
+\newcommand{\ControlFlowTok}[1]{\textcolor[rgb]{0.13,0.29,0.53}{\textbf{#1}}}
+\newcommand{\DataTypeTok}[1]{\textcolor[rgb]{0.13,0.29,0.53}{#1}}
+\newcommand{\DecValTok}[1]{\textcolor[rgb]{0.00,0.00,0.81}{#1}}
+\newcommand{\DocumentationTok}[1]{\textcolor[rgb]{0.56,0.35,0.01}{\textbf{\textit{#1}}}}
+\newcommand{\ErrorTok}[1]{\textcolor[rgb]{0.64,0.00,0.00}{\textbf{#1}}}
+\newcommand{\ExtensionTok}[1]{#1}
+\newcommand{\FloatTok}[1]{\textcolor[rgb]{0.00,0.00,0.81}{#1}}
+\newcommand{\FunctionTok}[1]{\textcolor[rgb]{0.13,0.29,0.53}{\textbf{#1}}}
+\newcommand{\ImportTok}[1]{#1}
+\newcommand{\InformationTok}[1]{\textcolor[rgb]{0.56,0.35,0.01}{\textbf{\textit{#1}}}}
+\newcommand{\KeywordTok}[1]{\textcolor[rgb]{0.13,0.29,0.53}{\textbf{#1}}}
+\newcommand{\NormalTok}[1]{#1}
+\newcommand{\OperatorTok}[1]{\textcolor[rgb]{0.81,0.36,0.00}{\textbf{#1}}}
+\newcommand{\OtherTok}[1]{\textcolor[rgb]{0.56,0.35,0.01}{#1}}
+\newcommand{\PreprocessorTok}[1]{\textcolor[rgb]{0.56,0.35,0.01}{\textit{#1}}}
+\newcommand{\RegionMarkerTok}[1]{#1}
+\newcommand{\SpecialCharTok}[1]{\textcolor[rgb]{0.81,0.36,0.00}{\textbf{#1}}}
+\newcommand{\SpecialStringTok}[1]{\textcolor[rgb]{0.31,0.60,0.02}{#1}}
+\newcommand{\StringTok}[1]{\textcolor[rgb]{0.31,0.60,0.02}{#1}}
+\newcommand{\VariableTok}[1]{\textcolor[rgb]{0.00,0.00,0.00}{#1}}
+\newcommand{\VerbatimStringTok}[1]{\textcolor[rgb]{0.31,0.60,0.02}{#1}}
+\newcommand{\WarningTok}[1]{\textcolor[rgb]{0.56,0.35,0.01}{\textbf{\textit{#1}}}}
 \usepackage{longtable,booktabs,array}
 \usepackage{calc} % for calculating minipage widths
 % Correct order of tables after \paragraph or \subparagraph
@@ -763,8 +803,422 @@ Anda akan melihat Dashboard
 \hypertarget{video-instalasi-postgresql}{%
 \subsection{Video Instalasi PostgreSQL}\label{video-instalasi-postgresql}}
 
-\hypertarget{praktikal-hands-on}{%
-\section{Praktikal (Hands On)}\label{praktikal-hands-on}}
+\hypertarget{praktikum}{%
+\section{Praktikum}\label{praktikum}}
+
+\begin{itemize}
+\tightlist
+\item
+  Tutorial di MySQL (CREATE \& Drop Database, Create \& Drop Tabel)
+\item
+  Tutorial di PostgreeeSQL (CREATE \& Drop Database, Create \& Drop Tabel)
+\end{itemize}
+
+\hypertarget{connecting-r-to-sql}{%
+\chapter{Connecting R to SQL}\label{connecting-r-to-sql}}
+
+\hypertarget{introduction}{%
+\section{Introduction}\label{introduction}}
+
+A database is a structured set of data. Terminology is a little bit different when working with a database management system compared to working with data in R.
+
+\begin{itemize}
+\tightlist
+\item
+  \textbf{field:} variable or quantity
+\item
+  \textbf{record:} collection of fields
+\item
+  \textbf{table:} collection of records with all the same fields
+\item
+  \textbf{database:} collection of tables
+\end{itemize}
+
+The relationship between R terminology and database terminology is explained below.
+
+\begin{longtable}[]{@{}ll@{}}
+\toprule\noalign{}
+R terminology & Database terminology \\
+\midrule\noalign{}
+\endhead
+\bottomrule\noalign{}
+\endlastfoot
+column & field \\
+row & record \\
+data frame & table \\
+types of columns & table schema \\
+collection of data & frames database \\
+\end{longtable}
+
+\begin{center}\rule{0.5\linewidth}{0.5pt}\end{center}
+
+\hypertarget{connecting-r-to-sql-1}{%
+\section{Connecting R to SQL}\label{connecting-r-to-sql-1}}
+
+Connecting R to SQL databases allows you to leverage the power of R for data analysis while directly interacting with and querying data stored in relational databases. This connection enables you to retrieve, manipulate, and analyze data using SQL queries within your R environment.
+
+\begin{figure}
+
+{\centering \includegraphics[width=1\linewidth]{./images/Bab2/coneccting_db_in_R} 
+
+}
+
+\caption{Connecting R to SQL [https://rviews.rstudio.com](https://rviews.rstudio.com/2017/05/17/databases-using-r/)}\label{fig:coneccting}
+\end{figure}
+
+Here's a step-by-step introduction to connecting R to an SQL database:
+
+\hypertarget{install-required-packages}{%
+\subsection{Install Required Packages}\label{install-required-packages}}
+
+First, you need to install R packages that facilitate database connections and SQL interactions. The DBI package provides a common interface for database connections, and you'll also need a database-specific package like RMySQL for MySQL, RPostgreSQL for PostgreSQL, or RODBC for ODBC connections.
+
+You can install these packages using the following commands:
+
+\begin{Shaded}
+\begin{Highlighting}[]
+\FunctionTok{install.packages}\NormalTok{(}\FunctionTok{c}\NormalTok{(}
+                   \StringTok{"RMariaDB"}\NormalTok{,}
+                   \StringTok{"RMySQL"}\NormalTok{,}
+                   \StringTok{"RPostgres"}
+                   \StringTok{"RSQLite"}\NormalTok{,}
+\NormalTok{                   )}
+\NormalTok{                 )}
+\end{Highlighting}
+\end{Shaded}
+
+\hypertarget{load-packages}{%
+\subsection{Load Packages}\label{load-packages}}
+
+Then, load all these requirement packages:
+
+\begin{Shaded}
+\begin{Highlighting}[]
+\CommentTok{\# install.packages("pacman")}
+\NormalTok{pacman}\SpecialCharTok{::}\FunctionTok{p\_load}\NormalTok{(}
+\NormalTok{               RMariaDB,             }\CommentTok{\# Database Interface and \textquotesingle{}MariaDB\textquotesingle{} Driver}
+\NormalTok{               RMySQL,               }\CommentTok{\# Database Interface and \textquotesingle{}RMySQL\textquotesingle{} Driver}
+\NormalTok{               RPostgres             }\CommentTok{\# Database Interface and \textquotesingle{}RPostgres\textquotesingle{} Driver}
+\NormalTok{               RSQLite,              }\CommentTok{\# Database Interface and \textquotesingle{}RSQLite\textquotesingle{} Driver}
+\NormalTok{          )}
+\end{Highlighting}
+\end{Shaded}
+
+\hypertarget{establish-a-connection}{%
+\subsection{Establish a Connection}\label{establish-a-connection}}
+
+There are many ways to connect your database with R. This article shows you three of the most common ways:
+
+\hypertarget{mariadb}{%
+\subsubsection*{MariaDB}\label{mariadb}}
+\addcontentsline{toc}{subsubsection}{MariaDB}
+
+\begin{Shaded}
+\begin{Highlighting}[]
+\NormalTok{MariaDB }\OtherTok{\textless{}{-}} \FunctionTok{dbConnect}\NormalTok{(RMariaDB}\SpecialCharTok{::}\FunctionTok{MariaDB}\NormalTok{(), }
+                  \AttributeTok{user=}\StringTok{\textquotesingle{}root\textquotesingle{}}\NormalTok{,}
+                  \AttributeTok{password=}\StringTok{\textquotesingle{}\textquotesingle{}}\NormalTok{, }
+                  \AttributeTok{dbname=}\StringTok{\textquotesingle{}bakti\textquotesingle{}}\NormalTok{, }
+                  \AttributeTok{host=}\StringTok{\textquotesingle{}localhost\textquotesingle{}}\NormalTok{)}
+\FunctionTok{dbListTables}\NormalTok{(MariaDB)                             }\CommentTok{\# table list on your database}
+\FunctionTok{dbExecute}\NormalTok{(MariaDB,}\StringTok{"CREATE DATABASE new\_MariaDB"}\NormalTok{)  }\CommentTok{\# Create a new Database}
+\FunctionTok{dbExecute}\NormalTok{(MariaDB,}\StringTok{"DROP DATABASE new\_MariaDB"}\NormalTok{)    }\CommentTok{\# Drop a Database}
+\end{Highlighting}
+\end{Shaded}
+
+\hypertarget{mysql}{%
+\subsubsection*{MySQL}\label{mysql}}
+\addcontentsline{toc}{subsubsection}{MySQL}
+
+\begin{Shaded}
+\begin{Highlighting}[]
+\NormalTok{MySQL }\OtherTok{\textless{}{-}} \FunctionTok{dbConnect}\NormalTok{(}\FunctionTok{MySQL}\NormalTok{(), }
+                  \AttributeTok{user=}\StringTok{\textquotesingle{}root\textquotesingle{}}\NormalTok{,}
+                  \AttributeTok{password=}\StringTok{\textquotesingle{}\textquotesingle{}}\NormalTok{, }
+                  \AttributeTok{dbname=}\StringTok{\textquotesingle{}bakti\textquotesingle{}}\NormalTok{, }
+                  \AttributeTok{host=}\StringTok{\textquotesingle{}localhost\textquotesingle{}}\NormalTok{)}
+\FunctionTok{dbListTables}\NormalTok{(MySQL)                               }\CommentTok{\# table list on your database}
+\FunctionTok{dbExecute}\NormalTok{(MySQL,}\StringTok{"CREATE DATABASE new\_MySQL"}\NormalTok{)      }\CommentTok{\# Create a new Database}
+\FunctionTok{dbExecute}\NormalTok{(MySQL,}\StringTok{"DROP DATABASE new\_MySQL"}\NormalTok{)        }\CommentTok{\# Drop a Database}
+\end{Highlighting}
+\end{Shaded}
+
+\hypertarget{postgres}{%
+\subsubsection*{Postgres}\label{postgres}}
+\addcontentsline{toc}{subsubsection}{Postgres}
+
+\begin{Shaded}
+\begin{Highlighting}[]
+\NormalTok{postgres }\OtherTok{\textless{}{-}} \FunctionTok{dbConnect}\NormalTok{(RPostgres}\SpecialCharTok{::}\FunctionTok{Postgres}\NormalTok{(), }
+                  \AttributeTok{user=}\StringTok{\textquotesingle{}postgres\textquotesingle{}}\NormalTok{,}
+                  \AttributeTok{password=}\StringTok{\textquotesingle{}1234\textquotesingle{}}\NormalTok{, }
+                  \AttributeTok{dbname=}\StringTok{\textquotesingle{}postgres\textquotesingle{}}\NormalTok{, }
+                  \AttributeTok{host=}\StringTok{\textquotesingle{}localhost\textquotesingle{}}\NormalTok{)}
+\FunctionTok{dbListTables}\NormalTok{(postgres)                               }\CommentTok{\# table list on your database}
+\FunctionTok{dbExecute}\NormalTok{(postgres,}\StringTok{"CREATE DATABASE new\_MySQL"}\NormalTok{)      }\CommentTok{\# Create a new Database}
+\FunctionTok{dbExecute}\NormalTok{(postgres,}\StringTok{"DROP DATABASE new\_MySQL"}\NormalTok{)        }\CommentTok{\# Drop a Database}
+\end{Highlighting}
+\end{Shaded}
+
+\hypertarget{sqlite}{%
+\subsubsection*{SQLite}\label{sqlite}}
+\addcontentsline{toc}{subsubsection}{SQLite}
+
+\begin{Shaded}
+\begin{Highlighting}[]
+\NormalTok{RSQLite }\OtherTok{\textless{}{-}} \FunctionTok{dbConnect}\NormalTok{(RSQLite}\SpecialCharTok{::}\FunctionTok{SQLite}\NormalTok{(), }\StringTok{"folder\_db/mydb3.sqlite"}\NormalTok{)}
+\FunctionTok{dbListTables}\NormalTok{(RSQLite)                             }\CommentTok{\# table list on your database}
+\end{Highlighting}
+\end{Shaded}
+
+\begin{itemize}
+\tightlist
+\item
+  \emph{Notes:} RSQLite will store the database you created in your current working directory.
+\end{itemize}
+
+\hypertarget{import-data}{%
+\section{Import Data}\label{import-data}}
+
+This section can be ignored if the data (table) that you need is already registered in your database. If not, then it is necessary to import data set according to your available files, download it below:
+
+\begin{itemize}
+\tightlist
+\item
+  \href{https://raw.githubusercontent.com/dsciencelabs/dataset/master/Customers.csv}{Customers.csv}
+\item
+  \href{https://raw.githubusercontent.com/dsciencelabs/dataset/master/Categories.csv}{Categories.csv}
+\item
+  \href{https://raw.githubusercontent.com/dsciencelabs/dataset/master/Employees.csv}{Employees.csv}
+\item
+  \href{https://raw.githubusercontent.com/dsciencelabs/dataset/master/OrderDetails.csv}{OrderDetails.csv}\\
+\item
+  \href{https://raw.githubusercontent.com/dsciencelabs/dataset/master/Orders.csv}{Orders.csv}
+\item
+  \href{https://raw.githubusercontent.com/dsciencelabs/dataset/master/Products.csv}{Products.csv}
+\item
+  \href{https://raw.githubusercontent.com/dsciencelabs/dataset/master/Shippers.csv}{Shippers.csv}
+\item
+  \href{https://raw.githubusercontent.com/dsciencelabs/dataset/master/Suppliers.csv}{Suppliers.csv}
+\item
+  \href{https://view.officeapps.live.com/op/view.aspx?src=https\%3A\%2F\%2Fraw.githubusercontent.com\%2Fdsciencelabs\%2Fdataset\%2Fmaster\%2FRawDatabase.xlsx\&wdOrigin=BROWSELINK}{RawDatabase.xlsx}
+\end{itemize}
+
+\hypertarget{csv-files}{%
+\subsection{CSV Files}\label{csv-files}}
+
+When you're working with files in R, such as reading data from a CSV file or saving plots as image files, R needs to know the location of these files. By setting the working directory, you provide a starting point for R to look for and save files.
+
+In R, the setwd() function is used to set the working directory for your R session. The working directory is the folder on your computer where R will look for files and where it will save files unless you specify a different location. Here's why the setwd() function is important and when you might use it:
+
+\begin{Shaded}
+\begin{Highlighting}[]
+\CommentTok{\# Set the working directory}
+\FunctionTok{setwd}\NormalTok{(}\StringTok{"/path/to/your/folder"}\NormalTok{)}
+\end{Highlighting}
+\end{Shaded}
+
+\begin{Shaded}
+\begin{Highlighting}[]
+\CommentTok{\# Now you can read CSV files without specifying the full path}
+\NormalTok{data }\OtherTok{\textless{}{-}} \FunctionTok{read.csv}\NormalTok{(}\StringTok{"file.csv"}\NormalTok{)}
+\end{Highlighting}
+\end{Shaded}
+
+Replace ``/path/to/your/folder'' with the actual path to the folder containing your CSV files. Then, you can run the following code!.
+
+\begin{Shaded}
+\begin{Highlighting}[]
+\NormalTok{Customers   }\OtherTok{\textless{}{-}}\FunctionTok{read.csv}\NormalTok{(}\StringTok{"data/Customers.csv"}\NormalTok{)}
+\NormalTok{Categories  }\OtherTok{\textless{}{-}}\FunctionTok{read.csv}\NormalTok{(}\StringTok{"data/Categories.csv"}\NormalTok{)  }
+\NormalTok{Employees   }\OtherTok{\textless{}{-}}\FunctionTok{read.csv}\NormalTok{(}\StringTok{"data/Employees.csv"}\NormalTok{)  }
+\NormalTok{OrderDetails}\OtherTok{\textless{}{-}}\FunctionTok{read.csv}\NormalTok{(}\StringTok{"data/OrderDetails.csv"}\NormalTok{)  }
+\NormalTok{Orders      }\OtherTok{\textless{}{-}}\FunctionTok{read.csv}\NormalTok{(}\StringTok{"data/Orders.csv"}\NormalTok{)  }
+\NormalTok{Products    }\OtherTok{\textless{}{-}}\FunctionTok{read.csv}\NormalTok{(}\StringTok{"data/Products.csv"}\NormalTok{)  }
+\NormalTok{Shippers    }\OtherTok{\textless{}{-}}\FunctionTok{read.csv}\NormalTok{(}\StringTok{"data/Shippers.csv"}\NormalTok{)}
+\NormalTok{Suppliers   }\OtherTok{\textless{}{-}}\FunctionTok{read.csv}\NormalTok{(}\StringTok{"data/Suppliers.csv"}\NormalTok{)  }
+\end{Highlighting}
+\end{Shaded}
+
+\hypertarget{xlsx-files}{%
+\subsection{XLSX Files}\label{xlsx-files}}
+
+\begin{Shaded}
+\begin{Highlighting}[]
+\FunctionTok{library}\NormalTok{(}\StringTok{"readxl"}\NormalTok{)                                  }
+\NormalTok{Customers   }\OtherTok{\textless{}{-}}\FunctionTok{read\_excel}\NormalTok{(}\StringTok{"data/RawDatabase.xlsx"}\NormalTok{,}\AttributeTok{sheet=}\DecValTok{1}\NormalTok{)      }
+\NormalTok{Categories  }\OtherTok{\textless{}{-}}\FunctionTok{read\_excel}\NormalTok{(}\StringTok{"data/RawDatabase.xlsx"}\NormalTok{,}\AttributeTok{sheet=}\DecValTok{2}\NormalTok{) }
+\NormalTok{Employees   }\OtherTok{\textless{}{-}}\FunctionTok{read\_excel}\NormalTok{(}\StringTok{"data/RawDatabase.xlsx"}\NormalTok{,}\AttributeTok{sheet=}\DecValTok{3}\NormalTok{)}
+\NormalTok{OrderDetails}\OtherTok{\textless{}{-}}\FunctionTok{read\_excel}\NormalTok{(}\StringTok{"data/RawDatabase.xlsx"}\NormalTok{,}\AttributeTok{sheet=}\DecValTok{4}\NormalTok{) }
+\NormalTok{Orders      }\OtherTok{\textless{}{-}}\FunctionTok{read\_excel}\NormalTok{(}\StringTok{"data/RawDatabase.xlsx"}\NormalTok{,}\AttributeTok{sheet=}\DecValTok{5}\NormalTok{)}
+\NormalTok{Products    }\OtherTok{\textless{}{-}}\FunctionTok{read\_excel}\NormalTok{(}\StringTok{"data/RawDatabase.xlsx"}\NormalTok{,}\AttributeTok{sheet=}\DecValTok{6}\NormalTok{) }
+\NormalTok{Shippers    }\OtherTok{\textless{}{-}}\FunctionTok{read\_excel}\NormalTok{(}\StringTok{"data/RawDatabase.xlsx"}\NormalTok{,}\AttributeTok{sheet=}\DecValTok{7}\NormalTok{)  }
+\NormalTok{Suppliers   }\OtherTok{\textless{}{-}}\FunctionTok{read\_excel}\NormalTok{(}\StringTok{"data/RawDatabase.xlsx"}\NormalTok{,}\AttributeTok{sheet=}\DecValTok{8}\NormalTok{)  }
+\end{Highlighting}
+\end{Shaded}
+
+\hypertarget{write-dataframe-to-database}{%
+\section{Write Dataframe to Database}\label{write-dataframe-to-database}}
+
+The key here is the \texttt{dbWriteTable} function which allows us to write an R data frame directly to a database table. The data frame's column names will be used as the database table's fields. In the following example I use \texttt{RMariaDB} connection, you can apply another driver as you like.
+
+\begin{Shaded}
+\begin{Highlighting}[]
+\NormalTok{new\_con }\OtherTok{\textless{}{-}} \FunctionTok{dbConnect}\NormalTok{(}\FunctionTok{MariaDB}\NormalTok{(), }
+                  \AttributeTok{user=}\StringTok{\textquotesingle{}root\textquotesingle{}}\NormalTok{,}
+                  \AttributeTok{password=}\StringTok{\textquotesingle{}\textquotesingle{}}\NormalTok{, }
+                  \AttributeTok{dbname=}\StringTok{\textquotesingle{}new\_MariaDB\textquotesingle{}}\NormalTok{, }
+                  \AttributeTok{host=}\StringTok{\textquotesingle{}localhost\textquotesingle{}}\NormalTok{)}
+
+\FunctionTok{dbWriteTable}\NormalTok{(new\_con, }\StringTok{"Customers"}\NormalTok{, Customers, }\AttributeTok{append=}\NormalTok{T) }
+\FunctionTok{dbWriteTable}\NormalTok{(new\_con, }\StringTok{"Categories"}\NormalTok{, Categories, }\AttributeTok{append=}\NormalTok{T) }
+\FunctionTok{dbWriteTable}\NormalTok{(new\_con, }\StringTok{"Employees"}\NormalTok{, Employees, }\AttributeTok{append=}\NormalTok{T) }
+\FunctionTok{dbWriteTable}\NormalTok{(new\_con, }\StringTok{"OrderDetails"}\NormalTok{, OrderDetails, }\AttributeTok{append=}\NormalTok{T) }
+\FunctionTok{dbWriteTable}\NormalTok{(new\_con, }\StringTok{"Orders"}\NormalTok{, Orders, }\AttributeTok{append=}\NormalTok{T) }
+\FunctionTok{dbWriteTable}\NormalTok{(new\_con, }\StringTok{"Products"}\NormalTok{, Products, }\AttributeTok{append=}\NormalTok{T) }
+\FunctionTok{dbWriteTable}\NormalTok{(new\_con, }\StringTok{"Shippers"}\NormalTok{, Shippers, }\AttributeTok{append=}\NormalTok{T) }
+\FunctionTok{dbWriteTable}\NormalTok{(new\_con, }\StringTok{"Suppliers"}\NormalTok{, Suppliers, }\AttributeTok{append=}\NormalTok{T) }
+\end{Highlighting}
+\end{Shaded}
+
+\emph{Note:} Some important things that must be considered when storing table data are as follows:
+
+\begin{itemize}
+\tightlist
+\item
+  Data Structure adjustments
+\item
+  Changes Data type (especially, Date and Time)
+\end{itemize}
+
+In this case, we have a problem with the data table \texttt{Employees} and \texttt{Orders}. When you consider these Table (Employees and Orders), you will find there is no date are written correctly in the database. In order to handle this problem, just type the following code in your R console:
+
+\begin{Shaded}
+\begin{Highlighting}[]
+\FunctionTok{dbRemoveTable}\NormalTok{(new\_con, }\StringTok{"Orders"}\NormalTok{)}
+\end{Highlighting}
+\end{Shaded}
+
+\begin{Shaded}
+\begin{Highlighting}[]
+\NormalTok{Orders[}\StringTok{"OrderDate"}\NormalTok{] }\OtherTok{\textless{}{-}}\FunctionTok{as.Date}\NormalTok{(Orders}\SpecialCharTok{$}\NormalTok{OrderDate, }\AttributeTok{format =} \StringTok{"\%Y{-}\%m{-}\%d"}\NormalTok{) }
+\end{Highlighting}
+\end{Shaded}
+
+\begin{Shaded}
+\begin{Highlighting}[]
+\FunctionTok{dbWriteTable}\NormalTok{(new\_con, }\StringTok{"Orders"}\NormalTok{, Orders, }\AttributeTok{append=}\NormalTok{T) }
+\end{Highlighting}
+\end{Shaded}
+
+\emph{Your Exercise:} Do the same thing to update data table \texttt{Employees}
+
+\hypertarget{basic-queries}{%
+\section{Basic Queries}\label{basic-queries}}
+
+\hypertarget{select}{%
+\subsection{SELECT}\label{select}}
+
+The SELECT statement is used to select data from a database.
+
+\begin{Shaded}
+\begin{Highlighting}[]
+\FunctionTok{library}\NormalTok{(DT)}
+\NormalTok{df1}\OtherTok{\textless{}{-}}\FunctionTok{dbGetQuery}\NormalTok{(new\_con,}\StringTok{\textquotesingle{}SELECT city}
+\StringTok{                         FROM Customers\textquotesingle{}}\NormalTok{)}
+\FunctionTok{datatable}\NormalTok{(df1)}
+\end{Highlighting}
+\end{Shaded}
+
+\hypertarget{where}{%
+\subsection{WHERE}\label{where}}
+
+The WHERE clause is used to filter records, extract only those records that fulfill a specified condition.
+
+\begin{Shaded}
+\begin{Highlighting}[]
+\NormalTok{df2}\OtherTok{\textless{}{-}}\FunctionTok{dbGetQuery}\NormalTok{(new\_con,}\StringTok{"SELECT * }
+\StringTok{                         FROM Customers }
+\StringTok{                         WHERE Country=\textquotesingle{}Germany\textquotesingle{}"}\NormalTok{)}
+\FunctionTok{datatable}\NormalTok{(df2)}
+\end{Highlighting}
+\end{Shaded}
+
+\hypertarget{insert-into}{%
+\subsection{INSERT INTO}\label{insert-into}}
+
+If you are adding values for all the columns of the table, you do not need to specify the column names in the SQL query. However, make sure the order of the values is in the same order as the columns in the table. The INSERT INTO syntax would be as follows:
+
+\begin{Shaded}
+\begin{Highlighting}[]
+\FunctionTok{dbExecute}\NormalTok{(new\_con,}\StringTok{"INSERT INTO Customers(CustomerName,ContactName,Address,City,PostalCode, Country)}
+\StringTok{                   VALUES(\textquotesingle{}Bakti\textquotesingle{},\textquotesingle{}Siregar\textquotesingle{},\textquotesingle{}Jl.Bahagia Selalu\textquotesingle{},\textquotesingle{}Tangerang\textquotesingle{},\textquotesingle{}081369\textquotesingle{},\textquotesingle{}Indonesia\textquotesingle{})"}\NormalTok{)}
+\end{Highlighting}
+\end{Shaded}
+
+\hypertarget{delete}{%
+\subsection{DELETE}\label{delete}}
+
+The DELETE statement is used to delete existing records in a table.
+
+\begin{Shaded}
+\begin{Highlighting}[]
+\FunctionTok{dbExecute}\NormalTok{(new\_con,}\StringTok{"DELETE FROM Customers}
+\StringTok{                   WHERE CustomerName =\textquotesingle{}Bakti\textquotesingle{} "}\NormalTok{)  }
+\end{Highlighting}
+\end{Shaded}
+
+\hypertarget{update}{%
+\subsection{UPDATE}\label{update}}
+
+The UPDATE statement is used to modify the existing records in a table.
+
+\begin{Shaded}
+\begin{Highlighting}[]
+\FunctionTok{dbExecute}\NormalTok{(new\_con,}\StringTok{"UPDATE Customers}
+\StringTok{                   SET ContactName = \textquotesingle{}Alfred Schmidt\textquotesingle{}, City= \textquotesingle{}Frankfurt\textquotesingle{}}
+\StringTok{                   WHERE CustomerID = 1"}\NormalTok{)}
+\end{Highlighting}
+\end{Shaded}
+
+\hypertarget{disconnect-database}{%
+\subsection{Disconnect Database}\label{disconnect-database}}
+
+If you are done with the query process and you don't want to use it anymore, you should disconnect the connection from your database.
+
+\begin{Shaded}
+\begin{Highlighting}[]
+\FunctionTok{dbDisconnect}\NormalTok{(new\_con)                                        }\CommentTok{\# disconnect from your database}
+\end{Highlighting}
+\end{Shaded}
+
+\hypertarget{your-job}{%
+\section{Your Job}\label{your-job}}
+
+\begin{enumerate}
+\def\labelenumi{\arabic{enumi}.}
+\tightlist
+\item
+  Write Dataframe to your Database directory, using the following Engine:
+\end{enumerate}
+
+\begin{itemize}
+\tightlist
+\item
+  RMySQL
+\item
+  RPostgres\\
+\item
+  RSQLite
+\end{itemize}
+
+\begin{enumerate}
+\def\labelenumi{\arabic{enumi}.}
+\setcounter{enumi}{1}
+\tightlist
+\item
+  Create a Basic Queries tutorial using all engine that you already use at task no 1, (Such as: \texttt{SELECT}, \texttt{WHERE}, \texttt{INSERT\ INTO}, \texttt{DELETE}, and \texttt{UPDATE})!
+\end{enumerate}
 
 \hypertarget{referensi}{%
 \chapter{Referensi}\label{referensi}}

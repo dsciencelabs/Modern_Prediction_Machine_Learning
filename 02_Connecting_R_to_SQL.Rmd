@@ -26,7 +26,7 @@ The relationship between R terminology and database terminology is explained bel
 
 Connecting R to SQL databases allows you to leverage the power of R for data analysis while directly interacting with and querying data stored in relational databases. This connection enables you to retrieve, manipulate, and analyze data using SQL queries within your R environment. 
 
-```{r coneccting,echo=FALSE, fig.cap='Connecting R to SQL [https://rviews.rstudio.com](https://rviews.rstudio.com/2017/05/17/databases-using-r/)')', tidy=FALSE, out.width='100%', fig.align='center'}
+```{r coneccting,echo=FALSE, fig.cap='Connecting R to SQL [https://rviews.rstudio.com](https://rviews.rstudio.com/2017/05/17/databases-using-r/)', tidy=FALSE, out.width='100%', fig.align='center'}
 library(knitr)
 include_graphics("./images/Bab2/coneccting_db_in_R.png")
 ```
@@ -121,9 +121,35 @@ dbListTables(RSQLite)                             # table list on your database
 
 ## Import Data 
 
-This section can be ignored if the data (table) that you need is already registered in your database. If not, then it is necessary to import data set according to your available files (here, I guide you with files CSV and XLSX). In your practice, you can choose either one.  
+This section can be ignored if the data (table) that you need is already registered in your database. If not, then it is necessary to import data set according to your available files, download it below:
+
+* [Customers.csv](https://raw.githubusercontent.com/dsciencelabs/dataset/master/Customers.csv)
+* [Categories.csv](https://raw.githubusercontent.com/dsciencelabs/dataset/master/Categories.csv) 
+* [Employees.csv](https://raw.githubusercontent.com/dsciencelabs/dataset/master/Employees.csv) 
+* [OrderDetails.csv](https://raw.githubusercontent.com/dsciencelabs/dataset/master/OrderDetails.csv)  
+* [Orders.csv](https://raw.githubusercontent.com/dsciencelabs/dataset/master/Orders.csv)
+* [Products.csv](https://raw.githubusercontent.com/dsciencelabs/dataset/master/Products.csv)
+* [Shippers.csv](https://raw.githubusercontent.com/dsciencelabs/dataset/master/Shippers.csv)
+* [Suppliers.csv](https://raw.githubusercontent.com/dsciencelabs/dataset/master/Suppliers.csv)
+* [RawDatabase.xlsx](https://view.officeapps.live.com/op/view.aspx?src=https%3A%2F%2Fraw.githubusercontent.com%2Fdsciencelabs%2Fdataset%2Fmaster%2FRawDatabase.xlsx&wdOrigin=BROWSELINK)
 
 ### CSV Files
+
+When you're working with files in R, such as reading data from a CSV file or saving plots as image files, R needs to know the location of these files. By setting the working directory, you provide a starting point for R to look for and save files. 
+
+In R, the setwd() function is used to set the working directory for your R session. The working directory is the folder on your computer where R will look for files and where it will save files unless you specify a different location. Here's why the setwd() function is important and when you might use it:
+
+```{r, eval=FALSE}
+# Set the working directory
+setwd("/path/to/your/folder")
+```
+
+```{r, eval=FALSE}
+# Now you can read CSV files without specifying the full path
+data <- read.csv("file.csv")
+```
+
+Replace "/path/to/your/folder" with the actual path to the folder containing your CSV files. Then, you can run the following code!.
 
 ```{r eval=FALSE}
 Customers   <-read.csv("data/Customers.csv")
@@ -196,9 +222,9 @@ dbWriteTable(new_con, "Orders", Orders, append=T)
 *Your Exercise:* Do the same thing to update data table `Employees`
 
 
-## Basic Queries
+## Basic SQL in R
 
-### SELECT FROM
+### SELECT
 
 The SELECT statement is used to select data from a database.
 
@@ -230,7 +256,7 @@ dbExecute(new_con,"INSERT INTO Customers(CustomerName,ContactName,Address,City,P
 ```
 
 
-### DELETE FROM
+### DELETE
 
 The DELETE statement is used to delete existing records in a table.
 
@@ -258,5 +284,17 @@ If you are done with the query process and you don't want to use it anymore, you
 ```{r eval=FALSE}
 dbDisconnect(new_con)                                        # disconnect from your database
 ```
+
+
+## Your Job
+
+1. Write Dataframe to your Database directory, using the following Engine:
+
+  * RMySQL
+  * RPostgres            
+  * RSQLite
+
+2. Create a 'Basic Queries' tutorial using all engine that you already use at task no 1, (Such as: `SELECT`, `WHERE`, `INSERT INTO`, `DELETE`,  and `UPDATE`)!
+
 
 
