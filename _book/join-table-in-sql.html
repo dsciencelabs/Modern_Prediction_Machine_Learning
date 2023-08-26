@@ -1,0 +1,533 @@
+<!DOCTYPE html>
+<html lang="" xml:lang="">
+<head>
+
+  <meta charset="utf-8" />
+  <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+  <title>Bab 4 Join Table in SQL | Basis Data dan Penelusuran Data</title>
+  <meta name="description" content="Deskripsi Singkat Tentang Buku" />
+  <meta name="generator" content="bookdown 0.34 and GitBook 2.6.7" />
+
+  <meta property="og:title" content="Bab 4 Join Table in SQL | Basis Data dan Penelusuran Data" />
+  <meta property="og:type" content="book" />
+  <meta property="og:image" content="/images/Cover_SQL_in_R.png" />
+  <meta property="og:description" content="Deskripsi Singkat Tentang Buku" />
+  <meta name="github-repo" content="dsciencelabs/SQL_in_R" />
+
+  <meta name="twitter:card" content="summary" />
+  <meta name="twitter:title" content="Bab 4 Join Table in SQL | Basis Data dan Penelusuran Data" />
+  
+  <meta name="twitter:description" content="Deskripsi Singkat Tentang Buku" />
+  <meta name="twitter:image" content="/images/Cover_SQL_in_R.png" />
+
+<meta name="author" content="Bakti Siregar, M.Sc" />
+
+
+<meta name="date" content="2023-08-26" />
+
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <meta name="apple-mobile-web-app-capable" content="yes" />
+  <meta name="apple-mobile-web-app-status-bar-style" content="black" />
+  
+  
+<link rel="prev" href="fundamental-sql-in-r.html"/>
+<link rel="next" href="referensi.html"/>
+<script src="libs/jquery-3.6.0/jquery-3.6.0.min.js"></script>
+<script src="https://cdn.jsdelivr.net/npm/fuse.js@6.4.6/dist/fuse.min.js"></script>
+<link href="libs/gitbook-2.6.7/css/style.css" rel="stylesheet" />
+<link href="libs/gitbook-2.6.7/css/plugin-table.css" rel="stylesheet" />
+<link href="libs/gitbook-2.6.7/css/plugin-bookdown.css" rel="stylesheet" />
+<link href="libs/gitbook-2.6.7/css/plugin-highlight.css" rel="stylesheet" />
+<link href="libs/gitbook-2.6.7/css/plugin-search.css" rel="stylesheet" />
+<link href="libs/gitbook-2.6.7/css/plugin-fontsettings.css" rel="stylesheet" />
+<link href="libs/gitbook-2.6.7/css/plugin-clipboard.css" rel="stylesheet" />
+
+
+
+
+
+
+
+
+<link href="libs/anchor-sections-1.1.0/anchor-sections.css" rel="stylesheet" />
+<link href="libs/anchor-sections-1.1.0/anchor-sections-hash.css" rel="stylesheet" />
+<script src="libs/anchor-sections-1.1.0/anchor-sections.js"></script>
+
+
+<style type="text/css">
+pre > code.sourceCode { white-space: pre; position: relative; }
+pre > code.sourceCode > span { display: inline-block; line-height: 1.25; }
+pre > code.sourceCode > span:empty { height: 1.2em; }
+.sourceCode { overflow: visible; }
+code.sourceCode > span { color: inherit; text-decoration: inherit; }
+pre.sourceCode { margin: 0; }
+@media screen {
+div.sourceCode { overflow: auto; }
+}
+@media print {
+pre > code.sourceCode { white-space: pre-wrap; }
+pre > code.sourceCode > span { text-indent: -5em; padding-left: 5em; }
+}
+pre.numberSource code
+  { counter-reset: source-line 0; }
+pre.numberSource code > span
+  { position: relative; left: -4em; counter-increment: source-line; }
+pre.numberSource code > span > a:first-child::before
+  { content: counter(source-line);
+    position: relative; left: -1em; text-align: right; vertical-align: baseline;
+    border: none; display: inline-block;
+    -webkit-touch-callout: none; -webkit-user-select: none;
+    -khtml-user-select: none; -moz-user-select: none;
+    -ms-user-select: none; user-select: none;
+    padding: 0 4px; width: 4em;
+    color: #aaaaaa;
+  }
+pre.numberSource { margin-left: 3em; border-left: 1px solid #aaaaaa;  padding-left: 4px; }
+div.sourceCode
+  {   }
+@media screen {
+pre > code.sourceCode > span > a:first-child::before { text-decoration: underline; }
+}
+code span.al { color: #ff0000; font-weight: bold; } /* Alert */
+code span.an { color: #60a0b0; font-weight: bold; font-style: italic; } /* Annotation */
+code span.at { color: #7d9029; } /* Attribute */
+code span.bn { color: #40a070; } /* BaseN */
+code span.bu { color: #008000; } /* BuiltIn */
+code span.cf { color: #007020; font-weight: bold; } /* ControlFlow */
+code span.ch { color: #4070a0; } /* Char */
+code span.cn { color: #880000; } /* Constant */
+code span.co { color: #60a0b0; font-style: italic; } /* Comment */
+code span.cv { color: #60a0b0; font-weight: bold; font-style: italic; } /* CommentVar */
+code span.do { color: #ba2121; font-style: italic; } /* Documentation */
+code span.dt { color: #902000; } /* DataType */
+code span.dv { color: #40a070; } /* DecVal */
+code span.er { color: #ff0000; font-weight: bold; } /* Error */
+code span.ex { } /* Extension */
+code span.fl { color: #40a070; } /* Float */
+code span.fu { color: #06287e; } /* Function */
+code span.im { color: #008000; font-weight: bold; } /* Import */
+code span.in { color: #60a0b0; font-weight: bold; font-style: italic; } /* Information */
+code span.kw { color: #007020; font-weight: bold; } /* Keyword */
+code span.op { color: #666666; } /* Operator */
+code span.ot { color: #007020; } /* Other */
+code span.pp { color: #bc7a00; } /* Preprocessor */
+code span.sc { color: #4070a0; } /* SpecialChar */
+code span.ss { color: #bb6688; } /* SpecialString */
+code span.st { color: #4070a0; } /* String */
+code span.va { color: #19177c; } /* Variable */
+code span.vs { color: #4070a0; } /* VerbatimString */
+code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warning */
+</style>
+
+<style type="text/css">
+  
+  div.hanging-indent{margin-left: 1.5em; text-indent: -1.5em;}
+</style>
+
+<link rel="stylesheet" href="style.css" type="text/css" />
+</head>
+
+<body>
+
+
+
+  <div class="book without-animation with-summary font-size-2 font-family-1" data-basepath=".">
+
+    <div class="book-summary">
+      <nav role="navigation">
+
+<ul class="summary">
+<li><center><img src="images/logo.png" alt="logo" width="50%" height="50%"style="margin: 15px 0 0 0"></center></li>
+
+<li class="divider"></li>
+<li class="chapter" data-level="" data-path="index.html"><a href="index.html"><i class="fa fa-check"></i>Kata Pengantar</a>
+<ul>
+<li class="chapter" data-level="" data-path="index.html"><a href="index.html#ringkasan-materi"><i class="fa fa-check"></i>Ringkasan Materi</a></li>
+<li class="chapter" data-level="" data-path="index.html"><a href="index.html#penulis"><i class="fa fa-check"></i>Penulis</a></li>
+<li class="chapter" data-level="" data-path="index.html"><a href="index.html#asisten-lab"><i class="fa fa-check"></i>Asisten Lab</a></li>
+<li class="chapter" data-level="" data-path="index.html"><a href="index.html#ucapan-terima-kasih"><i class="fa fa-check"></i>Ucapan Terima Kasih</a></li>
+<li class="chapter" data-level="" data-path="index.html"><a href="index.html#masukan-saran"><i class="fa fa-check"></i>Masukan &amp; Saran</a></li>
+</ul></li>
+<li class="chapter" data-level="1" data-path="pendahuluan.html"><a href="pendahuluan.html"><i class="fa fa-check"></i><b>1</b> Pendahuluan</a>
+<ul>
+<li class="chapter" data-level="1.1" data-path="pendahuluan.html"><a href="pendahuluan.html#apa-itu-sbd"><i class="fa fa-check"></i><b>1.1</b> Apa itu SBD?</a>
+<ul>
+<li class="chapter" data-level="1.1.1" data-path="pendahuluan.html"><a href="pendahuluan.html#komponen-sbd"><i class="fa fa-check"></i><b>1.1.1</b> Komponen SBD</a></li>
+<li class="chapter" data-level="1.1.2" data-path="pendahuluan.html"><a href="pendahuluan.html#manfaat-sbd"><i class="fa fa-check"></i><b>1.1.2</b> Manfaat SBD</a></li>
+<li class="chapter" data-level="1.1.3" data-path="pendahuluan.html"><a href="pendahuluan.html#definisi-sql-vs-nosql"><i class="fa fa-check"></i><b>1.1.3</b> Definisi SQL vs NoSQL</a></li>
+<li class="chapter" data-level="1.1.4" data-path="pendahuluan.html"><a href="pendahuluan.html#perbedaan-sql-vs-nosql"><i class="fa fa-check"></i><b>1.1.4</b> Perbedaan SQL vs NoSQL</a></li>
+<li class="chapter" data-level="1.1.5" data-path="pendahuluan.html"><a href="pendahuluan.html#top-7-sql"><i class="fa fa-check"></i><b>1.1.5</b> Top 7 SQL</a></li>
+<li class="chapter" data-level="1.1.6" data-path="pendahuluan.html"><a href="pendahuluan.html#top-8-nosql"><i class="fa fa-check"></i><b>1.1.6</b> Top 8 NoSQL</a></li>
+</ul></li>
+<li class="chapter" data-level="1.2" data-path="pendahuluan.html"><a href="pendahuluan.html#mengapa-r-sql"><i class="fa fa-check"></i><b>1.2</b> Mengapa R &amp; SQL?</a></li>
+<li class="chapter" data-level="1.3" data-path="pendahuluan.html"><a href="pendahuluan.html#mysql-vs-postgresql"><i class="fa fa-check"></i><b>1.3</b> MySQL vs PostgreSQL</a>
+<ul>
+<li class="chapter" data-level="1.3.1" data-path="pendahuluan.html"><a href="pendahuluan.html#kelebihan"><i class="fa fa-check"></i><b>1.3.1</b> Kelebihan</a></li>
+<li class="chapter" data-level="1.3.2" data-path="pendahuluan.html"><a href="pendahuluan.html#kekurangan"><i class="fa fa-check"></i><b>1.3.2</b> Kekurangan</a></li>
+</ul></li>
+<li class="chapter" data-level="1.4" data-path="pendahuluan.html"><a href="pendahuluan.html#instalasi-mysql-xampp"><i class="fa fa-check"></i><b>1.4</b> Instalasi MySQL (XAMPP)</a>
+<ul>
+<li class="chapter" data-level="1.4.1" data-path="pendahuluan.html"><a href="pendahuluan.html#download-aplikasi-xampp"><i class="fa fa-check"></i><b>1.4.1</b> Download Aplikasi XAMPP</a></li>
+<li class="chapter" data-level="1.4.2" data-path="pendahuluan.html"><a href="pendahuluan.html#install-aplikasi"><i class="fa fa-check"></i><b>1.4.2</b> Install Aplikasi</a></li>
+<li class="chapter" data-level="1.4.3" data-path="pendahuluan.html"><a href="pendahuluan.html#pilih-folder"><i class="fa fa-check"></i><b>1.4.3</b> Pilih Folder</a></li>
+<li class="chapter" data-level="1.4.4" data-path="pendahuluan.html"><a href="pendahuluan.html#jalankan-proses-instalasi"><i class="fa fa-check"></i><b>1.4.4</b> Jalankan proses Instalasi</a></li>
+<li class="chapter" data-level="1.4.5" data-path="pendahuluan.html"><a href="pendahuluan.html#xampp-sudah-terinstall"><i class="fa fa-check"></i><b>1.4.5</b> XAMPP sudah terinstall</a></li>
+<li class="chapter" data-level="1.4.6" data-path="pendahuluan.html"><a href="pendahuluan.html#video-instalasi-xampp"><i class="fa fa-check"></i><b>1.4.6</b> Video Instalasi XAMPP</a></li>
+</ul></li>
+<li class="chapter" data-level="1.5" data-path="pendahuluan.html"><a href="pendahuluan.html#instalasi-postgresql"><i class="fa fa-check"></i><b>1.5</b> Instalasi PostgreSQL</a>
+<ul>
+<li class="chapter" data-level="1.5.1" data-path="pendahuluan.html"><a href="pendahuluan.html#buka-browser"><i class="fa fa-check"></i><b>1.5.1</b> Buka Browser</a></li>
+<li class="chapter" data-level="1.5.2" data-path="pendahuluan.html"><a href="pendahuluan.html#cek-option"><i class="fa fa-check"></i><b>1.5.2</b> Cek Option</a></li>
+<li class="chapter" data-level="1.5.3" data-path="pendahuluan.html"><a href="pendahuluan.html#pilih-postgresql-version"><i class="fa fa-check"></i><b>1.5.3</b> Pilih PostgreSQL version</a></li>
+<li class="chapter" data-level="1.5.4" data-path="pendahuluan.html"><a href="pendahuluan.html#open-exe-file"><i class="fa fa-check"></i><b>1.5.4</b> Open exe file</a></li>
+<li class="chapter" data-level="1.5.5" data-path="pendahuluan.html"><a href="pendahuluan.html#pilih-folder-1"><i class="fa fa-check"></i><b>1.5.5</b> Pilih folder</a></li>
+<li class="chapter" data-level="1.5.6" data-path="pendahuluan.html"><a href="pendahuluan.html#select-components"><i class="fa fa-check"></i><b>1.5.6</b> Select components</a></li>
+<li class="chapter" data-level="1.5.7" data-path="pendahuluan.html"><a href="pendahuluan.html#check-data-location"><i class="fa fa-check"></i><b>1.5.7</b> Check data location</a></li>
+<li class="chapter" data-level="1.5.8" data-path="pendahuluan.html"><a href="pendahuluan.html#masukan-password"><i class="fa fa-check"></i><b>1.5.8</b> Masukan Password</a></li>
+<li class="chapter" data-level="1.5.9" data-path="pendahuluan.html"><a href="pendahuluan.html#cek-opsi-port"><i class="fa fa-check"></i><b>1.5.9</b> Cek opsi port</a></li>
+<li class="chapter" data-level="1.5.10" data-path="pendahuluan.html"><a href="pendahuluan.html#cek-summary"><i class="fa fa-check"></i><b>1.5.10</b> Cek Summary</a></li>
+<li class="chapter" data-level="1.5.11" data-path="pendahuluan.html"><a href="pendahuluan.html#ready-to-install"><i class="fa fa-check"></i><b>1.5.11</b> Ready to Install</a></li>
+<li class="chapter" data-level="1.5.12" data-path="pendahuluan.html"><a href="pendahuluan.html#check-stack-builder-prompt"><i class="fa fa-check"></i><b>1.5.12</b> Check stack builder prompt</a></li>
+<li class="chapter" data-level="1.5.13" data-path="pendahuluan.html"><a href="pendahuluan.html#launch-postgresql"><i class="fa fa-check"></i><b>1.5.13</b> Launch PostgreSQL</a></li>
+<li class="chapter" data-level="1.5.14" data-path="pendahuluan.html"><a href="pendahuluan.html#check-pgadmin"><i class="fa fa-check"></i><b>1.5.14</b> Check pgAdmin</a></li>
+<li class="chapter" data-level="1.5.15" data-path="pendahuluan.html"><a href="pendahuluan.html#cari-postgresql-15"><i class="fa fa-check"></i><b>1.5.15</b> Cari PostgreSQL 15</a></li>
+<li class="chapter" data-level="1.5.16" data-path="pendahuluan.html"><a href="pendahuluan.html#enter-password"><i class="fa fa-check"></i><b>1.5.16</b> Enter password</a></li>
+<li class="chapter" data-level="1.5.17" data-path="pendahuluan.html"><a href="pendahuluan.html#cek-dashboard"><i class="fa fa-check"></i><b>1.5.17</b> Cek Dashboard</a></li>
+<li class="chapter" data-level="1.5.18" data-path="pendahuluan.html"><a href="pendahuluan.html#video-instalasi-postgresql"><i class="fa fa-check"></i><b>1.5.18</b> Video Instalasi PostgreSQL</a></li>
+</ul></li>
+<li class="chapter" data-level="1.6" data-path="pendahuluan.html"><a href="pendahuluan.html#praktikum"><i class="fa fa-check"></i><b>1.6</b> Praktikum</a></li>
+</ul></li>
+<li class="chapter" data-level="2" data-path="connecting-r-to-sql.html"><a href="connecting-r-to-sql.html"><i class="fa fa-check"></i><b>2</b> Connecting R to SQL</a>
+<ul>
+<li class="chapter" data-level="2.1" data-path="connecting-r-to-sql.html"><a href="connecting-r-to-sql.html#introduction"><i class="fa fa-check"></i><b>2.1</b> Introduction</a></li>
+<li class="chapter" data-level="2.2" data-path="connecting-r-to-sql.html"><a href="connecting-r-to-sql.html#connecting-r-to-sql-1"><i class="fa fa-check"></i><b>2.2</b> Connecting R to SQL</a>
+<ul>
+<li class="chapter" data-level="2.2.1" data-path="connecting-r-to-sql.html"><a href="connecting-r-to-sql.html#install-required-packages"><i class="fa fa-check"></i><b>2.2.1</b> Install Required Packages</a></li>
+<li class="chapter" data-level="2.2.2" data-path="connecting-r-to-sql.html"><a href="connecting-r-to-sql.html#load-packages"><i class="fa fa-check"></i><b>2.2.2</b> Load Packages</a></li>
+<li class="chapter" data-level="2.2.3" data-path="connecting-r-to-sql.html"><a href="connecting-r-to-sql.html#establish-a-connection"><i class="fa fa-check"></i><b>2.2.3</b> Establish a Connection</a></li>
+</ul></li>
+<li class="chapter" data-level="2.3" data-path="connecting-r-to-sql.html"><a href="connecting-r-to-sql.html#import-data"><i class="fa fa-check"></i><b>2.3</b> Import Data</a>
+<ul>
+<li class="chapter" data-level="2.3.1" data-path="connecting-r-to-sql.html"><a href="connecting-r-to-sql.html#csv-files"><i class="fa fa-check"></i><b>2.3.1</b> CSV Files</a></li>
+<li class="chapter" data-level="2.3.2" data-path="connecting-r-to-sql.html"><a href="connecting-r-to-sql.html#xlsx-files"><i class="fa fa-check"></i><b>2.3.2</b> XLSX Files</a></li>
+</ul></li>
+<li class="chapter" data-level="2.4" data-path="connecting-r-to-sql.html"><a href="connecting-r-to-sql.html#write-dataframe-to-database"><i class="fa fa-check"></i><b>2.4</b> Write Dataframe to Database</a></li>
+<li class="chapter" data-level="2.5" data-path="connecting-r-to-sql.html"><a href="connecting-r-to-sql.html#basic-sql-in-r"><i class="fa fa-check"></i><b>2.5</b> Basic SQL in R</a>
+<ul>
+<li class="chapter" data-level="2.5.1" data-path="connecting-r-to-sql.html"><a href="connecting-r-to-sql.html#select"><i class="fa fa-check"></i><b>2.5.1</b> SELECT</a></li>
+<li class="chapter" data-level="2.5.2" data-path="connecting-r-to-sql.html"><a href="connecting-r-to-sql.html#where"><i class="fa fa-check"></i><b>2.5.2</b> WHERE</a></li>
+<li class="chapter" data-level="2.5.3" data-path="connecting-r-to-sql.html"><a href="connecting-r-to-sql.html#insert-into"><i class="fa fa-check"></i><b>2.5.3</b> INSERT INTO</a></li>
+<li class="chapter" data-level="2.5.4" data-path="connecting-r-to-sql.html"><a href="connecting-r-to-sql.html#delete"><i class="fa fa-check"></i><b>2.5.4</b> DELETE</a></li>
+<li class="chapter" data-level="2.5.5" data-path="connecting-r-to-sql.html"><a href="connecting-r-to-sql.html#update"><i class="fa fa-check"></i><b>2.5.5</b> UPDATE</a></li>
+<li class="chapter" data-level="2.5.6" data-path="connecting-r-to-sql.html"><a href="connecting-r-to-sql.html#disconnect-database"><i class="fa fa-check"></i><b>2.5.6</b> Disconnect Database</a></li>
+</ul></li>
+<li class="chapter" data-level="2.6" data-path="connecting-r-to-sql.html"><a href="connecting-r-to-sql.html#your-job"><i class="fa fa-check"></i><b>2.6</b> Your Job</a></li>
+</ul></li>
+<li class="chapter" data-level="3" data-path="fundamental-sql-in-r.html"><a href="fundamental-sql-in-r.html"><i class="fa fa-check"></i><b>3</b> Fundamental SQL in R</a>
+<ul>
+<li class="chapter" data-level="3.1" data-path="fundamental-sql-in-r.html"><a href="fundamental-sql-in-r.html#connecting-r-to-mysql"><i class="fa fa-check"></i><b>3.1</b> Connecting R to MySQL</a></li>
+<li class="chapter" data-level="3.2" data-path="fundamental-sql-in-r.html"><a href="fundamental-sql-in-r.html#create-db"><i class="fa fa-check"></i><b>3.2</b> Create DB</a></li>
+<li class="chapter" data-level="3.3" data-path="fundamental-sql-in-r.html"><a href="fundamental-sql-in-r.html#drop-db"><i class="fa fa-check"></i><b>3.3</b> Drop DB</a></li>
+<li class="chapter" data-level="3.4" data-path="fundamental-sql-in-r.html"><a href="fundamental-sql-in-r.html#create-table"><i class="fa fa-check"></i><b>3.4</b> Create Table</a></li>
+<li class="chapter" data-level="3.5" data-path="fundamental-sql-in-r.html"><a href="fundamental-sql-in-r.html#insert-value"><i class="fa fa-check"></i><b>3.5</b> Insert Value</a></li>
+<li class="chapter" data-level="3.6" data-path="fundamental-sql-in-r.html"><a href="fundamental-sql-in-r.html#truncate-table"><i class="fa fa-check"></i><b>3.6</b> Truncate Table</a></li>
+<li class="chapter" data-level="3.7" data-path="fundamental-sql-in-r.html"><a href="fundamental-sql-in-r.html#drop-table"><i class="fa fa-check"></i><b>3.7</b> Drop Table</a></li>
+<li class="chapter" data-level="3.8" data-path="fundamental-sql-in-r.html"><a href="fundamental-sql-in-r.html#write-table"><i class="fa fa-check"></i><b>3.8</b> Write Table</a></li>
+<li class="chapter" data-level="3.9" data-path="fundamental-sql-in-r.html"><a href="fundamental-sql-in-r.html#alter-table"><i class="fa fa-check"></i><b>3.9</b> Alter Table</a></li>
+<li class="chapter" data-level="3.10" data-path="fundamental-sql-in-r.html"><a href="fundamental-sql-in-r.html#add-column"><i class="fa fa-check"></i><b>3.10</b> Add Column</a></li>
+<li class="chapter" data-level="3.11" data-path="fundamental-sql-in-r.html"><a href="fundamental-sql-in-r.html#drop-column"><i class="fa fa-check"></i><b>3.11</b> Drop Column</a></li>
+<li class="chapter" data-level="3.12" data-path="fundamental-sql-in-r.html"><a href="fundamental-sql-in-r.html#modify-column"><i class="fa fa-check"></i><b>3.12</b> Modify Column</a></li>
+<li class="chapter" data-level="3.13" data-path="fundamental-sql-in-r.html"><a href="fundamental-sql-in-r.html#constraints"><i class="fa fa-check"></i><b>3.13</b> Constraints</a>
+<ul>
+<li class="chapter" data-level="3.13.1" data-path="fundamental-sql-in-r.html"><a href="fundamental-sql-in-r.html#not-null"><i class="fa fa-check"></i><b>3.13.1</b> Not Null</a></li>
+<li class="chapter" data-level="3.13.2" data-path="fundamental-sql-in-r.html"><a href="fundamental-sql-in-r.html#unique"><i class="fa fa-check"></i><b>3.13.2</b> Unique</a></li>
+<li class="chapter" data-level="3.13.3" data-path="fundamental-sql-in-r.html"><a href="fundamental-sql-in-r.html#primary-key"><i class="fa fa-check"></i><b>3.13.3</b> Primary Key</a></li>
+<li class="chapter" data-level="3.13.4" data-path="fundamental-sql-in-r.html"><a href="fundamental-sql-in-r.html#foreign-key"><i class="fa fa-check"></i><b>3.13.4</b> Foreign Key</a></li>
+<li class="chapter" data-level="3.13.5" data-path="fundamental-sql-in-r.html"><a href="fundamental-sql-in-r.html#check"><i class="fa fa-check"></i><b>3.13.5</b> Check</a></li>
+<li class="chapter" data-level="3.13.6" data-path="fundamental-sql-in-r.html"><a href="fundamental-sql-in-r.html#default"><i class="fa fa-check"></i><b>3.13.6</b> Default</a></li>
+<li class="chapter" data-level="3.13.7" data-path="fundamental-sql-in-r.html"><a href="fundamental-sql-in-r.html#index"><i class="fa fa-check"></i><b>3.13.7</b> Index</a></li>
+<li class="chapter" data-level="3.13.8" data-path="fundamental-sql-in-r.html"><a href="fundamental-sql-in-r.html#auto-increment"><i class="fa fa-check"></i><b>3.13.8</b> Auto Increment</a></li>
+</ul></li>
+</ul></li>
+<li class="chapter" data-level="4" data-path="join-table-in-sql.html"><a href="join-table-in-sql.html"><i class="fa fa-check"></i><b>4</b> Join Table in SQL</a>
+<ul>
+<li class="chapter" data-level="4.1" data-path="join-table-in-sql.html"><a href="join-table-in-sql.html#relational-database"><i class="fa fa-check"></i><b>4.1</b> Relational Database</a>
+<ul>
+<li class="chapter" data-level="4.1.1" data-path="join-table-in-sql.html"><a href="join-table-in-sql.html#table-customers"><i class="fa fa-check"></i><b>4.1.1</b> Table Customers</a></li>
+<li class="chapter" data-level="4.1.2" data-path="join-table-in-sql.html"><a href="join-table-in-sql.html#table-orders"><i class="fa fa-check"></i><b>4.1.2</b> Table Orders</a></li>
+</ul></li>
+<li class="chapter" data-level="4.2" data-path="join-table-in-sql.html"><a href="join-table-in-sql.html#relational-model"><i class="fa fa-check"></i><b>4.2</b> Relational Model</a></li>
+<li class="chapter" data-level="4.3" data-path="join-table-in-sql.html"><a href="join-table-in-sql.html#factory-database"><i class="fa fa-check"></i><b>4.3</b> Factory Database</a></li>
+<li class="chapter" data-level="4.4" data-path="join-table-in-sql.html"><a href="join-table-in-sql.html#basic-sql-join-types"><i class="fa fa-check"></i><b>4.4</b> Basic SQL Join Types</a></li>
+<li class="chapter" data-level="4.5" data-path="join-table-in-sql.html"><a href="join-table-in-sql.html#connect-to-mysql"><i class="fa fa-check"></i><b>4.5</b> Connect to MySQL</a></li>
+<li class="chapter" data-level="4.6" data-path="join-table-in-sql.html"><a href="join-table-in-sql.html#inner-join"><i class="fa fa-check"></i><b>4.6</b> Inner Join</a></li>
+<li class="chapter" data-level="4.7" data-path="join-table-in-sql.html"><a href="join-table-in-sql.html#left-join"><i class="fa fa-check"></i><b>4.7</b> Left Join</a></li>
+<li class="chapter" data-level="4.8" data-path="join-table-in-sql.html"><a href="join-table-in-sql.html#right-join"><i class="fa fa-check"></i><b>4.8</b> Right Join</a></li>
+<li class="chapter" data-level="4.9" data-path="join-table-in-sql.html"><a href="join-table-in-sql.html#full-join"><i class="fa fa-check"></i><b>4.9</b> Full Join</a></li>
+<li class="chapter" data-level="4.10" data-path="join-table-in-sql.html"><a href="join-table-in-sql.html#self-join"><i class="fa fa-check"></i><b>4.10</b> Self JOIN</a></li>
+<li class="chapter" data-level="4.11" data-path="join-table-in-sql.html"><a href="join-table-in-sql.html#your-job-1"><i class="fa fa-check"></i><b>4.11</b> Your Job</a></li>
+</ul></li>
+<li class="chapter" data-level="5" data-path="referensi.html"><a href="referensi.html"><i class="fa fa-check"></i><b>5</b> Referensi</a></li>
+<li class="divider"></li>
+<li><a href="https://github.com/rstudio/bookdown" target="blank">Published with bookdown</a></li>
+
+</ul>
+
+      </nav>
+    </div>
+
+    <div class="book-body">
+      <div class="body-inner">
+        <div class="book-header" role="navigation">
+          <h1>
+            <i class="fa fa-circle-o-notch fa-spin"></i><a href="./">Basis Data dan Penelusuran Data</a>
+          </h1>
+        </div>
+
+        <div class="page-wrapper" tabindex="-1" role="main">
+          <div class="page-inner">
+
+            <section class="normal" id="section-">
+<div id="join-table-in-sql" class="section level1 hasAnchor" number="4">
+<h1><span class="header-section-number">Bab 4</span> Join Table in SQL<a href="join-table-in-sql.html#join-table-in-sql" class="anchor-section" aria-label="Anchor link to header"></a></h1>
+<p>A SQL join is a Structured Query Language (SQL) instruction to combine data from two sets of data (i.e. two tables). Before we dive into the details of a SQL join, let’s briefly discuss what SQL is, and why someone would want to perform a SQL join.</p>
+<p>SQL is a special-purpose programming language designed for managing information in a relational database management system (RDBMS). The word relational here is key; it specifies that the database management system is organized in such a way that there are clear relations defined between different sets of data. Typically, you need to extract, transform, and load data into your RDBMS before you’re able to manage it using SQL, which you can accomplish by using a tool like Stitch.</p>
+<hr />
+<div id="relational-database" class="section level2 hasAnchor" number="4.1">
+<h2><span class="header-section-number">4.1</span> Relational Database<a href="join-table-in-sql.html#relational-database" class="anchor-section" aria-label="Anchor link to header"></a></h2>
+<p>Imagine you’re running a store and would like to record information about your customers and their orders. By using a relational database, you can save this information as two tables that represent two distinct entities: customers and orders .</p>
+<div id="table-customers" class="section level3 hasAnchor" number="4.1.1">
+<h3><span class="header-section-number">4.1.1</span> Table Customers<a href="join-table-in-sql.html#table-customers" class="anchor-section" aria-label="Anchor link to header"></a></h3>
+<div class="sourceCode" id="cb1"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb1-1"><a href="join-table-in-sql.html#cb1-1" tabindex="-1"></a><span class="fu">library</span>(DT)</span>
+<span id="cb1-2"><a href="join-table-in-sql.html#cb1-2" tabindex="-1"></a>costomers<span class="ot">&lt;-</span><span class="fu">read.csv</span>(<span class="st">&quot;data/customers.csv&quot;</span>)</span>
+<span id="cb1-3"><a href="join-table-in-sql.html#cb1-3" tabindex="-1"></a><span class="fu">datatable</span>(<span class="fu">head</span>(costomers, <span class="dv">5</span>), </span>
+<span id="cb1-4"><a href="join-table-in-sql.html#cb1-4" tabindex="-1"></a>          <span class="at">caption =</span> htmltools<span class="sc">::</span>tags<span class="sc">$</span><span class="fu">caption</span>(</span>
+<span id="cb1-5"><a href="join-table-in-sql.html#cb1-5" tabindex="-1"></a>            <span class="at">style =</span> <span class="st">&#39;caption-side: bottom; text-align: center;&#39;</span>, </span>
+<span id="cb1-6"><a href="join-table-in-sql.html#cb1-6" tabindex="-1"></a>            htmltools<span class="sc">::</span><span class="fu">em</span>(<span class="st">&#39;Table 1: customers.&#39;</span>)),</span>
+<span id="cb1-7"><a href="join-table-in-sql.html#cb1-7" tabindex="-1"></a>          <span class="at">options =</span> <span class="fu">list</span>(<span class="at">dom =</span> <span class="st">&#39;t&#39;</span>))</span></code></pre></div>
+<p>Table 1, informs about each customer is stored in its own row, with columns specifying different bits of information, including their first name, last name, and email address. Additionally, we associate a unique customer number, or primary key, with each customer record.</p>
+</div>
+<div id="table-orders" class="section level3 hasAnchor" number="4.1.2">
+<h3><span class="header-section-number">4.1.2</span> Table Orders<a href="join-table-in-sql.html#table-orders" class="anchor-section" aria-label="Anchor link to header"></a></h3>
+<div class="sourceCode" id="cb2"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb2-1"><a href="join-table-in-sql.html#cb2-1" tabindex="-1"></a>orders<span class="ot">&lt;-</span><span class="fu">read.csv</span>(<span class="st">&quot;data/orders.csv&quot;</span>)</span>
+<span id="cb2-2"><a href="join-table-in-sql.html#cb2-2" tabindex="-1"></a><span class="fu">datatable</span>(<span class="fu">head</span>(orders,<span class="dv">5</span>), </span>
+<span id="cb2-3"><a href="join-table-in-sql.html#cb2-3" tabindex="-1"></a>          <span class="at">caption =</span> htmltools<span class="sc">::</span>tags<span class="sc">$</span><span class="fu">caption</span>(</span>
+<span id="cb2-4"><a href="join-table-in-sql.html#cb2-4" tabindex="-1"></a>            <span class="at">style =</span> <span class="st">&#39;caption-side: bottom; text-align: center;&#39;</span>, </span>
+<span id="cb2-5"><a href="join-table-in-sql.html#cb2-5" tabindex="-1"></a>            htmltools<span class="sc">::</span><span class="fu">em</span>(<span class="st">&#39;Table 2: orders.&#39;</span>)),</span>
+<span id="cb2-6"><a href="join-table-in-sql.html#cb2-6" tabindex="-1"></a>          <span class="at">options =</span> <span class="fu">list</span>(<span class="at">dom =</span> <span class="st">&#39;t&#39;</span>))</span></code></pre></div>
+<p>Again, Table 2 are contains information about a specific order. Each order has its own unique identification key <code>order_id</code> for this table – assigned to it as well.</p>
+</div>
+</div>
+<div id="relational-model" class="section level2 hasAnchor" number="4.2">
+<h2><span class="header-section-number">4.2</span> Relational Model<a href="join-table-in-sql.html#relational-model" class="anchor-section" aria-label="Anchor link to header"></a></h2>
+<p>You’ve probably noticed that these two examples share similar information. You can see these simple relations diagrammed below:</p>
+<div class="figure" style="text-align: center"><span style="display:block;" id="fig:relational"></span>
+<img src="images/Bab5/relational.png" alt="Relational Table" width="100%" />
+<p class="caption">
+Gambar 4.1: Relational Table
+</p>
+</div>
+<p>Note that the orders table contains two keys: one for the order and one for the customer who placed that order. In scenarios when there are multiple keys in a table, the key that refers to the entity being described in that table is called the primary key <em>(PK)</em> and other key is called a foreign key <em>(FK)</em>.</p>
+<p>In our example, <code>order_id</code> is a primary key in the orders table, while <code>customer_id</code> is both a primary key in the customers table and a foreign key in the orders table. Primary and foreign keys are essential to describing relations between the tables, and in performing SQL joins.</p>
+<hr />
+</div>
+<div id="factory-database" class="section level2 hasAnchor" number="4.3">
+<h2><span class="header-section-number">4.3</span> Factory Database<a href="join-table-in-sql.html#factory-database" class="anchor-section" aria-label="Anchor link to header"></a></h2>
+<p>To make you more convenient about all the data tables that we will use in this section. Here, I summarize the following SQL relational for database <code>factory_db</code>:</p>
+<div class="figure" style="text-align: center"><span style="display:block;" id="fig:fullrelational"></span>
+<img src="images/Bab5/fullrelational.png" alt="Relational Table of Factory Database" width="100%" />
+<p class="caption">
+Gambar 4.2: Relational Table of Factory Database
+</p>
+</div>
+<p><em>Note:</em> Don’t forget to consider the data structure of your database (all table)</p>
+<hr />
+</div>
+<div id="basic-sql-join-types" class="section level2 hasAnchor" number="4.4">
+<h2><span class="header-section-number">4.4</span> Basic SQL Join Types<a href="join-table-in-sql.html#basic-sql-join-types" class="anchor-section" aria-label="Anchor link to header"></a></h2>
+<p>There are four basic types of SQL joins: inner, left, right, and full. The easiest and most intuitive way to explain the difference between these four types is by using a Venn diagram, which shows all possible logical relations between data sets.</p>
+<p>Again, it’s important to stress that before you can begin using any join type, you’ll need to extract the data and load it into an RDBMS like Amazon Redshift, where you can query tables from multiple sources. You build that process manually, or you can use an ETL service like Stitch, which automates that process for you.</p>
+<div class="figure" style="text-align: center"><span style="display:block;" id="fig:jointable"></span>
+<img src="images/Bab5/jointable.png" alt="Basic Join Table" width="100%" />
+<p class="caption">
+Gambar 4.3: Basic Join Table
+</p>
+</div>
+</div>
+<div id="connect-to-mysql" class="section level2 hasAnchor" number="4.5">
+<h2><span class="header-section-number">4.5</span> Connect to MySQL<a href="join-table-in-sql.html#connect-to-mysql" class="anchor-section" aria-label="Anchor link to header"></a></h2>
+<p>Reading data from <code>MySQL</code> into R workspace, it requires two R libraries, <code>RMySQL</code> and <code>DBI</code>. The connection data should not be embedded in analysis code. Separate the connection code in another script. The script should set up the connection and save it into the workspace.</p>
+<p>The saved connection is accessible by its name in the analysis code. In the dbConnect function, you need to replace dbname, username, pwd, dbserver and port with the actual values of your remote database.</p>
+<div class="sourceCode" id="cb3"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb3-1"><a href="join-table-in-sql.html#cb3-1" tabindex="-1"></a><span class="co"># set up the connection and save it into the workspace</span></span>
+<span id="cb3-2"><a href="join-table-in-sql.html#cb3-2" tabindex="-1"></a><span class="co">#~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~</span></span>
+<span id="cb3-3"><a href="join-table-in-sql.html#cb3-3" tabindex="-1"></a><span class="fu">library</span>(RMySQL)</span>
+<span id="cb3-4"><a href="join-table-in-sql.html#cb3-4" tabindex="-1"></a><span class="fu">library</span>(DBI)</span>
+<span id="cb3-5"><a href="join-table-in-sql.html#cb3-5" tabindex="-1"></a>bakti <span class="ot">&lt;-</span> <span class="fu">dbConnect</span>(RMySQL<span class="sc">::</span><span class="fu">MySQL</span>(),</span>
+<span id="cb3-6"><a href="join-table-in-sql.html#cb3-6" tabindex="-1"></a>                  <span class="at">dbname=</span><span class="st">&#39;factory_db&#39;</span>,</span>
+<span id="cb3-7"><a href="join-table-in-sql.html#cb3-7" tabindex="-1"></a>                  <span class="at">username=</span><span class="st">&#39;root&#39;</span>,</span>
+<span id="cb3-8"><a href="join-table-in-sql.html#cb3-8" tabindex="-1"></a>                  <span class="at">password=</span><span class="st">&#39;&#39;</span>, </span>
+<span id="cb3-9"><a href="join-table-in-sql.html#cb3-9" tabindex="-1"></a>                  <span class="at">host=</span><span class="st">&#39;localhost&#39;</span>,</span>
+<span id="cb3-10"><a href="join-table-in-sql.html#cb3-10" tabindex="-1"></a>                  <span class="at">port=</span><span class="dv">3306</span>)</span>
+<span id="cb3-11"><a href="join-table-in-sql.html#cb3-11" tabindex="-1"></a>knitr<span class="sc">::</span>opts_chunk<span class="sc">$</span><span class="fu">set</span>(<span class="at">connection =</span> <span class="st">&quot;bakti&quot;</span>)   <span class="co"># set up the connection </span></span></code></pre></div>
+<p>After set up the connection and save it into the workspace. Next, we can run SQL in a code chunk of type sql. By setting the connection in the code chuck and adding the option output.var, the resulting table from the SQL is written into a variable in R.</p>
+<pre><code>&#39;&#39;&#39;{sql connection=bakti, output.var=&quot;report_model_by_make&quot;} 
+      Your SQL code Here
+&#39;&#39;&#39;</code></pre>
+</div>
+<div id="inner-join" class="section level2 hasAnchor" number="4.6">
+<h2><span class="header-section-number">4.6</span> Inner Join<a href="join-table-in-sql.html#inner-join" class="anchor-section" aria-label="Anchor link to header"></a></h2>
+<p>Let’s say we wanted to get a list of those customers who placed an order and the details of the order they placed. This would be a perfect fit for an inner join, since an inner join returns records at the intersection of the two tables.</p>
+<div class="sourceCode" id="cb5"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb5-1"><a href="join-table-in-sql.html#cb5-1" tabindex="-1"></a>SELECT OrderID, CustomerName</span>
+<span id="cb5-2"><a href="join-table-in-sql.html#cb5-2" tabindex="-1"></a>  FROM Orders O</span>
+<span id="cb5-3"><a href="join-table-in-sql.html#cb5-3" tabindex="-1"></a>    INNER JOIN Customers C</span>
+<span id="cb5-4"><a href="join-table-in-sql.html#cb5-4" tabindex="-1"></a>      ON O.CustomerID <span class="ot">=</span> C.CustomerID</span></code></pre></div>
+<div class="sourceCode" id="cb6"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb6-1"><a href="join-table-in-sql.html#cb6-1" tabindex="-1"></a><span class="fu">library</span>(DT)</span>
+<span id="cb6-2"><a href="join-table-in-sql.html#cb6-2" tabindex="-1"></a><span class="fu">datatable</span>(Inner1, </span>
+<span id="cb6-3"><a href="join-table-in-sql.html#cb6-3" tabindex="-1"></a>          <span class="at">caption =</span> htmltools<span class="sc">::</span>tags<span class="sc">$</span><span class="fu">caption</span>(</span>
+<span id="cb6-4"><a href="join-table-in-sql.html#cb6-4" tabindex="-1"></a>            <span class="at">style =</span> <span class="st">&#39;caption-side: bottom; text-align: center;&#39;</span>, </span>
+<span id="cb6-5"><a href="join-table-in-sql.html#cb6-5" tabindex="-1"></a>            htmltools<span class="sc">::</span><span class="fu">em</span>(<span class="st">&#39;Table 3: SQL Inner Join Two Tables.&#39;</span>)))</span></code></pre></div>
+<p>The following SQL statement selects all orders with customer and shipper information:</p>
+<div class="sourceCode" id="cb7"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb7-1"><a href="join-table-in-sql.html#cb7-1" tabindex="-1"></a>SELECT <span class="sc">*</span> </span>
+<span id="cb7-2"><a href="join-table-in-sql.html#cb7-2" tabindex="-1"></a>  <span class="fu">FROM</span> ((Orders O</span>
+<span id="cb7-3"><a href="join-table-in-sql.html#cb7-3" tabindex="-1"></a>    INNER JOIN Customers C</span>
+<span id="cb7-4"><a href="join-table-in-sql.html#cb7-4" tabindex="-1"></a>      ON <span class="at">O.CustomerID =</span> C.CustomerID)</span>
+<span id="cb7-5"><a href="join-table-in-sql.html#cb7-5" tabindex="-1"></a>    INNER JOIN Shippers S </span>
+<span id="cb7-6"><a href="join-table-in-sql.html#cb7-6" tabindex="-1"></a>      ON <span class="at">O.ShipperID =</span> S.ShipperID)</span></code></pre></div>
+<div class="sourceCode" id="cb8"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb8-1"><a href="join-table-in-sql.html#cb8-1" tabindex="-1"></a><span class="fu">datatable</span>(Inner2, </span>
+<span id="cb8-2"><a href="join-table-in-sql.html#cb8-2" tabindex="-1"></a>          <span class="at">caption =</span> htmltools<span class="sc">::</span>tags<span class="sc">$</span><span class="fu">caption</span>(</span>
+<span id="cb8-3"><a href="join-table-in-sql.html#cb8-3" tabindex="-1"></a>            <span class="at">style =</span> <span class="st">&#39;caption-side: bottom; text-align: center;&#39;</span>, </span>
+<span id="cb8-4"><a href="join-table-in-sql.html#cb8-4" tabindex="-1"></a>            htmltools<span class="sc">::</span><span class="fu">em</span>(<span class="st">&#39;Table 4: SQL Inner Join Three Tables.&#39;</span>)),</span>
+<span id="cb8-5"><a href="join-table-in-sql.html#cb8-5" tabindex="-1"></a>          <span class="at">extensions =</span> <span class="st">&#39;FixedColumns&#39;</span>,</span>
+<span id="cb8-6"><a href="join-table-in-sql.html#cb8-6" tabindex="-1"></a>          <span class="at">options =</span> <span class="fu">list</span>(<span class="at">scrollX =</span> <span class="cn">TRUE</span>, <span class="at">fixedColumns =</span> <span class="cn">TRUE</span>)</span>
+<span id="cb8-7"><a href="join-table-in-sql.html#cb8-7" tabindex="-1"></a>          )</span></code></pre></div>
+</div>
+<div id="left-join" class="section level2 hasAnchor" number="4.7">
+<h2><span class="header-section-number">4.7</span> Left Join<a href="join-table-in-sql.html#left-join" class="anchor-section" aria-label="Anchor link to header"></a></h2>
+<p>If we wanted to simply append information about orders to our customers table, regardless of whether a customer placed an order or not, we would use a left join. A left join returns all records from table A and any matching records from table B. The result is NULL from the right side, if there is no match.</p>
+<div class="sourceCode" id="cb9"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb9-1"><a href="join-table-in-sql.html#cb9-1" tabindex="-1"></a>SELECT CustomerName, OrderID</span>
+<span id="cb9-2"><a href="join-table-in-sql.html#cb9-2" tabindex="-1"></a>  FROM Customers C</span>
+<span id="cb9-3"><a href="join-table-in-sql.html#cb9-3" tabindex="-1"></a>    LEFT JOIN Orders O</span>
+<span id="cb9-4"><a href="join-table-in-sql.html#cb9-4" tabindex="-1"></a>      ON C.CustomerID <span class="ot">=</span> O.CustomerID</span>
+<span id="cb9-5"><a href="join-table-in-sql.html#cb9-5" tabindex="-1"></a>        ORDER BY C.CustomerName</span></code></pre></div>
+<div class="sourceCode" id="cb10"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb10-1"><a href="join-table-in-sql.html#cb10-1" tabindex="-1"></a><span class="fu">datatable</span>(Left, </span>
+<span id="cb10-2"><a href="join-table-in-sql.html#cb10-2" tabindex="-1"></a>          <span class="at">caption =</span> htmltools<span class="sc">::</span>tags<span class="sc">$</span><span class="fu">caption</span>(</span>
+<span id="cb10-3"><a href="join-table-in-sql.html#cb10-3" tabindex="-1"></a>            <span class="at">style =</span> <span class="st">&#39;caption-side: bottom; text-align: center;&#39;</span>, </span>
+<span id="cb10-4"><a href="join-table-in-sql.html#cb10-4" tabindex="-1"></a>            htmltools<span class="sc">::</span><span class="fu">em</span>(<span class="st">&#39;Table 5: SQL Left Join Two Tables.&#39;</span>)))</span></code></pre></div>
+</div>
+<div id="right-join" class="section level2 hasAnchor" number="4.8">
+<h2><span class="header-section-number">4.8</span> Right Join<a href="join-table-in-sql.html#right-join" class="anchor-section" aria-label="Anchor link to header"></a></h2>
+<p>The following SQL statement will return all employees, and any orders they might have placed. The result is NULL from the left side, when there is no match.</p>
+<div class="sourceCode" id="cb11"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb11-1"><a href="join-table-in-sql.html#cb11-1" tabindex="-1"></a>SELECT OrderID, LastName, FirstName</span>
+<span id="cb11-2"><a href="join-table-in-sql.html#cb11-2" tabindex="-1"></a>  FROM Orders O</span>
+<span id="cb11-3"><a href="join-table-in-sql.html#cb11-3" tabindex="-1"></a>    RIGHT JOIN Employees E</span>
+<span id="cb11-4"><a href="join-table-in-sql.html#cb11-4" tabindex="-1"></a>      ON O.EmployeeID <span class="ot">=</span> E.EmployeeID</span>
+<span id="cb11-5"><a href="join-table-in-sql.html#cb11-5" tabindex="-1"></a>        ORDER BY O.OrderID</span></code></pre></div>
+<div class="sourceCode" id="cb12"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb12-1"><a href="join-table-in-sql.html#cb12-1" tabindex="-1"></a><span class="fu">datatable</span>(Right, </span>
+<span id="cb12-2"><a href="join-table-in-sql.html#cb12-2" tabindex="-1"></a>          <span class="at">caption =</span> htmltools<span class="sc">::</span>tags<span class="sc">$</span><span class="fu">caption</span>(</span>
+<span id="cb12-3"><a href="join-table-in-sql.html#cb12-3" tabindex="-1"></a>            <span class="at">style =</span> <span class="st">&#39;caption-side: bottom; text-align: center;&#39;</span>, </span>
+<span id="cb12-4"><a href="join-table-in-sql.html#cb12-4" tabindex="-1"></a>            htmltools<span class="sc">::</span><span class="fu">em</span>(<span class="st">&#39;Table 6: SQL Right Join Two Tables.&#39;</span>)))</span></code></pre></div>
+</div>
+<div id="full-join" class="section level2 hasAnchor" number="4.9">
+<h2><span class="header-section-number">4.9</span> Full Join<a href="join-table-in-sql.html#full-join" class="anchor-section" aria-label="Anchor link to header"></a></h2>
+<p>The FULL OUTER JOIN keyword returns all records when there is a match in left (table1) or right (table2) table records. FULL OUTER JOIN, FULL JOIN, and JOIN (MariaDB) are the same. The following SQL statement selects all customers, and all orders:</p>
+<div class="sourceCode" id="cb13"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb13-1"><a href="join-table-in-sql.html#cb13-1" tabindex="-1"></a>SELECT CustomerName, OrderID</span>
+<span id="cb13-2"><a href="join-table-in-sql.html#cb13-2" tabindex="-1"></a>  FROM Customers C</span>
+<span id="cb13-3"><a href="join-table-in-sql.html#cb13-3" tabindex="-1"></a>    JOIN Orders O</span>
+<span id="cb13-4"><a href="join-table-in-sql.html#cb13-4" tabindex="-1"></a>      ON C.CustomerID<span class="ot">=</span>O.CustomerID</span>
+<span id="cb13-5"><a href="join-table-in-sql.html#cb13-5" tabindex="-1"></a>        ORDER BY C.CustomerName</span></code></pre></div>
+<div class="sourceCode" id="cb14"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb14-1"><a href="join-table-in-sql.html#cb14-1" tabindex="-1"></a><span class="fu">datatable</span>(Full, </span>
+<span id="cb14-2"><a href="join-table-in-sql.html#cb14-2" tabindex="-1"></a>          <span class="at">caption =</span> htmltools<span class="sc">::</span>tags<span class="sc">$</span><span class="fu">caption</span>(</span>
+<span id="cb14-3"><a href="join-table-in-sql.html#cb14-3" tabindex="-1"></a>            <span class="at">style =</span> <span class="st">&#39;caption-side: bottom; text-align: center;&#39;</span>, </span>
+<span id="cb14-4"><a href="join-table-in-sql.html#cb14-4" tabindex="-1"></a>            htmltools<span class="sc">::</span><span class="fu">em</span>(<span class="st">&#39;Table 7: SQL Full Join Two Tables.&#39;</span>)))</span></code></pre></div>
+</div>
+<div id="self-join" class="section level2 hasAnchor" number="4.10">
+<h2><span class="header-section-number">4.10</span> Self JOIN<a href="join-table-in-sql.html#self-join" class="anchor-section" aria-label="Anchor link to header"></a></h2>
+<p>A self JOIN is a regular join, but the table is joined with itself. The following SQL statement matches customers that are from the same city:</p>
+<div class="sourceCode" id="cb15"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb15-1"><a href="join-table-in-sql.html#cb15-1" tabindex="-1"></a>SELECT A.CustomerName AS CustomerName1, </span>
+<span id="cb15-2"><a href="join-table-in-sql.html#cb15-2" tabindex="-1"></a>       B.CustomerName AS CustomerName2, </span>
+<span id="cb15-3"><a href="join-table-in-sql.html#cb15-3" tabindex="-1"></a>       A.City</span>
+<span id="cb15-4"><a href="join-table-in-sql.html#cb15-4" tabindex="-1"></a>  FROM Customers A, </span>
+<span id="cb15-5"><a href="join-table-in-sql.html#cb15-5" tabindex="-1"></a>       Customers B</span>
+<span id="cb15-6"><a href="join-table-in-sql.html#cb15-6" tabindex="-1"></a>    WHERE A.CustomerID <span class="sc">&lt;</span><span class="er">&gt;</span> B.CustomerID</span>
+<span id="cb15-7"><a href="join-table-in-sql.html#cb15-7" tabindex="-1"></a>      AND A.City <span class="ot">=</span> B.City</span>
+<span id="cb15-8"><a href="join-table-in-sql.html#cb15-8" tabindex="-1"></a>        ORDER BY A.City</span></code></pre></div>
+<div class="sourceCode" id="cb16"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb16-1"><a href="join-table-in-sql.html#cb16-1" tabindex="-1"></a><span class="fu">datatable</span>(Self, </span>
+<span id="cb16-2"><a href="join-table-in-sql.html#cb16-2" tabindex="-1"></a>          <span class="at">caption =</span> htmltools<span class="sc">::</span>tags<span class="sc">$</span><span class="fu">caption</span>(</span>
+<span id="cb16-3"><a href="join-table-in-sql.html#cb16-3" tabindex="-1"></a>            <span class="at">style =</span> <span class="st">&#39;caption-side: bottom; text-align: center;&#39;</span>, </span>
+<span id="cb16-4"><a href="join-table-in-sql.html#cb16-4" tabindex="-1"></a>            htmltools<span class="sc">::</span><span class="fu">em</span>(<span class="st">&#39;Table 8: SQL Self Join Two Tables.&#39;</span>)))</span></code></pre></div>
+<p>After finishing the work with the database, close the connection.</p>
+<div class="sourceCode" id="cb17"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb17-1"><a href="join-table-in-sql.html#cb17-1" tabindex="-1"></a>DBI<span class="sc">::</span><span class="fu">dbDisconnect</span>(bakti)</span></code></pre></div>
+</div>
+<div id="your-job-1" class="section level2 hasAnchor" number="4.11">
+<h2><span class="header-section-number">4.11</span> Your Job<a href="join-table-in-sql.html#your-job-1" class="anchor-section" aria-label="Anchor link to header"></a></h2>
+<ol style="list-style-type: decimal">
+<li><p>Apply Left join and Right join to returns all records from table Orders and any matching records from table Suppliers.</p></li>
+<li><p>Choose the correct JOIN clause to select all records from the two tables (Orders and Suppliers) where there is a match in both tables.</p></li>
+<li><p>Choose the correct JOIN clause to select all the records from the Suppliers table plus all the matches in the Orders table.</p></li>
+</ol>
+
+</div>
+</div>
+            </section>
+
+          </div>
+        </div>
+      </div>
+<a href="fundamental-sql-in-r.html" class="navigation navigation-prev " aria-label="Previous page"><i class="fa fa-angle-left"></i></a>
+<a href="referensi.html" class="navigation navigation-next " aria-label="Next page"><i class="fa fa-angle-right"></i></a>
+    </div>
+  </div>
+<script src="libs/gitbook-2.6.7/js/app.min.js"></script>
+<script src="libs/gitbook-2.6.7/js/clipboard.min.js"></script>
+<script src="libs/gitbook-2.6.7/js/plugin-search.js"></script>
+<script src="libs/gitbook-2.6.7/js/plugin-sharing.js"></script>
+<script src="libs/gitbook-2.6.7/js/plugin-fontsettings.js"></script>
+<script src="libs/gitbook-2.6.7/js/plugin-bookdown.js"></script>
+<script src="libs/gitbook-2.6.7/js/jquery.highlight.js"></script>
+<script src="libs/gitbook-2.6.7/js/plugin-clipboard.js"></script>
+<script>
+gitbook.require(["gitbook"], function(gitbook) {
+gitbook.start({
+"sharing": {
+"github": false,
+"facebook": true,
+"twitter": true,
+"linkedin": false,
+"weibo": false,
+"instapaper": false,
+"vk": false,
+"whatsapp": false,
+"all": ["facebook", "twitter", "linkedin", "weibo", "instapaper"]
+},
+"fontsettings": {
+"theme": "white",
+"family": "sans",
+"size": 2
+},
+"edit": {
+"link": null,
+"text": null
+},
+"history": {
+"link": null,
+"text": null
+},
+"view": {
+"link": null,
+"text": null
+},
+"download": ["SQL_in_R.pdf", "SQL_in_R.epub"],
+"search": {
+"engine": "fuse",
+"options": null
+},
+"toc": {
+"collapse": "subsection"
+}
+});
+});
+</script>
+
+</body>
+
+</html>

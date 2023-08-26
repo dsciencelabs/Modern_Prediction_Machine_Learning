@@ -365,6 +365,47 @@ dbSendQuery(MySQL,
 ```
 
 
+## Previewing `.sql` in R
+
+When you open a new `.sql` file in RStudio, it automatically populates the file with the following code:
+
+```{r, eval=FALSE}
+library(RSQLite)
+library(dplyr)
+library(dbplyr)
+
+conn <- src_memdb() # create a SQLite database in memory
+copy_to(conn, 
+        storms,     # this is a dataset built into dplyr
+        overwrite = TRUE)
+tbl(conn, sql("SELECT * FROM storms LIMIT 5"))
+```
+
+You need to create a `.sql` file with the following code:
+
+```
+-- !preview conn=src_memdb()$con
+
+SELECT * FROM storms LIMIT 5
+```
+
+Then, you will the resul like this:
+
+
+```{r, fig.cap='Previewing `.sql` in R', tidy=FALSE, out.width='100%', fig.align='center'}
+library(knitr)
+include_graphics("./images/Bab3/sql-file-preview.png")
+```
+
+## SQL chunks in RMarkdown
+
+I generally prefer to show RMarkdown output in the console 1 (and it looks like I’m not the only one). This means that when I run code in an .Rmd file, it feels more or less the same as when I run an .R file: the plots show up in the plots pane, code is run in the console, and so on. While you can use SQL chunks with this setting, there is NO chunk preview option. You must trust your queries and knit the file to make sure everything runs. You get the syntax highlighting razzle-dazzle but alas– no preview.
+
+It is in this very specific case where inline mode wins big time. SQL previews magically become an option, allowing you to interact with your beautifully colored SQL code.
+
+```{r, results='asis', fungsi,echo=FALSE, fig.cap='Ilustrasi Manipulasi Data dalam R', tidy=FALSE, out.width='100%', fig.align='center'}
+cat('<img src="./images/Bab3/sql-inline-preview.gif">')
+```
 
 
 
