@@ -4,18 +4,18 @@
 
   <meta charset="utf-8" />
   <meta http-equiv="X-UA-Compatible" content="IE=edge" />
-  <title>Bab 4 Join Table in SQL | Basis Data dan Penelusuran Data</title>
+  <title>Bab 5 Join Table in SQL | Basis Data dan Penelusuran Data</title>
   <meta name="description" content="Deskripsi Singkat Tentang Buku" />
   <meta name="generator" content="bookdown 0.34 and GitBook 2.6.7" />
 
-  <meta property="og:title" content="Bab 4 Join Table in SQL | Basis Data dan Penelusuran Data" />
+  <meta property="og:title" content="Bab 5 Join Table in SQL | Basis Data dan Penelusuran Data" />
   <meta property="og:type" content="book" />
   <meta property="og:image" content="/images/Cover_SQL_in_R.png" />
   <meta property="og:description" content="Deskripsi Singkat Tentang Buku" />
   <meta name="github-repo" content="dsciencelabs/SQL_in_R" />
 
   <meta name="twitter:card" content="summary" />
-  <meta name="twitter:title" content="Bab 4 Join Table in SQL | Basis Data dan Penelusuran Data" />
+  <meta name="twitter:title" content="Bab 5 Join Table in SQL | Basis Data dan Penelusuran Data" />
   
   <meta name="twitter:description" content="Deskripsi Singkat Tentang Buku" />
   <meta name="twitter:image" content="/images/Cover_SQL_in_R.png" />
@@ -30,7 +30,7 @@
   <meta name="apple-mobile-web-app-status-bar-style" content="black" />
   
   
-<link rel="prev" href="fundamental-sql-in-r.html"/>
+<link rel="prev" href="database-normalization-in-sql.html"/>
 <link rel="next" href="referensi.html"/>
 <script src="libs/jquery-3.6.0/jquery-3.6.0.min.js"></script>
 <script src="https://cdn.jsdelivr.net/npm/fuse.js@6.4.6/dist/fuse.min.js"></script>
@@ -248,26 +248,38 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
 <li class="chapter" data-level="3.13.7" data-path="fundamental-sql-in-r.html"><a href="fundamental-sql-in-r.html#index"><i class="fa fa-check"></i><b>3.13.7</b> Index</a></li>
 <li class="chapter" data-level="3.13.8" data-path="fundamental-sql-in-r.html"><a href="fundamental-sql-in-r.html#auto-increment"><i class="fa fa-check"></i><b>3.13.8</b> Auto Increment</a></li>
 </ul></li>
+<li class="chapter" data-level="3.14" data-path="fundamental-sql-in-r.html"><a href="fundamental-sql-in-r.html#previewing-.sql-in-r"><i class="fa fa-check"></i><b>3.14</b> Previewing <code>.sql</code> in R</a></li>
+<li class="chapter" data-level="3.15" data-path="fundamental-sql-in-r.html"><a href="fundamental-sql-in-r.html#sql-chunks-in-rmarkdown"><i class="fa fa-check"></i><b>3.15</b> SQL chunks in RMarkdown</a></li>
 </ul></li>
-<li class="chapter" data-level="4" data-path="join-table-in-sql.html"><a href="join-table-in-sql.html"><i class="fa fa-check"></i><b>4</b> Join Table in SQL</a>
+<li class="chapter" data-level="4" data-path="database-normalization-in-sql.html"><a href="database-normalization-in-sql.html"><i class="fa fa-check"></i><b>4</b> Database Normalization in SQL</a>
 <ul>
-<li class="chapter" data-level="4.1" data-path="join-table-in-sql.html"><a href="join-table-in-sql.html#relational-database"><i class="fa fa-check"></i><b>4.1</b> Relational Database</a>
+<li class="chapter" data-level="4.1" data-path="database-normalization-in-sql.html"><a href="database-normalization-in-sql.html#the-process-of-normalization"><i class="fa fa-check"></i><b>4.1</b> The Process of Normalization</a></li>
+<li class="chapter" data-level="4.2" data-path="database-normalization-in-sql.html"><a href="database-normalization-in-sql.html#simple-database-normalization"><i class="fa fa-check"></i><b>4.2</b> Simple Database Normalization</a>
 <ul>
-<li class="chapter" data-level="4.1.1" data-path="join-table-in-sql.html"><a href="join-table-in-sql.html#table-customers"><i class="fa fa-check"></i><b>4.1.1</b> Table Customers</a></li>
-<li class="chapter" data-level="4.1.2" data-path="join-table-in-sql.html"><a href="join-table-in-sql.html#table-orders"><i class="fa fa-check"></i><b>4.1.2</b> Table Orders</a></li>
+<li class="chapter" data-level="4.2.1" data-path="database-normalization-in-sql.html"><a href="database-normalization-in-sql.html#step-1-first-normal-form-1nf"><i class="fa fa-check"></i><b>4.2.1</b> Step 1: First Normal Form (1NF)</a></li>
+<li class="chapter" data-level="4.2.2" data-path="database-normalization-in-sql.html"><a href="database-normalization-in-sql.html#step-2-second-normal-form-2nf"><i class="fa fa-check"></i><b>4.2.2</b> Step 2: Second Normal Form (2NF)</a></li>
 </ul></li>
-<li class="chapter" data-level="4.2" data-path="join-table-in-sql.html"><a href="join-table-in-sql.html#relational-model"><i class="fa fa-check"></i><b>4.2</b> Relational Model</a></li>
-<li class="chapter" data-level="4.3" data-path="join-table-in-sql.html"><a href="join-table-in-sql.html#factory-database"><i class="fa fa-check"></i><b>4.3</b> Factory Database</a></li>
-<li class="chapter" data-level="4.4" data-path="join-table-in-sql.html"><a href="join-table-in-sql.html#basic-sql-join-types"><i class="fa fa-check"></i><b>4.4</b> Basic SQL Join Types</a></li>
-<li class="chapter" data-level="4.5" data-path="join-table-in-sql.html"><a href="join-table-in-sql.html#connect-to-mysql"><i class="fa fa-check"></i><b>4.5</b> Connect to MySQL</a></li>
-<li class="chapter" data-level="4.6" data-path="join-table-in-sql.html"><a href="join-table-in-sql.html#inner-join"><i class="fa fa-check"></i><b>4.6</b> Inner Join</a></li>
-<li class="chapter" data-level="4.7" data-path="join-table-in-sql.html"><a href="join-table-in-sql.html#left-join"><i class="fa fa-check"></i><b>4.7</b> Left Join</a></li>
-<li class="chapter" data-level="4.8" data-path="join-table-in-sql.html"><a href="join-table-in-sql.html#right-join"><i class="fa fa-check"></i><b>4.8</b> Right Join</a></li>
-<li class="chapter" data-level="4.9" data-path="join-table-in-sql.html"><a href="join-table-in-sql.html#full-join"><i class="fa fa-check"></i><b>4.9</b> Full Join</a></li>
-<li class="chapter" data-level="4.10" data-path="join-table-in-sql.html"><a href="join-table-in-sql.html#self-join"><i class="fa fa-check"></i><b>4.10</b> Self JOIN</a></li>
-<li class="chapter" data-level="4.11" data-path="join-table-in-sql.html"><a href="join-table-in-sql.html#your-job-1"><i class="fa fa-check"></i><b>4.11</b> Your Job</a></li>
+<li class="chapter" data-level="4.3" data-path="database-normalization-in-sql.html"><a href="database-normalization-in-sql.html#step-3-third-normal-form-3nf"><i class="fa fa-check"></i><b>4.3</b> Step 3: Third Normal Form (3NF)</a></li>
 </ul></li>
-<li class="chapter" data-level="5" data-path="referensi.html"><a href="referensi.html"><i class="fa fa-check"></i><b>5</b> Referensi</a></li>
+<li class="chapter" data-level="5" data-path="join-table-in-sql.html"><a href="join-table-in-sql.html"><i class="fa fa-check"></i><b>5</b> Join Table in SQL</a>
+<ul>
+<li class="chapter" data-level="5.1" data-path="join-table-in-sql.html"><a href="join-table-in-sql.html#relational-database"><i class="fa fa-check"></i><b>5.1</b> Relational Database</a>
+<ul>
+<li class="chapter" data-level="5.1.1" data-path="join-table-in-sql.html"><a href="join-table-in-sql.html#table-customers"><i class="fa fa-check"></i><b>5.1.1</b> Table Customers</a></li>
+<li class="chapter" data-level="5.1.2" data-path="join-table-in-sql.html"><a href="join-table-in-sql.html#table-orders"><i class="fa fa-check"></i><b>5.1.2</b> Table Orders</a></li>
+</ul></li>
+<li class="chapter" data-level="5.2" data-path="join-table-in-sql.html"><a href="join-table-in-sql.html#relational-model"><i class="fa fa-check"></i><b>5.2</b> Relational Model</a></li>
+<li class="chapter" data-level="5.3" data-path="join-table-in-sql.html"><a href="join-table-in-sql.html#factory-database"><i class="fa fa-check"></i><b>5.3</b> Factory Database</a></li>
+<li class="chapter" data-level="5.4" data-path="join-table-in-sql.html"><a href="join-table-in-sql.html#basic-sql-join-types"><i class="fa fa-check"></i><b>5.4</b> Basic SQL Join Types</a></li>
+<li class="chapter" data-level="5.5" data-path="join-table-in-sql.html"><a href="join-table-in-sql.html#connect-to-mysql"><i class="fa fa-check"></i><b>5.5</b> Connect to MySQL</a></li>
+<li class="chapter" data-level="5.6" data-path="join-table-in-sql.html"><a href="join-table-in-sql.html#inner-join"><i class="fa fa-check"></i><b>5.6</b> Inner Join</a></li>
+<li class="chapter" data-level="5.7" data-path="join-table-in-sql.html"><a href="join-table-in-sql.html#left-join"><i class="fa fa-check"></i><b>5.7</b> Left Join</a></li>
+<li class="chapter" data-level="5.8" data-path="join-table-in-sql.html"><a href="join-table-in-sql.html#right-join"><i class="fa fa-check"></i><b>5.8</b> Right Join</a></li>
+<li class="chapter" data-level="5.9" data-path="join-table-in-sql.html"><a href="join-table-in-sql.html#full-join"><i class="fa fa-check"></i><b>5.9</b> Full Join</a></li>
+<li class="chapter" data-level="5.10" data-path="join-table-in-sql.html"><a href="join-table-in-sql.html#self-join"><i class="fa fa-check"></i><b>5.10</b> Self JOIN</a></li>
+<li class="chapter" data-level="5.11" data-path="join-table-in-sql.html"><a href="join-table-in-sql.html#your-job-1"><i class="fa fa-check"></i><b>5.11</b> Your Job</a></li>
+</ul></li>
+<li class="chapter" data-level="6" data-path="referensi.html"><a href="referensi.html"><i class="fa fa-check"></i><b>6</b> Referensi</a></li>
 <li class="divider"></li>
 <li><a href="https://github.com/rstudio/bookdown" target="blank">Published with bookdown</a></li>
 
@@ -288,16 +300,16 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
           <div class="page-inner">
 
             <section class="normal" id="section-">
-<div id="join-table-in-sql" class="section level1 hasAnchor" number="4">
-<h1><span class="header-section-number">Bab 4</span> Join Table in SQL<a href="join-table-in-sql.html#join-table-in-sql" class="anchor-section" aria-label="Anchor link to header"></a></h1>
+<div id="join-table-in-sql" class="section level1 hasAnchor" number="5">
+<h1><span class="header-section-number">Bab 5</span> Join Table in SQL<a href="join-table-in-sql.html#join-table-in-sql" class="anchor-section" aria-label="Anchor link to header"></a></h1>
 <p>A SQL join is a Structured Query Language (SQL) instruction to combine data from two sets of data (i.e. two tables). Before we dive into the details of a SQL join, let’s briefly discuss what SQL is, and why someone would want to perform a SQL join.</p>
 <p>SQL is a special-purpose programming language designed for managing information in a relational database management system (RDBMS). The word relational here is key; it specifies that the database management system is organized in such a way that there are clear relations defined between different sets of data. Typically, you need to extract, transform, and load data into your RDBMS before you’re able to manage it using SQL, which you can accomplish by using a tool like Stitch.</p>
 <hr />
-<div id="relational-database" class="section level2 hasAnchor" number="4.1">
-<h2><span class="header-section-number">4.1</span> Relational Database<a href="join-table-in-sql.html#relational-database" class="anchor-section" aria-label="Anchor link to header"></a></h2>
+<div id="relational-database" class="section level2 hasAnchor" number="5.1">
+<h2><span class="header-section-number">5.1</span> Relational Database<a href="join-table-in-sql.html#relational-database" class="anchor-section" aria-label="Anchor link to header"></a></h2>
 <p>Imagine you’re running a store and would like to record information about your customers and their orders. By using a relational database, you can save this information as two tables that represent two distinct entities: customers and orders .</p>
-<div id="table-customers" class="section level3 hasAnchor" number="4.1.1">
-<h3><span class="header-section-number">4.1.1</span> Table Customers<a href="join-table-in-sql.html#table-customers" class="anchor-section" aria-label="Anchor link to header"></a></h3>
+<div id="table-customers" class="section level3 hasAnchor" number="5.1.1">
+<h3><span class="header-section-number">5.1.1</span> Table Customers<a href="join-table-in-sql.html#table-customers" class="anchor-section" aria-label="Anchor link to header"></a></h3>
 <div class="sourceCode" id="cb1"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb1-1"><a href="join-table-in-sql.html#cb1-1" tabindex="-1"></a><span class="fu">library</span>(DT)</span>
 <span id="cb1-2"><a href="join-table-in-sql.html#cb1-2" tabindex="-1"></a>costomers<span class="ot">&lt;-</span><span class="fu">read.csv</span>(<span class="st">&quot;data/customers.csv&quot;</span>)</span>
 <span id="cb1-3"><a href="join-table-in-sql.html#cb1-3" tabindex="-1"></a><span class="fu">datatable</span>(<span class="fu">head</span>(costomers, <span class="dv">5</span>), </span>
@@ -307,8 +319,8 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
 <span id="cb1-7"><a href="join-table-in-sql.html#cb1-7" tabindex="-1"></a>          <span class="at">options =</span> <span class="fu">list</span>(<span class="at">dom =</span> <span class="st">&#39;t&#39;</span>))</span></code></pre></div>
 <p>Table 1, informs about each customer is stored in its own row, with columns specifying different bits of information, including their first name, last name, and email address. Additionally, we associate a unique customer number, or primary key, with each customer record.</p>
 </div>
-<div id="table-orders" class="section level3 hasAnchor" number="4.1.2">
-<h3><span class="header-section-number">4.1.2</span> Table Orders<a href="join-table-in-sql.html#table-orders" class="anchor-section" aria-label="Anchor link to header"></a></h3>
+<div id="table-orders" class="section level3 hasAnchor" number="5.1.2">
+<h3><span class="header-section-number">5.1.2</span> Table Orders<a href="join-table-in-sql.html#table-orders" class="anchor-section" aria-label="Anchor link to header"></a></h3>
 <div class="sourceCode" id="cb2"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb2-1"><a href="join-table-in-sql.html#cb2-1" tabindex="-1"></a>orders<span class="ot">&lt;-</span><span class="fu">read.csv</span>(<span class="st">&quot;data/orders.csv&quot;</span>)</span>
 <span id="cb2-2"><a href="join-table-in-sql.html#cb2-2" tabindex="-1"></a><span class="fu">datatable</span>(<span class="fu">head</span>(orders,<span class="dv">5</span>), </span>
 <span id="cb2-3"><a href="join-table-in-sql.html#cb2-3" tabindex="-1"></a>          <span class="at">caption =</span> htmltools<span class="sc">::</span>tags<span class="sc">$</span><span class="fu">caption</span>(</span>
@@ -318,44 +330,44 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
 <p>Again, Table 2 are contains information about a specific order. Each order has its own unique identification key <code>order_id</code> for this table – assigned to it as well.</p>
 </div>
 </div>
-<div id="relational-model" class="section level2 hasAnchor" number="4.2">
-<h2><span class="header-section-number">4.2</span> Relational Model<a href="join-table-in-sql.html#relational-model" class="anchor-section" aria-label="Anchor link to header"></a></h2>
+<div id="relational-model" class="section level2 hasAnchor" number="5.2">
+<h2><span class="header-section-number">5.2</span> Relational Model<a href="join-table-in-sql.html#relational-model" class="anchor-section" aria-label="Anchor link to header"></a></h2>
 <p>You’ve probably noticed that these two examples share similar information. You can see these simple relations diagrammed below:</p>
 <div class="figure" style="text-align: center"><span style="display:block;" id="fig:relational"></span>
 <img src="images/Bab5/relational.png" alt="Relational Table" width="100%" />
 <p class="caption">
-Gambar 4.1: Relational Table
+Gambar 5.1: Relational Table
 </p>
 </div>
 <p>Note that the orders table contains two keys: one for the order and one for the customer who placed that order. In scenarios when there are multiple keys in a table, the key that refers to the entity being described in that table is called the primary key <em>(PK)</em> and other key is called a foreign key <em>(FK)</em>.</p>
 <p>In our example, <code>order_id</code> is a primary key in the orders table, while <code>customer_id</code> is both a primary key in the customers table and a foreign key in the orders table. Primary and foreign keys are essential to describing relations between the tables, and in performing SQL joins.</p>
 <hr />
 </div>
-<div id="factory-database" class="section level2 hasAnchor" number="4.3">
-<h2><span class="header-section-number">4.3</span> Factory Database<a href="join-table-in-sql.html#factory-database" class="anchor-section" aria-label="Anchor link to header"></a></h2>
+<div id="factory-database" class="section level2 hasAnchor" number="5.3">
+<h2><span class="header-section-number">5.3</span> Factory Database<a href="join-table-in-sql.html#factory-database" class="anchor-section" aria-label="Anchor link to header"></a></h2>
 <p>To make you more convenient about all the data tables that we will use in this section. Here, I summarize the following SQL relational for database <code>factory_db</code>:</p>
 <div class="figure" style="text-align: center"><span style="display:block;" id="fig:fullrelational"></span>
 <img src="images/Bab5/fullrelational.png" alt="Relational Table of Factory Database" width="100%" />
 <p class="caption">
-Gambar 4.2: Relational Table of Factory Database
+Gambar 5.2: Relational Table of Factory Database
 </p>
 </div>
 <p><em>Note:</em> Don’t forget to consider the data structure of your database (all table)</p>
 <hr />
 </div>
-<div id="basic-sql-join-types" class="section level2 hasAnchor" number="4.4">
-<h2><span class="header-section-number">4.4</span> Basic SQL Join Types<a href="join-table-in-sql.html#basic-sql-join-types" class="anchor-section" aria-label="Anchor link to header"></a></h2>
+<div id="basic-sql-join-types" class="section level2 hasAnchor" number="5.4">
+<h2><span class="header-section-number">5.4</span> Basic SQL Join Types<a href="join-table-in-sql.html#basic-sql-join-types" class="anchor-section" aria-label="Anchor link to header"></a></h2>
 <p>There are four basic types of SQL joins: inner, left, right, and full. The easiest and most intuitive way to explain the difference between these four types is by using a Venn diagram, which shows all possible logical relations between data sets.</p>
 <p>Again, it’s important to stress that before you can begin using any join type, you’ll need to extract the data and load it into an RDBMS like Amazon Redshift, where you can query tables from multiple sources. You build that process manually, or you can use an ETL service like Stitch, which automates that process for you.</p>
 <div class="figure" style="text-align: center"><span style="display:block;" id="fig:jointable"></span>
 <img src="images/Bab5/jointable.png" alt="Basic Join Table" width="100%" />
 <p class="caption">
-Gambar 4.3: Basic Join Table
+Gambar 5.3: Basic Join Table
 </p>
 </div>
 </div>
-<div id="connect-to-mysql" class="section level2 hasAnchor" number="4.5">
-<h2><span class="header-section-number">4.5</span> Connect to MySQL<a href="join-table-in-sql.html#connect-to-mysql" class="anchor-section" aria-label="Anchor link to header"></a></h2>
+<div id="connect-to-mysql" class="section level2 hasAnchor" number="5.5">
+<h2><span class="header-section-number">5.5</span> Connect to MySQL<a href="join-table-in-sql.html#connect-to-mysql" class="anchor-section" aria-label="Anchor link to header"></a></h2>
 <p>Reading data from <code>MySQL</code> into R workspace, it requires two R libraries, <code>RMySQL</code> and <code>DBI</code>. The connection data should not be embedded in analysis code. Separate the connection code in another script. The script should set up the connection and save it into the workspace.</p>
 <p>The saved connection is accessible by its name in the analysis code. In the dbConnect function, you need to replace dbname, username, pwd, dbserver and port with the actual values of your remote database.</p>
 <div class="sourceCode" id="cb3"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb3-1"><a href="join-table-in-sql.html#cb3-1" tabindex="-1"></a><span class="co"># set up the connection and save it into the workspace</span></span>
@@ -374,8 +386,8 @@ Gambar 4.3: Basic Join Table
       Your SQL code Here
 &#39;&#39;&#39;</code></pre>
 </div>
-<div id="inner-join" class="section level2 hasAnchor" number="4.6">
-<h2><span class="header-section-number">4.6</span> Inner Join<a href="join-table-in-sql.html#inner-join" class="anchor-section" aria-label="Anchor link to header"></a></h2>
+<div id="inner-join" class="section level2 hasAnchor" number="5.6">
+<h2><span class="header-section-number">5.6</span> Inner Join<a href="join-table-in-sql.html#inner-join" class="anchor-section" aria-label="Anchor link to header"></a></h2>
 <p>Let’s say we wanted to get a list of those customers who placed an order and the details of the order they placed. This would be a perfect fit for an inner join, since an inner join returns records at the intersection of the two tables.</p>
 <div class="sourceCode" id="cb5"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb5-1"><a href="join-table-in-sql.html#cb5-1" tabindex="-1"></a>SELECT OrderID, CustomerName</span>
 <span id="cb5-2"><a href="join-table-in-sql.html#cb5-2" tabindex="-1"></a>  FROM Orders O</span>
@@ -401,8 +413,8 @@ Gambar 4.3: Basic Join Table
 <span id="cb8-6"><a href="join-table-in-sql.html#cb8-6" tabindex="-1"></a>          <span class="at">options =</span> <span class="fu">list</span>(<span class="at">scrollX =</span> <span class="cn">TRUE</span>, <span class="at">fixedColumns =</span> <span class="cn">TRUE</span>)</span>
 <span id="cb8-7"><a href="join-table-in-sql.html#cb8-7" tabindex="-1"></a>          )</span></code></pre></div>
 </div>
-<div id="left-join" class="section level2 hasAnchor" number="4.7">
-<h2><span class="header-section-number">4.7</span> Left Join<a href="join-table-in-sql.html#left-join" class="anchor-section" aria-label="Anchor link to header"></a></h2>
+<div id="left-join" class="section level2 hasAnchor" number="5.7">
+<h2><span class="header-section-number">5.7</span> Left Join<a href="join-table-in-sql.html#left-join" class="anchor-section" aria-label="Anchor link to header"></a></h2>
 <p>If we wanted to simply append information about orders to our customers table, regardless of whether a customer placed an order or not, we would use a left join. A left join returns all records from table A and any matching records from table B. The result is NULL from the right side, if there is no match.</p>
 <div class="sourceCode" id="cb9"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb9-1"><a href="join-table-in-sql.html#cb9-1" tabindex="-1"></a>SELECT CustomerName, OrderID</span>
 <span id="cb9-2"><a href="join-table-in-sql.html#cb9-2" tabindex="-1"></a>  FROM Customers C</span>
@@ -414,8 +426,8 @@ Gambar 4.3: Basic Join Table
 <span id="cb10-3"><a href="join-table-in-sql.html#cb10-3" tabindex="-1"></a>            <span class="at">style =</span> <span class="st">&#39;caption-side: bottom; text-align: center;&#39;</span>, </span>
 <span id="cb10-4"><a href="join-table-in-sql.html#cb10-4" tabindex="-1"></a>            htmltools<span class="sc">::</span><span class="fu">em</span>(<span class="st">&#39;Table 5: SQL Left Join Two Tables.&#39;</span>)))</span></code></pre></div>
 </div>
-<div id="right-join" class="section level2 hasAnchor" number="4.8">
-<h2><span class="header-section-number">4.8</span> Right Join<a href="join-table-in-sql.html#right-join" class="anchor-section" aria-label="Anchor link to header"></a></h2>
+<div id="right-join" class="section level2 hasAnchor" number="5.8">
+<h2><span class="header-section-number">5.8</span> Right Join<a href="join-table-in-sql.html#right-join" class="anchor-section" aria-label="Anchor link to header"></a></h2>
 <p>The following SQL statement will return all employees, and any orders they might have placed. The result is NULL from the left side, when there is no match.</p>
 <div class="sourceCode" id="cb11"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb11-1"><a href="join-table-in-sql.html#cb11-1" tabindex="-1"></a>SELECT OrderID, LastName, FirstName</span>
 <span id="cb11-2"><a href="join-table-in-sql.html#cb11-2" tabindex="-1"></a>  FROM Orders O</span>
@@ -427,8 +439,8 @@ Gambar 4.3: Basic Join Table
 <span id="cb12-3"><a href="join-table-in-sql.html#cb12-3" tabindex="-1"></a>            <span class="at">style =</span> <span class="st">&#39;caption-side: bottom; text-align: center;&#39;</span>, </span>
 <span id="cb12-4"><a href="join-table-in-sql.html#cb12-4" tabindex="-1"></a>            htmltools<span class="sc">::</span><span class="fu">em</span>(<span class="st">&#39;Table 6: SQL Right Join Two Tables.&#39;</span>)))</span></code></pre></div>
 </div>
-<div id="full-join" class="section level2 hasAnchor" number="4.9">
-<h2><span class="header-section-number">4.9</span> Full Join<a href="join-table-in-sql.html#full-join" class="anchor-section" aria-label="Anchor link to header"></a></h2>
+<div id="full-join" class="section level2 hasAnchor" number="5.9">
+<h2><span class="header-section-number">5.9</span> Full Join<a href="join-table-in-sql.html#full-join" class="anchor-section" aria-label="Anchor link to header"></a></h2>
 <p>The FULL OUTER JOIN keyword returns all records when there is a match in left (table1) or right (table2) table records. FULL OUTER JOIN, FULL JOIN, and JOIN (MariaDB) are the same. The following SQL statement selects all customers, and all orders:</p>
 <div class="sourceCode" id="cb13"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb13-1"><a href="join-table-in-sql.html#cb13-1" tabindex="-1"></a>SELECT CustomerName, OrderID</span>
 <span id="cb13-2"><a href="join-table-in-sql.html#cb13-2" tabindex="-1"></a>  FROM Customers C</span>
@@ -440,8 +452,8 @@ Gambar 4.3: Basic Join Table
 <span id="cb14-3"><a href="join-table-in-sql.html#cb14-3" tabindex="-1"></a>            <span class="at">style =</span> <span class="st">&#39;caption-side: bottom; text-align: center;&#39;</span>, </span>
 <span id="cb14-4"><a href="join-table-in-sql.html#cb14-4" tabindex="-1"></a>            htmltools<span class="sc">::</span><span class="fu">em</span>(<span class="st">&#39;Table 7: SQL Full Join Two Tables.&#39;</span>)))</span></code></pre></div>
 </div>
-<div id="self-join" class="section level2 hasAnchor" number="4.10">
-<h2><span class="header-section-number">4.10</span> Self JOIN<a href="join-table-in-sql.html#self-join" class="anchor-section" aria-label="Anchor link to header"></a></h2>
+<div id="self-join" class="section level2 hasAnchor" number="5.10">
+<h2><span class="header-section-number">5.10</span> Self JOIN<a href="join-table-in-sql.html#self-join" class="anchor-section" aria-label="Anchor link to header"></a></h2>
 <p>A self JOIN is a regular join, but the table is joined with itself. The following SQL statement matches customers that are from the same city:</p>
 <div class="sourceCode" id="cb15"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb15-1"><a href="join-table-in-sql.html#cb15-1" tabindex="-1"></a>SELECT A.CustomerName AS CustomerName1, </span>
 <span id="cb15-2"><a href="join-table-in-sql.html#cb15-2" tabindex="-1"></a>       B.CustomerName AS CustomerName2, </span>
@@ -458,8 +470,8 @@ Gambar 4.3: Basic Join Table
 <p>After finishing the work with the database, close the connection.</p>
 <div class="sourceCode" id="cb17"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb17-1"><a href="join-table-in-sql.html#cb17-1" tabindex="-1"></a>DBI<span class="sc">::</span><span class="fu">dbDisconnect</span>(bakti)</span></code></pre></div>
 </div>
-<div id="your-job-1" class="section level2 hasAnchor" number="4.11">
-<h2><span class="header-section-number">4.11</span> Your Job<a href="join-table-in-sql.html#your-job-1" class="anchor-section" aria-label="Anchor link to header"></a></h2>
+<div id="your-job-1" class="section level2 hasAnchor" number="5.11">
+<h2><span class="header-section-number">5.11</span> Your Job<a href="join-table-in-sql.html#your-job-1" class="anchor-section" aria-label="Anchor link to header"></a></h2>
 <ol style="list-style-type: decimal">
 <li><p>Apply Left join and Right join to returns all records from table Orders and any matching records from table Suppliers.</p></li>
 <li><p>Choose the correct JOIN clause to select all records from the two tables (Orders and Suppliers) where there is a match in both tables.</p></li>
@@ -473,7 +485,7 @@ Gambar 4.3: Basic Join Table
           </div>
         </div>
       </div>
-<a href="fundamental-sql-in-r.html" class="navigation navigation-prev " aria-label="Previous page"><i class="fa fa-angle-left"></i></a>
+<a href="database-normalization-in-sql.html" class="navigation navigation-prev " aria-label="Previous page"><i class="fa fa-angle-left"></i></a>
 <a href="referensi.html" class="navigation navigation-next " aria-label="Next page"><i class="fa fa-angle-right"></i></a>
     </div>
   </div>

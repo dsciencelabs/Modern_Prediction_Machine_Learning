@@ -403,7 +403,7 @@ I generally prefer to show RMarkdown output in the console 1 (and it looks like 
 
 It is in this very specific case where inline mode wins big time. SQL previews magically become an option, allowing you to interact with your beautifully colored SQL code.
 
-```{r, results='asis', fungsi,echo=FALSE, fig.cap='Ilustrasi Manipulasi Data dalam R', tidy=FALSE, out.width='100%', fig.align='center'}
+```{r, results='asis',echo=FALSE}
 cat('<img src="./images/Bab3/sql-inline-preview.gif">')
 ```
 
