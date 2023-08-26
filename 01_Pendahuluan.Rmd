@@ -409,6 +409,9 @@ include_graphics("./images/Bab1/Postgree16.png")
 cat('<iframe width="800" height="430" src="https://www.youtube.com/embed/0n41UTkOBb0" frameborder="0" allowfullscreen></iframe>')
 ```
 
-## Praktikal (Hands On)
+## Praktikum
+
+* Tutorial di MySQL (CREATE & Drop Database, Create & Drop Tabel)
+* Tutorial di PostgreeeSQL (CREATE & Drop Database, Create & Drop Tabel)
 
 
