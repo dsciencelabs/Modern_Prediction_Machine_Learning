@@ -123,7 +123,7 @@ Sebelum menerapkan analisis di R, Anda mungkin perlu melakukan pra-pemrosesan pa
 
 Jadi, menggunakan R dan SQL bersama memungkinkan Anda menggabungkan kekuatan analisis statistik R dengan kemampuan pengelolaan data SQL. Ini bisa sangat berguna ketika Anda ingin melakukan analisis data yang luas dan kompleks dari berbagai sumber data yang berbeda.
 
-```{r sql-r-friends,echo=FALSE, fig.cap='R dan SQL', tidy=FALSE, out.width='100%', fig.align='center'}
+```{r sql-r-friends,echo=FALSE, fig.cap='R dan SQL [https://irene.rbind.io](https://irene.rbind.io/post/using-sql-in-rstudio/)', tidy=FALSE, out.width='100%', fig.align='center'}
 library(knitr)
 include_graphics("./images/Bab1/sql-r-friends.png")
 ```
@@ -134,7 +134,7 @@ include_graphics("./images/Bab1/sql-r-friends.png")
 
 MySQL adalah sistem manajemen basis data relasional yang memungkinkan Anda untuk menyimpan data sebagai tabel dengan baris dan kolom. Sistem ini populer sehingga digunakan di banyak aplikasi web, situs web dinamis, dan sistem tertanam. PostgreSQL adalah sistem manajemen basis data relasional-objek yang menawarkan lebih banyak fitur daripada MySQL. Sistem ini memberi Anda lebih banyak fleksibilitas dalam tipe data, skalabilitas, konkurensi, dan integrasi data. 
 
-```{r MySQL-VS-PostgreSQL,echo=FALSE, fig.cap='MySQL vs PostgreSQL', tidy=FALSE, out.width='100%', fig.align='center'}
+```{r MySQL-VS-PostgreSQL,echo=FALSE, fig.cap='MySQL vs PostgreSQL [https://integrio.net/](https://integrio.net/blog/postgresql-vs-mysql)', tidy=FALSE, out.width='100%', fig.align='center'}
 library(knitr)
 include_graphics("./images/Bab1/MySQL-VS-PostgreSQL.jpg")
 ```
@@ -170,30 +170,47 @@ MySQL dan PostgreSQL, Keduanya menyimpan data di dalam tabel yang terkait satu s
  
 Silakan [klik disini](https://www.apachefriends.org/download.html) untuk mengunduh applikasi XAMPP, pilih salah satu saja sesuai Operating System pada Komputer anda. 
 
-<img style="float: center; margin: 0px 0px 0px 0px; width:100%" src="images/Bab1/xampp0.png"/> 
+```{r download-xammp,echo=FALSE, fig.cap='Langkah 1, Download XAMPP)', tidy=FALSE, out.width='100%', fig.align='center'}
+library(knitr)
+include_graphics("./images/Bab1/xampp0.png")
+```
 
 ### Install Aplikasi
 
 Temukan file XAMPP.exe yang telah anda download, secara default biasanya disimpan di; 
 
-<img style="float: center; margin: 0px 0px 0px 0px; width:100%" src="images/Bab1/xampp1.png"/> 
+```{r install-xammp,echo=FALSE, fig.cap='Langkah 2, Instalasi XAMPP)', tidy=FALSE, out.width='100%', fig.align='center'}
+library(knitr)
+include_graphics("./images/Bab1/xampp1.png")
+```
 
 Selanjutnya, akan muncul Warning di klik **OK**
 
-<img style="float: center; margin: 0px 0px 0px 0px; width:100%" src="images/Bab1/xampp2.png"/> 
+```{r install-xammp2,echo=FALSE, fig.cap='Langkah 3, Instalasi XAMPP)', tidy=FALSE, out.width='100%', fig.align='center'}
+library(knitr)
+include_graphics("./images/Bab1/xampp2.png")
+```
 
 selajutunya klik next 
 
-<img style="float: center; margin: 0px 0px 0px 0px; width:100%" src="images/Bab1/xampp3.png"/>
+```{r install-xammp3,echo=FALSE, fig.cap='Langkah 4: Instalasi XAMPP)', tidy=FALSE, out.width='100%', fig.align='center'}
+library(knitr)
+include_graphics("./images/Bab1/xampp3.png")
+```
 
 Klik next lagi, karena sudah dipilih secara default oleh XAMPP
 
-<img style="float: center; margin: 0px 0px 0px 0px; width:100%" src="images/Bab1/xampp4.png"/>
-
+```{r install-xammp4,echo=FALSE, fig.cap='Langkah 5, Instalasi XAMPP)', tidy=FALSE, out.width='100%', fig.align='center'}
+library(knitr)
+include_graphics("./images/Bab1/xampp4.png")
+```
 
 ### Pilih Folder
 
-<img style="float: center; margin: 0px 0px 0px 0px; width:100%" src="images/Bab1/xampp5.png"/> 
+```{r install-xammp5,echo=FALSE, fig.cap='Langkah 6, Instalasi XAMPP)', tidy=FALSE, out.width='100%', fig.align='center'}
+library(knitr)
+include_graphics("./images/Bab1/xampp5.png")
+```
 
 Secara default akan membuat folder baru **C:&#92;xampp**, lalu pilih next.
 
@@ -201,21 +218,27 @@ Secara default akan membuat folder baru **C:&#92;xampp**, lalu pilih next.
 
 ### Jalankan proses Instalasi
 
-<img style="float: center; margin: 0px 0px 0px 0px; width:100%" src="images/Bab1/xampp6.png"/> 
+```{r install-xammp6,echo=FALSE, fig.cap='Langkah 7, Instalasi XAMPP)', tidy=FALSE, out.width='100%', fig.align='center'}
+library(knitr)
+include_graphics("./images/Bab1/xampp6.png")
+```
 
 Tunggu proses instalasi selesai **Biasanya 5-10 menit, tergantung kecepatan komputer anda**. 
 
 ### XAMPP sudah terinstall
 
-
-<img style="float: center; margin: 0px 0px 0px 0px; width:100%" src="images/Bab1/xampp7.png"/> 
+```{r install-xammp7,echo=FALSE, fig.cap='Langkah 8, Instalasi XAMPP)', tidy=FALSE, out.width='100%', fig.align='center'}
+library(knitr)
+include_graphics("./images/Bab1/xampp7.png")
+```
 
 Setelah aplikasi terinstall, sudah bisa digunakan.
 
 ### Video Instalasi XAMPP
 
-<iframe width="800" height="540" src="https://www.youtube.com/embed/T6Up7HgFocs" title="YouTube video player" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" allowfullscreen></iframe>
-
+```{r echo=FALSE, results='asis'}
+cat('<iframe width="800" height="430" src="https://www.youtube.com/embed/T6Up7HgFocs" frameborder="0" allowfullscreen></iframe>')
+```
 
 ## Instalasi PostgreSQL
 
@@ -225,145 +248,167 @@ Berikut ini adalah proses langkah demi langkah tentang Cara Menginstal PostgreSQ
 
 Klik https://www.postgresql.org/download and pilih Windows
 
-<img style="float: center; margin: 0px 0px 0px 0px; width:100%" src="images/Bab1/Postgree0.png"/>
-
+```{r install-posrgree1,echo=FALSE, fig.cap='Langkah 1, Instalasi PostgreeSQL)', tidy=FALSE, out.width='100%', fig.align='center'}
+library(knitr)
+include_graphics("./images/Bab1/Postgree0.png")
+```
 
 ### Cek Option
 
 Klik Download the installer Interactive Installer by EnterpriseDB
 
-<img style="float: center; margin: 0px 0px 0px 0px; width:100%" src="images/Bab1/Postgree1.png"/>
+```{r install-posrgree2,echo=FALSE, fig.cap='Langkah 2, Instalasi PostgreeSQL)', tidy=FALSE, out.width='100%', fig.align='center'}
+library(knitr)
+include_graphics("./images/Bab1/Postgree1.png")
+```
 
 
 ### Pilih PostgreSQL version
 
 Anda akan diminta untuk memilih versi PostgreSQL dan sistem operasi yang diinginkan. Pilih versi PostgreSQL terbaru dan OS sesuai dengan environment Anda, **klik tombol download.**
 
-<img style="float: center; margin: 0px 0px 0px 0px; width:100%" src="images/Bab1/Postgree2.png"/>
-
+```{r install-posrgree3,echo=FALSE, fig.cap='Langkah 3, Instalasi PostgreeSQL)', tidy=FALSE, out.width='100%', fig.align='center'}
+library(knitr)
+include_graphics("./images/Bab1/Postgree2.png")
+```
 
 ### Open exe file
 
 Setelah Anda mengunduh PostgreSQL, buka exe yang telah diunduh dan Klik berikutnya pada layar install welcome screen.
 
-<img style="float: center; margin: 0px 0px 0px 0px; width:100%" src="images/Bab1/Postgree3.webp"/>
+```{r install-posrgree4,echo=FALSE, fig.cap='Langkah 4, Instalasi PostgreeSQL)', tidy=FALSE, out.width='100%', fig.align='center'}
+library(knitr)
+include_graphics("./images/Bab1/Postgree3.png")
+```
 
 
 ### Pilih folder
 
 Ubah direktori Instalasi jika diperlukan, jika tidak, biarkan default,  **klik Next.**
 
-<img style="float: center; margin: 0px 0px 0px 0px; width:100%" src="images/Bab1/Postgree4.png"/>
 
+```{r install-posrgree5,echo=FALSE, fig.cap='Langkah 5, Instalasi PostgreeSQL)', tidy=FALSE, out.width='100%', fig.align='center'}
+library(knitr)
+include_graphics("./images/Bab1/Postgree4.png")
+```
 
 
 ### Select components
 
 Anda dapat memilih komponen yang ingin Anda instal di sistem Anda. Anda dapat menghapus centang pada Stack Builder (*disarankan ikuti secara default*), **klik Next.**
 
-<img style="float: center; margin: 0px 0px 0px 0px; width:100%" src="images/Bab1/Postgree5.webp"/>
-
+```{r install-posrgree6,echo=FALSE, fig.cap='Langkah 6, Instalasi PostgreeSQL)', tidy=FALSE, out.width='100%', fig.align='center'}
+library(knitr)
+include_graphics("./images/Bab1/Postgree5.png")
+```
 
 ### Check data location
 
 Anda dapat mengubah lokasi data, **Klik Next.**
 
-<img style="float: center; margin: 0px 0px 0px 0px; width:100%" src="images/Bab1/Postgree6.png"/>
+```{r install-posrgree7,echo=FALSE, fig.cap='Langkah 7, Instalasi PostgreeSQL)', tidy=FALSE, out.width='100%', fig.align='center'}
+library(knitr)
+include_graphics("./images/Bab1/Postgree6.png")
+```
 
 ### Masukan Password
 
 Masukkan kata sandi superuser. Catat kata sandi tersebut, **Klik Next.**
 
-<img style="float: center; margin: 0px 0px 0px 0px; width:100%" src="images/Bab1/Postgree7.webp"/>
-
+```{r install-posrgree8,echo=FALSE, fig.cap='Langkah 8, Instalasi PostgreeSQL)', tidy=FALSE, out.width='100%', fig.align='center'}
+library(knitr)
+include_graphics("./images/Bab1/Postgree7.png")
+```
 
 ### Cek opsi port
 
 Biarkan nomor port menjadi default, **Klik Next.** 
 
-<img style="float: center; margin: 0px 0px 0px 0px; width:100%" src="images/Bab1/Postgree8.webp"/>
-
+```{r install-posrgree9,echo=FALSE, fig.cap='Langkah 9, Instalasi PostgreeSQL)', tidy=FALSE, out.width='100%', fig.align='center'}
+library(knitr)
+include_graphics("./images/Bab1/Postgree8.png")
+```
 
 ### Cek Summary
 
 Periksa pra-penginstalan summary, **Klik Next**
 
-<img style="float: center; margin: 0px 0px 0px 0px; width:100%" src="images/Bab1/Postgree9.png"/>
-
+```{r install-posrgree10,echo=FALSE, fig.cap='Langkah 10, Instalasi PostgreeSQL)', tidy=FALSE, out.width='100%', fig.align='center'}
+library(knitr)
+include_graphics("./images/Bab1/Postgree9.png")
+```
 
 ### Ready to Install
 
 Klik tombol Next 
 
-<img style="float: center; margin: 0px 0px 0px 0px; width:100%" src="images/Bab1/Postgree10.webp"/>
+```{r install-posrgree11,echo=FALSE, fig.cap='Langkah 11, Instalasi PostgreeSQL)', tidy=FALSE, out.width='100%', fig.align='center'}
+library(knitr)
+include_graphics("./images/Bab1/Postgree10.png")
+```
 
 
 ### Check stack builder prompt
 
 Setelah instalasi selesai, Anda akan melihat prompt Stack Builder. Hapus centang pada opsi tersebut. Kita akan menggunakan Stack Builder dalam tutorial selanjutnya, **Klik Finish.**
 
-<img style="float: center; margin: 0px 0px 0px 0px; width:100%" src="images/Bab1/Postgree11.webp"/>
+```{r install-posrgree12,echo=FALSE, fig.cap='Langkah 12, Instalasi PostgreeSQL)', tidy=FALSE, out.width='100%', fig.align='center'}
+library(knitr)
+include_graphics("./images/Bab1/Postgree11.png")
+```
 
 ### Launch PostgreSQL
 
 Untuk launch PostgreSQL, buka Start Menu dan cari pgAdmin 4
 
-<img style="float: center; margin: 0px 0px 0px 0px; width:100%" src="images/Bab1/Postgree12.webp"/>
+```{r install-posrgree13,echo=FALSE, fig.cap='Langkah 13, Instalasi PostgreeSQL)', tidy=FALSE, out.width='100%', fig.align='center'}
+library(knitr)
+include_graphics("./images/Bab1/Postgree12.png")
+```
 
 ### Check pgAdmin
 
 Anda akan melihat beranda pgAdmin
 
-<img style="float: center; margin: 0px 0px 0px 0px; width:100%" src="images/Bab1/Postgree13.png"/>
+```{r install-posrgree14,echo=FALSE, fig.cap='Langkah 14, Instalasi PostgreeSQL)', tidy=FALSE, out.width='100%', fig.align='center'}
+library(knitr)
+include_graphics("./images/Bab1/Postgree13.png")
+```
 
 ### Cari PostgreSQL 15
 
 Klik pada Servers > PostgreSQL 15 di sub sebelah kiri
 
-<img style="float: center; margin: 0px 0px 0px 0px; width:100%" src="images/Bab1/Postgree14.png"/>
+```{r install-posrgree15,echo=FALSE, fig.cap='Langkah 15, Instalasi PostgreeSQL)', tidy=FALSE, out.width='100%', fig.align='center'}
+library(knitr)
+include_graphics("./images/Bab1/Postgree14.png")
+```
 
 ### Enter password
 
 Masukkan kata sandi superuser yang ditetapkan selama instalasi, **Klik OK**
 
-<img style="float: center; margin: 0px 0px 0px 0px; width:100%" src="images/Bab1/Postgree15.png"/>
+```{r install-posrgree16,echo=FALSE, fig.cap='Langkah 16, Instalasi PostgreeSQL)', tidy=FALSE, out.width='100%', fig.align='center'}
+library(knitr)
+include_graphics("./images/Bab1/Postgree15.png")
+```
 
 
 ### Cek Dashboard
 
 Anda akan melihat Dashboard
 
-<img style="float: center; margin: 0px 0px 0px 0px; width:100%" src="images/Bab1/Postgree16.png"/>
-
+```{r install-posrgree17,echo=FALSE, fig.cap='Langkah 17, Instalasi PostgreeSQL)', tidy=FALSE, out.width='100%', fig.align='center'}
+library(knitr)
+include_graphics("./images/Bab1/Postgree16.png")
+```
 
 ### Video Instalasi PostgreSQL
 
-<iframe width="800" height="540" src="https://www.youtube.com/embed/0n41UTkOBb0" title="YouTube video player" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" allowfullscreen></iframe>
-
-* [Download PostgreSQL](https://www.postgresql.org/download/)
-
+```{r echo=FALSE, results='asis'}
+cat('<iframe width="800" height="430" src="https://www.youtube.com/embed/0n41UTkOBb0" frameborder="0" allowfullscreen></iframe>')
+```
 
 ## Praktikal (Hands On)
 
-Untuk memulai bagian ini, pastikan bahwa anda sudah meng-install Anaconda dan XAMPP dikomputer yang akan digunakan. Kemudian, bukalah applikasi Juperterlab yang ada pada layar Anaconda Navigator, seperti diperlihatkan sebagai berikut:
 
-<img style="float: center; margin: 0px 0px 0px 0px; width:100%" src="images/Bab1/anaconda1.png"/>
-
-Selanjutnya, akan muncul halaman baru pada browser seperti gambar berikut;
- 
-<img style="float: center; margin: 0px 0px 0px 0px; width:100%" src="images/Bab1/anaconda2.png"/>
-
-Selanjutnya, klik `File > Open from URL'. Muncul tampilan sebagai berukut: 
-
-<img style="float: center; margin: 0px 0px 0px 0px; width:100%" src="images/Bab1/anaconda3.png"/>
-
-
-Terakhir, Copy-Paste dibawah ini pada kolom `Open URL`. Selanjutnya, ikuti tutorialnya. 
-
-* [**Akses Databases MySQL dengan Python**](https://raw.githubusercontent.com/dsciencelabs/JNE_Data_Analytics_PySQL/main/jupyterlab/01_py_sql.ipynb)
-
-* [**Akses Databases PostgreSQL dengan Python**](https://raw.githubusercontent.com/dsciencelabs/JNE_Data_Analytics_PySQL/main/jupyterlab/01_py_postgresql.ipynb)
-
-* [**Contoh Applikasi Sederhana Py_SQL**](https://raw.githubusercontent.com/dsciencelabs/JNE_Data_Analytics_PySQL/main/jupyterlab/01_Contoh_Aplikasi.ipynb)
- 
-## Latihan 
