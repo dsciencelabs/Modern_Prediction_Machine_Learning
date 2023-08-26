@@ -1,0 +1,153 @@
+p.caption {
+  color: #777;
+  margin-top: 10px;
+}
+p code {
+  white-space: inherit;
+}
+pre {
+  word-break: normal;
+  word-wrap: normal;
+}
+pre code {
+  white-space: inherit;
+}
+
+
+/* TOC */
+
+.book .book-summary {
+    position: absolute;
+    top: 0;
+    left: -300px;
+    bottom: 0;
+    z-index: 1;
+    width: 300px;
+    color: #FFFFFF;
+    background: #315479;
+    border-right: 1px solid rgba(0,0,0,.15);
+}
+
+.book .book-summary ul.summary li a, .book .book-summary ul.summary li span {
+    margin: 5px 5px 5px 5px;
+    display: block;
+    padding: 10px 20px 10px 20px;
+    color: #FFFFFF;
+    background: 0 0;
+    text-overflow: ellipsis;
+    overflow: hidden;
+    white-space: nowrap;
+    position: relative;
+}
+
+.book .book-summary ul.summary li.active>a {
+    padding-left: 5px;
+    border-radius: 10px 10px 10px 10px;
+    color: #FFFFFF;
+    font-weight: bold;
+    background: rgba(243,242,242,.35);
+    text-decoration: none;
+}
+
+.book .book-summary ul.summary li a:hover {
+    padding-left: 5px;
+    border-radius: 10px 10px 10px 10px;
+    font-weight: bold;
+    color: #FFFFFF;
+    background: rgba(243,242,242,.40);
+    text-decoration: none;
+}
+
+/* Tables */
+
+td, tr, th {
+    color:white !important;
+    background-color: transparent !important;
+}
+
+table {
+    border-radius: 10px 10px 10px 10px;
+    color:white !important;
+    background-color: rgb(78, 92, 104) !important;
+    padding: 6px 13px;
+    border: 1px solid #f0f0f0;
+}
+
+
+caption {
+    color:black;
+}
+
+
+/* source code copy button */
+.copy {
+  width: inherit;
+  background-color: #e2e2e2 ;
+  border: none;
+  border-radius: 2px;
+  float: right;
+  font-size: 60%;
+  padding: 4px 4px 4px 4px;
+  margin-left:5px;
+}
+
+.download {
+  width: inherit;
+  background-color: #e2e2e2 ;
+  border: none;
+  border-radius: 2px;
+  float: right;
+  font-size: 60%;
+  padding: 4px 4px 4px 4px;
+}
+
+.book .book-header.fixed {
+  font-family: 'Pacifico', sans-serif;
+  background-color:#F2F2F2;
+}
+
+.title {
+  font-family: 'Pacifico', sans-serif;  
+}
+
+.book .book-summary {
+  font-family:'PT Sans', sans-serif;
+}
+
+.book.font-family-0 {
+    font-family: 'Source Sans Pro', arial, sans-serif;
+}
+
+/*
+.book .book-body .page-wrapper .page-inner {
+  max-width: 980px !important;
+}
+*/
+
+
+body {
+  text-align: justify
+  
+}
+
+
+.nocopy {
+        -webkit-touch-callout: none;  /* iOS Safari */   
+	-webkit-user-select: none;    /* Chrome all / Safari all */
+	-khtml-user-select: none;     /* Konqueror */
+	-moz-user-select: none;       /* Firefox all */
+	-ms-user-select: none;        /* IE 10+ */
+	-o-user-select: none;
+	user-select: none;            /* Likely future */
+}
+
+/* NO SELECT + HIGHLIGHT COLOR */
+* {
+  user-select: none;
+}
+*::selection {
+  background: none;
+}
+*::-moz-selection {
+  background: none;
+}

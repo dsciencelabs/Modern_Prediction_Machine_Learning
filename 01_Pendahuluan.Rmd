@@ -1,0 +1,370 @@
+# Pendahuluan
+
+Sejak tahun 1970, **Structured Query Language (SQL)** telah digunakan oleh para programmer untuk membangun dan mengakses **Sistem Basis Data (SBD)**. Banyak sekali perdebatan mengenai cara penyebutan SQL ini, namun pada kenyataannya, kita dapat melafalkannya sebagai “sequel” ataupun “S.Q.L”. Mempelajari bahasa pemrograman umum seperti Python dan R adalah penting, namun tidak memiliki kemampuan SQL akan membuat kita amat sulit untuk mendapatkan pekerjaan dalam bidang pengolahan data. 
+
+<img align="middle" src="images/Bab1/SQL.png"  width = 100% />
+
+Hampir semua nama besar di bidang teknologi menggunakan SQL seperti Uber, Netflix, dan Airbnb. Bahkan dalam perusahaan seperti Facebook, Google dan Amazon, yang telah membuat sendiri **SBD** berkemampuan tinggi, tetap menggunakan SQL untuk melakukan query dan analisis data.
+
+
+## Apa itu SBD?
+
+Secara umum **SBD** dapat didefinisikan sebagai berikut:
+
+
+<img align="middle" src="images/Bab1/definisi_DB.png"  width = 100% />
+
+
+### Komponen SBD
+
+Adapun beberapa komponen dasar yang diperlukan dalam SBD adalah:
+
+<img style="float: center; margin: 0px 0px 0px 0px; width:100%" src="images/Bab1/komponen_DB.png"/>
+
+***
+
+### Manfaat SBD
+
+Manfaat atau kegunaan penerapan SBD cukup banyak dan cakupannya pun luas dalam mendukung keberadaan lembaga atau organisasi maupun perusahaan, diantaranya:
+
+<img style="float: center; margin: 0px 0px 0px 0px; width:100%" src="images/Bab1/manfaat_DB.png"/>
+
+***
+
+### Definisi SQL vs NoSQL
+
+Sebenarnya perbedaan antara [SQL](https://www.dewaweb.com/blog/sql-pengertian-fungsi-beserta-perintah-dasarnya/) dan [NoSQL](https://aws.amazon.com/id/nosql/) secara mendasar sudah dapat dijelaskan dari akronimnya. *SQL* basis data relasional yang menggunakan ‘relasi’ (yang biasanya disebut tabel) untuk menyimpan data dan mencocokkan data tersebut dengan memakai karakteristik umum di setiap dataset. 
+
+<img style="float: center; margin: 0px 0px 0px 0px; width:100%" src="images/Bab1/SQLvsNoSQL_DB.png"/>
+
+Sedangkan, *NoSQL* adalah database yang menggunakan format JSON untuk setiap dokumennya sehingga mudah dibaca dan dimengerti. NoSQL banyak diminati karena memiliki performa yang tinggi dan bersifat non-relasional sehingga dapat memakai berbagai model data. 
+
+***
+
+### Perbedaan SQL vs NoSQL
+
+Sebenarnya banyak perbedaan yang dimiliki di antara dua database tersebut tapi inilah perbedaan yang paling mencolok antara SQL dan NoSQL:
+
+<img style="float: center; margin: 0px 0px 0px 0px; width:100%" src="images/Bab1/Perbedaan_DB.png"/>
+
+
+***
+
+### Top 7 SQL
+
+Tercatat sampai bulan Februari 2020 ada 334 jenis database menurut db-engines.com. Berikut ini saya merangkum daftar 7 database terpopuler yang menggunakan [SQL](https://qwords.com/blog/database-terpopuler/) (Relasional):
+
+
+<img style="float: center; margin: 0px 0px 0px 0px; width:100%" src="images/Bab1/7SQL_DB.png"/>
+
+***
+
+### Top 8 NoSQL 
+
+Kebanyakan basis data NoSQL digunakan dalam dunia aplikasi web waktu nyata (real-time web app). Berikut ini adalah ulasan 8 jenis basis data [NoSQL](https://www.codepolitan.com/7-basis-data-nosql-populer) yang paling populer digunakan diseluruh dunia: 
+
+<img style="float: center; margin: 0px 0px 0px 0px; width:100%" src="images/Bab1/8NoSQL_DB.png"/>
+
+
+***
+
+## Mengapa Python & SQL?
+
+
+**Python** adalah sebuah bahasa pemrograman yang digunakan untuk membuat aplikasi, perintah komputer, dan melakukan analisis data. **SQL** adalah sintaks (bahasa) yang digunakan untuk mengatur dan mengambil informasi dari sistem basis data relasional dan yang juga dapat digunakan untuk membuat basis data sendiri. Jadi, kedua perangkat lunak ini mempunyai peran masing-masing. SQL ditujukan untuk mengakses dan mengambil data dari database. Sedangkan Python digunakan untuk menganalisis dan memanipulasi data dengan menggunakan regresi, time series maupun perhitungan lainnya.
+
+Jika kita ingin bekerja di bidang pengolahan data, kita harus fokus kepada kemampuan yang diinginkan oleh para perusahaan pemberi kerja tersebut. Untuk posisi analis data, SQL termasuk kemampuan yang diutamakan, sekitar 57.4% dari keseluruhan lowongan pekerjaan. Berdasarkan survei yang dilakukan Dataquest dan StackOverflow pada gambar dibawah ini, dapat dilihat bahwa SQL bahkan lebih populer di kalangan data scientist dan data engineer dibandingkan Python dan R. 
+
+<img style="float: center; margin: 0px 0px 0px 0px; width:100%" src="images/Bab1/SQL1.png"/>
+
+
+## MySQL vs PostgreSQL
+
+MySQL adalah sistem manajemen basis data relasional yang memungkinkan Anda untuk menyimpan data sebagai tabel dengan baris dan kolom. Sistem ini populer sehingga digunakan di banyak aplikasi web, situs web dinamis, dan sistem tertanam. PostgreSQL adalah sistem manajemen basis data relasional-objek yang menawarkan lebih banyak fitur daripada MySQL. Sistem ini memberi Anda lebih banyak fleksibilitas dalam tipe data, skalabilitas, konkurensi, dan integritas data. 
+
+<img style="float: center; margin: 0px 0px 0px 0px; width:100%" src="images/Bab1/MySQL-VS-PostgreSQL.jpg"/>
+
+MySQL dan PostgreSQL, Keduanya menyimpan data di dalam tabel yang terkait satu sama lain melalui nilai kolom umum. Namun keduanya sering dibandingkan karena terdapat beberapa perbedaan. Ingin mengenal lebih dalam? Simak penjelasan di bawah.
+
+### Kelebihan 
+
+|MySQL |	PostgreSQL|
+|:---------|:-----------|
+|Integrasi bahasa pemrograman sangat luas; | Support framework website modern seperti Node.js dan Django; Support framework website modern seperti Node.js dan Django; |
+|Aplikasi ringan, tidak membutuhkan spesifikasi hardware yang tinggi; | Dirilis dengan lisensi PostgreSQL sendiri; | 
+|Struktur tabel dengan fleksibilitas tinggi; | Bersifat open source dan gratis; |
+|Dibekali banyak administrative tools; | Skala besar, mampu memuat hingga ribuan transaksi data; | 
+|Bersifat open source dan gratis (versi basic); | Memiliki banyak fitur yang mumpuni; | 
+|Meski open source, MySQL menjamin keamanan tingkat tinggi; | Memiliki banyak fitur yang mumpuni; | 
+|Mendukung berbagai variasi Data Type; | Performa sangat baik meski menuntut query yang lebih kompleks; |
+|Dapat digunakan banyak pengguna karena mendukung multi user. | Kecepatan analisis (read-write) sangat cepat; Keamanan yang lebih ketat.|
+
+
+### Kekurangan 
+
+|MySQL |	PostgreSQL|
+|:---------|:-----------|
+|Sistem manajemen database kurang cocok untuk aplikasi mobile dan game;| PostgreSQL tidak mendukung semua stack development;|
+|Technical support MySQL dinilai kurang baik;| Meski memiliki integrasi dan skalabilitas tinggi, kecepatan PostgreSQL kalah unggul dibandingkan RDBMS lain;|
+|Sulit diaplikasikan untuk manajemen database berskala besar.| Sistem kompatibilitas PostgreSQL menuntut pengguna untuk bekerja lebih keras dalam perbaikan dan perawatan.|
+
+## Instalasi Python (Anaconda)
+
+Berikut ini adalah proses langkah demi langkah tentang Cara Menginstal Anaconda di Windows:
+
+### Open site
+
+Buka [Situs Web Anaconda](https://www.anaconda.com/download/) Lalu pilih Download pada logo Windows
+
+<img style="float: center; margin: 0px 0px 0px 0px; width:100%" src="images/Bab1/Conda0.png"/>
+
+
+### Buka file exe yang telah didownload
+
+Ketika layar di bawah ini muncul, klik Next.
+
+<img style="float: center; margin: 0px 0px 0px 0px; width:100%" src="images/Bab1/Conda1.png"/>
+
+### Baca perjanjian lisensi dan klik **I Agree**.
+
+<img style="float: center; margin: 0px 0px 0px 0px; width:100%" src="images/Bab1/Conda2.webp"/>
+
+### Click on Next
+
+<img style="float: center; margin: 0px 0px 0px 0px; width:100%" src="images/Bab1/Conda3.webp"/>
+
+### Catat lokasi penginstalan Anda, lalu klik Next.
+
+<img style="float: center; margin: 0px 0px 0px 0px; width:100%" src="images/Bab1/Conda4.webp"/>
+
+### Customiza Anaconda
+
+Ini adalah bagian penting dari proses instalasi. approach yang disarankan adalah tidak mencentang kotak untuk menambahkan Anaconda ke path Anda. Ini berarti Anda harus menggunakan Anaconda Navigator atau Anaconda Command Prompt (terletak di Start Menu di bawah "Anaconda") ketika Anda ingin menggunakan Anaconda (Anda selalu dapat menambahkan Anaconda ke PATH Anda nanti jika Anda tidak mencentang kotak). Jika Anda ingin menggunakan Anaconda pada command prompt Anda (atau git bash, cmder, powershell, dll), gunakan alternative approach dan centang kotaknya.
+
+<img style="float: center; margin: 0px 0px 0px 0px; width:100%" src="images/Bab1/Conda5.webp"/>
+
+### Setup Complete
+
+<img style="float: center; margin: 0px 0px 0px 0px; width:100%" src="images/Bab1/Conda6.webp"/>
+
+###Install Microsoft VSCode
+
+Anda dapat menginstal Microsoft VSCode jika Anda mau, tetapi ini opsional.
+
+<img style="float: center; margin: 0px 0px 0px 0px; width:100%" src="images/Bab1/Conda7.webp"/>
+
+### Selesai
+
+Click on Finish.
+
+<img style="float: center; margin: 0px 0px 0px 0px; width:100%" src="images/Bab1/Conda8.webp"/>
+
+### Video Instalasi
+
+<iframe width="800" height="540" src="https://www.youtube.com/embed/lMS637XSBig" title="YouTube video player" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" allowfullscreen></iframe>
+
+* [Download Anaconda](https://www.anaconda.com/download)
+
+## Instalasi MySQL (XAMPP)
+
+### Download Aplikasi XAMPP 
+ 
+Silakan [klik disini](https://www.apachefriends.org/download.html) untuk mengunduh applikasi XAMPP, pilih salah satu saja sesuai Operating System pada Komputer anda. 
+
+<img style="float: center; margin: 0px 0px 0px 0px; width:100%" src="images/Bab1/xampp0.png"/> 
+
+### Install Aplikasi
+
+Temukan file XAMPP.exe yang telah anda download, secara default biasanya disimpan di; 
+
+<img style="float: center; margin: 0px 0px 0px 0px; width:100%" src="images/Bab1/xampp1.png"/> 
+
+Selanjutnya, akan muncul Warning di klik **OK**
+
+<img style="float: center; margin: 0px 0px 0px 0px; width:100%" src="images/Bab1/xampp2.png"/> 
+
+selajutunya klik next 
+
+<img style="float: center; margin: 0px 0px 0px 0px; width:100%" src="images/Bab1/xampp3.png"/>
+
+Klik next lagi, karena sudah dipilih secara default oleh XAMPP
+
+<img style="float: center; margin: 0px 0px 0px 0px; width:100%" src="images/Bab1/xampp4.png"/>
+
+
+### Pilih Folder
+
+<img style="float: center; margin: 0px 0px 0px 0px; width:100%" src="images/Bab1/xampp5.png"/> 
+
+Secara default akan membuat folder baru **C:&#92;xampp**, lalu pilih next.
+
+**note:** jika anda sudah pernah mendownload aplikasi xampp, perlu di hapus terlebih dahulu file xampp yang lama di file **C:&#92;xampp**
+
+### Jalankan proses Instalasi
+
+<img style="float: center; margin: 0px 0px 0px 0px; width:100%" src="images/Bab1/xampp6.png"/> 
+
+Tunggu proses instalasi selesai **Biasanya 5-10 menit, tergantung kecepatan komputer anda**. 
+
+### XAMPP sudah terinstall
+
+
+<img style="float: center; margin: 0px 0px 0px 0px; width:100%" src="images/Bab1/xampp7.png"/> 
+
+Setelah aplikasi terinstall, sudah bisa digunakan.
+
+### Video Instalasi XAMPP
+
+<iframe width="800" height="540" src="https://www.youtube.com/embed/T6Up7HgFocs" title="YouTube video player" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" allowfullscreen></iframe>
+
+
+## Instalasi PostgreSQL
+
+Berikut ini adalah proses langkah demi langkah tentang Cara Menginstal PostgreSQL di Windows:
+
+### Buka Browser
+
+Klik https://www.postgresql.org/download and pilih Windows
+
+<img style="float: center; margin: 0px 0px 0px 0px; width:100%" src="images/Bab1/Postgree0.png"/>
+
+
+### Cek Option
+
+Klik Download the installer Interactive Installer by EnterpriseDB
+
+<img style="float: center; margin: 0px 0px 0px 0px; width:100%" src="images/Bab1/Postgree1.png"/>
+
+
+### Pilih PostgreSQL version
+
+Anda akan diminta untuk memilih versi PostgreSQL dan sistem operasi yang diinginkan. Pilih versi PostgreSQL terbaru dan OS sesuai dengan environment Anda, **klik tombol download.**
+
+<img style="float: center; margin: 0px 0px 0px 0px; width:100%" src="images/Bab1/Postgree2.png"/>
+
+
+### Open exe file
+
+Setelah Anda mengunduh PostgreSQL, buka exe yang telah diunduh dan Klik berikutnya pada layar install welcome screen.
+
+<img style="float: center; margin: 0px 0px 0px 0px; width:100%" src="images/Bab1/Postgree3.webp"/>
+
+
+### Pilih folder
+
+Ubah direktori Instalasi jika diperlukan, jika tidak, biarkan default,  **klik Next.**
+
+<img style="float: center; margin: 0px 0px 0px 0px; width:100%" src="images/Bab1/Postgree4.png"/>
+
+
+
+### Select components
+
+Anda dapat memilih komponen yang ingin Anda instal di sistem Anda. Anda dapat menghapus centang pada Stack Builder (*disarankan ikuti secara default*), **klik Next.**
+
+<img style="float: center; margin: 0px 0px 0px 0px; width:100%" src="images/Bab1/Postgree5.webp"/>
+
+
+### Check data location
+
+Anda dapat mengubah lokasi data, **Klik Next.**
+
+<img style="float: center; margin: 0px 0px 0px 0px; width:100%" src="images/Bab1/Postgree6.png"/>
+
+### Masukan Password
+
+Masukkan kata sandi superuser. Catat kata sandi tersebut, **Klik Next.**
+
+<img style="float: center; margin: 0px 0px 0px 0px; width:100%" src="images/Bab1/Postgree7.webp"/>
+
+
+### Cek opsi port
+
+Biarkan nomor port menjadi default, **Klik Next.** 
+
+<img style="float: center; margin: 0px 0px 0px 0px; width:100%" src="images/Bab1/Postgree8.webp"/>
+
+
+### Cek Summary
+
+Periksa pra-penginstalan summary, **Klik Next**
+
+<img style="float: center; margin: 0px 0px 0px 0px; width:100%" src="images/Bab1/Postgree9.png"/>
+
+
+### Ready to Install
+
+Klik tombol Next 
+
+<img style="float: center; margin: 0px 0px 0px 0px; width:100%" src="images/Bab1/Postgree10.webp"/>
+
+
+### Check stack builder prompt
+
+Setelah instalasi selesai, Anda akan melihat prompt Stack Builder. Hapus centang pada opsi tersebut. Kita akan menggunakan Stack Builder dalam tutorial selanjutnya, **Klik Finish.**
+
+<img style="float: center; margin: 0px 0px 0px 0px; width:100%" src="images/Bab1/Postgree11.webp"/>
+
+### Launch PostgreSQL
+
+Untuk launch PostgreSQL, buka Start Menu dan cari pgAdmin 4
+
+<img style="float: center; margin: 0px 0px 0px 0px; width:100%" src="images/Bab1/Postgree12.webp"/>
+
+### Check pgAdmin
+
+Anda akan melihat beranda pgAdmin
+
+<img style="float: center; margin: 0px 0px 0px 0px; width:100%" src="images/Bab1/Postgree13.png"/>
+
+### Cari PostgreSQL 15
+
+Klik pada Servers > PostgreSQL 15 di sub sebelah kiri
+
+<img style="float: center; margin: 0px 0px 0px 0px; width:100%" src="images/Bab1/Postgree14.png"/>
+
+### Enter password
+
+Masukkan kata sandi superuser yang ditetapkan selama instalasi, **Klik OK**
+
+<img style="float: center; margin: 0px 0px 0px 0px; width:100%" src="images/Bab1/Postgree15.png"/>
+
+
+### Cek Dashboard
+
+Anda akan melihat Dashboard
+
+<img style="float: center; margin: 0px 0px 0px 0px; width:100%" src="images/Bab1/Postgree16.png"/>
+
+
+### Video Instalasi PostgreSQL
+
+<iframe width="800" height="540" src="https://www.youtube.com/embed/0n41UTkOBb0" title="YouTube video player" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" allowfullscreen></iframe>
+
+* [Download PostgreSQL](https://www.postgresql.org/download/)
+
+
+## Praktikal (Hands On)
+
+Untuk memulai bagian ini, pastikan bahwa anda sudah meng-install Anaconda dan XAMPP dikomputer yang akan digunakan. Kemudian, bukalah applikasi Juperterlab yang ada pada layar Anaconda Navigator, seperti diperlihatkan sebagai berikut:
+
+<img style="float: center; margin: 0px 0px 0px 0px; width:100%" src="images/Bab1/anaconda1.png"/>
+
+Selanjutnya, akan muncul halaman baru pada browser seperti gambar berikut;
+ 
+<img style="float: center; margin: 0px 0px 0px 0px; width:100%" src="images/Bab1/anaconda2.png"/>
+
+Selanjutnya, klik `File > Open from URL'. Muncul tampilan sebagai berukut: 
+
+<img style="float: center; margin: 0px 0px 0px 0px; width:100%" src="images/Bab1/anaconda3.png"/>
+
+
+Terakhir, Copy-Paste dibawah ini pada kolom `Open URL`. Selanjutnya, ikuti tutorialnya. 
+
+* [**Akses Databases MySQL dengan Python**](https://raw.githubusercontent.com/dsciencelabs/JNE_Data_Analytics_PySQL/main/jupyterlab/01_py_sql.ipynb)
+
+* [**Akses Databases PostgreSQL dengan Python**](https://raw.githubusercontent.com/dsciencelabs/JNE_Data_Analytics_PySQL/main/jupyterlab/01_py_postgresql.ipynb)
+
+* [**Contoh Applikasi Sederhana Py_SQL**](https://raw.githubusercontent.com/dsciencelabs/JNE_Data_Analytics_PySQL/main/jupyterlab/01_Contoh_Aplikasi.ipynb)
+ 
+## Latihan 
