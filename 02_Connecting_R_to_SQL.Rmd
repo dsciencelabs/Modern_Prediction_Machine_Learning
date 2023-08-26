@@ -20,23 +20,37 @@ The relationship between R terminology and database terminology is explained bel
 | types of columns	  |      table schema   |
 | collection of data  |   frames	database  |
 
-SQL (Structured Query Language) allows you to directly interact with a database and perform tasks such as pull data and make updates. R has two packages available that make it easy to run SQL queries: [DBI](https://db.rstudio.com/getting-started/connect-to-database),[RMariaDB,RMySQL](https://db.rstudio.com/databases/my-sql/), and [RSQLite](https://db.rstudio.com/databases/sqlite/).
-
 ***
 
-## Getting Started
+## Connecting R to SQL
 
-To get started, install the following packages in your R Console pane.
+Connecting R to SQL databases allows you to leverage the power of R for data analysis while directly interacting with and querying data stored in relational databases. This connection enables you to retrieve, manipulate, and analyze data using SQL queries within your R environment. 
+
+```{r coneccting,echo=FALSE, fig.cap='Connecting R to SQL [https://rviews.rstudio.com](https://rviews.rstudio.com/2017/05/17/databases-using-r/)')', tidy=FALSE, out.width='100%', fig.align='center'}
+library(knitr)
+include_graphics("./images/Bab2/coneccting_db_in_R.png")
+```
+
+Here's a step-by-step introduction to connecting R to an SQL database:
+
+
+### Install Required Packages
+
+First, you need to install R packages that facilitate database connections and SQL interactions. The DBI package provides a common interface for database connections, and you'll also need a database-specific package like RMySQL for MySQL, RPostgreSQL for PostgreSQL, or RODBC for ODBC connections.
+
+You can install these packages using the following commands:
 
 ```{r eval=FALSE}
 install.packages(c(
                    "RMariaDB",
                    "RMySQL",
-                   "RSQLite",
                    "RPostgres"
+                   "RSQLite",
                    )
                  )
 ```
+
+### Load Packages
 
 Then, load all these requirement packages:
 
@@ -45,15 +59,17 @@ Then, load all these requirement packages:
 pacman::p_load(
                RMariaDB,             # Database Interface and 'MariaDB' Driver
                RMySQL,               # Database Interface and 'RMySQL' Driver
+               RPostgres             # Database Interface and 'RPostgres' Driver
                RSQLite,              # Database Interface and 'RSQLite' Driver
-               RPostgres           # Database Interface and 'RPostgres' Driver
           )
 ```
 
 
-## Connecting R to SQL
+### Establish a Connection
 
 There are many ways to connect your database with R. This article shows you three of the most common ways:
+
+#### MariaDB {-}
 
 ```{r eval=FALSE}
 MariaDB <- dbConnect(RMariaDB::MariaDB(), 
@@ -66,6 +82,9 @@ dbExecute(MariaDB,"CREATE DATABASE new_MariaDB")  # Create a new Database
 dbExecute(MariaDB,"DROP DATABASE new_MariaDB")    # Drop a Database
 ```
 
+
+#### MySQL {-}
+
 ```{r eval=FALSE}
 MySQL <- dbConnect(MySQL(), 
                   user='root',
@@ -77,6 +96,8 @@ dbExecute(MySQL,"CREATE DATABASE new_MySQL")      # Create a new Database
 dbExecute(MySQL,"DROP DATABASE new_MySQL")        # Drop a Database
 ```
 
+#### Postgres {-}
+
 ```{r eval=FALSE}
 postgres <- dbConnect(RPostgres::Postgres(), 
                   user='postgres',
@@ -87,6 +108,8 @@ dbListTables(postgres)                               # table list on your databa
 dbExecute(postgres,"CREATE DATABASE new_MySQL")      # Create a new Database
 dbExecute(postgres,"DROP DATABASE new_MySQL")        # Drop a Database
 ```
+
+#### SQLite {-}
 
 ```{r eval=FALSE}
 RSQLite <- dbConnect(RSQLite::SQLite(), "folder_db/mydb3.sqlite")
