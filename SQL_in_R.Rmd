@@ -137,9 +137,7 @@ Placeholder
 
 A SQL join is a Structured Query Language (SQL) instruction to combine data from two sets of data (i.e. two tables). Before we dive into the details of a SQL join, let’s briefly discuss what SQL is, and why someone would want to perform a SQL join.
 
-SQL is a special-purpose programming language designed for managing information in a relational database management system (RDBMS). The word relational here is key; it specifies that the database management system is organized in such a way that there are clear relations defined between different sets of data. 
-
-Typically, you need to extract, transform, and load data into your RDBMS before you’re able to manage it using SQL, which you can accomplish by using a tool like Stitch.
+SQL is a special-purpose programming language designed for managing information in a relational database management system (RDBMS). The word relational here is key; it specifies that the database management system is organized in such a way that there are clear relations defined between different sets of data. Typically, you need to extract, transform, and load data into your RDBMS before you’re able to manage it using SQL, which you can accomplish by using a tool like Stitch.
 
 ****
 
@@ -164,7 +162,7 @@ Table 1, informs about each customer is stored in its own row, with columns spec
 
 ### Table Orders
 
-```{r echo=FALSE}
+```{r eval=FALSE}
 orders<-read.csv("data/orders.csv")
 datatable(head(orders,5), 
           caption = htmltools::tags$caption(
@@ -180,8 +178,9 @@ Again, Table 2 are contains information about a specific order. Each order has i
 
 You’ve probably noticed that these two examples share similar information. You can see these simple relations diagrammed below:
 
-```{r relational, echo=FALSE,fig.align='center', out.width = '50%'}
-knitr::include_graphics("images/relational.png")
+```{r relational,echo=FALSE, fig.cap='Relational Table', tidy=FALSE, out.width='100%', fig.align='center'}
+library(knitr)
+include_graphics("./images/Bab5/relational.png")
 ```
 
 Note that the orders table contains two keys: one for the order and one for the customer who placed that order. In scenarios when there are multiple keys in a table, the key that refers to the entity being described in that table is called the primary key *(PK)* and other key is called a foreign key *(FK)*.
@@ -194,11 +193,10 @@ In our example, `order_id` is a primary key in the orders table, while `customer
 
 To make you more convenient about all the data tables that we will use in this section. Here, I summarize the following SQL relational for database `factory_db`:
 
-
-```{r fullrelational, echo=FALSE,fig.align='center', out.width = '100%'}
-knitr::include_graphics("images/fullrelational.png")
+```{r fullrelational,echo=FALSE, fig.cap='Relational Table of Factory Database', tidy=FALSE, out.width='100%', fig.align='center'}
+library(knitr)
+include_graphics("./images/Bab5/fullrelational.png")
 ```
-
 *Note:* Don't forget to consider the data structure of your database (all table)
 
 ****
@@ -209,8 +207,9 @@ There are four basic types of SQL joins: inner, left, right, and full. The easie
 
 Again, it's important to stress that before you can begin using any join type, you'll need to extract the data and load it into an RDBMS like Amazon Redshift, where you can query tables from multiple sources. You build that process manually, or you can use an ETL service like Stitch, which automates that process for you.
 
-```{r jointable, echo=FALSE,fig.align='center', out.width = '90%'}
-knitr::include_graphics("images/jointable.png")
+```{r jointable,echo=FALSE, fig.cap='Basic Join Table', tidy=FALSE, out.width='100%', fig.align='center'}
+library(knitr)
+include_graphics("./images/Bab5/jointable.png")
 ```
 
 
