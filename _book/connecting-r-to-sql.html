@@ -31,7 +31,7 @@
   
   
 <link rel="prev" href="pendahuluan.html"/>
-<link rel="next" href="referensi.html"/>
+<link rel="next" href="fundamental-sql-in-r.html"/>
 <script src="libs/jquery/jquery-3.6.0.min.js"></script>
 <script src="https://cdn.jsdelivr.net/npm/fuse.js@6.4.6/dist/fuse.min.js"></script>
 <link href="libs/gitbook/css/style.css" rel="stylesheet" />
@@ -212,7 +212,7 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
 <li class="chapter" data-level="2.3.2" data-path="connecting-r-to-sql.html"><a href="connecting-r-to-sql.html#xlsx-files"><i class="fa fa-check"></i><b>2.3.2</b> XLSX Files</a></li>
 </ul></li>
 <li class="chapter" data-level="2.4" data-path="connecting-r-to-sql.html"><a href="connecting-r-to-sql.html#write-dataframe-to-database"><i class="fa fa-check"></i><b>2.4</b> Write Dataframe to Database</a></li>
-<li class="chapter" data-level="2.5" data-path="connecting-r-to-sql.html"><a href="connecting-r-to-sql.html#basic-queries"><i class="fa fa-check"></i><b>2.5</b> Basic Queries</a>
+<li class="chapter" data-level="2.5" data-path="connecting-r-to-sql.html"><a href="connecting-r-to-sql.html#basic-sql-in-r"><i class="fa fa-check"></i><b>2.5</b> Basic SQL in R</a>
 <ul>
 <li class="chapter" data-level="2.5.1" data-path="connecting-r-to-sql.html"><a href="connecting-r-to-sql.html#select"><i class="fa fa-check"></i><b>2.5.1</b> SELECT</a></li>
 <li class="chapter" data-level="2.5.2" data-path="connecting-r-to-sql.html"><a href="connecting-r-to-sql.html#where"><i class="fa fa-check"></i><b>2.5.2</b> WHERE</a></li>
@@ -223,7 +223,59 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
 </ul></li>
 <li class="chapter" data-level="2.6" data-path="connecting-r-to-sql.html"><a href="connecting-r-to-sql.html#your-job"><i class="fa fa-check"></i><b>2.6</b> Your Job</a></li>
 </ul></li>
-<li class="chapter" data-level="3" data-path="referensi.html"><a href="referensi.html"><i class="fa fa-check"></i><b>3</b> Referensi</a></li>
+<li class="chapter" data-level="3" data-path="fundamental-sql-in-r.html"><a href="fundamental-sql-in-r.html"><i class="fa fa-check"></i><b>3</b> Fundamental SQL in R</a>
+<ul>
+<li class="chapter" data-level="3.1" data-path="fundamental-sql-in-r.html"><a href="fundamental-sql-in-r.html#connecting-r-to-mysql"><i class="fa fa-check"></i><b>3.1</b> Connecting R to MySQL</a></li>
+<li class="chapter" data-level="3.2" data-path="fundamental-sql-in-r.html"><a href="fundamental-sql-in-r.html#create-db"><i class="fa fa-check"></i><b>3.2</b> Create DB</a></li>
+<li class="chapter" data-level="3.3" data-path="fundamental-sql-in-r.html"><a href="fundamental-sql-in-r.html#drop-db"><i class="fa fa-check"></i><b>3.3</b> Drop DB</a></li>
+<li class="chapter" data-level="3.4" data-path="fundamental-sql-in-r.html"><a href="fundamental-sql-in-r.html#create-table"><i class="fa fa-check"></i><b>3.4</b> Create Table</a></li>
+<li class="chapter" data-level="3.5" data-path="fundamental-sql-in-r.html"><a href="fundamental-sql-in-r.html#insert-value"><i class="fa fa-check"></i><b>3.5</b> Insert Value</a></li>
+<li class="chapter" data-level="3.6" data-path="fundamental-sql-in-r.html"><a href="fundamental-sql-in-r.html#truncate-table"><i class="fa fa-check"></i><b>3.6</b> Truncate Table</a></li>
+<li class="chapter" data-level="3.7" data-path="fundamental-sql-in-r.html"><a href="fundamental-sql-in-r.html#drop-table"><i class="fa fa-check"></i><b>3.7</b> Drop Table</a></li>
+<li class="chapter" data-level="3.8" data-path="fundamental-sql-in-r.html"><a href="fundamental-sql-in-r.html#write-table"><i class="fa fa-check"></i><b>3.8</b> Write Table</a></li>
+<li class="chapter" data-level="3.9" data-path="fundamental-sql-in-r.html"><a href="fundamental-sql-in-r.html#alter-table"><i class="fa fa-check"></i><b>3.9</b> Alter Table</a></li>
+<li class="chapter" data-level="3.10" data-path="fundamental-sql-in-r.html"><a href="fundamental-sql-in-r.html#add-column"><i class="fa fa-check"></i><b>3.10</b> Add Column</a></li>
+<li class="chapter" data-level="3.11" data-path="fundamental-sql-in-r.html"><a href="fundamental-sql-in-r.html#drop-column"><i class="fa fa-check"></i><b>3.11</b> Drop Column</a></li>
+<li class="chapter" data-level="3.12" data-path="fundamental-sql-in-r.html"><a href="fundamental-sql-in-r.html#modify-column"><i class="fa fa-check"></i><b>3.12</b> Modify Column</a></li>
+<li class="chapter" data-level="3.13" data-path="fundamental-sql-in-r.html"><a href="fundamental-sql-in-r.html#constraints"><i class="fa fa-check"></i><b>3.13</b> Constraints</a>
+<ul>
+<li class="chapter" data-level="3.13.1" data-path="fundamental-sql-in-r.html"><a href="fundamental-sql-in-r.html#not-null"><i class="fa fa-check"></i><b>3.13.1</b> Not Null</a></li>
+<li class="chapter" data-level="3.13.2" data-path="fundamental-sql-in-r.html"><a href="fundamental-sql-in-r.html#unique"><i class="fa fa-check"></i><b>3.13.2</b> Unique</a></li>
+<li class="chapter" data-level="3.13.3" data-path="fundamental-sql-in-r.html"><a href="fundamental-sql-in-r.html#primary-key"><i class="fa fa-check"></i><b>3.13.3</b> Primary Key</a></li>
+<li class="chapter" data-level="3.13.4" data-path="fundamental-sql-in-r.html"><a href="fundamental-sql-in-r.html#foreign-key"><i class="fa fa-check"></i><b>3.13.4</b> Foreign Key</a></li>
+<li class="chapter" data-level="3.13.5" data-path="fundamental-sql-in-r.html"><a href="fundamental-sql-in-r.html#check"><i class="fa fa-check"></i><b>3.13.5</b> Check</a></li>
+<li class="chapter" data-level="3.13.6" data-path="fundamental-sql-in-r.html"><a href="fundamental-sql-in-r.html#default"><i class="fa fa-check"></i><b>3.13.6</b> Default</a></li>
+<li class="chapter" data-level="3.13.7" data-path="fundamental-sql-in-r.html"><a href="fundamental-sql-in-r.html#index"><i class="fa fa-check"></i><b>3.13.7</b> Index</a></li>
+<li class="chapter" data-level="3.13.8" data-path="fundamental-sql-in-r.html"><a href="fundamental-sql-in-r.html#auto-increment"><i class="fa fa-check"></i><b>3.13.8</b> Auto Increment</a></li>
+</ul></li>
+<li class="chapter" data-level="3.14" data-path="fundamental-sql-in-r.html"><a href="fundamental-sql-in-r.html#previewing-.sql-in-r"><i class="fa fa-check"></i><b>3.14</b> Previewing <code>.sql</code> in R</a></li>
+<li class="chapter" data-level="3.15" data-path="fundamental-sql-in-r.html"><a href="fundamental-sql-in-r.html#sql-chunks-in-rmarkdown"><i class="fa fa-check"></i><b>3.15</b> SQL chunks in RMarkdown</a></li>
+</ul></li>
+<li class="chapter" data-level="4" data-path="database-normalization-in-sql.html"><a href="database-normalization-in-sql.html"><i class="fa fa-check"></i><b>4</b> Database Normalization in SQL</a>
+<ul>
+<li class="chapter" data-level="4.1" data-path="database-normalization-in-sql.html"><a href="database-normalization-in-sql.html#the-process-of-normalization"><i class="fa fa-check"></i><b>4.1</b> The Process of Normalization</a></li>
+<li class="chapter" data-level="4.2" data-path="database-normalization-in-sql.html"><a href="database-normalization-in-sql.html#simple-database-normalization"><i class="fa fa-check"></i><b>4.2</b> Simple Database Normalization</a></li>
+<li class="chapter" data-level="4.3" data-path="database-normalization-in-sql.html"><a href="database-normalization-in-sql.html#your-job-1"><i class="fa fa-check"></i><b>4.3</b> Your Job</a></li>
+</ul></li>
+<li class="chapter" data-level="5" data-path="join-table-in-sql.html"><a href="join-table-in-sql.html"><i class="fa fa-check"></i><b>5</b> Join Table in SQL</a>
+<ul>
+<li class="chapter" data-level="5.1" data-path="join-table-in-sql.html"><a href="join-table-in-sql.html#relational-database"><i class="fa fa-check"></i><b>5.1</b> Relational Database</a>
+<ul>
+<li class="chapter" data-level="5.1.1" data-path="join-table-in-sql.html"><a href="join-table-in-sql.html#table-customers"><i class="fa fa-check"></i><b>5.1.1</b> Table Customers</a></li>
+<li class="chapter" data-level="5.1.2" data-path="join-table-in-sql.html"><a href="join-table-in-sql.html#table-orders"><i class="fa fa-check"></i><b>5.1.2</b> Table Orders</a></li>
+</ul></li>
+<li class="chapter" data-level="5.2" data-path="join-table-in-sql.html"><a href="join-table-in-sql.html#relational-model"><i class="fa fa-check"></i><b>5.2</b> Relational Model</a></li>
+<li class="chapter" data-level="5.3" data-path="join-table-in-sql.html"><a href="join-table-in-sql.html#factory-database"><i class="fa fa-check"></i><b>5.3</b> Factory Database</a></li>
+<li class="chapter" data-level="5.4" data-path="join-table-in-sql.html"><a href="join-table-in-sql.html#basic-sql-join-types"><i class="fa fa-check"></i><b>5.4</b> Basic SQL Join Types</a></li>
+<li class="chapter" data-level="5.5" data-path="join-table-in-sql.html"><a href="join-table-in-sql.html#connect-to-mysql"><i class="fa fa-check"></i><b>5.5</b> Connect to MySQL</a></li>
+<li class="chapter" data-level="5.6" data-path="join-table-in-sql.html"><a href="join-table-in-sql.html#inner-join"><i class="fa fa-check"></i><b>5.6</b> Inner Join</a></li>
+<li class="chapter" data-level="5.7" data-path="join-table-in-sql.html"><a href="join-table-in-sql.html#left-join"><i class="fa fa-check"></i><b>5.7</b> Left Join</a></li>
+<li class="chapter" data-level="5.8" data-path="join-table-in-sql.html"><a href="join-table-in-sql.html#right-join"><i class="fa fa-check"></i><b>5.8</b> Right Join</a></li>
+<li class="chapter" data-level="5.9" data-path="join-table-in-sql.html"><a href="join-table-in-sql.html#full-join"><i class="fa fa-check"></i><b>5.9</b> Full Join</a></li>
+<li class="chapter" data-level="5.10" data-path="join-table-in-sql.html"><a href="join-table-in-sql.html#self-join"><i class="fa fa-check"></i><b>5.10</b> Self JOIN</a></li>
+<li class="chapter" data-level="5.11" data-path="join-table-in-sql.html"><a href="join-table-in-sql.html#your-job-2"><i class="fa fa-check"></i><b>5.11</b> Your Job</a></li>
+</ul></li>
+<li class="chapter" data-level="6" data-path="referensi.html"><a href="referensi.html"><i class="fa fa-check"></i><b>6</b> Referensi</a></li>
 <li class="divider"></li>
 <li><a href="https://github.com/rstudio/bookdown" target="blank">Published with bookdown</a></li>
 
@@ -441,8 +493,8 @@ Gambar 2.1: Connecting R to SQL <a href="https://rviews.rstudio.com/2017/05/17/d
 <div class="sourceCode" id="cb14"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb14-1"><a href="connecting-r-to-sql.html#cb14-1" tabindex="-1"></a><span class="fu">dbWriteTable</span>(new_con, <span class="st">&quot;Orders&quot;</span>, Orders, <span class="at">append=</span>T) </span></code></pre></div>
 <p><em>Your Exercise:</em> Do the same thing to update data table <code>Employees</code></p>
 </div>
-<div id="basic-queries" class="section level2 hasAnchor" number="2.5">
-<h2><span class="header-section-number">2.5</span> Basic Queries<a href="connecting-r-to-sql.html#basic-queries" class="anchor-section" aria-label="Anchor link to header"></a></h2>
+<div id="basic-sql-in-r" class="section level2 hasAnchor" number="2.5">
+<h2><span class="header-section-number">2.5</span> Basic SQL in R<a href="connecting-r-to-sql.html#basic-sql-in-r" class="anchor-section" aria-label="Anchor link to header"></a></h2>
 <div id="select" class="section level3 hasAnchor" number="2.5.1">
 <h3><span class="header-section-number">2.5.1</span> SELECT<a href="connecting-r-to-sql.html#select" class="anchor-section" aria-label="Anchor link to header"></a></h3>
 <p>The SELECT statement is used to select data from a database.</p>
@@ -496,7 +548,7 @@ Gambar 2.1: Connecting R to SQL <a href="https://rviews.rstudio.com/2017/05/17/d
 <li>RSQLite</li>
 </ul>
 <ol start="2" style="list-style-type: decimal">
-<li>Create a Basic Queries tutorial using all engine that you already use at task no 1, (Such as: <code>SELECT</code>, <code>WHERE</code>, <code>INSERT INTO</code>, <code>DELETE</code>, and <code>UPDATE</code>)!</li>
+<li>Create a ‘Basic Queries’ tutorial using all engine that you already use at task no 1, (Such as: <code>SELECT</code>, <code>WHERE</code>, <code>INSERT INTO</code>, <code>DELETE</code>, and <code>UPDATE</code>)!</li>
 </ol>
 
 </div>
@@ -507,7 +559,7 @@ Gambar 2.1: Connecting R to SQL <a href="https://rviews.rstudio.com/2017/05/17/d
         </div>
       </div>
 <a href="pendahuluan.html" class="navigation navigation-prev " aria-label="Previous page"><i class="fa fa-angle-left"></i></a>
-<a href="referensi.html" class="navigation navigation-next " aria-label="Next page"><i class="fa fa-angle-right"></i></a>
+<a href="fundamental-sql-in-r.html" class="navigation navigation-next " aria-label="Next page"><i class="fa fa-angle-right"></i></a>
     </div>
   </div>
 <script src="libs/gitbook/js/app.min.js"></script>

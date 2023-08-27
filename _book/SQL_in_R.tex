@@ -1113,8 +1113,8 @@ In this case, we have a problem with the data table \texttt{Employees} and \text
 
 \emph{Your Exercise:} Do the same thing to update data table \texttt{Employees}
 
-\hypertarget{basic-queries}{%
-\section{Basic Queries}\label{basic-queries}}
+\hypertarget{basic-sql-in-r}{%
+\section{Basic SQL in R}\label{basic-sql-in-r}}
 
 \hypertarget{select}{%
 \subsection{SELECT}\label{select}}
@@ -1217,7 +1217,1135 @@ If you are done with the query process and you don't want to use it anymore, you
 \setcounter{enumi}{1}
 \tightlist
 \item
-  Create a Basic Queries tutorial using all engine that you already use at task no 1, (Such as: \texttt{SELECT}, \texttt{WHERE}, \texttt{INSERT\ INTO}, \texttt{DELETE}, and \texttt{UPDATE})!
+  Create a `Basic Queries' tutorial using all engine that you already use at task no 1, (Such as: \texttt{SELECT}, \texttt{WHERE}, \texttt{INSERT\ INTO}, \texttt{DELETE}, and \texttt{UPDATE})!
+\end{enumerate}
+
+\hypertarget{fundamental-sql-in-r}{%
+\chapter{Fundamental SQL in R}\label{fundamental-sql-in-r}}
+
+In the previous section, we learned how to connect R to a Database System (SQL) Such as RMariaDB, RMySQL, and RSQLite. In this section, we continue to cover all that you have to know about fundamental operations in SQL (Here, focus on RMySQL).
+
+\hypertarget{connecting-r-to-mysql}{%
+\section{Connecting R to MySQL}\label{connecting-r-to-mysql}}
+
+Connecting R to MySQL is made very easy with the \texttt{RMySQL} package. To connect to a MySQL database simply install the package and load the library.
+
+\begin{Shaded}
+\begin{Highlighting}[]
+\FunctionTok{library}\NormalTok{(RMySQL)}
+\NormalTok{MySQL }\OtherTok{\textless{}{-}} \FunctionTok{dbConnect}\NormalTok{(}\FunctionTok{MySQL}\NormalTok{(), }
+                  \AttributeTok{user=}\StringTok{\textquotesingle{}root\textquotesingle{}}\NormalTok{,}
+                  \AttributeTok{password=}\StringTok{\textquotesingle{}\textquotesingle{}}\NormalTok{, }
+                  \AttributeTok{dbname=}\StringTok{\textquotesingle{}mysql\textquotesingle{}}\NormalTok{, }
+                  \AttributeTok{host=}\StringTok{\textquotesingle{}localhost\textquotesingle{}}\NormalTok{)}
+\FunctionTok{dbListTables}\NormalTok{(MySQL)                  }\CommentTok{\# a list of the tables in our connection}
+\end{Highlighting}
+\end{Shaded}
+
+\emph{Note:} Open and your XAMPP, click start on Apache and MySQL. Then, make sure you have the admin privilege before creating any database.
+
+\hypertarget{create-db}{%
+\section{Create DB}\label{create-db}}
+
+If you want to create a new database, then the CREATE DATABASE statement would be as shown below:
+
+\begin{Shaded}
+\begin{Highlighting}[]
+\FunctionTok{dbExecute}\NormalTok{(MySQL, }\StringTok{"CREATE DATABASE factory\_db"}\NormalTok{)}
+\end{Highlighting}
+\end{Shaded}
+
+The result show us \texttt{1}, means that you have succeeded to create a database.
+
+\hypertarget{drop-db}{%
+\section{Drop DB}\label{drop-db}}
+
+If you want to delete an existing database, then the DROP DATABASE statement would be as shown below:
+
+\begin{Shaded}
+\begin{Highlighting}[]
+\FunctionTok{dbExecute}\NormalTok{(MySQL, }\StringTok{"DROP DATABASE factory\_db"}\NormalTok{)}
+\end{Highlighting}
+\end{Shaded}
+
+The result show us \texttt{0}, means that you have succeeded to remove (Drop) a database.
+
+\hypertarget{create-table}{%
+\section{Create Table}\label{create-table}}
+
+Once you have a database, you can continue to create table as shown below:
+
+\begin{Shaded}
+\begin{Highlighting}[]
+\FunctionTok{dbExecute}\NormalTok{(MySQL, }\StringTok{"CREATE TABLE Persons(}
+\StringTok{                 PersonID int,}
+\StringTok{                 LastName varchar(255),}
+\StringTok{                 FirstName varchar(255),}
+\StringTok{                 Address varchar(255),}
+\StringTok{                 City varchar(255))"}\NormalTok{)}
+\end{Highlighting}
+\end{Shaded}
+
+\hypertarget{insert-value}{%
+\section{Insert Value}\label{insert-value}}
+
+If you are adding values for all the columns of the table, you do not need to specify the column names in the SQL query. However, make sure the order of the values is in the same order as the columns in the table. The INSERT INTO syntax would be as follows:
+
+\begin{Shaded}
+\begin{Highlighting}[]
+\FunctionTok{dbExecute}\NormalTok{(MySQL,}\StringTok{"INSERT INTO Persons(PersonID,LastName,FirstName, Address,City)}
+\StringTok{                 VALUES(1,\textquotesingle{}Siregar\textquotesingle{},\textquotesingle{}Bakti\textquotesingle{}, \textquotesingle{}Jl.Bahagia\textquotesingle{},\textquotesingle{}Tangerang\textquotesingle{})"}\NormalTok{)}
+\end{Highlighting}
+\end{Shaded}
+
+\hypertarget{truncate-table}{%
+\section{Truncate Table}\label{truncate-table}}
+
+The TRUNCATE TABLE statement is used to delete the data inside a table, but not the table itself.
+
+\begin{Shaded}
+\begin{Highlighting}[]
+\FunctionTok{dbExecute}\NormalTok{(MySQL, }\StringTok{"TRUNCATE TABLE Persons"}\NormalTok{)}
+\end{Highlighting}
+\end{Shaded}
+
+\hypertarget{drop-table}{%
+\section{Drop Table}\label{drop-table}}
+
+The DROP TABLE statement is used to drop an existing table in a database.
+
+\begin{Shaded}
+\begin{Highlighting}[]
+\FunctionTok{dbExecute}\NormalTok{(MySQL, }\StringTok{"DROP TABLE Persons"}\NormalTok{)}
+\end{Highlighting}
+\end{Shaded}
+
+\begin{center}\rule{0.5\linewidth}{0.5pt}\end{center}
+
+\hypertarget{write-table}{%
+\section{Write Table}\label{write-table}}
+
+The key here is the \texttt{dbWriteTable} function which allows us to write an R data frame directly to a database table. The data frame's column names will be used as the database table's fields.
+
+\begin{Shaded}
+\begin{Highlighting}[]
+\NormalTok{Orders      }\OtherTok{\textless{}{-}}\FunctionTok{read.csv}\NormalTok{(}\StringTok{"data/Orders.csv"}\NormalTok{)  }
+\FunctionTok{dbWriteTable}\NormalTok{(MySQL, }\StringTok{"Orders"}\NormalTok{, Orders, }\AttributeTok{append=}\NormalTok{T) }
+\end{Highlighting}
+\end{Shaded}
+
+\hypertarget{alter-table}{%
+\section{Alter Table}\label{alter-table}}
+
+The ALTER TABLE statement is used to add, delete, or modify columns in an existing table. The ALTER TABLE statement is also used to add and drop various constraints on an existing table.
+
+\hypertarget{add-column}{%
+\section{Add Column}\label{add-column}}
+
+To add a column in a table, use the following syntax:
+
+\begin{Shaded}
+\begin{Highlighting}[]
+\FunctionTok{dbExecute}\NormalTok{(MySQL, }\StringTok{"ALTER TABLE Orders}
+\StringTok{                 ADD Email varchar(255)"}\NormalTok{)}
+\end{Highlighting}
+\end{Shaded}
+
+\hypertarget{drop-column}{%
+\section{Drop Column}\label{drop-column}}
+
+To delete a column in a table, use the following syntax (notice that some database systems don't allow deleting a column):
+
+\begin{Shaded}
+\begin{Highlighting}[]
+\FunctionTok{dbSendQuery}\NormalTok{(MySQL, }\StringTok{"ALTER TABLE Orders}
+\StringTok{                   DROP COLUMN Email"}\NormalTok{)}
+\end{Highlighting}
+\end{Shaded}
+
+\hypertarget{modify-column}{%
+\section{Modify Column}\label{modify-column}}
+
+\begin{Shaded}
+\begin{Highlighting}[]
+\FunctionTok{dbSendQuery}\NormalTok{(MySQL,}\StringTok{" ALTER TABLE Orders}
+\StringTok{                  MODIFY COLUMN OrderDate date"}\NormalTok{)}
+\end{Highlighting}
+\end{Shaded}
+
+\hypertarget{constraints}{%
+\section{Constraints}\label{constraints}}
+
+SQL constraints are used to specify rules for the data in a table. Constraints are used to limit the type of data that can go into a table. This ensures the accuracy and reliability of the data in the table. If there is any violation between the constraint and the data action, the action is aborted.
+
+Constraints can be column level or table level. Column level constraints apply to a column, and table level constraints apply to the whole table. The following constraints are commonly used in SQL:
+
+\begin{itemize}
+\tightlist
+\item
+  \emph{NOT NULL:} Ensures that a column cannot have a NULL value
+\item
+  \emph{UNIQUE:} Ensures that all values in a column are different
+\item
+  \emph{PRIMARY KEY:} A combination of a NOT NULL and UNIQUE. Uniquely identifies each row in a table
+\item
+  \emph{FOREIGN KEY:} Uniquely identifies a row/record in another table
+\item
+  \emph{CHECK:} Ensures that all values in a column satisfies a specific condition
+\item
+  \emph{DEFAULT:} Sets a default value for a column when no value is specified
+\item
+  \emph{INDEX:} Used to create and retrieve data from the database very quickly
+\end{itemize}
+
+\hypertarget{not-null}{%
+\subsection{Not Null}\label{not-null}}
+
+The following SQL ensures that the ``ID'', ``LastName'', and ``FirstName'' columns will NOT accept NULL values when the ``Persons\_NotNull'' table is created:
+
+\begin{Shaded}
+\begin{Highlighting}[]
+\FunctionTok{dbSendQuery}\NormalTok{(MySQL,}\StringTok{"CREATE TABLE Person\_NotNull (}
+\StringTok{                   ID int NOT NULL,}
+\StringTok{                   LastName varchar(255) NOT NULL,}
+\StringTok{                   FirstName varchar(255) NOT NULL,}
+\StringTok{                   Age int)"}\NormalTok{)}
+\end{Highlighting}
+\end{Shaded}
+
+\hypertarget{unique}{%
+\subsection{Unique}\label{unique}}
+
+The following SQL creates a UNIQUE constraint on the ``ID'' column when the ``Persons'' table is created:
+
+\begin{Shaded}
+\begin{Highlighting}[]
+\FunctionTok{dbSendQuery}\NormalTok{(MySQL,}\StringTok{"CREATE TABLE Persons\_Unique (ID int NOT NULL UNIQUE,}
+\StringTok{                   LastName varchar(255) NOT NULL,}
+\StringTok{                   FirstName varchar(255) NOT NULL,}
+\StringTok{                   Age int)"}\NormalTok{)}
+\end{Highlighting}
+\end{Shaded}
+
+To create a UNIQUE constraint on the ``ID'' column when the table is already created, use the following SQL:
+
+\begin{Shaded}
+\begin{Highlighting}[]
+\FunctionTok{dbSendQuery}\NormalTok{(MySQL,}\StringTok{"ALTER TABLE Persons\_Unique}
+\StringTok{                   ADD UNIQUE (ID)"}\NormalTok{)}
+\end{Highlighting}
+\end{Shaded}
+
+To define a UNIQUE constraint on multiple columns, use the following SQL syntax:
+
+\begin{Shaded}
+\begin{Highlighting}[]
+\FunctionTok{dbSendQuery}\NormalTok{(MySQL,}\StringTok{"ALTER TABLE Persons\_Unique}
+\StringTok{                  ADD CONSTRAINT UNIQUE (ID,LastName)"}
+\end{Highlighting}
+\end{Shaded}
+
+To drop a UNIQUE constraint, use the following SQL:
+
+\begin{Shaded}
+\begin{Highlighting}[]
+\FunctionTok{dbSendQuery}\NormalTok{(MySQL,}\StringTok{"ALTER TABLE Persons\_Unique}
+\StringTok{                  DROP INDEX ID"}\NormalTok{)}
+\end{Highlighting}
+\end{Shaded}
+
+\hypertarget{primary-key}{%
+\subsection{Primary Key}\label{primary-key}}
+
+The PRIMARY KEY constraint uniquely identifies each record in a table. Primary keys must contain UNIQUE values, and cannot contain NULL values. A table can have only ONE primary key; and in the table, this primary key can consist of single or multiple columns (fields).
+
+\begin{Shaded}
+\begin{Highlighting}[]
+\FunctionTok{dbSendQuery}\NormalTok{(MySQL,}\StringTok{"CREATE TABLE Persons\_PK (ID int NOT NULL PRIMARY KEY,}
+\StringTok{                   LastName varchar(255) NOT NULL,}
+\StringTok{                   FirstName varchar(255),}
+\StringTok{                   Age int)"}\NormalTok{)}
+\end{Highlighting}
+\end{Shaded}
+
+To allow naming of a PRIMARY KEY constraint, and for defining a PRIMARY KEY constraint on multiple columns, use the following SQL syntax:
+
+\begin{Shaded}
+\begin{Highlighting}[]
+\FunctionTok{dbSendQuery}\NormalTok{(MySQL,}\StringTok{"CREATE TABLE Persons\_PK (ID int NOT NULL,}
+\StringTok{                  LastName varchar(255) NOT NULL,}
+\StringTok{                  FirstName varchar(255),}
+\StringTok{                  Age int,}
+\StringTok{                  CONSTRAINT Persons\_PK PRIMARY KEY (ID,LastName))"}\NormalTok{)}
+\end{Highlighting}
+\end{Shaded}
+
+To create a PRIMARY KEY constraint on the ``ID'' column when the table is already created, use the following SQL:
+
+\begin{Shaded}
+\begin{Highlighting}[]
+\FunctionTok{dbSendQuery}\NormalTok{(MySQL, }\StringTok{"ALTER TABLE Persons\_PK}
+\StringTok{                   ADD PRIMARY KEY (ID)"}\NormalTok{)}
+\end{Highlighting}
+\end{Shaded}
+
+\hypertarget{foreign-key}{%
+\subsection{Foreign Key}\label{foreign-key}}
+
+A FOREIGN KEY is a key used to link two tables together. A FOREIGN KEY is a field (or collection of fields) in one table that refers to the PRIMARY KEY in another table. The table containing the foreign key is called the child table, and the table containing the candidate key is called the referenced or parent table.
+
+Look at the following two tables:
+
+\begin{itemize}
+\tightlist
+\item
+  ``Persons'' table:
+\end{itemize}
+
+\begin{longtable}[]{@{}cccc@{}}
+\toprule\noalign{}
+PersonID & LastName & FirstName & Age \\
+\midrule\noalign{}
+\endhead
+\bottomrule\noalign{}
+\endlastfoot
+1 & Xi & Bakti & 28 \\
+2 & Li & Chong & 23 \\
+3 & Gou & Mei & 20 \\
+\end{longtable}
+
+\begin{itemize}
+\tightlist
+\item
+  ``Orders'' table:
+\end{itemize}
+
+\begin{longtable}[]{@{}ccc@{}}
+\toprule\noalign{}
+OrderID & OrderNumber & PersonID \\
+\midrule\noalign{}
+\endhead
+\bottomrule\noalign{}
+\endlastfoot
+1 & 77895 & 3 \\
+2 & 44678 & 3 \\
+\end{longtable}
+
+Notice that the ``PersonID'' column in the ``Orders'' table points to the ``PersonID'' column in the ``Persons'' table.
+
+\begin{itemize}
+\tightlist
+\item
+  The ``PersonID'' column in the ``Persons'' table is the PRIMARY KEY in the ``Persons'' table.
+\item
+  The ``PersonID'' column in the ``Orders'' table is a FOREIGN KEY in the ``Orders'' table.
+\item
+  The FOREIGN KEY constraint is used to prevent actions that would destroy links between tables.
+\item
+  The FOREIGN KEY constraint also prevents invalid data from being inserted into the foreign key column, because it has to be one of the values contained in the table it points to.
+\end{itemize}
+
+To allow naming of a FOREIGN KEY constraint, and for defining a FOREIGN KEY constraint on multiple columns, use the following SQL syntax:
+
+\begin{Shaded}
+\begin{Highlighting}[]
+\FunctionTok{dbSendQuery}\NormalTok{(MySQL,}
+\StringTok{"CREATE TABLE Orders (OrderID int NOT NULL,}
+\StringTok{                     OrderNumber int NOT NULL,}
+\StringTok{                     PersonID int,}
+\StringTok{                     CONSTRAINT FOREIGN KEY (PersonID))"}\NormalTok{)}
+\end{Highlighting}
+\end{Shaded}
+
+To allow naming of a FOREIGN KEY constraint, and for defining a FOREIGN KEY constraint on multiple columns, use the following SQL syntax:
+
+\begin{Shaded}
+\begin{Highlighting}[]
+\FunctionTok{dbSendQuery}\NormalTok{(MySQL,}
+\StringTok{"CREATE TABLE Orders (}
+\StringTok{    OrderID int NOT NULL,}
+\StringTok{    OrderNumber int NOT NULL,}
+\StringTok{    PersonID int,}
+\StringTok{    PRIMARY KEY (OrderID),}
+\StringTok{    FOREIGN KEY (PersonID) REFERENCES Persons\_pk (PersonID))"}\NormalTok{)}
+\end{Highlighting}
+\end{Shaded}
+
+To allow naming of a FOREIGN KEY constraint, and for defining a FOREIGN KEY constraint on multiple columns, use the following SQL syntax:
+
+\begin{Shaded}
+\begin{Highlighting}[]
+\FunctionTok{dbSendQuery}\NormalTok{(MySQL,}
+\StringTok{"ALTER TABLE Orders}
+\StringTok{ADD CONSTRAINT FK\_Person Order}
+\StringTok{FOREIGN KEY (PersonID) REFERENCES Persons(PersonID)"}\NormalTok{)}
+\end{Highlighting}
+\end{Shaded}
+
+\hypertarget{check}{%
+\subsection{Check}\label{check}}
+
+The CHECK constraint is used to limit the value range that can be placed in a column. If you define a CHECK constraint on a single column it allows only certain values for this column. If you define a CHECK constraint on a table it can limit the values in certain columns based on values in other columns in the row. The following SQL creates a CHECK constraint on the ``Age'' column when the ``Persons'' table is created. The CHECK constraint ensures that the age of a person must be 18, or older:
+
+\begin{Shaded}
+\begin{Highlighting}[]
+\FunctionTok{dbSendQuery}\NormalTok{(MySQL,}
+\StringTok{"CREATE TABLE Persons (ID int NOT NULL,}
+\StringTok{                      LastName varchar(255) NOT NULL,}
+\StringTok{                      FirstName varchar(255),}
+\StringTok{                      Age int,}
+\StringTok{                      CHECK (Age\textgreater{}=18))"}\NormalTok{)}
+\end{Highlighting}
+\end{Shaded}
+
+To allow naming of a CHECK constraint, and for defining a CHECK constraint on multiple columns, use the following SQL syntax:
+
+\begin{Shaded}
+\begin{Highlighting}[]
+\FunctionTok{dbSendQuery}\NormalTok{(MySQL,}
+\StringTok{"CREATE TABLE Persons (}
+\StringTok{    ID int NOT NULL,}
+\StringTok{    LastName varchar(255) NOT NULL,}
+\StringTok{    FirstName varchar(255),}
+\StringTok{    Age int,}
+\StringTok{    City varchar(255),}
+\StringTok{    CONSTRAINT CHK\_Person CHECK (Age\textgreater{}=18 AND City=\textquotesingle{}Sandnes\textquotesingle{}))"}\NormalTok{)}
+\end{Highlighting}
+\end{Shaded}
+
+To create a CHECK constraint on the ``Age'' column when the table is already created, use the following SQL:
+
+\begin{Shaded}
+\begin{Highlighting}[]
+\FunctionTok{dbSendQuery}\NormalTok{(MySQL, }\StringTok{"ALTER TABLE Persons}
+\StringTok{                         ADD CHECK (Age\textgreater{}=18)"}\NormalTok{)}
+\end{Highlighting}
+\end{Shaded}
+
+To allow naming of a CHECK constraint, and for defining a CHECK constraint on multiple columns, use the following SQL syntax:
+
+\begin{Shaded}
+\begin{Highlighting}[]
+\FunctionTok{dbSendQuery}\NormalTok{(MySQL, }\StringTok{"ALTER TABLE Persons}
+\StringTok{                    ADD CONSTRAINT CHK\_PersonAge }
+\StringTok{                    CHECK (Age\textgreater{}=18 AND City=\textquotesingle{}Sandnes\textquotesingle{})"}\NormalTok{)}
+\end{Highlighting}
+\end{Shaded}
+
+\hypertarget{default}{%
+\subsection{Default}\label{default}}
+
+The DEFAULT constraint is used to provide a default value for a column. The default value will be added to all new records IF no other value is specified. The following SQL sets a DEFAULT value for the ``City'' column when the ``Persons'' table is created:
+
+\begin{Shaded}
+\begin{Highlighting}[]
+\FunctionTok{dbSendQuery}\NormalTok{(MySQL,}
+\StringTok{"CREATE TABLE Persons\_default (ID int NOT NULL,}
+\StringTok{                              LastName varchar(255) NOT NULL,}
+\StringTok{                              FirstName varchar(255),}
+\StringTok{                              Age int,}
+\StringTok{                              City varchar(255) DEFAULT \textquotesingle{}Sandnes\textquotesingle{})"}\NormalTok{)}
+\end{Highlighting}
+\end{Shaded}
+
+To create a DEFAULT constraint on the ``City'' column when the table is already created, use the following SQL:
+
+\begin{Shaded}
+\begin{Highlighting}[]
+\FunctionTok{dbSendQuery}\NormalTok{(MySQL,}\StringTok{"ALTER TABLE Persons}
+\StringTok{                        ALTER City SET DEFAULT \textquotesingle{}Sandnes\textquotesingle{}"}\NormalTok{)}
+\end{Highlighting}
+\end{Shaded}
+
+\hypertarget{index}{%
+\subsection{Index}\label{index}}
+
+The CREATE INDEX statement is used to create indexes in tables. Indexes are used to retrieve data from the database more quickly than otherwise. The users cannot see the indexes, they are just used to speed up searches/queries. Creates an index on a table. Duplicate values are allowed:
+
+\begin{Shaded}
+\begin{Highlighting}[]
+\FunctionTok{dbSendQuery}\NormalTok{(MySQL, }\StringTok{"CREATE INDEX idx\_pname}
+\StringTok{                   ON Persons (LastName, FirstName)"}\NormalTok{)}
+\end{Highlighting}
+\end{Shaded}
+
+\emph{Note:} Updating a table with indexes takes more time than updating a table without (because the indexes also need an update). So, only create indexes on columns that will be frequently searched against.
+
+\hypertarget{auto-increment}{%
+\subsection{Auto Increment}\label{auto-increment}}
+
+Auto-increment allows a unique number to be generated automatically when a new record is inserted into a table. Often this is the primary key field that we would like to be created automatically every time a new record is inserted. The following SQL statement defines the ``Personid'' column to be an auto-increment primary key field in the ``Persons'' table:
+
+\begin{Shaded}
+\begin{Highlighting}[]
+\FunctionTok{dbSendQuery}\NormalTok{(MySQL,}
+\StringTok{"CREATE TABLE Persons\_ai (}
+\StringTok{    Personid int NOT NULL AUTO\_INCREMENT,}
+\StringTok{    LastName varchar(255) NOT NULL,}
+\StringTok{    FirstName varchar(255),}
+\StringTok{    Age int,}
+\StringTok{    PRIMARY KEY (Personid))"}\NormalTok{)}
+\end{Highlighting}
+\end{Shaded}
+
+\hypertarget{previewing-.sql-in-r}{%
+\section{\texorpdfstring{Previewing \texttt{.sql} in R}{Previewing .sql in R}}\label{previewing-.sql-in-r}}
+
+When you open a new \texttt{.sql} file in RStudio, it automatically populates the file with the following code:
+
+\begin{Shaded}
+\begin{Highlighting}[]
+\FunctionTok{library}\NormalTok{(RSQLite)}
+\FunctionTok{library}\NormalTok{(dplyr)}
+\FunctionTok{library}\NormalTok{(dbplyr)}
+
+\NormalTok{conn }\OtherTok{\textless{}{-}} \FunctionTok{src\_memdb}\NormalTok{() }\CommentTok{\# create a SQLite database in memory}
+\FunctionTok{copy\_to}\NormalTok{(conn, }
+\NormalTok{        storms,     }\CommentTok{\# this is a dataset built into dplyr}
+        \AttributeTok{overwrite =} \ConstantTok{TRUE}\NormalTok{)}
+\FunctionTok{tbl}\NormalTok{(conn, }\FunctionTok{sql}\NormalTok{(}\StringTok{"SELECT * FROM storms LIMIT 5"}\NormalTok{))}
+\end{Highlighting}
+\end{Shaded}
+
+You need to create a \texttt{.sql} file with the following code:
+
+\begin{verbatim}
+-- !preview conn=src_memdb()$con
+
+SELECT * FROM storms LIMIT 5
+\end{verbatim}
+
+Then, you will the resul like this:
+
+\begin{Shaded}
+\begin{Highlighting}[]
+\FunctionTok{library}\NormalTok{(knitr)}
+\FunctionTok{include\_graphics}\NormalTok{(}\StringTok{"./images/Bab3/sql{-}file{-}preview.png"}\NormalTok{)}
+\end{Highlighting}
+\end{Shaded}
+
+\begin{figure}
+
+{\centering \includegraphics[width=1\linewidth]{./images/Bab3/sql-file-preview} 
+
+}
+
+\caption{Previewing `.sql` in R}\label{fig:unnamed-chunk-55}
+\end{figure}
+
+\hypertarget{sql-chunks-in-rmarkdown}{%
+\section{SQL chunks in RMarkdown}\label{sql-chunks-in-rmarkdown}}
+
+I generally prefer to show RMarkdown output in the console 1 (and it looks like I'm not the only one). This means that when I run code in an .Rmd file, it feels more or less the same as when I run an .R file: the plots show up in the plots pane, code is run in the console, and so on. While you can use SQL chunks with this setting, there is NO chunk preview option. You must trust your queries and knit the file to make sure everything runs. You get the syntax highlighting razzle-dazzle but alas-- no preview.
+
+It is in this very specific case where inline mode wins big time. SQL previews magically become an option, allowing you to interact with your beautifully colored SQL code.
+
+\hypertarget{database-normalization-in-sql}{%
+\chapter{Database Normalization in SQL}\label{database-normalization-in-sql}}
+
+Normalization is a database design technique that reduces data redundancy and eliminates undesirable characteristics like Insertion, Update and Deletion Anomalies. Normalization rules divides larger tables into smaller tables and links them using relationships. The purpose of Normalisation in SQL is to eliminate redundant (repetitive) data and ensure data is stored logically.
+
+The inventor of the relational model Edgar Codd proposed the theory of normalization of data with the introduction of the First Normal Form, and he continued to extend theory with Second and Third Normal Form. Later he joined Raymond F. Boyce to develop the theory of Boyce-Codd Normal Form.
+
+Here is a list of Normal Forms in SQL:
+
+\begin{itemize}
+\tightlist
+\item
+  1NF (First Normal Form)
+\item
+  2NF (Second Normal Form)
+\item
+  3NF (Third Normal Form)
+\item
+  BCNF (Boyce-Codd Normal Form)
+\item
+  4NF (Fourth Normal Form)
+\item
+  5NF (Fifth Normal Form)
+\item
+  6NF (Sixth Normal Form)
+\end{itemize}
+
+The Theory of Data Normalization in MySQL server is still being developed further. For example, there are discussions even on 6th Normal Form. However, in most practical applications, normalization achieves its best in 3rd Normal Form.
+
+\hypertarget{the-process-of-normalization}{%
+\section{The Process of Normalization}\label{the-process-of-normalization}}
+
+The process of normalization involves breaking down a large table into smaller, related tables and defining relationships between them. This helps in achieving the following benefits:
+
+\begin{itemize}
+\tightlist
+\item
+  \textbf{Elimination of Data Redundancy:} Redundant data can lead to inconsistencies and increased storage requirements. Normalization ensures that each piece of data is stored in only one place, reducing redundancy and promoting consistency.
+\item
+  \textbf{Data Integrity:} Normalization minimizes the chances of inconsistencies and anomalies that may occur when data is duplicated or updated in one place but not in another.
+\item
+  \textbf{Efficient Data Updates:} Since data is stored in smaller, more specific tables, updates are more efficient and require fewer changes.
+\item
+  \textbf{Simpler Queries:} Normalized data allows for more straightforward and efficient querying due to the structured relationships between tables.
+\end{itemize}
+
+The process of database normalization is typically divided into several ``normal forms'' (often referred to as 1NF, 2NF, 3NF, BCNF, etc.), each with its own set of rules and requirements. These normal forms build on each other, with higher normal forms addressing more complex issues of redundancy and dependency. Here's a brief overview of some common normal forms:
+
+\begin{enumerate}
+\def\labelenumi{\arabic{enumi}.}
+\tightlist
+\item
+  \textbf{First Normal Form (1NF):}
+\end{enumerate}
+
+\begin{itemize}
+\tightlist
+\item
+  Eliminate duplicate columns.
+\item
+  Create separate tables for related data.
+\item
+  Define a primary key for each table.
+\end{itemize}
+
+\begin{enumerate}
+\def\labelenumi{\arabic{enumi}.}
+\setcounter{enumi}{1}
+\tightlist
+\item
+  \textbf{Second Normal Form (2NF):}
+\end{enumerate}
+
+\begin{itemize}
+\tightlist
+\item
+  Meet 1NF requirements.
+\item
+  Remove partial dependencies (attributes dependent on only part of the primary key) by creating
+\item
+  separate tables.
+\end{itemize}
+
+\begin{enumerate}
+\def\labelenumi{\arabic{enumi}.}
+\setcounter{enumi}{2}
+\tightlist
+\item
+  \textbf{Third Normal Form (3NF):}
+\end{enumerate}
+
+\begin{itemize}
+\tightlist
+\item
+  Meet 2NF requirements.
+\item
+  Remove transitive dependencies (attributes dependent on non-key attributes) by creating separate tables.
+\end{itemize}
+
+\begin{enumerate}
+\def\labelenumi{\arabic{enumi}.}
+\setcounter{enumi}{3}
+\tightlist
+\item
+  \textbf{Boyce-Codd Normal Form (BCNF):}
+\end{enumerate}
+
+\begin{itemize}
+\tightlist
+\item
+  Meet 3NF requirements.
+\item
+  Remove overlapping candidate keys by creating separate tables.
+\end{itemize}
+
+Higher normal forms exist beyond these, such as \textbf{Fourth Normal Form (4NF)} and \textbf{Fifth Normal Form (5NF)}, but they are less commonly encountered and may be more relevant in specific cases of complex data modeling. While normalization offers significant benefits, it's important to strike a balance between normalization and performance. Over-normalization can lead to complex query logic and decreased query performance. Therefore, designing a database often involves considering the nature of the data and the queries that will be performed on it.
+
+\hypertarget{simple-database-normalization}{%
+\section{Simple Database Normalization}\label{simple-database-normalization}}
+
+Let's go through a simple example of database normalization using a hypothetical scenario of an online bookstore. We'll start with an unnormalized table and then progressively normalize it through different normal forms.
+
+Scenario: Consider an unnormalized table that stores information about books, authors, and their publishers.
+
+\textbf{Unnormalized Table (1NF):}
+
+\begin{longtable}[]{@{}
+  >{\raggedright\arraybackslash}p{(\columnwidth - 10\tabcolsep) * \real{0.1233}}
+  >{\raggedright\arraybackslash}p{(\columnwidth - 10\tabcolsep) * \real{0.2329}}
+  >{\raggedright\arraybackslash}p{(\columnwidth - 10\tabcolsep) * \real{0.1918}}
+  >{\raggedright\arraybackslash}p{(\columnwidth - 10\tabcolsep) * \real{0.1918}}
+  >{\raggedright\arraybackslash}p{(\columnwidth - 10\tabcolsep) * \real{0.1781}}
+  >{\raggedright\arraybackslash}p{(\columnwidth - 10\tabcolsep) * \real{0.0822}}@{}}
+\toprule\noalign{}
+\begin{minipage}[b]{\linewidth}\raggedright
+Book ID
+\end{minipage} & \begin{minipage}[b]{\linewidth}\raggedright
+Title
+\end{minipage} & \begin{minipage}[b]{\linewidth}\raggedright
+Author
+\end{minipage} & \begin{minipage}[b]{\linewidth}\raggedright
+Author Birth
+\end{minipage} & \begin{minipage}[b]{\linewidth}\raggedright
+Publisher
+\end{minipage} & \begin{minipage}[b]{\linewidth}\raggedright
+Year
+\end{minipage} \\
+\midrule\noalign{}
+\endhead
+\bottomrule\noalign{}
+\endlastfoot
+1 & Algorithm & John Smith & 1980-05-15 & ABC Pub & 2000 \\
+2 & Data Science & Jane Doe & 1975-10-20 & XYZ Books & 2015 \\
+3 & Database System & John Smith & 1980-05-15 & ABC Pub & 2012 \\
+\end{longtable}
+
+In this unnormalized table, we have duplicate author and publisher information, leading to redundancy. John Smith's information is repeated, and if any of his details change, we need to update multiple rows.
+
+\textbf{First Normal Form (1NF):}
+
+To achieve 1NF, we break the table into smaller tables and remove duplicate data. We create separate tables for authors and publishers.
+
+Authors Table:
+
+\begin{longtable}[]{@{}lll@{}}
+\toprule\noalign{}
+Author ID & Author & Author Birth \\
+\midrule\noalign{}
+\endhead
+\bottomrule\noalign{}
+\endlastfoot
+1 & John Smith & 1980-05-15 \\
+2 & Jane Doe & 1975-10-20 \\
+\end{longtable}
+
+Publishers Table:
+
+\begin{longtable}[]{@{}ll@{}}
+\toprule\noalign{}
+Publisher ID & Publisher \\
+\midrule\noalign{}
+\endhead
+\bottomrule\noalign{}
+\endlastfoot
+1 & ABC Pub \\
+2 & XYZ Books \\
+\end{longtable}
+
+Books Table (1NF):
+
+\begin{longtable}[]{@{}lllll@{}}
+\toprule\noalign{}
+Book ID & Title & Author ID & Publisher ID & Year \\
+\midrule\noalign{}
+\endhead
+\bottomrule\noalign{}
+\endlastfoot
+1 & Algorithm & 1 & 1 & 2000 \\
+2 & Data Science & 2 & 2 & 2015 \\
+3 & Database System & 1 & 1 & 2012 \\
+\end{longtable}
+
+We've eliminated redundancy by referencing author and publisher IDs in the books table.
+
+\textbf{Second Normal Form (2NF):}
+
+To achieve 2NF, we identify partial dependencies and create a separate table for author information.
+
+Authors Table (2NF):
+
+\begin{longtable}[]{@{}lll@{}}
+\toprule\noalign{}
+Author ID & Author & Author Birth \\
+\midrule\noalign{}
+\endhead
+\bottomrule\noalign{}
+\endlastfoot
+1 & John Smith & 1980-05-15 \\
+2 & Jane Doe & 1975-10-20 \\
+\end{longtable}
+
+Books Table (2NF):
+
+\begin{longtable}[]{@{}lllll@{}}
+\toprule\noalign{}
+Book ID & Title & Author ID & Publisher ID & Year \\
+\midrule\noalign{}
+\endhead
+\bottomrule\noalign{}
+\endlastfoot
+1 & Algorithm & 1 & 1 & 2000 \\
+2 & Data Science & 2 & 2 & 2015 \\
+3 & Database System & 1 & 1 & 2012 \\
+\end{longtable}
+
+No changes are required in the Books table for 2NF since there were no partial dependencies.
+
+\textbf{Third Normal Form (3NF):}
+
+To achieve 3NF, we identify transitive dependencies and create a separate table for publisher information.
+
+Publishers Table (3NF):
+
+\begin{longtable}[]{@{}ll@{}}
+\toprule\noalign{}
+Publisher ID & Publisher \\
+\midrule\noalign{}
+\endhead
+\bottomrule\noalign{}
+\endlastfoot
+1 & ABC Pub \\
+2 & XYZ Books \\
+\end{longtable}
+
+Books Table (3NF):
+
+\begin{longtable}[]{@{}lllll@{}}
+\toprule\noalign{}
+Book ID & Title & Author ID & Publisher ID & Year \\
+\midrule\noalign{}
+\endhead
+\bottomrule\noalign{}
+\endlastfoot
+1 & Algorithm & 1 & 1 & 2000 \\
+2 & Data Science & 2 & 2 & 2015 \\
+3 & Database System & 1 & 1 & 2012 \\
+\end{longtable}
+
+No changes are required in the Books table for 3NF since there were no transitive dependencies. The result is a normalized database structure that eliminates redundancy and ensures data integrity.
+
+Please note that the above example is simplified for demonstration purposes. In real-world scenarios, databases can have more complex structures and relationships, which may require deeper levels of normalization to achieve higher normal forms like BCNF or 4NF.
+
+\hypertarget{your-job-1}{%
+\section{Your Job}\label{your-job-1}}
+
+Consider a hypothetical database for an online bookstore. We'll start with a denormalized table and then go through the normalization process step by step.
+
+Suppose we have a single table called Books with the following columns:
+
+\begin{table}
+
+\caption{\label{tab:unnamed-chunk-57}First Normal Form (1NF)}
+\centering
+\begin{tabular}[t]{l|l|l|l|l|l}
+\hline
+BookID & Title & Author & Genre & Publisher & PublicationYear\\
+\hline
+1 & Book A & Author X & Fiction & dsciencelabs & 2021\\
+\hline
+2 & Book B & Author Y & Mystery & Matana & 2022\\
+\hline
+3 & Book B & Author X & Romance & dsciencelabs & 2023\\
+\hline
+\end{tabular}
+\end{table}
+
+Your job is the following statements:
+
+\begin{enumerate}
+\def\labelenumi{\arabic{enumi}.}
+\tightlist
+\item
+  Display Database Normalization Process
+\item
+  Create Database to your PC After Normalization Process using R and SQL
+\end{enumerate}
+
+\hypertarget{join-table-in-sql}{%
+\chapter{Join Table in SQL}\label{join-table-in-sql}}
+
+A SQL join is a Structured Query Language (SQL) instruction to combine data from two sets of data (i.e.~two tables). Before we dive into the details of a SQL join, let's briefly discuss what SQL is, and why someone would want to perform a SQL join.
+
+SQL is a special-purpose programming language designed for managing information in a relational database management system (RDBMS). The word relational here is key; it specifies that the database management system is organized in such a way that there are clear relations defined between different sets of data. Typically, you need to extract, transform, and load data into your RDBMS before you're able to manage it using SQL, which you can accomplish by using a tool like Stitch.
+
+\begin{center}\rule{0.5\linewidth}{0.5pt}\end{center}
+
+\hypertarget{relational-database}{%
+\section{Relational Database}\label{relational-database}}
+
+Imagine you're running a store and would like to record information about your customers and their orders. By using a relational database, you can save this information as two tables that represent two distinct entities: customers and orders .
+
+\hypertarget{table-customers}{%
+\subsection{Table Customers}\label{table-customers}}
+
+\begin{Shaded}
+\begin{Highlighting}[]
+\FunctionTok{library}\NormalTok{(DT)}
+\NormalTok{costomers}\OtherTok{\textless{}{-}}\FunctionTok{read.csv}\NormalTok{(}\StringTok{"data/customers.csv"}\NormalTok{)}
+\FunctionTok{datatable}\NormalTok{(}\FunctionTok{head}\NormalTok{(costomers, }\DecValTok{5}\NormalTok{), }
+          \AttributeTok{caption =}\NormalTok{ htmltools}\SpecialCharTok{::}\NormalTok{tags}\SpecialCharTok{$}\FunctionTok{caption}\NormalTok{(}
+            \AttributeTok{style =} \StringTok{\textquotesingle{}caption{-}side: bottom; text{-}align: center;\textquotesingle{}}\NormalTok{, }
+\NormalTok{            htmltools}\SpecialCharTok{::}\FunctionTok{em}\NormalTok{(}\StringTok{\textquotesingle{}Table 1: customers.\textquotesingle{}}\NormalTok{)),}
+          \AttributeTok{options =} \FunctionTok{list}\NormalTok{(}\AttributeTok{dom =} \StringTok{\textquotesingle{}t\textquotesingle{}}\NormalTok{))}
+\end{Highlighting}
+\end{Shaded}
+
+Table 1, informs about each customer is stored in its own row, with columns specifying different bits of information, including their first name, last name, and email address. Additionally, we associate a unique customer number, or primary key, with each customer record.
+
+\hypertarget{table-orders}{%
+\subsection{Table Orders}\label{table-orders}}
+
+\begin{Shaded}
+\begin{Highlighting}[]
+\NormalTok{orders}\OtherTok{\textless{}{-}}\FunctionTok{read.csv}\NormalTok{(}\StringTok{"data/orders.csv"}\NormalTok{)}
+\FunctionTok{datatable}\NormalTok{(}\FunctionTok{head}\NormalTok{(orders,}\DecValTok{5}\NormalTok{), }
+          \AttributeTok{caption =}\NormalTok{ htmltools}\SpecialCharTok{::}\NormalTok{tags}\SpecialCharTok{$}\FunctionTok{caption}\NormalTok{(}
+            \AttributeTok{style =} \StringTok{\textquotesingle{}caption{-}side: bottom; text{-}align: center;\textquotesingle{}}\NormalTok{, }
+\NormalTok{            htmltools}\SpecialCharTok{::}\FunctionTok{em}\NormalTok{(}\StringTok{\textquotesingle{}Table 2: orders.\textquotesingle{}}\NormalTok{)),}
+          \AttributeTok{options =} \FunctionTok{list}\NormalTok{(}\AttributeTok{dom =} \StringTok{\textquotesingle{}t\textquotesingle{}}\NormalTok{))}
+\end{Highlighting}
+\end{Shaded}
+
+Again, Table 2 are contains information about a specific order. Each order has its own unique identification key \texttt{order\_id} for this table -- assigned to it as well.
+
+\hypertarget{relational-model}{%
+\section{Relational Model}\label{relational-model}}
+
+You've probably noticed that these two examples share similar information. You can see these simple relations diagrammed below:
+
+\begin{figure}
+
+{\centering \includegraphics[width=1\linewidth]{./images/Bab5/relational} 
+
+}
+
+\caption{Relational Table}\label{fig:relational}
+\end{figure}
+
+Note that the orders table contains two keys: one for the order and one for the customer who placed that order. In scenarios when there are multiple keys in a table, the key that refers to the entity being described in that table is called the primary key \emph{(PK)} and other key is called a foreign key \emph{(FK)}.
+
+In our example, \texttt{order\_id} is a primary key in the orders table, while \texttt{customer\_id} is both a primary key in the customers table and a foreign key in the orders table. Primary and foreign keys are essential to describing relations between the tables, and in performing SQL joins.
+
+\begin{center}\rule{0.5\linewidth}{0.5pt}\end{center}
+
+\hypertarget{factory-database}{%
+\section{Factory Database}\label{factory-database}}
+
+To make you more convenient about all the data tables that we will use in this section. Here, I summarize the following SQL relational for database \texttt{factory\_db}:
+
+\begin{figure}
+
+{\centering \includegraphics[width=1\linewidth]{./images/Bab5/fullrelational} 
+
+}
+
+\caption{Relational Table of Factory Database}\label{fig:fullrelational}
+\end{figure}
+
+\emph{Note:} Don't forget to consider the data structure of your database (all table)
+
+\begin{center}\rule{0.5\linewidth}{0.5pt}\end{center}
+
+\hypertarget{basic-sql-join-types}{%
+\section{Basic SQL Join Types}\label{basic-sql-join-types}}
+
+There are four basic types of SQL joins: inner, left, right, and full. The easiest and most intuitive way to explain the difference between these four types is by using a Venn diagram, which shows all possible logical relations between data sets.
+
+Again, it's important to stress that before you can begin using any join type, you'll need to extract the data and load it into an RDBMS like Amazon Redshift, where you can query tables from multiple sources. You build that process manually, or you can use an ETL service like Stitch, which automates that process for you.
+
+\begin{figure}
+
+{\centering \includegraphics[width=1\linewidth]{./images/Bab5/jointable} 
+
+}
+
+\caption{Basic Join Table}\label{fig:jointable}
+\end{figure}
+
+\hypertarget{connect-to-mysql}{%
+\section{Connect to MySQL}\label{connect-to-mysql}}
+
+Reading data from \texttt{MySQL} into R workspace, it requires two R libraries, \texttt{RMySQL} and \texttt{DBI}. The connection data should not be embedded in analysis code. Separate the connection code in another script. The script should set up the connection and save it into the workspace.
+
+The saved connection is accessible by its name in the analysis code. In the dbConnect function, you need to replace dbname, username, pwd, dbserver and port with the actual values of your remote database.
+
+\begin{Shaded}
+\begin{Highlighting}[]
+\CommentTok{\# set up the connection and save it into the workspace}
+\CommentTok{\#\textasciitilde{}\textasciitilde{}\textasciitilde{}\textasciitilde{}\textasciitilde{}\textasciitilde{}\textasciitilde{}\textasciitilde{}\textasciitilde{}\textasciitilde{}\textasciitilde{}\textasciitilde{}\textasciitilde{}\textasciitilde{}\textasciitilde{}\textasciitilde{}\textasciitilde{}\textasciitilde{}\textasciitilde{}\textasciitilde{}\textasciitilde{}\textasciitilde{}\textasciitilde{}\textasciitilde{}\textasciitilde{}\textasciitilde{}\textasciitilde{}\textasciitilde{}\textasciitilde{}\textasciitilde{}\textasciitilde{}\textasciitilde{}\textasciitilde{}\textasciitilde{}\textasciitilde{}\textasciitilde{}\textasciitilde{}\textasciitilde{}\textasciitilde{}\textasciitilde{}\textasciitilde{}\textasciitilde{}\textasciitilde{}\textasciitilde{}\textasciitilde{}\textasciitilde{}\textasciitilde{}\textasciitilde{}\textasciitilde{}\textasciitilde{}\textasciitilde{}\textasciitilde{}\textasciitilde{}\textasciitilde{}\textasciitilde{}\textasciitilde{}\textasciitilde{}\textasciitilde{}\textasciitilde{}\textasciitilde{}\textasciitilde{}\textasciitilde{}\textasciitilde{}\textasciitilde{}\textasciitilde{}\textasciitilde{}\textasciitilde{}\textasciitilde{}\textasciitilde{}\textasciitilde{}\textasciitilde{}\textasciitilde{}\textasciitilde{}\textasciitilde{}\textasciitilde{}\textasciitilde{}\textasciitilde{}\textasciitilde{}\textasciitilde{}}
+\FunctionTok{library}\NormalTok{(RMySQL)}
+\FunctionTok{library}\NormalTok{(DBI)}
+\NormalTok{bakti }\OtherTok{\textless{}{-}} \FunctionTok{dbConnect}\NormalTok{(RMySQL}\SpecialCharTok{::}\FunctionTok{MySQL}\NormalTok{(),}
+                  \AttributeTok{dbname=}\StringTok{\textquotesingle{}factory\_db\textquotesingle{}}\NormalTok{,}
+                  \AttributeTok{username=}\StringTok{\textquotesingle{}root\textquotesingle{}}\NormalTok{,}
+                  \AttributeTok{password=}\StringTok{\textquotesingle{}\textquotesingle{}}\NormalTok{, }
+                  \AttributeTok{host=}\StringTok{\textquotesingle{}localhost\textquotesingle{}}\NormalTok{,}
+                  \AttributeTok{port=}\DecValTok{3306}\NormalTok{)}
+\NormalTok{knitr}\SpecialCharTok{::}\NormalTok{opts\_chunk}\SpecialCharTok{$}\FunctionTok{set}\NormalTok{(}\AttributeTok{connection =} \StringTok{"bakti"}\NormalTok{)   }\CommentTok{\# set up the connection }
+\end{Highlighting}
+\end{Shaded}
+
+After set up the connection and save it into the workspace. Next, we can run SQL in a code chunk of type sql. By setting the connection in the code chuck and adding the option output.var, the resulting table from the SQL is written into a variable in R.
+
+\begin{verbatim}
+'''{sql connection=bakti, output.var="report_model_by_make"} 
+      Your SQL code Here
+'''
+\end{verbatim}
+
+\hypertarget{inner-join}{%
+\section{Inner Join}\label{inner-join}}
+
+Let's say we wanted to get a list of those customers who placed an order and the details of the order they placed. This would be a perfect fit for an inner join, since an inner join returns records at the intersection of the two tables.
+
+\begin{Shaded}
+\begin{Highlighting}[]
+\NormalTok{SELECT OrderID, CustomerName}
+\NormalTok{  FROM Orders O}
+\NormalTok{    INNER JOIN Customers C}
+\NormalTok{      ON O.CustomerID }\OtherTok{=}\NormalTok{ C.CustomerID}
+\end{Highlighting}
+\end{Shaded}
+
+\begin{Shaded}
+\begin{Highlighting}[]
+\FunctionTok{library}\NormalTok{(DT)}
+\FunctionTok{datatable}\NormalTok{(Inner1, }
+          \AttributeTok{caption =}\NormalTok{ htmltools}\SpecialCharTok{::}\NormalTok{tags}\SpecialCharTok{$}\FunctionTok{caption}\NormalTok{(}
+            \AttributeTok{style =} \StringTok{\textquotesingle{}caption{-}side: bottom; text{-}align: center;\textquotesingle{}}\NormalTok{, }
+\NormalTok{            htmltools}\SpecialCharTok{::}\FunctionTok{em}\NormalTok{(}\StringTok{\textquotesingle{}Table 3: SQL Inner Join Two Tables.\textquotesingle{}}\NormalTok{)))}
+\end{Highlighting}
+\end{Shaded}
+
+The following SQL statement selects all orders with customer and shipper information:
+
+\begin{Shaded}
+\begin{Highlighting}[]
+\NormalTok{SELECT }\SpecialCharTok{*} 
+  \FunctionTok{FROM}\NormalTok{ ((Orders O}
+\NormalTok{    INNER JOIN Customers C}
+\NormalTok{      ON }\AttributeTok{O.CustomerID =}\NormalTok{ C.CustomerID)}
+\NormalTok{    INNER JOIN Shippers S }
+\NormalTok{      ON }\AttributeTok{O.ShipperID =}\NormalTok{ S.ShipperID)}
+\end{Highlighting}
+\end{Shaded}
+
+\begin{Shaded}
+\begin{Highlighting}[]
+\FunctionTok{datatable}\NormalTok{(Inner2, }
+          \AttributeTok{caption =}\NormalTok{ htmltools}\SpecialCharTok{::}\NormalTok{tags}\SpecialCharTok{$}\FunctionTok{caption}\NormalTok{(}
+            \AttributeTok{style =} \StringTok{\textquotesingle{}caption{-}side: bottom; text{-}align: center;\textquotesingle{}}\NormalTok{, }
+\NormalTok{            htmltools}\SpecialCharTok{::}\FunctionTok{em}\NormalTok{(}\StringTok{\textquotesingle{}Table 4: SQL Inner Join Three Tables.\textquotesingle{}}\NormalTok{)),}
+          \AttributeTok{extensions =} \StringTok{\textquotesingle{}FixedColumns\textquotesingle{}}\NormalTok{,}
+          \AttributeTok{options =} \FunctionTok{list}\NormalTok{(}\AttributeTok{scrollX =} \ConstantTok{TRUE}\NormalTok{, }\AttributeTok{fixedColumns =} \ConstantTok{TRUE}\NormalTok{)}
+\NormalTok{          )}
+\end{Highlighting}
+\end{Shaded}
+
+\hypertarget{left-join}{%
+\section{Left Join}\label{left-join}}
+
+If we wanted to simply append information about orders to our customers table, regardless of whether a customer placed an order or not, we would use a left join. A left join returns all records from table A and any matching records from table B. The result is NULL from the right side, if there is no match.
+
+\begin{Shaded}
+\begin{Highlighting}[]
+\NormalTok{SELECT CustomerName, OrderID}
+\NormalTok{  FROM Customers C}
+\NormalTok{    LEFT JOIN Orders O}
+\NormalTok{      ON C.CustomerID }\OtherTok{=}\NormalTok{ O.CustomerID}
+\NormalTok{        ORDER BY C.CustomerName}
+\end{Highlighting}
+\end{Shaded}
+
+\begin{Shaded}
+\begin{Highlighting}[]
+\FunctionTok{datatable}\NormalTok{(Left, }
+          \AttributeTok{caption =}\NormalTok{ htmltools}\SpecialCharTok{::}\NormalTok{tags}\SpecialCharTok{$}\FunctionTok{caption}\NormalTok{(}
+            \AttributeTok{style =} \StringTok{\textquotesingle{}caption{-}side: bottom; text{-}align: center;\textquotesingle{}}\NormalTok{, }
+\NormalTok{            htmltools}\SpecialCharTok{::}\FunctionTok{em}\NormalTok{(}\StringTok{\textquotesingle{}Table 5: SQL Left Join Two Tables.\textquotesingle{}}\NormalTok{)))}
+\end{Highlighting}
+\end{Shaded}
+
+\hypertarget{right-join}{%
+\section{Right Join}\label{right-join}}
+
+The following SQL statement will return all employees, and any orders they might have placed. The result is NULL from the left side, when there is no match.
+
+\begin{Shaded}
+\begin{Highlighting}[]
+\NormalTok{SELECT OrderID, LastName, FirstName}
+\NormalTok{  FROM Orders O}
+\NormalTok{    RIGHT JOIN Employees E}
+\NormalTok{      ON O.EmployeeID }\OtherTok{=}\NormalTok{ E.EmployeeID}
+\NormalTok{        ORDER BY O.OrderID}
+\end{Highlighting}
+\end{Shaded}
+
+\begin{Shaded}
+\begin{Highlighting}[]
+\FunctionTok{datatable}\NormalTok{(Right, }
+          \AttributeTok{caption =}\NormalTok{ htmltools}\SpecialCharTok{::}\NormalTok{tags}\SpecialCharTok{$}\FunctionTok{caption}\NormalTok{(}
+            \AttributeTok{style =} \StringTok{\textquotesingle{}caption{-}side: bottom; text{-}align: center;\textquotesingle{}}\NormalTok{, }
+\NormalTok{            htmltools}\SpecialCharTok{::}\FunctionTok{em}\NormalTok{(}\StringTok{\textquotesingle{}Table 6: SQL Right Join Two Tables.\textquotesingle{}}\NormalTok{)))}
+\end{Highlighting}
+\end{Shaded}
+
+\hypertarget{full-join}{%
+\section{Full Join}\label{full-join}}
+
+The FULL OUTER JOIN keyword returns all records when there is a match in left (table1) or right (table2) table records. FULL OUTER JOIN, FULL JOIN, and JOIN (MariaDB) are the same. The following SQL statement selects all customers, and all orders:
+
+\begin{Shaded}
+\begin{Highlighting}[]
+\NormalTok{SELECT CustomerName, OrderID}
+\NormalTok{  FROM Customers C}
+\NormalTok{    JOIN Orders O}
+\NormalTok{      ON C.CustomerID}\OtherTok{=}\NormalTok{O.CustomerID}
+\NormalTok{        ORDER BY C.CustomerName}
+\end{Highlighting}
+\end{Shaded}
+
+\begin{Shaded}
+\begin{Highlighting}[]
+\FunctionTok{datatable}\NormalTok{(Full, }
+          \AttributeTok{caption =}\NormalTok{ htmltools}\SpecialCharTok{::}\NormalTok{tags}\SpecialCharTok{$}\FunctionTok{caption}\NormalTok{(}
+            \AttributeTok{style =} \StringTok{\textquotesingle{}caption{-}side: bottom; text{-}align: center;\textquotesingle{}}\NormalTok{, }
+\NormalTok{            htmltools}\SpecialCharTok{::}\FunctionTok{em}\NormalTok{(}\StringTok{\textquotesingle{}Table 7: SQL Full Join Two Tables.\textquotesingle{}}\NormalTok{)))}
+\end{Highlighting}
+\end{Shaded}
+
+\hypertarget{self-join}{%
+\section{Self JOIN}\label{self-join}}
+
+A self JOIN is a regular join, but the table is joined with itself. The following SQL statement matches customers that are from the same city:
+
+\begin{Shaded}
+\begin{Highlighting}[]
+\NormalTok{SELECT A.CustomerName AS CustomerName1, }
+\NormalTok{       B.CustomerName AS CustomerName2, }
+\NormalTok{       A.City}
+\NormalTok{  FROM Customers A, }
+\NormalTok{       Customers B}
+\NormalTok{    WHERE A.CustomerID }\SpecialCharTok{\textless{}}\ErrorTok{\textgreater{}}\NormalTok{ B.CustomerID}
+\NormalTok{      AND A.City }\OtherTok{=}\NormalTok{ B.City}
+\NormalTok{        ORDER BY A.City}
+\end{Highlighting}
+\end{Shaded}
+
+\begin{Shaded}
+\begin{Highlighting}[]
+\FunctionTok{datatable}\NormalTok{(Self, }
+          \AttributeTok{caption =}\NormalTok{ htmltools}\SpecialCharTok{::}\NormalTok{tags}\SpecialCharTok{$}\FunctionTok{caption}\NormalTok{(}
+            \AttributeTok{style =} \StringTok{\textquotesingle{}caption{-}side: bottom; text{-}align: center;\textquotesingle{}}\NormalTok{, }
+\NormalTok{            htmltools}\SpecialCharTok{::}\FunctionTok{em}\NormalTok{(}\StringTok{\textquotesingle{}Table 8: SQL Self Join Two Tables.\textquotesingle{}}\NormalTok{)))}
+\end{Highlighting}
+\end{Shaded}
+
+After finishing the work with the database, close the connection.
+
+\begin{Shaded}
+\begin{Highlighting}[]
+\NormalTok{DBI}\SpecialCharTok{::}\FunctionTok{dbDisconnect}\NormalTok{(bakti)}
+\end{Highlighting}
+\end{Shaded}
+
+\hypertarget{your-job-2}{%
+\section{Your Job}\label{your-job-2}}
+
+\begin{enumerate}
+\def\labelenumi{\arabic{enumi}.}
+\item
+  Apply Left join and Right join to returns all records from table Orders and any matching records from table Suppliers.
+\item
+  Choose the correct JOIN clause to select all records from the two tables (Orders and Suppliers) where there is a match in both tables.
+\item
+  Choose the correct JOIN clause to select all the records from the Suppliers table plus all the matches in the Orders table.
 \end{enumerate}
 
 \hypertarget{referensi}{%

@@ -31,16 +31,16 @@
   
   
 <link rel="prev" href="connecting-r-to-sql.html"/>
-<link rel="next" href="join-table-in-sql.html"/>
-<script src="libs/jquery-3.6.0/jquery-3.6.0.min.js"></script>
+<link rel="next" href="database-normalization-in-sql.html"/>
+<script src="libs/jquery/jquery-3.6.0.min.js"></script>
 <script src="https://cdn.jsdelivr.net/npm/fuse.js@6.4.6/dist/fuse.min.js"></script>
-<link href="libs/gitbook-2.6.7/css/style.css" rel="stylesheet" />
-<link href="libs/gitbook-2.6.7/css/plugin-table.css" rel="stylesheet" />
-<link href="libs/gitbook-2.6.7/css/plugin-bookdown.css" rel="stylesheet" />
-<link href="libs/gitbook-2.6.7/css/plugin-highlight.css" rel="stylesheet" />
-<link href="libs/gitbook-2.6.7/css/plugin-search.css" rel="stylesheet" />
-<link href="libs/gitbook-2.6.7/css/plugin-fontsettings.css" rel="stylesheet" />
-<link href="libs/gitbook-2.6.7/css/plugin-clipboard.css" rel="stylesheet" />
+<link href="libs/gitbook/css/style.css" rel="stylesheet" />
+<link href="libs/gitbook/css/plugin-table.css" rel="stylesheet" />
+<link href="libs/gitbook/css/plugin-bookdown.css" rel="stylesheet" />
+<link href="libs/gitbook/css/plugin-highlight.css" rel="stylesheet" />
+<link href="libs/gitbook/css/plugin-search.css" rel="stylesheet" />
+<link href="libs/gitbook/css/plugin-fontsettings.css" rel="stylesheet" />
+<link href="libs/gitbook/css/plugin-clipboard.css" rel="stylesheet" />
 
 
 
@@ -49,9 +49,9 @@
 
 
 
-<link href="libs/anchor-sections-1.1.0/anchor-sections.css" rel="stylesheet" />
-<link href="libs/anchor-sections-1.1.0/anchor-sections-hash.css" rel="stylesheet" />
-<script src="libs/anchor-sections-1.1.0/anchor-sections.js"></script>
+<link href="libs/anchor-sections/anchor-sections.css" rel="stylesheet" />
+<link href="libs/anchor-sections/anchor-sections-hash.css" rel="stylesheet" />
+<script src="libs/anchor-sections/anchor-sections.js"></script>
 
 
 <style type="text/css">
@@ -251,41 +251,29 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
 <li class="chapter" data-level="3.14" data-path="fundamental-sql-in-r.html"><a href="fundamental-sql-in-r.html#previewing-.sql-in-r"><i class="fa fa-check"></i><b>3.14</b> Previewing <code>.sql</code> in R</a></li>
 <li class="chapter" data-level="3.15" data-path="fundamental-sql-in-r.html"><a href="fundamental-sql-in-r.html#sql-chunks-in-rmarkdown"><i class="fa fa-check"></i><b>3.15</b> SQL chunks in RMarkdown</a></li>
 </ul></li>
-<li class="chapter" data-level="4" data-path="join-table-in-sql.html"><a href="join-table-in-sql.html"><i class="fa fa-check"></i><b>4</b> Join Table in SQL</a>
+<li class="chapter" data-level="4" data-path="database-normalization-in-sql.html"><a href="database-normalization-in-sql.html"><i class="fa fa-check"></i><b>4</b> Database Normalization in SQL</a>
 <ul>
-<li class="chapter" data-level="4.1" data-path="join-table-in-sql.html"><a href="join-table-in-sql.html#relational-database"><i class="fa fa-check"></i><b>4.1</b> Relational Database</a>
-<ul>
-<li class="chapter" data-level="4.1.1" data-path="join-table-in-sql.html"><a href="join-table-in-sql.html#table-customers"><i class="fa fa-check"></i><b>4.1.1</b> Table Customers</a></li>
-<li class="chapter" data-level="4.1.2" data-path="join-table-in-sql.html"><a href="join-table-in-sql.html#table-orders"><i class="fa fa-check"></i><b>4.1.2</b> Table Orders</a></li>
+<li class="chapter" data-level="4.1" data-path="database-normalization-in-sql.html"><a href="database-normalization-in-sql.html#the-process-of-normalization"><i class="fa fa-check"></i><b>4.1</b> The Process of Normalization</a></li>
+<li class="chapter" data-level="4.2" data-path="database-normalization-in-sql.html"><a href="database-normalization-in-sql.html#simple-database-normalization"><i class="fa fa-check"></i><b>4.2</b> Simple Database Normalization</a></li>
+<li class="chapter" data-level="4.3" data-path="database-normalization-in-sql.html"><a href="database-normalization-in-sql.html#your-job-1"><i class="fa fa-check"></i><b>4.3</b> Your Job</a></li>
 </ul></li>
-<li class="chapter" data-level="4.2" data-path="join-table-in-sql.html"><a href="join-table-in-sql.html#relational-model"><i class="fa fa-check"></i><b>4.2</b> Relational Model</a></li>
-<li class="chapter" data-level="4.3" data-path="join-table-in-sql.html"><a href="join-table-in-sql.html#factory-database"><i class="fa fa-check"></i><b>4.3</b> Factory Database</a></li>
-<li class="chapter" data-level="4.4" data-path="join-table-in-sql.html"><a href="join-table-in-sql.html#basic-sql-join-types"><i class="fa fa-check"></i><b>4.4</b> Basic SQL Join Types</a></li>
-<li class="chapter" data-level="4.5" data-path="join-table-in-sql.html"><a href="join-table-in-sql.html#connect-to-mysql"><i class="fa fa-check"></i><b>4.5</b> Connect to MySQL</a></li>
-<li class="chapter" data-level="4.6" data-path="join-table-in-sql.html"><a href="join-table-in-sql.html#inner-join"><i class="fa fa-check"></i><b>4.6</b> Inner Join</a></li>
-<li class="chapter" data-level="4.7" data-path="join-table-in-sql.html"><a href="join-table-in-sql.html#left-join"><i class="fa fa-check"></i><b>4.7</b> Left Join</a></li>
-<li class="chapter" data-level="4.8" data-path="join-table-in-sql.html"><a href="join-table-in-sql.html#right-join"><i class="fa fa-check"></i><b>4.8</b> Right Join</a></li>
-<li class="chapter" data-level="4.9" data-path="join-table-in-sql.html"><a href="join-table-in-sql.html#full-join"><i class="fa fa-check"></i><b>4.9</b> Full Join</a></li>
-<li class="chapter" data-level="4.10" data-path="join-table-in-sql.html"><a href="join-table-in-sql.html#self-join"><i class="fa fa-check"></i><b>4.10</b> Self JOIN</a></li>
-<li class="chapter" data-level="4.11" data-path="join-table-in-sql.html"><a href="join-table-in-sql.html#your-job-1"><i class="fa fa-check"></i><b>4.11</b> Your Job</a></li>
-</ul></li>
-<li class="chapter" data-level="5" data-path="join-table-in-sql-1.html"><a href="join-table-in-sql-1.html"><i class="fa fa-check"></i><b>5</b> Join Table in SQL</a>
+<li class="chapter" data-level="5" data-path="join-table-in-sql.html"><a href="join-table-in-sql.html"><i class="fa fa-check"></i><b>5</b> Join Table in SQL</a>
 <ul>
-<li class="chapter" data-level="5.1" data-path="join-table-in-sql-1.html"><a href="join-table-in-sql-1.html#relational-database-1"><i class="fa fa-check"></i><b>5.1</b> Relational Database</a>
+<li class="chapter" data-level="5.1" data-path="join-table-in-sql.html"><a href="join-table-in-sql.html#relational-database"><i class="fa fa-check"></i><b>5.1</b> Relational Database</a>
 <ul>
-<li class="chapter" data-level="5.1.1" data-path="join-table-in-sql-1.html"><a href="join-table-in-sql-1.html#table-customers-1"><i class="fa fa-check"></i><b>5.1.1</b> Table Customers</a></li>
-<li class="chapter" data-level="5.1.2" data-path="join-table-in-sql-1.html"><a href="join-table-in-sql-1.html#table-orders-1"><i class="fa fa-check"></i><b>5.1.2</b> Table Orders</a></li>
+<li class="chapter" data-level="5.1.1" data-path="join-table-in-sql.html"><a href="join-table-in-sql.html#table-customers"><i class="fa fa-check"></i><b>5.1.1</b> Table Customers</a></li>
+<li class="chapter" data-level="5.1.2" data-path="join-table-in-sql.html"><a href="join-table-in-sql.html#table-orders"><i class="fa fa-check"></i><b>5.1.2</b> Table Orders</a></li>
 </ul></li>
-<li class="chapter" data-level="5.2" data-path="join-table-in-sql-1.html"><a href="join-table-in-sql-1.html#relational-model-1"><i class="fa fa-check"></i><b>5.2</b> Relational Model</a></li>
-<li class="chapter" data-level="5.3" data-path="join-table-in-sql-1.html"><a href="join-table-in-sql-1.html#factory-database-1"><i class="fa fa-check"></i><b>5.3</b> Factory Database</a></li>
-<li class="chapter" data-level="5.4" data-path="join-table-in-sql-1.html"><a href="join-table-in-sql-1.html#basic-sql-join-types-1"><i class="fa fa-check"></i><b>5.4</b> Basic SQL Join Types</a></li>
-<li class="chapter" data-level="5.5" data-path="join-table-in-sql-1.html"><a href="join-table-in-sql-1.html#connect-to-mysql-1"><i class="fa fa-check"></i><b>5.5</b> Connect to MySQL</a></li>
-<li class="chapter" data-level="5.6" data-path="join-table-in-sql-1.html"><a href="join-table-in-sql-1.html#inner-join-1"><i class="fa fa-check"></i><b>5.6</b> Inner Join</a></li>
-<li class="chapter" data-level="5.7" data-path="join-table-in-sql-1.html"><a href="join-table-in-sql-1.html#left-join-1"><i class="fa fa-check"></i><b>5.7</b> Left Join</a></li>
-<li class="chapter" data-level="5.8" data-path="join-table-in-sql-1.html"><a href="join-table-in-sql-1.html#right-join-1"><i class="fa fa-check"></i><b>5.8</b> Right Join</a></li>
-<li class="chapter" data-level="5.9" data-path="join-table-in-sql-1.html"><a href="join-table-in-sql-1.html#full-join-1"><i class="fa fa-check"></i><b>5.9</b> Full Join</a></li>
-<li class="chapter" data-level="5.10" data-path="join-table-in-sql-1.html"><a href="join-table-in-sql-1.html#self-join-1"><i class="fa fa-check"></i><b>5.10</b> Self JOIN</a></li>
-<li class="chapter" data-level="5.11" data-path="join-table-in-sql-1.html"><a href="join-table-in-sql-1.html#your-job-2"><i class="fa fa-check"></i><b>5.11</b> Your Job</a></li>
+<li class="chapter" data-level="5.2" data-path="join-table-in-sql.html"><a href="join-table-in-sql.html#relational-model"><i class="fa fa-check"></i><b>5.2</b> Relational Model</a></li>
+<li class="chapter" data-level="5.3" data-path="join-table-in-sql.html"><a href="join-table-in-sql.html#factory-database"><i class="fa fa-check"></i><b>5.3</b> Factory Database</a></li>
+<li class="chapter" data-level="5.4" data-path="join-table-in-sql.html"><a href="join-table-in-sql.html#basic-sql-join-types"><i class="fa fa-check"></i><b>5.4</b> Basic SQL Join Types</a></li>
+<li class="chapter" data-level="5.5" data-path="join-table-in-sql.html"><a href="join-table-in-sql.html#connect-to-mysql"><i class="fa fa-check"></i><b>5.5</b> Connect to MySQL</a></li>
+<li class="chapter" data-level="5.6" data-path="join-table-in-sql.html"><a href="join-table-in-sql.html#inner-join"><i class="fa fa-check"></i><b>5.6</b> Inner Join</a></li>
+<li class="chapter" data-level="5.7" data-path="join-table-in-sql.html"><a href="join-table-in-sql.html#left-join"><i class="fa fa-check"></i><b>5.7</b> Left Join</a></li>
+<li class="chapter" data-level="5.8" data-path="join-table-in-sql.html"><a href="join-table-in-sql.html#right-join"><i class="fa fa-check"></i><b>5.8</b> Right Join</a></li>
+<li class="chapter" data-level="5.9" data-path="join-table-in-sql.html"><a href="join-table-in-sql.html#full-join"><i class="fa fa-check"></i><b>5.9</b> Full Join</a></li>
+<li class="chapter" data-level="5.10" data-path="join-table-in-sql.html"><a href="join-table-in-sql.html#self-join"><i class="fa fa-check"></i><b>5.10</b> Self JOIN</a></li>
+<li class="chapter" data-level="5.11" data-path="join-table-in-sql.html"><a href="join-table-in-sql.html#your-job-2"><i class="fa fa-check"></i><b>5.11</b> Your Job</a></li>
 </ul></li>
 <li class="chapter" data-level="6" data-path="referensi.html"><a href="referensi.html"><i class="fa fa-check"></i><b>6</b> Referensi</a></li>
 <li class="divider"></li>
@@ -314,59 +302,59 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
 <div id="connecting-r-to-mysql" class="section level2 hasAnchor" number="3.1">
 <h2><span class="header-section-number">3.1</span> Connecting R to MySQL<a href="fundamental-sql-in-r.html#connecting-r-to-mysql" class="anchor-section" aria-label="Anchor link to header"></a></h2>
 <p>Connecting R to MySQL is made very easy with the <code>RMySQL</code> package. To connect to a MySQL database simply install the package and load the library.</p>
-<div class="sourceCode" id="cb1"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb1-1"><a href="fundamental-sql-in-r.html#cb1-1" tabindex="-1"></a><span class="fu">library</span>(RMySQL)</span>
-<span id="cb1-2"><a href="fundamental-sql-in-r.html#cb1-2" tabindex="-1"></a>MySQL <span class="ot">&lt;-</span> <span class="fu">dbConnect</span>(<span class="fu">MySQL</span>(), </span>
-<span id="cb1-3"><a href="fundamental-sql-in-r.html#cb1-3" tabindex="-1"></a>                  <span class="at">user=</span><span class="st">&#39;root&#39;</span>,</span>
-<span id="cb1-4"><a href="fundamental-sql-in-r.html#cb1-4" tabindex="-1"></a>                  <span class="at">password=</span><span class="st">&#39;&#39;</span>, </span>
-<span id="cb1-5"><a href="fundamental-sql-in-r.html#cb1-5" tabindex="-1"></a>                  <span class="at">dbname=</span><span class="st">&#39;mysql&#39;</span>, </span>
-<span id="cb1-6"><a href="fundamental-sql-in-r.html#cb1-6" tabindex="-1"></a>                  <span class="at">host=</span><span class="st">&#39;localhost&#39;</span>)</span>
-<span id="cb1-7"><a href="fundamental-sql-in-r.html#cb1-7" tabindex="-1"></a><span class="fu">dbListTables</span>(MySQL)                  <span class="co"># a list of the tables in our connection</span></span></code></pre></div>
+<div class="sourceCode" id="cb21"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb21-1"><a href="fundamental-sql-in-r.html#cb21-1" tabindex="-1"></a><span class="fu">library</span>(RMySQL)</span>
+<span id="cb21-2"><a href="fundamental-sql-in-r.html#cb21-2" tabindex="-1"></a>MySQL <span class="ot">&lt;-</span> <span class="fu">dbConnect</span>(<span class="fu">MySQL</span>(), </span>
+<span id="cb21-3"><a href="fundamental-sql-in-r.html#cb21-3" tabindex="-1"></a>                  <span class="at">user=</span><span class="st">&#39;root&#39;</span>,</span>
+<span id="cb21-4"><a href="fundamental-sql-in-r.html#cb21-4" tabindex="-1"></a>                  <span class="at">password=</span><span class="st">&#39;&#39;</span>, </span>
+<span id="cb21-5"><a href="fundamental-sql-in-r.html#cb21-5" tabindex="-1"></a>                  <span class="at">dbname=</span><span class="st">&#39;mysql&#39;</span>, </span>
+<span id="cb21-6"><a href="fundamental-sql-in-r.html#cb21-6" tabindex="-1"></a>                  <span class="at">host=</span><span class="st">&#39;localhost&#39;</span>)</span>
+<span id="cb21-7"><a href="fundamental-sql-in-r.html#cb21-7" tabindex="-1"></a><span class="fu">dbListTables</span>(MySQL)                  <span class="co"># a list of the tables in our connection</span></span></code></pre></div>
 <p><em>Note:</em> Open and your XAMPP, click start on Apache and MySQL. Then, make sure you have the admin privilege before creating any database.</p>
 </div>
 <div id="create-db" class="section level2 hasAnchor" number="3.2">
 <h2><span class="header-section-number">3.2</span> Create DB<a href="fundamental-sql-in-r.html#create-db" class="anchor-section" aria-label="Anchor link to header"></a></h2>
 <p>If you want to create a new database, then the CREATE DATABASE statement would be as shown below:</p>
-<div class="sourceCode" id="cb2"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb2-1"><a href="fundamental-sql-in-r.html#cb2-1" tabindex="-1"></a><span class="fu">dbExecute</span>(MySQL, <span class="st">&quot;CREATE DATABASE factory_db&quot;</span>)</span></code></pre></div>
+<div class="sourceCode" id="cb22"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb22-1"><a href="fundamental-sql-in-r.html#cb22-1" tabindex="-1"></a><span class="fu">dbExecute</span>(MySQL, <span class="st">&quot;CREATE DATABASE factory_db&quot;</span>)</span></code></pre></div>
 <p>The result show us <code>1</code>, means that you have succeeded to create a database.</p>
 </div>
 <div id="drop-db" class="section level2 hasAnchor" number="3.3">
 <h2><span class="header-section-number">3.3</span> Drop DB<a href="fundamental-sql-in-r.html#drop-db" class="anchor-section" aria-label="Anchor link to header"></a></h2>
 <p>If you want to delete an existing database, then the DROP DATABASE statement would be as shown below:</p>
-<div class="sourceCode" id="cb3"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb3-1"><a href="fundamental-sql-in-r.html#cb3-1" tabindex="-1"></a><span class="fu">dbExecute</span>(MySQL, <span class="st">&quot;DROP DATABASE factory_db&quot;</span>)</span></code></pre></div>
+<div class="sourceCode" id="cb23"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb23-1"><a href="fundamental-sql-in-r.html#cb23-1" tabindex="-1"></a><span class="fu">dbExecute</span>(MySQL, <span class="st">&quot;DROP DATABASE factory_db&quot;</span>)</span></code></pre></div>
 <p>The result show us <code>0</code>, means that you have succeeded to remove (Drop) a database.</p>
 </div>
 <div id="create-table" class="section level2 hasAnchor" number="3.4">
 <h2><span class="header-section-number">3.4</span> Create Table<a href="fundamental-sql-in-r.html#create-table" class="anchor-section" aria-label="Anchor link to header"></a></h2>
 <p>Once you have a database, you can continue to create table as shown below:</p>
-<div class="sourceCode" id="cb4"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb4-1"><a href="fundamental-sql-in-r.html#cb4-1" tabindex="-1"></a><span class="fu">dbExecute</span>(MySQL, <span class="st">&quot;CREATE TABLE Persons(</span></span>
-<span id="cb4-2"><a href="fundamental-sql-in-r.html#cb4-2" tabindex="-1"></a><span class="st">                 PersonID int,</span></span>
-<span id="cb4-3"><a href="fundamental-sql-in-r.html#cb4-3" tabindex="-1"></a><span class="st">                 LastName varchar(255),</span></span>
-<span id="cb4-4"><a href="fundamental-sql-in-r.html#cb4-4" tabindex="-1"></a><span class="st">                 FirstName varchar(255),</span></span>
-<span id="cb4-5"><a href="fundamental-sql-in-r.html#cb4-5" tabindex="-1"></a><span class="st">                 Address varchar(255),</span></span>
-<span id="cb4-6"><a href="fundamental-sql-in-r.html#cb4-6" tabindex="-1"></a><span class="st">                 City varchar(255))&quot;</span>)</span></code></pre></div>
+<div class="sourceCode" id="cb24"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb24-1"><a href="fundamental-sql-in-r.html#cb24-1" tabindex="-1"></a><span class="fu">dbExecute</span>(MySQL, <span class="st">&quot;CREATE TABLE Persons(</span></span>
+<span id="cb24-2"><a href="fundamental-sql-in-r.html#cb24-2" tabindex="-1"></a><span class="st">                 PersonID int,</span></span>
+<span id="cb24-3"><a href="fundamental-sql-in-r.html#cb24-3" tabindex="-1"></a><span class="st">                 LastName varchar(255),</span></span>
+<span id="cb24-4"><a href="fundamental-sql-in-r.html#cb24-4" tabindex="-1"></a><span class="st">                 FirstName varchar(255),</span></span>
+<span id="cb24-5"><a href="fundamental-sql-in-r.html#cb24-5" tabindex="-1"></a><span class="st">                 Address varchar(255),</span></span>
+<span id="cb24-6"><a href="fundamental-sql-in-r.html#cb24-6" tabindex="-1"></a><span class="st">                 City varchar(255))&quot;</span>)</span></code></pre></div>
 </div>
 <div id="insert-value" class="section level2 hasAnchor" number="3.5">
 <h2><span class="header-section-number">3.5</span> Insert Value<a href="fundamental-sql-in-r.html#insert-value" class="anchor-section" aria-label="Anchor link to header"></a></h2>
 <p>If you are adding values for all the columns of the table, you do not need to specify the column names in the SQL query. However, make sure the order of the values is in the same order as the columns in the table. The INSERT INTO syntax would be as follows:</p>
-<div class="sourceCode" id="cb5"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb5-1"><a href="fundamental-sql-in-r.html#cb5-1" tabindex="-1"></a><span class="fu">dbExecute</span>(MySQL,<span class="st">&quot;INSERT INTO Persons(PersonID,LastName,FirstName, Address,City)</span></span>
-<span id="cb5-2"><a href="fundamental-sql-in-r.html#cb5-2" tabindex="-1"></a><span class="st">                 VALUES(1,&#39;Siregar&#39;,&#39;Bakti&#39;, &#39;Jl.Bahagia&#39;,&#39;Tangerang&#39;)&quot;</span>)</span></code></pre></div>
+<div class="sourceCode" id="cb25"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb25-1"><a href="fundamental-sql-in-r.html#cb25-1" tabindex="-1"></a><span class="fu">dbExecute</span>(MySQL,<span class="st">&quot;INSERT INTO Persons(PersonID,LastName,FirstName, Address,City)</span></span>
+<span id="cb25-2"><a href="fundamental-sql-in-r.html#cb25-2" tabindex="-1"></a><span class="st">                 VALUES(1,&#39;Siregar&#39;,&#39;Bakti&#39;, &#39;Jl.Bahagia&#39;,&#39;Tangerang&#39;)&quot;</span>)</span></code></pre></div>
 </div>
 <div id="truncate-table" class="section level2 hasAnchor" number="3.6">
 <h2><span class="header-section-number">3.6</span> Truncate Table<a href="fundamental-sql-in-r.html#truncate-table" class="anchor-section" aria-label="Anchor link to header"></a></h2>
 <p>The TRUNCATE TABLE statement is used to delete the data inside a table, but not the table itself.</p>
-<div class="sourceCode" id="cb6"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb6-1"><a href="fundamental-sql-in-r.html#cb6-1" tabindex="-1"></a><span class="fu">dbExecute</span>(MySQL, <span class="st">&quot;TRUNCATE TABLE Persons&quot;</span>)</span></code></pre></div>
+<div class="sourceCode" id="cb26"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb26-1"><a href="fundamental-sql-in-r.html#cb26-1" tabindex="-1"></a><span class="fu">dbExecute</span>(MySQL, <span class="st">&quot;TRUNCATE TABLE Persons&quot;</span>)</span></code></pre></div>
 </div>
 <div id="drop-table" class="section level2 hasAnchor" number="3.7">
 <h2><span class="header-section-number">3.7</span> Drop Table<a href="fundamental-sql-in-r.html#drop-table" class="anchor-section" aria-label="Anchor link to header"></a></h2>
 <p>The DROP TABLE statement is used to drop an existing table in a database.</p>
-<div class="sourceCode" id="cb7"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb7-1"><a href="fundamental-sql-in-r.html#cb7-1" tabindex="-1"></a><span class="fu">dbExecute</span>(MySQL, <span class="st">&quot;DROP TABLE Persons&quot;</span>)</span></code></pre></div>
+<div class="sourceCode" id="cb27"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb27-1"><a href="fundamental-sql-in-r.html#cb27-1" tabindex="-1"></a><span class="fu">dbExecute</span>(MySQL, <span class="st">&quot;DROP TABLE Persons&quot;</span>)</span></code></pre></div>
 <hr />
 </div>
 <div id="write-table" class="section level2 hasAnchor" number="3.8">
 <h2><span class="header-section-number">3.8</span> Write Table<a href="fundamental-sql-in-r.html#write-table" class="anchor-section" aria-label="Anchor link to header"></a></h2>
 <p>The key here is the <code>dbWriteTable</code> function which allows us to write an R data frame directly to a database table. The data frame’s column names will be used as the database table’s fields.</p>
-<div class="sourceCode" id="cb8"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb8-1"><a href="fundamental-sql-in-r.html#cb8-1" tabindex="-1"></a>Orders      <span class="ot">&lt;-</span><span class="fu">read.csv</span>(<span class="st">&quot;data/Orders.csv&quot;</span>)  </span>
-<span id="cb8-2"><a href="fundamental-sql-in-r.html#cb8-2" tabindex="-1"></a><span class="fu">dbWriteTable</span>(MySQL, <span class="st">&quot;Orders&quot;</span>, Orders, <span class="at">append=</span>T) </span></code></pre></div>
+<div class="sourceCode" id="cb28"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb28-1"><a href="fundamental-sql-in-r.html#cb28-1" tabindex="-1"></a>Orders      <span class="ot">&lt;-</span><span class="fu">read.csv</span>(<span class="st">&quot;data/Orders.csv&quot;</span>)  </span>
+<span id="cb28-2"><a href="fundamental-sql-in-r.html#cb28-2" tabindex="-1"></a><span class="fu">dbWriteTable</span>(MySQL, <span class="st">&quot;Orders&quot;</span>, Orders, <span class="at">append=</span>T) </span></code></pre></div>
 </div>
 <div id="alter-table" class="section level2 hasAnchor" number="3.9">
 <h2><span class="header-section-number">3.9</span> Alter Table<a href="fundamental-sql-in-r.html#alter-table" class="anchor-section" aria-label="Anchor link to header"></a></h2>
@@ -375,19 +363,19 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
 <div id="add-column" class="section level2 hasAnchor" number="3.10">
 <h2><span class="header-section-number">3.10</span> Add Column<a href="fundamental-sql-in-r.html#add-column" class="anchor-section" aria-label="Anchor link to header"></a></h2>
 <p>To add a column in a table, use the following syntax:</p>
-<div class="sourceCode" id="cb9"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb9-1"><a href="fundamental-sql-in-r.html#cb9-1" tabindex="-1"></a><span class="fu">dbExecute</span>(MySQL, <span class="st">&quot;ALTER TABLE Orders</span></span>
-<span id="cb9-2"><a href="fundamental-sql-in-r.html#cb9-2" tabindex="-1"></a><span class="st">                 ADD Email varchar(255)&quot;</span>)</span></code></pre></div>
+<div class="sourceCode" id="cb29"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb29-1"><a href="fundamental-sql-in-r.html#cb29-1" tabindex="-1"></a><span class="fu">dbExecute</span>(MySQL, <span class="st">&quot;ALTER TABLE Orders</span></span>
+<span id="cb29-2"><a href="fundamental-sql-in-r.html#cb29-2" tabindex="-1"></a><span class="st">                 ADD Email varchar(255)&quot;</span>)</span></code></pre></div>
 </div>
 <div id="drop-column" class="section level2 hasAnchor" number="3.11">
 <h2><span class="header-section-number">3.11</span> Drop Column<a href="fundamental-sql-in-r.html#drop-column" class="anchor-section" aria-label="Anchor link to header"></a></h2>
 <p>To delete a column in a table, use the following syntax (notice that some database systems don’t allow deleting a column):</p>
-<div class="sourceCode" id="cb10"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb10-1"><a href="fundamental-sql-in-r.html#cb10-1" tabindex="-1"></a><span class="fu">dbSendQuery</span>(MySQL, <span class="st">&quot;ALTER TABLE Orders</span></span>
-<span id="cb10-2"><a href="fundamental-sql-in-r.html#cb10-2" tabindex="-1"></a><span class="st">                   DROP COLUMN Email&quot;</span>)</span></code></pre></div>
+<div class="sourceCode" id="cb30"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb30-1"><a href="fundamental-sql-in-r.html#cb30-1" tabindex="-1"></a><span class="fu">dbSendQuery</span>(MySQL, <span class="st">&quot;ALTER TABLE Orders</span></span>
+<span id="cb30-2"><a href="fundamental-sql-in-r.html#cb30-2" tabindex="-1"></a><span class="st">                   DROP COLUMN Email&quot;</span>)</span></code></pre></div>
 </div>
 <div id="modify-column" class="section level2 hasAnchor" number="3.12">
 <h2><span class="header-section-number">3.12</span> Modify Column<a href="fundamental-sql-in-r.html#modify-column" class="anchor-section" aria-label="Anchor link to header"></a></h2>
-<div class="sourceCode" id="cb11"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb11-1"><a href="fundamental-sql-in-r.html#cb11-1" tabindex="-1"></a><span class="fu">dbSendQuery</span>(MySQL,<span class="st">&quot; ALTER TABLE Orders</span></span>
-<span id="cb11-2"><a href="fundamental-sql-in-r.html#cb11-2" tabindex="-1"></a><span class="st">                  MODIFY COLUMN OrderDate date&quot;</span>)</span></code></pre></div>
+<div class="sourceCode" id="cb31"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb31-1"><a href="fundamental-sql-in-r.html#cb31-1" tabindex="-1"></a><span class="fu">dbSendQuery</span>(MySQL,<span class="st">&quot; ALTER TABLE Orders</span></span>
+<span id="cb31-2"><a href="fundamental-sql-in-r.html#cb31-2" tabindex="-1"></a><span class="st">                  MODIFY COLUMN OrderDate date&quot;</span>)</span></code></pre></div>
 </div>
 <div id="constraints" class="section level2 hasAnchor" number="3.13">
 <h2><span class="header-section-number">3.13</span> Constraints<a href="fundamental-sql-in-r.html#constraints" class="anchor-section" aria-label="Anchor link to header"></a></h2>
@@ -405,45 +393,45 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
 <div id="not-null" class="section level3 hasAnchor" number="3.13.1">
 <h3><span class="header-section-number">3.13.1</span> Not Null<a href="fundamental-sql-in-r.html#not-null" class="anchor-section" aria-label="Anchor link to header"></a></h3>
 <p>The following SQL ensures that the “ID”, “LastName”, and “FirstName” columns will NOT accept NULL values when the “Persons_NotNull” table is created:</p>
-<div class="sourceCode" id="cb12"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb12-1"><a href="fundamental-sql-in-r.html#cb12-1" tabindex="-1"></a><span class="fu">dbSendQuery</span>(MySQL,<span class="st">&quot;CREATE TABLE Person_NotNull (</span></span>
-<span id="cb12-2"><a href="fundamental-sql-in-r.html#cb12-2" tabindex="-1"></a><span class="st">                   ID int NOT NULL,</span></span>
-<span id="cb12-3"><a href="fundamental-sql-in-r.html#cb12-3" tabindex="-1"></a><span class="st">                   LastName varchar(255) NOT NULL,</span></span>
-<span id="cb12-4"><a href="fundamental-sql-in-r.html#cb12-4" tabindex="-1"></a><span class="st">                   FirstName varchar(255) NOT NULL,</span></span>
-<span id="cb12-5"><a href="fundamental-sql-in-r.html#cb12-5" tabindex="-1"></a><span class="st">                   Age int)&quot;</span>)</span></code></pre></div>
+<div class="sourceCode" id="cb32"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb32-1"><a href="fundamental-sql-in-r.html#cb32-1" tabindex="-1"></a><span class="fu">dbSendQuery</span>(MySQL,<span class="st">&quot;CREATE TABLE Person_NotNull (</span></span>
+<span id="cb32-2"><a href="fundamental-sql-in-r.html#cb32-2" tabindex="-1"></a><span class="st">                   ID int NOT NULL,</span></span>
+<span id="cb32-3"><a href="fundamental-sql-in-r.html#cb32-3" tabindex="-1"></a><span class="st">                   LastName varchar(255) NOT NULL,</span></span>
+<span id="cb32-4"><a href="fundamental-sql-in-r.html#cb32-4" tabindex="-1"></a><span class="st">                   FirstName varchar(255) NOT NULL,</span></span>
+<span id="cb32-5"><a href="fundamental-sql-in-r.html#cb32-5" tabindex="-1"></a><span class="st">                   Age int)&quot;</span>)</span></code></pre></div>
 </div>
 <div id="unique" class="section level3 hasAnchor" number="3.13.2">
 <h3><span class="header-section-number">3.13.2</span> Unique<a href="fundamental-sql-in-r.html#unique" class="anchor-section" aria-label="Anchor link to header"></a></h3>
 <p>The following SQL creates a UNIQUE constraint on the “ID” column when the “Persons” table is created:</p>
-<div class="sourceCode" id="cb13"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb13-1"><a href="fundamental-sql-in-r.html#cb13-1" tabindex="-1"></a><span class="fu">dbSendQuery</span>(MySQL,<span class="st">&quot;CREATE TABLE Persons_Unique (ID int NOT NULL UNIQUE,</span></span>
-<span id="cb13-2"><a href="fundamental-sql-in-r.html#cb13-2" tabindex="-1"></a><span class="st">                   LastName varchar(255) NOT NULL,</span></span>
-<span id="cb13-3"><a href="fundamental-sql-in-r.html#cb13-3" tabindex="-1"></a><span class="st">                   FirstName varchar(255) NOT NULL,</span></span>
-<span id="cb13-4"><a href="fundamental-sql-in-r.html#cb13-4" tabindex="-1"></a><span class="st">                   Age int)&quot;</span>)</span></code></pre></div>
+<div class="sourceCode" id="cb33"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb33-1"><a href="fundamental-sql-in-r.html#cb33-1" tabindex="-1"></a><span class="fu">dbSendQuery</span>(MySQL,<span class="st">&quot;CREATE TABLE Persons_Unique (ID int NOT NULL UNIQUE,</span></span>
+<span id="cb33-2"><a href="fundamental-sql-in-r.html#cb33-2" tabindex="-1"></a><span class="st">                   LastName varchar(255) NOT NULL,</span></span>
+<span id="cb33-3"><a href="fundamental-sql-in-r.html#cb33-3" tabindex="-1"></a><span class="st">                   FirstName varchar(255) NOT NULL,</span></span>
+<span id="cb33-4"><a href="fundamental-sql-in-r.html#cb33-4" tabindex="-1"></a><span class="st">                   Age int)&quot;</span>)</span></code></pre></div>
 <p>To create a UNIQUE constraint on the “ID” column when the table is already created, use the following SQL:</p>
-<div class="sourceCode" id="cb14"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb14-1"><a href="fundamental-sql-in-r.html#cb14-1" tabindex="-1"></a><span class="fu">dbSendQuery</span>(MySQL,<span class="st">&quot;ALTER TABLE Persons_Unique</span></span>
-<span id="cb14-2"><a href="fundamental-sql-in-r.html#cb14-2" tabindex="-1"></a><span class="st">                   ADD UNIQUE (ID)&quot;</span>)</span></code></pre></div>
+<div class="sourceCode" id="cb34"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb34-1"><a href="fundamental-sql-in-r.html#cb34-1" tabindex="-1"></a><span class="fu">dbSendQuery</span>(MySQL,<span class="st">&quot;ALTER TABLE Persons_Unique</span></span>
+<span id="cb34-2"><a href="fundamental-sql-in-r.html#cb34-2" tabindex="-1"></a><span class="st">                   ADD UNIQUE (ID)&quot;</span>)</span></code></pre></div>
 <p>To define a UNIQUE constraint on multiple columns, use the following SQL syntax:</p>
-<div class="sourceCode" id="cb15"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb15-1"><a href="fundamental-sql-in-r.html#cb15-1" tabindex="-1"></a><span class="fu">dbSendQuery</span>(MySQL,<span class="st">&quot;ALTER TABLE Persons_Unique</span></span>
-<span id="cb15-2"><a href="fundamental-sql-in-r.html#cb15-2" tabindex="-1"></a><span class="st">                  ADD CONSTRAINT UNIQUE (ID,LastName)&quot;</span></span></code></pre></div>
+<div class="sourceCode" id="cb35"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb35-1"><a href="fundamental-sql-in-r.html#cb35-1" tabindex="-1"></a><span class="fu">dbSendQuery</span>(MySQL,<span class="st">&quot;ALTER TABLE Persons_Unique</span></span>
+<span id="cb35-2"><a href="fundamental-sql-in-r.html#cb35-2" tabindex="-1"></a><span class="st">                  ADD CONSTRAINT UNIQUE (ID,LastName)&quot;</span></span></code></pre></div>
 <p>To drop a UNIQUE constraint, use the following SQL:</p>
-<div class="sourceCode" id="cb16"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb16-1"><a href="fundamental-sql-in-r.html#cb16-1" tabindex="-1"></a><span class="fu">dbSendQuery</span>(MySQL,<span class="st">&quot;ALTER TABLE Persons_Unique</span></span>
-<span id="cb16-2"><a href="fundamental-sql-in-r.html#cb16-2" tabindex="-1"></a><span class="st">                  DROP INDEX ID&quot;</span>)</span></code></pre></div>
+<div class="sourceCode" id="cb36"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb36-1"><a href="fundamental-sql-in-r.html#cb36-1" tabindex="-1"></a><span class="fu">dbSendQuery</span>(MySQL,<span class="st">&quot;ALTER TABLE Persons_Unique</span></span>
+<span id="cb36-2"><a href="fundamental-sql-in-r.html#cb36-2" tabindex="-1"></a><span class="st">                  DROP INDEX ID&quot;</span>)</span></code></pre></div>
 </div>
 <div id="primary-key" class="section level3 hasAnchor" number="3.13.3">
 <h3><span class="header-section-number">3.13.3</span> Primary Key<a href="fundamental-sql-in-r.html#primary-key" class="anchor-section" aria-label="Anchor link to header"></a></h3>
 <p>The PRIMARY KEY constraint uniquely identifies each record in a table. Primary keys must contain UNIQUE values, and cannot contain NULL values. A table can have only ONE primary key; and in the table, this primary key can consist of single or multiple columns (fields).</p>
-<div class="sourceCode" id="cb17"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb17-1"><a href="fundamental-sql-in-r.html#cb17-1" tabindex="-1"></a><span class="fu">dbSendQuery</span>(MySQL,<span class="st">&quot;CREATE TABLE Persons_PK (ID int NOT NULL PRIMARY KEY,</span></span>
-<span id="cb17-2"><a href="fundamental-sql-in-r.html#cb17-2" tabindex="-1"></a><span class="st">                   LastName varchar(255) NOT NULL,</span></span>
-<span id="cb17-3"><a href="fundamental-sql-in-r.html#cb17-3" tabindex="-1"></a><span class="st">                   FirstName varchar(255),</span></span>
-<span id="cb17-4"><a href="fundamental-sql-in-r.html#cb17-4" tabindex="-1"></a><span class="st">                   Age int)&quot;</span>)</span></code></pre></div>
+<div class="sourceCode" id="cb37"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb37-1"><a href="fundamental-sql-in-r.html#cb37-1" tabindex="-1"></a><span class="fu">dbSendQuery</span>(MySQL,<span class="st">&quot;CREATE TABLE Persons_PK (ID int NOT NULL PRIMARY KEY,</span></span>
+<span id="cb37-2"><a href="fundamental-sql-in-r.html#cb37-2" tabindex="-1"></a><span class="st">                   LastName varchar(255) NOT NULL,</span></span>
+<span id="cb37-3"><a href="fundamental-sql-in-r.html#cb37-3" tabindex="-1"></a><span class="st">                   FirstName varchar(255),</span></span>
+<span id="cb37-4"><a href="fundamental-sql-in-r.html#cb37-4" tabindex="-1"></a><span class="st">                   Age int)&quot;</span>)</span></code></pre></div>
 <p>To allow naming of a PRIMARY KEY constraint, and for defining a PRIMARY KEY constraint on multiple columns, use the following SQL syntax:</p>
-<div class="sourceCode" id="cb18"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb18-1"><a href="fundamental-sql-in-r.html#cb18-1" tabindex="-1"></a><span class="fu">dbSendQuery</span>(MySQL,<span class="st">&quot;CREATE TABLE Persons_PK (ID int NOT NULL,</span></span>
-<span id="cb18-2"><a href="fundamental-sql-in-r.html#cb18-2" tabindex="-1"></a><span class="st">                  LastName varchar(255) NOT NULL,</span></span>
-<span id="cb18-3"><a href="fundamental-sql-in-r.html#cb18-3" tabindex="-1"></a><span class="st">                  FirstName varchar(255),</span></span>
-<span id="cb18-4"><a href="fundamental-sql-in-r.html#cb18-4" tabindex="-1"></a><span class="st">                  Age int,</span></span>
-<span id="cb18-5"><a href="fundamental-sql-in-r.html#cb18-5" tabindex="-1"></a><span class="st">                  CONSTRAINT Persons_PK PRIMARY KEY (ID,LastName))&quot;</span>)</span></code></pre></div>
+<div class="sourceCode" id="cb38"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb38-1"><a href="fundamental-sql-in-r.html#cb38-1" tabindex="-1"></a><span class="fu">dbSendQuery</span>(MySQL,<span class="st">&quot;CREATE TABLE Persons_PK (ID int NOT NULL,</span></span>
+<span id="cb38-2"><a href="fundamental-sql-in-r.html#cb38-2" tabindex="-1"></a><span class="st">                  LastName varchar(255) NOT NULL,</span></span>
+<span id="cb38-3"><a href="fundamental-sql-in-r.html#cb38-3" tabindex="-1"></a><span class="st">                  FirstName varchar(255),</span></span>
+<span id="cb38-4"><a href="fundamental-sql-in-r.html#cb38-4" tabindex="-1"></a><span class="st">                  Age int,</span></span>
+<span id="cb38-5"><a href="fundamental-sql-in-r.html#cb38-5" tabindex="-1"></a><span class="st">                  CONSTRAINT Persons_PK PRIMARY KEY (ID,LastName))&quot;</span>)</span></code></pre></div>
 <p>To create a PRIMARY KEY constraint on the “ID” column when the table is already created, use the following SQL:</p>
-<div class="sourceCode" id="cb19"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb19-1"><a href="fundamental-sql-in-r.html#cb19-1" tabindex="-1"></a><span class="fu">dbSendQuery</span>(MySQL, <span class="st">&quot;ALTER TABLE Persons_PK</span></span>
-<span id="cb19-2"><a href="fundamental-sql-in-r.html#cb19-2" tabindex="-1"></a><span class="st">                   ADD PRIMARY KEY (ID)&quot;</span>)</span></code></pre></div>
+<div class="sourceCode" id="cb39"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb39-1"><a href="fundamental-sql-in-r.html#cb39-1" tabindex="-1"></a><span class="fu">dbSendQuery</span>(MySQL, <span class="st">&quot;ALTER TABLE Persons_PK</span></span>
+<span id="cb39-2"><a href="fundamental-sql-in-r.html#cb39-2" tabindex="-1"></a><span class="st">                   ADD PRIMARY KEY (ID)&quot;</span>)</span></code></pre></div>
 </div>
 <div id="foreign-key" class="section level3 hasAnchor" number="3.13.4">
 <h3><span class="header-section-number">3.13.4</span> Foreign Key<a href="fundamental-sql-in-r.html#foreign-key" class="anchor-section" aria-label="Anchor link to header"></a></h3>
@@ -514,103 +502,103 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
 <li>The FOREIGN KEY constraint also prevents invalid data from being inserted into the foreign key column, because it has to be one of the values contained in the table it points to.</li>
 </ul>
 <p>To allow naming of a FOREIGN KEY constraint, and for defining a FOREIGN KEY constraint on multiple columns, use the following SQL syntax:</p>
-<div class="sourceCode" id="cb20"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb20-1"><a href="fundamental-sql-in-r.html#cb20-1" tabindex="-1"></a><span class="fu">dbSendQuery</span>(MySQL,</span>
-<span id="cb20-2"><a href="fundamental-sql-in-r.html#cb20-2" tabindex="-1"></a><span class="st">&quot;CREATE TABLE Orders (OrderID int NOT NULL,</span></span>
-<span id="cb20-3"><a href="fundamental-sql-in-r.html#cb20-3" tabindex="-1"></a><span class="st">                     OrderNumber int NOT NULL,</span></span>
-<span id="cb20-4"><a href="fundamental-sql-in-r.html#cb20-4" tabindex="-1"></a><span class="st">                     PersonID int,</span></span>
-<span id="cb20-5"><a href="fundamental-sql-in-r.html#cb20-5" tabindex="-1"></a><span class="st">                     CONSTRAINT FOREIGN KEY (PersonID))&quot;</span>)</span></code></pre></div>
+<div class="sourceCode" id="cb40"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb40-1"><a href="fundamental-sql-in-r.html#cb40-1" tabindex="-1"></a><span class="fu">dbSendQuery</span>(MySQL,</span>
+<span id="cb40-2"><a href="fundamental-sql-in-r.html#cb40-2" tabindex="-1"></a><span class="st">&quot;CREATE TABLE Orders (OrderID int NOT NULL,</span></span>
+<span id="cb40-3"><a href="fundamental-sql-in-r.html#cb40-3" tabindex="-1"></a><span class="st">                     OrderNumber int NOT NULL,</span></span>
+<span id="cb40-4"><a href="fundamental-sql-in-r.html#cb40-4" tabindex="-1"></a><span class="st">                     PersonID int,</span></span>
+<span id="cb40-5"><a href="fundamental-sql-in-r.html#cb40-5" tabindex="-1"></a><span class="st">                     CONSTRAINT FOREIGN KEY (PersonID))&quot;</span>)</span></code></pre></div>
 <p>To allow naming of a FOREIGN KEY constraint, and for defining a FOREIGN KEY constraint on multiple columns, use the following SQL syntax:</p>
-<div class="sourceCode" id="cb21"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb21-1"><a href="fundamental-sql-in-r.html#cb21-1" tabindex="-1"></a><span class="fu">dbSendQuery</span>(MySQL,</span>
-<span id="cb21-2"><a href="fundamental-sql-in-r.html#cb21-2" tabindex="-1"></a><span class="st">&quot;CREATE TABLE Orders (</span></span>
-<span id="cb21-3"><a href="fundamental-sql-in-r.html#cb21-3" tabindex="-1"></a><span class="st">    OrderID int NOT NULL,</span></span>
-<span id="cb21-4"><a href="fundamental-sql-in-r.html#cb21-4" tabindex="-1"></a><span class="st">    OrderNumber int NOT NULL,</span></span>
-<span id="cb21-5"><a href="fundamental-sql-in-r.html#cb21-5" tabindex="-1"></a><span class="st">    PersonID int,</span></span>
-<span id="cb21-6"><a href="fundamental-sql-in-r.html#cb21-6" tabindex="-1"></a><span class="st">    PRIMARY KEY (OrderID),</span></span>
-<span id="cb21-7"><a href="fundamental-sql-in-r.html#cb21-7" tabindex="-1"></a><span class="st">    FOREIGN KEY (PersonID) REFERENCES Persons_pk (PersonID))&quot;</span>)</span></code></pre></div>
+<div class="sourceCode" id="cb41"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb41-1"><a href="fundamental-sql-in-r.html#cb41-1" tabindex="-1"></a><span class="fu">dbSendQuery</span>(MySQL,</span>
+<span id="cb41-2"><a href="fundamental-sql-in-r.html#cb41-2" tabindex="-1"></a><span class="st">&quot;CREATE TABLE Orders (</span></span>
+<span id="cb41-3"><a href="fundamental-sql-in-r.html#cb41-3" tabindex="-1"></a><span class="st">    OrderID int NOT NULL,</span></span>
+<span id="cb41-4"><a href="fundamental-sql-in-r.html#cb41-4" tabindex="-1"></a><span class="st">    OrderNumber int NOT NULL,</span></span>
+<span id="cb41-5"><a href="fundamental-sql-in-r.html#cb41-5" tabindex="-1"></a><span class="st">    PersonID int,</span></span>
+<span id="cb41-6"><a href="fundamental-sql-in-r.html#cb41-6" tabindex="-1"></a><span class="st">    PRIMARY KEY (OrderID),</span></span>
+<span id="cb41-7"><a href="fundamental-sql-in-r.html#cb41-7" tabindex="-1"></a><span class="st">    FOREIGN KEY (PersonID) REFERENCES Persons_pk (PersonID))&quot;</span>)</span></code></pre></div>
 <p>To allow naming of a FOREIGN KEY constraint, and for defining a FOREIGN KEY constraint on multiple columns, use the following SQL syntax:</p>
-<div class="sourceCode" id="cb22"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb22-1"><a href="fundamental-sql-in-r.html#cb22-1" tabindex="-1"></a><span class="fu">dbSendQuery</span>(MySQL,</span>
-<span id="cb22-2"><a href="fundamental-sql-in-r.html#cb22-2" tabindex="-1"></a><span class="st">&quot;ALTER TABLE Orders</span></span>
-<span id="cb22-3"><a href="fundamental-sql-in-r.html#cb22-3" tabindex="-1"></a><span class="st">ADD CONSTRAINT FK_Person Order</span></span>
-<span id="cb22-4"><a href="fundamental-sql-in-r.html#cb22-4" tabindex="-1"></a><span class="st">FOREIGN KEY (PersonID) REFERENCES Persons(PersonID)&quot;</span>)</span></code></pre></div>
+<div class="sourceCode" id="cb42"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb42-1"><a href="fundamental-sql-in-r.html#cb42-1" tabindex="-1"></a><span class="fu">dbSendQuery</span>(MySQL,</span>
+<span id="cb42-2"><a href="fundamental-sql-in-r.html#cb42-2" tabindex="-1"></a><span class="st">&quot;ALTER TABLE Orders</span></span>
+<span id="cb42-3"><a href="fundamental-sql-in-r.html#cb42-3" tabindex="-1"></a><span class="st">ADD CONSTRAINT FK_Person Order</span></span>
+<span id="cb42-4"><a href="fundamental-sql-in-r.html#cb42-4" tabindex="-1"></a><span class="st">FOREIGN KEY (PersonID) REFERENCES Persons(PersonID)&quot;</span>)</span></code></pre></div>
 </div>
 <div id="check" class="section level3 hasAnchor" number="3.13.5">
 <h3><span class="header-section-number">3.13.5</span> Check<a href="fundamental-sql-in-r.html#check" class="anchor-section" aria-label="Anchor link to header"></a></h3>
 <p>The CHECK constraint is used to limit the value range that can be placed in a column. If you define a CHECK constraint on a single column it allows only certain values for this column. If you define a CHECK constraint on a table it can limit the values in certain columns based on values in other columns in the row. The following SQL creates a CHECK constraint on the “Age” column when the “Persons” table is created. The CHECK constraint ensures that the age of a person must be 18, or older:</p>
-<div class="sourceCode" id="cb23"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb23-1"><a href="fundamental-sql-in-r.html#cb23-1" tabindex="-1"></a><span class="fu">dbSendQuery</span>(MySQL,</span>
-<span id="cb23-2"><a href="fundamental-sql-in-r.html#cb23-2" tabindex="-1"></a><span class="st">&quot;CREATE TABLE Persons (ID int NOT NULL,</span></span>
-<span id="cb23-3"><a href="fundamental-sql-in-r.html#cb23-3" tabindex="-1"></a><span class="st">                      LastName varchar(255) NOT NULL,</span></span>
-<span id="cb23-4"><a href="fundamental-sql-in-r.html#cb23-4" tabindex="-1"></a><span class="st">                      FirstName varchar(255),</span></span>
-<span id="cb23-5"><a href="fundamental-sql-in-r.html#cb23-5" tabindex="-1"></a><span class="st">                      Age int,</span></span>
-<span id="cb23-6"><a href="fundamental-sql-in-r.html#cb23-6" tabindex="-1"></a><span class="st">                      CHECK (Age&gt;=18))&quot;</span>)</span></code></pre></div>
+<div class="sourceCode" id="cb43"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb43-1"><a href="fundamental-sql-in-r.html#cb43-1" tabindex="-1"></a><span class="fu">dbSendQuery</span>(MySQL,</span>
+<span id="cb43-2"><a href="fundamental-sql-in-r.html#cb43-2" tabindex="-1"></a><span class="st">&quot;CREATE TABLE Persons (ID int NOT NULL,</span></span>
+<span id="cb43-3"><a href="fundamental-sql-in-r.html#cb43-3" tabindex="-1"></a><span class="st">                      LastName varchar(255) NOT NULL,</span></span>
+<span id="cb43-4"><a href="fundamental-sql-in-r.html#cb43-4" tabindex="-1"></a><span class="st">                      FirstName varchar(255),</span></span>
+<span id="cb43-5"><a href="fundamental-sql-in-r.html#cb43-5" tabindex="-1"></a><span class="st">                      Age int,</span></span>
+<span id="cb43-6"><a href="fundamental-sql-in-r.html#cb43-6" tabindex="-1"></a><span class="st">                      CHECK (Age&gt;=18))&quot;</span>)</span></code></pre></div>
 <p>To allow naming of a CHECK constraint, and for defining a CHECK constraint on multiple columns, use the following SQL syntax:</p>
-<div class="sourceCode" id="cb24"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb24-1"><a href="fundamental-sql-in-r.html#cb24-1" tabindex="-1"></a><span class="fu">dbSendQuery</span>(MySQL,</span>
-<span id="cb24-2"><a href="fundamental-sql-in-r.html#cb24-2" tabindex="-1"></a><span class="st">&quot;CREATE TABLE Persons (</span></span>
-<span id="cb24-3"><a href="fundamental-sql-in-r.html#cb24-3" tabindex="-1"></a><span class="st">    ID int NOT NULL,</span></span>
-<span id="cb24-4"><a href="fundamental-sql-in-r.html#cb24-4" tabindex="-1"></a><span class="st">    LastName varchar(255) NOT NULL,</span></span>
-<span id="cb24-5"><a href="fundamental-sql-in-r.html#cb24-5" tabindex="-1"></a><span class="st">    FirstName varchar(255),</span></span>
-<span id="cb24-6"><a href="fundamental-sql-in-r.html#cb24-6" tabindex="-1"></a><span class="st">    Age int,</span></span>
-<span id="cb24-7"><a href="fundamental-sql-in-r.html#cb24-7" tabindex="-1"></a><span class="st">    City varchar(255),</span></span>
-<span id="cb24-8"><a href="fundamental-sql-in-r.html#cb24-8" tabindex="-1"></a><span class="st">    CONSTRAINT CHK_Person CHECK (Age&gt;=18 AND City=&#39;Sandnes&#39;))&quot;</span>)</span></code></pre></div>
+<div class="sourceCode" id="cb44"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb44-1"><a href="fundamental-sql-in-r.html#cb44-1" tabindex="-1"></a><span class="fu">dbSendQuery</span>(MySQL,</span>
+<span id="cb44-2"><a href="fundamental-sql-in-r.html#cb44-2" tabindex="-1"></a><span class="st">&quot;CREATE TABLE Persons (</span></span>
+<span id="cb44-3"><a href="fundamental-sql-in-r.html#cb44-3" tabindex="-1"></a><span class="st">    ID int NOT NULL,</span></span>
+<span id="cb44-4"><a href="fundamental-sql-in-r.html#cb44-4" tabindex="-1"></a><span class="st">    LastName varchar(255) NOT NULL,</span></span>
+<span id="cb44-5"><a href="fundamental-sql-in-r.html#cb44-5" tabindex="-1"></a><span class="st">    FirstName varchar(255),</span></span>
+<span id="cb44-6"><a href="fundamental-sql-in-r.html#cb44-6" tabindex="-1"></a><span class="st">    Age int,</span></span>
+<span id="cb44-7"><a href="fundamental-sql-in-r.html#cb44-7" tabindex="-1"></a><span class="st">    City varchar(255),</span></span>
+<span id="cb44-8"><a href="fundamental-sql-in-r.html#cb44-8" tabindex="-1"></a><span class="st">    CONSTRAINT CHK_Person CHECK (Age&gt;=18 AND City=&#39;Sandnes&#39;))&quot;</span>)</span></code></pre></div>
 <p>To create a CHECK constraint on the “Age” column when the table is already created, use the following SQL:</p>
-<div class="sourceCode" id="cb25"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb25-1"><a href="fundamental-sql-in-r.html#cb25-1" tabindex="-1"></a><span class="fu">dbSendQuery</span>(MySQL, <span class="st">&quot;ALTER TABLE Persons</span></span>
-<span id="cb25-2"><a href="fundamental-sql-in-r.html#cb25-2" tabindex="-1"></a><span class="st">                         ADD CHECK (Age&gt;=18)&quot;</span>)</span></code></pre></div>
+<div class="sourceCode" id="cb45"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb45-1"><a href="fundamental-sql-in-r.html#cb45-1" tabindex="-1"></a><span class="fu">dbSendQuery</span>(MySQL, <span class="st">&quot;ALTER TABLE Persons</span></span>
+<span id="cb45-2"><a href="fundamental-sql-in-r.html#cb45-2" tabindex="-1"></a><span class="st">                         ADD CHECK (Age&gt;=18)&quot;</span>)</span></code></pre></div>
 <p>To allow naming of a CHECK constraint, and for defining a CHECK constraint on multiple columns, use the following SQL syntax:</p>
-<div class="sourceCode" id="cb26"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb26-1"><a href="fundamental-sql-in-r.html#cb26-1" tabindex="-1"></a><span class="fu">dbSendQuery</span>(MySQL, <span class="st">&quot;ALTER TABLE Persons</span></span>
-<span id="cb26-2"><a href="fundamental-sql-in-r.html#cb26-2" tabindex="-1"></a><span class="st">                    ADD CONSTRAINT CHK_PersonAge </span></span>
-<span id="cb26-3"><a href="fundamental-sql-in-r.html#cb26-3" tabindex="-1"></a><span class="st">                    CHECK (Age&gt;=18 AND City=&#39;Sandnes&#39;)&quot;</span>)</span></code></pre></div>
+<div class="sourceCode" id="cb46"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb46-1"><a href="fundamental-sql-in-r.html#cb46-1" tabindex="-1"></a><span class="fu">dbSendQuery</span>(MySQL, <span class="st">&quot;ALTER TABLE Persons</span></span>
+<span id="cb46-2"><a href="fundamental-sql-in-r.html#cb46-2" tabindex="-1"></a><span class="st">                    ADD CONSTRAINT CHK_PersonAge </span></span>
+<span id="cb46-3"><a href="fundamental-sql-in-r.html#cb46-3" tabindex="-1"></a><span class="st">                    CHECK (Age&gt;=18 AND City=&#39;Sandnes&#39;)&quot;</span>)</span></code></pre></div>
 </div>
 <div id="default" class="section level3 hasAnchor" number="3.13.6">
 <h3><span class="header-section-number">3.13.6</span> Default<a href="fundamental-sql-in-r.html#default" class="anchor-section" aria-label="Anchor link to header"></a></h3>
 <p>The DEFAULT constraint is used to provide a default value for a column. The default value will be added to all new records IF no other value is specified. The following SQL sets a DEFAULT value for the “City” column when the “Persons” table is created:</p>
-<div class="sourceCode" id="cb27"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb27-1"><a href="fundamental-sql-in-r.html#cb27-1" tabindex="-1"></a><span class="fu">dbSendQuery</span>(MySQL,</span>
-<span id="cb27-2"><a href="fundamental-sql-in-r.html#cb27-2" tabindex="-1"></a><span class="st">&quot;CREATE TABLE Persons_default (ID int NOT NULL,</span></span>
-<span id="cb27-3"><a href="fundamental-sql-in-r.html#cb27-3" tabindex="-1"></a><span class="st">                              LastName varchar(255) NOT NULL,</span></span>
-<span id="cb27-4"><a href="fundamental-sql-in-r.html#cb27-4" tabindex="-1"></a><span class="st">                              FirstName varchar(255),</span></span>
-<span id="cb27-5"><a href="fundamental-sql-in-r.html#cb27-5" tabindex="-1"></a><span class="st">                              Age int,</span></span>
-<span id="cb27-6"><a href="fundamental-sql-in-r.html#cb27-6" tabindex="-1"></a><span class="st">                              City varchar(255) DEFAULT &#39;Sandnes&#39;)&quot;</span>)</span></code></pre></div>
+<div class="sourceCode" id="cb47"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb47-1"><a href="fundamental-sql-in-r.html#cb47-1" tabindex="-1"></a><span class="fu">dbSendQuery</span>(MySQL,</span>
+<span id="cb47-2"><a href="fundamental-sql-in-r.html#cb47-2" tabindex="-1"></a><span class="st">&quot;CREATE TABLE Persons_default (ID int NOT NULL,</span></span>
+<span id="cb47-3"><a href="fundamental-sql-in-r.html#cb47-3" tabindex="-1"></a><span class="st">                              LastName varchar(255) NOT NULL,</span></span>
+<span id="cb47-4"><a href="fundamental-sql-in-r.html#cb47-4" tabindex="-1"></a><span class="st">                              FirstName varchar(255),</span></span>
+<span id="cb47-5"><a href="fundamental-sql-in-r.html#cb47-5" tabindex="-1"></a><span class="st">                              Age int,</span></span>
+<span id="cb47-6"><a href="fundamental-sql-in-r.html#cb47-6" tabindex="-1"></a><span class="st">                              City varchar(255) DEFAULT &#39;Sandnes&#39;)&quot;</span>)</span></code></pre></div>
 <p>To create a DEFAULT constraint on the “City” column when the table is already created, use the following SQL:</p>
-<div class="sourceCode" id="cb28"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb28-1"><a href="fundamental-sql-in-r.html#cb28-1" tabindex="-1"></a><span class="fu">dbSendQuery</span>(MySQL,<span class="st">&quot;ALTER TABLE Persons</span></span>
-<span id="cb28-2"><a href="fundamental-sql-in-r.html#cb28-2" tabindex="-1"></a><span class="st">                        ALTER City SET DEFAULT &#39;Sandnes&#39;&quot;</span>)</span></code></pre></div>
+<div class="sourceCode" id="cb48"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb48-1"><a href="fundamental-sql-in-r.html#cb48-1" tabindex="-1"></a><span class="fu">dbSendQuery</span>(MySQL,<span class="st">&quot;ALTER TABLE Persons</span></span>
+<span id="cb48-2"><a href="fundamental-sql-in-r.html#cb48-2" tabindex="-1"></a><span class="st">                        ALTER City SET DEFAULT &#39;Sandnes&#39;&quot;</span>)</span></code></pre></div>
 </div>
 <div id="index" class="section level3 hasAnchor" number="3.13.7">
 <h3><span class="header-section-number">3.13.7</span> Index<a href="fundamental-sql-in-r.html#index" class="anchor-section" aria-label="Anchor link to header"></a></h3>
 <p>The CREATE INDEX statement is used to create indexes in tables. Indexes are used to retrieve data from the database more quickly than otherwise. The users cannot see the indexes, they are just used to speed up searches/queries. Creates an index on a table. Duplicate values are allowed:</p>
-<div class="sourceCode" id="cb29"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb29-1"><a href="fundamental-sql-in-r.html#cb29-1" tabindex="-1"></a><span class="fu">dbSendQuery</span>(MySQL, <span class="st">&quot;CREATE INDEX idx_pname</span></span>
-<span id="cb29-2"><a href="fundamental-sql-in-r.html#cb29-2" tabindex="-1"></a><span class="st">                   ON Persons (LastName, FirstName)&quot;</span>)</span></code></pre></div>
+<div class="sourceCode" id="cb49"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb49-1"><a href="fundamental-sql-in-r.html#cb49-1" tabindex="-1"></a><span class="fu">dbSendQuery</span>(MySQL, <span class="st">&quot;CREATE INDEX idx_pname</span></span>
+<span id="cb49-2"><a href="fundamental-sql-in-r.html#cb49-2" tabindex="-1"></a><span class="st">                   ON Persons (LastName, FirstName)&quot;</span>)</span></code></pre></div>
 <p><em>Note:</em> Updating a table with indexes takes more time than updating a table without (because the indexes also need an update). So, only create indexes on columns that will be frequently searched against.</p>
 </div>
 <div id="auto-increment" class="section level3 hasAnchor" number="3.13.8">
 <h3><span class="header-section-number">3.13.8</span> Auto Increment<a href="fundamental-sql-in-r.html#auto-increment" class="anchor-section" aria-label="Anchor link to header"></a></h3>
 <p>Auto-increment allows a unique number to be generated automatically when a new record is inserted into a table. Often this is the primary key field that we would like to be created automatically every time a new record is inserted. The following SQL statement defines the “Personid” column to be an auto-increment primary key field in the “Persons” table:</p>
-<div class="sourceCode" id="cb30"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb30-1"><a href="fundamental-sql-in-r.html#cb30-1" tabindex="-1"></a><span class="fu">dbSendQuery</span>(MySQL,</span>
-<span id="cb30-2"><a href="fundamental-sql-in-r.html#cb30-2" tabindex="-1"></a><span class="st">&quot;CREATE TABLE Persons_ai (</span></span>
-<span id="cb30-3"><a href="fundamental-sql-in-r.html#cb30-3" tabindex="-1"></a><span class="st">    Personid int NOT NULL AUTO_INCREMENT,</span></span>
-<span id="cb30-4"><a href="fundamental-sql-in-r.html#cb30-4" tabindex="-1"></a><span class="st">    LastName varchar(255) NOT NULL,</span></span>
-<span id="cb30-5"><a href="fundamental-sql-in-r.html#cb30-5" tabindex="-1"></a><span class="st">    FirstName varchar(255),</span></span>
-<span id="cb30-6"><a href="fundamental-sql-in-r.html#cb30-6" tabindex="-1"></a><span class="st">    Age int,</span></span>
-<span id="cb30-7"><a href="fundamental-sql-in-r.html#cb30-7" tabindex="-1"></a><span class="st">    PRIMARY KEY (Personid))&quot;</span>)</span></code></pre></div>
+<div class="sourceCode" id="cb50"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb50-1"><a href="fundamental-sql-in-r.html#cb50-1" tabindex="-1"></a><span class="fu">dbSendQuery</span>(MySQL,</span>
+<span id="cb50-2"><a href="fundamental-sql-in-r.html#cb50-2" tabindex="-1"></a><span class="st">&quot;CREATE TABLE Persons_ai (</span></span>
+<span id="cb50-3"><a href="fundamental-sql-in-r.html#cb50-3" tabindex="-1"></a><span class="st">    Personid int NOT NULL AUTO_INCREMENT,</span></span>
+<span id="cb50-4"><a href="fundamental-sql-in-r.html#cb50-4" tabindex="-1"></a><span class="st">    LastName varchar(255) NOT NULL,</span></span>
+<span id="cb50-5"><a href="fundamental-sql-in-r.html#cb50-5" tabindex="-1"></a><span class="st">    FirstName varchar(255),</span></span>
+<span id="cb50-6"><a href="fundamental-sql-in-r.html#cb50-6" tabindex="-1"></a><span class="st">    Age int,</span></span>
+<span id="cb50-7"><a href="fundamental-sql-in-r.html#cb50-7" tabindex="-1"></a><span class="st">    PRIMARY KEY (Personid))&quot;</span>)</span></code></pre></div>
 </div>
 </div>
 <div id="previewing-.sql-in-r" class="section level2 hasAnchor" number="3.14">
 <h2><span class="header-section-number">3.14</span> Previewing <code>.sql</code> in R<a href="fundamental-sql-in-r.html#previewing-.sql-in-r" class="anchor-section" aria-label="Anchor link to header"></a></h2>
 <p>When you open a new <code>.sql</code> file in RStudio, it automatically populates the file with the following code:</p>
-<div class="sourceCode" id="cb31"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb31-1"><a href="fundamental-sql-in-r.html#cb31-1" tabindex="-1"></a><span class="fu">library</span>(RSQLite)</span>
-<span id="cb31-2"><a href="fundamental-sql-in-r.html#cb31-2" tabindex="-1"></a><span class="fu">library</span>(dplyr)</span>
-<span id="cb31-3"><a href="fundamental-sql-in-r.html#cb31-3" tabindex="-1"></a><span class="fu">library</span>(dbplyr)</span>
-<span id="cb31-4"><a href="fundamental-sql-in-r.html#cb31-4" tabindex="-1"></a></span>
-<span id="cb31-5"><a href="fundamental-sql-in-r.html#cb31-5" tabindex="-1"></a>conn <span class="ot">&lt;-</span> <span class="fu">src_memdb</span>() <span class="co"># create a SQLite database in memory</span></span>
-<span id="cb31-6"><a href="fundamental-sql-in-r.html#cb31-6" tabindex="-1"></a><span class="fu">copy_to</span>(conn, </span>
-<span id="cb31-7"><a href="fundamental-sql-in-r.html#cb31-7" tabindex="-1"></a>        storms,     <span class="co"># this is a dataset built into dplyr</span></span>
-<span id="cb31-8"><a href="fundamental-sql-in-r.html#cb31-8" tabindex="-1"></a>        <span class="at">overwrite =</span> <span class="cn">TRUE</span>)</span>
-<span id="cb31-9"><a href="fundamental-sql-in-r.html#cb31-9" tabindex="-1"></a><span class="fu">tbl</span>(conn, <span class="fu">sql</span>(<span class="st">&quot;SELECT * FROM storms LIMIT 5&quot;</span>))</span></code></pre></div>
+<div class="sourceCode" id="cb51"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb51-1"><a href="fundamental-sql-in-r.html#cb51-1" tabindex="-1"></a><span class="fu">library</span>(RSQLite)</span>
+<span id="cb51-2"><a href="fundamental-sql-in-r.html#cb51-2" tabindex="-1"></a><span class="fu">library</span>(dplyr)</span>
+<span id="cb51-3"><a href="fundamental-sql-in-r.html#cb51-3" tabindex="-1"></a><span class="fu">library</span>(dbplyr)</span>
+<span id="cb51-4"><a href="fundamental-sql-in-r.html#cb51-4" tabindex="-1"></a></span>
+<span id="cb51-5"><a href="fundamental-sql-in-r.html#cb51-5" tabindex="-1"></a>conn <span class="ot">&lt;-</span> <span class="fu">src_memdb</span>() <span class="co"># create a SQLite database in memory</span></span>
+<span id="cb51-6"><a href="fundamental-sql-in-r.html#cb51-6" tabindex="-1"></a><span class="fu">copy_to</span>(conn, </span>
+<span id="cb51-7"><a href="fundamental-sql-in-r.html#cb51-7" tabindex="-1"></a>        storms,     <span class="co"># this is a dataset built into dplyr</span></span>
+<span id="cb51-8"><a href="fundamental-sql-in-r.html#cb51-8" tabindex="-1"></a>        <span class="at">overwrite =</span> <span class="cn">TRUE</span>)</span>
+<span id="cb51-9"><a href="fundamental-sql-in-r.html#cb51-9" tabindex="-1"></a><span class="fu">tbl</span>(conn, <span class="fu">sql</span>(<span class="st">&quot;SELECT * FROM storms LIMIT 5&quot;</span>))</span></code></pre></div>
 <p>You need to create a <code>.sql</code> file with the following code:</p>
 <pre><code>-- !preview conn=src_memdb()$con
 
 SELECT * FROM storms LIMIT 5</code></pre>
 <p>Then, you will the resul like this:</p>
-<div class="sourceCode" id="cb33"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb33-1"><a href="fundamental-sql-in-r.html#cb33-1" tabindex="-1"></a><span class="fu">library</span>(knitr)</span>
-<span id="cb33-2"><a href="fundamental-sql-in-r.html#cb33-2" tabindex="-1"></a><span class="fu">include_graphics</span>(<span class="st">&quot;./images/Bab3/sql-file-preview.png&quot;</span>)</span></code></pre></div>
-<div class="figure" style="text-align: center"><span style="display:block;" id="fig:unnamed-chunk-32"></span>
+<div class="sourceCode" id="cb53"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb53-1"><a href="fundamental-sql-in-r.html#cb53-1" tabindex="-1"></a><span class="fu">library</span>(knitr)</span>
+<span id="cb53-2"><a href="fundamental-sql-in-r.html#cb53-2" tabindex="-1"></a><span class="fu">include_graphics</span>(<span class="st">&quot;./images/Bab3/sql-file-preview.png&quot;</span>)</span></code></pre></div>
+<div class="figure" style="text-align: center"><span style="display:block;" id="fig:unnamed-chunk-55"></span>
 <img src="images/Bab3/sql-file-preview.png" alt="Previewing `.sql` in R" width="100%" />
 <p class="caption">
 Gambar 3.1: Previewing <code>.sql</code> in R
@@ -631,17 +619,17 @@ Gambar 3.1: Previewing <code>.sql</code> in R
         </div>
       </div>
 <a href="connecting-r-to-sql.html" class="navigation navigation-prev " aria-label="Previous page"><i class="fa fa-angle-left"></i></a>
-<a href="join-table-in-sql.html" class="navigation navigation-next " aria-label="Next page"><i class="fa fa-angle-right"></i></a>
+<a href="database-normalization-in-sql.html" class="navigation navigation-next " aria-label="Next page"><i class="fa fa-angle-right"></i></a>
     </div>
   </div>
-<script src="libs/gitbook-2.6.7/js/app.min.js"></script>
-<script src="libs/gitbook-2.6.7/js/clipboard.min.js"></script>
-<script src="libs/gitbook-2.6.7/js/plugin-search.js"></script>
-<script src="libs/gitbook-2.6.7/js/plugin-sharing.js"></script>
-<script src="libs/gitbook-2.6.7/js/plugin-fontsettings.js"></script>
-<script src="libs/gitbook-2.6.7/js/plugin-bookdown.js"></script>
-<script src="libs/gitbook-2.6.7/js/jquery.highlight.js"></script>
-<script src="libs/gitbook-2.6.7/js/plugin-clipboard.js"></script>
+<script src="libs/gitbook/js/app.min.js"></script>
+<script src="libs/gitbook/js/clipboard.min.js"></script>
+<script src="libs/gitbook/js/plugin-search.js"></script>
+<script src="libs/gitbook/js/plugin-sharing.js"></script>
+<script src="libs/gitbook/js/plugin-fontsettings.js"></script>
+<script src="libs/gitbook/js/plugin-bookdown.js"></script>
+<script src="libs/gitbook/js/jquery.highlight.js"></script>
+<script src="libs/gitbook/js/plugin-clipboard.js"></script>
 <script>
 gitbook.require(["gitbook"], function(gitbook) {
 gitbook.start({

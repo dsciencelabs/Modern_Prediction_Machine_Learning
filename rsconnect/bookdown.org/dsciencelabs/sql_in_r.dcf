@@ -5,10 +5,10 @@ account: dsciencelabs
 server: bookdown.org
 hostUrl: https://bookdown.org/__api__
 appId: 12767
-bundleId: 87749
+bundleId: 87755
 url: https://bookdown.org/dsciencelabs/sql_in_r/
-when: 1693053267.22951
-lastSyncTime: 1693053267.22952
+when: 1693068390.1885
+lastSyncTime: 1693068390.18851
 asMultiple: FALSE
 asStatic: FALSE
-ignoredFiles: _bookdown.yml|_output.yml|01_Pendahuluan.Rmd|02_Connecting_R_to_SQL.Rmd|book.bib|customBlocks.toc|Data/Kumpulan_data_disini.md|desktop.ini|EnvStat.aux|index.Rmd|LICENSE|packages.bib|preamble.tex|README.md|Referensi.Rmd|style.css|_bookdown_files|images
+ignoredFiles: _bookdown.yml|_output.yml|01_Pendahuluan.Rmd|02_Connecting_R_to_SQL.Rmd|03_Fundamental_SQL_in_R.Rmd|04_Database_Normalization_in_SQL.Rmd|05_Join_Table_in_SQL.Rmd|book.bib|customBlocks.toc|Data/Kumpulan_data_disini.md|desktop.ini|EnvStat.aux|index.Rmd|LICENSE|packages.bib|preamble.tex|README.md|Referensi.Rmd|style.css|_bookdown_files|images
