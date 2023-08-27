@@ -4,18 +4,18 @@
 
   <meta charset="utf-8" />
   <meta http-equiv="X-UA-Compatible" content="IE=edge" />
-  <title>Page not found | Basis Data dan Penelusuran Data</title>
+  <title>Bab 6 Simple Query | Basis Data dan Penelusuran Data</title>
   <meta name="description" content="Deskripsi Singkat Tentang Buku" />
   <meta name="generator" content="bookdown 0.34 and GitBook 2.6.7" />
 
-  <meta property="og:title" content="Page not found | Basis Data dan Penelusuran Data" />
+  <meta property="og:title" content="Bab 6 Simple Query | Basis Data dan Penelusuran Data" />
   <meta property="og:type" content="book" />
   <meta property="og:image" content="/images/Cover_SQL_in_R.png" />
   <meta property="og:description" content="Deskripsi Singkat Tentang Buku" />
   <meta name="github-repo" content="dsciencelabs/SQL_in_R" />
 
   <meta name="twitter:card" content="summary" />
-  <meta name="twitter:title" content="Page not found | Basis Data dan Penelusuran Data" />
+  <meta name="twitter:title" content="Bab 6 Simple Query | Basis Data dan Penelusuran Data" />
   
   <meta name="twitter:description" content="Deskripsi Singkat Tentang Buku" />
   <meta name="twitter:image" content="/images/Cover_SQL_in_R.png" />
@@ -30,8 +30,8 @@
   <meta name="apple-mobile-web-app-status-bar-style" content="black" />
   
   
-
-
+<link rel="prev" href="join-table-in-sql.html"/>
+<link rel="next" href="referensi.html"/>
 <script src="libs/jquery-3.6.0/jquery-3.6.0.min.js"></script>
 <script src="https://cdn.jsdelivr.net/npm/fuse.js@6.4.6/dist/fuse.min.js"></script>
 <link href="libs/gitbook-2.6.7/css/style.css" rel="stylesheet" />
@@ -313,19 +313,375 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
           <div class="page-inner">
 
             <section class="normal" id="section-">
-<div id="page-not-found" class="section level1">
-<h1>Page not found</h1>
-<p>The page you requested cannot be found (perhaps it was moved or renamed).</p>
-<p>You may want to try searching to find the page's new location, or use
-the table of contents to find the page you are looking for.</p>
+<div id="simple-query" class="section level1 hasAnchor" number="6">
+<h1><span class="header-section-number">Bab 6</span> Simple Query<a href="simple-query.html#simple-query" class="anchor-section" aria-label="Anchor link to header"></a></h1>
+<p>The real power of a relational database lies in its ability to quickly retrieve and analyze your data by running a query. Queries allow you to pull information from one or more tables based on a set of search conditions you define. In this section, you will learn how to create a simple one-table query.</p>
+<p>First, we need to connect to our database. Please type the following code in your R console:</p>
+<div class="sourceCode" id="cb1"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb1-1"><a href="simple-query.html#cb1-1" tabindex="-1"></a><span class="co"># set up the connection and save it into the workspace</span></span>
+<span id="cb1-2"><a href="simple-query.html#cb1-2" tabindex="-1"></a><span class="co">#~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~</span></span>
+<span id="cb1-3"><a href="simple-query.html#cb1-3" tabindex="-1"></a><span class="fu">library</span>(RMySQL)</span>
+<span id="cb1-4"><a href="simple-query.html#cb1-4" tabindex="-1"></a><span class="fu">library</span>(DBI)</span>
+<span id="cb1-5"><a href="simple-query.html#cb1-5" tabindex="-1"></a>bakti <span class="ot">&lt;-</span> <span class="fu">dbConnect</span>(RMySQL<span class="sc">::</span><span class="fu">MySQL</span>(),</span>
+<span id="cb1-6"><a href="simple-query.html#cb1-6" tabindex="-1"></a>                  <span class="at">dbname=</span><span class="st">&#39;factory_db&#39;</span>,</span>
+<span id="cb1-7"><a href="simple-query.html#cb1-7" tabindex="-1"></a>                  <span class="at">username=</span><span class="st">&#39;root&#39;</span>,</span>
+<span id="cb1-8"><a href="simple-query.html#cb1-8" tabindex="-1"></a>                  <span class="at">password=</span><span class="st">&#39;&#39;</span>, </span>
+<span id="cb1-9"><a href="simple-query.html#cb1-9" tabindex="-1"></a>                  <span class="at">host=</span><span class="st">&#39;localhost&#39;</span>,</span>
+<span id="cb1-10"><a href="simple-query.html#cb1-10" tabindex="-1"></a>                  <span class="at">port=</span><span class="dv">3306</span>)</span>
+<span id="cb1-11"><a href="simple-query.html#cb1-11" tabindex="-1"></a>knitr<span class="sc">::</span>opts_chunk<span class="sc">$</span><span class="fu">set</span>(<span class="at">connection =</span> <span class="st">&quot;bakti&quot;</span>) <span class="co"># to set up the connection in your Rmarkdown chunk</span></span></code></pre></div>
+<div id="select-1" class="section level2 hasAnchor" number="6.1">
+<h2><span class="header-section-number">6.1</span> SELECT<a href="simple-query.html#select-1" class="anchor-section" aria-label="Anchor link to header"></a></h2>
+<p>The SQL SELECT statement is used to fetch the data from a database table which returns this data in the form of a result table. These result tables are called result-sets. The basic syntax of the SELECT statement is as follows:</p>
+<pre><code>SELECT column1, column2, columnN 
+  FROM table_name;</code></pre>
+<p>Assume, column1, column2… are the fields of a table whose values you want to fetch. If you want to fetch some of the fields available in the field, then you can use the following syntax.</p>
+<pre><code>SELECT CustomerName, Address, City, Country 
+  FROM CUSTOMERS;</code></pre>
+<p>If you want to fetch all the fields of the CUSTOMERS table, then you should use the following query.</p>
+<pre><code>SELECT *
+  FROM CUSTOMERS;</code></pre>
+</div>
+<div id="distinct" class="section level2 hasAnchor" number="6.2">
+<h2><span class="header-section-number">6.2</span> DISTINCT<a href="simple-query.html#distinct" class="anchor-section" aria-label="Anchor link to header"></a></h2>
+<p>The SQL DISTINCT keyword is used in conjunction with the SELECT statement to eliminate all the duplicate records and fetching only unique records. There may be a situation when you have multiple duplicate records in a table. While fetching such records, it makes more sense to fetch only those unique records instead of fetching duplicate records.</p>
+<p>The basic syntax of DISTINCT keyword to eliminate the duplicate records is as follows:</p>
+<pre><code>SELECT DISTINCT column_name
+  FROM table_name</code></pre>
+<p>Now, let us use the DISTINCT keyword with the above SELECT query and then see the result.</p>
+<pre><code>SELECT DISTINCT Country   
+  FROM customers;</code></pre>
+</div>
+<div id="where-1" class="section level2 hasAnchor" number="6.3">
+<h2><span class="header-section-number">6.3</span> WHERE<a href="simple-query.html#where-1" class="anchor-section" aria-label="Anchor link to header"></a></h2>
+<p>The WHERE clause is used to filter records. The WHERE clause is used to extract only those records that fulfill a specified condition.</p>
+<pre><code>SELECT column1, column2, ...
+  FROM table_name
+    WHERE [condition];</code></pre>
+<p><em>Note:</em> The WHERE clause is not only used in SELECT statement, it is also used in UPDATE, DELETE statement, etc.!</p>
+<p>The following SQL statement selects all the customers from the country “Mexico”, in the “Customers” table:</p>
+<pre><code>SELECT * 
+  FROM Customers
+    WHERE Country=&#39;Mexico&#39;;</code></pre>
+<p>The following operators can be used in the WHERE clause, please try it by your self!</p>
+<table>
+<colgroup>
+<col width="36%" />
+<col width="63%" />
+</colgroup>
+<thead>
+<tr class="header">
+<th align="left">Operator</th>
+<th align="left">Description</th>
+</tr>
+</thead>
+<tbody>
+<tr class="odd">
+<td align="left">=</td>
+<td align="left">Equal</td>
+</tr>
+<tr class="even">
+<td align="left">&gt;</td>
+<td align="left">Greater than</td>
+</tr>
+<tr class="odd">
+<td align="left">&lt;</td>
+<td align="left">Less than</td>
+</tr>
+<tr class="even">
+<td align="left">&gt;=</td>
+<td align="left">Greater than or equal</td>
+</tr>
+<tr class="odd">
+<td align="left">&lt;=</td>
+<td align="left">Less than or equal</td>
+</tr>
+<tr class="even">
+<td align="left">&lt;&gt;</td>
+<td align="left">Not equal. Note: In some versions of SQL this operator may be written as !=</td>
+</tr>
+<tr class="odd">
+<td align="left">IS NULL or IS NOT NUL</td>
+<td align="left">A field with a NULL value is a field with no value.</td>
+</tr>
+<tr class="even">
+<td align="left">BETWEEN</td>
+<td align="left">Between a certain range</td>
+</tr>
+<tr class="odd">
+<td align="left">LIKE</td>
+<td align="left">Search for a pattern</td>
+</tr>
+<tr class="even">
+<td align="left">IN</td>
+<td align="left">To specify multiple possible values for a column</td>
+</tr>
+</tbody>
+</table>
+</div>
+<div id="between" class="section level2 hasAnchor" number="6.4">
+<h2><span class="header-section-number">6.4</span> BETWEEN<a href="simple-query.html#between" class="anchor-section" aria-label="Anchor link to header"></a></h2>
+<p>The BETWEEN operator selects values within a given range. The values can be numbers, text, or dates. The BETWEEN operator is inclusive: begin and end values are included.</p>
+<pre><code>SELECT column_name(s)
+  FROM table_name
+    WHERE column_name 
+      BETWEEN value1 AND value2;</code></pre>
+<p>The following SQL statement selects all products with a price BETWEEN 10 and 20:</p>
+<pre><code>SELECT * 
+  FROM Products
+    WHERE Price 
+      BETWEEN 10 AND 20;</code></pre>
+<p>The following SQL statement selects all orders with an OrderDate BETWEEN ‘01-July-1996’ and ‘31-July-1996’:</p>
+<pre><code>SELECT * 
+  FROM Orders
+    WHERE OrderDate 
+      BETWEEN &#39;1996-07-01&#39; AND &#39;1996-07-31&#39;;</code></pre>
+</div>
+<div id="in" class="section level2 hasAnchor" number="6.5">
+<h2><span class="header-section-number">6.5</span> IN<a href="simple-query.html#in" class="anchor-section" aria-label="Anchor link to header"></a></h2>
+<p>The IN operator allows you to specify multiple values in a WHERE clause. The IN operator is a shorthand for multiple OR conditions.</p>
+<pre><code>SELECT column_name(s)
+  FROM table_name
+    WHERE column_name 
+      IN (SELECT STATEMENT);</code></pre>
+<p>The following SQL statement selects all customers that are located in “Germany”, “France” or “UK”:</p>
+<pre><code>SELECT * 
+  FROM Customers
+    WHERE Country 
+      IN (&#39;Germany&#39;, &#39;France&#39;, &#39;UK&#39;);</code></pre>
+<p>The following SQL statement selects all customers that are from the same countries as the suppliers:</p>
+<pre><code>SELECT * 
+  FROM Customers
+    WHERE Country 
+      IN (SELECT Country FROM Suppliers);</code></pre>
+</div>
+<div id="like" class="section level2 hasAnchor" number="6.6">
+<h2><span class="header-section-number">6.6</span> LIKE<a href="simple-query.html#like" class="anchor-section" aria-label="Anchor link to header"></a></h2>
+<p>The LIKE operator is used in a WHERE clause to search for a specified pattern in a column. There are two wildcards often used in conjunction with the LIKE operator:</p>
+<pre><code>SELECT column1, column2, ...
+  FROM table_name
+    WHERE columnN LIKE pattern;</code></pre>
+<ul>
+<li>% : The percent sign represents zero, one, or multiple characters</li>
+<li>_ : The underscore represents a single character</li>
+</ul>
+<p>The following SQL statement selects all customers with a CustomerName starting with “a”:</p>
+<pre><code>SELECT * 
+  FROM Customers
+    WHERE CustomerName 
+      LIKE &#39;a%&#39;;</code></pre>
+<p>Here are some examples showing different LIKE operators with ‘%’ and ’_’ wildcards:</p>
+<table>
+<colgroup>
+<col width="52%" />
+<col width="48%" />
+</colgroup>
+<thead>
+<tr class="header">
+<th align="left">LIKE Operator</th>
+<th align="left">Description</th>
+</tr>
+</thead>
+<tbody>
+<tr class="odd">
+<td align="left">WHERE CustomerName LIKE ‘a%’</td>
+<td align="left">Finds any values that start with “a”</td>
+</tr>
+<tr class="even">
+<td align="left">WHERE CustomerName LIKE ‘%a’</td>
+<td align="left">Finds any values that end with “a”</td>
+</tr>
+<tr class="odd">
+<td align="left">WHERE CustomerName LIKE ‘%or%’</td>
+<td align="left">Finds any values that have “or” in any position</td>
+</tr>
+<tr class="even">
+<td align="left">WHERE CustomerName LIKE ’_r%’</td>
+<td align="left">Finds any values that have “r” in the second position</td>
+</tr>
+<tr class="odd">
+<td align="left">WHERE CustomerName LIKE ‘a_%’</td>
+<td align="left">Finds any values that start with “a” and are at least 2 characters in length</td>
+</tr>
+<tr class="even">
+<td align="left">WHERE CustomerName LIKE ’a__%’</td>
+<td align="left">Finds any values that start with “a” and are at least 3 characters in length</td>
+</tr>
+<tr class="odd">
+<td align="left">WHERE ContactName LIKE ‘a%o’</td>
+<td align="left"></td>
+</tr>
+</tbody>
+</table>
+</div>
+<div id="and-or-and-not" class="section level2 hasAnchor" number="6.7">
+<h2><span class="header-section-number">6.7</span> AND, OR and NOT<a href="simple-query.html#and-or-and-not" class="anchor-section" aria-label="Anchor link to header"></a></h2>
+<p>The WHERE clause can be combined with AND, OR, and NOT operators. The AND and OR operators are used to filter records based on more than one condition:</p>
+<ul>
+<li>The AND operator displays a record if all the conditions separated by AND are TRUE.</li>
+<li>The OR operator displays a record if any of the conditions separated by OR is TRUE.</li>
+<li>The NOT operator displays a record if the condition(s) is NOT TRUE.</li>
+</ul>
+<pre><code>SELECT column1, column2, ...
+  FROM table_name
+    WHERE condition1 AND condition2 OR condition3 NOT condition4;</code></pre>
+<p>The following SQL statement selects all fields from “Customers” where country is “Germany” AND city must be “Berlin” OR “München” (use parenthesis to form complex expressions):</p>
+<pre><code>SELECT * FROM Customers
+WHERE Country=&#39;Germany&#39; AND (City=&#39;Berlin&#39; OR City=&#39;München&#39;);</code></pre>
+<p>Let see one more example, the following SQL statement selects all fields from “Customers” where country is NOT “Germany” and NOT “USA”:</p>
+<pre><code>SELECT * FROM Customers
+WHERE Country=&#39;Germany&#39; AND (City=&#39;Berlin&#39; OR City=&#39;München&#39;);</code></pre>
+</div>
+<div id="order-by" class="section level2 hasAnchor" number="6.8">
+<h2><span class="header-section-number">6.8</span> ORDER BY<a href="simple-query.html#order-by" class="anchor-section" aria-label="Anchor link to header"></a></h2>
+<p>The SQL ORDER BY clause is used to sort the data in ascending or descending order, based on one or more columns. Some databases sort the query results in an ascending order by default. The basic syntax of the ORDER BY clause is as follows:</p>
+<pre><code>SELECT column-list 
+  FROM table_name 
+    [WHERE condition] 
+      [ORDER BY column1, column2, .. columnN] [ASC | DESC];</code></pre>
+<ul>
+<li>By default ORDER BY sorts the data in ascending order.</li>
+<li>We can use the keyword DESC to sort the data in descending order and the keyword ASC to sort in ascending order.</li>
+</ul>
+<p>You can use more than one column in the ORDER BY clause. Make sure whatever column you are using to sort that column should be in the column-list.The following code block has an example, which would sort the result in an ascending order by the City and the Country:</p>
+<pre><code>SELECT * FROM Customers
+WHERE Country=&#39;Germany&#39; AND (City=&#39;Berlin&#39; OR City=&#39;München&#39;)
+  ORDER BY Country, City;</code></pre>
+</div>
+<div id="limit" class="section level2 hasAnchor" number="6.9">
+<h2><span class="header-section-number">6.9</span> LIMIT<a href="simple-query.html#limit" class="anchor-section" aria-label="Anchor link to header"></a></h2>
+<p>If there are a large number of tuples satisfying the query conditions, it might be resourceful to view only a handful of them at a time.</p>
+<ul>
+<li>The LIMIT clause is used to set an upper limit on the number of tuples returned by SQL.</li>
+<li>It is important to note that this clause is not supported by all SQL versions.</li>
+<li>The LIMIT clause can also be specified using the SQL 2008 <a href="https://www.geeksforgeeks.org/sql-offset-fetch-clause/">OFFSET/FETCH FIRST</a> clauses.</li>
+<li>The limit/offset expressions must be a non-negative integer.</li>
+</ul>
+<pre><code>SELECT column-list 
+  FROM table_name 
+    [WHERE condition] 
+      [ORDER BY column1, column2, .. columnN] [ASC | DESC]
+        LIMIT rows_to_skip, next_rows_to_skip;
+          </code></pre>
+<p>The following illustrates the LIMIT clauses to collect TOP 3 rows:</p>
+<pre><code>SELECT * FROM Customers
+WHERE Country=&#39;Germany&#39; AND (City=&#39;Berlin&#39; OR City=&#39;München&#39;)
+  ORDER BY Country, City
+      LIMIT 3;</code></pre>
+<p>Next, the following illustrates the LIMIT clauses to collect TOP 5 rows after TOP 3 rows:</p>
+<pre><code>SELECT CustomerName, Address, City, Country 
+  FROM customers
+    ORDER BY City, Country DESC
+      LIMIT 3, 5;</code></pre>
+</div>
+<div id="min-and-max" class="section level2 hasAnchor" number="6.10">
+<h2><span class="header-section-number">6.10</span> MIN and MAX<a href="simple-query.html#min-and-max" class="anchor-section" aria-label="Anchor link to header"></a></h2>
+<p>The MIN() function returns the smallest value of the selected column. The MAX() function returns the largest value of the selected column.</p>
+<pre><code>SELECT MIN/MAX(column_name)
+  FROM table_name
+    WHERE condition;</code></pre>
+<p>The following SQL statement finds the price of the cheapest product:</p>
+<pre><code>SELECT MIN(Price) AS SmallestPrice
+  FROM Products;</code></pre>
+<p>The following SQL statement finds the price of the most expensive product:</p>
+<pre><code>SELECT MAX(Price) AS LargestPrice
+  FROM Products;</code></pre>
+</div>
+<div id="count-sum-and-avg" class="section level2 hasAnchor" number="6.11">
+<h2><span class="header-section-number">6.11</span> COUNT, SUM, and AVG<a href="simple-query.html#count-sum-and-avg" class="anchor-section" aria-label="Anchor link to header"></a></h2>
+<p>The COUNT() function returns the number of rows that matches a specified criterion. The AVG() function returns the average value of a numeric column. The SUM() function returns the total sum of a numeric column.</p>
+<pre><code>SELECT COUNT/SUM/AVG(column_name)
+FROM table_name
+WHERE condition;</code></pre>
+<p>The following SQL statement finds the average price of all products:</p>
+<pre><code>SELECT AVG(Price)
+  FROM Products;</code></pre>
+<p>Note: Please try other functions, to get more convenient with SQL!</p>
+</div>
+<div id="having" class="section level2 hasAnchor" number="6.12">
+<h2><span class="header-section-number">6.12</span> HAVING<a href="simple-query.html#having" class="anchor-section" aria-label="Anchor link to header"></a></h2>
+<p>The HAVING clause was added to SQL because the WHERE keyword could not be used with aggregate functions.</p>
+<pre><code>SELECT column_name(s)
+  FROM table_name
+    WHERE condition
+      GROUP BY column_name(s)
+        HAVING condition
+          ORDER BY column_name(s);</code></pre>
+<p>The following SQL statement lists the number of customers in each country, sorted high to low (Only include countries with more than 5 customers):</p>
+<pre><code>SELECT COUNT(CustomerID), Country
+  FROM Customers
+    GROUP BY Country
+      HAVING COUNT(CustomerID) &gt; 5
+        ORDER BY COUNT(CustomerID) DESC;</code></pre>
+</div>
+<div id="case" class="section level2 hasAnchor" number="6.13">
+<h2><span class="header-section-number">6.13</span> CASE<a href="simple-query.html#case" class="anchor-section" aria-label="Anchor link to header"></a></h2>
+<p>The CASE statement goes through conditions and returns a value when the first condition is met (like an IF-THEN-ELSE statement). So, once a condition is true, it will stop reading and return the result. If no conditions are true, it returns the value in the ELSE clause.</p>
+<p>If there is no ELSE part and no conditions are true, it returns NULL.</p>
+<pre><code>CASE
+    WHEN condition1 THEN result1
+    WHEN condition2 THEN result2
+    WHEN conditionN THEN resultN
+    ELSE result
+END;</code></pre>
+<p>The following SQL goes through conditions and returns a value when the first condition is met:</p>
+<pre><code>SELECT OrderID, Quantity,
+CASE
+    WHEN Quantity &gt; 30 THEN &#39;The quantity is greater than 30&#39;
+    WHEN Quantity = 30 THEN &#39;The quantity is 30&#39;
+    ELSE &#39;The quantity is under 30&#39;
+END AS QuantityText
+FROM OrderDetails;</code></pre>
+<p>The following SQL will order the customers by City. However, if City is NULL, then order by Country:</p>
+<pre><code>SELECT CustomerName, City, Country
+FROM Customers
+ORDER BY
+(CASE
+    WHEN City IS NULL THEN Country
+    ELSE City
+END);</code></pre>
+</div>
+<div id="your-job-3" class="section level2 hasAnchor" number="6.14">
+<h2><span class="header-section-number">6.14</span> Your Job<a href="simple-query.html#your-job-3" class="anchor-section" aria-label="Anchor link to header"></a></h2>
+<ul>
+<li>Select Some attributes of suppliers in alphabetical order!</li>
+<li>Some attributes of suppliers in reverse alphabetical order!</li>
+<li>Some attributes of suppliers ordered by country, then by city!</li>
+<li>All atributes of suppliers and reverse alphabetical ordered by country, then by city!</li>
+<li>All orders, sorted by total amount, the largest first!</li>
+<li>Get all but the 10 most expensive products sorted by price!</li>
+<li>Get the 10th to 15th most expensive products sorted by price!</li>
+<li>List all supplier countries in alphabetical order!</li>
+<li>Find the cheapest product and Expensive Orders!</li>
+<li>Find the number of Supplier USA!</li>
+<li>Compute the total Quantity of orderitem!</li>
+<li>Compute the average UnitPrice of all product!</li>
+<li>Get all information about customer named Thomas Hardy!</li>
+<li>List all customers from Spain or France!</li>
+<li>List all customers that are not from the USA!</li>
+<li>List all orders that not between $50 and $15000!</li>
+<li>List all products between $10 and $20</li>
+<li>List all products not between $10 and $100 sorted by price!</li>
+<li>Get the list of orders and amount sold between 1996 Jan 01 and 1996 Des 31!</li>
+<li>List all suppliers from the USA, UK, OR Japan!</li>
+<li>List all products that are not exactly $10, $20, $30, $40, or $50!</li>
+<li>List all customers that are from the same countries as the suppliers!</li>
+<li>List all products that start with ‘Cha’ or ‘Chan’ and have one more character!</li>
+<li>List all suppliers that do have a fax number!</li>
+<li>List all customer with average orders between $1000 and $1200 !</li>
+<li>List total customers in each country.</li>
+<li>Display results with easy to understand column headers.</li>
+<li>Measure the average order of product names from each country and order it from max to min.</li>
+<li>Compare the average order of product names from each country in the year 1996 vs 1997 order it from max to min.</li>
+</ul>
+
+</div>
 </div>
             </section>
 
           </div>
         </div>
       </div>
-
-
+<a href="join-table-in-sql.html" class="navigation navigation-prev " aria-label="Previous page"><i class="fa fa-angle-left"></i></a>
+<a href="referensi.html" class="navigation navigation-next " aria-label="Next page"><i class="fa fa-angle-right"></i></a>
     </div>
   </div>
 <script src="libs/gitbook-2.6.7/js/app.min.js"></script>
