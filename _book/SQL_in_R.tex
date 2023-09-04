@@ -122,7 +122,7 @@
 
 \title{Basis Data dan Penelusuran Data}
 \author{Bakti Siregar, M.Sc}
-\date{2023-08-26}
+\date{2023-09-04}
 
 \begin{document}
 \maketitle
@@ -880,7 +880,7 @@ You can install these packages using the following commands:
 \FunctionTok{install.packages}\NormalTok{(}\FunctionTok{c}\NormalTok{(}
                    \StringTok{"RMariaDB"}\NormalTok{,}
                    \StringTok{"RMySQL"}\NormalTok{,}
-                   \StringTok{"RPostgres"}
+                   \StringTok{"RPostgres"}\NormalTok{,}
                    \StringTok{"RSQLite"}\NormalTok{,}
 \NormalTok{                   )}
 \NormalTok{                 )}
@@ -894,13 +894,10 @@ Then, load all these requirement packages:
 
 \begin{Shaded}
 \begin{Highlighting}[]
-\CommentTok{\# install.packages("pacman")}
-\NormalTok{pacman}\SpecialCharTok{::}\FunctionTok{p\_load}\NormalTok{(}
-\NormalTok{               RMariaDB,             }\CommentTok{\# Database Interface and \textquotesingle{}MariaDB\textquotesingle{} Driver}
-\NormalTok{               RMySQL,               }\CommentTok{\# Database Interface and \textquotesingle{}RMySQL\textquotesingle{} Driver}
-\NormalTok{               RPostgres             }\CommentTok{\# Database Interface and \textquotesingle{}RPostgres\textquotesingle{} Driver}
-\NormalTok{               RSQLite,              }\CommentTok{\# Database Interface and \textquotesingle{}RSQLite\textquotesingle{} Driver}
-\NormalTok{          )}
+\FunctionTok{library}\NormalTok{(}\StringTok{"RMariaDB"}\NormalTok{)                     }\CommentTok{\# Database Interface and \textquotesingle{}MariaDB\textquotesingle{} Driver}
+\FunctionTok{library}\NormalTok{(}\StringTok{"RMySQL"}\NormalTok{)                       }\CommentTok{\# Database Interface and \textquotesingle{}RMySQL\textquotesingle{} Driver}
+\FunctionTok{library}\NormalTok{(}\StringTok{"RPostgres"}\NormalTok{)                    }\CommentTok{\# Database Interface and \textquotesingle{}RPostgres\textquotesingle{} Driver}
+\FunctionTok{library}\NormalTok{(}\StringTok{"RSQLite"}\NormalTok{)                      }\CommentTok{\# Database Interface and \textquotesingle{}RSQLite\textquotesingle{} Driver}
 \end{Highlighting}
 \end{Shaded}
 
@@ -913,16 +910,49 @@ There are many ways to connect your database with R. This article shows you thre
 \subsubsection*{MariaDB}\label{mariadb}}
 \addcontentsline{toc}{subsubsection}{MariaDB}
 
+You'll need to establish a connection to the MySQL server first. Use the \texttt{dbConnect()} function to create a connection. Provide the necessary connection information, such as the host, user, and password. For example:
+
 \begin{Shaded}
 \begin{Highlighting}[]
-\NormalTok{MariaDB }\OtherTok{\textless{}{-}} \FunctionTok{dbConnect}\NormalTok{(RMariaDB}\SpecialCharTok{::}\FunctionTok{MariaDB}\NormalTok{(), }
+\NormalTok{MariaDB}\OtherTok{\textless{}{-}} \FunctionTok{dbConnect}\NormalTok{(RMariaDB}\SpecialCharTok{::}\FunctionTok{MariaDB}\NormalTok{(), }
                   \AttributeTok{user=}\StringTok{\textquotesingle{}root\textquotesingle{}}\NormalTok{,}
                   \AttributeTok{password=}\StringTok{\textquotesingle{}\textquotesingle{}}\NormalTok{, }
-                  \AttributeTok{dbname=}\StringTok{\textquotesingle{}bakti\textquotesingle{}}\NormalTok{, }
                   \AttributeTok{host=}\StringTok{\textquotesingle{}localhost\textquotesingle{}}\NormalTok{)}
-\FunctionTok{dbListTables}\NormalTok{(MariaDB)                             }\CommentTok{\# table list on your database}
-\FunctionTok{dbExecute}\NormalTok{(MariaDB,}\StringTok{"CREATE DATABASE new\_MariaDB"}\NormalTok{)  }\CommentTok{\# Create a new Database}
+\NormalTok{MariaDB}
+\end{Highlighting}
+\end{Shaded}
+
+To get a list of all databases on the MySQL server, you can use the dbListTables() function. It provides a list of tables in the currently selected database. To see all databases, you can run an SQL query using the dbGetQuery() function. Here's an example:
+
+\begin{Shaded}
+\begin{Highlighting}[]
+\FunctionTok{dbGetQuery}\NormalTok{(MariaDB, }\StringTok{"SHOW DATABASES"}\NormalTok{)          }\CommentTok{\# daftar semua database}
+\end{Highlighting}
+\end{Shaded}
+
+To create a database, you can use the dbExecute() function to run a SQL query that creates the database. To drop (delete) a database, you can use the dbExecute() function with an SQL query that deletes the database. Be careful when dropping a database, as all data in the database will be permanently deleted. Here's an example:
+
+\begin{Shaded}
+\begin{Highlighting}[]
+\FunctionTok{dbExecute}\NormalTok{(MariaDB,}\StringTok{"CREATE DATABASE new\_MariaDB"}\NormalTok{) }\CommentTok{\# create a database}
 \FunctionTok{dbExecute}\NormalTok{(MariaDB,}\StringTok{"DROP DATABASE new\_MariaDB"}\NormalTok{)    }\CommentTok{\# Drop a Database}
+\end{Highlighting}
+\end{Shaded}
+
+Or, you can create/drop a database by using IF Exist Statement,
+
+\begin{Shaded}
+\begin{Highlighting}[]
+\FunctionTok{dbExecute}\NormalTok{(MySQL,}\StringTok{"CREATE DATABASE IF NOT EXISTS new\_MariaDB"}\NormalTok{) }\CommentTok{\# create a database}
+\FunctionTok{dbExecute}\NormalTok{(MariaDB1,}\StringTok{"DROP DATABASE IF EXISTS new\_MariaDB"}\NormalTok{)    }\CommentTok{\# Drop a Database}
+\end{Highlighting}
+\end{Shaded}
+
+To list the tables in the selected database, you can use the dbListTables() function:
+
+\begin{Shaded}
+\begin{Highlighting}[]
+\FunctionTok{dbListTables}\NormalTok{(MariaDB)                          }\CommentTok{\# table list on your database}
 \end{Highlighting}
 \end{Shaded}
 
@@ -930,12 +960,16 @@ There are many ways to connect your database with R. This article shows you thre
 \subsubsection*{MySQL}\label{mysql}}
 \addcontentsline{toc}{subsubsection}{MySQL}
 
+We can perform similar database operations using the MySQL package in R as you would with the MariaDB package. Both packages provide database connectivity and SQL query execution capabilities, and their usage is quite similar.
+
+Here's how you can establish a database connection and list tables in a specific database using the MySQL package:
+
 \begin{Shaded}
 \begin{Highlighting}[]
 \NormalTok{MySQL }\OtherTok{\textless{}{-}} \FunctionTok{dbConnect}\NormalTok{(}\FunctionTok{MySQL}\NormalTok{(), }
                   \AttributeTok{user=}\StringTok{\textquotesingle{}root\textquotesingle{}}\NormalTok{,}
                   \AttributeTok{password=}\StringTok{\textquotesingle{}\textquotesingle{}}\NormalTok{, }
-                  \AttributeTok{dbname=}\StringTok{\textquotesingle{}bakti\textquotesingle{}}\NormalTok{, }
+                  \AttributeTok{dbname=}\StringTok{\textquotesingle{}coba\_coba\textquotesingle{}}\NormalTok{, }
                   \AttributeTok{host=}\StringTok{\textquotesingle{}localhost\textquotesingle{}}\NormalTok{)}
 \FunctionTok{dbListTables}\NormalTok{(MySQL)                               }\CommentTok{\# table list on your database}
 \FunctionTok{dbExecute}\NormalTok{(MySQL,}\StringTok{"CREATE DATABASE new\_MySQL"}\NormalTok{)      }\CommentTok{\# Create a new Database}
@@ -947,16 +981,20 @@ There are many ways to connect your database with R. This article shows you thre
 \subsubsection*{Postgres}\label{postgres}}
 \addcontentsline{toc}{subsubsection}{Postgres}
 
+Certainly! You can use similar approaches to connect to and interact with a MySQL database using the RMariaDB package in R as you would with packages like RPostgreSQL for PostgreSQL. Both packages provide similar functionalities for connecting to and querying databases, but the specific functions and connection parameters may differ.
+
+Here's a comparison between connecting to a MySQL database using RMariaDB and connecting to a PostgreSQL database using RPostgreSQL:
+
 \begin{Shaded}
 \begin{Highlighting}[]
 \NormalTok{postgres }\OtherTok{\textless{}{-}} \FunctionTok{dbConnect}\NormalTok{(RPostgres}\SpecialCharTok{::}\FunctionTok{Postgres}\NormalTok{(), }
                   \AttributeTok{user=}\StringTok{\textquotesingle{}postgres\textquotesingle{}}\NormalTok{,}
-                  \AttributeTok{password=}\StringTok{\textquotesingle{}1234\textquotesingle{}}\NormalTok{, }
+                  \AttributeTok{password=}\StringTok{\textquotesingle{}123\textquotesingle{}}\NormalTok{, }
                   \AttributeTok{dbname=}\StringTok{\textquotesingle{}postgres\textquotesingle{}}\NormalTok{, }
                   \AttributeTok{host=}\StringTok{\textquotesingle{}localhost\textquotesingle{}}\NormalTok{)}
-\FunctionTok{dbListTables}\NormalTok{(postgres)                               }\CommentTok{\# table list on your database}
-\FunctionTok{dbExecute}\NormalTok{(postgres,}\StringTok{"CREATE DATABASE new\_MySQL"}\NormalTok{)      }\CommentTok{\# Create a new Database}
-\FunctionTok{dbExecute}\NormalTok{(postgres,}\StringTok{"DROP DATABASE new\_MySQL"}\NormalTok{)        }\CommentTok{\# Drop a Database}
+\FunctionTok{dbListTables}\NormalTok{(postgres)                            }\CommentTok{\# table list on your database}
+\FunctionTok{dbExecute}\NormalTok{(postgres,}\StringTok{"CREATE DATABASE new\_PG"}\NormalTok{)      }\CommentTok{\# Create a new Database}
+\FunctionTok{dbExecute}\NormalTok{(postgres,}\StringTok{"DROP DATABASE coba\_coba"}\NormalTok{)     }\CommentTok{\# Drop a Database}
 \end{Highlighting}
 \end{Shaded}
 
@@ -964,9 +1002,11 @@ There are many ways to connect your database with R. This article shows you thre
 \subsubsection*{SQLite}\label{sqlite}}
 \addcontentsline{toc}{subsubsection}{SQLite}
 
+Last but not least, you can perform similar database operations in RMariaDB as you would in packages like SQLite or any other database package in R. The general concepts and functions for database operations are quite similar across different database management systems. Here is the RSQLite example;
+
 \begin{Shaded}
 \begin{Highlighting}[]
-\NormalTok{RSQLite }\OtherTok{\textless{}{-}} \FunctionTok{dbConnect}\NormalTok{(RSQLite}\SpecialCharTok{::}\FunctionTok{SQLite}\NormalTok{(), }\StringTok{"folder\_db/mydb3.sqlite"}\NormalTok{)}
+\NormalTok{RSQLite }\OtherTok{\textless{}{-}} \FunctionTok{dbConnect}\NormalTok{(RSQLite}\SpecialCharTok{::}\FunctionTok{SQLite}\NormalTok{(), }\StringTok{"MySQLite.sqlite"}\NormalTok{)}
 \FunctionTok{dbListTables}\NormalTok{(RSQLite)                             }\CommentTok{\# table list on your database}
 \end{Highlighting}
 \end{Shaded}
@@ -1287,7 +1327,7 @@ Once you have a database, you can continue to create table as shown below:
 \end{Shaded}
 
 \hypertarget{insert-value}{%
-\section{Insert Value}\label{insert-value}}
+\subsection{Insert Value}\label{insert-value}}
 
 If you are adding values for all the columns of the table, you do not need to specify the column names in the SQL query. However, make sure the order of the values is in the same order as the columns in the table. The INSERT INTO syntax would be as follows:
 
@@ -1299,7 +1339,7 @@ If you are adding values for all the columns of the table, you do not need to sp
 \end{Shaded}
 
 \hypertarget{truncate-table}{%
-\section{Truncate Table}\label{truncate-table}}
+\subsection{Truncate Table}\label{truncate-table}}
 
 The TRUNCATE TABLE statement is used to delete the data inside a table, but not the table itself.
 
@@ -1310,7 +1350,7 @@ The TRUNCATE TABLE statement is used to delete the data inside a table, but not 
 \end{Shaded}
 
 \hypertarget{drop-table}{%
-\section{Drop Table}\label{drop-table}}
+\subsection{Drop Table}\label{drop-table}}
 
 The DROP TABLE statement is used to drop an existing table in a database.
 
@@ -1323,7 +1363,7 @@ The DROP TABLE statement is used to drop an existing table in a database.
 \begin{center}\rule{0.5\linewidth}{0.5pt}\end{center}
 
 \hypertarget{write-table}{%
-\section{Write Table}\label{write-table}}
+\subsection{Write Table}\label{write-table}}
 
 The key here is the \texttt{dbWriteTable} function which allows us to write an R data frame directly to a database table. The data frame's column names will be used as the database table's fields.
 
@@ -1335,12 +1375,12 @@ The key here is the \texttt{dbWriteTable} function which allows us to write an R
 \end{Shaded}
 
 \hypertarget{alter-table}{%
-\section{Alter Table}\label{alter-table}}
+\subsection{Alter Table}\label{alter-table}}
 
 The ALTER TABLE statement is used to add, delete, or modify columns in an existing table. The ALTER TABLE statement is also used to add and drop various constraints on an existing table.
 
 \hypertarget{add-column}{%
-\section{Add Column}\label{add-column}}
+\subsection{Add Column}\label{add-column}}
 
 To add a column in a table, use the following syntax:
 
@@ -1352,7 +1392,7 @@ To add a column in a table, use the following syntax:
 \end{Shaded}
 
 \hypertarget{drop-column}{%
-\section{Drop Column}\label{drop-column}}
+\subsection{Drop Column}\label{drop-column}}
 
 To delete a column in a table, use the following syntax (notice that some database systems don't allow deleting a column):
 
@@ -1364,7 +1404,7 @@ To delete a column in a table, use the following syntax (notice that some databa
 \end{Shaded}
 
 \hypertarget{modify-column}{%
-\section{Modify Column}\label{modify-column}}
+\subsection{Modify Column}\label{modify-column}}
 
 \begin{Shaded}
 \begin{Highlighting}[]
@@ -1730,7 +1770,7 @@ Then, you will the resul like this:
 
 }
 
-\caption{Previewing `.sql` in R}\label{fig:unnamed-chunk-55}
+\caption{Previewing `.sql` in R}\label{fig:unnamed-chunk-59}
 \end{figure}
 
 \hypertarget{sql-chunks-in-rmarkdown}{%
@@ -2021,7 +2061,7 @@ Suppose we have a single table called Books with the following columns:
 
 \begin{table}
 
-\caption{\label{tab:unnamed-chunk-57}First Normal Form (1NF)}
+\caption{\label{tab:unnamed-chunk-61}First Normal Form (1NF)}
 \centering
 \begin{tabular}[t]{l|l|l|l|l|l}
 \hline
@@ -2347,6 +2387,936 @@ After finishing the work with the database, close the connection.
 \item
   Choose the correct JOIN clause to select all the records from the Suppliers table plus all the matches in the Orders table.
 \end{enumerate}
+
+\hypertarget{simple-query}{%
+\chapter{Simple Query}\label{simple-query}}
+
+The real power of a relational database lies in its ability to quickly retrieve and analyze your data by running a query. Queries allow you to pull information from one or more tables based on a set of search conditions you define. In this section, you will learn how to create a simple one-table query.
+
+First, we need to connect to our database. Please type the following code in your R console:
+
+\begin{Shaded}
+\begin{Highlighting}[]
+\CommentTok{\# set up the connection and save it into the workspace}
+\CommentTok{\#\textasciitilde{}\textasciitilde{}\textasciitilde{}\textasciitilde{}\textasciitilde{}\textasciitilde{}\textasciitilde{}\textasciitilde{}\textasciitilde{}\textasciitilde{}\textasciitilde{}\textasciitilde{}\textasciitilde{}\textasciitilde{}\textasciitilde{}\textasciitilde{}\textasciitilde{}\textasciitilde{}\textasciitilde{}\textasciitilde{}\textasciitilde{}\textasciitilde{}\textasciitilde{}\textasciitilde{}\textasciitilde{}\textasciitilde{}\textasciitilde{}\textasciitilde{}\textasciitilde{}\textasciitilde{}\textasciitilde{}\textasciitilde{}\textasciitilde{}\textasciitilde{}\textasciitilde{}\textasciitilde{}\textasciitilde{}\textasciitilde{}\textasciitilde{}\textasciitilde{}\textasciitilde{}\textasciitilde{}\textasciitilde{}\textasciitilde{}\textasciitilde{}\textasciitilde{}\textasciitilde{}\textasciitilde{}\textasciitilde{}\textasciitilde{}\textasciitilde{}\textasciitilde{}\textasciitilde{}\textasciitilde{}\textasciitilde{}\textasciitilde{}\textasciitilde{}\textasciitilde{}\textasciitilde{}\textasciitilde{}\textasciitilde{}\textasciitilde{}\textasciitilde{}\textasciitilde{}\textasciitilde{}\textasciitilde{}\textasciitilde{}\textasciitilde{}\textasciitilde{}\textasciitilde{}\textasciitilde{}\textasciitilde{}\textasciitilde{}\textasciitilde{}\textasciitilde{}\textasciitilde{}\textasciitilde{}\textasciitilde{}\textasciitilde{}}
+\FunctionTok{library}\NormalTok{(RMySQL)}
+\FunctionTok{library}\NormalTok{(DBI)}
+\NormalTok{bakti }\OtherTok{\textless{}{-}} \FunctionTok{dbConnect}\NormalTok{(RMySQL}\SpecialCharTok{::}\FunctionTok{MySQL}\NormalTok{(),}
+                  \AttributeTok{dbname=}\StringTok{\textquotesingle{}factory\_db\textquotesingle{}}\NormalTok{,}
+                  \AttributeTok{username=}\StringTok{\textquotesingle{}root\textquotesingle{}}\NormalTok{,}
+                  \AttributeTok{password=}\StringTok{\textquotesingle{}\textquotesingle{}}\NormalTok{, }
+                  \AttributeTok{host=}\StringTok{\textquotesingle{}localhost\textquotesingle{}}\NormalTok{,}
+                  \AttributeTok{port=}\DecValTok{3306}\NormalTok{)}
+\NormalTok{knitr}\SpecialCharTok{::}\NormalTok{opts\_chunk}\SpecialCharTok{$}\FunctionTok{set}\NormalTok{(}\AttributeTok{connection =} \StringTok{"bakti"}\NormalTok{) }\CommentTok{\# to set up the connection in your Rmarkdown chunk}
+\end{Highlighting}
+\end{Shaded}
+
+\hypertarget{select-1}{%
+\section{SELECT}\label{select-1}}
+
+The SQL SELECT statement is used to fetch the data from a database table which returns this data in the form of a result table. These result tables are called result-sets. The basic syntax of the SELECT statement is as follows:
+
+\begin{verbatim}
+SELECT column1, column2, columnN 
+  FROM table_name;
+\end{verbatim}
+
+Assume, column1, column2\ldots{} are the fields of a table whose values you want to fetch. If you want to fetch some of the fields available in the field, then you can use the following syntax.
+
+\begin{verbatim}
+SELECT CustomerName, Address, City, Country 
+  FROM CUSTOMERS;
+\end{verbatim}
+
+If you want to fetch all the fields of the CUSTOMERS table, then you should use the following query.
+
+\begin{verbatim}
+SELECT *
+  FROM CUSTOMERS;
+\end{verbatim}
+
+\hypertarget{distinct}{%
+\section{DISTINCT}\label{distinct}}
+
+The SQL DISTINCT keyword is used in conjunction with the SELECT statement to eliminate all the duplicate records and fetching only unique records. There may be a situation when you have multiple duplicate records in a table. While fetching such records, it makes more sense to fetch only those unique records instead of fetching duplicate records.
+
+The basic syntax of DISTINCT keyword to eliminate the duplicate records is as follows:
+
+\begin{verbatim}
+SELECT DISTINCT column_name
+  FROM table_name
+\end{verbatim}
+
+Now, let us use the DISTINCT keyword with the above SELECT query and then see the result.
+
+\begin{verbatim}
+SELECT DISTINCT Country   
+  FROM customers;
+\end{verbatim}
+
+\hypertarget{where-1}{%
+\section{WHERE}\label{where-1}}
+
+The WHERE clause is used to filter records. The WHERE clause is used to extract only those records that fulfill a specified condition.
+
+\begin{verbatim}
+SELECT column1, column2, ...
+  FROM table_name
+    WHERE [condition];
+\end{verbatim}
+
+\emph{Note:} The WHERE clause is not only used in SELECT statement, it is also used in UPDATE, DELETE statement, etc.!
+
+The following SQL statement selects all the customers from the country ``Mexico'', in the ``Customers'' table:
+
+\begin{verbatim}
+SELECT * 
+  FROM Customers
+    WHERE Country='Mexico';
+\end{verbatim}
+
+The following operators can be used in the WHERE clause, please try it by your self!
+
+\begin{longtable}[]{@{}
+  >{\raggedright\arraybackslash}p{(\columnwidth - 2\tabcolsep) * \real{0.3636}}
+  >{\raggedright\arraybackslash}p{(\columnwidth - 2\tabcolsep) * \real{0.6364}}@{}}
+\toprule\noalign{}
+\begin{minipage}[b]{\linewidth}\raggedright
+Operator
+\end{minipage} & \begin{minipage}[b]{\linewidth}\raggedright
+Description
+\end{minipage} \\
+\midrule\noalign{}
+\endhead
+\bottomrule\noalign{}
+\endlastfoot
+= & Equal \\
+\textgreater{} & Greater than \\
+\textless{} & Less than \\
+\textgreater= & Greater than or equal \\
+\textless= & Less than or equal \\
+\textless\textgreater{} & Not equal. Note: In some versions of SQL this operator may be written as != \\
+IS NULL or IS NOT NUL & A field with a NULL value is a field with no value. \\
+BETWEEN & Between a certain range \\
+LIKE & Search for a pattern \\
+IN & To specify multiple possible values for a column \\
+\end{longtable}
+
+\hypertarget{between}{%
+\section{BETWEEN}\label{between}}
+
+The BETWEEN operator selects values within a given range. The values can be numbers, text, or dates. The BETWEEN operator is inclusive: begin and end values are included.
+
+\begin{verbatim}
+SELECT column_name(s)
+  FROM table_name
+    WHERE column_name 
+      BETWEEN value1 AND value2;
+\end{verbatim}
+
+The following SQL statement selects all products with a price BETWEEN 10 and 20:
+
+\begin{verbatim}
+SELECT * 
+  FROM Products
+    WHERE Price 
+      BETWEEN 10 AND 20;
+\end{verbatim}
+
+The following SQL statement selects all orders with an OrderDate BETWEEN `01-July-1996' and `31-July-1996':
+
+\begin{verbatim}
+SELECT * 
+  FROM Orders
+    WHERE OrderDate 
+      BETWEEN '1996-07-01' AND '1996-07-31';
+\end{verbatim}
+
+\hypertarget{in}{%
+\section{IN}\label{in}}
+
+The IN operator allows you to specify multiple values in a WHERE clause. The IN operator is a shorthand for multiple OR conditions.
+
+\begin{verbatim}
+SELECT column_name(s)
+  FROM table_name
+    WHERE column_name 
+      IN (SELECT STATEMENT);
+\end{verbatim}
+
+The following SQL statement selects all customers that are located in ``Germany'', ``France'' or ``UK'':
+
+\begin{verbatim}
+SELECT * 
+  FROM Customers
+    WHERE Country 
+      IN ('Germany', 'France', 'UK');
+\end{verbatim}
+
+The following SQL statement selects all customers that are from the same countries as the suppliers:
+
+\begin{verbatim}
+SELECT * 
+  FROM Customers
+    WHERE Country 
+      IN (SELECT Country FROM Suppliers);
+\end{verbatim}
+
+\hypertarget{like}{%
+\section{LIKE}\label{like}}
+
+The LIKE operator is used in a WHERE clause to search for a specified pattern in a column. There are two wildcards often used in conjunction with the LIKE operator:
+
+\begin{verbatim}
+SELECT column1, column2, ...
+  FROM table_name
+    WHERE columnN LIKE pattern;
+\end{verbatim}
+
+\begin{itemize}
+\tightlist
+\item
+  \% : The percent sign represents zero, one, or multiple characters
+\item
+  \_ : The underscore represents a single character
+\end{itemize}
+
+The following SQL statement selects all customers with a CustomerName starting with ``a'':
+
+\begin{verbatim}
+SELECT * 
+  FROM Customers
+    WHERE CustomerName 
+      LIKE 'a%';
+\end{verbatim}
+
+Here are some examples showing different LIKE operators with `\%' and '\_' wildcards:
+
+\begin{longtable}[]{@{}
+  >{\raggedright\arraybackslash}p{(\columnwidth - 2\tabcolsep) * \real{0.5200}}
+  >{\raggedright\arraybackslash}p{(\columnwidth - 2\tabcolsep) * \real{0.4800}}@{}}
+\toprule\noalign{}
+\begin{minipage}[b]{\linewidth}\raggedright
+LIKE Operator
+\end{minipage} & \begin{minipage}[b]{\linewidth}\raggedright
+Description
+\end{minipage} \\
+\midrule\noalign{}
+\endhead
+\bottomrule\noalign{}
+\endlastfoot
+WHERE CustomerName LIKE `a\%' & Finds any values that start with ``a'' \\
+WHERE CustomerName LIKE `\%a' & Finds any values that end with ``a'' \\
+WHERE CustomerName LIKE `\%or\%' & Finds any values that have ``or'' in any position \\
+WHERE CustomerName LIKE '\_r\%' & Finds any values that have ``r'' in the second position \\
+WHERE CustomerName LIKE `a\_\%' & Finds any values that start with ``a'' and are at least 2 characters in length \\
+WHERE CustomerName LIKE 'a\_\_\%' & Finds any values that start with ``a'' and are at least 3 characters in length \\
+WHERE ContactName LIKE `a\%o' & \\
+\end{longtable}
+
+\hypertarget{and-or-and-not}{%
+\section{AND, OR and NOT}\label{and-or-and-not}}
+
+The WHERE clause can be combined with AND, OR, and NOT operators. The AND and OR operators are used to filter records based on more than one condition:
+
+\begin{itemize}
+\tightlist
+\item
+  The AND operator displays a record if all the conditions separated by AND are TRUE.
+\item
+  The OR operator displays a record if any of the conditions separated by OR is TRUE.
+\item
+  The NOT operator displays a record if the condition(s) is NOT TRUE.
+\end{itemize}
+
+\begin{verbatim}
+SELECT column1, column2, ...
+  FROM table_name
+    WHERE condition1 AND condition2 OR condition3 NOT condition4;
+\end{verbatim}
+
+The following SQL statement selects all fields from ``Customers'' where country is ``Germany'' AND city must be ``Berlin'' OR ``München'' (use parenthesis to form complex expressions):
+
+\begin{verbatim}
+SELECT * FROM Customers
+WHERE Country='Germany' AND (City='Berlin' OR City='München');
+\end{verbatim}
+
+Let see one more example, the following SQL statement selects all fields from ``Customers'' where country is NOT ``Germany'' and NOT ``USA'':
+
+\begin{verbatim}
+SELECT * FROM Customers
+WHERE Country='Germany' AND (City='Berlin' OR City='München');
+\end{verbatim}
+
+\hypertarget{order-by}{%
+\section{ORDER BY}\label{order-by}}
+
+The SQL ORDER BY clause is used to sort the data in ascending or descending order, based on one or more columns. Some databases sort the query results in an ascending order by default. The basic syntax of the ORDER BY clause is as follows:
+
+\begin{verbatim}
+SELECT column-list 
+  FROM table_name 
+    [WHERE condition] 
+      [ORDER BY column1, column2, .. columnN] [ASC | DESC];
+\end{verbatim}
+
+\begin{itemize}
+\tightlist
+\item
+  By default ORDER BY sorts the data in ascending order.
+\item
+  We can use the keyword DESC to sort the data in descending order and the keyword ASC to sort in ascending order.
+\end{itemize}
+
+You can use more than one column in the ORDER BY clause. Make sure whatever column you are using to sort that column should be in the column-list.The following code block has an example, which would sort the result in an ascending order by the City and the Country:
+
+\begin{verbatim}
+SELECT * FROM Customers
+WHERE Country='Germany' AND (City='Berlin' OR City='München')
+  ORDER BY Country, City;
+\end{verbatim}
+
+\hypertarget{limit}{%
+\section{LIMIT}\label{limit}}
+
+If there are a large number of tuples satisfying the query conditions, it might be resourceful to view only a handful of them at a time.
+
+\begin{itemize}
+\tightlist
+\item
+  The LIMIT clause is used to set an upper limit on the number of tuples returned by SQL.
+\item
+  It is important to note that this clause is not supported by all SQL versions.
+\item
+  The LIMIT clause can also be specified using the SQL 2008 \href{https://www.geeksforgeeks.org/sql-offset-fetch-clause/}{OFFSET/FETCH FIRST} clauses.
+\item
+  The limit/offset expressions must be a non-negative integer.
+\end{itemize}
+
+\begin{verbatim}
+SELECT column-list 
+  FROM table_name 
+    [WHERE condition] 
+      [ORDER BY column1, column2, .. columnN] [ASC | DESC]
+        LIMIT rows_to_skip, next_rows_to_skip;
+          
+\end{verbatim}
+
+The following illustrates the LIMIT clauses to collect TOP 3 rows:
+
+\begin{verbatim}
+SELECT * FROM Customers
+WHERE Country='Germany' AND (City='Berlin' OR City='München')
+  ORDER BY Country, City
+      LIMIT 3;
+\end{verbatim}
+
+Next, the following illustrates the LIMIT clauses to collect TOP 5 rows after TOP 3 rows:
+
+\begin{verbatim}
+SELECT CustomerName, Address, City, Country 
+  FROM customers
+    ORDER BY City, Country DESC
+      LIMIT 3, 5;
+\end{verbatim}
+
+\hypertarget{min-and-max}{%
+\section{MIN and MAX}\label{min-and-max}}
+
+The MIN() function returns the smallest value of the selected column. The MAX() function returns the largest value of the selected column.
+
+\begin{verbatim}
+SELECT MIN/MAX(column_name)
+  FROM table_name
+    WHERE condition;
+\end{verbatim}
+
+The following SQL statement finds the price of the cheapest product:
+
+\begin{verbatim}
+SELECT MIN(Price) AS SmallestPrice
+  FROM Products;
+\end{verbatim}
+
+The following SQL statement finds the price of the most expensive product:
+
+\begin{verbatim}
+SELECT MAX(Price) AS LargestPrice
+  FROM Products;
+\end{verbatim}
+
+\hypertarget{count-sum-and-avg}{%
+\section{COUNT, SUM, and AVG}\label{count-sum-and-avg}}
+
+The COUNT() function returns the number of rows that matches a specified criterion. The AVG() function returns the average value of a numeric column. The SUM() function returns the total sum of a numeric column.
+
+\begin{verbatim}
+SELECT COUNT/SUM/AVG(column_name)
+FROM table_name
+WHERE condition;
+\end{verbatim}
+
+The following SQL statement finds the average price of all products:
+
+\begin{verbatim}
+SELECT AVG(Price)
+  FROM Products;
+\end{verbatim}
+
+Note: Please try other functions, to get more convenient with SQL!
+
+\hypertarget{having}{%
+\section{HAVING}\label{having}}
+
+The HAVING clause was added to SQL because the WHERE keyword could not be used with aggregate functions.
+
+\begin{verbatim}
+SELECT column_name(s)
+  FROM table_name
+    WHERE condition
+      GROUP BY column_name(s)
+        HAVING condition
+          ORDER BY column_name(s);
+\end{verbatim}
+
+The following SQL statement lists the number of customers in each country, sorted high to low (Only include countries with more than 5 customers):
+
+\begin{verbatim}
+SELECT COUNT(CustomerID), Country
+  FROM Customers
+    GROUP BY Country
+      HAVING COUNT(CustomerID) > 5
+        ORDER BY COUNT(CustomerID) DESC;
+\end{verbatim}
+
+\hypertarget{case}{%
+\section{CASE}\label{case}}
+
+The CASE statement goes through conditions and returns a value when the first condition is met (like an IF-THEN-ELSE statement). So, once a condition is true, it will stop reading and return the result. If no conditions are true, it returns the value in the ELSE clause.
+
+If there is no ELSE part and no conditions are true, it returns NULL.
+
+\begin{verbatim}
+CASE
+    WHEN condition1 THEN result1
+    WHEN condition2 THEN result2
+    WHEN conditionN THEN resultN
+    ELSE result
+END;
+\end{verbatim}
+
+The following SQL goes through conditions and returns a value when the first condition is met:
+
+\begin{verbatim}
+SELECT OrderID, Quantity,
+CASE
+    WHEN Quantity > 30 THEN 'The quantity is greater than 30'
+    WHEN Quantity = 30 THEN 'The quantity is 30'
+    ELSE 'The quantity is under 30'
+END AS QuantityText
+FROM OrderDetails;
+\end{verbatim}
+
+The following SQL will order the customers by City. However, if City is NULL, then order by Country:
+
+\begin{verbatim}
+SELECT CustomerName, City, Country
+FROM Customers
+ORDER BY
+(CASE
+    WHEN City IS NULL THEN Country
+    ELSE City
+END);
+\end{verbatim}
+
+\hypertarget{your-job-3}{%
+\section{Your Job}\label{your-job-3}}
+
+\begin{itemize}
+\tightlist
+\item
+  Select Some attributes of suppliers in alphabetical order!
+\item
+  Some attributes of suppliers in reverse alphabetical order!
+\item
+  Some attributes of suppliers ordered by country, then by city!
+\item
+  All atributes of suppliers and reverse alphabetical ordered by country, then by city!
+\item
+  All orders, sorted by total amount, the largest first!
+\item
+  Get all but the 10 most expensive products sorted by price!
+\item
+  Get the 10th to 15th most expensive products sorted by price!
+\item
+  List all supplier countries in alphabetical order!
+\item
+  Find the cheapest product and Expensive Orders!
+\item
+  Find the number of Supplier USA!
+\item
+  Compute the total Quantity of orderitem!
+\item
+  Compute the average UnitPrice of all product!
+\item
+  Get all information about customer named Thomas Hardy!
+\item
+  List all customers from Spain or France!
+\item
+  List all customers that are not from the USA!
+\item
+  List all orders that not between \$50 and \$15000!
+\item
+  List all products between \$10 and \$20
+\item
+  List all products not between \$10 and \$100 sorted by price!
+\item
+  Get the list of orders and amount sold between 1996 Jan 01 and 1996 Des 31!
+\item
+  List all suppliers from the USA, UK, OR Japan!
+\item
+  List all products that are not exactly \$10, \$20, \$30, \$40, or \$50!
+\item
+  List all customers that are from the same countries as the suppliers!
+\item
+  List all products that start with `Cha' or `Chan' and have one more character!
+\item
+  List all suppliers that do have a fax number!
+\item
+  List all customer with average orders between \$1000 and \$1200 !
+\item
+  List total customers in each country.
+\item
+  Display results with easy to understand column headers.
+\item
+  Measure the average order of product names from each country and order it from max to min.
+\item
+  Compare the average order of product names from each country in the year 1996 vs 1997 order it from max to min.
+\end{itemize}
+
+\hypertarget{join-table-queries}{%
+\chapter{Join Table Queries}\label{join-table-queries}}
+
+In the previous section, you learned how to create a simple query with one table. Most queries you design in Access will likely use multiple tables, allowing you to answer more complex questions. In this lesson, you'll learn how to design and create a multi-table query.
+
+Queries can be difficult to understand and build if you don't have a good idea of what you're trying to find and how to find it. A one-table query can be simple enough to make up as you go along, but to build anything more powerful you'll need to plan the query in advance.
+
+\hypertarget{planning-a-query-in-sql}{%
+\section{Planning a Query in SQL}\label{planning-a-query-in-sql}}
+
+Planning a query in SQL involves several important steps to ensure that you retrieve the desired data efficiently and accurately. Here's a step-by-step guide to planning and executing a successful SQL query:
+
+\begin{itemize}
+\tightlist
+\item
+  \textbf{Understand Requirements}
+\end{itemize}
+
+\begin{quote}
+Clearly define the purpose of your query. Understand what specific data you need and what conditions or criteria need to be met. If you're unsure, discuss the requirements with stakeholders or team members.
+\end{quote}
+
+\begin{itemize}
+\tightlist
+\item
+  \textbf{Select the Right Table(s)}
+\end{itemize}
+
+\begin{quote}
+Identify the table(s) that contain the relevant data you need. Make sure you understand the table structure, column names, and relationships between tables (if applicable).
+\end{quote}
+
+\begin{itemize}
+\tightlist
+\item
+  \textbf{Choose Columns}
+\end{itemize}
+
+\begin{quote}
+Determine the columns you need in the query result. Select only the columns that are necessary to fulfill the query requirements. This reduces the amount of data retrieved and improves performance.
+\end{quote}
+
+\begin{itemize}
+\tightlist
+\item
+  \textbf{Apply Filters (WHERE Clause)}
+\end{itemize}
+
+\begin{quote}
+Use the WHERE clause to filter the rows that meet specific criteria. This helps narrow down the dataset and retrieves only the relevant records. Be cautious not to use overly complex conditions that might slow down the query.
+\end{quote}
+
+\begin{itemize}
+\tightlist
+\item
+  \textbf{Sort Results (ORDER BY Clause, if needed)}
+\end{itemize}
+
+\begin{quote}
+If you need the results in a specific order, use the ORDER BY clause to sort the output based on one or more columns. Sorting can impact performance, so use it judiciously.
+\end{quote}
+
+\begin{itemize}
+\tightlist
+\item
+  \textbf{Aggregate Data (GROUP BY and HAVING Clauses, if needed)}
+\end{itemize}
+
+\begin{quote}
+If you need to perform aggregate calculations (e.g., SUM, AVG, COUNT), use the GROUP BY clause to group data based on certain columns. You can also use the HAVING clause to filter groups based on aggregate conditions.
+\end{quote}
+
+\begin{itemize}
+\tightlist
+\item
+  \textbf{Join Tables (if needed)}
+\end{itemize}
+
+\begin{quote}
+If your query requires data from multiple tables, use the appropriate join operations (INNER JOIN, LEFT JOIN, etc.) to combine data based on related columns. Make sure you understand the relationships and select the appropriate join type.
+\end{quote}
+
+\begin{itemize}
+\tightlist
+\item
+  \textbf{Optimize Performance}
+\end{itemize}
+
+\begin{quote}
+Consider the performance implications of your query. Avoid using unnecessary subqueries or functions that could slow down execution. Use indexes on columns that are frequently used for filtering or joining.
+\end{quote}
+
+\begin{itemize}
+\tightlist
+\item
+  \textbf{Test the Query}
+\end{itemize}
+
+\begin{quote}
+Before executing the query in a production environment, test it in a safe environment (e.g., a development or testing database). Verify that the query returns the expected results and that the performance is acceptable.
+\end{quote}
+
+\begin{itemize}
+\tightlist
+\item
+  \textbf{Backup Data (if applicable)}
+\end{itemize}
+
+\begin{quote}
+If your query involves updating or deleting data, create a backup of the relevant tables before making any changes. This helps prevent accidental data loss.
+\end{quote}
+
+\begin{itemize}
+\tightlist
+\item
+  \textbf{Execute and Review}
+\end{itemize}
+
+\begin{quote}
+Once you're confident in your query, execute it in the production environment if necessary. Review the results to ensure they match your expectations.
+\end{quote}
+
+\begin{itemize}
+\tightlist
+\item
+  \textbf{Monitor and Optimize}
+\end{itemize}
+
+\begin{quote}
+After executing the query, monitor its performance in the production environment. Use tools like query execution plans to identify bottlenecks and optimize as needed.
+\end{quote}
+
+\begin{itemize}
+\tightlist
+\item
+  \textbf{Document the Query}
+\end{itemize}
+
+\begin{quote}
+Document the query, including its purpose, the tables involved, the filters applied, and any other relevant details. This documentation can be helpful for future reference and troubleshooting.
+\end{quote}
+
+By following these steps, you can plan and execute SQL queries effectively, ensuring that you retrieve accurate results in an efficient manner.
+
+\hypertarget{union}{%
+\section{UNION}\label{union}}
+
+The UNION operator is used to combine the result-set of two or more SELECT statements.
+
+\begin{itemize}
+\tightlist
+\item
+  Each SELECT statement within UNION must have the same number of columns
+\item
+  The columns must also have similar data types
+\item
+  The columns in each SELECT statement must also be in the same order
+\end{itemize}
+
+\begin{verbatim}
+SELECT column_name(s) 
+  FROM table1
+    UNION
+      SELECT column_name(s) 
+        FROM table2;
+\end{verbatim}
+
+Before we begin, first we need to connect to our database. Please type the following code in your R console:
+
+\begin{Shaded}
+\begin{Highlighting}[]
+\CommentTok{\# set up the connection and save it into the workspace}
+\CommentTok{\#\textasciitilde{}\textasciitilde{}\textasciitilde{}\textasciitilde{}\textasciitilde{}\textasciitilde{}\textasciitilde{}\textasciitilde{}\textasciitilde{}\textasciitilde{}\textasciitilde{}\textasciitilde{}\textasciitilde{}\textasciitilde{}\textasciitilde{}\textasciitilde{}\textasciitilde{}\textasciitilde{}\textasciitilde{}\textasciitilde{}\textasciitilde{}\textasciitilde{}\textasciitilde{}\textasciitilde{}\textasciitilde{}\textasciitilde{}\textasciitilde{}\textasciitilde{}\textasciitilde{}\textasciitilde{}\textasciitilde{}\textasciitilde{}\textasciitilde{}\textasciitilde{}\textasciitilde{}\textasciitilde{}\textasciitilde{}\textasciitilde{}\textasciitilde{}\textasciitilde{}\textasciitilde{}\textasciitilde{}\textasciitilde{}\textasciitilde{}\textasciitilde{}\textasciitilde{}\textasciitilde{}\textasciitilde{}\textasciitilde{}\textasciitilde{}\textasciitilde{}\textasciitilde{}\textasciitilde{}\textasciitilde{}\textasciitilde{}\textasciitilde{}\textasciitilde{}\textasciitilde{}\textasciitilde{}\textasciitilde{}\textasciitilde{}\textasciitilde{}\textasciitilde{}\textasciitilde{}\textasciitilde{}\textasciitilde{}\textasciitilde{}\textasciitilde{}\textasciitilde{}\textasciitilde{}\textasciitilde{}\textasciitilde{}\textasciitilde{}\textasciitilde{}\textasciitilde{}\textasciitilde{}\textasciitilde{}\textasciitilde{}\textasciitilde{}}
+\FunctionTok{library}\NormalTok{(RMySQL)}
+\FunctionTok{library}\NormalTok{(DBI)}
+\NormalTok{bakti }\OtherTok{\textless{}{-}} \FunctionTok{dbConnect}\NormalTok{(RMySQL}\SpecialCharTok{::}\FunctionTok{MySQL}\NormalTok{(),}
+                  \AttributeTok{dbname=}\StringTok{\textquotesingle{}factory\_db\textquotesingle{}}\NormalTok{,}
+                  \AttributeTok{username=}\StringTok{\textquotesingle{}root\textquotesingle{}}\NormalTok{,}
+                  \AttributeTok{password=}\StringTok{\textquotesingle{}\textquotesingle{}}\NormalTok{, }
+                  \AttributeTok{host=}\StringTok{\textquotesingle{}localhost\textquotesingle{}}\NormalTok{,}
+                  \AttributeTok{port=}\DecValTok{3306}\NormalTok{)}
+\NormalTok{knitr}\SpecialCharTok{::}\NormalTok{opts\_chunk}\SpecialCharTok{$}\FunctionTok{set}\NormalTok{(}\AttributeTok{connection =} \StringTok{"bakti"}\NormalTok{) }\CommentTok{\# to set up the connection in your Rmarkdown chunk}
+\end{Highlighting}
+\end{Shaded}
+
+The following SQL statement returns the cities (only distinct values) from both the ``Customers'' and the ``Suppliers'' table:
+
+\begin{verbatim}
+SELECT City 
+  FROM Customers
+    UNION
+      SELECT City 
+        FROM Suppliers
+          ORDER BY City;
+\end{verbatim}
+
+\emph{Note:} If some customers or suppliers have the same city, each city will only be listed once, because UNION selects only distinct values. Use UNION ALL to also select duplicate values!
+
+\hypertarget{union-all}{%
+\subsection{UNION ALL}\label{union-all}}
+
+The following SQL statement returns the cities (duplicate values also) from both the ``Customers'' and the ``Suppliers'' table:
+
+\begin{verbatim}
+SELECT City 
+  FROM Customers
+    UNION ALL
+      SELECT City 
+        FROM Suppliers
+          ORDER BY City;
+\end{verbatim}
+
+\hypertarget{union-with-where}{%
+\subsection{UNION With WHERE}\label{union-with-where}}
+
+The following SQL statement returns the German cities (only distinct values) from both the ``Customers'' and the ``Suppliers'' table:
+
+\begin{verbatim}
+SELECT City, Country 
+  FROM Customers
+    WHERE Country='Germany'
+      UNION
+        SELECT City, Country 
+          FROM Suppliers
+            WHERE Country='Germany'
+              ORDER BY City;
+\end{verbatim}
+
+\hypertarget{union-all-with-where}{%
+\subsection{UNION ALL With WHERE}\label{union-all-with-where}}
+
+The following SQL statement returns the German cities (duplicate values also) from both the ``Customers'' and the ``Suppliers'' table:
+
+\begin{verbatim}
+SELECT City, Country 
+  FROM Customers
+    WHERE Country='Germany'
+      UNION ALL
+        SELECT City, Country 
+          FROM Suppliers
+            WHERE Country='Germany'
+              ORDER BY City;
+\end{verbatim}
+
+\hypertarget{exists}{%
+\section{EXISTS}\label{exists}}
+
+The EXISTS operator is used to test for the existence of any record in a subquery. The EXISTS operator returns true if the subquery returns one or more records.
+
+\begin{verbatim}
+SELECT column_name(s)
+  FROM table_name
+    WHERE EXISTS
+      (SELECT column_name FROM table_name WHERE condition);
+\end{verbatim}
+
+The following SQL statement returns TRUE and lists the suppliers with a product price over \$50
+
+\begin{verbatim}
+SELECT SupplierName
+  FROM Suppliers
+    WHERE EXISTS (SELECT ProductName 
+                    FROM Products 
+                      WHERE Products.SupplierID = Suppliers.supplierID 
+                        AND Price > 50);
+\end{verbatim}
+
+\hypertarget{any-and-all}{%
+\section{ANY and ALL}\label{any-and-all}}
+
+The ANY and ALL operators are used with a WHERE or HAVING clause. The ANY operator returns TRUE if any of the subquery values meet the condition.
+
+\begin{verbatim}
+SELECT column_name(s)
+FROM table_name
+WHERE column_name operator ANY
+(SELECT column_name FROM table_name WHERE condition);
+\end{verbatim}
+
+The following SQL statement returns TRUE and lists the product names if it finds ANY records in the OrderDetails table that quantity = 10:
+
+\begin{verbatim}
+SELECT *
+  FROM Products
+    WHERE ProductID = ANY (SELECT ProductID
+                            FROM OrderDetails 
+                              WHERE Quantity = 10);
+\end{verbatim}
+
+The ALL operator returns TRUE if all of the subquery values meet the condition. The following SQL statement returns TRUE and lists the product names if ALL the records in the OrderDetails table has quantity = 11.
+
+\begin{verbatim}
+SELECT ProductName
+  FROM Products
+    WHERE ProductID = ALL (SELECT ProductID 
+                            FROM OrderDetails 
+                              WHERE Quantity = 11);
+\end{verbatim}
+
+\hypertarget{group-by}{%
+\section{GROUP BY}\label{group-by}}
+
+The GROUP BY statement groups rows that have the same values into summary rows, like ``find the number of customers in each country''. The GROUP BY statement is often used with aggregate functions (COUNT, MAX, MIN, SUM, AVG) to group the result-set by one or more columns.
+
+\begin{verbatim}
+SELECT column_name(s)
+  FROM table_name
+    WHERE condition
+      GROUP BY column_name(s)
+        ORDER BY column_name(s);
+\end{verbatim}
+
+The following SQL statement lists the number of orders sent by each shipper:
+
+\begin{verbatim}
+SELECT Shippers.ShipperName, COUNT(Orders.OrderID) AS NumberOfOrders 
+  FROM Orders
+    LEFT JOIN Shippers ON Orders.ShipperID = Shippers.ShipperID
+      GROUP BY ShipperName;
+\end{verbatim}
+
+\hypertarget{having-1}{%
+\section{HAVING}\label{having-1}}
+
+The following SQL statement lists the employees that have registered more than 10 orders:
+
+\begin{verbatim}
+SELECT Employees.LastName, COUNT(Orders.OrderID) AS NumberOfOrders
+  FROM (Orders
+    INNER JOIN Employees ON Orders.EmployeeID = Employees.EmployeeID)
+      GROUP BY LastName
+        HAVING COUNT(Orders.OrderID) > 10;
+\end{verbatim}
+
+The following SQL statement lists if the employees ``Davolio'' or ``Fuller'' have registered more than 25 orders:
+
+\begin{verbatim}
+SELECT Employees.LastName, COUNT(Orders.OrderID) AS NumberOfOrders
+  FROM Orders
+    INNER JOIN Employees ON Orders.EmployeeID = Employees.EmployeeID
+      WHERE LastName = 'Davolio' OR LastName = 'Fuller'
+        GROUP BY LastName
+          HAVING COUNT(Orders.OrderID) > 25;
+\end{verbatim}
+
+\emph{Note:} All the functions that we can use in simple queries, it can definitely use them in Multi-table query.
+
+\hypertarget{your-job-4}{%
+\section{Your Job}\label{your-job-4}}
+
+\begin{itemize}
+\tightlist
+\item
+  List all orders with customer information!
+\item
+  List all orders with product names, quantities, and prices!
+\item
+  This will list all customers, whether they placed any order or not!
+\item
+  List customers that have not placed orders!
+\item
+  List all contacts, i.e., suppliers and customers!
+\item
+  List products with order quantities greater than 80!
+\item
+  Which products were sold by the unit (i.e.~quantity =1)?
+\item
+  List customers who placed orders that are larger than the average of each customer order!
+\item
+  Find best selling products based on quantity!
+\item
+  Find best selling products based on revenue!
+\item
+  Find best selling products based on revenue for each country!
+\item
+  Find suppliers with a product price less than \$50!
+\item
+  Find top 10 best employees based on their sales quantity!
+\item
+  Find top 10 best supplier countries based on quantity!
+\item
+  Find top 10 best customer countries based on quantity!
+\item
+  Find top 10 best selling products based on quantity in every year!
+\end{itemize}
+
+\hypertarget{introduction-to-flexdashboard}{%
+\chapter{Introduction to Flexdashboard}\label{introduction-to-flexdashboard}}
+
+Work-in-Progress {[}\url{https://pkgs.rstudio.com/flexdashboard/articles/flexdashboard.html}{]}
+
+\hypertarget{flexdasboard-with-sqlite}{%
+\chapter{Flexdasboard with SQLite}\label{flexdasboard-with-sqlite}}
+
+Work-in-Progress {[}\url{https://pkgs.rstudio.com/flexdashboard/articles/flexdashboard.html}{]}
+
+\hypertarget{shiny-dashboard}{%
+\chapter{Shiny Dashboard}\label{shiny-dashboard}}
+
+Work-in-Progress {[}\url{https://rstudio.github.io/shinydashboard/index.html}{]}
+
+\hypertarget{basic-shiny-dashboard}{%
+\section{Basic Shiny Dashboard}\label{basic-shiny-dashboard}}
+
+\hypertarget{shiny-dashboard-plus}{%
+\section{Shiny Dashboard Plus}\label{shiny-dashboard-plus}}
+
+\hypertarget{shiny-dashboard-with-sql}{%
+\chapter{Shiny Dashboard with SQL}\label{shiny-dashboard-with-sql}}
+
+Work-in-Progress {[}\url{https://rstudio.github.io/shinydashboard/index.html}{]}
+
+\hypertarget{basic-shiny-dashboard-1}{%
+\section{Basic Shiny Dashboard}\label{basic-shiny-dashboard-1}}
+
+\hypertarget{shiny-dashboard-plus-1}{%
+\section{Shiny Dashboard Plus}\label{shiny-dashboard-plus-1}}
+
+\hypertarget{data-analytics-dashboard}{%
+\chapter{Data Analytics Dashboard}\label{data-analytics-dashboard}}
+
+Work-in-Progress
 
 \hypertarget{referensi}{%
 \chapter{Referensi}\label{referensi}}

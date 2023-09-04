@@ -44,24 +44,22 @@ You can install these packages using the following commands:
 install.packages(c(
                    "RMariaDB",
                    "RMySQL",
-                   "RPostgres"
+                   "RPostgres",
                    "RSQLite",
                    )
                  )
 ```
+
 
 ### Load Packages
 
 Then, load all these requirement packages:
 
 ```{r eval=FALSE}
-# install.packages("pacman")
-pacman::p_load(
-               RMariaDB,             # Database Interface and 'MariaDB' Driver
-               RMySQL,               # Database Interface and 'RMySQL' Driver
-               RPostgres             # Database Interface and 'RPostgres' Driver
-               RSQLite,              # Database Interface and 'RSQLite' Driver
-          )
+library("RMariaDB")                     # Database Interface and 'MariaDB' Driver
+library("RMySQL")                       # Database Interface and 'RMySQL' Driver
+library("RPostgres")                    # Database Interface and 'RPostgres' Driver
+library("RSQLite")                      # Database Interface and 'RSQLite' Driver
 ```
 
 
@@ -71,25 +69,55 @@ There are many ways to connect your database with R. This article shows you thre
 
 #### MariaDB {-}
 
+You'll need to establish a connection to the MySQL server first. Use the `dbConnect()` function to create a connection. Provide the necessary connection information, such as the host, user, and password. For example:
+
+
 ```{r eval=FALSE}
-MariaDB <- dbConnect(RMariaDB::MariaDB(), 
+MariaDB<- dbConnect(RMariaDB::MariaDB(), 
                   user='root',
                   password='', 
-                  dbname='bakti', 
                   host='localhost')
-dbListTables(MariaDB)                             # table list on your database
-dbExecute(MariaDB,"CREATE DATABASE new_MariaDB")  # Create a new Database
+MariaDB
+```
+To get a list of all databases on the MySQL server, you can use the dbListTables() function. It provides a list of tables in the currently selected database. To see all databases, you can run an SQL query using the dbGetQuery() function. Here's an example:
+
+
+```{r eval=FALSE}
+dbGetQuery(MariaDB, "SHOW DATABASES")          # daftar semua database
+```
+
+To create a database, you can use the dbExecute() function to run a SQL query that creates the database. To drop (delete) a database, you can use the dbExecute() function with an SQL query that deletes the database. Be careful when dropping a database, as all data in the database will be permanently deleted. Here's an example:
+
+```{r eval=FALSE}
+dbExecute(MariaDB,"CREATE DATABASE new_MariaDB") # create a database
 dbExecute(MariaDB,"DROP DATABASE new_MariaDB")    # Drop a Database
+```
+
+Or, you can create/drop a database by using IF Exist Statement, 
+
+
+```{r eval=F}
+dbExecute(MySQL,"CREATE DATABASE IF NOT EXISTS new_MariaDB") # create a database
+dbExecute(MariaDB1,"DROP DATABASE IF EXISTS new_MariaDB")    # Drop a Database
+```
+To list the tables in the selected database, you can use the dbListTables() function:
+
+```{r eval=FALSE}
+dbListTables(MariaDB)                          # table list on your database
 ```
 
 
 #### MySQL {-}
 
+We can perform similar database operations using the MySQL package in R as you would with the MariaDB package. Both packages provide database connectivity and SQL query execution capabilities, and their usage is quite similar.
+
+Here's how you can establish a database connection and list tables in a specific database using the MySQL package:
+
 ```{r eval=FALSE}
 MySQL <- dbConnect(MySQL(), 
                   user='root',
                   password='', 
-                  dbname='bakti', 
+                  dbname='coba_coba', 
                   host='localhost')
 dbListTables(MySQL)                               # table list on your database
 dbExecute(MySQL,"CREATE DATABASE new_MySQL")      # Create a new Database
@@ -98,21 +126,27 @@ dbExecute(MySQL,"DROP DATABASE new_MySQL")        # Drop a Database
 
 #### Postgres {-}
 
+Certainly! You can use similar approaches to connect to and interact with a MySQL database using the RMariaDB package in R as you would with packages like RPostgreSQL for PostgreSQL. Both packages provide similar functionalities for connecting to and querying databases, but the specific functions and connection parameters may differ.
+
+Here's a comparison between connecting to a MySQL database using RMariaDB and connecting to a PostgreSQL database using RPostgreSQL:
+
 ```{r eval=FALSE}
 postgres <- dbConnect(RPostgres::Postgres(), 
                   user='postgres',
-                  password='1234', 
+                  password='123', 
                   dbname='postgres', 
                   host='localhost')
-dbListTables(postgres)                               # table list on your database
-dbExecute(postgres,"CREATE DATABASE new_MySQL")      # Create a new Database
-dbExecute(postgres,"DROP DATABASE new_MySQL")        # Drop a Database
+dbListTables(postgres)                            # table list on your database
+dbExecute(postgres,"CREATE DATABASE new_PG")      # Create a new Database
+dbExecute(postgres,"DROP DATABASE coba_coba")     # Drop a Database
 ```
 
 #### SQLite {-}
 
+Last but not least, you can perform similar database operations in RMariaDB as you would in packages like SQLite or any other database package in R. The general concepts and functions for database operations are quite similar across different database management systems. Here is the RSQLite example; 
+
 ```{r eval=FALSE}
-RSQLite <- dbConnect(RSQLite::SQLite(), "folder_db/mydb3.sqlite")
+RSQLite <- dbConnect(RSQLite::SQLite(), "MySQLite.sqlite")
 dbListTables(RSQLite)                             # table list on your database
 ```
 
@@ -265,7 +299,6 @@ The DELETE statement is used to delete existing records in a table.
 dbExecute(new_con,"DELETE FROM Customers
                    WHERE CustomerName ='Bakti' ")  
 ```
-
 
 ### UPDATE
 

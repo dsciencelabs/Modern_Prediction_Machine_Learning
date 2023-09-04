@@ -1,0 +1,419 @@
+# Simple Query
+
+The real power of a relational database lies in its ability to quickly retrieve and analyze your data by running a query. Queries allow you to pull information from one or more tables based on a set of search conditions you define. In this section, you will learn how to create a simple one-table query. 
+
+First, we need to connect to our database. Please type the following code in your R console:
+
+```{r, eval=F}
+# set up the connection and save it into the workspace
+#~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+library(RMySQL)
+library(DBI)
+bakti <- dbConnect(RMySQL::MySQL(),
+                  dbname='factory_db',
+                  username='root',
+                  password='', 
+                  host='localhost',
+                  port=3306)
+knitr::opts_chunk$set(connection = "bakti") # to set up the connection in your Rmarkdown chunk
+```
+
+## SELECT
+
+The SQL SELECT statement is used to fetch the data from a database table which returns this data in the form of a result table. These result tables are called result-sets. The basic syntax of the SELECT statement is as follows:
+
+```
+SELECT column1, column2, columnN 
+  FROM table_name;
+```
+
+Assume, column1, column2... are the fields of a table whose values you want to fetch. If you want to fetch some of the fields available in the field, then you can use the following syntax.
+
+```
+SELECT CustomerName, Address, City, Country 
+  FROM CUSTOMERS;
+```
+
+If you want to fetch all the fields of the CUSTOMERS table, then you should use the following query.
+
+```
+SELECT *
+  FROM CUSTOMERS;
+```
+
+## DISTINCT
+
+The SQL DISTINCT keyword is used in conjunction with the SELECT statement to eliminate all the duplicate records and fetching only unique records. There may be a situation when you have multiple duplicate records in a table. While fetching such records, it makes more sense to fetch only those unique records instead of fetching duplicate records.
+
+The basic syntax of DISTINCT keyword to eliminate the duplicate records is as follows:
+
+```
+SELECT DISTINCT column_name
+  FROM table_name
+```
+
+Now, let us use the DISTINCT keyword with the above SELECT query and then see the result.
+
+```
+SELECT DISTINCT Country   
+  FROM customers;
+```
+
+
+## WHERE
+
+The WHERE clause is used to filter records. The WHERE clause is used to extract only those records that fulfill a specified condition.
+
+```
+SELECT column1, column2, ...
+  FROM table_name
+    WHERE [condition];
+```
+
+*Note:* The WHERE clause is not only used in SELECT statement, it is also used in UPDATE, DELETE statement, etc.!
+
+The following SQL statement selects all the customers from the country "Mexico", in the "Customers" table:
+
+```
+SELECT * 
+  FROM Customers
+    WHERE Country='Mexico';
+```
+
+The following operators can be used in the WHERE clause, please try it by your self!
+
+|Operator|	Description |
+|:-------|:-------------|
+|=	|Equal	|
+|>|	Greater than|	
+|<|	Less than	|
+|>=	|Greater than or equal|	
+|<=|	Less than or equal|	
+|<>	|Not equal. Note: In some versions of SQL this operator may be written as !=|	
+|IS NULL or IS NOT NUL| A field with a NULL value is a field with no value.|
+|BETWEEN|	Between a certain range	|
+|LIKE	| Search for a pattern	|
+|IN	|To specify multiple possible values for a column|
+
+## BETWEEN
+
+The BETWEEN operator selects values within a given range. The values can be numbers, text, or dates. The BETWEEN operator is inclusive: begin and end values are included. 
+
+```
+SELECT column_name(s)
+  FROM table_name
+    WHERE column_name 
+      BETWEEN value1 AND value2;
+```
+
+The following SQL statement selects all products with a price BETWEEN 10 and 20:
+
+```
+SELECT * 
+  FROM Products
+    WHERE Price 
+      BETWEEN 10 AND 20;
+```
+
+The following SQL statement selects all orders with an OrderDate BETWEEN '01-July-1996' and '31-July-1996':
+
+
+```
+SELECT * 
+  FROM Orders
+    WHERE OrderDate 
+      BETWEEN '1996-07-01' AND '1996-07-31';
+```
+
+## IN 
+
+The IN operator allows you to specify multiple values in a WHERE clause. The IN operator is a shorthand for multiple OR conditions.
+
+```
+SELECT column_name(s)
+  FROM table_name
+    WHERE column_name 
+      IN (SELECT STATEMENT);
+```
+
+The following SQL statement selects all customers that are located in "Germany", "France" or "UK":
+
+```
+SELECT * 
+  FROM Customers
+    WHERE Country 
+      IN ('Germany', 'France', 'UK');
+```
+
+The following SQL statement selects all customers that are from the same countries as the suppliers:
+
+```
+SELECT * 
+  FROM Customers
+    WHERE Country 
+      IN (SELECT Country FROM Suppliers);
+```
+
+## LIKE
+
+The LIKE operator is used in a WHERE clause to search for a specified pattern in a column. There are two wildcards often used in conjunction with the LIKE operator:
+
+```
+SELECT column1, column2, ...
+  FROM table_name
+    WHERE columnN LIKE pattern;
+```
+
+* \% :  The percent sign represents zero, one, or multiple characters
+* _ : The underscore represents a single character
+
+The following SQL statement selects all customers with a CustomerName starting with "a":
+
+```
+SELECT * 
+  FROM Customers
+    WHERE CustomerName 
+      LIKE 'a%';
+```
+
+Here are some examples showing different LIKE operators with '%' and '_' wildcards:
+
+|LIKE Operator|	Description|
+|:------------|:-----------|
+|WHERE CustomerName LIKE 'a%'|	Finds any values that start with "a"|
+|WHERE CustomerName LIKE '%a'|	Finds any values that end with "a"|
+|WHERE CustomerName LIKE '%or%'|	Finds any values that have "or" in any position|
+|WHERE CustomerName LIKE '_r%'|	Finds any values that have "r" in the second position|
+|WHERE CustomerName LIKE 'a_%'|	Finds any values that start with "a" and are at least 2 characters in length|
+|WHERE CustomerName LIKE 'a__%'|	Finds any values that start with "a" and are at least 3 characters in length|
+|WHERE ContactName LIKE 'a%o'|
+
+## AND, OR and NOT 
+
+The WHERE clause can be combined with AND, OR, and NOT operators. The AND and OR operators are used to filter records based on more than one condition:
+
+* The AND operator displays a record if all the conditions separated by AND are TRUE.
+* The OR operator displays a record if any of the conditions separated by OR is TRUE.
+* The NOT operator displays a record if the condition(s) is NOT TRUE.
+
+```
+SELECT column1, column2, ...
+  FROM table_name
+    WHERE condition1 AND condition2 OR condition3 NOT condition4;
+```
+
+The following SQL statement selects all fields from "Customers" where country is "Germany" AND city must be "Berlin" OR "München" (use parenthesis to form complex expressions):
+
+```
+SELECT * FROM Customers
+WHERE Country='Germany' AND (City='Berlin' OR City='München');
+```
+
+Let see one more example, the following SQL statement selects all fields from "Customers" where country is NOT "Germany" and NOT "USA":
+
+```
+SELECT * FROM Customers
+WHERE Country='Germany' AND (City='Berlin' OR City='München');
+```
+
+## ORDER BY
+
+The SQL ORDER BY clause is used to sort the data in ascending or descending order, based on one or more columns. Some databases sort the query results in an ascending order by default. The basic syntax of the ORDER BY clause is as follows:
+
+```
+SELECT column-list 
+  FROM table_name 
+    [WHERE condition] 
+      [ORDER BY column1, column2, .. columnN] [ASC | DESC];
+```
+
+* By default ORDER BY sorts the data in ascending order.
+* We can use the keyword DESC to sort the data in descending order and the keyword ASC to sort in ascending order.
+
+You can use more than one column in the ORDER BY clause. Make sure whatever column you are using to sort that column should be in the column-list.The following code block has an example, which would sort the result in an ascending order by the City and the Country:
+
+```
+SELECT * FROM Customers
+WHERE Country='Germany' AND (City='Berlin' OR City='München')
+  ORDER BY Country, City;
+```
+
+## LIMIT
+
+If there are a large number of tuples satisfying the query conditions, it might be resourceful to view only a handful of them at a time.
+
+* The LIMIT clause is used to set an upper limit on the number of tuples returned by SQL.
+* It is important to note that this clause is not supported by all SQL versions.
+* The LIMIT clause can also be specified using the SQL 2008 [OFFSET/FETCH FIRST](https://www.geeksforgeeks.org/sql-offset-fetch-clause/) clauses.
+* The limit/offset expressions must be a non-negative integer.
+
+```
+SELECT column-list 
+  FROM table_name 
+    [WHERE condition] 
+      [ORDER BY column1, column2, .. columnN] [ASC | DESC]
+        LIMIT rows_to_skip, next_rows_to_skip;
+          
+```
+
+The following illustrates the LIMIT clauses to collect TOP 3 rows:
+
+```
+SELECT * FROM Customers
+WHERE Country='Germany' AND (City='Berlin' OR City='München')
+  ORDER BY Country, City
+      LIMIT 3;
+```
+
+Next, the following illustrates the LIMIT clauses to collect TOP 5 rows after TOP 3 rows:
+
+
+```
+SELECT CustomerName, Address, City, Country 
+  FROM customers
+    ORDER BY City, Country DESC
+      LIMIT 3, 5;
+```
+
+## MIN and MAX
+
+The MIN() function returns the smallest value of the selected column. The MAX() function returns the largest value of the selected column.
+
+```
+SELECT MIN/MAX(column_name)
+  FROM table_name
+    WHERE condition;
+```
+
+The following SQL statement finds the price of the cheapest product:
+
+```
+SELECT MIN(Price) AS SmallestPrice
+  FROM Products;
+```
+
+The following SQL statement finds the price of the most expensive product:
+
+```
+SELECT MAX(Price) AS LargestPrice
+  FROM Products;
+```
+
+
+## COUNT, SUM, and AVG
+
+The COUNT() function returns the number of rows that matches a specified criterion. The AVG() function returns the average value of a numeric column. The SUM() function returns the total sum of a numeric column.
+
+```
+SELECT COUNT/SUM/AVG(column_name)
+FROM table_name
+WHERE condition;
+```
+
+The following SQL statement finds the average price of all products:
+
+```
+SELECT AVG(Price)
+  FROM Products;
+```
+
+Note: Please try other functions, to get more convenient with SQL!
+
+
+## HAVING
+
+The HAVING clause was added to SQL because the WHERE keyword could not be used with aggregate functions.
+
+```
+SELECT column_name(s)
+  FROM table_name
+    WHERE condition
+      GROUP BY column_name(s)
+        HAVING condition
+          ORDER BY column_name(s);
+```
+
+The following SQL statement lists the number of customers in each country, sorted high to low (Only include countries with more than 5 customers):
+
+```
+SELECT COUNT(CustomerID), Country
+  FROM Customers
+    GROUP BY Country
+      HAVING COUNT(CustomerID) > 5
+        ORDER BY COUNT(CustomerID) DESC;
+```
+
+## CASE
+
+The CASE statement goes through conditions and returns a value when the first condition is met (like an IF-THEN-ELSE statement). So, once a condition is true, it will stop reading and return the result. If no conditions are true, it returns the value in the ELSE clause.
+
+If there is no ELSE part and no conditions are true, it returns NULL.
+
+```
+CASE
+    WHEN condition1 THEN result1
+    WHEN condition2 THEN result2
+    WHEN conditionN THEN resultN
+    ELSE result
+END;
+```
+
+The following SQL goes through conditions and returns a value when the first condition is met:
+
+```
+SELECT OrderID, Quantity,
+CASE
+    WHEN Quantity > 30 THEN 'The quantity is greater than 30'
+    WHEN Quantity = 30 THEN 'The quantity is 30'
+    ELSE 'The quantity is under 30'
+END AS QuantityText
+FROM OrderDetails;
+```
+
+The following SQL will order the customers by City. However, if City is NULL, then order by Country:
+
+```
+SELECT CustomerName, City, Country
+FROM Customers
+ORDER BY
+(CASE
+    WHEN City IS NULL THEN Country
+    ELSE City
+END);
+```
+
+
+## Your Job 
+
+* Select Some attributes of suppliers in alphabetical order!
+* Some attributes of suppliers in reverse alphabetical order!
+* Some attributes of suppliers ordered by country, then by city!
+* All atributes of suppliers and reverse alphabetical ordered by country, then by city!
+* All orders, sorted by total amount, the largest first!
+* Get all but the 10 most expensive products sorted by price!
+* Get the 10th to 15th most expensive products sorted by price!
+* List all supplier countries in alphabetical order!
+* Find the cheapest product and Expensive Orders!
+* Find the number of Supplier USA!
+* Compute the total Quantity of orderitem!
+* Compute the average UnitPrice of all product!
+* Get all information about customer named Thomas Hardy!
+* List all customers from Spain or France!
+* List all customers that are not from the USA!
+* List all orders that not between $50 and $15000!
+* List all products between $10 and $20 
+* List all products not between $10 and $100 sorted by price!
+* Get the list of orders and amount sold between 1996 Jan 01 and 1996 Des 31!
+* List all suppliers from the USA, UK, OR Japan!
+* List all products that are not exactly $10, $20, $30, $40, or $50!
+* List all customers that are from the same countries as the suppliers!
+* List all products that start with 'Cha' or 'Chan' and have one more character!
+* List all suppliers that do have a fax number!
+* List all customer with average orders between $1000 and $1200 ! 
+* List total customers in each country. 
+* Display results with easy to understand column headers. 
+* Measure the average order of product names from each country and order it from max to min. 
+* Compare the average order of product names from each country in the year 1996 vs 1997 order it from max to min. 
+
+
+

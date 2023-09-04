@@ -1,0 +1,276 @@
+
+# Join Table Queries
+
+In the previous section, you learned how to create a simple query with one table. Most queries you design in Access will likely use multiple tables, allowing you to answer more complex questions. In this lesson, you'll learn how to design and create a multi-table query.
+
+Queries can be difficult to understand and build if you don't have a good idea of what you're trying to find and how to find it. A one-table query can be simple enough to make up as you go along, but to build anything more powerful you'll need to plan the query in advance.
+
+## Planning a Query in SQL
+
+Planning a query in SQL involves several important steps to ensure that you retrieve the desired data efficiently and accurately. Here's a step-by-step guide to planning and executing a successful SQL query:
+
+* **Understand Requirements**
+
+> Clearly define the purpose of your query. Understand what specific data you need and what conditions or criteria need to be met. If you're unsure, discuss the requirements with stakeholders or team members.
+
+* **Select the Right Table(s)**
+
+> Identify the table(s) that contain the relevant data you need. Make sure you understand the table structure, column names, and relationships between tables (if applicable).
+
+* **Choose Columns**
+
+> Determine the columns you need in the query result. Select only the columns that are necessary to fulfill the query requirements. This reduces the amount of data retrieved and improves performance.
+
+* **Apply Filters (WHERE Clause)**
+
+> Use the WHERE clause to filter the rows that meet specific criteria. This helps narrow down the dataset and retrieves only the relevant records. Be cautious not to use overly complex conditions that might slow down the query.
+
+* **Sort Results (ORDER BY Clause, if needed)**
+
+> If you need the results in a specific order, use the ORDER BY clause to sort the output based on one or more columns. Sorting can impact performance, so use it judiciously.
+
+* **Aggregate Data (GROUP BY and HAVING Clauses, if needed)**
+
+> If you need to perform aggregate calculations (e.g., SUM, AVG, COUNT), use the GROUP BY clause to group data based on certain columns. You can also use the HAVING clause to filter groups based on aggregate conditions.
+
+* **Join Tables (if needed)**
+
+> If your query requires data from multiple tables, use the appropriate join operations (INNER JOIN, LEFT JOIN, etc.) to combine data based on related columns. Make sure you understand the relationships and select the appropriate join type.
+
+* **Optimize Performance**
+
+> Consider the performance implications of your query. Avoid using unnecessary subqueries or functions that could slow down execution. Use indexes on columns that are frequently used for filtering or joining.
+
+* **Test the Query**
+
+> Before executing the query in a production environment, test it in a safe environment (e.g., a development or testing database). Verify that the query returns the expected results and that the performance is acceptable.
+
+* **Backup Data (if applicable)**
+
+> If your query involves updating or deleting data, create a backup of the relevant tables before making any changes. This helps prevent accidental data loss.
+
+* **Execute and Review**
+
+> Once you're confident in your query, execute it in the production environment if necessary. Review the results to ensure they match your expectations.
+
+* **Monitor and Optimize**
+
+> After executing the query, monitor its performance in the production environment. Use tools like query execution plans to identify bottlenecks and optimize as needed.
+
+* **Document the Query**
+
+> Document the query, including its purpose, the tables involved, the filters applied, and any other relevant details. This documentation can be helpful for future reference and troubleshooting.
+
+By following these steps, you can plan and execute SQL queries effectively, ensuring that you retrieve accurate results in an efficient manner.
+
+## UNION
+
+The UNION operator is used to combine the result-set of two or more SELECT statements.
+
+* Each SELECT statement within UNION must have the same number of columns
+* The columns must also have similar data types
+* The columns in each SELECT statement must also be in the same order
+
+```
+SELECT column_name(s) 
+  FROM table1
+    UNION
+      SELECT column_name(s) 
+        FROM table2;
+```
+
+Before we begin, first we need to connect to our database. Please type the following code in your R console:
+
+```{r, eval=FALSE}
+# set up the connection and save it into the workspace
+#~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+library(RMySQL)
+library(DBI)
+bakti <- dbConnect(RMySQL::MySQL(),
+                  dbname='factory_db',
+                  username='root',
+                  password='', 
+                  host='localhost',
+                  port=3306)
+knitr::opts_chunk$set(connection = "bakti") # to set up the connection in your Rmarkdown chunk
+```
+
+The following SQL statement returns the cities (only distinct values) from both the "Customers" and the "Suppliers" table:
+
+```
+SELECT City 
+  FROM Customers
+    UNION
+      SELECT City 
+        FROM Suppliers
+          ORDER BY City;
+```
+
+*Note:* If some customers or suppliers have the same city, each city will only be listed once, because UNION selects only distinct values. Use UNION ALL to also select duplicate values!
+
+### UNION ALL
+
+The following SQL statement returns the cities (duplicate values also) from both the "Customers" and the "Suppliers" table:
+
+```
+SELECT City 
+  FROM Customers
+    UNION ALL
+      SELECT City 
+        FROM Suppliers
+          ORDER BY City;
+```
+
+### UNION With WHERE
+
+The following SQL statement returns the German cities (only distinct values) from both the "Customers" and the "Suppliers" table:
+
+```
+SELECT City, Country 
+  FROM Customers
+    WHERE Country='Germany'
+      UNION
+        SELECT City, Country 
+          FROM Suppliers
+            WHERE Country='Germany'
+              ORDER BY City;
+```
+
+### UNION ALL With WHERE
+
+The following SQL statement returns the German cities (duplicate values also) from both the "Customers" and the "Suppliers" table:
+
+```
+SELECT City, Country 
+  FROM Customers
+    WHERE Country='Germany'
+      UNION ALL
+        SELECT City, Country 
+          FROM Suppliers
+            WHERE Country='Germany'
+              ORDER BY City;
+```
+
+## EXISTS
+
+The EXISTS operator is used to test for the existence of any record in a subquery. The EXISTS operator returns true if the subquery returns one or more records.
+
+```
+SELECT column_name(s)
+  FROM table_name
+    WHERE EXISTS
+      (SELECT column_name FROM table_name WHERE condition);
+```
+
+The following SQL statement returns TRUE and lists the suppliers with a product price over \$50 
+
+```
+SELECT SupplierName
+  FROM Suppliers
+    WHERE EXISTS (SELECT ProductName 
+                    FROM Products 
+                      WHERE Products.SupplierID = Suppliers.supplierID 
+                        AND Price > 50);
+```
+
+## ANY and ALL
+
+The ANY and ALL operators are used with a WHERE or HAVING clause. The ANY operator returns TRUE if any of the subquery values meet the condition. 
+
+```
+SELECT column_name(s)
+FROM table_name
+WHERE column_name operator ANY
+(SELECT column_name FROM table_name WHERE condition);
+```
+
+The following SQL statement returns TRUE and lists the product names if it finds ANY records in the OrderDetails table that quantity = 10:
+
+```
+SELECT *
+  FROM Products
+    WHERE ProductID = ANY (SELECT ProductID
+                            FROM OrderDetails 
+                              WHERE Quantity = 10);
+```
+
+The ALL operator returns TRUE if all of the subquery values meet the condition. The following SQL statement returns TRUE and lists the product names if ALL the records in the OrderDetails table has quantity = 11.
+
+```
+SELECT ProductName
+  FROM Products
+    WHERE ProductID = ALL (SELECT ProductID 
+                            FROM OrderDetails 
+                              WHERE Quantity = 11);
+```
+
+## GROUP BY
+
+The GROUP BY statement groups rows that have the same values into summary rows, like "find the number of customers in each country". The GROUP BY statement is often used with aggregate functions (COUNT, MAX, MIN, SUM, AVG) to group the result-set by one or more columns.
+
+```
+SELECT column_name(s)
+  FROM table_name
+    WHERE condition
+      GROUP BY column_name(s)
+        ORDER BY column_name(s);
+```
+
+The following SQL statement lists the number of orders sent by each shipper:
+
+```
+SELECT Shippers.ShipperName, COUNT(Orders.OrderID) AS NumberOfOrders 
+  FROM Orders
+    LEFT JOIN Shippers ON Orders.ShipperID = Shippers.ShipperID
+      GROUP BY ShipperName;
+```
+
+## HAVING
+
+The following SQL statement lists the employees that have registered more than 10 orders:
+
+```
+SELECT Employees.LastName, COUNT(Orders.OrderID) AS NumberOfOrders
+  FROM (Orders
+    INNER JOIN Employees ON Orders.EmployeeID = Employees.EmployeeID)
+      GROUP BY LastName
+        HAVING COUNT(Orders.OrderID) > 10;
+```
+
+The following SQL statement lists if the employees "Davolio" or "Fuller" have registered more than 25 orders:
+
+```
+SELECT Employees.LastName, COUNT(Orders.OrderID) AS NumberOfOrders
+  FROM Orders
+    INNER JOIN Employees ON Orders.EmployeeID = Employees.EmployeeID
+      WHERE LastName = 'Davolio' OR LastName = 'Fuller'
+        GROUP BY LastName
+          HAVING COUNT(Orders.OrderID) > 25;
+```
+
+*Note:* All the functions that we can use in simple queries, it can definitely use them in Multi-table query.  
+
+
+## Your Job
+
+* List all orders with customer information!
+* List all orders with product names, quantities, and prices!
+* This will list all customers, whether they placed any order or not!
+* List customers that have not placed orders!
+* List all contacts, i.e., suppliers and customers!
+* List products with order quantities greater than 80!
+* Which products were sold by the unit (i.e. quantity =1)?
+* List customers who placed orders that are larger than the average of each customer order!
+* Find best selling products based on quantity!
+* Find best selling products based on revenue!
+* Find best selling products based on revenue for each country!
+* Find suppliers with a product price less than $50!
+* Find top 10 best employees based on their sales quantity!
+* Find top 10 best supplier countries based on quantity! 
+* Find top 10 best customer countries based on quantity! 
+* Find top 10 best selling products based on quantity in every year!
+
+
+
+
+

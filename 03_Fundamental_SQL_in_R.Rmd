@@ -54,7 +54,7 @@ dbExecute(MySQL, "CREATE TABLE Persons(
 ```
 
 
-## Insert Value
+### Insert Value
 
 If you are adding values for all the columns of the table, you do not need to specify the column names in the SQL query. However, make sure the order of the values is in the same order as the columns in the table. The INSERT INTO syntax would be as follows:
 
@@ -63,7 +63,7 @@ dbExecute(MySQL,"INSERT INTO Persons(PersonID,LastName,FirstName, Address,City)
                  VALUES(1,'Siregar','Bakti', 'Jl.Bahagia','Tangerang')")
 ```
 
-## Truncate Table
+### Truncate Table
 
 The TRUNCATE TABLE statement is used to delete the data inside a table, but not the table itself.
 
@@ -72,7 +72,7 @@ dbExecute(MySQL, "TRUNCATE TABLE Persons")
 ```
 
 
-## Drop Table
+### Drop Table
 
 The DROP TABLE statement is used to drop an existing table in a database.
 
@@ -83,7 +83,7 @@ dbExecute(MySQL, "DROP TABLE Persons")
 
 ****
 
-## Write Table
+### Write Table
 
 The key here is the `dbWriteTable` function which allows us to write an R data frame directly to a database table. The data frame's column names will be used as the database table's fields.
 
@@ -93,11 +93,11 @@ dbWriteTable(MySQL, "Orders", Orders, append=T)
 ```
 
 
-## Alter Table
+### Alter Table
 
 The ALTER TABLE statement is used to add, delete, or modify columns in an existing table. The ALTER TABLE statement is also used to add and drop various constraints on an existing table.
 
-## Add Column
+### Add Column
 
 To add a column in a table, use the following syntax:
 
@@ -107,7 +107,7 @@ dbExecute(MySQL, "ALTER TABLE Orders
 ```
 
 
-## Drop Column
+### Drop Column
 
 To delete a column in a table, use the following syntax (notice that some database systems don't allow deleting a column):
 
@@ -117,7 +117,7 @@ dbSendQuery(MySQL, "ALTER TABLE Orders
 ```
 
 
-## Modify Column
+### Modify Column
 
 ```{r eval=FALSE}
 dbSendQuery(MySQL," ALTER TABLE Orders
