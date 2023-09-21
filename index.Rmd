@@ -1,5 +1,5 @@
 --- 
-title: "Basis Data dan Penelusuran Data"
+title: "Komputasi Statistika"
 author: "Bakti Siregar, M.Sc"
 date: "`r Sys.Date()`"
 site: bookdown::bookdown_site

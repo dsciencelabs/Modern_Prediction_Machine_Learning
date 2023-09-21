@@ -1,4 +1,0 @@
-
-# Introduction to Flexdashboard
-
-Work-in-Progress [https://pkgs.rstudio.com/flexdashboard/articles/flexdashboard.html]
