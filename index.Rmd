@@ -1,5 +1,5 @@
 --- 
-title: "Komputasi Statistika"
+title: "Modern Prediction & Machine Learning"
 author: "Bakti Siregar, M.Sc"
 date: "`r Sys.Date()`"
 site: bookdown::bookdown_site

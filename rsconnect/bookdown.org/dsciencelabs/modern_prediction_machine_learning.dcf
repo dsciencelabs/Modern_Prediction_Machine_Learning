@@ -1,0 +1,13 @@
+name: modern_prediction_machine_learning
+title: Modern_Prediction_Machine_Learning
+username: dsciencelabs
+account: dsciencelabs
+server: bookdown.org
+hostUrl: https://bookdown.org/__api__
+appId: 12947
+bundleId: 88577
+url: https://bookdown.org/dsciencelabs/modern_prediction_machine_learning/
+version: 1
+asMultiple: FALSE
+asStatic: FALSE
+ignoredFiles: _bookdown.yml|_output.yml|01_Bab1.Rmd|02_Bab2.Rmd|03_Bab3.Rmd|book.bib|customBlocks.toc|Data/Kumpulan_data_disini.md|desktop.ini|EnvStat.aux|index.Rmd|LICENSE|packages.bib|preamble.tex|README.md|Referensi.Rmd|style.css|images
