@@ -1,3 +1,0 @@
-# Fundamental SQL in R
-
-## Praktikum

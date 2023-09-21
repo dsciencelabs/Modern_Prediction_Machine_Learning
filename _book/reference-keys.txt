@@ -1,7 +1,7 @@
-pendahuluan
+bab1
 praktikum
-connecting-r-to-sql
+bab2
 praktikum-1
-fundamental-sql-in-r
+bab3
 praktikum-2
 referensi

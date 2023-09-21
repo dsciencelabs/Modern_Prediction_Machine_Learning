@@ -1,0 +1,13 @@
+name: komputasi_statistika
+title: Komputasi_Statistika
+username: dsciencelabs
+account: dsciencelabs
+server: bookdown.org
+hostUrl: https://bookdown.org/__api__
+appId: 12941
+bundleId: 88567
+url: https://bookdown.org/dsciencelabs/komputasi_statistika/
+version: 1
+asMultiple: FALSE
+asStatic: FALSE
+ignoredFiles: _bookdown.yml|_output.yml|01_Bab1.Rmd|02_Bab2.Rmd|03_Bab3.Rmd|book.bib|customBlocks.toc|Data/Kumpulan_data_disini.md|desktop.ini|EnvStat.aux|index.Rmd|LICENSE|packages.bib|preamble.tex|README.md|Referensi.Rmd|style.css
