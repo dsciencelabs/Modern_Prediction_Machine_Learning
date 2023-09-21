@@ -1,0 +1,179 @@
+% Options for packages loaded elsewhere
+\PassOptionsToPackage{unicode}{hyperref}
+\PassOptionsToPackage{hyphens}{url}
+%
+\documentclass[
+]{book}
+\usepackage{amsmath,amssymb}
+\usepackage{iftex}
+\ifPDFTeX
+  \usepackage[T1]{fontenc}
+  \usepackage[utf8]{inputenc}
+  \usepackage{textcomp} % provide euro and other symbols
+\else % if luatex or xetex
+  \usepackage{unicode-math} % this also loads fontspec
+  \defaultfontfeatures{Scale=MatchLowercase}
+  \defaultfontfeatures[\rmfamily]{Ligatures=TeX,Scale=1}
+\fi
+\usepackage{lmodern}
+\ifPDFTeX\else
+  % xetex/luatex font selection
+\fi
+% Use upquote if available, for straight quotes in verbatim environments
+\IfFileExists{upquote.sty}{\usepackage{upquote}}{}
+\IfFileExists{microtype.sty}{% use microtype if available
+  \usepackage[]{microtype}
+  \UseMicrotypeSet[protrusion]{basicmath} % disable protrusion for tt fonts
+}{}
+\makeatletter
+\@ifundefined{KOMAClassName}{% if non-KOMA class
+  \IfFileExists{parskip.sty}{%
+    \usepackage{parskip}
+  }{% else
+    \setlength{\parindent}{0pt}
+    \setlength{\parskip}{6pt plus 2pt minus 1pt}}
+}{% if KOMA class
+  \KOMAoptions{parskip=half}}
+\makeatother
+\usepackage{xcolor}
+\usepackage{longtable,booktabs,array}
+\usepackage{calc} % for calculating minipage widths
+% Correct order of tables after \paragraph or \subparagraph
+\usepackage{etoolbox}
+\makeatletter
+\patchcmd\longtable{\par}{\if@noskipsec\mbox{}\fi\par}{}{}
+\makeatother
+% Allow footnotes in longtable head/foot
+\IfFileExists{footnotehyper.sty}{\usepackage{footnotehyper}}{\usepackage{footnote}}
+\makesavenoteenv{longtable}
+\usepackage{graphicx}
+\makeatletter
+\def\maxwidth{\ifdim\Gin@nat@width>\linewidth\linewidth\else\Gin@nat@width\fi}
+\def\maxheight{\ifdim\Gin@nat@height>\textheight\textheight\else\Gin@nat@height\fi}
+\makeatother
+% Scale images if necessary, so that they will not overflow the page
+% margins by default, and it is still possible to overwrite the defaults
+% using explicit options in \includegraphics[width, height, ...]{}
+\setkeys{Gin}{width=\maxwidth,height=\maxheight,keepaspectratio}
+% Set default figure placement to htbp
+\makeatletter
+\def\fps@figure{htbp}
+\makeatother
+\setlength{\emergencystretch}{3em} % prevent overfull lines
+\providecommand{\tightlist}{%
+  \setlength{\itemsep}{0pt}\setlength{\parskip}{0pt}}
+\setcounter{secnumdepth}{5}
+\usepackage{booktabs}
+\usepackage{lscape}
+
+\ifLuaTeX
+  \usepackage{selnolig}  % disable illegal ligatures
+\fi
+\usepackage[]{natbib}
+\bibliographystyle{apalike}
+\IfFileExists{bookmark.sty}{\usepackage{bookmark}}{\usepackage{hyperref}}
+\IfFileExists{xurl.sty}{\usepackage{xurl}}{} % add URL line breaks if available
+\urlstyle{same}
+\hypersetup{
+  pdftitle={Komputasi Statistika},
+  pdfauthor={Bakti Siregar, M.Sc},
+  hidelinks,
+  pdfcreator={LaTeX via pandoc}}
+
+\title{Komputasi Statistika}
+\author{Bakti Siregar, M.Sc}
+\date{2023-09-21}
+
+\begin{document}
+\maketitle
+
+{
+\setcounter{tocdepth}{1}
+\tableofcontents
+}
+\hypertarget{kata-pengantar}{%
+\chapter*{Kata Pengantar}\label{kata-pengantar}}
+\addcontentsline{toc}{chapter}{Kata Pengantar}
+
+Selamat datang dalam modul praktikum mengenai basis data dan penelusuran data. Dalam era digital yang semakin maju, pengelolaan informasi dan akses terhadap data sangatlah penting. Basis data merupakan fondasi utama dalam pengelolaan data yang efisien dan terstruktur, sedangkan penelusuran data memungkinkan kita untuk menggali wawasan berharga dari kumpulan informasi yang tersedia. Dalam modul ini, kita akan menjelajahi konsep-konsep dasar dalam basis data, termasuk jenis-jenis basis data, model data, bahasa kueri, dan praktik terbaik dalam merancang basis data yang optimal. Secara khusus, mudul ini
+
+Selain itu, penelusuran basis data yang menjadi fokus penting adalah menggunakan R Programing dan SQL dalam membuat data analytics system. Penelusuran data melibatkan teknik-teknik dan alat-alat untuk menggali informasi yang berharga dari kumpulan data yang besar dan kompleks. Dengan adanya kemajuan dalam analisis data dan kecerdasan buatan, penelusuran data telah menjadi aspek penting dalam pengambilan keputusan dan inovasi. Penulis berharap bimbingan ini akan memberikan pemahaman yang kokoh tentang basis data dan penelusuran data, serta memberi Anda wawasan yang berguna dalam mengelola data dan mengambil informasi berharga dari sumber daya yang ada. Selamat belajar!
+
+\hypertarget{ringkasan-materi}{%
+\section*{Ringkasan Materi}\label{ringkasan-materi}}
+\addcontentsline{toc}{section}{Ringkasan Materi}
+
+Adapun isi pembelajaran dalam modul ini adalah sebagai berikut:
+
+\begin{itemize}
+\tightlist
+\item
+  Bab 1
+\item
+  Bab 2
+\item
+  Bab 3
+\item
+  Dst
+\end{itemize}
+
+\hypertarget{penulis}{%
+\section*{Penulis}\label{penulis}}
+\addcontentsline{toc}{section}{Penulis}
+
+\begin{itemize}
+\tightlist
+\item
+  \textbf{\href{https://www.linkedin.com/in/dsciencelabs/}{Bakti Siregar, M.Sc}} adalah Ketua Program Studi di Jurusan Statistika Universitas Matana. Lulusan Magister Matematika Terapan dari National Sun Yat Sen University, Taiwan. Beliau juga merupakan dosen dan konsultan Data Scientist di perusahaan-perusahaan ternama seperti \href{https://www.jne.co.id/id/beranda}{JNE}, \href{https://www.samoragroup.co.id/home/en}{Samora Group}, \href{https://www.pertamina.com/}{Pertamina}, dan lainnya. Beliau memiliki antusiasme khusus dalam mengajar Big Data Analytics, Machine Learning, Optimisasi, dan Analisis Time Series di bidang keuangan dan investasi. Keahliannya juga terlihat dalam penggunaan bahasa pemrograman Statistik seperti R Studio dan Python. Beliau mengaplikasikan sistem basis data MySQL/NoSQL dalam pembelajaran manajemen data, serta mahir dalam menggunakan tools Big Data seperti Spark dan Hadoop. Beberapa project beliau dapat dilihat di link berikut: \href{https://rpubs.com/dsciencelabs}{Rpubs}, \href{https://github.com/dsciencelabs}{Github}, \href{https://dsciencelabs.github.io/web/index.html}{Website}, dan \href{https://www.kaggle.com/baktisiregar/code}{Kaggle}.
+\end{itemize}
+
+\hypertarget{asisten-lab}{%
+\section*{Asisten Lab}\label{asisten-lab}}
+\addcontentsline{toc}{section}{Asisten Lab}
+
+\begin{itemize}
+\tightlist
+\item
+  \textbf{\href{https://www.linkedin.com/in/juenzy-hodawya/}{Juenzy Hodawya, S.Stat}} adalah seorang alumni Statistika yang bersemangat dalam dunia pemrograman dan analisis data. Saat ini Juenzy bekerja di salah satu perusahaan yang melibatkan ilmu olah data yaitu Cost Control Specialist. Selama menajadi mahasiswa Statistika Universitas Matana, Juen berperan dalam membantu mahasiswa dalam memahami konsep-konsep dasar dan kompleks dalam pemrograman R dan Python. Dalam perjalanan waktu, Juen mulai mengambil tanggung jawab lebih besar dalam laboratorium. Ia membantu mengembangkan materi pembelajaran tambahan, menulis modul seperti tutorial online tentang analisis data menggunakan R dan Python. Ia juga aktif dalam berbagai proyek penelitian di bawah bimbingan dosen, yang melibatkan pengolahan data besar untuk analisis statistik, visualisasi, dan menulis jurnal.
+\end{itemize}
+
+\hypertarget{ucapan-terima-kasih}{%
+\section*{Ucapan Terima Kasih}\label{ucapan-terima-kasih}}
+\addcontentsline{toc}{section}{Ucapan Terima Kasih}
+
+Saya ingin mengucapkan terima kasih yang tulus kepada semua yang telah mendukung dan berkontribusi dalam perjalanan pembuatan modul ``Basis Data dan Penelusuran Data''. Modul ini tidak akan mungkin menjadi kenyataan tanpa kerja keras, semangat, dan dukungan yang luar biasa dari berbagai pihak. Terima kasih juga kepada rekan-rekan dan kolega yang telah memberikan masukan, saran, dan diskusi berharga sepanjang perjalanan penulisan modul ini. Kontribusi kalian telah membantu memperkaya isi modul dan menghadirkan sudut pandang yang beragam. Tentu saja,modul ini tidak akan lengkap tanpa rasa terima kasih kepada para peneliti dan praktisi di bidang basis data dan penelusuran data yang telah menciptakan landasan pengetahuan yang menjadi dasar dari modul ini. Pengalaman dan pengetahuan yang kalian bagikan sangat berharga. Saya juga ingin mengucapkan terima kasih kepada keluarga dan teman-teman saya atas dukungan, pengertian, dan dorongan yang tak henti-hentinya. Tanpa dukungan kalian, perjalanan menulis modul ini pastinya tidak akan semudah ini.
+
+Akhir kata, semoga modul ini dapat memberikan manfaat dan wawasan baru kepada para pembaca yang ingin mendalami dunia basis data dan penelusuran data. Ucapan terima kasih terakhir saya tujukan untuk semua yang telah berkontribusi, baik secara langsung maupun tidak langsung, dalam menghadirkan modul ini kepada para pembaca.
+
+\hypertarget{masukan-saran}{%
+\section*{Masukan \& Saran}\label{masukan-saran}}
+\addcontentsline{toc}{section}{Masukan \& Saran}
+
+Semua masukan dan tanggapan Anda sangat berarti bagi kami untuk memperbaiki template ini kedepannya. Bagi para pembaca/pengguna yang ingin menyampaikan masukan dan tanggapan, dipersilahkan melalui kontak dibawak ini!
+
+\textbf{Email:} \href{mailto:dsciencelabs@outlook.com}{\nolinkurl{dsciencelabs@outlook.com}}
+
+\hypertarget{pendahuluan}{%
+\chapter{Pendahuluan}\label{pendahuluan}}
+
+\hypertarget{praktikum}{%
+\section{Praktikum}\label{praktikum}}
+
+\hypertarget{connecting-r-to-sql}{%
+\chapter{Connecting R to SQL}\label{connecting-r-to-sql}}
+
+\hypertarget{praktikum-1}{%
+\section{Praktikum}\label{praktikum-1}}
+
+\hypertarget{fundamental-sql-in-r}{%
+\chapter{Fundamental SQL in R}\label{fundamental-sql-in-r}}
+
+\hypertarget{praktikum-2}{%
+\section{Praktikum}\label{praktikum-2}}
+
+\hypertarget{referensi}{%
+\chapter{Referensi}\label{referensi}}
+
+  \bibliography{book.bib,packages.bib}
+
+\end{document}
