@@ -19,7 +19,7 @@ We begin by using the
 `sample()` function to split the set of observations into two halves, by selecting a random subset of $196$ observations out of the original $392$ observations. We  refer
 to these observations as the training set.
 
-```{r chunk1}
+```{r chunk41}
 library(ISLR2)
 set.seed(1)
 train <- sample(392, 196)
@@ -28,7 +28,7 @@ train <- sample(392, 196)
 (Here we use a shortcut in the sample command; see `?sample` for details.)
 We then use the `subset` option in `lm()` to fit a linear regression using only the observations corresponding to the training set.
 
-```{r chunk2}
+```{r chunk42}
 lm.fit <- lm(mpg ~ horsepower, data = Auto, subset = train)
 ```
 
@@ -37,14 +37,14 @@ We now  use
  we  use
   the `mean()` function to calculate the MSE of the $196$ observations in the validation set. Note that the `-train` index below selects  only the observations that are not in the training set.
 
-```{r chunk3}
+```{r chunk43}
 attach(Auto)
 mean((mpg - predict(lm.fit, Auto))[-train]^2)
 ```
 
 Therefore, the estimated test MSE for the linear regression fit is $23.27$. We can use the `poly()` function to estimate the test error for the quadratic and cubic regressions.
 
-```{r chunk4}
+```{r chunk44}
 lm.fit2 <- lm(mpg ~ poly(horsepower, 2), data = Auto, 
     subset = train)
 mean((mpg - predict(lm.fit2, Auto))[-train]^2)
@@ -56,7 +56,7 @@ mean((mpg - predict(lm.fit3, Auto))[-train]^2)
 These error rates are $18.72$ and $18.79$, respectively.
 If we choose a different training set instead, then we will obtain somewhat different errors on the validation set.
 
-```{r chunk5}
+```{r chunk45}
 set.seed(2)
 train <- sample(392, 196)
 lm.fit <- lm(mpg ~ horsepower, subset = train)
@@ -80,14 +80,14 @@ The LOOCV estimate can be automatically computed for any generalized linear mode
  But if we use `glm()` to fit a model without passing in the `family` argument, then it  performs linear regression, just like the `lm()` function.
 So for instance,
 
-```{r chunk6}
+```{r chunk46}
 glm.fit <- glm(mpg ~ horsepower, data = Auto)
 coef(glm.fit)
 ```
 
 and
 
-```{r chunk7}
+```{r chunk47}
 lm.fit <- lm(mpg ~ horsepower, data = Auto)
 coef(lm.fit)
 ```
@@ -96,7 +96,7 @@ coef(lm.fit)
  the `glm()` function rather than the `lm()` function because the former can be used together with
 `cv.glm()`. The `cv.glm()` function is part of the `boot` library.
 
-```{r chunk8}
+```{r chunk48}
 library(boot)
 glm.fit <- glm(mpg ~ horsepower, data = Auto)
 cv.err <- cv.glm(Auto, glm.fit)
@@ -109,7 +109,7 @@ We can repeat this procedure for increasingly complex polynomial fits.
  To automate the process, we use the  `for()` function to initiate a *for loop* which iteratively fits polynomial regressions for polynomials of order $i=1$ to $i=10$, computes the associated cross-validation error, and stores it in the $i$th element of the vector `cv.error`.
  We begin by initializing the vector. 
 
-```{r chunk9}
+```{r chunk49}
 cv.error <- rep(0, 10)
 for (i in 1:10) {
   glm.fit <- glm(mpg ~ poly(horsepower, i), data = Auto)
@@ -125,7 +125,7 @@ As in Figure 5.4, we see a sharp drop in the estimated test MSE between the line
 The `cv.glm()` function can also be used to implement $k$-fold CV. Below we use $k=10$, a common choice for $k$, on the `Auto` data set.
 We once again set a random seed and initialize a vector in which we will store the CV errors corresponding to the polynomial fits of orders one to ten.
 
-```{r chunk10}
+```{r chunk410}
 set.seed(17)
 cv.error.10 <- rep(0, 10)
 for (i in 1:10) {
@@ -166,7 +166,7 @@ as well as a vector indicating which observations should be used to
 estimate $\alpha$. The function then outputs the estimate for $\alpha$
 based on the selected observations.
 
-```{r chunk11}
+```{r chunk411}
 alpha.fn <- function(data, index) {
   X <- data$X[index]
   Y <- data$Y[index]
@@ -178,7 +178,7 @@ This function *returns*, or outputs, an  estimate for $\alpha$ based on applying
 For instance, the following command tells `R` to estimate $\alpha$ using
 all $100$ observations.
 
-```{r chunk12}
+```{r chunk412}
 alpha.fn(Portfolio, 1:100)
 ```
 
@@ -187,7 +187,7 @@ $100$ observations from the range $1$ to $100$, with replacement. This is equiva
 to constructing a new bootstrap data set and recomputing $\hat{\alpha}$
 based on the new data set.
 
-```{r chunk13}
+```{r chunk413}
 set.seed(7)
 alpha.fn(Portfolio, sample(100, 100, replace = T))
 ```
@@ -198,7 +198,7 @@ standard deviation.
 However, the `boot()` function automates this approach. Below we produce $R=1,000$ bootstrap estimates for $\alpha$.
 
 
-```{r chunk14}
+```{r chunk414}
 boot(Portfolio, alpha.fn, R = 1000)
 ```
 
@@ -221,7 +221,7 @@ returns the intercept and slope estimates for the linear regression model. We th
 to the full set of $392$ observations in order to compute the estimates of $\beta_0$ and $\beta_1$ on the entire data set using the usual linear regression coefficient estimate
 formulas from Chapter 3. Note that we do not need the `{` and `}` at the beginning and end of the function because it is only one line long.
 
-```{r chunk15}
+```{r chunk415}
 boot.fn <- function(data, index)
   coef(lm(mpg ~ horsepower, data = data, subset = index))
 boot.fn(Auto, 1:392)
@@ -230,7 +230,7 @@ boot.fn(Auto, 1:392)
  The `boot.fn()` function can also be used in order to create
  bootstrap estimates for the intercept and slope terms by randomly sampling from among the observations with replacement. Here we give two examples.
 
-```{r chunk16}
+```{r chunk416}
 set.seed(1)
 boot.fn(Auto, sample(392, 392, replace = T))
 boot.fn(Auto, sample(392, 392, replace = T))
@@ -238,14 +238,14 @@ boot.fn(Auto, sample(392, 392, replace = T))
 
 Next, we use the `boot()` function to compute the standard errors of 1,000 bootstrap estimates for the intercept and slope terms.
 
-```{r chunk17}
+```{r chunk417}
 boot(Auto, boot.fn, 1000)
 ```
 
 This indicates that the bootstrap estimate for ${\rm SE}(\hat{\beta}_0)$ is $0.84$, and that the bootstrap estimate for ${\rm SE}(\hat{\beta}_1)$ is $0.0073$.
 As discussed in Section 3.1.2, standard formulas can be used to compute the standard errors for the regression coefficients in a linear model. These can be obtained using the  `summary()` function.
 
-```{r chunk18}
+```{r chunk418}
 summary(lm(mpg ~ horsepower, data = Auto))$coef
 ```
 
@@ -272,7 +272,7 @@ function.
 Below we compute the bootstrap standard error estimates and the standard
 linear regression estimates that result from fitting the quadratic model to the data. Since this model provides a good fit to the data (Figure 3.8), there is now a better correspondence between the bootstrap estimates and the standard estimates of ${\rm SE}(\hat{\beta}_0)$, ${\rm SE}(\hat{\beta}_1)$ and ${\rm SE}(\hat{\beta}_2)$.
 
-```{r chunk19}
+```{r chunk419}
 boot.fn <- function(data, index)
   coef(
       lm(mpg ~ horsepower + I(horsepower^2), 

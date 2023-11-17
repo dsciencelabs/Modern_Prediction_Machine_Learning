@@ -8,27 +8,27 @@ knitr::opts_chunk$set(error = TRUE)
 In this lab, we perform PCA on the `USArrests` data set, which is part of the base `R` package.
 The rows of the data set contain the 50 states, in alphabetical order.
 
-```{r chunk1}
+```{r chunk131}
 states <- row.names(USArrests)
 states
 ```
 
 The columns of the data set contain the four variables.
 
-```{r chunk2}
+```{r chunk132}
 names(USArrests)
 ```
 
 We first briefly examine the data. We notice that the variables have vastly different means.
 
-```{r chunk3}
+```{r chunk133}
 apply(USArrests, 2, mean)
 ```
 
 Note that the `apply()` function allows us to apply a function---in this case, the `mean()` function---to each row or column of the data set. The second input here denotes whether we wish to compute the mean of the rows, $1$, or the columns, $2$. We see that there are on average three times as many rapes as murders, and more than eight times as many assaults as rapes.
 We can also examine the variances of the four variables using the `apply()` function.
 
-```{r chunk4}
+```{r chunk134}
 apply(USArrests, 2, var)
 ```
 
@@ -40,7 +40,7 @@ Thus, it is important to standardize the variables to have mean zero and standar
 
 We now perform principal components analysis using the `prcomp()` function, which is one of several functions in `R` that perform PCA.
 
-```{r chunk5}
+```{r chunk135}
 pr.out <- prcomp(USArrests, scale = TRUE)
 ```
 
@@ -49,13 +49,13 @@ mean zero. By using the option `scale = TRUE`, we scale the
 variables to have standard deviation one. The output from
 `prcomp()` contains a number of useful quantities.
 
-```{r chunk6}
+```{r chunk136}
 names(pr.out)
 ```
 
 The `center` and `scale` components correspond to the means and standard deviations of the variables that were used for scaling prior to implementing PCA.
 
-```{r chunk7}
+```{r chunk137}
 pr.out$center
 pr.out$scale
 ```
@@ -69,7 +69,7 @@ principal component loading vector.\footnote{This function names it
   principal component scores.}
 
 
-```{r chunk8}
+```{r chunk138}
 pr.out$rotation
 ```
 
@@ -80,13 +80,13 @@ variables.
 
 Using the `prcomp()` function, we do not need to explicitly multiply the data by the principal component loading vectors  in order to obtain the principal component score vectors. Rather the $50 \times 4$ matrix `x` has as its columns the principal component score vectors. That is, the $k$th column is the $k$th principal component score vector.
 
-```{r chunk9}
+```{r chunk139}
 dim(pr.out$x)
 ```
 
 We can plot the first two principal components as follows:
 
-```{r chunk10}
+```{r chunk1310}
 biplot(pr.out, scale = 0)
 ```
 
@@ -94,7 +94,7 @@ The `scale = 0` argument to `biplot()` ensures that the arrows are scaled to rep
 
 Notice that this figure is a mirror image of Figure 12.1. Recall that the principal components are only unique up to a sign change, so we can reproduce Figure 12.1 by making a few small changes:
 
-```{r chunk11}
+```{r chunk1311}
 pr.out$rotation = -pr.out$rotation
 pr.out$x = -pr.out$x
 biplot(pr.out, scale = 0)
@@ -104,20 +104,20 @@ biplot(pr.out, scale = 0)
 
 The `prcomp()` function also outputs the standard deviation of each principal component. For instance, on the `USArrests` data set, we can access these standard deviations as follows:
 
-```{r chunk12}
+```{r chunk1312}
 pr.out$sdev
 ```
 
 The variance explained by each principal component is obtained by squaring these:
 
-```{r chunk13}
+```{r chunk1313}
 pr.var <- pr.out$sdev^2
 pr.var
 ```
 
 To compute the proportion of variance explained by each principal component, we simply divide the variance explained by each principal component by the total variance explained by all four principal components:
 
-```{r chunk14}
+```{r chunk1314}
 pve <- pr.var / sum(pr.var)
 pve
 ```
@@ -125,7 +125,7 @@ pve
 We see that the first principal component explains $62.0 \%$ of the variance in the data, the next principal component explains $24.7 \%$ of the variance, and so forth.
  We can plot the PVE explained by each component, as well as the cumulative PVE, as follows:
 
-```{r chunk15}
+```{r chunk1315}
 par(mfrow = c(1, 2))
 plot(pve, xlab = "Principal Component",
     ylab = "Proportion of Variance Explained", ylim = c(0, 1),
@@ -138,7 +138,7 @@ plot(cumsum(pve), xlab = "Principal Component",
  The result is shown in Figure 12.3.
 Note that the function `cumsum()` computes the cumulative sum of the elements of  a numeric vector. For instance:
 
-```{r chunk16}
+```{r chunk1316}
 a <- c(1, 2, 8, -3)
 cumsum(a)
 ```
@@ -151,7 +151,7 @@ Section 12.3. We turn the data frame into a
 matrix, after centering and scaling each column to have mean zero and
 variance one.
 
-```{r chunk17}
+```{r chunk1317}
 X <- data.matrix(scale(USArrests))
 pcob <- prcomp(X)
 summary(pcob)
@@ -166,7 +166,7 @@ equivalent to computing the first $M$ principal
 components of the data. The *singular value decomposition*
 (SVD)  is a general algorithm for solving (12.6).
 
-```{r chunk18}
+```{r chunk1318}
 sX <- svd(X)
 names(sX)
 round(sX$v, 3)
@@ -175,7 +175,7 @@ round(sX$v, 3)
 The `svd()` function returns three components, `u`, `d`, and `v`. The matrix `v` is equivalent to the
 loading matrix from principal components (up to an unimportant sign flip).
 
-```{r chunk19}
+```{r chunk1319}
 pcob$rotation
 ```
 
@@ -183,7 +183,7 @@ The matrix `u` is equivalent to the matrix of *standardized*
 scores, and the standard deviations are in the vector `d`. We can recover the score vectors using the output of `svd()`.
 They are identical to the score vectors output by `prcomp()`.
 
-```{r chunk20}
+```{r chunk1320}
 t(sX$d * t(sX$u))
 pcob$x
 ```
@@ -198,7 +198,7 @@ of the four entries in each row at random. This ensures that every row has
 at least three observed values.
 
 
-```{r chunk21}
+```{r chunk1321}
 nomit <- 20
 set.seed(15)
 ina <- sample(seq(50), nomit)
@@ -220,7 +220,7 @@ Algorithm 12.1.
 We first write a  function that takes in a matrix, and returns an approximation to the matrix using the `svd()` function.
   This will be needed in Step 2 of Algorithm 12.1.  As mentioned earlier, we could do this using the `prcomp()` function, but instead we use the `svd()` function for illustration.
 
-```{r chunk22}
+```{r chunk1322}
 fit.svd <- function(X, M = 1) {
    svdob <- svd(X)
    with(svdob,
@@ -234,7 +234,7 @@ Here, we did not bother to explicitly call the `return()` function to return a v
 the computed quantity is automatically returned by `R`.  We use the `with()` function to
 make it a little easier to index the elements of `svdob`. As an alternative to using `with()`, we could have written
 
-```{r chunk23}
+```{r chunk1323}
 ```
 
 inside the `fit.svd()` function.
@@ -242,7 +242,7 @@ inside the `fit.svd()` function.
 To conduct Step 1 of the algorithm, we initialize `Xhat` --- this is $\tilde{\bf X}$ in Algorithm 12.1 --- by replacing
 the missing values with the column means of the non-missing entries.
 
-```{r chunk24}
+```{r chunk1324}
 Xhat <- Xna
 xbar <- colMeans(Xna, na.rm = TRUE)
 Xhat[index.na] <- xbar[inb]
@@ -252,7 +252,7 @@ Xhat[index.na] <- xbar[inb]
 Before we begin Step 2, we set ourselves up to measure the progress of our
 iterations:
 
-```{r chunk25}
+```{r chunk1325}
 thresh <- 1e-7
 rel_err <- 1
 iter <- 0
@@ -270,7 +270,7 @@ We store the mean squared error  of the non-missing elements  of the old version
 
 In Step 2(a) of Algorithm 12.1, we  approximate `Xhat` using `fit.svd()`; we call this `Xapp`.   In Step 2(b), we  use `Xapp`  to update the estimates for elements in `Xhat` that are missing in `Xna`. Finally, in Step 2(c), we compute the relative error. These three steps are contained in this `while()` loop:
 
-```{r chunk26}
+```{r chunk1326}
 while(rel_err > thresh) {
     iter <- iter + 1
     # Step 2(a)
@@ -291,7 +291,7 @@ We see that after eight iterations, the relative error has fallen below `thresh 
 Finally, we compute the correlation between the 20 imputed values
 and the actual values:
 
-```{r chunk27}
+```{r chunk1327}
 cor(Xapp[ismiss], X[ismiss])
 ```
 
@@ -309,7 +309,7 @@ The function `kmeans()` performs $K$-means clustering in
 truly are two clusters in the data: the first 25 observations have a
 mean shift relative to the next 25 observations.
 
-```{r chunk28}
+```{r chunk1328}
 set.seed(2)
 x <- matrix(rnorm(50 * 2), ncol = 2)
 x[1:25, 1] <- x[1:25, 1] + 3
@@ -321,20 +321,20 @@ x[1:25, 2] <- x[1:25, 2] - 4
 
 We now perform $K$-means clustering with $K=2$.
 
-```{r chunk29}
+```{r chunk1329}
 km.out <- kmeans(x, 2, nstart = 20)
 ```
 
 The cluster assignments of the 50 observations are contained in  `km.out$cluster`.
 
-```{r chunk30}
+```{r chunk1330}
 km.out$cluster
 ```
 
 The $K$-means clustering perfectly separated the observations into two clusters even though we did not supply any group information to `kmeans()`. We can plot the data, with each observation
 colored according to its cluster assignment.
 
-```{r chunk31}
+```{r chunk1331}
 #par(mfrow = c(1, 2))
 plot(x, col = (km.out$cluster + 1),
     main = "K-Means Clustering Results with K = 2",
@@ -347,7 +347,7 @@ variables then we could instead perform PCA and plot the first two principal com
 In this example, we knew that there really were two clusters because we generated the data. However, for real data, in general we do not
 know the true number of clusters. We could instead have performed $K$-means clustering on this example with $K=3$.
 
-```{r chunk32}
+```{r chunk1332}
 set.seed(4)
 km.out <- kmeans(x, 3, nstart = 20)
 km.out
@@ -362,7 +362,7 @@ To run the `kmeans()` function in `R` with multiple initial cluster assignments,
 `nstart` argument. If a value of `nstart` greater than one is used, then $K$-means clustering will be performed using
 multiple random assignments in Step~1 of Algorithm 12.2, and the `kmeans()` function will report only the best results. Here we compare using `nstart = 1` to `nstart = 20`.
 
-```{r chunk33}
+```{r chunk1333}
 set.seed(4)
 km.out <- kmeans(x, 3, nstart = 1)
 km.out$tot.withinss
@@ -387,20 +387,20 @@ The `hclust()` function implements  hierarchical clustering in `R`. In the follo
  plot the hierarchical clustering dendrogram using complete, single, and average linkage clustering, with  Euclidean distance as the dissimilarity measure.
 We begin by clustering observations using complete linkage. The `dist()` function is used to compute the $50 \times 50$ inter-observation Euclidean distance matrix.
 
-```{r chunk34}
+```{r chunk1334}
 hc.complete <- hclust(dist(x), method = "complete")
 ```
 
 We could just as easily perform hierarchical clustering with average or single linkage instead:
 
-```{r chunk35}
+```{r chunk1335}
 hc.average <- hclust(dist(x), method = "average")
 hc.single <- hclust(dist(x), method = "single")
 ```
 
 We can now plot the dendrograms obtained using the usual `plot()` function. The numbers at the bottom of the plot identify each observation.
 
-```{r chunk36}
+```{r chunk1336}
 par(mfrow = c(1, 3))
 plot(hc.complete, main = "Complete Linkage",
     xlab = "", sub = "", cex = .9)
@@ -413,7 +413,7 @@ plot(hc.single, main = "Single Linkage",
 
 To determine the cluster labels for each observation associated with a given cut of the dendrogram, we can use the `cutree()` function:
 
-```{r chunk37}
+```{r chunk1337}
 cutree(hc.complete, 2)
 cutree(hc.average, 2)
 cutree(hc.single, 2)
@@ -422,14 +422,14 @@ cutree(hc.single, 2)
 The second argument to `cutree()` is the number of clusters we wish to obtain.
 For this data, complete and average linkage generally separate the observations into their correct groups. However, single linkage identifies one point as belonging to its own cluster. A more sensible answer is obtained when four clusters are selected, although there are still two singletons.
 
-```{r chunk38}
+```{r chunk1338}
 cutree(hc.single, 4)
 ```
 
 
 To scale the variables before performing hierarchical clustering of the observations, we use the `scale()` function:
 
-```{r chunk39}
+```{r chunk1339}
 xsc <- scale(x)
 plot(hclust(dist(xsc), method = "complete"),
     main = "Hierarchical Clustering with Scaled Features")
@@ -439,7 +439,7 @@ plot(hclust(dist(xsc), method = "complete"),
 Correlation-based distance can be computed using the `as.dist()` function, which converts an arbitrary square symmetric matrix into a form that the `hclust()` function recognizes as a distance matrix. However, this only makes sense for data with at least three features since the absolute correlation between any two observations
 with measurements on two features is always 1. Hence, we will cluster a three-dimensional data set. This data set does not contain any true clusters.
 
-```{r chunk40}
+```{r chunk1340}
 x <- matrix(rnorm(30 * 3), ncol = 3)
 dd <- as.dist(1 - cor(t(x)))
 plot(hclust(dd, method = "complete"),
@@ -456,7 +456,7 @@ plot(hclust(dd, method = "complete"),
 Unsupervised techniques are often used in the analysis of genomic data. In particular, PCA and hierarchical clustering are popular tools.
  We  illustrate these techniques on the `NCI` cancer cell line microarray data, which consists of $6{,}830$ gene expression measurements on $64$ cancer cell lines.
 
-```{r chunk41}
+```{r chunk1341}
 library(ISLR2)
 nci.labs <- NCI60$labs
 nci.data <- NCI60$data
@@ -468,14 +468,14 @@ check to see the extent to which these cancer types agree with the results of th
 
 The data has $64$ rows and $6{,}830$ columns.
 
-```{r chunk42}
+```{r chunk1342}
 dim(nci.data)
 ```
 
 
 We begin by examining the cancer types for the cell lines.
 
-```{r chunk43}
+```{r chunk1343}
 nci.labs[1:4]
 table(nci.labs)
 ```
@@ -485,14 +485,14 @@ table(nci.labs)
 
 We first perform PCA on the data after scaling the variables (genes) to have standard deviation one, although one could reasonably argue that it is better not to scale the genes.
 
-```{r chunk44}
+```{r chunk1344}
 pr.out <- prcomp(nci.data, scale = TRUE)
 ```
 
 We now  plot the first few principal component score vectors, in order to visualize the data. The observations (cell lines) corresponding to a given cancer type will be plotted in the same color, so that we can see to what extent the observations within a cancer type are similar to each other. We first create a simple function that assigns a distinct color to each element of a numeric vector.
 The function will be used to assign a  color to each of the $64$ cell lines, based on the cancer type to which it corresponds.
 
-```{r chunk45}
+```{r chunk1345}
 Cols <- function(vec) {
    cols <- rainbow(length(unique(vec)))
    return(cols[as.numeric(as.factor(vec))])
@@ -501,7 +501,7 @@ Cols <- function(vec) {
 
 Note that the `rainbow()` function takes as its argument a positive integer, and returns a vector containing that number of distinct colors.  We now can plot the principal component score vectors.
 
-```{r chunk46}
+```{r chunk1346}
 par(mfrow = c(1, 2))
 plot(pr.out$x[, 1:2], col = Cols(nci.labs), pch = 19,
     xlab = "Z1", ylab = "Z2")
@@ -514,20 +514,20 @@ principal component score vectors. This indicates that cell lines from the same 
 
 We can obtain a summary of the proportion of variance explained (PVE) of the first few principal components using the `summary()` method for a `prcomp` object (we have truncated the printout):
 
-```{r chunk47}
+```{r chunk1347}
 summary(pr.out)
 ```
 
 Using the `plot()` function, we can also plot the variance explained by the first few principal components.
 
-```{r chunk48}
+```{r chunk1348}
 plot(pr.out)
 ```
 
 Note that the height of each bar in the bar plot is given by squaring the corresponding element of `pr.out$sdev`.
 However, it is more informative to plot the PVE of each principal component (i.e. a scree plot) and the cumulative PVE of each principal component. This can be done with just a little work.
 
-```{r chunk49}
+```{r chunk1349}
 pve <- 100 * pr.out$sdev^2 / sum(pr.out$sdev^2)
 par(mfrow = c(1, 2))
 plot(pve,  type = "o", ylab = "PVE",
@@ -552,13 +552,13 @@ This suggests that there may be little benefit to examining more than seven or s
 We now proceed to hierarchically cluster the cell lines in the `NCI` data, with the goal of finding out whether or not the observations cluster into distinct types of cancer. To begin, we standardize the variables to have mean
  zero and standard deviation one. As mentioned earlier, this step is optional and should be performed only if we want each gene to be on the same *scale*.
 
-```{r chunk50}
+```{r chunk1350}
 sd.data <- scale(nci.data)
 ```
 
 We now perform hierarchical clustering of the observations using complete, single, and average linkage. Euclidean distance is used as the dissimilarity measure.
 
-```{r chunk51}
+```{r chunk1351}
 par(mfrow = c(1, 3))
 data.dist <- dist(sd.data)
 plot(hclust(data.dist), xlab = "", sub = "", ylab = "",
@@ -579,7 +579,7 @@ Clearly cell lines within a single cancer type do tend to cluster together, alth
 
 We can cut the dendrogram at the height that will yield a particular number of clusters, say four:
 
-```{r chunk52}
+```{r chunk1352}
 hc.out <- hclust(dist(sd.data))
 hc.clusters <- cutree(hc.out, 4)
 table(hc.clusters, nci.labs)
@@ -587,7 +587,7 @@ table(hc.clusters, nci.labs)
 
 There are some clear patterns. All the leukemia cell lines fall in cluster $3$, while the breast cancer cell lines are spread out over three different clusters.  We can plot the cut on the dendrogram that produces these four clusters:
 
-```{r chunk53}
+```{r chunk1353}
 par(mfrow = c(1, 1))
 plot(hc.out, labels = nci.labs)
 abline(h = 139, col = "red")
@@ -599,7 +599,7 @@ dendrogram; this is the height that results in four distinct clusters. It is eas
  
 Printing the output of `hclust` gives a useful brief summary of the object:
 
-```{r chunk54}
+```{r chunk1354}
 hc.out
 ```
 
@@ -607,7 +607,7 @@ hc.out
 We claimed earlier in Section 12.4.2 that $K$-means clustering and hierarchical clustering with the dendrogram cut to obtain the same number of clusters can yield very different results.
 How do these `NCI` hierarchical clustering results compare to what we  get if we perform $K$-means clustering with $K=4$?
 
-```{r chunk55}
+```{r chunk1355}
 set.seed(2)
 km.out <- kmeans(sd.data, 4, nstart = 20)
 km.clusters <- km.out$cluster
@@ -621,7 +621,7 @@ cluster 1 by hierarchical clustering, as well as all of the observations assigne
 Rather than performing hierarchical clustering on the entire data matrix, we can simply perform hierarchical clustering on the first few principal component score vectors,
 as follows:
 
-```{r chunk56}
+```{r chunk1356}
 hc.out <- hclust(dist(pr.out$x[, 1:5]))
 plot(hc.out, labels = nci.labs,
     main = "Hier. Clust. on First Five Score Vectors")

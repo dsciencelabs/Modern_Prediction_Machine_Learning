@@ -2,9 +2,6 @@
 knitr::opts_chunk$set(error = TRUE)
 ```
 
-
-
-
 # Survival Analysis
 
 In this lab, we perform survival analyses on three separate data sets. In Section 11.8.1 we analyze the `BrainCancer` data that was  first described in Section 11.3.
@@ -13,19 +10,19 @@ In this lab, we perform survival analyses on three separate data sets. In Sectio
 ## Brain Cancer Data
 We begin with the `BrainCancer` data set, which is part of the  `ISLR2` package.
 
-```{r chunk1}
+```{r chunk121}
 library(ISLR2)
 ```
 
 The rows index the 88 patients, while the columns contain the 8 predictors.
 
-```{r chunk2}
+```{r chunk122}
 names(BrainCancer)
 ```
 
 We first briefly examine the data.
 
-```{r chunk3}
+```{r chunk123}
 attach(BrainCancer)
 table(sex)
 table(diagnosis)
@@ -36,7 +33,7 @@ Before beginning an analysis, it is important to know how the `status` variable 
 
 To begin the analysis, we re-create  the Kaplan-Meier survival curve  shown in  Figure 11.2, using the `survfit()` function within the `R` `survival` library. Here `time` corresponds to $y_i$, the time to the $i$th event (either censoring or death).
 
-```{r chunk4}
+```{r chunk124}
 library(survival)
 fit.surv <- survfit(Surv(time, status) ~ 1)
 plot(fit.surv, xlab = "Months",
@@ -45,7 +42,7 @@ plot(fit.surv, xlab = "Months",
 
 Next we create Kaplan-Meier survival curves that are stratified by `sex`, in order to reproduce Figure 11.3.
 
-```{r chunk5}
+```{r chunk125}
 fit.sex <- survfit(Surv(time, status) ~ sex)
 plot(fit.sex, xlab = "Months",
     ylab = "Estimated Probability of Survival", col = c(2,4))
@@ -55,7 +52,7 @@ legend("bottomleft", levels(sex), col = c(2,4), lty = 1)
 
 As discussed in Section 11.4, we can perform a log-rank test to compare the survival of males to females, using the `survdiff()` function.
 
-```{r chunk6}
+```{r chunk126}
 logrank.test <- survdiff(Surv(time, status) ~ sex)
 logrank.test
 ```
@@ -66,14 +63,14 @@ The resulting $p$-value is $0.23$, indicating  no evidence of a difference in su
 Next, we fit  Cox proportional hazards models using the `coxph()`  function.
 To begin, we consider a model that uses `sex` as the only predictor.
 
-```{r chunk7}
+```{r chunk127}
 fit.cox <- coxph(Surv(time, status) ~ sex)
 summary(fit.cox)
 ```
 
 Note that the values of the likelihood ratio, Wald, and score tests have been rounded.  It is possible to display additional digits.
 
-```{r chunk8}
+```{r chunk128}
 summary(fit.cox)$logtest[1]
 summary(fit.cox)$waldtest[1]
 summary(fit.cox)$sctest[1]
@@ -81,7 +78,7 @@ summary(fit.cox)$sctest[1]
 
 Regardless of which test we use, we see that there is no clear evidence for a difference in survival between males and females.
 
-```{r chunk9}
+```{r chunk129}
 logrank.test$chisq
 ```
 
@@ -89,7 +86,7 @@ As we learned in this chapter, the score test from the Cox model is exactly equa
 
 Now we fit a  model that makes use of additional predictors. 
 
-```{r chunk10}
+```{r chunk1210}
 fit.all <- coxph(
 Surv(time, status) ~ sex + diagnosis + loc + ki + gtv +
    stereo)
@@ -108,7 +105,7 @@ level of diagnosis. The `survfit()` function will produce a curve for each of th
 and one call to `plot()` will display them all in the same plot.
 
 
-```{r chunk11}
+```{r chunk1211}
 modaldata <- data.frame(
      diagnosis = levels(diagnosis),
      sex = rep("Female", 4),
@@ -130,7 +127,7 @@ legend("bottomleft", levels(diagnosis), col = 2:5, lty = 1)
 
 The `Publication` data presented in Section 11.5.4 can be found in the `ISLR2` library. We first reproduce Figure 11.5 by plotting the Kaplan-Meier curves stratified on the `posres` variable, which records whether the study had a positive or negative result.
 
-```{r chunk12}
+```{r chunk1212}
 fit.posres <- survfit(
     Surv(time, status) ~ posres, data = Publication
   )
@@ -143,7 +140,7 @@ legend("topright", c("Negative Result", "Positive Result"),
 
 As discussed previously, the $p$-values from fitting Cox's proportional hazards model to the `posres` variable are quite large, providing no evidence of a difference in time-to-publication between studies with positive versus negative results.
 
-```{r chunk13}
+```{r chunk1213}
 fit.pub <- coxph(Surv(time, status) ~ posres,
     data = Publication)
 fit.pub
@@ -152,7 +149,7 @@ fit.pub
 
 As expected, the log-rank test provides an identical conclusion.
 
-```{r chunk14}
+```{r chunk1214}
 logrank.test <- survdiff(Surv(time, status) ~ posres,
     data = Publication)
 logrank.test
@@ -161,7 +158,7 @@ logrank.test
 
 However, the results change dramatically when we include other  predictors in the model. Here we have excluded the funding mechanism variable.
 
-```{r chunk15}
+```{r chunk1215}
 fit.pub2 <- coxph(Surv(time, status) ~ . - mech,
     data = Publication)
 fit.pub2
@@ -176,7 +173,7 @@ In this context, censoring occurs if a customer hangs up before his or her call 
 
 There are three covariates: `Operators` (the number of call center operators available at the time of the call, which can range from $5$ to $15$), `Center` (either A, B, or C), and `Time` of day (Morning, Afternoon, or Evening). We generate data for these covariates so that all possibilities are equally likely: for instance, morning, afternoon and evening calls are equally likely, and any number of operators from $5$ to $15$ is equally likely.
 
-```{r chunk16}
+```{r chunk1216}
 set.seed(4)
 N <- 2000
 Operators <- sample(5:15, N, replace = T)
@@ -188,13 +185,13 @@ X <- model.matrix( ~ Operators + Center + Time)[, -1]
 It is worthwhile to take a peek at the design matrix `X`,  so that we can be sure that we understand how the
 variables have been coded.
 
-```{r chunk17}
+```{r chunk1217}
 X[1:5, ]
 ```
 
 Next,  we specify the coefficients and the hazard function.
 
-```{r chunk18}
+```{r chunk1218}
 true.beta <- c(0.04, -0.3, 0, 0.2, -0.2)
 h.fn <- function(x) return(0.00001 * x)
 ```
@@ -208,7 +205,7 @@ the wait times are a bit longer at Center B.
 
 We are now ready to  generate data under the  Cox proportional hazards model. The `sim.survdata()` function allows us to specify the maximum possible failure time, which in this case corresponds to the longest possible wait time for a customer; we set this to equal $1{,}000$ seconds.
 
-```{r chunk19}
+```{r chunk1219}
 library(coxed)
 queuing <- sim.survdata(N = N, T = 1000, X = X,
     beta = true.beta, hazard.fun = h.fn)
@@ -219,18 +216,15 @@ names(queuing)
 
 The "observed" data is stored in `queuing$data`, with `y` corresponding to the event time and `failed` an indicator of whether the call was answered (`failed = T`) or the customer hung up before the call was answered (`failed = F`). We see that almost $90\%$ of calls were answered.
 
-```{r chunk20}
+```{r chunk1220}
 head(queuing$data)
 mean(queuing$data$failed)
 ```
 
 
-
-
-
 We now plot  Kaplan-Meier survival curves. First, we stratify by `Center`.
 
-```{r chunk21}
+```{r chunk1221}
 fit.Center <- survfit(Surv(y, failed) ~ Center,
     data = queuing$data)
 plot(fit.Center, xlab = "Seconds",
@@ -243,7 +237,7 @@ legend("topright",
 
 Next, we stratify by `Time`.
 
-```{r chunk22}
+```{r chunk1222}
 fit.Time <- survfit(Surv(y, failed) ~ Time,
    data = queuing$data)
 plot(fit.Time, xlab = "Seconds",
@@ -256,7 +250,7 @@ legend("topright", c("Morning", "Afternoon", "Evening"),
 It seems that calls at Call Center B
   take longer to be answered than calls at Centers A and C. Similarly, it appears that wait times are longest in the morning and shortest in the evening hours. We can use a log-rank test to determine whether these differences are statistically significant.
 
-```{r chunk23}
+```{r chunk1223}
 survdiff(Surv(y, failed) ~ Center, data = queuing$data)
 survdiff(Surv(y, failed) ~ Time, data = queuing$data)
 ```
@@ -268,7 +262,7 @@ We find that  differences between centers are highly significant, as are differe
 
 Finally, we fit Cox's proportional hazards model to the data.
 
-```{r chunk24}
+```{r chunk1224}
 fit.queuing <- coxph(Surv(y, failed) ~ .,
     data = queuing$data)
 fit.queuing

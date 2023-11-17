@@ -3,11 +3,7 @@ knitr::opts_chunk$set(error = TRUE)
 ```
 
 
-
 # Multiple Testing
-
-
-
 
 
 ## Review of Hypothesis Tests
@@ -16,7 +12,7 @@ We begin by performing some one-sample  $t$-tests  using the `t.test()` function
  First we create 100 variables, each consisting of 10 observations. The first 50 variables have mean $0.5$ and variance $1$,
 while the others have mean $0$ and variance $1$.
 
-```{r chunk1}
+```{r chunk141}
 set.seed(6)
 x <- matrix(rnorm(10 * 100), 10, 100)
 x[, 1:50] <- x[, 1:50] + 0.5
@@ -26,7 +22,7 @@ x[, 1:50] <- x[, 1:50] + 0.5
 The `t.test()` function can perform a one-sample or a two-sample $t$-test.
  By default, a  one-sample test is performed. To begin, we test $H_{0}: \mu_1=0$, the null hypothesis that the first variable has mean zero.
 
-```{r chunk2}
+```{r chunk142}
 t.test(x[, 1], mu = 0)
 ```
 
@@ -38,7 +34,7 @@ We now test $H_{0j}: \mu_j=0$ for $j=1,\ldots,100$. We compute the 100
  $p$-values, and then construct a vector recording whether the $j$th $p$-value is less than or equal to 0.05, in which case we reject $H_{0j}$,
  or greater than 0.05, in which case we do not reject $H_{0j}$, for $j=1,\ldots,100$.
 
-```{r chunk3}
+```{r chunk143}
 p.values <- rep(0, 100)
 for (i in 1:100)
   p.values[i] <- t.test(x[, i], mu = 0)$p.value
@@ -48,7 +44,7 @@ decision[p.values <= .05] <- "Reject H0"
 
 Since this is a simulated data set, we can create a $2 \times 2$ table similar to Table 13.2.
 
-```{r chunk4}
+```{r chunk144}
 table(decision,
     c(rep("H0 is False", 50), rep("H0 is True", 50))
   )
@@ -67,7 +63,7 @@ it resulted in a high number of Type II errors.
 If we instead simulate data with a stronger signal, so that  the ratio of the mean to the standard deviation for the false null hypotheses equals $1$,
 then we make only $9$ Type II errors.
 
-```{r chunk5}
+```{r chunk145}
 x <- matrix(rnorm(10 * 100), 10, 100)
 x[, 1:50] <- x[, 1:50] + 1
 for (i in 1:100)
@@ -84,7 +80,7 @@ table(decision,
 Recall from (13.5) that if the null hypothesis is true for each of $m$ independent hypothesis tests, then the
   FWER is equal to $1-(1-\alpha)^m$. We can use this expression to compute the FWER for $m=1,\ldots, 500$ and $\alpha=0.05$, $0.01$, and $0.001$.
 
-```{r chunk6}
+```{r chunk146}
 m <- 1:500
 fwe1 <- 1 - (1 - 0.05)^m
 fwe2 <- 1 - (1 - 0.01)^m
@@ -94,7 +90,7 @@ fwe3 <- 1 - (1 - 0.001)^m
 We plot these three vectors in order to
 reproduce Figure 13.2. The  red, blue, and green lines correspond to $\alpha=0.05$, $0.01$, and $0.001$, respectively.
 
-```{r chunk7}
+```{r chunk147}
 par(mfrow = c(1, 1))
 plot(m, fwe1, type = "l", log = "x", ylim = c(0, 1), col = 2,
     ylab = "Family - Wise Error Rate",
@@ -115,7 +111,7 @@ We now conduct a one-sample $t$-test for each of the first five managers in the 
   in order to test the null hypothesis that the $j$th fund manager's mean return equals zero,
 $H_{0j}: \mu_j=0$.
 
-```{r chunk8}
+```{r chunk148}
 library(ISLR2)
 fund.mini <- Fund[, 1:5]
 t.test(fund.mini[, 1], mu = 0)
@@ -146,7 +142,7 @@ For example, in the case of Bonferroni's
 method, the raw $p$-values are multiplied by the total number of hypotheses, $m$, in order to obtain the adjusted $p$-values. (However,
 adjusted $p$-values are not allowed to exceed $1$.)
 
-```{r chunk9}
+```{r chunk149}
 p.adjust(fund.pvalue, method = "bonferroni")
 pmin(fund.pvalue * 5, 1)
 ```
@@ -158,21 +154,21 @@ By contrast, using Holm's method, the adjusted $p$-values indicate that we can
  reject the null hypotheses for Managers One and Three at a FWER
 of $0.05$.
 
-```{r chunk10}
+```{r chunk1410}
 p.adjust(fund.pvalue, method = "holm")
 ```
 
 
 As discussed previously, Manager One seems to perform particularly well, whereas Manager Two has poor performance.
 
-```{r chunk11}
+```{r chunk1411}
 apply(fund.mini, 2, mean)
 ```
 
 Is there evidence of a meaningful difference in performance between these two managers? Performing a paired $t$-test 
 using the `t.test()` function results in a $p$-value of $0.038$, suggesting a statistically significant difference.
 
-```{r chunk12}
+```{r chunk1412}
 t.test(fund.mini[, 1], fund.mini[, 2], paired = T)
 ```
 
@@ -185,7 +181,7 @@ which is essentially just a linear regression in which all of the predictors are
 In this case, the response consists of the monthly excess returns achieved by each manager,
  and the predictor indicates the manager to which each return corresponds.
 
-```{r chunk13}
+```{r chunk1413}
 returns <- as.vector(as.matrix(fund.mini))
 manager <- rep(c("1", "2", "3", "4", "5"), rep(50, 5))
 a1 <- aov(returns ~ manager)
@@ -198,7 +194,7 @@ as well as a $p$-value. All of these quantities
   has increased from $0.038$ to $0.186$, so there is no longer  clear evidence of a difference between the managers' performances.
 We can plot the confidence intervals for the pairwise comparisons using the `plot()` function.
 
-```{r chunk14}
+```{r chunk1414}
 plot(TukeyHSD(x = a1))
 ```
 
@@ -209,7 +205,7 @@ plot(TukeyHSD(x = a1))
 Now we perform hypothesis tests for all 2,000 fund managers in the `Fund` dataset. We perform a one-sample $t$-test of
 $H_{0j}: \mu_j=0$, which states that the $j$th fund manager's mean return is zero.
 
-```{r chunk15}
+```{r chunk1415}
 fund.pvalues <- rep(0, 2000)
 for (i in 1:2000)
   fund.pvalues[i] <- t.test(Fund[, i], mu = 0)$p.value
@@ -219,7 +215,7 @@ There are far too many managers to consider trying to control the FWER.
 Instead, we focus on controlling the FDR: that is, the expected fraction of rejected null hypotheses that are actually false positives.
 The `p.adjust()` function can be used to carry out the Benjamini-Hochberg procedure.
 
-```{r chunk16}
+```{r chunk1416}
 q.values.BH <- p.adjust(fund.pvalues, method = "BH")
 q.values.BH[1:10]
 ```
@@ -230,7 +226,7 @@ an FDR of $10\%$ or greater, but that we cannot reject the null hypothesis at an
 
 If we control the FDR at $10\%$, then for how many of the fund managers can we reject $H_{0j}: \mu_j=0$?
 
-```{r chunk17}
+```{r chunk1417}
 sum(q.values.BH <= .1)
 ```
 
@@ -239,7 +235,7 @@ beat the market at an FDR of $10\%$.  Only about 15 ($10\%$ of 146) of these fun
 By contrast,
 if we had instead used Bonferroni's method to control the FWER at level  $\alpha=0.1$, then we would have failed to reject any null hypotheses!
 
-```{r chunk18}
+```{r chunk1418}
 sum(fund.pvalues <= (0.1 / 2000))
 ```
 
@@ -255,7 +251,7 @@ all $p$-values that satisfy $p_{(j)}<qj/m$ (`wh.ps`).
 Finally, `wh` indexes all  $p$-values that are less than or equal to the largest $p$-value in `wh.ps`. Therefore, `wh`
 indexes the $p$-values rejected by the Benjamini-Hochberg procedure.
 
-```{r chunk19}
+```{r chunk1419}
 ps <- sort(fund.pvalues)
 m <- length(fund.pvalues)
 q <- 0.1
@@ -269,7 +265,7 @@ if (length(wh.ps) >0) {
 
 We now reproduce the middle panel of Figure 13.6.
 
-```{r chunk20}
+```{r chunk1420}
 plot(ps, log = "xy", ylim = c(4e-6, 1), ylab = "P-Value",
     xlab = "Index", main = "")
 points(wh, ps[wh], col = 4)
@@ -283,7 +279,7 @@ abline(h = 0.1 / 2000, col = 3)
 Here, we implement the re-sampling approach to hypothesis testing using the `Khan` dataset, which we investigated in Section 13.5.
  First, we merge the training and testing data, which results in observations on $83$ patients for $2{,}308$ genes.
 
-```{r chunk21}
+```{r chunk1421}
 attach(Khan)
 x <- rbind(xtrain, xtest)
 y <- c(as.numeric(ytrain), as.numeric(ytest))
@@ -296,7 +292,7 @@ There are four classes of cancer. For each gene, we compare the mean expression 
   Performing a standard two-sample $t$-test on the $11$th gene produces a test-statistic of $-2.09$
 and an associated $p$-value of $0.0412$, suggesting modest evidence of a difference in mean expression levels between the two cancer types.
 
-```{r chunk22}
+```{r chunk1422}
 x <- as.matrix(x)
 x1 <- x[which(y == 2), ]
 x2 <- x[which(y == 4), ]
@@ -316,7 +312,7 @@ Under the null hypothesis of no difference between the groups, this new test sta
 Repeating this process 10,000 times allows us to approximate the null distribution of the test statistic.
  We compute the fraction of the time that our observed test statistic exceeds the test statistics obtained via re-sampling.
 
-```{r chunk23}
+```{r chunk1423}
 set.seed(1)
 B <- 10000
 Tbs <- rep(NA, B)
@@ -333,7 +329,7 @@ This fraction, $0.0416$, is our re-sampling-based $p$-value. It is almost identi
 
 We can plot  a histogram of the re-sampling-based test statistics in order to reproduce Figure 13.7.
 
-```{r chunk24}
+```{r chunk1424}
 hist(Tbs, breaks = 100, xlim = c(-4.2, 4.2), main = "",
     xlab = "Null Distribution of Test Statistic", col = 7)
 lines(seq(-4.2, 4.2, len = 1000),
@@ -355,7 +351,7 @@ and then produce $10{,}000$ re-sampled test statistics. This may take a few minu
 then you could set `B` equal to a smaller
 value (e.g. `B = 500`).
 
-```{r chunk25}
+```{r chunk1425}
 m <- 100
 B <- 1000
 set.seed(1)
@@ -381,7 +377,7 @@ Next, we compute the number of rejected null hypotheses $R$, the estimated numbe
   $c$ in Algorithm 13.4. The threshold values are chosen using the absolute values of the
   test statistics from the $100$ genes.
 
-```{r chunk26}
+```{r chunk1426}
 cs <- sort(abs(Ts))
 FDRs <- Rs <- Vs <- rep(NA, m)
 for (j in 1:m) {
@@ -399,7 +395,7 @@ rejected. For example, with the FDR controlled at 0.1,
 At an FDR of $0.2$, we can reject the null hypothesis for $28$ genes, of which we expect around six to be false discoveries.
 The variable `index` is needed here since we restricted our analysis to just $100$ randomly-selected genes.
 
-```{r chunk27}
+```{r chunk1427}
 max(Rs[FDRs <= .1])
 sort(index[abs(Ts) >= min(cs[FDRs < .1])])
 max(Rs[FDRs <= .2])
@@ -409,7 +405,7 @@ sort(index[abs(Ts) >= min(cs[FDRs < .2])])
 The next line  generates Figure 13.11, which is similar to Figure 13.9,
 except that it is based on only  a subset of the genes.
 
-```{r chunk28}
+```{r chunk1428}
 plot(Rs, FDRs, xlab = "Number of Rejections", type = "l",
     ylab = "False Discovery Rate", col = 4, lwd = 3)
 ```
